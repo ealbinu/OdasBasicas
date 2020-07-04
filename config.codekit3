@@ -9,6 +9,13 @@
 	],
 "creatorBuild": "26667",
 "files": {
+	"\/.gitattributes": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.gitattributes",
+		"oF": 0
+		},
 	"\/assets\/aimg\/bullet.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -559,6 +566,13 @@
 		"oAP": "\/CM1T1\/CM1T1-212\/index.html",
 		"oF": 0
 		},
+	"\/CNAME": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/CNAME",
+		"oF": 0
+		},
 	"\/ES1T1\/ES1T1-38\/aimg\/ilustracion.png": {
 		"ft": 32768,
 		"iS": 96557,
@@ -596,6 +610,24 @@
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
+		},
+	"\/ES2T1\/ES2T1-27\/aimg\/ilustracion.png": {
+		"ft": 32768,
+		"iS": 96557,
+		"oA": 0,
+		"oAP": "\/ES2T1\/ES2T1-27\/aimg\/ilustracion.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T1\/ES2T1-27\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES2T1\/ES2T1-27\/index.html",
+		"oF": 0
 		},
 	"\/MA1T1\/MA1T1-108\/aimg\/i1.png": {
 		"ft": 32768,
@@ -1005,7 +1037,7 @@
 		},
 	"\/MA1T1\/MA1T1-96\/aimg\/i2.png": {
 		"ft": 32768,
-		"iS": 229376,
+		"iS": 53598,
 		"oA": 0,
 		"oAP": "\/MA1T1\/MA1T1-96\/aimg\/i3.png",
 		"oF": 0,
