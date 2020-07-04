@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordeno mis actividades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Ordeno mis actividades</h1>
+        <h2>El orden de las actividades / Los días de la semana</h2>
+
+        <div class="instruccion mt-5">Señalar la palabra mañana, tarde o noche en cada una de las imágenes para indicar en qué momento del día realizas las siguientes actividades.</div>
+
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-4 text-center">
+                        <selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="manana" :options="[{val:'manana', txt:'mañana'}, {val:'tarde', txt:'tarde'},  {val:'noche', txt:'noche'}]" customclass="col-sm-12">
+                            <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                        </selectableoptions>
+                    </div>
+                    <div class="col-8"><img src="aimg/i1.png" class="img-fluid" ></div>    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-4 text-center">
+                        <selectableoptions v-model="r[1]" ref="q1" @isright="right++" answer="tarde" :options="[{val:'manana', txt:'mañana'}, {val:'tarde', txt:'tarde'},  {val:'noche', txt:'noche'}]" customclass="col-sm-12">
+                            <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                        </selectableoptions>
+                    </div>
+                    <div class="col-8"><img src="aimg/i2.png" class="img-fluid" ></div>    
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-4 text-center">
+                        <selectableoptions v-model="r[2]" ref="q2" @isright="right++" answer="tarde" :options="[{val:'manana', txt:'mañana'}, {val:'tarde', txt:'tarde'},  {val:'noche', txt:'noche'}]" customclass="col-sm-12">
+                            <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                        </selectableoptions>
+                    </div>
+                    <div class="col-8"><img src="aimg/i3.png" class="img-fluid" ></div>    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-4 text-center">
+                        <selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="noche" :options="[{val:'manana', txt:'mañana'}, {val:'tarde', txt:'tarde'},  {val:'noche', txt:'noche'}]" customclass="col-sm-12">
+                            <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                        </selectableoptions>
+                    </div>
+                    <div class="col-8"><img src="aimg/i4.png" class="img-fluid" ></div>    
+                </div>
+            </div>
+        </div>
+        
+        <div class="instruccion mt-5">Observa las ilustraciones y señala primero o después según el orden en que deben realizarse.</div>
+        
+        <div class="row mt-4">
+            <div class="col-sm-3">
+                <img src="aimg/i5.png" class="img-fluid" >
+                <selectableoptions v-model="r[4]" ref="q4" @isright="right++" answer="primero" :options="[{val:'primero', txt:'primero'}, {val:'despues', txt:'después'}]" customclass="col-sm-12" watch="true" @clicked="r[5] = r[4]=='primero'?'despues':'primero'">
+                    <template v-slot:option="{option}">
+                        <div class="py-2 text-center"><strong class="h4 accent">{{option.txt}}</strong></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-3">
+                <img src="aimg/i6.png" class="img-fluid" >
+                <selectableoptions v-model="r[5]" ref="q5" @isright="right++" answer="despues" :options="[{val:'primero', txt:'primero'}, {val:'despues', txt:'después'}]" customclass="col-sm-12" watch="true" @clicked="r[4] = r[5]=='primero'?'despues':'primero'">
+                    <template v-slot:option="{option}">
+                        <div class="py-2 text-center"><strong class="h4 accent">{{option.txt}}</strong></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-3">
+                <img src="aimg/i7.png" class="img-fluid" >
+                <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="despues" :options="[{val:'primero', txt:'primero'}, {val:'despues', txt:'después'}]" customclass="col-sm-12" watch="true" @clicked="r[7] = r[6]=='primero'?'despues':'primero'">
+                    <template v-slot:option="{option}">
+                        <div class="py-2 text-center"><strong class="h4 sec">{{option.txt}}</strong></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-3">
+                <img src="aimg/i8.png" class="img-fluid" >
+                <selectableoptions v-model="r[7]" ref="q7" @isright="right++" answer="primero" :options="[{val:'primero', txt:'primero'}, {val:'despues', txt:'después'}]" customclass="col-sm-12" watch="true" @clicked="r[6] = r[7]=='primero'?'despues':'primero'">
+                    <template v-slot:option="{option}">
+                        <div class="py-2 text-center"><strong class="h4 sec">{{option.txt}}</strong></div>
+                    </template>
+                </selectableoptions>
+            </div>
+
+
+        </div>
+        
+        
+
+        <!-- ENDING -->
+
+        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
+            <button class="finalizar" @click="finalizar">Finalizar</button>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
+            <h3>Resultado</h3>
+            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+            <button class="finalizar" @click="reset">Volver a intentar</button>
+        </div>
+                
+        
+    </div><!--end#app-->
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

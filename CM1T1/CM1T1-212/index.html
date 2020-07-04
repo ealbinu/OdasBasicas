@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .img-fluid{max-width:140px;}
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
+
+        
+        
+        <div class="row mt-4">
+            <div class="col-sm-12 mt-4">
+                <div class="h4"><strong class="accent">1.</strong> Es un elemento natural que sirve de alimento.</div>
+                <selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="dos" :options="[{val:'uno', img:'aimg/i1.png'}, {val:'dos',img:'aimg/i2.png'}, {val:'tres',img:'aimg/i3.png'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <div class="text-center p-5"><img :src="option.img" class="img-fluid"></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-12 mt-4">
+                <div class="h4"><strong class="accent">2.</strong> Es un animal que vive en el mar.</div>
+                <selectableoptions v-model="r[1]" ref="q1" @isright="right++" answer="tres" :options="[{val:'uno', img:'aimg/i4.png'}, {val:'dos',img:'aimg/i5.png'}, {val:'tres',img:'aimg/i6.png'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <div class="text-center p-5"><img :src="option.img" class="img-fluid"></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-12 mt-4">
+                <div class="h4"><strong class="accent">3.</strong> Es un documento que te da identidad.</div>
+                <selectableoptions v-model="r[2]" ref="q2" @isright="right++" answer="dos" :options="[{val:'uno', img:'aimg/i7.png'}, {val:'dos',img:'aimg/i8.png'}, {val:'tres',img:'aimg/i9.png'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <div class="text-center p-5"><img :src="option.img" class="img-fluid"></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-12 mt-4">
+                <div class="h4"><strong class="accent">4.</strong> Es la imagen que representa una regla de tu casa.</div>
+                <selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="tres" :options="[{val:'uno', img:'aimg/i10.png'}, {val:'dos',img:'aimg/i11.png'}, {val:'tres',img:'aimg/i12.png'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <div class="text-center p-5"><img :src="option.img" class="img-fluid"></div>
+                    </template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-12 mt-4">
+                <div class="h4"><strong class="accent">5.</strong> Es el hábito de higiene que se debe practicar después de cada comida.</div>
+                <selectableoptions v-model="r[4]" ref="q4" @isright="right++" answer="uno" :options="[{val:'uno', img:'aimg/i13.png'}, {val:'dos',img:'aimg/i14.png'}, {val:'tres',img:'aimg/i15.png'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <div class="text-center p-5"><img :src="option.img" class="img-fluid"></div>
+                    </template>
+                </selectableoptions>
+            </div>
+
+        </div>
+        
+        
+
+        <!-- ENDING -->
+
+        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
+            <button class="finalizar" @click="finalizar">Finalizar</button>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
+            <h3>Resultado</h3>
+            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+            <button class="finalizar" @click="reset">Volver a intentar</button>
+        </div>
+                
+        
+    </div><!--end#app-->
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

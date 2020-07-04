@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparo edificios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        /* local style */
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Comparo edificios</h1>
+        <h2>Largas y cortas / Marcos para fotos</h2>
+        
+        <div class="instruccion mt-5">Observa la siguiente ilustración. Después lee las preguntas y señala la respuesta correcta.</div>
+        <div class="row mt-3 align-items-center">
+            <div class="col-sm-12 text-center"><img class="img-fluid" src="aimg/i1.png"></div>
+            <div class="col-sm-12">
+                <div><choose v-model="r[0]" ref="q0" num="1." text="¿Cuál es el elemento más largo?" :options="['El edificio', 'La casa', 'El auto']" @isright="right++" answer="El edificio" /></div>
+                <div><choose v-model="r[1]" ref="q1" num="2." text="¿Cuál es el elemento más ancho?" :options="['El edificio', 'La casa', 'El auto']" @isright="right++" answer="La casa" /></div>
+                <div><choose v-model="r[2]" ref="q2" num="3." text="¿En dónde se encuentra la ventana más ancha?" :options="['En el edificio', 'En el auto', 'En la casa']" @isright="right++" answer="En la casa" /></div>
+            </div>
+        </div>
+
+
+        <!-- ENDING -->
+
+        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
+            <button class="finalizar" @click="finalizar">Finalizar</button>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
+            <h3>Resultado</h3>
+            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+            <button class="finalizar" @click="reset">Volver a intentar</button>
+        </div>
+ 
+    </div><!--end#app-->
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+        /* local script */
+    </script>
+</body>
+</html>
