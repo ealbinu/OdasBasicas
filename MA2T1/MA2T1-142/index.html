@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparo colecciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .bg1, .bg2, .bg3, .bg4 { border-radius: 10px; padding: 10px; }
+        .bg1 {background: #E7F1D8;  }
+        .bg2 {background: #EFDFE6;  }
+        .bg3 {background: #FDE8CF;  }
+        .bg4 {background: #D2E5EF;  }
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Comparo colecciones</h1>
+        <h2>¿Me alcanza?</h2>
+
+        <div class="instruccion mt-5">Escribe con números la descomposición de cada conjunto en decenas y unidades. Después compáralos y selecciona si es <strong>es mayor que</strong> o <strong>es menor que</strong>, según corresponda.</div>
+        
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-4">
+                <img src="aimg/i1.png" class="img-fluid mb-4">
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="1+1+1+1+1+1=6" type="text" placeh="1+1+1...=?"></inputbox>
+            </div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[1]" ref="q1" @isright="right++" answer="menorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4">
+                <img src="aimg/i2.png" class="img-fluid mb-4">
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="10+2=12" type="text" placeh="10+?=?"></inputbox>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-4">
+                <img src="aimg/i3.png" class="img-fluid mb-4">
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="10+10+10+3=33" type="text" placeh="10+?+?+?=?"></inputbox>
+            </div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[4]" ref="q4" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4">
+                <img src="aimg/i4.png" class="img-fluid mb-4">
+                <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="10+10+10=30" type="text" placeh="10+?+?=?"></inputbox>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Compara las cantidades y el resultado de las sumas, y selecciona si <strong>es mayor que</strong> o <strong>es menor que</strong>, según corresponda.</div>
+        
+        <div class="row justify-content-center align-items-center mt-5 text-center">
+            <div class="col-sm-4"><div class="bg1"><strong class="h3 sec">65</strong></div></div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4"><div class="bg1"><strong class="h3 sec">55+5</strong></div></div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-5 text-center">
+            <div class="col-sm-4"><div class="bg2"><strong class="h3 sec">70</strong></div></div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[7]" ref="q7" @isright="right++" answer="menorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4"><div class="bg2"><strong class="h3 sec">60+20</strong></div></div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-5 text-center">
+            <div class="col-sm-4"><div class="bg3"><strong class="h3 sec">90</strong></div></div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[8]" ref="q8" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4"><div class="bg3"><strong class="h3 sec">70+10</strong></div></div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-5 text-center">
+            <div class="col-sm-4"><div class="bg4"><strong class="h3 sec">85</strong></div></div>
+            <div class="col-sm-4">
+                <selectableoptions v-model="r[9]" ref="q9" @isright="right++" answer="menorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
+                    <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
+                </selectableoptions>
+            </div>
+            <div class="col-sm-4"><div class="bg4"><strong class="h3 sec">90+5</strong></div></div>
+        </div>
+
+
+
+        <!-- ENDING -->
+
+        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
+            <button class="finalizar" @click="finalizar">Finalizar</button>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
+            <h3>Resultado</h3>
+            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+            <button class="finalizar" @click="reset">Volver a intentar</button>
+        </div>
+                
+        
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

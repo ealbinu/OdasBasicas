@@ -1329,6 +1329,57 @@
 		"oA": 0,
 		"oAP": "\/MA2T1\/MA2T1-125\/index.html",
 		"oF": 0
+		},
+	"\/MA2T1\/MA2T1-142\/aimg\/i1.png": {
+		"ft": 32768,
+		"iS": 10210,
+		"oA": 0,
+		"oAP": "\/MA2T1\/MA2T1-142\/aimg\/i1.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA2T1\/MA2T1-142\/aimg\/i2.png": {
+		"ft": 32768,
+		"iS": 19346,
+		"oA": 0,
+		"oAP": "\/MA2T1\/MA2T1-142\/aimg\/i2.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA2T1\/MA2T1-142\/aimg\/i3.png": {
+		"ft": 32768,
+		"iS": 48909,
+		"oA": 0,
+		"oAP": "\/MA2T1\/MA2T1-142\/aimg\/i3.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA2T1\/MA2T1-142\/aimg\/i4.png": {
+		"ft": 32768,
+		"iS": 43258,
+		"oA": 0,
+		"oAP": "\/MA2T1\/MA2T1-142\/aimg\/i4.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA2T1\/MA2T1-142\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA2T1\/MA2T1-142\/index.html",
+		"oF": 0
 		}
 	},
 "hooks": [
