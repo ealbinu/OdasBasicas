@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizo cálculos mentales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Realizo cálculos mentales</h1>
+
+        <div class="instruccion mt-5">Calcula mentalmente las siguientes operaciones.</div>
+        
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-9"><img src="aimg/i1.png" class="img-fluid"></div>
+            <div class="col-sm"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="20" type="number" placeh="#"></inputbox></div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-9"><img src="aimg/i2.png" class="img-fluid"></div>
+            <div class="col-sm"><inputbox v-model="r[1]" ref="q1" @isright="right++" answer="10" type="number" placeh="#"></inputbox></div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-9"><img src="aimg/i3.png" class="img-fluid"></div>
+            <div class="col-sm"><inputbox v-model="r[2]" ref="q2" @isright="right++" answer="20" type="number" placeh="#"></inputbox></div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-9"><img src="aimg/i4.png" class="img-fluid"></div>
+            <div class="col-sm"><inputbox v-model="r[3]" ref="q3" @isright="right++" answer="10" type="number" placeh="#"></inputbox></div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="col-sm-9"><img src="aimg/i5.png" class="img-fluid"></div>
+            <div class="col-sm"><inputbox v-model="r[4]" ref="q4" @isright="right++" answer="5" type="number" placeh="#"></inputbox></div>
+        </div>
+
+
+        <!-- ENDING -->
+
+        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
+            <button class="finalizar" @click="finalizar">Finalizar</button>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
+            <h3>Resultado</h3>
+            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+            <button class="finalizar" @click="reset">Volver a intentar</button>
+        </div>
+                
+        
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
