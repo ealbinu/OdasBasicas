@@ -30,6 +30,9 @@ Vue.component('inputbox', {
         },
         verify () { 
             this.evaluate = true
+            if(this.type == 'text'){
+                this.status = this.status.toLowerCase()
+            }
             if(this.status == this.answer) {
                 this.$emit('isright', true)
                 this.result = true
@@ -48,3 +51,8 @@ Vue.component('inputbox', {
         </div>
     `
 })
+
+
+/*
+<inputbox v-model="r[29]" ref="q29" @isright="right++" :answer="90" type="number" placeh="#"></inputbox>
+*/

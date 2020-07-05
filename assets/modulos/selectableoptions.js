@@ -61,3 +61,12 @@ Vue.component('selectableoptions', {
     </div>
     `
 })
+
+
+/*
+<selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i2.png'},  {val:'no', img:'aimg/i2.png'}]" customclass="col-sm-6">
+    <template v-slot:option="{option}">
+        <img :src="option.img" class="img-fluid">
+    </template>
+</selectableoptions>
+*/
