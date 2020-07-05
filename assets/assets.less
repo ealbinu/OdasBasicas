@@ -8,6 +8,7 @@
 :root {
     --main: @main;
     --sec: @sec;
+    --accent: @accent;
 }
 
 body {
@@ -233,4 +234,17 @@ strong {
     &.iswrong input{
         border: 2px solid @wrongcol;
     }
+}
+
+/* HIDE INPUT NUMBER ARROWS*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

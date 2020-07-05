@@ -1,6 +1,7 @@
 :root {
   --main: #ED1846;
   --sec: #005093;
+  --accent: #EB8B2E;
 }
 body {
   font-family: 'Montserrat', sans-serif;
@@ -264,5 +265,16 @@ strong.sec {
 }
 .inputbox.iswrong input {
   border: 2px solid #DB3E34;
+}
+/* HIDE INPUT NUMBER ARROWS*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 /*# sourceMappingURL=assets.css.map */
