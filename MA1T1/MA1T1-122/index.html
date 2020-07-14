@@ -12,8 +12,8 @@
     <style>
         .img-c{
             width: 80%;
-            height: 300px;
-            margin: 0 auto;
+            max-height: 240px;
+            margin: 0 auto 10px auto;
         }
     </style>
 </head>
@@ -33,11 +33,11 @@
             </div>
             <div class="col-sm-6  my-5">
                 <div class="img-c"><img class="img-fluid" src="aimg/i3.png"></div>
-                <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="25" type="number" placeh="# de manzanas"></inputbox>
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="25" type="number" placeh="# de plátanos"></inputbox>
             </div>
             <div class="col-sm-6  my-5">
                 <div class="img-c"><img class="img-fluid" src="aimg/i4.png"></div>
-                <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="25" type="number" placeh="# de manzanas"></inputbox>
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="25" type="number" placeh="# de plátanos"></inputbox>
             </div>
         </div>
 
