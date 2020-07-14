@@ -22,7 +22,7 @@
         
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12">
-                <selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i1.png'},  {val:'no', img:'aimg/i2.png'}]" customclass="col-6">
+                <selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="one" :options="[{val:'one', img:'aimg/i1.png'},  {val:'two', img:'aimg/i2.png'}]" customclass="col-6">
                     <template v-slot:option="{option}">
                         <img :src="option.img" class="img-fluid">
                     </template>
@@ -34,37 +34,37 @@
 
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12">
-                <selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i3.png'},  {val:'no', img:'aimg/i4.png'}]" customclass="col-6">
+                <selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="one" :options="[{val:'one', img:'aimg/i3.png'},  {val:'two', img:'aimg/i4.png'}]" customclass="col-6">
                     <template v-slot:option="{option}">
                         <img :src="option.img" class="img-fluid">
                     </template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[4]" ref="q4" @isright="right++" answer="cinco" type="text" placeh="# de autos"></inputbox></div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[5]" ref="q5" @isright="right++" answer="tres" type="text" placeh="# de helicópteros"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[4]" ref="q4" @isright="right++" answer="quince" type="text" placeh="# de autos"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[5]" ref="q5" @isright="right++" answer="diez" type="text" placeh="# de helicópteros"></inputbox></div>
         </div>
 
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12">
-                <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i5.png'},  {val:'no', img:'aimg/i6.png'}]" customclass="col-6">
+                <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="two" :options="[{val:'one', img:'aimg/i5.png'},  {val:'two', img:'aimg/i6.png'}]" customclass="col-6">
                     <template v-slot:option="{option}">
                         <img :src="option.img" class="img-fluid">
                     </template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[7]" ref="q7" @isright="right++" answer="cinco" type="text" placeh="# de cerezas"></inputbox></div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[8]" ref="q8" @isright="right++" answer="tres" type="text" placeh="# de fresas"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[7]" ref="q7" @isright="right++" answer="treinta y cinco" type="text" placeh="# de cerezas"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[8]" ref="q8" @isright="right++" answer="cincuenta" type="text" placeh="# de fresas"></inputbox></div>
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12">
-                <selectableoptions v-model="r[9]" ref="q9" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i7.png'},  {val:'no', img:'aimg/i8.png'}]" customclass="col-6">
+                <selectableoptions v-model="r[9]" ref="q9" @isright="right++" answer="one" :options="[{val:'one', img:'aimg/i7.png'},  {val:'two', img:'aimg/i8.png'}]" customclass="col-6">
                     <template v-slot:option="{option}">
                         <img :src="option.img" class="img-fluid">
                     </template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[10]" ref="q10" @isright="right++" answer="cinco" type="text" placeh="# de mariposas"></inputbox></div>
-            <div class="col-sm-6 mt-2"><inputbox v-model="r[11]" ref="q11" @isright="right++" answer="tres" type="text" placeh="# de libélulas"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[10]" ref="q10" @isright="right++" answer="dieciocho" type="text" placeh="# de mariposas"></inputbox></div>
+            <div class="col-sm-6 mt-2"><inputbox v-model="r[11]" ref="q11" @isright="right++" answer="doce" type="text" placeh="# de libélulas"></inputbox></div>
         </div>
 
 
