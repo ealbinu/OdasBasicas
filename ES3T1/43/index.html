@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indentifico familias léxicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .enun {
+            font-size: 1.6rem;
+        }
+        .opcionestxt {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .selectableoptions {
+            max-width: 400px;
+            background: var(--sec);
+            padding: 0 2px;
+        }
+        .selectableoptions .opcion-txt {
+            position: relative;
+            padding: 2px 10px;
+            margin: 0 5px;
+        }
+        .selectableoptions .opcion-txt strong {
+            color: #fff;
+        }
+
+        .cocinero {
+            max-width: 100px;
+            margin: 10px auto;
+        }
+        .choose {
+            margin: 4px 0;
+        }
+        .choose .options {
+            background: var(--accent);
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: bold;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        .choose .options > div {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 10px;
+            color: var(--accent);
+            border-bottom: none;
+            box-sizing: border-box;
+        }
+        .choose .options > div.active {
+            background: var(--main);
+            color: #fff;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Identifico familias léxicas</h1>
+        <h2>¡A escribir el folleto!</h2>
+
+        <div class="instruccion mt-5">De cada par de palabras, encierra la que complete correctamente el texto. Observa el ejemplo.</div>
+        
+        <div class="row mt-3">
+           <div class="col-md-12">
+               <div class="enun">
+                Las familias de
+                <span class="opcionestxt">
+                    <selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="ok"
+                        :options="[{val:'ok', t:'palabras'},{val:'no', t:'letras'}]" customclass="opcion-txt">
+                        <template v-slot:option="{option}"><strong >{{option.t}}</strong></template>
+                    </selectableoptions>
+                </span>
+                o <strong class="main">familia léxica</strong> son aquellas 
+                <span class="opcionestxt">
+                    <selectableoptions v-model="r[1]" ref="q1" @isright="right++" answer="ok"
+                        :options="[{val:'no', t:'oraciones'},{val:'ok', t:'palabras'}]" customclass="opcion-txt">
+                        <template v-slot:option="{option}"><strong >{{option.t}}</strong></template>
+                    </selectableoptions>
+                </span>
+                que están
+                <span class="opcionestxt">
+                    <selectableoptions v-model="r[10]" ref="q1b" @isright="right++" answer="ok"
+                        :options="[{val:'no', t:'separadas'},{val:'ok', t:'compuestas'}]" customclass="opcion-txt">
+                        <template v-slot:option="{option}"><strong >{{option.t}}</strong></template>
+                    </selectableoptions>
+                </span>
+                por el mismo lexema o raíz, por lo tanto,
+                <span class="opcionestxt">
+                    <selectableoptions v-model="r[2]" ref="q2" @isright="right++" answer="ok"
+                        :options="[{val:'ok', t:'comparten'},{val:'no', t:'dividen'}]" customclass="opcion-txt">
+                        <template v-slot:option="{option}"><strong >{{option.t}}</strong></template>
+                    </selectableoptions>
+                </span>
+                una parte de su significado y ortografía.
+                Por ejemplo, <strong class="main">pan</strong>: panadero,
+                <span class="opcionestxt">
+                    <selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="ok"
+                        :options="[{val:'ok', t:'panadería'},{val:'no', t:'patriótico'}]" customclass="opcion-txt">
+                        <template v-slot:option="{option}"><strong >{{option.t}}</strong></template>
+                    </selectableoptions>
+                </span>
+                , panera, etcétera.
+            </div>
+           </div>
+        </div>
+        
+        <div class="instruccion mt-5">Selecciona la palabra que no pertenezca a cada familia léxica.</div>
+
+        <div class="row mt-3">
+           <div class="col-md-3"><img src="aimg/i1.png" class="img-fluid cocinero"></div>
+            <div class="col-md-9">
+                <div><choose v-model="r[4]" ref="q4" key="4" text="" :options="['cocina', 'cocinar', 'coser', 'cocinero']" @isright="right++" answer="coser" /></div>
+                <div><choose v-model="r[5]" ref="q5" key="5" text="" :options="['luz', 'lucero', 'luces', 'lustrar']" @isright="right++" answer="lustrar" /></div>
+                <div><choose v-model="r[6]" ref="q6" key="6" text="" :options="['planta', 'maceta', 'plantar', 'plantación']" @isright="right++" answer="maceta" /></div>
+                <div><choose v-model="r[7]" ref="q7" key="7" text="" :options="['blanco', 'blancura', 'blanquear', 'blando']" @isright="right++" answer="blando" /></div>
+                <div><choose v-model="r[8]" ref="q8" key="8" text="" :options="['`pan', 'panadería', 'pandero', 'panadero']" @isright="right++" answer="pandero" /></div>
+                <div><choose v-model="r[9]" ref="q9" key="9" text="" :options="['carne', 'cartero', 'carnicero', 'carnicería']" @isright="right++" answer="cartero" /></div>
+            </div>
+        </div>
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
