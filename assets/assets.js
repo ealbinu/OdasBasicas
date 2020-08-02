@@ -25,7 +25,11 @@ var app = new Vue({
             s_win.play()
             this.total = this.r.length
             for(var i in this.$refs){
-                this.$refs[i].verify()
+                if(Array.isArray(this.$refs[i])){
+                    this.$refs[i][0].verify()
+                } else {
+                    this.$refs[i].verify()
+                }
             }
             this.resultado = true
         }

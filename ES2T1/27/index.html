@@ -23,35 +23,27 @@
             <div class="col-sm-6"><check v-model="r[1]" ref="q1" num="2." @isright="right++" :answer="false" text="Rayar los libros." /></div>
             <div class="col-sm-6"><check v-model="r[2]" ref="q2" num="3." @isright="right++" :answer="false" text="Dejar los libros por todo el salón." /></div>
             <div class="col-sm-6"><check v-model="r[3]" ref="q3" num="4." @isright="right++" :answer="true" text="Cuidar los libros." /></div>
-            <div class="col-sm-6"><check v-model="r[4]" ref="q4" num="1." @isright="right++" :answer="true" text="Colocar los libros en su lugar." /></div>
-            <div class="col-sm-6"><check v-model="r[5]" ref="q5" num="2." @isright="right++" :answer="false" text="Arrancar las hojas de los libros." /></div>
-            <div class="col-sm-6"><check v-model="r[6]" ref="q6" num="3." @isright="right++" :answer="false" text="Comer en el área de lectura." /></div>
-            <div class="col-sm-6"><check v-model="r[7]" ref="q7" num="4." @isright="right++" :answer="true" text="Mantener los libros ordenados." /></div>
+            <div class="col-sm-6"><check v-model="r[4]" ref="q4" num="5." @isright="right++" :answer="true" text="Colocar los libros en su lugar." /></div>
+            <div class="col-sm-6"><check v-model="r[5]" ref="q5" num="6." @isright="right++" :answer="false" text="Arrancar las hojas de los libros." /></div>
+            <div class="col-sm-6"><check v-model="r[6]" ref="q6" num="7." @isright="right++" :answer="false" text="Comer en el área de lectura." /></div>
+            <div class="col-sm-6"><check v-model="r[7]" ref="q7" num="8." @isright="right++" :answer="true" text="Mantener los libros ordenados." /></div>
         </div>
         
 
 
         <!-- ENDING -->
-        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
-            <button class="finalizar" @click="finalizar">Finalizar</button>
-        </div>
-
-        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
-            <h3>Resultado</h3>
-            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
-            <button class="finalizar" @click="reset">Volver a intentar</button>
-        </div>
-                
-        
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/check.js"></script>
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>

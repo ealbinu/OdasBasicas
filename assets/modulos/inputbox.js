@@ -29,6 +29,7 @@ Vue.component('inputbox', {
             }
         },
         verify () { 
+            console.log(this.status, this.answer)
             this.evaluate = true
             if(this.type == 'text'){
                 this.status = this.status.toLowerCase()

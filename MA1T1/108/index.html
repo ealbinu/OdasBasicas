@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
-    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
@@ -54,29 +53,19 @@
 
 
         <!-- ENDING -->
-
-        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
-            <button class="finalizar" @click="finalizar">Finalizar</button>
-        </div>
-
-        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
-            <h3>Resultado</h3>
-            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
-            <button class="finalizar" @click="reset">Volver a intentar</button>
-        </div>
-                
-        
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
-    <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/check.js"></script>
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script src="index.js"></script>
+    <script></script>
 </body>
 </html>

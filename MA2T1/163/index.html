@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llego hasta 100</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .inputbox input {
+            margin-left: 3px;
+        }
+        .inputbox {
+            color: var(--main);
+            font-size: 1.8rem;
+        }
+        .headr {
+            background: var(--sec);
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .conjunto {
+            padding: 10px 0;
+            background: #f5f5f5;
+            margin: 10px 0;
+        }
+        .conjunto.ej {
+            border: 2px solid #AAE0FA;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .conjunto.ej strong {
+            color: var(--main);
+            font-size: 1.8rem;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .col1, .col2{
+            background: #E9F4F3;
+            padding: 10px;
+            border-radius: 10px;
+            border: 4px solid #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Llego hasta 100</h1>
+        <h2>Trayecto 7. Otra vez 100. Junta 100 con elo dado</h2>
+
+        <div class="instruccion mt-5">Escribe la cantidad de dinero que hay en cada conjunto y cuánto falta para compeltar <strong>$100</strong>. Observa el ejemplo</div>
+        
+        <div class="row mt-5">
+            <div class="col-md-8"></div>
+            <div class="col-md-2 headr">Total</div>
+            <div class="col-md-2 headr">Falta para $100</div>
+        </div>
+        <div class="row align-items-center conjunto ej">
+            <div class="col-md-8"><img src="aimg/i1.png" class="img-fluid"></div>
+            <div class="col-md-2 col-6">
+                <strong>$31</strong>
+            </div>
+            <div class="col-md-2 col-6">
+                <strong>$69</strong>
+            </div>
+        </div>
+        <div class="row align-items-center conjunto">
+            <div class="col-md-8"><img src="aimg/i2.png" class="img-fluid"></div>
+            <div class="col-md-2 col-6">
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="41" type="number" placeh="#"><template v-slot:before><strong>$</strong></template></inputbox>
+            </div>
+            <div class="col-md-2 col-6">
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="59" type="number" placeh="#"><template v-slot:before><strong>$</strong></template></inputbox>
+            </div>
+        </div>
+        <div class="row align-items-center conjunto">
+            <div class="col-md-8"><img src="aimg/i3.png" class="img-fluid"></div>
+            <div class="col-md-2 col-6">
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="62" type="number" placeh="#"><template v-slot:before><strong>$</strong></template></inputbox>
+            </div>
+            <div class="col-md-2 col-6">
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="38" type="number" placeh="#"><template v-slot:before><strong>$</strong></template></inputbox>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Escribe los números que faltan en cada suma para que el resultado sea <strong>100</strong>.</div>
+        <div class="row text-center">
+            <div class="col-md-6 col1">
+                <inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="10" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">90 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[5]" ref="q5" @isright="right++" :answer="15" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">85 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[6]" ref="q6" @isright="right++" :answer="35" type="number" placeh="#">
+                    <template v-slot:after><div class="col-4 ">+ 65</div> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[7]" ref="q7" @isright="right++" :answer="8" type="number" placeh="#">
+
+                    <template v-slot:after> <div class="col-4 ">+ 92</div> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[8]" ref="q8" @isright="right++" :answer="19" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">81 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+            </div>
+            <div class="col-md-6 col2">
+                <inputbox v-model="r[9]" ref="q9" @isright="right++" :answer="64" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">36 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[10]" ref="q10" @isright="right++" :answer="88" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">12 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[11]" ref="q11" @isright="right++" :answer="25" type="number" placeh="#">
+                    <template v-slot:after> <div class="col-4 ">+ 25</div> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[12]" ref="q12" @isright="right++" :answer="7" type="number" placeh="#">
+                    <template v-slot:after> <div class="col-4 ">+ 93</div> <div class="col-4">= 100</div> </template>
+                </inputbox>
+                <inputbox v-model="r[13]" ref="q13" @isright="right++" :answer="76" type="number" placeh="#">
+                    <template v-slot:before> <div class="col-4 ">24 +</div> </template>
+                    <template v-slot:after> <div class="col-4">= 100</div> </template>
+                </inputbox>
+            </div>
+
+        </div>
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

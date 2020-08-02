@@ -1,8 +1,8 @@
 Vue.component('selectable', {
-    props: ['value', 'text', 'answer', 'id', 'watch'],
+    props: ['value', 'isok'],
     data() {
         return {
-            status: "",
+            status: false,
             evaluate: false,
             result: false
         }
@@ -28,7 +28,7 @@ Vue.component('selectable', {
             if(this.evaluate) {
                 return false
             }
-            this.status = this.id
+            this.status = !this.status
             //this.status = !this.status
             this.$emit('input', this.status)
             if(this.status) {
@@ -39,18 +39,18 @@ Vue.component('selectable', {
         },
         verify () { 
             this.evaluate = true
-            if(this.status == this.answer) {
+            if(this.status == this.isok) {
                 this.$emit('isright', true)
                 this.result = true
             }
         }
     },
     mounted () {
-        this.$emit('input', "")
+       this.$emit('input', "")
     },
     template: `
         <div class="selectable" :class="setclass"  @click="clicked">
-            <div :class="this.status == this.id ? 'circledactive' : ''"></div>
+            <div :class="this.status ? 'circledactive' : ''"></div>
             <slot></slot>
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         </div>

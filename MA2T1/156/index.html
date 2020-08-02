@@ -94,28 +94,18 @@
 
 
         <!-- ENDING -->
-
-        <div class="d-flex justify-content-center mt-5" v-if="!resultado">
-            <button class="finalizar" @click="finalizar">Finalizar</button>
-        </div>
-
-        <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
-            <h3>Resultado</h3>
-            <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
-            <button class="finalizar" @click="reset">Volver a intentar</button>
-        </div>
-                
-        
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
-    <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/check.js"></script>
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
