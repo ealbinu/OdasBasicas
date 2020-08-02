@@ -258,7 +258,7 @@ strong.sec {
 }
 .inputbox.iswrong,
 .inputbox.isright {
-  border: 1px solid #fff;
+  border: 1px solid transparent;
 }
 .inputbox.isright input {
   border: 2px solid #5EB246;
