@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .options div{
+            margin: 10px;
+            min-width: 150px;
+        }
+
+        @media (max-width: 680px){
+            .options{
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+
+        <div class="instruccion mt-5">Selecciona la respuesta correcta</div>
+        <div class="row mt-3" v-for='(i, index) in [
+            {  
+                p: "No es una función del reglamento de una biblioteca.",
+                arr: ["Nos indica cómo debemos comportarnos.", "Nos indica cómo es el uso del servicio.", "Nos indica cómo leer en voz alta."],
+                ok: "Nos indica cómo leer en voz alta."
+            },
+            {  
+                p: "Es el tipo de discurso que usa el narrador para mencionar lo que alguien más dijo.",
+                arr: ["Discurso indirecto.", "Discurso directo.", "Lenguaje figurado."],
+                ok: "Discurso indirecto."
+            },
+            {  
+                p: "En un reglamento, ¿cómo deben escribirse los verbos?",
+                arr: ["En pasado.", "En infinitivo.", "En futuro."],
+                ok: "En infinitivo."
+            },
+            {  
+                p: "Es una regla ortográfica de los signos de admiración e interrogación.",
+                arr: ["Se escribe solamente un signo al final de la oración.", "Se escribe el signo al inicio y al final de la oración.", "Se escriben dos signos iguales al inicio de la oración."],
+                ok: "Se escribe el signo al inicio y al final de la oración."
+            },
+            {  
+                p: "Es la palabra que rima con <strong>disfrutar</strong>.",
+                arr: ["Caminar.", "Sonreír.", "Baile."],
+                ok: "Caminar."
+            },
+            {  
+                p: "La expresión <strong>toc, toc</strong> es un ejemplo de:",
+                arr: ["Aliteración.", "Símil.", "Onomatopeya."],
+                ok: "Onomatopeya."
+            },
+            {  
+                p: "Lenguaje que se utiliza en los poemas; usa la imaginación y tiene varias interpretaciones.",
+                arr: ["Figurado.", "Literal.", "Directo."],
+                ok: "Figurado."
+            },
+            {  
+                p: "Son elementos que se pueden encontrar en los materiales de consulta de audiovisuales.",
+                arr: ["Libros.", "Películas.", "Periódicos."],
+                ok: "Películas."
+            },
+            {  
+                p: "¿Qué es un folleto?",
+                arr: ["Es una composición literaria para expresar sentimientos.", "Es un conjunto de palabras que comparten significado.", "Es un material impreso que se apoya de texto, imágenes o gráficos."],
+                ok: "Es un material impreso que se apoya de texto, imágenes o gráficos."
+            },
+            {  
+                p: "Es el dicho o la historia breve que a través de un juego de palabras o de conceptos provoca risa.",
+                arr: ["El chiste.", "El poema.", "La fábula."],
+                ok: "El chiste."
+            },
+        ]'>
+            <div class="col-sm-12">
+                <choose v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p" :options="i.arr" @isright="right++" :answer="i.ok"></choose>
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
