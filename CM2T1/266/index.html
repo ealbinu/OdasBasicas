@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sé cómo se mueven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .opciones div {
+            background: #f5f5f5;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin: 1%;
+            box-sizing: border-box;
+            max-width: 23%;
+            flex-direction: column;
+            font-weight: bold;
+        }
+        .opciones div strong {
+            color: #fff;
+            font-size: 2rem;
+            width: 50pX;
+            background: var(--main);
+            border-radius: 10px;
+            margin-bottom: 4px;
+        }
+        .opciones div small {
+            line-height: 0.9;
+        }
+        .inputbox{
+            max-width: 70%;
+            margin: -15% 15% 15% 15%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Sé cómo se mueven</h1>
+        <h2>¿Cómo se mueven los animales?</h2>
+        <div class="instruccion mt-5">Escribe el número que corresponda según el tipo de movimiento de cada animal.</div>
+        <div class="row mt-4 opciones">
+            <div class="col-md-3"><strong>1</strong> Volar</div>
+            <div class="col-md-3"><strong>2</strong> Caminar</div>
+            <div class="col-md-3"><strong>3</strong> Nadar</div>
+            <div class="col-md-3"><strong>4</strong> Arrastrarse <small>(reptar)</small></div>
+        </div>
+
+        <div class="row mt-3 imgs">
+            <template v-for="(i, index) in [
+                {val: 1, img: 'i1.png'},
+                {val: 2, img: 'i2.png'},
+                {val: 2, img: 'i3.png'},
+                {val: 3, img: 'i4.png'},
+                {val: 1, img: 'i5.png'},
+                {val: 3, img: 'i6.png'},
+                {val: 2, img: 'i7.png'},
+                {val: 3, img: 'i8.png'},
+                {val: 4, img: 'i9.png'},
+                {val: 1, img: 'i10.png'},
+                {val: 4, img: 'i11.png'},
+                {val: 1, img: 'i12.png'},
+            ]">
+                <div class="col-md-3">
+                    <img :src="'aimg/'+i.img" class="img-fluid">
+                    <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.val" type="number" placeh="#"></inputbox>
+                </div>
+            </template>
+        </div>
+        
+        
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
