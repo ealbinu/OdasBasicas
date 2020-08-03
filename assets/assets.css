@@ -101,7 +101,8 @@ strong.sec {
   display: flex;
   justify-content: center;
 }
-.inputbox input {
+.inputbox input,
+.inputbox textarea {
   border: 2px solid #AAE1FA;
   padding: 6px 10px;
   border-radius: 20px;
@@ -112,6 +113,10 @@ strong.sec {
   font-size: 2rem;
   outline: none !important;
   width: 100%;
+}
+.inputbox textarea {
+  height: 100%;
+  resize: none;
 }
 .selectable,
 .selectableoptions {
@@ -260,10 +265,12 @@ strong.sec {
 .inputbox.isright {
   border: 1px solid transparent;
 }
-.inputbox.isright input {
+.inputbox.isright input,
+.inputbox.isright textarea {
   border: 2px solid #5EB246;
 }
-.inputbox.iswrong input {
+.inputbox.iswrong input,
+.inputbox.iswrong textarea {
   border: 2px solid #DB3E34;
 }
 /* HIDE INPUT NUMBER ARROWS*/

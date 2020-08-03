@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sé cómo se organiza mi país</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+.diagrama {
+	width: 100%;
+	position: relative;
+}
+.diagrama img {
+	width: 100%;
+}
+.diagrama .inputs .inputbox {
+	position: absolute;
+	width: 20%;
+}
+.diagrama .inputs .inputbox input,
+.diagrama .inputs .inputbox textarea {
+	font-size: 1.5rem;
+	border-radius: 0 0 10px 10px;
+	line-height: 1;
+}
+.diagrama .inputs .inputbox:nth-child(1) {
+	left: 2%;
+	top: 27%;
+	width: 25%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(2) {
+	left: 54%;
+	top: 27%;
+	width: 25%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(3) {
+	left: 2%;
+	top: 55%;
+	width: 25%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(4) {
+	left: 34%;
+	top: 55%;
+	width: 22%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(5) {
+	left: 58.5%;
+	top: 64%;
+	width: 16%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(6) {
+	left: 79%;
+	top: 55%;
+	width: 18%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(7) {
+	left: 2%;
+	top: 84%;
+	width: 25%;
+	height: 12%;
+}
+.diagrama .inputs .inputbox:nth-child(8) {
+	left: 79%;
+	top: 84%;
+	width: 18%;
+	height: 12%;
+}
+@media (max-width: 960px) {
+	.diagrama .inputs .inputbox input,
+	.diagrama .inputs .inputbox textarea {
+		font-size: 1rem;
+		padding: 2px;
+	}
+}
+@media (max-width: 680px) {
+	.diagrama .inputs .inputbox input,
+	.diagrama .inputs .inputbox textarea {
+		font-size: 0.7rem;
+	}
+}
+.isright textarea{color:#fff;}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Sé cómo se organiza mi país</h1>
+        <h2>México y su división política</h2>
+
+        <div class="instruccion mt-5">Completa el mapa conceptual. Consulta las páginas 18 a 20 de tu libro de texto SEP. Después contesta la pregunta.</div>
+        
+        <div class="row mt-3">
+            <div class="diagrama">
+                <img src="aimg/diag.svg">
+                <div class="inputs">
+                    <inputbox v-for="(i, index) in [
+                    'república federal',
+                    'entidades federativas o estados',
+                    'república mexicana',
+                    'libres y soberanos',
+                    '32',
+                    'municipios',
+                    'la ciudad de méxico',
+                    '244'
+                    ]" v-model="r[i]" :ref="'q'+i" @isright="right++" :answer="i" type="text" placeh="-" textarea ></inputbox>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

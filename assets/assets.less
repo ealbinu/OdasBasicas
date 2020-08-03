@@ -108,7 +108,7 @@ strong {
 .inputbox {
     display: flex;
     justify-content: center;
-    input{
+    input, textarea{
         border: 2px solid @clear;
         padding: 6px 10px;
         border-radius: 20px;
@@ -119,6 +119,10 @@ strong {
         font-size: 2rem;
         outline: none !important;
         width: 100%;
+    }
+    textarea{
+        height:100%;
+        resize: none;
     }
 }
 
@@ -228,10 +232,10 @@ strong {
     &.iswrong, &.isright {
         border: 1px solid transparent;
     }
-    &.isright input{
+    &.isright input, &.isright textarea{
         border: 2px solid @rightcol;
     }
-    &.iswrong input{
+    &.iswrong input, &.iswrong textarea{
         border: 2px solid @wrongcol;
     }
 }
