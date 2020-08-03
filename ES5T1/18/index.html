@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identifico siglas, abreviaturas y símbolos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+		.palabras {
+	margin: 10px;
+	font-size: 1.4rem;
+	background: #f5f5f5;
+	padding: 4px 10px;
+	border-radius: 10px;
+}
+.palabras strong {
+	font-size: 1.8rem;
+}
+.relacion {
+	margin: 10px;
+}
+.rela .inputbox {
+	width: 100%;
+	justify-content: flex-start;
+	font-size: 1.4rem;
+}
+.rela .inputbox input {
+	width: 80px;
+	margin-right: 20px;
+	font-size: 1.4rem;
+}
+
+.imas .inputbox input{
+	font-size: 1.4rem;
+}
+
+.imas img {
+	max-width: 120px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Identifico siglas, abreviaturas y símbolos</h1>
+
+        <div class="instruccion mt-5">Relaciona las siglas y las abreviaturas con su significado escribiendo dentro de cada paréntesis el número correcto.</div>
+        
+        <div class="row mt-3">
+            <div class="col-4">
+				<div v-for="(i, index) in ['IMSS', 'Pág.', 'Av.', 'CFE', 'ONU', 'Blvd.', 'Fracc.', 'SEP', 'Lic.', 'Dr.']" class="palabras">
+					<strong class="accent">{{index+1}}.</strong> {{i}}
+				</div>
+			</div>
+			<div class="col rela">
+				<div v-for="(i, index) in [
+					{i: 9, t: 'Licenciado.'},
+					{i: 6, t: 'Boulevard.'},
+					{i: 10, t: 'Doctor.'},
+					{i: 8, t: 'Secretaría de Educación Pública.'},
+					{i: 7, t: 'Fraccionamiento.'},
+					{i: 4, t: 'Comisión Federal de Electricidad.'},
+					{i: 2, t: 'Página.'},
+					{i: 1, t: 'Instituto Mexicano del Seguro Social.'},
+					{i: 5, t: 'Organización de las Naciones Unidas.'},
+					{i: 3, t: 'Avenida.'},
+				]" class="relacion">
+					<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.i" type="text" placeh="-">
+						<template v-slot:after>
+							{{i.t}}
+						</template>
+					</inputbox>
+				</div>
+			</div>
+        </div>
+		
+		<div class="instruccion mt-5">Identifica los símbolos y escribe su significado.</div>
+		<div class="row mt-3 imas">
+			<template v-for="(i, index) in [
+				'restaurante',
+				'gasolinera',
+				'vuelta a la derecha',
+				'peligro electricidad',
+				'ruta de evacuación',
+				'cruz roja',
+				'no estacionarse',
+				'hospital',
+				'punto de reunión',
+				'baños',
+				'aeropuerto',
+				'balneario'
+			]">
+				<div class="col-md-3 mt-4 text-center">
+					<img :src="'aimg/a'+(index+1)+'.svg'" class="img-fluid">
+					<inputbox v-model="r[index+11]" :ref="'q'+index+11" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+				</div>
+			</template>
+		</div>
+
+
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

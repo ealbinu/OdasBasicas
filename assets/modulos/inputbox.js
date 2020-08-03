@@ -31,10 +31,13 @@ Vue.component('inputbox', {
         verify () { 
             console.log(this.status, this.answer)
             this.evaluate = true
+            var theanswer = this.answer
+            
             if(this.type == 'text'){
+                theanswer = theanswer.toString().toLowerCase()
                 this.status = this.status.toLowerCase()
             }
-            if(this.status == this.answer) {
+            if(this.status == theanswer) {
                 this.$emit('isright', true)
                 this.result = true
             }
