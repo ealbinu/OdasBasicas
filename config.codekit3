@@ -2066,6 +2066,79 @@
 		"oA": 0,
 		"oAP": "\/MA3T1\/98\/index.html",
 		"oF": 0
+		},
+	"\/MA4T1\/99\/aimg\/i1.png": {
+		"ft": 32768,
+		"iS": 81649,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/i1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/aimg\/i2.png": {
+		"ft": 32768,
+		"iS": 82219,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/i2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/aimg\/i3.png": {
+		"ft": 32768,
+		"iS": 81020,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/i3.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/aimg\/i4.png": {
+		"ft": 32768,
+		"iS": 81236,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/i4.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/aimg\/m1.png": {
+		"ft": 32768,
+		"iS": 328740,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/m1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/aimg\/MA4T1.png": {
+		"ft": 32768,
+		"iS": 1311258,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/aimg\/MA4T1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA4T1\/99\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA4T1\/99\/index.html",
+		"oF": 0
 		}
 	},
 "hooks": [
