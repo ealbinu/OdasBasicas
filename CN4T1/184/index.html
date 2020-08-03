@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participo en el cuidado de mi entorno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .borderize {
+            border:2px solid var(--accent);
+            border-radius: 10px;
+            box-sizing: border-box;
+            background: #FEE8B6;
+        }
+        .borderize.b1{background-color: #F0ECF0; border-color: #6A4287;}
+        .borderize.b2{background-color: #EBF2F6; border-color: #008DC4;}
+        .borderize.b3{background-color: #FFF4E7; border-color: #EC8C3D;}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Participo en el cuidado de mi entorno</h1>
+
+        <div class="instruccion mt-5">Para ayudar al medioambiente puede utilizarse la técnica de las“tres erres”.Lee las definicio- nes y escribe en cada recuadro la técnica que corresponde.</div>
+
+        <div class="row mt-3">
+                <div class="col-md-8 borderize b1">
+                    Disminuir el consumo de productos y servicios, por ejemplo, utilizar bicicleta o cami- nar en lugar de usar automóvil, utilizar baterías recargables y preferir productos con pocos empaques.
+                </div>
+                <div class="col"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="reducir" type="text" placeh="-"></inputbox></div>
+        </div>
+        <div class="row mt-3">
+                <div class="col-md-8 borderize b2">
+                    Volver a utilizar algún producto en buen estado, en lugar de desecharlo, por ejemplo, utilizar las hojas de papel por ambos lados, utilizar recipientes para almacenar otros productos y utilizar materiales para reparar otros.
+                </div>
+                <div class="col"><inputbox v-model="r[1]" ref="q1" @isright="right++" answer="reutilizar" type="text" placeh="-"></inputbox></div>
+        </div>
+        <div class="row mt-3">
+                <div class="col-md-8 borderize b3">
+                    Rescatar y transformar material de desecho para convertirlo en un producto nuevo, como fundir vidrio para hacer nuevos productos, utilizar la materia orgánica como abono para la tierra, procesar papel y cartón que no pueda ser reutilizado.
+                </div>
+                <div class="col"><inputbox v-model="r[2]" ref="q2" @isright="right++" answer="reciclar" type="text" placeh="-"></inputbox></div>
+        </div>
+        
+
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
