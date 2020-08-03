@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizo la situación de México</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+        .selectableoptions {
+            width: 60%;
+            margin: 4% 15%;
+            background: #fff;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+        .selectableoptions img {
+            max-width: 30px;
+            margin: 5px auto;
+        }
+
+
+        .numeros .fld {
+	background: #f5f5f5;
+	font-size: 1.2rem;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 5px;
+}
+.imgs p {
+	background: var(--sec);
+	color: #fff;
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-radius: 10px;
+}
+.choose {
+	padding: 0;
+	margin: 0;
+}
+.choose .options {
+	margin: 0 10px;
+	justify-content: center;
+}
+.choose .options div {
+	background: var(--main);
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 2;
+	margin: 1px;
+	color: #fff;
+}
+.choose .options div:nth-child(1) {
+	border-radius: 10px 0 0 10px;
+}
+.choose .options div:nth-child(4) {
+	border-radius: 0 10px 10px 0;
+}
+.choose .options div.active {
+	background: var(--sec);
+	border: none;
+	color: #fff;
+}
+
+
+        .conceptos {
+            background: var(--sec);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .concepto {
+            display: block;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 4px 10px;
+            border: 2px solid #fff;
+            font-size: 1.4rem;
+            color: var(--main);
+            margin: 5px;
+        }
+        .parrafo {
+            padding: 10px;
+            border: 2px solid var(--main);
+            border-radius: 10px;
+            font-size: 1.4rem;
+        }
+        .parrafo .inputbox {
+            display: inline-block;
+            max-width: 200px;
+        }
+        .inputbox input{  font-size: 1.2rem; }
+
+        .numeros {
+            background: var(--sec);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .numeros .fld{
+            background: #fff;
+		}
+		
+		.parrafo2 {
+            padding: 10px;
+            border: 2px solid #B35A96;
+            border-radius: 10px;
+			font-size: 1.2rem;
+			background: #F8F0F2
+		}
+		.ib2 .inputbox{
+			height: 100%;
+		}
+		.ib2 .inputbox input {
+			height: 100%;
+			border: 2px solid #B35A96;
+			background: #F8F0F2;
+			font-size: 2.1rem;
+			color: var(--main);
+		}
+		
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Analizo la situación de México</h1>
+		<h2>México al término de la guerra de Independencia</h2>
+
+        <div class="instruccion mt-5">Completa las frases utilizando los términos correspondientes del recuadro.Consulta las páginas 18 a 20 de tu libro de texto SEP.</div>
+        
+        <div class="row flex-wrap justify-content-center mt-3 text-center conceptos">
+			<div class=""><strong class="concepto">soberanía</strong></div>
+            <div class=""><strong class="concepto">hacienda pública</strong></div>
+            <div class=""><strong class="concepto">guerra civil</strong></div>
+        </div>
+        <div class="row mt-3">
+			<div class="col-12 parrafo mt-3">
+				<strong class="accent h3">1.</strong> Después del dominio extranjero, México se convertiría en una nación con
+				<inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="'soberanía'" type="text" placeh="-"></inputbox>.
+            </div>
+            <div class="col-12 parrafo mt-3">
+				<strong class="accent h3">2.</strong> Al igual que la economía del país, la
+				<inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="'hacienda pública'" type="text" placeh="-"></inputbox>
+				tampoco tenía recursos.
+            </div>
+            <div class="col-12 parrafo mt-3">
+				<strong class="accent h3">3.</strong> A consecuencia de los desacuerdos entre los grupos políticos, México vivió una
+				<inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="'guerra civil'" type="text" placeh="-"></inputbox>
+				en las primeras décadas.
+            </div>
+            <div class="col-12 parrafo mt-3">
+				<strong class="accent h3">4.</strong>  Gracias a la 
+				<inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="'soberanía'" type="text" placeh="-"></inputbox>
+				en México, el pueblo podía elegir a sus gobernantes.
+            </div>
+            <div class="col-12 parrafo mt-3">
+				<strong class="accent h3">5.</strong> La
+				<inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="'hacienda pública'" type="text" placeh="-"></inputbox>
+				es la institución encargada de recaudar y administrar el dinero del gobierno.
+            </div>
+            <div class="col-12 parrafo mt-3">
+				<strong class="accent h3">6.</strong> Después de la Independencia, México vivió una
+				<inputbox v-model="r[5]" ref="q5" @isright="right++" :answer="'guerra civil'" type="text" placeh="-"></inputbox>
+				y se caracterizó por la falta de unidad y la desorganización.
+            </div>
+        </div>
+        
+        
+
+        <div class="instruccion mt-5">Escribe <strong class="main h3">V</strong> si el enunciado es verdadero, o <strong class="main h3">F</strong> si es falso.</div>
+		
+		<div class="row mt-3 align-items-center">
+			<div class="col-10 parrafo2 mt-32">
+				<strong class="sec h4">1.</strong> Al consumarse la Independencia de México los gobernantes se elegían en España.
+			</div>
+			<div class="col-2 ib2"><inputbox v-model="r[6]" ref="q6" @isright="right++" :answer="'F'" type="text" placeh="-"></inputbox></div>
+		</div>
+		<div class="row mt-3 align-items-center">
+			<div class="col-10 parrafo2 mt-32">
+				<strong class="sec h4">2.</strong> Como consecuencia de los once años que duró la guerra, la economía del país se debilitó.
+			</div>
+			<div class="col-2 ib2"><inputbox v-model="r[7]" ref="q7" @isright="right++" :answer="'V'" type="text" placeh="-"></inputbox></div>
+		</div>
+		<div class="row mt-3 align-items-center">
+			<div class="col-10 parrafo2 mt-32">
+				<strong class="sec h4">3.</strong> Después de la Independencia se produjo una disminución de la producción agrícola.
+			</div>
+			<div class="col-2 ib2"><inputbox v-model="r[8]" ref="q8" @isright="right++" :answer="'V'" type="text" placeh="-"></inputbox></div>
+		</div>
+		<div class="row mt-3 align-items-center">
+			<div class="col-10 parrafo2 mt-32">
+				<strong class="sec h4">4.</strong> Al término de la Independencia, los caminos y la inseguridad fueron erradicados en México.
+			</div>
+			<div class="col-2 ib2"><inputbox v-model="r[9]" ref="q9" @isright="right++" :answer="'F'" type="text" placeh="-"></inputbox></div>
+		</div>
+		<div class="row mt-3 align-items-center">
+			<div class="col-10 parrafo2 mt-32">
+				<strong class="sec h4">5.</strong> La población indígena conformaba más de la mitad de la población total de aquella época.
+			</div>
+			<div class="col-2 ib2"><inputbox v-model="r[10]" ref="q10" @isright="right++" :answer="'V'" type="text" placeh="-"></inputbox></div>
+		</div>
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
