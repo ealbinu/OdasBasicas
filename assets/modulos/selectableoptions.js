@@ -42,9 +42,16 @@ Vue.component('selectableoptions', {
 
         verify () { 
             this.evaluate = true
-            if(this.status == this.answer) {
-                this.$emit('isright', true)
-                this.result = true
+            if(Array.isArray(this.answer)){
+                if(this.answer.find(element => element == this.status)){
+                    this.$emit('isright', true)
+                    this.result = true
+                }
+            } else {
+                if(this.status == this.answer) {
+                    this.$emit('isright', true)
+                    this.result = true
+                }
             }
         }
     },
@@ -53,7 +60,7 @@ Vue.component('selectableoptions', {
     },
     template: `
     <div :class="'row justify-content-center align-items-center selectableoptions '+setclass">
-        <div :class="customclass" v-for="option in options" @click="clicked(option.val)">
+        <div :class="customclass +' option '+ (option.val == status ? 'on':'off')" v-for="option in options" @click="clicked(option.val)">
             <slot name="option" :option="option" />
             <div :class="status == option.val ? 'circledactive' : ''"></div>
         </div>
