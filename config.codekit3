@@ -2327,6 +2327,23 @@
 		"oA": 0,
 		"oAP": "\/MA4T1\/99\/index.html",
 		"oF": 0
+		},
+	"\/MA5T1\/91\/aimg\/i1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA5T1\/91\/aimg\/i1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA5T1\/91\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA5T1\/91\/index.html",
+		"oF": 0
 		}
 	},
 "hooks": [

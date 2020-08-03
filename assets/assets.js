@@ -17,6 +17,7 @@ var app = new Vue({
             right: 0,
             total: 0,
             resultado: false,
+            temps: null
         }
     },
     methods: {
