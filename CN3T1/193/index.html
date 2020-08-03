@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconozco animales y estaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .imgs .choose {
+            margin: 8px 10px;
+        }
+        .imgs .options {
+            flex-direction: column;
+            text-align: center;
+        }
+        .imgs2 > div {
+            margin-bottom: 20px;
+        }
+        .selectableoptions {
+            width: 60%;
+            margin: 4% 15%;
+            background: #fff;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+        .selectableoptions img {
+            max-width: 30px;
+            margin: 5px auto;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Reconozco animales y estaciones</h1>
+
+        <div class="instruccion mt-5">Elige el tipo de movimiento que realiza cada animal para desplazarse.</div>
+        <div class="row mt-3 imgs">
+            <template v-for="(i, index) in [
+            {val: 'Nadar', img: 'i1.png'},
+            {val: 'Volar', img: 'i2.png'},
+            {val: 'Arrastrarse', img: 'i3.png'},
+            {val: 'Caminar', img: 'i4.png'},
+            ]">
+            <div class="col-md-3">
+                <img :src="'aimg/'+i.img" class="img-fluid">
+                <choose v-model="r[index]" :ref="'q'+index" text="" :options="['Volar', 'Caminar', 'Nadar', 'Arrastrarse']" @isright="right++" :answer="i.val" />
+                </div>
+            </template>
+        </div>
+    
+    
+    <div class="instruccion mt-5">Marca así <span><img src="aimg/markerr.svg" /></span> los animales terrestres y así <span><img src="aimg/markcheck.svg" /></span> los animales marinos.</div>
+    <div class="row mt-3 imgs2">
+        <template v-for="(i, index) in [
+        {val: 't', img: 'm1.png'},
+        {val: 'm', img: 'm2.png'},
+        {val: 't', img: 'm3.png'},
+        {val: 'm', img: 'm4.png'},
+        {val: 'm', img: 'm5.png'},
+        {val: 't', img: 'm6.png'},
+        {val: 't', img: 'm7.png'},
+        {val: 'm', img: 'm8.png'},
+        ]">
+        <div class="col-md-3">
+            <img :src="'aimg/'+i.img" class="img-fluid">
+            <selectableoptions v-model="r[index+4]" :ref="'q'+(index+4)" @isright="right++" :answer="i.val" :options="[{val:'t', img:'aimg/markerr.svg'},  {val:'m', img:'aimg/markcheck.svg'}]" customclass="col-sm-6">
+                <template v-slot:option="{option}">
+                    <img :src="option.img" class="img-fluid">
+                </template>
+            </selectableoptions>
+            </div>
+        </template>
+    </div>
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

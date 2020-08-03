@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo folletos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+
+        .selectableoptions {
+            width: 60%;
+            margin: 4% 15%;
+            background: #fff;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+        .selectableoptions img {
+            max-width: 30px;
+            margin: 5px auto;
+        }
+
+
+        .numeros .fld {
+	background: #f5f5f5;
+	font-size: 1.2rem;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 5px;
+}
+.imgs p {
+	background: var(--sec);
+	color: #fff;
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-radius: 10px;
+}
+.choose {
+	padding: 0;
+	margin: 0;
+}
+.choose .options {
+	margin: 0 10px;
+	justify-content: center;
+}
+.choose .options div {
+	background: var(--main);
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 2;
+	margin: 1px;
+	color: #fff;
+}
+.choose .options div:nth-child(1) {
+	border-radius: 10px 0 0 10px;
+}
+.choose .options div:nth-child(4) {
+	border-radius: 0 10px 10px 0;
+}
+.choose .options div.active {
+	background: var(--sec);
+	border: none;
+	color: #fff;
+}
+
+
+        .conceptos {
+            background: var(--main);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .concepto {
+            display: block;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 4px 10px;
+            border: 2px solid #fff;
+            font-size: 1.4rem;
+            color: var(--main);
+            margin: 5px;
+        }
+        .parrafo {
+            padding: 10px;
+            border: 2px solid var(--main);
+            border-radius: 10px;
+            font-size: 1.4rem;
+        }
+        .parrafo .inputbox {
+            display: inline-block;
+            max-width: 200px;
+        }
+        .inputbox input{  font-size: 1.2rem; }
+
+        .numeros {
+            background: var(--sec);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .numeros .fld{
+            background: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Leo folletos</h1>
+
+        <div class="instruccion mt-5">Completa el siguiente texto con las palabras del recuadro.</div>
+        
+        <div class="row flex-wrap justify-content-center mt-3 text-center conceptos">
+            <div class=""><strong class="concepto">impresos</strong></div>
+            <div class=""><strong class="concepto">informar</strong></div>
+            <div class=""><strong class="concepto">instrucciones</strong></div>
+            <div class=""><strong class="concepto">servicio</strong></div>
+            <div class=""><strong class="concepto">folletos</strong></div>
+            <div class=""><strong class="concepto">informativos</strong></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-m12">
+                <p class="parrafo">
+                    Los
+                    <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="'folletos'" type="text" placeh="-"></inputbox>
+                    son materiales
+                    <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="'impresos'" type="text" placeh="-"></inputbox>
+                    que sirven para
+                    <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="'informar'" type="text" placeh="-"></inputbox>
+                    o dar a conocer un producto o
+                    <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="'servicio'" type="text" placeh="-"></inputbox>
+                    , pueden ser
+                    <inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="'informativos'" type="text" placeh="-"></inputbox>
+                    o publicitarios, incluso se pueden utilizar para describir procedimientos o
+                    <inputbox v-model="r[5]" ref="q5" @isright="right++" :answer="'instrucciones'" type="text" placeh="-"></inputbox>
+                    para construir algo.
+                </p>
+            </div>
+        </div>
+        
+        
+        <div class="instruccion mt-5">Elige el número del concepto en la descripción correspondiente.</div>
+        <div class="row flex-wrap justify-content-center mt-3 text-center numeros">
+            <div class="fld"><strong class="h3 main">1</strong> Fuentes de información</div>
+            <div class="fld"><strong class="h3 main">2</strong> Diagramas</div>
+            <div class="fld"><strong class="h3 main">3</strong> Título y subtítulos</div>
+            <div class="fld"><strong class="h3 main">4</strong> Índice</div>
+        </div>
+        <div class="row mt-3 imgs">
+            <template v-for="(i, index) in [
+            {val: 3, txt: 'Sirven para identifi- car el tema principal, los apartados o las divisiones en que se desarrolla el mismo.'},
+            {val: 4, txt: 'Ordena los títulos, los subtítulos y las páginas en donde se encuentra cada uno.'},
+            {val: 1, txt: 'Son los libros, las revistas o los docu- mentos en los cuales se pueden obtener apuntes sobre algún tema.'},
+            {val: 2, txt: 'Se pueden utilizar para presentar la información de forma gráfica, ordenada, organizada, clara y sencilla. Pueden construirse a partir de las ideas principales y secundarias.'},
+            ]">
+                <div class="col-md-3">
+                    <choose v-model="r[index+6]" :ref="'q'+(index+6)" text="" :options="[1, 2, 3, 4]" @isright="right++" :answer="i.val" ></choose>
+                    <p v-html="i.txt"></p>
+                </div>
+            </template>
+        </div>
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
