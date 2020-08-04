@@ -17,7 +17,14 @@ var app = new Vue({
             right: 0,
             total: 0,
             resultado: false,
-            temps: null
+            temps: null,
+            finalData:{
+                score: 0,
+                scoresum: 0,
+                oks: 0,
+                errors: 0,
+                answers: 0,
+            },
         }
     },
     methods: {
@@ -33,6 +40,20 @@ var app = new Vue({
                 }
             }
             this.resultado = true
-        }
+            this.ended()
+        },
+        ended () {
+            var _this = this
+            _this.finalData.scoresum = (_this.finalData.score / _this.total) * _this.right
+            _this.finalData.oks = _this.right
+            _this.finalData.errors = _this.total-_this.right
+            _this.finalData.answers = _this.total
+            var endData = JSON.stringify(_this.finalData)
+            window.top.postMessage(endData, "*")
+        },
+    },
+    mounted () {
+        var h = parseInt(window.location.hash ? window.location.hash.replace('#s', '') : 100)
+        this.finalData.score = h ? h : 100
     }
 })

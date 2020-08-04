@@ -29,7 +29,6 @@ Vue.component('inputbox', {
             }
         },
         verify () { 
-            console.log(this.status, this.answer)
             this.evaluate = true
             var theanswer = this.answer
             

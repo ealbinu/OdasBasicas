@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identifico los elementos de la división</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+		.table {
+			text-align: center;
+		}
+		.table thead tr th {
+			font-family: 'barnacle_boyregular';
+			color: #fff;
+			background: #E9832C;
+		}
+		.table thead tr th:nth-child(1) {
+			background: #0083BF;
+		}
+		.table thead tr th:nth-child(3) {
+			background: #6A4287;
+		}
+		.table thead tr th:nth-child(5) {
+			background: #6CB743;
+		}
+		.table thead tr th:nth-child(7) {
+			background: #00AEB5;
+		}
+		.table thead tr th:nth-child(8) {
+			width: 30%;
+		}
+		.table tbody tr td {
+			font-weight: bold;
+			vertical-align: middle;
+			color: #E9832C;
+			font-size: 1.1rem;
+		}
+		.table tbody tr td:nth-child(1) {
+			color: #0083BF;
+		}
+		.table tbody tr td:nth-child(1) input {
+			border-color: #0083BF;
+		}
+		.table tbody tr td:nth-child(3) {
+			color: #6A4287;
+		}
+		.table tbody tr td:nth-child(3) input {
+			border-color: #6A4287;
+		}
+		.table tbody tr td:nth-child(5) {
+			color: #6CB743;
+		}
+		.table tbody tr td:nth-child(5) input {
+			border-color: #6CB743;
+		}
+		.table tbody tr td:nth-child(7) {
+			color: #00AEB5;
+		}
+		.table tbody tr td:nth-child(7) input {
+			border-color: #00AEB5;
+		}
+		.table tbody tr td:nth-child(8) {
+			width: 30%;
+		}
+		.table input {
+			font-size: 1.2rem;
+		}
+		@media (max-width: 680px) {
+			.table {
+				font-size: 0.8rem;
+			}
+			.table tbody tr td {
+				font-size: 0.9rem;
+			}
+			.table input {
+				font-size: 0.9rem;
+			}
+			.table tbody tr td:nth-child(8) {
+				width: 100%;
+				display: block;
+			}
+		}
+
+		.division {
+			background: #EBD5E0;
+			padding-top: 20px;
+			margin-top: 10px;
+			border-radius: 10px;
+			font-weight: bold;
+		}
+		.division:nth-child(2) {
+			background: #D3EBE9;
+		}
+		.division .ecu hr {
+			border-top: 2px solid var(--accent);
+		}
+		.division .ecu .row:nth-child(2) div:nth-child(3) {
+			border-left: 2px solid var(--accent);
+			border-top: 2px solid var(--accent);
+		}
+		.division .ecu .row:nth-child(2) div:nth-child(4) {
+			border-top: 2px solid var(--accent);
+		}
+		.division .ecu .row:nth-child(2) div:nth-child(5) {
+			border-top: 2px solid var(--accent);
+		}
+
+		.division .inputbox {
+			display: inline-block;
+		}
+		.division .inputbox input {
+			width: 100%;
+			max-width: 50px;
+			padding: 0;
+			font-size: 1rem;
+		}
+
+		.comp {
+			background: #fff;
+			margin: 20px 6px;
+			padding: 10px 4px;
+			text-align: center;
+			border-radius: 10px;
+			border: 2px solid rgba(0, 0, 0, 0.3);
+		}
+		.comp strong {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Identifico los elementos de la división</h1>
+
+        <div class="instruccion mt-5">Completa la siguiente tabla. Observa los ejemplos.</div>
+        
+        <div class="row mt-3">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cociente</th><th>x</th>
+						<th>Divisor</th><th>x</th>
+						<th>Residuo</th><th>=</th>
+						<th>Dividendo</th>
+						<th>División</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(i, index) in [
+						{c: 18,			d: 11,		r: 7,		d2: 205,			div: '205 ÷ 11 = 18 y sobran 7.' },
+						{c: 23,			d: 18,		r: 9,		d2: 423,			div: '423 ÷ 18 = 23 y sobran 9.' },
+						{c: [33,0],		d: [25,1],	r: [12,2],	d2: [837, 9],		div: '837 ÷ 25 = 33 y sobran 12.' },
+						{c: 40,			d: 36,		r: 15,		d2: [1455, 10],		div: '1 455 ÷ 36 = 40 y sobran 15.' },
+						{c: [45,3],		d: [16,4],	r: [11,5],	d2: [731,11], 		div: '731 ÷ 16 = 45 y sobran 11.' },
+						{c: 55,			d: 22,		r: 19,		d2: [1229,12],		div: '1 229 ÷ 22 = 55 y sobran 19.' },
+						{c: [30,6],		d: [24,7],	r: [20,8],	d2: [740,49], 		div: '740 ÷ 24 = 30 y sobran 20.' },
+					]">
+
+						<td v-if="Array.isArray(i.c)">
+							<inputbox v-model="r[i.c[1]]" :ref="'q'+i.c[1]" @isright="right++" :answer="i.c[0]" type="number" placeh="#"></inputbox>
+						</td>
+						<td v-else>{{i.c}}</td>
+						<td>x</td>
+						<td v-if="Array.isArray(i.d)">
+							<inputbox v-model="r[i.d[1]]" :ref="'q'+i.d[1]" @isright="right++" :answer="i.d[0]" type="number" placeh="#"></inputbox>
+						</td>
+						<td v-else>{{i.d}}</td>
+						<td>+</td>
+						<td v-if="Array.isArray(i.r)">
+							<inputbox v-model="r[i.r[1]]" :ref="'q'+i.r[1]" @isright="right++" :answer="i.r[0]" type="number" placeh="#"></inputbox>
+						</td>
+						<td v-else>{{i.d}}</td>
+						<td>=</td>
+						<td v-if="Array.isArray(i.d2)">
+							<inputbox v-model="r[i.d2[1]]" :ref="'q'+i.d2[1]" @isright="right++" :answer="i.d2[0]" type="number" placeh="#"></inputbox>
+						</td>
+						<td v-else>{{i.d}}</td>
+						<td>{{i.div}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		
+        <div class="instruccion mt-5">Resuelve las siguientes divisiones.Observa el ejemplo.</div>
+
+		<div class="row wrap mt-3">
+			<!--------------->
+			<div class="division col-lg-4">
+				<div class="in">346 ÷ 18 = <strong class="accent">19 y sobran 4.</strong></div>
+				<div class="ecu">
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2">1</div>
+						<div class="col-2">9</div>
+					</div>
+					<div class="row">
+						<div class="col-2">1</div>
+						<div class="col-2">8</div>
+						<div class="col-2">3</div>
+						<div class="col-2">4</div>
+						<div class="col-2">6</div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2">1</div>
+						<div class="col-2">8</div>
+						<div class="col-2"></div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2">1</div>
+						<div class="col-2">6</div>
+						<div class="col-2">6</div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2">1</div>
+						<div class="col-2">6</div>
+						<div class="col-2">2</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2">0</div>
+						<div class="col-2">0</div>
+						<div class="col-2">4</div>
+					</div>
+				</div>
+				<div class="comp">
+					<strong class="accent">Comprobación</strong>
+					<div>18 x 19 + 4 = 346</div>
+				</div>
+			</div>
+			<!--------------->
+			<div class="division col-lg-4">
+				<div class="in">346 ÷ 18 = <strong class="accent"><inputbox v-model="r[13]" :ref="'q'+13" @isright="right++" :answer="24" type="number" placeh="#"></inputbox> y sobran <inputbox v-model="r[14]" :ref="'q'+14" @isright="right++" :answer="18" type="number" placeh="#"></inputbox>.</strong></div>
+				<div class="ecu">
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[15]" :ref="'q'+15" @isright="right++" :answer="2" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[16]" :ref="'q'+16" @isright="right++" :answer="4" type="number" placeh="#"></inputbox></div>
+					</div>
+					<div class="row">
+						<div class="col-2">2</div>
+						<div class="col-2">1</div>
+						<div class="col-2">5</div>
+						<div class="col-2">2</div>
+						<div class="col-2">2</div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2"><inputbox v-model="r[17]" :ref="'q'+17" @isright="right++" :answer="4" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[18]" :ref="'q'+18" @isright="right++" :answer="2" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"></div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[19]" :ref="'q'+19" @isright="right++" :answer="1" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[20]" :ref="'q'+20" @isright="right++" answer="0" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[21]" :ref="'q'+21" @isright="right++" :answer="2" type="number" placeh="#"></inputbox></div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[22]" :ref="'q'+22" @isright="right++" :answer="8" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[23]" :ref="'q'+23" @isright="right++" :answer="4" type="number" placeh="#"></inputbox></div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[24]" :ref="'q'+24" @isright="right++" answer="0" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[25]" :ref="'q'+25" @isright="right++" :answer="1" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[26]" :ref="'q'+26" @isright="right++" :answer="8" type="number" placeh="#"></inputbox></div>
+					</div>
+				</div>
+				<div class="comp">
+					<strong class="accent">Comprobación</strong>
+					<div>
+						<inputbox v-model="r[27]" :ref="'q'+27" @isright="right++" :answer="18" type="" placeh="#"></inputbox>
+						 x 
+						<inputbox v-model="r[28]" :ref="'q'+28" @isright="right++" :answer="19" type="" placeh="#"></inputbox>
+						 + 
+						<inputbox v-model="r[29]" :ref="'q'+29" @isright="right++" :answer="4" type="" placeh="#"></inputbox>
+						 = 
+						<inputbox v-model="r[30]" :ref="'q'+30" @isright="right++" :answer="346" type="" placeh="#"></inputbox>
+					</div>
+				</div>
+			</div>
+			<!--------------->
+			<div class="division col-lg-4">
+				<div class="in">839 ÷ 32 = <strong class="accent"><inputbox v-model="r[31]" :ref="'q'+31" @isright="right++" :answer="26" type="number" placeh="#"></inputbox> y sobran <inputbox v-model="r[32]" :ref="'q'+32" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>.</strong></div>
+				<div class="ecu">
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[33]" :ref="'q'+33" @isright="right++" :answer="2" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[34]" :ref="'q'+34" @isright="right++" :answer="6" type="number" placeh="#"></inputbox></div>
+					</div>
+					<div class="row">
+						<div class="col-2">3</div>
+						<div class="col-2">2</div>
+						<div class="col-2">8</div>
+						<div class="col-2">3</div>
+						<div class="col-2">9</div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2"><inputbox v-model="r[35]" :ref="'q'+35" @isright="right++" :answer="6" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[36]" :ref="'q'+36" @isright="right++" :answer="4" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"></div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[37]" :ref="'q'+37" @isright="right++" :answer="1" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[38]" :ref="'q'+38" @isright="right++" answer="9" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[39]" :ref="'q'+39" @isright="right++" :answer="9" type="number" placeh="#"></inputbox></div>
+					</div>
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-2">-</div>
+						<div class="col-2"><inputbox v-model="r[42]" :ref="'q'+42" @isright="right++" :answer="1" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[40]" :ref="'q'+40" @isright="right++" :answer="9" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[41]" :ref="'q'+41" @isright="right++" :answer="2" type="number" placeh="#"></inputbox></div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-2"></div><div class="col-2"></div><div class="col-2"></div>
+						<div class="col-2"><inputbox v-model="r[43]" :ref="'q'+43" @isright="right++" answer="0" type="number" placeh="#"></inputbox></div>
+						<div class="col-2"><inputbox v-model="r[44]" :ref="'q'+44" @isright="right++" :answer="7" type="number" placeh="#"></inputbox></div>
+					</div>
+				</div>
+				<div class="comp">
+					<strong class="accent">Comprobación</strong>
+					<div>
+						<inputbox v-model="r[45]" :ref="'q'+45" @isright="right++" :answer="32" type="" placeh="#"></inputbox>
+						 x 
+						<inputbox v-model="r[46]" :ref="'q'+46" @isright="right++" :answer="26" type="" placeh="#"></inputbox>
+						 + 
+						<inputbox v-model="r[47]" :ref="'q'+47" @isright="right++" :answer="7" type="" placeh="#"></inputbox>
+						 = 
+						<inputbox v-model="r[48]" :ref="'q'+48" @isright="right++" :answer="839" type="" placeh="#"></inputbox>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
