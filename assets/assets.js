@@ -18,6 +18,8 @@ var app = new Vue({
             total: 0,
             resultado: false,
             temps: null,
+            temps2: null,
+            temps3: null,
             finalData:{
                 score: 0,
                 scoresum: 0,

@@ -2,6 +2,8 @@
   --main: #ED1846;
   --sec: #005093;
   --accent: #EB8B2E;
+  --rightcol: #5EB246;
+  --wrongcol: #DB3E34;
 }
 body {
   font-family: 'Montserrat', sans-serif;

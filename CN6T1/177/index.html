@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examino mezclas y las separo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+	.dropzones {
+		display: flex;
+		flex-direction: column;
+	}
+	.dropzones > div {
+		height: 100%;
+		margin: 6px 0;
+		text-align: center;
+	}
+	.dropzones > div:nth-child(1) {
+		border: 2px solid #A7880E;
+	}
+	.dropzones > div:nth-child(2) {
+		border: 2px solid #6BA70E;
+	}
+	.draggable {
+		background: #f5f5f5;
+		width: 100%;
+		border-radius: 10px;
+		padding: 8px;
+		text-align: center;
+	}
+	.draggable > div {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.draggable > div div {
+		background: #fff;
+		color: var(--main);
+		border: 2px solid var(--main);
+		border-radius: 10px;
+		margin: 2px;
+		padding: 2px 6px;
+	}
+	.draggable.options > div {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+	}
+	@media (max-width: 992px) {
+		.draggable {
+			margin: 1px;
+			padding: 1px;
+		}
+		.draggable > div {
+			padding: 1px;
+		}
+		.draggable > div div {
+			padding: 1px;
+			margin: 1px;
+			font-size: 0.8rem;
+		}
+	}
+	@media (max-width: 768px) {
+		.draggable {
+			margin: 1px;
+			padding: 1px;
+		}
+		.draggable > div {
+			padding: 1px;
+		}
+		.draggable > div div {
+			border: none;
+			padding: 0;
+			margin: 1px;
+			font-size: 0.7rem;
+		}
+	}
+
+	.dragdropcustomres {
+		position: relative;
+		border-radius: 10px;
+	}
+	.dragdropcustomres .isright {
+		border: 2px solid var(--rightcol);
+	}
+	.dragdropcustomres .iswrong {
+		border: 2px solid var(--wrongcol);
+	}
+	.dragdropcustomres .isright,
+	.dragdropcustomres .iswrong {
+		position: absolute;
+		right: -2%;
+		top: -10%;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+	}
+	.dragdropcustomres .isright:after,
+	.dragdropcustomres .iswrong:after {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-image: url("../../assets/aimg/iswrong.svg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 70%;
+	}
+	.dragdropcustomres .isright {
+		background: var(--rightcol);
+	}
+	.dragdropcustomres .isright:after {
+		background-image: url("../../assets/aimg/isright.svg");
+	}
+	.dragdropcustomres .iswrong {
+		background: var(--wrongcol);
+	}
+
+	
+	.ops {
+		background: #D3EBE9;
+		margin: 10px 2px;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	.res {
+		display: flex;
+		align-items: center;
+		background: #E1D9C5;
+		border-radius: 10px;
+		margin: 10px 2px;
+		padding: 6px;
+	}
+	.res input {
+		max-width: 80px;
+		padding: 3px;
+		font-size: 1.4rem;
+	}
+	.res div {
+		margin: 0 10px;
+	}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Examino mezclas y las separo</h1>
+
+		
+        <div class="instruccion mt-5">Clasifica arrastrando en el lugar correspondiente del esquema los tipos de mezclas.</div>
+		<dragdrop v-model="r[0]" :ref="'q'+0" @isright="right++"></dragdrop>
+		
+        <div class="instruccion mt-5">Escribe cada número en el círculo de la respuesta que corresponda.</div>
+		<div class="row mt-3 align-items-center">
+			<div class="col-5">
+				<div class="ops"><strong class="sec h3">1</strong> <strong class="sec h6">Filtración</strong></div>
+				<div class="ops"><strong class="sec h3">2</strong> <strong class="sec h6">Evaporación</strong></div>
+				<div class="ops"><strong class="sec h3">3</strong> <strong class="sec h6">Imantación</strong></div>
+				<div class="ops"><strong class="sec h3">4</strong> <strong class="sec h6">Decantación</strong></div>
+			</div>
+			<div class="col-7">
+				<div class="res" v-for="(i,index) in [
+					{val: 4, txt: 'Separar agua de aceite.'},
+					{val: 2, txt: 'Separar sal de agua.'},
+					{val: 1, txt: 'Separar agua de arena.'},
+					{val: 3, txt: 'Separar hierro de aserrín.'},
+					{val: 1, txt: 'Separr el grano molido de café del agua caliente.'},
+					{val: 3, txt: 'Separar clips de agua.'},
+				]">
+					<inputbox v-model="r[index+1]" :ref="'q'+(index+1)" @isright="right++" :answer="i.val" type="number" placeh="#"></inputbox>
+					<div>{{i.txt}}</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.val" type="number" placeh="#"></inputbox>
+-->
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+	<!--sortable-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="dragdrop-custom1.js"></script>
+	<!-- /sortable -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+	</script>
+</body>
+</html>
