@@ -269,26 +269,6 @@
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/modulos\/dragdrop-custom1.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "\/assets\/modulos\/dragdrop-custom1-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/modulos\/dragdrop.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "\/assets\/modulos\/dragdrop-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
 	"\/assets\/modulos\/finalize.js": {
 		"ft": 64,
 		"ma": 0,
@@ -744,6 +724,103 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/CM2T1\/266\/index.html",
+		"oF": 0
+		},
+	"\/CM2T1\/275\/aimg\/i1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i2.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i2.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i3.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i3.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i4.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i4.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i5.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i5.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i6.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i6.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i7.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i7.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i8.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i8.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/aimg\/i9.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/CM2T1\/275\/aimg\/i9.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/CM2T1\/275\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/CM2T1\/275\/index.html",
 		"oF": 0
 		},
 	"\/CN3T1\/193\/aimg\/i1.png": {
@@ -1383,6 +1460,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/GE4T1\/226\/index.html",
+		"oF": 0
+		},
+	"\/GE6T1\/225\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/GE6T1\/225\/index.html",
 		"oF": 0
 		},
 	"\/HI4T1\/258\/aimg\/arido.svg": {

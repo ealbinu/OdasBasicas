@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .label { font-size: 1.2rem; }
+        .img-fluid{max-width: 140px; margin: 0 auto;}
+        .selectableoptions{text-align: center;}
+        .options div{ margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
+        <div class="row mt-3">
+            <div class="col-sm-12">
+                <choose v-model="r[0]" ref="q0" num="1." text="¿Cuál es un hábito de higiene?"
+                    :options="['Lavarse los dientes después de comer.', 'Picarse la nariz.', 'Comer muchos dulces.']" @isright="right++" answer="Lavarse los dientes después de comer."></choose>
+                
+                <div class="label px-3"><strong>2.</strong> <span>Es el órgano del sentido de la vista.</span></div>
+                <selectableoptions v-model="r[1]" :ref="'q'+1" @isright="right++" :answer="3" :options="[{val:1, img:'aimg/i1.svg'},  {val:2, img:'aimg/i2.svg'},  {val:3, img:'aimg/i3.svg'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <img :src="option.img" class="img-fluid">
+                    </template>
+                </selectableoptions>
+                
+                <choose v-model="r[2]" ref="q2" num="3." text="Es una celebración tradicional en nuestro país."
+                    :options="['Día de los Veteranos.', 'El Día de Muertos.', 'Halloween.']" @isright="right++" answer="El Día de Muertos."></choose>
+
+                <div class="label px-3"><strong>4.</strong> <span>Es el animal que necesita aletas para moverse.</span></div>
+                <selectableoptions v-model="r[3]" :ref="'q'+3" @isright="right++" :answer="1" :options="[{val:1, img:'aimg/i4.svg'},  {val:2, img:'aimg/i5.svg'},  {val:3, img:'aimg/i6.svg'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <img :src="option.img" class="img-fluid">
+                    </template>
+                </selectableoptions>
+                
+                <choose v-model="r[4]" ref="q4" num="5." text="¿Cuál es un animal nocturno?"
+                    :options="['La vaca.', 'El murciélago.', 'La gallina.']" @isright="right++" answer="El murciélago."></choose>
+                
+                <choose v-model="r[5]" ref="q5" num="6." text="¿Cuál es un derecho que tienen todos los niños?"
+                    :options="['Derecho a trabajar.', 'Derecho a no hacer la tarea.', 'Derecho a los servicios de salud.']" @isright="right++" answer="Derecho a los servicios de salud."></choose>
+                
+                <div class="label px-3"><strong>7.</strong> <span>Es un juguete de antes.</span></div>
+                <selectableoptions v-model="r[6]" :ref="'q'+6" @isright="right++" :answer="2" :options="[{val:1, img:'aimg/i7.svg'},  {val:2, img:'aimg/i8.svg'},  {val:3, img:'aimg/i9.svg'}]" customclass="col-sm-4">
+                    <template v-slot:option="{option}">
+                        <img :src="option.img" class="img-fluid">
+                    </template>
+                </selectableoptions>
+                
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
