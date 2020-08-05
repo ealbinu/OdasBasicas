@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sé por qué puedo moverme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+       .infog {
+            position: relative;
+        }
+        .inputbox {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22%;
+        }
+        @media (max-width: 992px) {
+            .inputbox input {
+                font-size: 1.1rem;
+            }
+        }
+        @media (max-width: 680px) {
+            .inputbox input {
+                font-size: 0.6rem;
+            }
+        }
+        .inputbox.isright input {
+            background: #fff;
+        }
+
+        .listado {
+            background: #425230;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .listado span {
+            display: inline-block;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px 10px;
+        }
+        .inputbox:nth-child(1) {
+            left: 15%;
+            top: 8%;
+        }
+        .inputbox:nth-child(1) input {
+            border: 4px solid #A07FB9;
+        }
+        .inputbox:nth-child(2) {
+            left: 13%;
+            top: 26%;
+        }
+        .inputbox:nth-child(2) input {
+            border: 4px solid #A07FB9;
+        }
+        .inputbox:nth-child(3) {
+            left: 3%;
+            top: 36%;
+        }
+        .inputbox:nth-child(3) input {
+            border: 4px solid #A07FB9;
+        }
+        .inputbox:nth-child(4) {
+            left: 2.5%;
+            top: 59.5%;
+        }
+        .inputbox:nth-child(4) input {
+            border: 4px solid #A07FB9;
+        }
+        .inputbox:nth-child(5) {
+            left: 2.5%;
+            top: 66.5%;
+        }
+        .inputbox:nth-child(5) input {
+            border: 4px solid #A07FB9;
+        }
+        .inputbox:nth-child(6) {
+            left: 1%;
+            top: 78.5%;
+        }
+        .inputbox:nth-child(6) input {
+            border: 4px solid #67A1D7;
+        }
+        .inputbox:nth-child(7) {
+            left: 1%;
+            top: 85%;
+        }
+        .inputbox:nth-child(7) input {
+            border: 4px solid #67A1D7;
+        }
+        .inputbox:nth-child(8) {
+            left: 1%;
+            top: 91.5%;
+        }
+        .inputbox:nth-child(8) input {
+            border: 4px solid #67A1D7;
+        }
+        .inputbox:nth-child(9) {
+            left: 73%;
+            top: 9%;
+        }
+        .inputbox:nth-child(9) input {
+            border: 4px solid #FDBF49;
+        }
+        .inputbox:nth-child(10) {
+            left: 68%;
+            top: 19.5%;
+            width: 25%;
+        }
+        .inputbox:nth-child(10) input {
+            border: 4px solid #FDBF49;
+        }
+        .inputbox:nth-child(11) {
+            left: 73%;
+            top: 26.2%;
+        }
+        .inputbox:nth-child(11) input {
+            border: 4px solid #FDBF49;
+        }
+        .inputbox:nth-child(12) {
+            left: 76%;
+            top: 38.4%;
+        }
+        .inputbox:nth-child(12) input {
+            border: 4px solid #EF5C46;
+        }
+        .inputbox:nth-child(13) {
+            left: 62%;
+            top: 54%;
+        }
+        .inputbox:nth-child(13) input {
+            border: 4px solid #EF5C46;
+        }
+        .inputbox:nth-child(14) {
+            left: 63%;
+            top: 61.5%;
+        }
+        .inputbox:nth-child(14) input {
+            border: 4px solid #EF5C46;
+        }
+        .inputbox:nth-child(15) {
+            left: 68%;
+            top: 82%;
+        }
+        .inputbox:nth-child(15) input {
+            border: 4px solid #66A264;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Sé por qué puedo moverme</h1>
+        <h2>Movimientos del cuerpo y prevención de lesiones</h2>
+
+        <div class="instruccion mt-5">Escribe las siguientes palabras en los recuadros correspondientes. Consulta las páginas 11 a 23 de tu libro de texto SEP.</div>
+        <div class="row mt-3  justify-content-center align-items-center listado">
+            <span>Huesos</span>
+            <span>Cráneo</span>
+            <span>Húmero</span>
+            <span>Costillas</span>
+            <span>Pelvis</span>
+            <span>Ligamento</span>
+            <span>Cartílago</span>
+            <span>Articulación</span>
+            <span>Nervios</span>
+            <span>Cerebro</span>
+            <span>Médula espinal</span>
+            <span>Arterias</span>
+            <span>Venas</span>
+            <span>Corazón</span>
+            <span>Músculos</span>
+        </div>
+        <div class="row mt-3">
+            <div class="infog">
+                <img src="aimg/i1.png" class="img-fluid">
+                <div class="inputboxes">
+                    <inputbox v-for="(i,index) in ['cráneo', 'húmero', 'huesos', 'costillas', 'pelvis', 'cartílago', 'articulación', 'ligamento', 'cerebro', 'médula espinal', 'nervios', 'corazón', 'arterias', 'venas', 'músculos']" v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
