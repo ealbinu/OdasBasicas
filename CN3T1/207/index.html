@@ -182,7 +182,7 @@
             <div class="infog">
                 <img src="aimg/i1.png" class="img-fluid">
                 <div class="inputboxes">
-                    <inputbox v-for="(i,index) in ['cráneo', 'húmero', 'huesos', 'costillas', 'pelvis', 'cartílago', 'articulación', 'ligamento', 'cerebro', 'médula espinal', 'nervios', 'corazón', 'arterias', 'venas', 'músculos']" v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+                    <inputbox v-for="(i,index) in ['cráneo', 'húmero', 'huesos', 'costillas', 'pelvis', 'cartílago', 'articulación', 'ligamento', 'cerebro', 'médula espinal', 'nervios', 'corazón', 'arterias', 'venas', 'músculos']" :key="i" v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
                 </div>
             </div>
         </div>

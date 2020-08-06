@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La respiración</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+     .inputbox input { font-size: 1.4rem; }
+     .ima{
+         text-align: center;
+         padding: 10px 0;
+     }
+     .palabras {
+        background: var(--main);
+        padding: 10px;
+        border-radius: 10pX;
+    }
+    .palabras div {
+        background: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin: 10px;
+        text-align: center;
+    }
+    .palabras div strong {
+        color: var(--main);
+        font-size: 2rem;
+        display: block;
+    }
+    .example{
+        border: 2px solid var(--main);
+        border-radius: 20px;
+    }
+    @media (max-width: 680px){
+        .ima{
+            padding: 10px 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>La respiración</h1>
+        <h2>Cómo respiran algunos animales</h2>
+
+        <div class="instruccion mt-5">Utilizando el código que se encuentra entre los paréntesis, escribe en los círculos el tipo de respiración que corresponde a cada animal. Observa el ejemplo.</div>
+        <div class="row mt-3 justify-content-center align-items-center palabras">
+            <div>Pulmones <strong>(PL)</strong></div>
+            <div>Branquias <strong>(B)</strong></div>
+            <div>Estomas <strong>(E)</strong></div>
+            <div>Piel <strong>(P)</strong></div>
+            <div>Tráqueas <strong>(T)</strong></div>
+        </div>
+        <div class="row mt-3  justify-content-center align-items-center">
+            <template v-for="(i, index) in [
+            'PL', 'P', 'E', 'B', 'E',
+            'T', 'T', 'P', 'E', 'B',
+            'P', 'T', 'T', 'B', 'E',
+            'T', 'PL', 'B', 'PL', 'P'
+            ]">
+                <div class="col-md-3 ima">
+                    <img class="img-fluid" :src="'aimg/i'+(index+1)+'.png'">
+                    <div class="inputbox example" v-if="index==0"><strong class="h3 main">PL</strong></div>
+                    <inputbox v-else v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+                </div>
+            </template>
+        </div>
+    
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
