@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practico mi ortografía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .eh1 {
+            border: 16px solid #4D2520;
+            border-left-color: #68312B;
+            border-top-color: #623129;
+            border-right-color: #954638;
+            border-bottom-color: #9D4B3D;
+            outline: 4px solid #7D3C31;
+            padding: 20px 10px;
+            background: #FAF7D9;
+        }
+        .eh1 .cuest {
+            background: rgba(0, 0, 0, 0.04);
+            padding: 6px;
+            box-sizing: border-box;
+            text-align: left;
+            border-radius: 10px;
+            border: 2px solid #F9F7D9;
+        }
+        .eh1 .cuest .row {
+            height: 100%;
+        }
+        .eh1 .inputbox input {
+            font-size: 1.4rem;
+        }
+
+        .oraciones .oracion {
+            background: #DDF0EE;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 4px;
+        }
+        .oraciones .inputbox input {
+            font-size: 1.4rem;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Practico mi ortografía</h1>
+
+        <div class="instruccion mt-5">Escribe <strong>V</strong> si la regla ortográfica es correcta o <strong>F</strong> si es falsa.</div>
+        
+        <div class="row flex-wrap justify-content-center mt-3 text-center eh1">
+            <div class="col-md-6">
+                <template v-for="(i, index) in [
+                    { v: 'V', txt:'Se escribe punto al final de un enunciado u oración.'},
+                    { v: 'V', txt:'Se utiliza coma para separar una enumeración en un enunciado.'},
+                    { v: 'V', txt:'Se escribe con mayúscula inicial después de un punto.'},
+                    { v: 'F', txt:'Se escribe punto al final de los títulos.'},
+                    { v: 'F', txt:'Se debe colocar solamente el signo de admiración al final de la oración.'},
+            ]">
+                
+                    <div class="row align-items-center cuest">
+                        <div class="col-4"><inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
+                        <div class="col">{{i.txt}}</div>
+                    </div>
+            </template>
+            </div>
+            <div class="col-md-6">
+                <template v-for="(i, index) in [
+                    { v: 'V', txt:'Los nombres propios se deben escribir con mayúscula.'},
+                    { v: 'F', txt:'Después de la coma se debe escribir con mayúscula.'},
+                    { v: 'V', txt:'Se escribe signo de interrogación para indi- car el principio y final de la pregunta.'},
+                    { v: 'V', txt:'La primera palabra de un escrito se escribe con mayúscula.'},
+                    { v: 'V', txt:'La coma indica una breve pausa de lectura.'},
+            ]">
+                
+                    <div class="row align-items-center cuest">
+                        <div class="col-4"><inputbox v-model="r[index+5]" :ref="'q'+(index+5)" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
+                        <div class="col">{{i.txt}}</div>
+                    </div>
+            </template>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Escribe correctamente los signos de admiración e interrogación en las siguientes oraciones.</div>
+        <div class="row mt-3 justify-content-center align-items-center oraciones">
+            
+            <div class="col-md-6">
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[10]" :ref="'q'+(10)" @isright="right++" answer="¿" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Cómo te llamas</strong></div>
+                    <div class="col-3"><inputbox v-model="r[11]" :ref="'q'+(11)" @isright="right++" answer="?" type="text" placeh="-"></inputbox></div>
+                </div>
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[12]" :ref="'q'+(12)" @isright="right++" answer="¡" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Feliz cumpleaños</strong></div>
+                    <div class="col-3"><inputbox v-model="r[13]" :ref="'q'+(13)" @isright="right++" answer="!" type="text" placeh="-"></inputbox></div>
+                </div>
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[14]" :ref="'q'+(14)" @isright="right++" answer="¿" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Cuántos años tienes</strong></div>
+                    <div class="col-3"><inputbox v-model="r[15]" :ref="'q'+(15)" @isright="right++" answer="?" type="text" placeh="-"></inputbox></div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[16]" :ref="'q'+(16)" @isright="right++" answer="¡" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Qué gusto que estés aquí</strong></div>
+                    <div class="col-3"><inputbox v-model="r[17]" :ref="'q'+(17)" @isright="right++" answer="!" type="text" placeh="-"></inputbox></div>
+                </div>
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[18]" :ref="'q'+(18)" @isright="right++" answer="¡" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Me gustó demasiado</strong></div>
+                    <div class="col-3"><inputbox v-model="r[19]" :ref="'q'+(19)" @isright="right++" answer="!" type="text" placeh="-"></inputbox></div>
+                </div>
+                <div class="row justify-content-center align-items-center text-center oracion">
+                    <div class="col-3"><inputbox v-model="r[20]" :ref="'q'+(20)" @isright="right++" answer="¿" type="text" placeh="-"></inputbox></div>
+                    <div class="col"><strong class="h4 main">Cómo están en tu casa</strong></div>
+                    <div class="col-3"><inputbox v-model="r[21]" :ref="'q'+(21)" @isright="right++" answer="?" type="text" placeh="-"></inputbox></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="instruccion mt-5">Escribe correctamente las siguientes oraciones.</div>
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-12 py-4">
+                <div class="label text-left h3">
+                    <strong class="accent">1.</strong>
+                    <span>miguel se tapa con el codoal estornudar o toSer</span>
+                </div>
+                <inputbox v-model="r[22]" :ref="'q'+(22)" @isright="right++" answer="Miguel se tapa con el codo al estornudar o toser." type="text" placeh="---"></inputbox>
+            </div>
+            <div class="col-12 py-4">
+                <div class="label text-left h3">
+                    <strong class="accent">2.</strong>
+                    <span>al cuidarnos a nosotros mismos, Cuidamos tambien alosdemas</span>
+                </div>
+                <inputbox v-model="r[23]" :ref="'q'+(23)" @isright="right++" answer="Al cuidarnos a nosotros mismos, cuidamos también a los demás." type="text" placeh="---"></inputbox>
+            </div>
+        </div>
+
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
