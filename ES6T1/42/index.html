@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+       .options div{margin: 10px 20px;} 
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
+        <div class="row mt-3">
+            <div class="col-sm-12">
+
+                <choose v-for="(i, index) in [
+                    {
+                        p: 'Son herramientas que te ayudan a estudiar cuando tienes que preparar un examen.',
+                        ops: ['Ensayos.','Reportajes.','Cuestionarios.'],
+                        a: 2
+                    },
+                    {
+                        p: 'Es el tipo de preguntas que admiten respuestas amplias o explicaciones.',
+                        ops: ['Preguntas abiertas.','Preguntas cerradas.','Preguntas de opción múltiple.'],
+                        a: 0
+                    },
+                    {
+                        p: '¿Cuál es el texto biográfico escrito en tercera persona?',
+                        ops: ['Autobiografía.','Narración.','Biografía.'],
+                        a: 2
+                    },
+                    {
+                        p: 'Es la persona gramatical en la que están narradas las autobiografías.',
+                        ops: ['Tercera persona.','Primera persona.','Segunda persona.'],
+                        a: 1
+                    },
+                    {
+                        p: 'Elige la oración coordinada.',
+                        ops: ['Los niños juegan en la calle, mañana irán a la escuela.', 'El perro ladra y el gato sale a pasear.', 'Ayer compré un auto, aunque no puedo manejarlo.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Son las frases que sirven para identificar cualidades o características de un sustantivo uniendo un adverbio y un sustantivo.',
+                        ops: ['Frases adjetivas.','Frases yuxtapuestas.','Frases coordinadas.'],
+                        a: 0
+                    },
+                    {
+                        p: '¿Cuál de las siguientes palabras está conjugada en copretérito?',
+                        ops: ['Jugaba.','Jugar.','Jugué.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Es el tipo de lenguaje que se utiliza en el guion radiofónico para llegar al público en ge- neral.',
+                        ops: ['Lenguaje formal.','Lenguaje cifrado.','Lenguaje informal.'],
+                        a: 2
+                    },
+                    {
+                        p: 'Es la persona que controla el sonido y recibe órdenes del productor en un programa de radio.',
+                        ops: ['El locutor.','El operador.','El guionista.'],
+                        a: 1
+                    },
+                    {
+                        p: 'Es un trabajo periodístico informativo que desarrolla un tema específico.',
+                        ops: ['Entrevista.','Leyenda.','Reportaje.'],
+                        a: 2
+                    },
+                ]"
+                    :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p"
+                    :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+                
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
