@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconozco a los homínidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+.esc {
+	margin: 10px;
+	border: 2px solid #7A693D;
+	border-radius: 10px;
+	padding: 10px;
+	background: #F0F2F0;
+	font-size: 1.1rem;
+}
+.esc .inputbox input {
+	font-size: 1.4rem;
+	border: 2px solid #7A693D;
+}
+
+.map {
+	position: relative;
+}
+.inputs .inputbox {
+	width: 10%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.inputs .inputbox input {
+	font-size: 1.4rem;
+	border-color: #4FACBA;
+	color: var(--main);
+}
+.inputs .inputbox:nth-child(1) {
+	left: 45%;
+	top: 50%;
+}
+.inputs .inputbox:nth-child(2) {
+	left: 68%;
+	top: 20%;
+}
+.inputs .inputbox:nth-child(3) {
+	left: 50%;
+	top: 10%;
+}
+.inputs .inputbox:nth-child(4) {
+	left: 80%;
+	top: 65%;
+}
+.inputs .inputbox:nth-child(5) {
+	left: 13%;
+	top: 25%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Reconozco a los homínidos</h1>
+		<h2>Competencias: Comprensión del tiempo y del espacio históricos. Manejo de información histórica. Formación de una conciencia histórica para la convivencia.</h2>
+
+        <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero o <strong>F</strong> si es falso. Consulta las páginas 12 y 13 de tu libro de texto SEP.</div>
+        
+
+        <div class="mt-3">
+			<template v-for="(i, index) in [
+				{v: 'V', t:'El orígen del ser humano fue en el continente africano.' },
+				{v: 'V', t:'Los homo habilis fueron los primeros seres humanos.' },
+				{v: 'V', t:'La prehistoria comenzó hace aproximadamente 3 500 000 de años.' },
+				{v: 'V', t:'Las siglas a. C. significan antes de Cristo.' },
+				{v: 'V', t:'El Paleolítico fue el periodo en el que los seres humanos pulían las piedras, practicaban la agricultura y domesticaban animales, además de vivir en comunidades.' },
+				{v: 'V', t:'En el Neolítico el hombre producía herramientas e instrumentos hechos de piedra, cazaba animales y cambiaba de lugar de residencia por la escasez de F alimento.' },
+				{v: 'V', t:'La agricultura y la metalurgia surgieron en Asia y Europa.' },
+				{v: 'V', t:'La invención de la escritura marcó el fin de la prehistoria y fue desarrollada en el 3200 a. C. aproximadamente.' },
+			]">
+				<div class="row esc align-items-center">
+					<div class="txt col-10">{{i.t}}</div>
+					<div class="inpt col-2">
+						<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.v" type="text" placeh="#"></inputbox>
+					</div>
+				</div>
+			</template>
+		</div>
+		
+        <div class="instruccion mt-5">Observa el siguiente mapa y ordena del 1 al 5 el origen del ser humano y el poblamiento de los continentes.</div>
+        <div class="mt-3">
+			<div class="map">
+				<img src="aimg/map.svg" class="mapimg w-100 img-fluid">
+				<div class="inputs">
+					<inputbox v-for="(i,index) in [1,2,3,4,5]" v-model="r[index+8]" :ref="'q'+(index+8)" @isright="right++" :answer="i" type="text" placeh="#"></inputbox>
+				</div>
+			</div>
+		</div>
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
