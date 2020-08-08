@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+       .options div{margin: 10px 20px;} 
+       .choose .options div.active {
+            border-bottom: none;
+            background: #FEDDE1;
+            border-radius: 10px;
+        }
+        .choose .options {
+            text-align: center;
+        }
+        .choose .options > div, .choose .options div {
+            border-bottom: none;
+            background: rgba(200,200,200,0.1);
+        }
+        .choose .options hr {
+            margin: 0;
+            border-top: 3px solid var(--main);
+            min-width: 20px;
+        }
+        .label div {
+            display: inline-block;
+            max-width: 30px;
+            text-align: center;
+            transform: translatey(15px);
+            margin: 0 10px;
+        }
+        .label div hr {
+            margin: 0;
+            max-width: 30px;
+            min-width: 20px;
+            border-top: 2px solid #000;
+        }
+        .options {
+	flex-wrap: wrap;
+}
+.options .row {
+	min-width: 120px;
+}
+.options .row div {
+	margin: 0 8px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
+        <div class="row mt-3">
+            <div class="col-sm-12">
+
+                <choose v-for="(i, index) in [
+                    {
+                        p: 'Es la figura que no tiene ejes de simetría.',
+                        ops: ['El cuadrado.','El rectángulo.','El triángulo escaleno.'],
+                        a: 2
+                    },
+                    {
+                        p: '¿Cuántas vueltas hay que dar en un circuito de 20 km para recorrer un total de 280 km?',
+                        ops: ['14 vueltas.', '15 vueltas.', '16 vueltas.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Paola compró un pantalón de $387.00 playeras de $120.00 shorts de $150.00 y una gorra de $75.00. Al total de la cuenta le hicieron el 37 % de descuento. ¿Cuánto pagó al final?',
+                        ops: ['$732.00','$461.16','$270.84'],
+                        a: 1
+                    },
+                    {
+                        p: 'En una fábrica hacen 1 700 pelotas diarias, de las cuales el 27 % son rojas, el 25 % azules, el 15 % moradas, el 13 % amarillas y el 20 % anaranjadas. ¿Cuántas pelotas son rojas?',
+                        ops: ['459 pelotas.','345 pelotas.','350 pelotas.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Es el resultado de esta multiplicación. 750 × 100 =',
+                        ops: ['7 500','75 000','750 000'],
+                        a: 1
+                    },
+                    {
+                        p: 'En un anuncio del mercado, Manuel observó que por cada $250.00 se hace un descuento del 25 %. Si él adquirirá productos por un total de $750.00, ¿cuánto pagará al final?',
+                        ops: ['$562.50','$695.20','$705.50'],
+                        a: 0
+                    },
+                    {
+                        p: 'Victoria compró 350 paquetes de hilos a $10.00 cada uno. ¿Cuánto pagó por ellos?',
+                        ops: ['$3 500.00','$350.00','$35 000.00'],
+                        a: 0
+                    },
+                    {
+                        p: '¿Cuál es el número mayor que 45 750?',
+                        ops: ['45 050','46 345','45 749'],
+                        a: 1
+                    },
+                    {
+                        p: 'El número decimal 0.33 es equivalente a:',
+                        ops: ['1<hr>6', '1<hr>3', '1<hr>5'],
+                        a: 1
+                    },
+                    {
+                        p: 'Andrea compró 0.33 cm de listón azul, María 0.50 cm y Luisa 0.25 cm. ¿Cuáles son las fracciones que representan lo que compró cada una?',
+                        ops: [
+                            '<div class=\'row align-items-center\'><div>1<hr>3</div>, <div>1<hr>2</div> y <div>1<hr>4</div>.</div>',
+                            '<div class=\'row align-items-center\'><div>3<hr>6</div>, <div>1<hr>2</div> y <div>3<hr>4</div>.</div>',
+                            '<div class=\'row align-items-center\'><div>1<hr>6</div>, <div>4<hr>8</div> y <div>1<hr>4</div>.</div>',
+                            ],
+                        a: 0
+                    },
+                ]"
+                    :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p"
+                    :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+                
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

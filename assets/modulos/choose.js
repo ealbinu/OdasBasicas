@@ -44,8 +44,8 @@ Vue.component('choose', {
             <div class="label"><strong v-if="num">{{num}}</strong> <span v-html="text"></span></div>
             <div class="options">
                 <template v-for="op in options">  
-                    <div @click="clicked(op)" v-if="status!=op">{{op}}</div>
-                    <div @click="clicked(op)" v-if="status==op" class="active animate__animated animate__heartBeat">{{op}}</div>
+                    <div @click="clicked(op)" v-if="status!=op" v-html="op"></div>
+                    <div @click="clicked(op)" v-if="status==op" class="active animate__animated animate__heartBeat" v-html="op"></div>
                 </template>
             </div>
         </div>

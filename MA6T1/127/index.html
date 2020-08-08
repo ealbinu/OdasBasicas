@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmo lo que aprendí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+       .options div{margin: 10px 20px;} 
+       .choose .options div.active {
+            border-bottom: none;
+            background: #FEDDE1;
+            border-radius: 10px;
+        }
+        .choose .options {
+            text-align: center;
+        }
+        .choose .options > div {
+            border-bottom: none;
+            background: #f5f5f5;
+        }
+        .choose .options hr {
+            margin: 0;
+            border-top: 3px solid var(--main);
+            min-width: 30px;
+        }
+
+        .label div {
+            display: inline-block;
+            max-width: 30px;
+            text-align: center;
+            transform: translatey(15px);
+            margin: 0 10px;
+        }
+        .label div hr {
+            margin: 0;
+            max-width: 40px;
+            min-width: 20px;
+            border-top: 2px solid #000;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Confirmo lo que aprendí</h1>
+
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
+        <div class="row mt-3">
+            <div class="col-sm-12">
+
+                <choose v-for="(i, index) in [
+                    {
+                        p: 'Beatriz vendió 40 bolsas de paletas a $15.50. ¿Cuánto dinero ganó?',
+                        ops: ['$620.00','$700.00','$650.00'],
+                        a: 0
+                    },
+                    {
+                        p: 'Lulú compró 10 bolis a $7.00 cada uno. Si pagó con un billete de $200.00, ¿cuánto le dieron de cambio?',
+                        ops: ['$70.00','$130.00','$80.00'],
+                        a: 1
+                    },
+                    {
+                        p: 'Luis tiene 2 pasteles y necesita repartirlos en partes iguales entre sus 8 invitados. ¿Qué fracción le tocará a cada uno?',
+                        ops: ['1<hr>8', '1<hr>4', '1<hr>2'],
+                        a: 1
+                    },
+                    {
+                        p: 'Ángel tiene en su auto <div>4<hr>3</div> de tanque de gasolina y Miguel <div>7<hr>8</div> . ¿Quién tiene más gasolina?',
+                        ops: ['Ángel.', 'Miguel.', 'Tienen lo mismo.'],
+                        a: 1
+                    },
+                    {
+                        p: '¿Qué número es mayor que 1 346?',
+                        ops: ['1 234','1 347', '1 200'],
+                        a: 1
+                    },
+                    {
+                        p: '¿Cuál es el resultado de esta resta? 2.25 − 1.4 =',
+                        ops: ['0.3', '0.85', '0.145'],
+                        a: 1
+                    },
+                    {
+                        p: 'Iván compró un pantalón que tenía el 20 % de descuento. Si costaba $400.00 antes del des- cuento, ¿cuánto le costará el pantalón?',
+                        ops: ['$350.00','$320.00','$500.00'],
+                        a: 1
+                    },
+                    {
+                        p: '¿Cuál es el número más próximo a 5 059 678?',
+                        ops: ['5 100 670','5 059 677', '5 059 679'],
+                        a: 1
+                    },
+                    {
+                        p: '¿Qué fracción es menor que <div>1<hr>2</div>?',
+                        ops: ['3<hr>4', '7<hr>8', '1<hr>4'],
+                        a: 2
+                    },
+                    {
+                        p: 'En un estacionamiento entraron el día lunes 50 autos. Si el martes entraron el triple que el lunes, ¿cuántos autos entraron el martes?',
+                        ops: ['150 autos.', '200 autos.', '300 autos.'],
+                        a: 0
+                    },
+                ]"
+                    :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p"
+                    :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+                
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
