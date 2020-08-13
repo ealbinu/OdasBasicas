@@ -3,24 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Aprendo cómo protegen las vacunas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-
-
+        .inputbox input{
+            font-size: 1.4rem;
+        }
+        .pregunta{
+            background: #BFE5EA;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 2px 0;
+        }
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Aprendo cómo protegen las vacunas</h1>
+        <h2>Importancia de las vacunas para la prevención de enfermedades</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Contesta las siguientes afirmaciones y después busca las respuestas en la sopa de letras. Consulta las páginas 28 a 30 de tu libro de texto SEP.</div>
 
-        <div class="row mt-3">
+        <div class="row mt-3 align-items-center">
+            <div class="col-md-7">
+                <img src="aimg/cross.svg" class="img-fluid">
+            </div>
+            <div class="col-md-5">
+               <div class="pregunta" v-for="(i, index) in [
+                {a:'Pentavalente', p:'Vacuna que protege contra la difteria y la tosferina, entre otras enfermedades.' },
+                {a:'Viruela', p:'Nombre de la vacuna que ya no se aplica porque la enfer- medad se erradicó en México en 1952.' },
+                {a:'Varicela', p:'Es una de las enfermedades que se propaga cuando el enfermo entra en contacto con otras personas.' },
+                {a:'españoles', p:'¿Quiénes trajeron a México el virus de la viruela en 1520?' },
+               ]">
+                <strong class="sec">{{index+1}}. </strong> {{i.p}}
+                <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
+            </div>
+           </div>
            
         </div>
 
