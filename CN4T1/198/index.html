@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Reconozco la reproducción animal</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-
+        .imag{
+            margin-bottom: 20px;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Reconozco la reproducción animal</h1>
+        <h2>Reproducción sexual en animales</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Observa las imágenes y escribe debajo de cada una si el animal es ovíparo o vivíparo.</div>
 
-        <div class="row mt-3">
+        <div class="row mt-3 align-items-center">
+               <div class="col-md-4 imag" v-for="(i, index) in ['o', 'v', 'v', 'v', 'o', 'o']">
+                <img :src="'aimg/i'+(index+1)+'.png'" class="img-fluid">
+                <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i=='o'?'ovíparo' : 'vivíparo'" type="text" placeh="-"></inputbox>
+           </div>
            
         </div>
 
