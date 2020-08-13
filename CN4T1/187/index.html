@@ -3,25 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Utilizo imanes</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        .conceptos, .conceptos2 {
+            background: #FFF4CE;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .conceptos2 {
+            background: #694287;
+        }
+        .concepto {
+            display: block;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 4px 10px;
+            border: 2px solid #FFF4CE;
+            font-size: 1.4rem;
+            color: var(--main);
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+        .conceptos2 .concepto { border: 2px solid #694287; }
+        .concepto:nth-child(1){color:#AE4E8F;}
+        .concepto:nth-child(2){color:#0284BF;}
+        .concepto:nth-child(3){color:#6CB644;}
+        .concepto:nth-child(4){color:#E9832C;}
+        .concepto:nth-child(5){color:#694287;}
+
+        .parrafo {
+            padding: 10px;
+            border: 2px solid var(--main);
+            border-radius: 10px;
+            font-size: 1.4rem;
+            width: 100%;
+        }
+        .parrafo2 {
+            padding: 10px;
+            border: 2px solid #694287;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            width: 100%;
+            background: #F5F1F5;
+        }
+        .parrafo .inputbox, .parrafo2 .inputbox {
+            display: inline-block;
+        }
+        .parrafo2 .inputbox {
+            max-width: 180px;
+        }
+        .inputbox input{font-size: 1.4rem;}
+        .parrafo:nth-child(1){border-color:#AE4E8F;}
+        .parrafo:nth-child(2){border-color:#0284BF;}
+        .parrafo:nth-child(3){border-color:#6CB644;}
+        .parrafo:nth-child(4){border-color:#E9832C;}
+        .parrafo:nth-child(5){border-color:#694287;}
+
+        .parrafo:nth-child(1) input{border-color:#AE4E8F;}
+        .parrafo:nth-child(2) input{border-color:#0284BF;}
+        .parrafo:nth-child(3) input{border-color:#6CB644;}
+        .parrafo:nth-child(4) input{border-color:#E9832C;}
+        .parrafo:nth-child(5) input{border-color:#694287;}
+
+        .parrafo:nth-child(1) strong{color:#AE4E8F;}
+        .parrafo:nth-child(2) strong{color:#0284BF;}
+        .parrafo:nth-child(3) strong{color:#6CB644;}
+        .parrafo:nth-child(4) strong{color:#E9832C;}
+        .parrafo:nth-child(5) strong{color:#694287;}
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Utilizo imanes</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
-
+        <div class="instruccion mt-5">Descifra las palabras y completa los enunciados.</div>
+        <div class="row justify-content-center align-items-center mt-3 text-center conceptos">
+            <div class="col-md-4 concepto"><strong class="">AGNISMTMEO</strong></div>
+            <div class="col-md-4 concepto"><strong class="">OPOSL</strong></div>
+            <div class="col-md-4 concepto"><strong class="">RNEHCAZA</strong></div>
+            <div class="col-md-4 concepto"><strong class="">BARJULÚ</strong></div>
+            <div class="col-md-4 concepto"><strong class="">MAELSET</strong></div>
+        </div>
         <div class="row mt-3">
-           
+            <div class="col-md-12">
+                <p class="parrafo">
+                    <strong class="">1.</strong> La propiedad de atraer objetos metálicos se llama <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="'magnetismo'" type="text" placeh="-"></inputbox>.
+                </p>
+                <p class="parrafo">
+                    <strong class="">2.</strong> Se llaman <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="'polos'" type="text" placeh="-"></inputbox> a los extremos de los imanes, y es donde se concentra su mayor capacidad de atracción.
+                </p>
+                <p class="parrafo">
+                    <strong class="">3.</strong> Al aproximar dos polos con la misma carga magnética, éstos se <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="'rechazan'" type="text" placeh="-"></inputbox>.
+                </p>
+                <p class="parrafo">
+                    <strong class="">4.</strong> Una <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="'brújula'" type="text" placeh="-"></inputbox> es un instrumento que utiliza el magnetismo para ubicar los puntos cardinales.
+                </p>
+                <p class="parrafo">
+                    <strong class="">5.</strong> Los imanes pueden atraer  <inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="'metales'" type="text" placeh="-"></inputbox> como el hierro, el níquel y el cobalto.
+                </p>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Completa el siguiente texto utilizando las palabras del recuadro.</div>
+        <div class="row justify-content-center align-items-center mt-3 text-center conceptos2">
+            <div class="col-md-3 col-6 concepto" v-for="i in ['otoño','Luna','primavera','estaciones','365','Sol','giro','noches','movimiento','día','Tierra','28','rotación','traslación']"><strong class="main">{{i}}</strong></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <p class="parrafo2">
+                    La Tierra se mueve continuamente, realiza dos movimientos: el movimiento de rotación y el movimiento de <inputbox v-model="r[5]" ref="q5" @isright="right++" :answer="'traslación'" type="text" placeh="-"></inputbox>.
+                    La <inputbox v-model="r[6]" ref="q6" @isright="right++" :answer="'rotación'" type="text" placeh="-"></inputbox> es el movimiento de giro de la <inputbox v-model="r[7]" ref="q7" @isright="right++" :answer="'tierra'" type="text" placeh="-"></inputbox> sobre sí misma y tarda 24 horas, es decir, un <inputbox v-model="r[8]" ref="q8" @isright="right++" :answer="'día'" type="text" placeh="-"></inputbox>.
+                    <br><br>
+                    El <inputbox v-model="r[9]" ref="q9" @isright="right++" :answer="'movimiento'" type="text" placeh="-"></inputbox> de rotación produce la sucesión de los días y las <inputbox v-model="r[10]" ref="q10" @isright="right++" :answer="'noches'" type="text" placeh="-"></inputbox>.
+                    <br><br>
+                    La traslación es el movimiento de <inputbox v-model="r[11]" ref="q11" @isright="right++" :answer="'giro'" type="text" placeh="-"></inputbox> de la Tierra alrededor del <inputbox v-model="r[12]" ref="q12" @isright="right++" :answer="'Sol'" type="text" placeh="-"></inputbox> y ésta tarda un año, es decir, <inputbox v-model="r[13]" ref="q13" @isright="right++" :answer="'365'" type="text" placeh="-"></inputbox> días en dar una vuelta completa, y da lugar a la sucesión de las cuatro <inputbox v-model="r[14]" ref="q14" @isright="right++" :answer="'estaciones'" type="text" placeh="-"></inputbox>:
+                    el invierno, la <inputbox v-model="r[15]" ref="q15" @isright="right++" :answer="'primavera'" type="text" placeh="-"></inputbox> , el verano y el <inputbox v-model="r[16]" ref="q16" @isright="right++" :answer="'otoño'" type="text" placeh="-"></inputbox>.
+                    <br><br>
+                    La <inputbox v-model="r[17]" ref="q17" @isright="right++" :answer="'luna'" type="text" placeh="-"></inputbox> gira alrededor de la Tierra y tarda <inputbox v-model="r[18]" ref="q18" @isright="right++" :answer="'28'" type="text" placeh="-"></inputbox> días en dar una vuelta completa, por eso no la vemos siempre de la misma forma.
+                </p>
+            </div>
         </div>
 
 
