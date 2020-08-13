@@ -3,27 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Estudio el boletín informativo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        .texto {
+            background: linear-gradient(#C2DCA5, #E4F0D5);
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .texto strong.h4 {
+            margin: 10px 0;
+            color: #000;
+        }
 
+        .tag {
+            background: #FFF4CE;
+            border-radius: 10px;
+            padding: 10px;
+            border: 4px solid #fff;
+        }
+        .tag.azul {
+            background: #02A6D8;
+        }
+        .tag.verde {
+            background: #00A149;
+        }
+        .tag.anaranjado {
+            background: #EB8F36;
+        }
+        .choose {
+            margin: 0;
+        }
+        .choose .options {
+            margin: 0;
+            padding: 0;
+        }
+        .options div {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 8px solid #fff !important;
+            border-radius: 50%;
+            text-indent: -9999px;
+        }
+        .options div:nth-child(1) {
+            background: #00A149;
+        }
+        .options div:nth-child(2) {
+            background: #02A6D8;
+        }
+        .options div:nth-child(3) {
+            background: #EB8F36;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Estudio el boletín informativo</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Marca el texto que corresponde a un boletín informativo.</div>
 
         <div class="row mt-3">
-           
+            <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="ok" :options="[
+            {val:'no', title:'Emperadores de México', txt: 'Maximiliano de Habsburgo fue el segundo empe- rador de México al aceptar el trono de manos de los conservadores que no querían a Benito Juárez como presidente. Maximiliano llegó al puerto de Veracruz con su esposa Carlota. Ambos rigieron el país bajo la protección del ejército francés del emperador Napoleón III.'},
+            {val:'ok', title:'Aprendizaje colectivo', txt: 'Volver a la normalidad es un muy relativo cuando se trata de afrontar una catástrofe. La comunidad tapatía aprendió una lección de higiene y respeto después de la cuarentena derivada de la pandemia. La nueva norma- lidad se basa en no repetir los hábitos que generaron gran cantidad de contagios por el virus que afectó a la humanidad dese los inicios del 2020.'}
+            ]" customclass="col-md-6">
+                <template v-slot:option="{option}">
+                    <div class="py-2 texto">
+                        <strong class="h4">{{option.title}}</strong>
+                        <p>{{option.txt}}</p>
+                    </div>
+                </template>
+            </selectableoptions>
         </div>
 
+        <div class="instruccion mt-5">Colorea cada una de las características de la elaboración de un boletín informativo de acuerdo a como se indica.</div>
+
+        <div class="row mt-3  justify-content-center align-items-center">
+            <div class="col-md-10 col-8">
+                <div class="row justify-content-center align-items-center">
+                    <div :class="'tag col-md-4 '+r[0]">
+                        Debe ser atractivo y estar organizado de forma que se pueda leer con facilidad.
+                        <choose v-model="r[0]" ref="q0" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="azul"></choose>
+                    </div>
+                    <div :class="'tag col-md-4 '+r[1]">
+                        Incluir fotografías o ilustraciones.
+                        <choose v-model="r[1]" ref="q1" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="verde"></choose>
+                    </div>
+                    <div :class="'tag col-md-4 '+r[2]">
+                        Enviar el boletín por correo electrónico.
+                        <choose v-model="r[2]" ref="q2" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="anaranjado"></choose>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div :class="'tag col-md-4 '+r[3]">
+                        Tomar en cuenta el público al que se dirige.
+                        <choose v-model="r[3]" ref="q3" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="verde"></choose>
+                    </div>
+                    <div :class="'tag col-md-4 '+r[4]">
+                        Entregar el boletín de manera personal.
+                        <choose v-model="r[4]" ref="q4" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="anaranjado"></choose>
+                    </div>
+                    <div :class="'tag col-md-4 '+r[5]">
+                        Escribir la información en cada párrafo de forma jerarquizada.
+                        <choose v-model="r[5]" ref="q5" :options="['verde', 'azul', 'anaranjado']" @isright="right++" answer="verde"></choose>
+                    </div>
+                </div>
+            </div>
+            <div class="col"><img src="aimg/i1.svg" class="img-fluid"></div>
+        </div>
 
 
 
