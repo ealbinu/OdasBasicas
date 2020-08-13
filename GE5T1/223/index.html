@@ -3,27 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>¡Encuentro países!</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        .pais {
+            background: #FFF6D7;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .pais > div {
+            border-top: 2px solid #fff;
+            padding: 10px 2px;
+        }
+        .pais strong {
+            font-size: 1.6rem;
+        }
+        .pais .img-fluid {
+            max-width: 120px;
+            margin: 20px 0;
+        }
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>¡Encuentro países!</h1>
+        <h2>¿Cómo localizo?</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Completa las siguientes fichas con los datos que se piden, observa las banderas para determi- nar el país del que se trata. Consulta las páginas 72 a 79 de tu Atlas de Geografía del Mundo. Observa el ejemplo.</div>
 
         <div class="row mt-3">
-           
+           <div class="pais col-md-4">
+               <img src="aimg/a1.svg" class="img-fluid">
+               <div><div class="label">País:</div><strong class="main">México</strong></div>
+               <div><div class="label">Capital:</div><strong class="main">Ciudad de México</strong></div>
+               <div><div class="label">Longitud aproximada:</div><strong class="main">100º oeste</strong></div>
+               <div><div class="label">Latitud aproximada:</div><strong class="main">20º norte</strong></div>
+            </div>
+
+           <div class="pais col-md-4" v-for="(i, index) in [
+            {p: 'Alemania', c: 'Berlín', lon:'9º este', lat: '50º norte', dx: [0, 1, 2, 3]},
+            {p: 'Noruega', c: 'Oslo', lon:'10º este', lat: '60º norte', dx: [4, 5, 6, 7]},
+            {p: 'Australia', c: 'Canberra', lon:'130º este', lat: '25º sur', dx: [8, 9, 10, 11]},
+            {p: 'Egipto', c: 'El Cairo', lon:'14º este', lat: '27º norte', dx: [12, 13, 14, 15]},
+            {p: 'China', c: 'Pekín', lon:'105º este', lat: '35º norte', dx: [16, 17, 18, 19]},
+           ]">
+            <img :src="'aimg/i'+(index+1)+'.svg'" class="img-fluid">
+            <div><div class="label">País:</div><inputbox v-model="r[i.dx[0]]" :ref="'q'+(i.dx[0])" @isright="right++" :answer="i.p" type="text" placeh="-"></inputbox></div>
+            <div><div class="label">Capital:</div><inputbox v-model="r[i.dx[1]]" :ref="'q'+(i.dx[1])" @isright="right++" :answer="i.c" type="text" placeh="-"></inputbox></div>
+            <div><div class="label">Longitud aproximada:</div><inputbox v-model="r[i.dx[2]]" :ref="'q'+(i.dx[2])" @isright="right++" :answer="i.lon" type="text" placeh="-"></inputbox></div>
+            <div><div class="label">Latitud aproximada:</div><inputbox v-model="r[i.dx[3]]" :ref="'q'+(i.dx[3])" @isright="right++" :answer="i.lat" type="text" placeh="-"></inputbox></div>
+           </div>
         </div>
 
+        
 
 
 
