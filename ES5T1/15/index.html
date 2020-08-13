@@ -3,25 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Formulo preguntas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-
+        .h5{
+            padding: 10px;
+            background: linear-gradient(#DCDDDB, #EDEDEC);
+            border-radius: 6px;
+            text-shadow: 0 2px 2px #a9aAa8;
+            line-height: 1.6;
+        }
+        .inputbox {
+            display: inline-block;
+        }
+        .inputbox input {
+            font-size: 1.4rem;
+        }
+        .pregunta {
+            font-size: 1.6rem;
+            padding: 10px;
+            border: 2px solid #BFB28F;
+            border-radius: 10px;
+            color: #EB8C2D;
+            margin-bottom: 10px;
+        }
+        .ask .inputbox {
+            width: 100%;
+        }
+        .txt .inputbox {
+            max-width: 80px;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Formulo preguntas</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Lee el siguiente texto y completa las preguntas.</div>
 
         <div class="row mt-3">
-           
+            <p class="h5"> Se pronostica que el 1 de junio iniciará en el océano Pacífico la temporada de huracanes y terminará hasta el 30 de noviembre aproximadamente. A un huracán con vientos menores o iguales a 62 km/h se le conoce como depresión tropical. Cuando esos vientos alcanzan velocidades de 63 km/h a 117 km/h se convierten en una tormenta tropical; y al exceder los 118 km/h, la tormenta tropical es llamada huracán. Los huracanes son las tormentas más grandes y violentas de la Tierra. También se les conoce como tifones o ciclones según el lugar donde se presentan.</p>
+        </div>
+        
+        <div class="row mt-3 pregunta" v-for="(i, index) in [
+            {a: 'cuándo', t:'se pronostica que iniciará la temporada de huracanes'},
+            {a: 'dónde', t:'surge ese fenómeno climático'},
+            {a: 'cómo', t:'se llaman los huracanes en otros lugares de la Tierra'},
+            {a: 'cuántos', t:'km/h alcanzan los vientos de una tormenta tropica'},
+            {a: 'cuáles', t:'son las tormentas más violentas de la Tierra'},
+        ]">
+
+            <div class="col-md-3 ask">
+                <div class="row">
+                    <div class="col-1"><strong>¿</strong></div>
+                    <div class="col"><inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox></div>
+                </div>
+            
+            </div>
+
+            <div class="col txt">
+                {{i.t}}
+                <inputbox v-model="r[index+5]" :ref="'q'+(index+5)" @isright="right++" answer="?" type="text" placeh="-"></inputbox>
+            </div>
         </div>
 
 
