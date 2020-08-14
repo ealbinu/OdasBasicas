@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizo la situación de México</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+.afirmaciones {
+	background: #75B2D6;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 20px;
+}
+.afirmaciones .row {
+	background: #fff;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px;
+}
+.info {
+	background: #FDE8CF;
+	max-width: 300px;
+	padding: 10px;
+	border-radius: 10px;
+	border: 4px solid #fff;
+}
+.oraciones {
+	background: #FDE8CF;
+	padding: 20px 10px;
+	border-radius: 10px;
+}
+.oraciones > div {
+	height: 200px;
+	background: #f5f5f5;
+	padding: 10px;
+	border: 4px solid #FDE8CF;
+	border-radius: 10px;
+}
+.oraciones > div:nth-child(1) {
+	background: #E0EEF4;
+}
+.oraciones > div:nth-child(2) {
+	background: #F5E8EE;
+}
+.oraciones > div:nth-child(3) {
+	background: #E9F5F3;
+}
+.oraciones > div:nth-child(4) {
+	background: #E9E4EA;
+}
+.oraciones > div:nth-child(5) {
+	background: #EEF6E3;
+}
+.oraciones > div:nth-child(6) {
+	background: #F0EBDE;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Reviso los hechos históricos</h1>
+		<h2>El gobierno republicano y el Segundo Imperio</h2>
+
+        <div class="instruccion mt-5">Escribe <strong>V</strong> si la afirmación es verdadera o <strong>F</strong> si es falsa.</div>
+        
+        <div class="justify-content-center mt-3 afirmaciones">
+				<div class="row align-items-center">
+					<div class="col-2"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="V" type="text" placeh="-"></inputbox></div>
+					<div class="col">El 5 de mayo de 1862, el ejército mexicano, encabezado por Ignacio Zaragoza, logró una importante victoria ante Francia.</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-2"><inputbox v-model="r[1]" ref="q1" @isright="right++" answer="F" type="text" placeh="-"></inputbox></div>
+					<div class="col">Benito Juárez estuvo como encargado del partido conserva- dor en México, promoviendo la monarquía.</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-2"><inputbox v-model="r[2]" ref="q2" @isright="right++" answer="V" type="text" placeh="-"></inputbox></div>
+					<div class="col">Durante la intervención francesa en México se ejercieron dos tipos de gobierno: una república constitucionalmente establecida, y una monarquía apoyada por las fuerzas extranjeras.</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-2"><inputbox v-model="r[3]" ref="q3" @isright="right++" answer="F" type="text" placeh="-"></inputbox></div>
+					<div class="col">Maximiliano encabezó a los liberales, asimismo, creó las Leyes de Reforma.</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-2"><inputbox v-model="r[4]" ref="q4" @isright="right++" answer="V" type="text" placeh="-"></inputbox></div>
+					<div class="col">Los liberales recuperaron los territorios que estaban en manos de los franceses.</div>
+				</div>
+		</div>
+
+
+		<div class="instruccion mt-5">Lee las siguientes oraciones y escribe la letra de acuerdo al movimiento que corresponden.</div>
+		<div class="row mt-3 justify-content-center align-items-center text-center">
+			<div class="col info"><strong class="main">L</strong> = Liberal</div>
+			<div class="col info"><strong class="main">C</strong> = Conservador</div>
+		</div>
+
+		<div class="row mt-3 justify-content-center align-items-center oraciones">
+			<div class="col-md-4"><inputbox v-model="r[5]" ref="q5" @isright="right++" answer="C" type="text" placeh="-"></inputbox><div>Este movimiento perdió apoyo de Napoleón III a causa de las Guerras en Europa.</div></div>
+			<div class="col-md-4"><inputbox v-model="r[6]" ref="q6" @isright="right++" answer="L" type="text" placeh="-"></inputbox><div>No reconocieron la autoridad de Maximiliano y su esposa Carlota.</div></div>
+			<div class="col-md-4"><inputbox v-model="r[7]" ref="q7" @isright="right++" answer="C" type="text" placeh="-"></inputbox><div>Buscaban establecer una monarquía.</div></div>
+			<div class="col-md-4"><inputbox v-model="r[8]" ref="q8" @isright="right++" answer="L" type="text" placeh="-"></inputbox><div>Este movimiento buscaba la soberanía del país.</div></div>
+			<div class="col-md-4"><inputbox v-model="r[9]" ref="q9" @isright="right++" answer="C" type="text" placeh="-"></inputbox><div>A causa de las decisiones de Maximiliano sobre ratificar algunas Leyes de Reforma, este movimiento retiró su apoyo.</div></div>
+			<div class="col-md-4"><inputbox v-model="r[10]" ref="q10" @isright="right++" answer="L" type="text" placeh="-"></inputbox><div>Se apoyaban en los principios establecidos en la Constitución.</div></div>
+		</div>
+		
+
+
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
