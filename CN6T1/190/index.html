@@ -3,25 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Aprendo sobre el cáncer de mama</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-
+        .tag{
+            background: #F5E8EE;
+            border: 2px solid #AE4E8F;
+            color:#AE4E8F;
+            border-radius: 10px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 10px;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Aprendo sobre el cáncer de mama</h1>
+        <h2>Un dato interesante</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Marca los factores de riesgo para contraer cáncer de mama. Consulta la página 33 de tu libro de texto SEP.</div>
 
-        <div class="row mt-3">
-           
+        <div class="row justify-content-center align-items-center mt-3">
+            <div class="col-md-4" v-for="(i, index) in [
+                {v: true, t: 'Ser mayor de 35 años.'},
+                {v: true, t: 'Tener antecedentes de familiares que sufrieron este padecimiento.'},
+                {v: false, t: 'Tener urticaria en la piel.'},
+                {v: true, t: 'Continuar menstruando después de los 50 años.'},
+                {v: true, t: 'Utilizar hormonas durante la menopausia por tiempos prolongados.'},
+                {v: true, t: 'Inicio de menstruación a edad temprana.'},
+                {v: true, t: 'Consumo excesivo de grasas saturadas.'},
+            ]">
+                <selectable :isok="i.v" v-model="r[index]" :ref="'q'+index" @isright="right++"><div class="tag">{{i.t}}</div></selectable>
+
+            </div>
+
         </div>
 
 
