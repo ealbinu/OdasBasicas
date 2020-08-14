@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 164 333" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g transform="matrix(1,0,0,1,-1124,-419)">
+        <g id="a1">
+            <g transform="matrix(0,4.16667,4.16667,0,1301.07,572.501)">
+                <path d="M-28.467,-37.198L27.46,-37.198L37.198,-28.467L-17.05,-28.467L-28.467,-37.198Z" style="fill:rgb(179,215,223);fill-rule:nonzero;stroke:rgb(0,179,218);stroke-width:1.01px;"/>
+            </g>
+            <g transform="matrix(0.021491,4.16661,4.16661,-0.021491,1334.98,568.601)">
+                <path d="M-16.538,-36.521L38.718,-36.521L34.339,-16.611L-18.545,-16.338L-16.538,-36.521Z" style="fill:rgb(179,215,223);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(4.14404,-0.433673,-0.433673,-4.14404,1171.16,505.456)">
+                <path d="M2.82,0.905L23.103,0.905L17.598,-51.691L-2.647,-54.079L2.82,0.905Z" style="fill:none;fill-rule:nonzero;stroke:rgb(0,179,218);stroke-width:1.01px;"/>
+            </g>
+            <g transform="matrix(-4.12099,0.615238,0.615238,4.12099,1143.99,462.352)">
+                <path d="M-27.803,10.979L-7.696,10.979L-0.88,-2.5L-19.213,-2.319L-27.803,10.979Z" style="fill:rgb(179,215,223);fill-rule:nonzero;stroke:rgb(0,179,218);stroke-width:1.01px;"/>
+            </g>
+            <g transform="matrix(4.16667,0,0,4.16667,1224.12,709.658)">
+                <path d="M0,-62.486L-0.285,-9.667L9.6,0" style="fill:none;fill-rule:nonzero;stroke:rgb(0,179,218);stroke-width:1.01px;stroke-dasharray:3.02,3.02,3.02,3.02,3.02,3.02;"/>
+            </g>
+            <g transform="matrix(-4.0803,0.843945,0.843945,4.0803,1148.37,694.183)">
+                <path d="M-17.775,-1.819L0.186,-1.819" style="fill:none;fill-rule:nonzero;stroke:rgb(0,179,218);stroke-width:1.01px;stroke-dasharray:3.02,3.02,3.02,3.02,3.02,3.02;"/>
+            </g>
+        </g>
+    </g>
+</svg>
