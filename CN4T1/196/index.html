@@ -3,25 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Sé cómo se reproducen las plantas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        .preg {
+            background: #E9E4EA;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 6px 0;
+            border: 2px solid #6A4287;
+            font-size: 1.1rem;
+        }
+        .preg strong {
+            font-size: 1.4rem;
+        }
+        .ans {
+            background: #E2F4F8;
+            padding: 6px 10px;
+            border-radius: 10px;
+            margin: 5px 0;
+            border: 2px solid #02BDE4;
+            font-size: 1.2rem;
+            color: #0283BF;
+            font-weight: bold;
+        }
+        .inputbox {
+            max-width: 54px;
+            display: inline-block;
+        }
+        .inputbox input {
+            font-size: 1.2rem;
+            border-color: #6A4287;
+        }
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Sé cómo se reproducen las plantas</h1>
+        <h2>Diversidad en la reproducción</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Relaciona las columnas escribiendo en cada círculo el número correspondiente. Consulta las páginas 43 a 47 de tu libro de texto SEP.</div>
 
-        <div class="row mt-3">
-           
+        <div class="row mt-3 justify-content-center align-items-center">
+            <div class="col-md-9">
+                <div class="preg" v-for="(i,index) in temps">
+                    <strong class="sec">{{index+1}}.</strong> {{i.t}}
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="ans col-md-12 col-6" v-for="(i,index) in _.shuffle(temps)">
+                        <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="index+1" type="number" placeh="#"></inputbox> {{i.p}}
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -34,6 +75,7 @@
     
     
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -43,6 +85,19 @@
     <script src="../../assets/modulos/choose.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script></script>
+    <script>
+        app.temps = [
+            {p: 'Helecho', t: 'Planta en cuyos soros se forman esporas, las cuales la ayudan a reproducirse.'},
+            {p: 'Pétalos', t: 'También conocida como corola, protege el interior de la flor.'},
+            {p: 'Estambres', t: 'Está compuesto de dos partes llamadas antera y filamento.'},
+            {p: 'Polen', t: 'Una de las estructuras del estambre contiene este elemento que se percibe como polvo.'},
+            {p: 'Androceo', t: 'Es el nombre de un conjunto de estambres. Se le conoce como el órgano sexual masculino de la planta.'},
+            {p: 'Gineceo', t: 'Es el nombre de el órgano femenino de la planta, el cual está compuesto por tres estructuras.También es conocido como pistilo.'},
+            {p: 'Ovario', t: 'Parte del órgano sexual femenino en el cual se encuentran los óvulos.'},
+            {p: 'Semilla', t: 'Es la capa que envuelve al óvulo fecundado desarrollado como embrión.'},
+            {p: 'Flor', t: 'Lugar de la planta donde ocurre la fecundación.'},
+            {p: 'Clavel', t: 'Es un ejemplo de planta que se reproduce asexualmente'},
+        ]
+    </script>
 </body>
 </html>
