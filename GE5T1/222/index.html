@@ -3,25 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco la Tierra</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        .preg {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            font-size: 1.2rem;
+        }
+        .preg .inputbox {
+            margin-top: 10px;
+        }
+        .inputbox input {
+            font-size: 1.4rem;
+        }
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
-
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <h1>Conozco la Tierra</h1>
+        <h2>¿Dónde hace calor y dónde hace frío?</h2>
+        <div class="instruccion mt-5">Contesta lo siguiente, utilizando las respuestas en la sopa de letras. Consulta las páginas 18 y 19 de tu Atlas de Geografía del Mundo.</div>
 
         <div class="row mt-3">
-           
+            <div class="col-md-6 preg" v-for="(i, index) in [
+                {a: 'Latitud', p: '¿Cómo se le llama a la distancia medida en grados con respecto al ecuador?'},
+                {a: 'Altitud', p: 'Es la distancia vertical, medida en metros, de cualquier punto de la superficie terrestre.'},
+                {a: 'Mapas', p: 'Son representaciones de porciones de la superficie terrestre elaboradas en un plano.'},
+                {a: 'Polos', p: 'Es el nombre de los puntos en los que el eje toca la esfera terrestre.'},
+                {a: 'Paralelos', p: 'Son las líneas horizontales que rodean por completo la Tierra formando círculos.'},
+                {a: 'Ecuador', p: 'Es el mayor de los paralelos que divide a nuestro planeta en dos hemisferios: norte y sur.'},
+                {a: 'Greenwich', p: 'Nombre del meridiano principal de la Tierra.'},
+                {a: 'Trópico de Cáncer', p: 'Es uno de los principales paralelos y se ubica en el hemisferio norte.'},
+            ]">
+                <div><strong class="main">{{index+1}}.</strong> {{i.p}}</div>
+                <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col"><img src="aimg/cross.svg" class="img-fluid"></div>
         </div>
 
 

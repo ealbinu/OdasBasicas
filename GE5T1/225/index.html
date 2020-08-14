@@ -3,28 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Observo las formas de la Tierra</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-
+        .ima{margin-top: 10px; }
+        .inputbox input {
+            font-size: 1.4rem;
+        }
+        .iscol {
+            background-image: url("aimg/col.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 10px 0;
+        }
+        .iscol .preg {
+            background-image: url("aimg/row.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            padding: 16px 10px;
+            margin: 20px 0;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 2px 2px #000;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .iscol .ans {
+            margin: 10px 0;
+        }
+        .iscol .ans .inputbox input {
+            font-size: 1.2rem;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
-
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
-
+        <h1>Observo las formas de la Tierra</h1>
+        <h2>Entre valles, llanuras y montañas</h2>
+        <div class="instruccion mt-5">Observa las imágenes y escribe en los recuadros el tipo de relieve que representa cada una. Consulta las páginas 41 y 42 de tu libro de texto SEP.</div>
+        
         <div class="row mt-3">
-           
+            <div class="col-md-4 ima" v-for="(i, index) in ['Llanura', 'Montaña', 'Depresión', 'Meseta', 'Depresión', 'Llanura']">
+                <img :src="'aimg/a'+(index+1)+'.png'" class="img-fluid">
+                <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+            </div>
         </div>
-
-
+        
+        <div class="instruccion mt-5">Escribe en qué continente se encuentra cada uno de los siguientes relieves. Consulta las páginas 29 a 35 de tu Atlas de Geografía del Mundo.</div>
+        
+        <div class="row mt-3">
+            <div class="col-lg-3 col-6 iscol">
+                <template v-for="(i, index) in [
+                    {p: 'Meseta de Fraser', a: 'América'},
+                    {p: 'Depresión de Qattara', a: 'África'},
+                    {p: 'Llanura de Jars', a: 'Asia'},
+                ]">
+                <div class="preg">{{i.p}}</div>
+                <div class="ans"><inputbox v-model="r[(index*1)+6]" :ref="'q'+((index)+6)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox></div>
+                </template>
+            </div>
+            <div class="col-lg-3 col-6 iscol">
+                <template v-for="(i, index) in [
+                    {p: 'Llanura del mar Báltico', a: 'Europa'},
+                    {p: 'Llanura de Nullarbor', a: 'Oceanía'},
+                    {p: 'Llanura Húngara', a: 'Europa'},
+                ]">
+                <div class="preg">{{i.p}}</div>
+                <div class="ans"><inputbox v-model="r[(index)+9]" :ref="'q'+((index)+9)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox></div>
+                </template>
+            </div>
+            <div class="col-lg-3 col-6 iscol">
+                <template v-for="(i, index) in [
+                    {p: 'Meseta del Decán', a: 'Asia'},
+                    {p: 'Meseta de Zimbabwe', a: 'África'},
+                    {p: 'Meseta Ozark', a: 'América'},
+                ]">
+                <div class="preg">{{i.p}}</div>
+                <div class="ans"><inputbox v-model="r[(index)+12]" :ref="'q'+((index)+12)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox></div>
+                </template>
+            </div>
+            <div class="col-lg-3 col-6 iscol">
+                <template v-for="(i, index) in [
+                    {p: 'Meseta de Paraná', a: 'América'},
+                    {p: 'Meseta del Volga', a: 'Europa'},
+                    {p: 'Meseta de Jos', a: 'África'},
+                ]">
+                <div class="preg">{{i.p}}</div>
+                <div class="ans"><inputbox v-model="r[(index)+15]" :ref="'q'+((index)+15)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox></div>
+                </template>
+            </div>
+        </div>
 
 
         <!-- ENDING -->
