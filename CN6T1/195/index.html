@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Sé qué necesitan los seres vivos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -11,20 +11,69 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
+        .inputbox {
+            margin: 10px;
+        }
+        .inputbox:nth-child(1) input {
+            border-color: #FAA21C;
+        }
+        .inputbox:nth-child(2) input {
+            border-color: #DAF1FD;
+        }
+        .inputbox:nth-child(3) input {
+            border-color: #6F96BF;
+        }
+        .inputbox:nth-child(4) input {
+            border-color: #81C342;
+        }
+        .inputbox img {
+            width: 60px;
+            margin-right: 10px;
+        }
+
+
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Sé qué necesitan los seres vivos</h1>
+        <h2>Importancia de las interacciones entre los componentes del ambiente</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
-
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Escribe el nombre de cuatro factores físicos indispensables para la vida. Consulta la página 66 de tu libro de texto SEP.</div>
+        
+        <div class="row mt-3 justify-content-center align-items-center">
+            <div class="col-md-6">
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="Sol" type="text" placeh="-"><template v-slot:before><img src="aimg/sol.svg"></template></inputbox>
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="Aire" type="text" placeh="-"><template v-slot:before><img src="aimg/aire.svg"></template></inputbox>
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="Agua" type="text" placeh="-"><template v-slot:before><img src="aimg/agua.svg"></template></inputbox>
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="Suelo" type="text" placeh="-"><template v-slot:before><img src="aimg/suelo.svg"></template></inputbox>
+            </div>
+            <div class="col-md-6">
+                <img src="aimg/il.svg" class="img-fluid">
+            </div>
         </div>
-
-
+        
+        <div class="instruccion mt-5">Escribe el lugar que ocupa México en cuanto a riqueza biológica de los siguientes seres vivos. Consulta la página 69 de tu libro de texto SEP.</div>
+        
+        <div class="row mt-3">
+            <div class="col-md-3 col-6">
+                <img src="aimg/i1.png" class="img-fluid">
+                <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="5º" type="text" placeh="#º"></inputbox>
+            </div>
+            <div class="col-md-3 col-6">
+                <img src="aimg/i2.png" class="img-fluid">
+                <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="2º" type="text" placeh="#º"></inputbox>
+            </div>
+            <div class="col-md-3 col-6">
+                <img src="aimg/i3.png" class="img-fluid">
+                <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="3º" type="text" placeh="#º"></inputbox>
+            </div>
+            <div class="col-md-3 col-6">
+                <img src="aimg/i4.png" class="img-fluid">
+                <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="5º" type="text" placeh="#º"></inputbox>
+            </div>
+        </div>
 
 
         <!-- ENDING -->
