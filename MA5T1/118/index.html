@@ -3,27 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Encuentro el valor unitario</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+        
+        .ex1 .inputbox strong {
+            font-size: 2.4rem;
+        }
+        .ex1 .inputbox input {
+            max-width: 200px;
+            margin-left: 5px;
+        }
+
+        .ex2 thead tr th {
+            background: #6CB644;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            border-radius: 10px;
+            border: 2px solid #fff;
+        }
+        .ex2 td {
+            padding: 0;
+            text-align: center;
+            background: #f5f5f5;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            vertical-align: middle;
+        }
+        .ex2 .inputbox strong, .ex2 strong {
+            font-size: 1.4rem;
+        }
+        .ex2 .inputbox input {
+            margin-left: 5px;
+            font-size: 1.4rem;
+            max-width: 70px;
+        }
+        @media (max-width: 680px) {
+            .ex2 .table tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            .ex2 .table tr th:nth-child(1) {
+                display: none;
+            }
+            .ex2 .table tr td:nth-child(1) {
+                display: block;
+                width: 100%;
+            }
+            .ex2 .table tr td:nth-child(1) img {
+                max-width: 140px;
+            }
+            .ex2 .table tr th,
+            .ex2 .table tr td {
+                width: 14%;
+                height: 100%;
+            }
+        }
+
+
+        .ex3 table.table th,
+        .ex3 table.table td {
+            padding: 0;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .ex3 table.table td:nth-child(odd),
+        .ex3 table.table th:nth-child(odd) {
+            background: #E8F5F4;
+        }
+        .ex3 table.table strong {
+            font-size: 1.4rem;
+        }
+        .ex3 table.table .inputbox input {
+            font-size: 1.4rem;
+        }
+        @media (max-width: 680px) {
+            .ex3 tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            .ex3 th:first-child,
+            .ex3 td:first-child {
+                width: 100%;
+            }
+            .ex3 th,
+            .ex3 td {
+                width: 12%;
+            }
+        }
+
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Encuentro el valor unitario</h1>
+        <h2>Botones y camisas / La fonda de la tía Chela / ¿Qué pesa más?</h2>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Observa la siguiente tabla y contesta las preguntas. Después completa la tabla de precios.</div>
 
         <div class="row mt-3">
-           
+           <img src="aimg/a1.png" class="img-fluid">
+           <img src="aimg/tabla.svg" class="img-fluid w-100">
         </div>
 
+        <div class="row mt-3 ex1">
+            <div class="col-md-6">
+                <div class="label"><strong class="accent">1.</strong> ¿Cuál es el precio de un kilo de jitomate?</div>
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="25" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox>
+            </div>
+            <div class="col-md-6">
+                <div class="label"><strong class="accent">2.</strong> ¿Cuánto pagarás por un kilogramo de uvas?</div>
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="60" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox>
+            </div>
+        </div>
+
+        <div class="row mt-3 ex2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fruta</th>
+                        <th>1 kg</th>
+                        <th>2 kg</th>
+                        <th>3 kg</th>
+                        <th>6 kg</th>
+                        <th>8 kg</th>
+                        <th>9 kg</th>
+                        <th>10 kg</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="aimg/i3.svg" class="img-fluid"></td>
+                        <td v-for="(i, index) in [[9,2], [18,3], ['$27'], [54,4], [72,5], [81,6], [90,7]]">
+                            <strong class="accent" v-if="typeof i[0] == 'string'">{{i[0]}}</strong>
+                            <div v-else><inputbox v-model="r[i[1]]" :ref="'q'+(i[1])" @isright="right++" :answer="i[0]" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="aimg/i4.svg" class="img-fluid"></td>
+                        <td v-for="(i, index) in [[60,8], ['$120'], [180,9], [360,10], [480,11], [540,12], [600,13]]">
+                            <strong class="accent" v-if="typeof i[0] == 'string'">{{i[0]}}</strong>
+                            <div v-else><inputbox v-model="r[i[1]]" :ref="'q'+(i[1])" @isright="right++" :answer="i[0]" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="aimg/i2.svg" class="img-fluid"></td>
+                        <td v-for="(i, index) in [[25,14], ['$25'], [75,15], [150,16], [200,17], [225,18], [250,19]]">
+                            <strong class="accent" v-if="typeof i[0] == 'string'">{{i[0]}}</strong>
+                            <div v-else><inputbox v-model="r[i[1]]" :ref="'q'+(i[1])" @isright="right++" :answer="i[0]" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="instruccion mt-5">Lee el siguiente problema y resuelve como se indica.</div>
+
+        <div class="row mt-3">
+            <div class="h4">El papá de Joaquín compite en carreras de ciclismo. Si en 5 horas puede recorrer 20 kilómetros, ¿cuántos kilómetros podrá recorrer en las diferentes horas que muestra la tabla?</div>
+        </div>
+        <div class="row mt-3 ex3">
+            <table class="table w-100">
+                <thead>
+                    <tr>
+                        <th><strong>Horas</strong></th>
+                        <th><strong>1</strong></th>
+                        <th><strong>2</strong></th>
+                        <th><strong>3</strong></th>
+                        <th><strong>4</strong></th>
+                        <th><strong>5</strong></th>
+                        <th><strong>8</strong></th>
+                        <th><strong>9</strong></th>
+                        <th><strong>10</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><strong>Kilómetros</strong></th>
+                        <td v-for="(i, index) in [[4, 20], [8, 21], [12,22], [16,23], ['20'], [32, 24], [36, 25], [40,26]]">
+                            <strong class="accent" v-if="typeof i[0] == 'string'">{{i[0]}}</strong>
+                            <div v-else><inputbox v-model="r[i[1]]" :ref="'q'+(i[1])" @isright="right++" :answer="i[0]" type="text" placeh="#"></inputbox></div>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
 
