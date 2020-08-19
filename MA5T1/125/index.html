@@ -3,37 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Confirmo lo que aprendí</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+       .options div{margin: 10px 20px;} 
+       .choose .options div.active {
+            border-bottom: none;
+            background: #FEDDE1;
+            border-radius: 10px;
+        }
+        .choose .options {
+            text-align: center;
+        }
+        .choose .options > div, .choose .options div {
+            border-bottom: none;
+            background: rgba(200,200,200,0.1);
+        }
+        .choose .options hr {
+            margin: 0;
+            border-top: 3px solid var(--main);
+            min-width: 20px;
+        }
+        .label div {
+            display: inline-block;
+            max-width: 30px;
+            text-align: center;
+            transform: translatey(15px);
+            margin: 0 10px;
+        }
+        .label div hr {
+            margin: 0;
+            max-width: 30px;
+            min-width: 20px;
+            border-top: 2px solid #000;
+        }
+        .options {
+	flex-wrap: wrap;
+}
+.options .row {
+	min-width: 120px;
+}
+.options .row div {
+	margin: 0 8px;
+}
 
+.label div {
+            display: inline-block;
+            max-width: 30px;
+            text-align: center;
+            transform: translatey(15px);
+            margin: 0 10px;
+        }
+        .label div hr {
+            margin: 0;
+            max-width: 40px;
+            min-width: 20px;
+            border-top: 2px solid #000;
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Confirmo lo que aprendí</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
 
+
+        <div class="instruccion mt-5">Marca la respuesta correcta</div>
         <div class="row mt-3">
-           
+            <div class="col-sm-12">
+
+                <choose v-for="(i, index) in [
+                    {
+                        p: 'Rosaura compró 3<div>1<hr>4</div>m de listón azul para hacer un moño y 5<div>1<hr>2</div>m de listón morado para hacer otro. ¿Cuántos metros de listón compró en total?',
+                        ops: [
+                            '<div class=\'row align-items-center justify-content-center\'>8<div>1<hr>2</div>m</div>',
+                            '<div class=\'row align-items-center justify-content-center\'>8<div>3<hr>4</div>m</div>',
+                            '<div class=\'row align-items-center justify-content-center\'>9<div>1<hr>4</div>m</div>'
+                        ],
+                        a: 1
+                    },
+                    {
+                        p: 'Teresa tiene 480 peces repartidos en 12 peceras. ¿Cuántos peces tiene en cada pecera?',
+                        ops: ['45 peces.','42 peces.','40 peces.'],
+                        a: 2
+                    },
+                    {
+                        p: 'Raúl y Andrea viajaron y gastaron en total $3 514. ¿Cuánto pagó cada uno?',
+                        ops: ['$1 757','$1 750','$1 010'],
+                        a: 0
+                    },
+                    {
+                        p: '¿Cuántos camiones con capacidad de 28 pasajeros necesito para transportar a 840 personas?',
+                        ops: ['28 camiones.','30 camiones.','25 camiones.'],
+                        a: 1
+                    },
+                    {
+                        p: 'Es el nombre que reciben las rectas que al cruzarse forman ángulos de 90°.',
+                        ops: ['Perpendiculares.','Rectas.','Secantes.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Manuel compró 7.5 metros de alambre. ¿A qué medida en centímetros equivale?',
+                        ops: ['450 centímetros.','750 centímetros.','705 centímetros.'],
+                        a: 1
+                    },
+                    {
+                        p: 'Manuel tiene 2 décadas y 24 meses de edad. ¿A cuántos años equivale?',
+                        ops: ['22 años.', '23 años.','25 años.'],
+                        a: 0
+                    },
+                    {
+                        p: 'Leonel tiene $750 para gastar en 7 días. ¿Cuánto puede gastar cada día para no que- darse sin dinero?',
+                        ops: ['$107.14','$110.00','$110.10'],
+                        a: 0
+                    },
+                    {
+                        p: 'Joel entró a un reto para consumir la mayor cantidad de agua posible en un mes. La primera semana tomó 5<div>1<hr>2</div>litros, la segunda 7<div>3<hr>4</div>, la tercera 6<div>3<hr>4</div> y la última 7<div>1<hr>4</div>. ¿Cuántos litros de agua consumió en total?',
+                        ops: [
+                            '<div class=\'row align-items-center justify-content-center\'>28<div>1<hr>2</div>litros.</div>',
+                            '<div class=\'row align-items-center justify-content-center\'>27<div>1<hr>4</div>litros.</div>',
+                            '<div class=\'row align-items-center justify-content-center\'>26<div>3<hr>4</div>litros.</div>'
+                        ],
+                        a: 1
+                    },
+                ]"
+                    :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p"
+                    :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+                
+            </div>
         </div>
-
-
+        
 
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
-    
-    
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
