@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubico las entidades federativas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+	.inst {
+		background: var(--sec);
+		border: 10px;
+		border-radius: 10px;
+		padding: 10px;
+	}
+	.inst div {
+		color: var(--sec);
+		padding: 10px 2px;
+		background: #fff;
+		border: 2px solid var(--sec);
+		border-radius: 10px;
+		min-width: 120px;
+	}
+
+	.pregunta {
+		padding: 10px;
+		background: #f5f5f5;
+		border-radius: 10px;
+		border: 2px solid #fff;
+		font-size: 1.2rem;
+	}
+	.inputbox {
+		display: inline-block;
+		max-width: 140px;
+	}
+	.inputbox input {
+		font-size: 1.2rem;
+	}
+
+
+
+.mapa {
+	width: 100%;
+	position: relative;
+}
+.mapa img {
+	width: 100%;
+}
+.mapa .inputs .inputbox {
+	position: absolute;
+	width: 10%;
+}
+
+
+@media (max-width: 960px) {
+	.mapa .inputs .inputbox input,
+	.mapa .inputs .inputbox textarea {
+		font-size: 1rem;
+		padding: 2px;
+	}
+}
+@media (max-width: 680px) {
+	.mapa .inputs .inputbox input,
+	.mapa .inputs .inputbox textarea {
+		font-size: 0.7rem;
+	}
+}
+.isright textarea{color:#fff;}
+
+.mapa .inputs .inputbox input {
+	border-color: #EB058C;
+}
+.mapa .inputs .inputbox:nth-child(1) {
+	left: 4%;
+	top: 28%;
+}
+.mapa .inputs .inputbox:nth-child(2) {
+	left: 30%;
+	top: 77%;
+}
+.mapa .inputs .inputbox:nth-child(3) {
+	left: 88%;
+	top: 69%;
+}
+.mapa .inputs .inputbox:nth-child(4) {
+	left: 32%;
+	top: 37%;
+}
+.mapa .inputs .inputbox:nth-child(5) {
+	left: 65%;
+	top: 62%;
+}
+.mapa .inputs .inputbox:nth-child(6) {
+	left: 44%;
+	top: 69%;
+}
+.mapa .inputs .inputbox:nth-child(7) {
+	left: 44%;
+	top: 84%;
+}
+.mapa .inputs .inputbox:nth-child(8) {
+	left: 48%;
+	top: 34%;
+}
+.mapa .inputs .inputbox:nth-child(9) {
+	left: 63%;
+	top: 76%;
+}
+.mapa .inputs .inputbox:nth-child(10) {
+	left: 16%;
+	top: 12%;
+}
+.mapa .inputs .inputbox:nth-child(11) {
+	left: 72%;
+	top: 69.5%;
+}
+.mapa .inputs .inputbox:nth-child(12) {
+	left: 76%;
+	top: 79%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Sé cómo se organiza mi país</h1>
+        <h2>México y su división política</h2>
+
+        <div class="instruccion mt-5">Completa los enunciados con las palabras del recuadro. Algunas palabras se repiten. Des- pués escribe el número del enunciado en la entidad correspondiente en el mapa de abajo.</div>
+		
+		<div class="row mt-3 inst text-center wrap justify-content-center align-items-center">
+			<div class="col" v-for="i in ['norte','sur','este','oeste','centro','noroeste','sureste']"><strong>{{i}}</strong></div>
+		</div>
+
+		<div class="row mt-3">
+			
+			<div class="col-12 pregunta" v-for="(i, index) in [
+				{t1: 'Baja California Sur se encuentra al ',a:'noroeste',t2:' de México. Su capital es La Paz.'},
+				{t1: 'El estado de Colima está en la zona ',a:'oeste',t2:' del país.Ahí está el importante puerto de Manzanillo.'},
+				{t1: 'Campeche está al ',a:'sureste',t2:' de México, en la costa del Golfo de México.'},
+				{t1: 'El estado de Durango se encuentra al ',a:'sur',t2:' del estado de Chihuahua. En Durango se localiza la Zona del Silencio.'},
+				{t1: 'La capital del Estado de México es Toluca. Esta entidad se encuentra al ',a:'centro',t2:' de nuestro país y forma parte de la Zona Metropolitana de la Ciudad de México.'},
+				{t1: 'El estado de Michoacán se ubica al ',a:'oeste',t2:' de México. Esta entidad tiene hermosos lagos como Pátzcuaro y Janitzio.'},
+				{t1: 'Morelos se encuentra al ',a:'centro',t2:' de la república mexicana. Su capital es Cuernavaca.'},
+				{t1: 'Nuevo León está al ',a:'norte',t2:' de México. Es una zona de gran producción industrial.'},
+				{t1: 'Veracruz está ubicado al ',a:'este',t2:' de la república mexicana, y tiene una gran costa en el Golfo de México.'},
+				{t1: 'Sonora se ubica al ',a:'noroeste',t2:' del país. En esa entidad hay una importante actividad ganadera.'},
+				{t1: 'El estado de Tlaxcala se distingue por su cultivo del maguey, entre otras cosas. Está ubicado al ',a:'centro',t2:' de nuestro país.'},
+				{t1: 'La capital de Tabasco es Villahermosa. Esta entidad está ubicada al ',a:'sureste',t2:' de la república mexicana.'},
+			]">
+				<strong class="accent">{{index+1}}.</strong> {{i.t1}} 
+				<inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="text" placeh="-"></inputbox>
+				{{i.t2}}
+
+			</div>
+		</div>
+
+
+        <div class="row mt-3">
+            <div class="mapa">
+                <img src="aimg/map.svg">
+                <div class="inputs">
+                    <inputbox v-for="(i, index) in 12" v-model="r[index+12]" :ref="'q'+(index+12)" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
