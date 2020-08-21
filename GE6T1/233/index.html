@@ -3,25 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco las capas de la Tierra</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+.diag {
+	position: relative;
+}
+.diag .inputbox {
+	position: absolute;
+	top: 0;
+	left: 63%;
+	width: 32%;
+}
+.diag .inputbox input {
+	font-size: 1.2rem;
+	border-color: #B9C26C;
+	height: 76px;
+}
+@media (max-width: 992px) {
+	.diag .inputbox input {
+		height: 50px;
+	}
+}
+@media (max-width: 768px) {
+	.diag .inputbox input {
+		height: 40px;
+		font-size: 1rem;
+	}
+}
+.diag .inputbox:nth-child(1) {
+	top: 3%;
+}
+.diag .inputbox:nth-child(2) {
+	top: 21%;
+}
+.diag .inputbox:nth-child(3) {
+	top: 39%;
+}
+.diag .inputbox:nth-child(4) {
+	top: 61%;
+}
+.diag .inputbox:nth-child(5) {
+	top: 81%;
+}
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Conozco las capas de la Tierra</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Completa las capas de la Tierra con las palabras del recuadro.</div>
 
         <div class="row mt-3">
-           
+           <div class="diag col-12">
+               <img src="aimg/a1.svg" class=" w-100">
+               <div class="opts">
+                <inputbox v-for="(i, index) in ['Atmósfera', 'Corteza', 'Manto', 'Núcleo externo', 'Núcleo interno']" v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="text" placeh="-"></inputbox>
+
+               </div>
+           </div>
         </div>
 
 

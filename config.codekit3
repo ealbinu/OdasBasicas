@@ -2386,11 +2386,11 @@
 		"oAP": "\/GE6T1\/231\/index.html",
 		"oF": 0
 		},
-	"\/GE6T1\/232\/aimg\/sector1.svg": {
+	"\/GE6T1\/232\/aimg\/a1.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "\/GE6T1\/232\/aimg\/sector1.svg",
+		"oAP": "\/GE6T1\/232\/aimg\/a1.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
@@ -2402,6 +2402,16 @@
 		"oA": 0,
 		"oAP": "\/GE6T1\/232\/index.html",
 		"oF": 0
+		},
+	"\/GE6T1\/233\/aimg\/a1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/GE6T1\/233\/aimg\/a1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/GE6T1\/233\/index.html": {
 		"cB": 0,
