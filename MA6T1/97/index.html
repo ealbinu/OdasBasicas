@@ -3,29 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Empleo el factor constante</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+img {
+	max-width: 120px !important;
+	margin-bottom: 10px;
+}
+.ex1,
+.ex2,
+.ex3,
+.ex4 {
+	text-align: center;
+}
+.table {
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+}
+.table td,
+.table th {
+	border: 2px solid #fff;
+	font-size: 1.2rem;
+	vertical-align: middle;
+	border-radius: 6px;
+}
+.table .inputbox input {
+	font-size: 1.2rem;
+	input: 2px;
+}
+.ex1 .table {
+	background: #6A4287;
+	box-shadow: 6px 6px 0 #361D45;
+}
+.ex2 .table {
+	background: #E9832C;
+	box-shadow: 6px 6px 0 #AE4424;
+}
+.ex3 .table {
+	background: #00AEB5;
+	box-shadow: 6px 6px 0 #00707A;
+}
+.ex4 .table {
+	background: #AE4E8F;
+	box-shadow: 6px 6px 0 #662C55;
+}
+.factor {
+	background: #FFF4CE;
+	padding: 10px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2rem;
+}
+.factor .inputbox {
+	margin-left: 10px;
+}
+.factor .inputbox input {
+	font-size: 1.4rem;
+}
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Empleo el factor constante</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Encuentra el factor constante de cada tabla y complétalas.</div>
 
-        <div class="row mt-3">
-           
+        <div class="row mt-3 ex1">
+            <div class="col-md-2"><img src="aimg/a1.svg"  class="img-fluid"></div>
+           <div class="col">
+                <table class="table">
+                    <tr>
+                        <th>Semanas</th>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Días</th>
+                        <td>7</td>
+                        <td>14</td>
+                        <td><inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="21" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="28" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="35" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="42" type="number" placeh="#"></inputbox></td>
+                    </tr>
+                </table>
+            </div>
         </div>
+        <div class="factor row">Factor constante: <inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="7" type="number" placeh="#"></inputbox></div>
+
+        <div class="row mt-3 ex2">
+            <div class="col-md-2"><img src="aimg/a1.svg"  class="img-fluid"></div>
+           <div class="col">
+                <table class="table">
+                    <tr>
+                        <th>Años</th>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Meses</th>
+                        <td><inputbox v-model="r[5]" ref="q5" @isright="right++" :answer="12" type="number" placeh="#"></inputbox></td>
+                        <td>24</td>
+                        <td>36</td>
+                        <td><inputbox v-model="r[6]" ref="q6" @isright="right++" :answer="48" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[7]" ref="q7" @isright="right++" :answer="60" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[8]" ref="q8" @isright="right++" :answer="72" type="number" placeh="#"></inputbox></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="factor row">Factor constante: <inputbox v-model="r[9]" ref="q9" @isright="right++" :answer="12" type="number" placeh="#"></inputbox></div>
 
 
+        <div class="instruccion mt-5">Resuelve los siguientes problemas encontrando el factor constante de proporcionalidad y completa los datos que se indican.</div>
+        
+        <div class="label mt-3"><strong>1.</strong> Don Ignacio tiene una granja y cría borregos. Si cada borrego come 1.5 kg de alimento al día, ¿qué cantidad de alimento comerá 1 borrego en 6 días?</div>
+        
+        <div class="row mt-3 ex3">
+            <div class="col-md-2"><img src="aimg/a2.svg"  class="img-fluid"></div>
+           <div class="col">
+                <table class="table">
+                    <tr>
+                        <th>Días</th>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Cantidad de alimento (kg)</th>
+                        <td><inputbox v-model="r[10]" ref="q10" @isright="right++" :answer="1.5" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[11]" ref="q11" @isright="right++" :answer="3" type="number" placeh="#"></inputbox></td>
+                        <td>4.5</td>
+                        <td>6</td>
+                        <td><inputbox v-model="r[12]" ref="q12" @isright="right++" :answer="7.5" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[13]" ref="q13" @isright="right++" :answer="9" type="number" placeh="#"></inputbox></td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        
+        <div class="factor row">Factor constante: <inputbox v-model="r[14]" ref="q14" @isright="right++" :answer="1.5" type="number" placeh="#"></inputbox></div>
+        
+        <div class="label mt-3"><strong>2.</strong> En una frutería 1 kg de plátano cuesta $15.00. Si Diana compró 6 kg de plátano, ¿cuánto debe pagar?</div>
 
+        <div class="row mt-3 ex4">
+            <div class="col-md-2"><img src="aimg/a3.svg"  class="img-fluid"></div>
+           <div class="col-12 col-md-10">
+                <table class="table">
+                    <tr>
+                        <th>Kg de plátano</th>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Costo ($)</th>
+                        <td><inputbox v-model="r[15]" ref="q15" @isright="right++" :answer="15" type="number" placeh="#"></inputbox></td>
+                        <td>30</td>
+                        <td><inputbox v-model="r[16]" ref="q16" @isright="right++" :answer="45" type="number" placeh="#"></inputbox></td>
+                        <td><inputbox v-model="r[17]" ref="q17" @isright="right++" :answer="60" type="number" placeh="#"></inputbox></td>
+                        <td>75</td>
+                        <td><inputbox v-model="r[18]" ref="q18" @isright="right++" :answer="90" type="number" placeh="#"></inputbox></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class=" factor row">Factor constante: <inputbox v-model="r[19]" ref="q19" @isright="right++" :answer="15" type="number" placeh="#"></inputbox></div>
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
