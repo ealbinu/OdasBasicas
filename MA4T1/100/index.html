@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco su longitud</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,12 +16,45 @@
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Conozco su longitud</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">La familia de María irá a comprar zapatos. Escribe la medida de los zapatos de cada miem- bro de su familia.</div>
 
-        <div class="row mt-3">
-           
+        <div class="row mt-5 align-items-end">
+           <div class="col-md-8">
+               <img src="aimg/a1.svg" class="img-fluid">
+           </div>
+           <div class="col">
+                El zapato del hermanito de María mide:
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="12 cm" type="text" placeh="#"></inputbox>
+           </div>
+        </div>
+        <div class="row mt-5 align-items-end">
+           <div class="col-md-8">
+               <img src="aimg/a2.svg" class="img-fluid">
+           </div>
+           <div class="col">
+            El zapato de María mide:
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="19 cm" type="text" placeh="#"></inputbox>
+           </div>
+        </div>
+        <div class="row mt-5 align-items-end">
+           <div class="col-md-8">
+               <img src="aimg/a3.svg" class="img-fluid">
+           </div>
+           <div class="col">
+            El zapato de la mamá de María mide:
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="24 cm" type="text" placeh="#"></inputbox>
+           </div>
+        </div>
+        <div class="row mt-5 align-items-end">
+           <div class="col-md-8">
+               <img src="aimg/a4.svg" class="img-fluid">
+           </div>
+           <div class="col">
+            El zapato del papá de María mide:
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="28 cm" type="text" placeh="#"></inputbox>
+           </div>
         </div>
 
 
