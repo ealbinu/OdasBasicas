@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Identifico la vida de los ecosistemas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -11,19 +11,57 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
+.reinosimgs{ width: 100%; max-width: 300px; margin: 10px auto; }
+.cuest {
+	background: #EFDEE6;
+	border: 2px solid #AE4E8F;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px !important;
+	font-size: 1.2rem;
+}
+.cuest .inputbox input {
+	border-color: #AE4E8F;
+	font-size: 1.2rem;
+}
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Identifico la vida de los ecosistemas</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Observa las imágenes y escribe el nombre del reino al que pertenece cada uno.</div>
+
+        <div class="row mt-3 justify-content-center align-items-center">
+           <div class="col-md-4 col-6 text-center" v-for="(i, index) in ['Fungi', 'Protista', 'Plantas', 'Monera', 'Animal']">
+               <img :src="'aimg/a'+(index+1)+'.png'" class="img-fluid reinosimgs">
+               <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+
+           </div>
+        </div>
+        <div class="instruccion mt-5">Escribe <strong>V</strong>  si el enunciado es verdadero o <strong>F</strong> si es falso.</div>
+
 
         <div class="row mt-3">
-           
+            <div class="col-12 enuns">
+                <template v-for="(i, index) in [
+                        { v: 'V', txt:'Un ecosistema está formado por seres bióticos y abióticos.'},
+                        { v: 'F', txt:'Un lago es un ecosistema terrestre.'},
+                        { v: 'F', txt:'En los ecosistemas solo viven los seres abióticos.'},
+                        { v: 'V', txt:'En el bosque de coníferas son característicos los pinos y abetos.'},
+                        { v: 'F', txt:'Los pastizales se caracterizan por la escasez de lluvia la mayor parte del año.'},
+                        { v: 'V', txt:'En la zona costera existen lagunas donde se mezcla el agua dulce con la salada.'},
+                        { v: 'V', txt:'Los arrecifes concentran una gran biodiversidad de corales, moluscos, peces, mamíferos y tortugas marinas.'},
+                ]">
+                    
+                    <div class="row align-items-center cuest">
+                        <div class="col-2"><inputbox v-model="r[index+5]" :ref="'q'+(index+5)" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
+                        <div class="col txt">{{i.txt}}</div>
+                    </div>
+                </template>
         </div>
-
+        </div>
 
 
 
