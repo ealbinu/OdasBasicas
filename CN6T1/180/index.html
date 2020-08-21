@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco el sistema solar</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -11,20 +11,182 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
+.ex1 .des {
+	display: flex;
+}
+.ex1 .des strong {
+	background: #f5f5f5;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 1.8;
+	margin: 2px;
+	color: #fff;
+}
+.ex1 .inputbox {
+	margin: 10px 0;
+}
+.ex1 .inputbox input {
+	font-size: 1.4rem;
+}
+.ex1:nth-child(1) .des strong {
+	background: #6CB743;
+}
+.ex1:nth-child(2) .des strong {
+	background: #6A4287;
+}
+.ex1:nth-child(3) .des strong {
+	background: #E9832C;
+}
+.ex1:nth-child(4) .des strong {
+	background: #6CB743;
+}
+.ex1:nth-child(5) .des strong {
+	background: #00AEB5;
+}
+.ex1:nth-child(6) .des strong {
+	background: #0083BF;
+}
+.ex1:nth-child(7) .des strong {
+	background: #FBD01E;
+}
+.ex1:nth-child(8) .des strong {
+	background: #887544;
+}
+.ex1:nth-child(9) .des strong {
+	background: #AE4E8F;
+}
+.sistema {
+	position: relative;
+}
+.sistema .planets .inputbox {
+	width: 14%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.sistema .planets .inputbox input {
+	padding: 4px 2px;
+	font-size: 1.2rem;
+}
+@media (max-width: 780px) {
+	.sistema .planets .inputbox input {
+		font-size: 0.9rem;
+	}
+}
+.sistema .inputbox:nth-child(1) {
+	left: 20%;
+	top: 10%;
+}
+.sistema .inputbox:nth-child(2) {
+	left: 60%;
+	top: 8%;
+}
+.sistema .inputbox:nth-child(3) {
+	left: 72%;
+	top: 34%;
+}
+.sistema .inputbox:nth-child(4) {
+	left: 46%;
+	top: 47%;
+}
+.sistema .inputbox:nth-child(5) {
+	left: 84%;
+	top: 55%;
+}
+.sistema .inputbox:nth-child(6) {
+	left: 23%;
+	top: 70%;
+}
+.sistema .inputbox:nth-child(7) {
+	left: 37%;
+	top: 77%;
+}
+.sistema .inputbox:nth-child(8) {
+	left: 52%;
+	top: 80%;
+}
+.sistema .inputbox:nth-child(9) {
+	left: 70%;
+	top: 82%;
+}
+.choose {
+	width: 100%;
+}
+.choose .options {
+	align-items: center;
+	justify-content: center;
+}
+.choose .options div {
+	margin: 10px 20px;
+}
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Conozco el sistema solar</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Descifra las palabras y escríbelas en las líneas.</div>
 
         <div class="row mt-3">
-           
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['I', 'R', 'O', 'C', 'U', 'M', 'R', 'E']">{{i}}</strong></div>
+               <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="Mercurio" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['U','R','O','N','T','S','A']">{{i}}</strong></div>
+               <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="Saturno" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['S','E','V','U','N']">{{i}}</strong></div>
+               <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="Venus" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['N','R','O','A','U']">{{i}}</strong></div>
+               <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="Urano" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['I','R','E','R','A','T']">{{i}}</strong></div>
+               <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="Tierra" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['E','P','U','T','N','O','N']">{{i}}</strong></div>
+               <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="Neptuno" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['E','R','T','M','A']">{{i}}</strong></div>
+               <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="Marte" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['L','S','O']">{{i}}</strong></div>
+               <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="Sol" type="text" placeh="-"></inputbox>
+           </div>
+           <div class="col-md-6 ex1">
+               <div class="des"><strong v-for="(i,index) in ['J','R','E','P','I','Ú','T']">{{i}}</strong></div>
+               <inputbox v-model="r[8]" ref="q8" @isright="right++" answer="Júpiter" type="text" placeh="-"></inputbox>
+           </div>
         </div>
 
+        <div class="instruccion mt-5">Utiliza las palabras del ejercicio anterior y completa el siguiente esquema.</div>
+        <div class="row mt-3">
+            <div class="sistema col-12">
+                <img src="aimg/a1.svg" class=" w-100">
+                <div class="planets">
+                    <inputbox v-for="(i, index) in ['Sol', 'Júpiter', 'Saturno', 'Tierra', 'Neptuno', 'Mercurio', 'Venus', 'Marte', 'Urano']" v-model="r[index+9]" :ref="'q'+(index+9)" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Marca la respuesta correcta.</div>
+        <div class="row mt-3">
+            <choose v-model="r[18]" ref="q18" num="1." text="Es el movimiento que realiza la Tierra cuando gira sobre su propio eje." :options="['Rotación','Traslación']" @isright="right++" answer="Rotación" />
+        </div>
+        <div class="row mt-3">
+            <choose v-model="r[19]" ref="q19" num="2." text="Es el movimiento que realiza la Tierra alrededor del Sol y tarda un año en llevarlo a cabo." :options="['Rotación','Traslación']" @isright="right++" answer="Traslación" />
+        </div>
 
 
         <!-- ENDING -->
