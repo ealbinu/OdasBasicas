@@ -3,24 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco la importancia del agua</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+.cuest {
+	background: #F0F7F6;
+	border: 2px solid #00AEB5;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px !important;
+	font-size: 1.2rem;
+}
+
+.funcs .check {
+	background: #EFF5E3;
+	height: 90%;
+	padding: 10px;
+	font-size: 1.1rem;
+	border: 2px solid #6CB743;
+}
 
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Conozco la importancia del agua</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Escribe <strong>V</strong>  si el enunciado es verdadero o <strong>F</strong> si es falso.</div>
+
 
         <div class="row mt-3">
+            <div class="col-12 enuns">
+                <template v-for="(i, index) in [
+                        { v: 'V', txt:'El agua es un elemento indispensable para los seres vivos.'},
+                        { v: 'F', txt:'Se puede beber cualquier agua sin tener cuidado.'},
+                        { v: 'V', txt:'Hervir el agua durante diez minutos mata los microbios que contiene.'},
+                        { v: 'V', txt:'El agua es la bebida más importante que debemos consumir.'},
+                ]">
+                    
+                    <div class="row align-items-center cuest">
+                        <div class="col-2"><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
+                        <div class="col txt">{{i.txt}}</div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Marca las funciones que realiza el agua en el organismo. Consulta la sección <em>Te cuento que... de esta página.</em></div>
+
+
+
+        <div class="row mt-3">
+            <div class="col-md-4 funcs" v-for="(i, index) in [
+                {ans: true, txt: 'Disuelve los nutrientes para hacer más fácil su asimilación.'},
+                {ans: true, txt: 'Regula la temperatura.'},
+                {ans: true, txt: 'Es capaz de mejorar el funcionamiento de los órganos.'},
+                {ans: false, txt: 'Transporta oxígeno y otros nutrientes.'},
+                {ans: true, txt: 'Desintoxica el cuerpo por medio del sudor y la orina.'},
+                {ans: true, txt: 'Desintoxica el cuerpo por medio del sudor y la orina.'},
+            ]">
+                <check v-model="r[index+4]" :ref="'q'+(index+4)" @isright="right++" :answer="i.ans" :text="i.txt"></check>
+            </div>
            
         </div>
 
