@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Mido peso, capacidad y longitud</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -11,17 +11,55 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
+        .preg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            background: #FEE592;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+        .preg > strong {
+            width: 40%;
+            color: var(--sec);
+        }
+        .preg .inputbox {
+            max-width: 60%;
+        }
+        .preg .inputbox input {
+            margin-right: 4px;
+            font-size: 1.4rem;
+            border-color: var(--accent);
+        }
+        .preg .inputbox strong {
+            width: 20%;
+            color: var(--accent);
+        }
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Mido peso, capacidad y longitud</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
+        <div class="instruccion mt-5">Observa la tabla de equivalencias del Recuerda que... y realiza las siguientes conversiones. Observa el ejemplo.</div>
 
-        <div class="row mt-3">
-           
+        <div class="row mt-3 row justify-content-center align-items-center">
+            <div class="col-lg-4 col-sm-6 preg">
+                <strong>5 l =</strong> <div class="inputbox"><strong style="width: 100%;">5000 ml</strong></div>
+            </div>
+            <div class="col-lg-4 col-sm-6 preg" v-for="(i, index) in [
+            {txt: '8 kg =', val: '8000', end: 'g'},
+            {txt: '9 m =', val: '900', end: 'cm'},
+            {txt: '2 500 ml =', val: '2.5', end: 'l'},
+            {txt: '550 g =', val: '0.55', end: 'kg'},
+            {txt: '500 cm =', val: '5', end: 'm'},
+            {txt: '15 l =', val: '15000', end: 'ml'},
+            {txt: '28 kg =', val: '28000', end: 'g'},
+            {txt: '5.8 m =', val: '580', end: 'cm'},
+           ]"><strong>{{i.txt}}</strong> <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.val" type="text" placeh="#"><template v-slot:after><strong>{{i.end}}</strong></template></inputbox> </div>
         </div>
 
 
