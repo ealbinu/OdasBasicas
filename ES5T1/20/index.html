@@ -44,6 +44,55 @@
 }
 
 
+
+
+/*cross*/
+
+
+.crucigrama {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.crucigrama .box {
+	width: 4.54545455%;
+	min-height: 40px;
+}
+.crucigrama .box div {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.crucigrama .box .inputbox {
+	height: 100%;
+}
+.crucigrama .box .inputbox input {
+	height: 100%;
+	padding: 0;
+	border-radius: 2px;
+	font-size: 1rem;
+}
+
+
+.crucigrama {
+	padding: 10px;
+	border-radius: 10px;
+	background: linear-gradient(#FEF2B6, #B1D6B1);
+}
+.crucigrama .number {
+	background: #AAC299;
+	width: 100%;
+	border-radius: 3px;
+	color: #fff;
+}
+.crucigrama .cell.demo {
+	width: 100%;
+	border: 1px solid #6EB745;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -98,27 +147,28 @@
         <div class="crucigrama">
             <template v-for="y in 13">
                 <template v-for="x in 22">
-                    <!--
-                    <div v-for="b in [2, 'M','E','T','A','F','O','R','A']" class="box" v-if="x==4">
-                        <div v-if="typeof b == 'number'">{{b}}</div>
-                        <div v-else>b</div>
-                    </div>
-                    <div v-else :class="'box ' + 'x'+x+'y'+y" :data="'x'+x+'y'+y"></div>
-                    -->
                     <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
+                        <!--horizontales-->
+                        <div v-for="(b,index) in [1, 'A','D','J','E','T','I','V','O','S']" v-if="x==8+index && y==3"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell demo">{{b}}</div></div>
+                        
+                        <div v-for="(b,index) in [2, ['M', 72],['E', 73],['T', 74],['Á', 75],['F', 10],['O', 11],['R', 12],['A',13]]" v-if="x==1+index && y==5"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [3, ['A', 14],['D', 15],['V', 16],['E', 17],['R', 18],['B', 19],['I', 20],['O', 21]]" v-if="x==1+index && y==7"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [4, ['R', 22],['E', 23],['F', 24],['R', 25],['A', 26],['N', 27],['E', 28],['S', 29]]" v-if="x==12+index && y==7"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [5, ['E', 30],['X', 31],['P', 32],['L', 33],['Í', 34],['C', 35],['I', 36],['T', 37],['O', 38]]" v-if="x==4+index && y==9"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [6, ['R', 39],['I', 40],['M', 41],['A', 42],['S', 76]]" v-if="x==17+index && y==11"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
 
-                        <div v-for="(b,index) in [2, false,'M','E','T','A','F','O','R','A']" v-if="x==1+index && y==6">
-                            <div v-if="typeof b == 'number'">{{b}}</div>
-                            <div v-else-if="b==false"></div>
-                            <div v-else><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="number" placeh="#"></inputbox></div>
-                        </div>
+                        <!--verticales-->
+
+                        <div v-for="(b,index) in [1, false, ['N', 43],false,['L', 44],false,['G', 45],false,['A', 46]]" v-if="y==2+index && x==9"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [2, ['I', 47],['M', 48],['P', 49],['L', 50],false,['C', 51],['I', 52],['T', 53],['O', 54]]" v-if="y==4+index && x==11"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [3, ['M', 55],false,['N', 56],['O',57],['G', 58],false,['A', 59],['F', 60],['Í', 61],['A', 62]]" v-if="y==1+index && x==16"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
+                        <div v-for="(b,index) in [4, ['A', 63],['L', 64],['I', 65],['T', 66],false,['R', 67],['A', 68],['C', 69],false,['Ó', 70],['N',71]]" v-if="y==2+index && x==19"><div v-if="typeof b == 'number'" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
 
                     </div>
                 </template>
             </template>
         </div>
 
-        22x13
 
 
         <!-- ENDING -->
@@ -136,7 +186,7 @@
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
+    
     <script src="../../assets/assets.js"></script>
-    <script></script>
 </body>
 </html>
