@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Resuelvo un crucigrama</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -11,20 +11,114 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
+.palabras {
+	background: #6CB743;
+	padding: 4px 10px;
+	border-radius: 10px;
+}
+.palabras div {
+	background: #fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	margin: 6px 8px;
+}
+.parrafo .preg {
+	border: 2px solid #6CB743;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px 0;
+	font-size: 1.2rem;
+}
+.parrafo .preg .inputbox {
+	background: #6CB743;
+	padding: 10px;
+	border-radius: 10px;
+	max-width: 400px;
+	margin: 0 auto;
+}
+.parrafo .preg .inputbox input {
+	font-size: 1.4rem;
+}
+.parrafo .preg.pregdemo .inputbox strong {
+	color: #fff;
+}
+
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Resuelvo un crucigrama</h1>
 
-        <div class="instruccion mt-5">INSTRUCCIONES</div>
-
+        <div class="instruccion mt-5">Utiliza las palabras del recuadro para completar los siguientes enunciados y después resuelve el crucigrama. Observa el ejemplo.</div>
+        
+        <div class="palabras row justify-content-center align-items-center wrap">
+            <div v-for="i in ['Refranes','Adverbio','Monografía','Analogía','Explícito Metáfora','Adjetivos','Aliteración','Implícito','Rimas']"><strong class="sec">{{i}}</strong></div>
+        </div>
         <div class="row mt-3">
-           
+           <div class="parrafo col-12">
+                <strong class="accent">Horizontales</strong>
+
+                <div class="preg pregdemo"><strong class="accent">1. </strong> Son palabras que describen cómo son las cosas. <div class="inputbox"><strong class="">Adjetivos</strong></div></div>
+
+                <div  class="preg" v-for="(i,index) in [
+                    {ans: 'Metáfora', txt: 'Es el recurso literario que consiste en transferir las cualidades de un objeto a otro.'},
+                    {ans: 'Adverbio', txt: 'Es la palabra que modifica a un adjetivo, a un verbo o a otro adverbio.'},
+                    {ans: 'Refranes', txt: 'Son dichos populares cuya finalidad es transmitir una enseñanza o un mensaje.'},
+                    {ans: 'Explícito', txt: 'Es el tipo de mensaje que no requiere explicación, es directo y claro.'},
+                    {ans: 'Rimas', txt: 'Las encontramos en la repetición de sonidos al final de los versos de una poesía.'},
+
+                ]">
+                    <strong class="accent">{{index+2}}. </strong> 
+                    {{i.txt}}
+                    <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.ans" type="text" placeh="-"></inputbox>
+
+                </div>
+           </div>
+           <div class="parrafo col-12">
+                <strong class="accent">Verticales</strong>
+
+                <div  class="preg" v-for="(i,index) in [
+                    {ans: 'Analogía', txt: 'Es el recurso literario que se utiliza para comparar una situación con otra.'},
+                    {ans: 'Implícito', txt: 'Es el tipo de mensaje que oculta otro significado y necesita ser interpretado.'},
+                    {ans: 'Monografía', txt: 'Es un texto que trata sobre un tema en particular.'},
+                    {ans: 'Aliteración', txt: 'Su característica es la repetición sucesiva de un determinado sonido.'},
+
+                ]">
+                    <strong class="accent">{{index+1}}. </strong>
+                    {{i.txt}}
+                    <inputbox v-model="r[index+5]" :ref="'q'+(index+5)" @isright="right++" :answer="i.ans" type="text" placeh="-"></inputbox>
+
+                </div>
+           </div>
         </div>
 
 
+
+        <div class="crucigrama">
+            <template v-for="y in 13">
+                <template v-for="x in 22">
+                    <!--
+                    <div v-for="b in [2, 'M','E','T','A','F','O','R','A']" class="box" v-if="x==4">
+                        <div v-if="typeof b == 'number'">{{b}}</div>
+                        <div v-else>b</div>
+                    </div>
+                    <div v-else :class="'box ' + 'x'+x+'y'+y" :data="'x'+x+'y'+y"></div>
+                    -->
+                    <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
+
+                        <div v-for="(b,index) in [2, false,'M','E','T','A','F','O','R','A']" v-if="x==1+index && y==6">
+                            <div v-if="typeof b == 'number'">{{b}}</div>
+                            <div v-else-if="b==false"></div>
+                            <div v-else><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="number" placeh="#"></inputbox></div>
+                        </div>
+
+                    </div>
+                </template>
+            </template>
+        </div>
+
+        22x13
 
 
         <!-- ENDING -->

@@ -26,7 +26,9 @@ var app = new Vue({
                 oks: 0,
                 errors: 0,
                 answers: 0,
+                screen: []
             },
+            screen: []
         }
     },
     methods: {
@@ -42,7 +44,19 @@ var app = new Vue({
                 }
             }
             this.resultado = true
-            this.ended()
+
+
+            /* screenshot */
+            var _this = this
+            var el = 
+            domtoimage.toPng(document.body).then(function (dataUrl) {
+                _this.screen.push(dataUrl)
+                _this.ended()
+            }).catch(function (error) { console.error('oops, something went wrong!', error); });
+
+
+
+            //this.ended()
         },
         ended () {
             var _this = this
@@ -50,12 +64,22 @@ var app = new Vue({
             _this.finalData.oks = _this.right
             _this.finalData.errors = _this.total-_this.right
             _this.finalData.answers = _this.total
+            _this.finalData.screen = _this.screen
             var endData = JSON.stringify(_this.finalData)
             window.top.postMessage(endData, "*")
+        },
+        loadScreencap(){
+            var s = document.createElement("script")
+            s.type = "text/javascript"
+            s.src = "https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+            document.head.appendChild(s)
+
         },
     },
     mounted () {
         var h = parseInt(window.location.hash ? window.location.hash.replace('#s', '') : 100)
         this.finalData.score = h ? h : 100
+
+        this.loadScreencap()
     }
 })
