@@ -48,7 +48,6 @@ var app = new Vue({
 
             /* screenshot */
             var _this = this
-            var el = 
             domtoimage.toPng(document.body).then(function (dataUrl) {
                 _this.screen.push(dataUrl)
                 _this.ended()
