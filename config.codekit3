@@ -1917,6 +1917,23 @@
 		"oAP": "\/ES3T1\/50\/index.html",
 		"oF": 0
 		},
+	"\/ES4T1\/14\/dragdrop.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/ES4T1\/14\/dragdrop-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/ES4T1\/14\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES4T1\/14\/index.html",
+		"oF": 0
+		},
 	"\/ES4T1\/16\/aimg\/i1.png": {
 		"ft": 32768,
 		"iS": 131298,
