@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sé cuidarme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .datos div {
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            background: #f5f5f5;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            border: 4px solid #fff;
+        }
+        .datos div strong:first-child {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background: #fff;
+            line-height: 2;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .datos div:nth-child(1) {
+            background: #AE4E8F;
+        }
+        .datos div:nth-child(1) strong:first-child {
+            color: #AE4E8F;
+        }
+        .datos div:nth-child(2) {
+            background: #6CB743;
+        }
+        .datos div:nth-child(2) strong:first-child {
+            color: #6CB743;
+        }
+        .datos div:nth-child(3) {
+            background: #E9832C;
+        }
+        .datos div:nth-child(3) strong:first-child {
+            color: #E9832C;
+        }
+        .datos div:nth-child(4) {
+            background: #00AEB5;
+        }
+        .datos div:nth-child(4) strong:first-child {
+            color: #00AEB5;
+        }
+        .imas {
+            text-align: center;
+        }
+        .imas img {
+            max-width: 280px;
+        }
+        .imas .inputbox {
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Sé cuidarme</h1>
+
+        <div class="instruccion mt-5">Escribe en cada imagen el número del hábito que se está practicando.</div>
+
+        <div class="row mt-3 datos">
+            <div class="col-md-6"><strong>1</strong><strong>Mantengo mis uñas limpias 3 y cortas.</strong></div>
+            <div class="col-md-6"><strong>3</strong><strong>Me lavo las manos antes de comer y después de ir al baño.</strong></div>
+            <div class="col-md-6"><strong>2</strong><strong>Me baño y peino todos los días.</strong></div>
+            <div class="col-md-6"><strong>4</strong><strong>Me lavo los dientes después de cada comida.</strong></div>
+        </div>
+
+        <div class="row mt-3 imas">
+            <div class="col-md-6">
+                <img src="aimg/i1.svg" alt="" class="img-fluid">
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+
+            </div>
+            <div class="col-md-6">
+                <img src="aimg/i2.svg" alt="" class="img-fluid">
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col-md-6">
+                <img src="aimg/i3.svg" alt="" class="img-fluid">
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col-md-6">
+                <img src="aimg/i4.svg" alt="" class="img-fluid">
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+        </div>
+
+        
+        
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

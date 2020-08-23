@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilizo las letras correctamente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .letra {
+            background: #FFF4CE;
+            border: 2px solid #fff;
+            padding: 10px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .letra .inputbox {
+            width: 90%;
+        }
+        .letra .inputbox input {
+            font-size: 1.6rem;
+            border-color: #00AEB5;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Utilizo las letras correctamente</h1>
+
+        <h2>Escribe al lado de cada letra mayúscula la letra minúscula correspondiente.</h2>
+
+        <div class="instruccion mt-5"> Lee la siguiente  lista de acciones y escribe sólo las que ayudan al buen funcionamiento de una biblioteca.</div>
+        <div class="row mt-3">
+            <div class="col-md-3 col-sm-4 col-6 letra" v-for="(i, index) in ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z']">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-4">{{i}}</div>
+                    <div class="col"><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.toLowerCase()" type="text" placeh="-" case-sensitive></inputbox></div>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

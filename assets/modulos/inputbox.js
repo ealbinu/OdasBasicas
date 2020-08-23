@@ -1,5 +1,5 @@
 Vue.component('inputbox', {
-    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea'],
+    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive'],
     data() {
         return {
             status: "",
@@ -32,7 +32,7 @@ Vue.component('inputbox', {
             this.evaluate = true
             var theanswer = this.answer
             
-            if(this.type == 'text'){
+            if(this.type == 'text' && this.caseSensitive==undefined){
                 theanswer = theanswer.toString().toLowerCase()
                 this.status = this.status.toLowerCase()
             }
