@@ -3,44 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utilizo las letras correctamente</title>
+    <title>Reinvento rondas y cantos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        .letra {
-            background: #FFF4CE;
-            border: 2px solid #fff;
-            padding: 10px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .letra .inputbox {
-            width: 90%;
-        }
-        .letra .inputbox input {
-            font-size: 1.6rem;
-            border-color: #00AEB5;
-        }
+        .palabras {
+	background: #4CBAC0;
+	color: #fff;
+	display: flex;
+	padding: 10px;
+	border: 10px;
+	border-radius: 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.palabras strong {
+	display: block;
+	padding: 4px 10px;
+	font-size: 1.1rem;
+}
+.canto {
+	background: #DDF0EE;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #00AEB5;
+	font-size: 1.2rem;
+	margin-top: 20px;
+}
+.cantoexec {
+	font-size: 1.2rem;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #00AEB5;
+}
+.cantoexec strong{color:#00AEB5;}
+.cantoexec .inputbox {
+	max-width: 200px;
+	display: inline-block;
+	margin: 3px 0;
+}
+.cantoexec .inputbox input {
+	padding: 0;
+	border-color: #4DBAC0;
+	background: #DEF0EE;
+	font-size: 1.4rem;
+}
+
 
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>Utilizo las letras correctamente</h1>
+        <h1>Reinvento rondas y cantos</h1>
 
-        <h2>Escribe al lado de cada letra mayúscula la letra minúscula correspondiente.</h2>
 
-        <div class="instruccion mt-5"> Lee la siguiente  lista de acciones y escribe sólo las que ayudan al buen funcionamiento de una biblioteca.</div>
+        <div class="instruccion mt-5">Lee la siguiente ronda,después utiliza las palabras del recuadro para cambiar las palabras resaltadas. Observa los ejemplos.</div>
+        
         <div class="row mt-3">
-            <div class="col-md-3 col-sm-4 col-6 letra" v-for="(i, index) in ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z']">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-4">{{i}}</div>
-                    <div class="col"><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.toLowerCase()" type="text" placeh="-" case-sensitive></inputbox></div>
+            <div class="col-md-5">
+                <div class="palabras"><strong v-for="i in ['llamada','esposo','patita','pato','brilloso','desmayado','dado','cuac','Pato']">{{i}}</strong></div>
+                <div class="canto">
+                    <p>El señor don <strong>Gato</strong></p>
+                    <p>Estaba el señor don <strong>Gato</strong> 
+                        <br>sentadito en su tejado, 
+                        <br><strong>miau</strong>, <strong>miau</strong>, <strong>miau</strong>, <strong>miau</strong>.</p>
+                    <p>Ha recibido una <strong>carta</strong>: 
+                        <br>que si quiere ser casado 
+                        <br>con una <strong>gatita</strong> blanca, 
+                        <br>sobrina de un <strong>gato pardo</strong>.</p>
+                    <p>Al recibir la <strong>noticia</strong> 
+                        <br>se ha caído del <strong>tejado</strong>, 
+                        <br>y un gran chipote se ha hecho 
+                        <br>del susto que le han <strong>pegado</strong></p>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="cantoexec">
+                    <p>El señor don <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox></p>
+                    <p>Estaba el señor don <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox>
+                        <br>sentadito en su tejado, 
+                        <br><strong>cuac</strong>, <strong>cuac</strong>, <strong>cuac</strong>, <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox>.</p>
+                    <p>Ha recibido una <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="llamada" type="text" placeh="-"></inputbox>: 
+                        <br>que si quiere ser <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="esposo" type="text" placeh="-"></inputbox> 
+                        <br>con una <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="patita" type="text" placeh="-"></inputbox> blanca, 
+                        <br>sobrina de un <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="pato brilloso" type="text" placeh="-"></inputbox>.</p>
+                    <p>Al recibir la <strong>llamada</strong>
+                        <br>se ha caído del <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="desmayado" type="text" placeh="-"></inputbox>, 
+                        <br>y un gran chipote se ha hecho 
+                        <br>del susto que le han <inputbox v-model="r[8]" ref="q8" @isright="right++" answer="dado" type="text" placeh="-"></inputbox>.</p>
                 </div>
             </div>
         </div>
