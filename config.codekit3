@@ -1917,12 +1917,12 @@
 		"oAP": "\/ES3T1\/50\/index.html",
 		"oF": 0
 		},
-	"\/ES4T1\/14\/dragdrop.js": {
+	"\/ES4T1\/14\/dragdrop-custom2.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "\/ES4T1\/14\/dragdrop-min.js",
+		"oAP": "\/ES4T1\/14\/dragdrop-custom2-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
@@ -2091,6 +2091,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/ES4T1\/16\/index.html",
+		"oF": 0
+		},
+	"\/ES4T1\/19\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES4T1\/19\/index.html",
 		"oF": 0
 		},
 	"\/ES4T1\/27\/index.html": {
