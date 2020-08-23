@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practico la resta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .inputbox input {
+            font-size: 1.4rem;
+        }
+        .inputbox {
+	display: inline-block;
+	max-width: 100px;
+}
+.oper {
+	text-align: right;
+	font-size: 1.4rem;
+	background: #EFDEE6;
+	padding: 10px;
+	border-radius: 10px;
+}
+.oper > div {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.prob {
+	font-size: 1.4rem;
+}
+.ans {
+	background: #f5f5f5;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 1.2rem;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Practico la resta</h1>
+
+        <div class="instruccion mt-5">Resuelve las siguientes restas.</div>
+        
+        <div class="row justify-content-center align-items-end mt-3 oper">
+            <div class="col-md-4" v-for="(i, index) in [
+                {t: '18 − 4 = ', a: 14},
+                {t: '19 - 7 = ', a: 12},
+                {t: '24 - 13 = ', a: 11},
+                {t: '54 - 32 = ', a: 22 },
+                {t: '67 - 46 = ', a: 21 },
+                {t: '47 - 15 = ', a: 32 },
+               
+            ]">
+                <strong class="accent">{{i.t}}</strong>
+                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.a" type="number" placeh="#"></inputbox>
+            </div>
+            
+        </div>
+
+
+
+        <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+
+        <div class=" mt-3">
+            <p class="prob"><strong class="accent">1.</strong> Amanda compró 38 caramelos y le regaló 16 a su prima. ¿Cuántos caramelos le quedaron?</p>
+            <div class="ans">
+                Le quedaron <inputbox v-model="r[6]" ref="q6" @isright="right++" :answer="22" type="number" placeh="#"></inputbox> caramelos.
+        </div>
+        </div>
+        <div class=" mt-3">
+            <p class="prob"><strong class="accent">2.</strong> Mauricio tiene una caja con 65 carritos y desechó 23 porque ya no servían. ¿Cuántos carritos le quedaron?</p>
+            <div class="ans">
+                Le quedaron <inputbox v-model="r[7]" ref="q7" @isright="right++" :answer="42" type="number" placeh="#"></inputbox> carritos.
+        </div>
+        </div>
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
