@@ -1681,22 +1681,18 @@
 		"oAP": "\/ES1T1\/38\/index.html",
 		"oF": 0
 		},
-	"\/ES2T1\/12\/aimg\/ilustracion.png": {
-		"ft": 32768,
-		"iS": 96557,
-		"oA": 0,
-		"oAP": "\/ES2T1\/12\/aimg\/ilustracion.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
 	"\/ES2T1\/12\/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/ES2T1\/12\/index.html",
+		"oF": 0
+		},
+	"\/ES2T1\/14\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES2T1\/14\/index.html",
 		"oF": 0
 		},
 	"\/ES2T1\/27\/aimg\/ilustracion.png": {
