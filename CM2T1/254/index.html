@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conozco la luz y el movimiento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+.row {
+	text-align: center;
+}
+img {
+	max-width: 200px !important;
+	margin-bottom: 10px;
+}
+.inputbox {
+	margin-bottom: 20px;
+}
+.inputbox input {
+	font-size: 1.4rem;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Conozco la luz y el movimiento</h1>
+
+        <div class="instruccion mt-5">Escribe la palabra <strong>empujar</strong> o <strong>jalar</strong> de acuerdo a la forma adecuada en la que se deben mover los siguientes objetos.</div>
+        
+        <div class="row justify-content-center align-items-end mt-3 ">
+            <div class="col-md-4 col-6" v-for="(i, index) in ['E', 'E', 'J', 'J', 'E', 'J']">
+                <img :src="'aimg/a'+(index+1)+'.svg'" class="img-fluid">
+                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i == 'E' ? 'Empujar' : 'Jalar'" type="text" placeh="-"></inputbox>
+
+            </div>
+        </div>
+        
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
