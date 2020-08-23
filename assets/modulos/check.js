@@ -47,7 +47,7 @@ Vue.component('check', {
             <div class="checkbox" @click="clicked">
                 <img v-if="status" src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat">
             </div>
-            <div class="label" @click="clicked">{{text}}</div>
+            <div class="label" @click="clicked" v-html="text"></div>
         </div>
     `
 })
