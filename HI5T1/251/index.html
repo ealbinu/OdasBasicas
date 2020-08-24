@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conozco la Nueva España</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+		.map {
+			position: relative;
+		}
+		.map .selectable {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 20%;
+			height: 20%;
+		}
+		.map .selectable:nth-child(1) {
+			left: 45%;
+			top: 10%;
+		}
+
+		.bluecheck .checkbox {
+	display: none;
+}
+.bluecheck .check {
+	background: #f5f5f5;
+}
+.bluecheck .check .checktext {
+	width: 100%;
+	text-align: center;
+}
+.bluecheck .check.activecheck {
+	background: var(--clear);
+}
+
+
+.choose .options {
+	flex-direction: column;
+}
+.choose .options div {
+	margin: 10px;
+}
+
+.pers div {
+	background: #E9E4EA;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 14px;
+	color: #1A1919;
+	font-weight: bold;
+}
+.pers div strong {
+	font-size: 2rem;
+}
+.rel > div {
+	background: #E9F4F3;
+	padding: 10px;
+	border-radius: 2px 10px;
+	margin-bottom: 4px;
+}
+.rel > div .inputbox input {
+	border-color: #1A1919;
+	font-size: 1.6rem;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Conozco la Nueva España</h1>
+
+  
+        <div class="instruccion mt-5">Colorea de <strong class="sec">azul</strong> los nombres de los dioses mesoamericanos.</div>
+        <div class="row wrap mt-3 ">
+			<div class="col-md-4 bluecheck" v-for="(i, index) in [
+				{a: true, t: 'Explotación de los indígenas.'},
+				{a: true, t: 'Reformas borbónicas.'},
+				{a: true, t: 'Invasión francesa a España.'},
+				{a: true, t: 'Descontento criollo por no poder ocupar puestos de poder político.'},
+				{a: false, t: 'Explotación de minerales.'},
+				{a: false, t: 'Establecimiento del Consejo de Indias.'},
+			]"><check v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.a" :text="i.t" /></div>
+		</div>
+		
+
+
+		<div class="instruccion mt-5">Relaciona los personajes con las acciones que realizaron.</div>
+
+		<div class="row mt-3">
+			<div class="col-4 pers">
+				<div><strong>1.</strong> Miguel Hidalgo y Costilla</div>
+				<div><strong>2.</strong> José María Morelos y Pavón</div>
+				<div><strong>3.</strong> Iturbide y Guerrero</div>
+				<div><strong>4.</strong> Josefa Ortiz de Domínguez</div>
+			</div>
+			<div class="col-8 rel">
+				<div class="row" v-for="(i,index) in [
+					{v: 3, t: 'Entre ellos se dio el famoso abrazo de Acatempan como símbolo de alianza, así surgió el ejército Trigarante.'},
+					{v: 4, t: 'Formó parte de la conspiración junto a Hidalgo, y cuan- do los descubrieron, dio aviso a Aldama y Allende.'},
+					{v: 1, t: 'Dio el Grito de Dolores y publicó en Guadalajara el “Decreto de la Abolición de la Esclavitud”.'},
+					{v: 2, t: 'Lideró la segunda etapa de la guerra de Independencia, fue nombrado “Siervo de la Nación” y escribió <em>Sentimientos de la Nación</em>.'},
+				]">
+					<div class="col-3"><inputbox v-model="r[index+6]" :ref="'q'+(index+6)" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox></div>
+					<div class="col"><div v-html="i.t"></div></div>
+				</div>
+			</div>
+		</div>
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
