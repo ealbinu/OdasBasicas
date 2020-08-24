@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizo la alimentación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+	.palabras {
+	background: #E8E1D0;
+	padding: 10px;
+	border-radius: 10px;
+}
+.palabras strong {
+	color: #887544;
+	padding: 10px;
+	background: #fff;
+	margin: 4px;
+	border-radius: 10px;
+}
+.box {
+	text-align: center;
+	padding: 10px;
+	border: 2px solid #fff;
+}
+.box:nth-child(1) {
+	background: #EFF5E3;
+}
+.box:nth-child(2) {
+	background: #FDE8CF;
+}
+.box:nth-child(3) {
+	background: #F5E9EE;
+}
+.box:nth-child(4) {
+	background: #E1EDF4;
+}
+.box img {
+	max-height: 120px;
+	max-width: 160px;
+	margin-top: 30px;
+}
+.box div {
+	text-align: left;
+}
+.box div .inputbox {
+	display: inline-block;
+	max-width: 200px;
+}
+.box div .inputbox input {
+	font-size: 1.1rem;
+	padding: 4px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Analizo la alimentación</h1>
+
+
+        <div class="instruccion mt-5">Completa los siguientes textos informativos con las palabras del recuadro.</div>
+		
+		<div class="palabras row justify-content-center align-items-center"><strong v-for="i in ['verduras','calcio','Comer','grasas','carbohidratos','balanceada','vitaminas animal','Cereales','fibras','proteínas']">{{i}}</strong></div>
+		
+		<div class="row mt-3 align-items-center">
+			<div class="col-md-6 box">
+				<div>El Plato del Bien
+					<inputbox v-model="r[0]" ref="q0" @isright="right++" answer="Comer" type="text" placeh="-"></inputbox>
+					es una guía visual que orienta sobre una alimentación 
+					<inputbox v-model="r[1]" ref="q1" @isright="right++" answer="balanceada" type="text" placeh="-"></inputbox>
+					, mostrando los tres grupos de alimentos.</div>
+				<img src="aimg/a1.png" class="img-fluid">
+			</div>	
+			<div class="col-md-6 box">
+				<div>Frutas y 
+					<inputbox v-model="r[2]" ref="q2" @isright="right++" answer="verduras" type="text" placeh="-"></inputbox>
+					es el grupo de alimentos que se debe consumir en mayor cantidad, ya que aportan 
+					<inputbox v-model="r[3]" ref="q3" @isright="right++" answer="vitaminas" type="text" placeh="-"></inputbox>
+					, minerales y 
+					<inputbox v-model="r[4]" ref="q4" @isright="right++" answer="fibras" type="text" placeh="-"></inputbox>
+					.</div>
+				<img src="aimg/a2.png" class="img-fluid">
+			</div>	
+			<div class="col-md-6 box">
+				<div>
+					<inputbox v-model="r[5]" ref="q5" @isright="right++" answer="Cereales" type="text" placeh="-"></inputbox>
+					tan 
+					<inputbox v-model="r[6]" ref="q6" @isright="right++" answer="carbohidratos" type="text" placeh="-"></inputbox>
+					consumir en cantidades suficientes, ya que aportan energía.</div>
+				<img src="aimg/a3.png" class="img-fluid">
+			</div>	
+			<div class="col-md-6 box">
+				<div>Las leguminosas y los alimentos de origen 
+					<inputbox v-model="r[7]" ref="q7" @isright="right++" answer="animal" type="text" placeh="-"></inputbox>
+					se recomiendan consumir en pocas cantidades ya que contienen 
+					<inputbox v-model="r[8]" ref="q8" @isright="right++" answer="grasas" type="text" placeh="-"></inputbox>
+					, pero también aportan 
+					<inputbox v-model="r[9]" ref="q9" @isright="right++" answer="calcio" type="text" placeh="-"></inputbox>
+					y 
+					<inputbox v-model="r[10]" ref="q10" @isright="right++" answer="proteínas" type="text" placeh="-"></inputbox>.
+				</div>
+				<img src="aimg/a4.png" class="img-fluid">
+			</div>	
+		</div>
+
+		<!--
+		<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.val" type="number" placeh="#"></inputbox>
+-->
+        
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+	<!-- /sortable -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+	</script>
+</body>
+</html>
