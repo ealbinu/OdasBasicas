@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizo un tríptico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+		.selectable .circledactive, .selectableoptions .circledactive{border-radius: 20px;}
+		.selectableoptions img {
+	width: 100%;
+}
+
+img{max-width: 280px !important; }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Analizo un tríptico</h1>
+
+        <div class="instruccion mt-5">Elige la definición correcta de un tríptico.</div>
+        
+        <div class="row justify-content-center align-items-center mt-3">
+			<selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="yes" :options="[
+			{val:'no', txt:'Documento en el que se enlista una serie de materiales y pasos para realizar un proceso específico, ya sea de fabricación, funcionamiento o al cocinar.'},
+			{val:'yes', txt:'Es un tipo de folleto en el que se presenta información organizada con la finalidad de comunicar de manera clara y concisa un tema en específico.'}]" customclass="col-sm-6">
+				<template v-slot:option="{option}">
+					<strong>Tríptico</strong>
+					<p>{{option.txt}}</p>
+				</template>
+			</selectableoptions>
+        </div>
+		
+		
+		<div class="instruccion mt-5">Encierra la imagen que representa el formato de un tríptico.</div>
+        
+        <div class="row justify-content-center align-items-center mt-3 text-center">
+			<selectableoptions v-model="r[1]" ref="q1" @isright="right++" answer="yes" :options="[
+			{val:'yes', im:'aimg/a1.svg'},
+			{val:'no', im :'aimg/a2.svg'},
+			{val:'no2', im: 'aimg/a3.svg'},
+			
+			]" customclass="col-md-4">
+				<template v-slot:option="{option}">
+					<img :src="option.im" class="img-fluid">
+				</template>
+			</selectableoptions>
+		</div>
+		
+
+		<div class="instruccion mt-5">Escribe <strong>V</strong>  si el enunciado es verdadero o <strong>F</strong> si es falso.</div>
+
+
+        <div class="row mt-3 justify-content-center align-items-center">
+            <div class="col-md-8 enuns">
+                <template v-for="(i, index) in [
+                        { v: 'V', txt:'Los trípticos son un medio funcional para difundir información.'},
+                        { v: 'F', txt:'Los trípticos no se basan en fuentes de información fiables.'},
+                        { v: 'F', txt:'El bullying es un tema al que no debemos prestar atención.'},
+                        { v: 'V', txt:'Los trípticos se organizan en temas y subtemas.'},
+                        { v: 'V', txt:'Los trípticos deben dirigirse a un público en específico.'},
+                        
+                ]">
+                    
+                    <div class="row align-items-center cuest">
+                        <div class="col-2"><inputbox v-model="r[index+2]" :ref="'q'+(index+2)" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
+                        <div class="col txt">{{i.txt}}</div>
+                    </div>
+                </template>
+			</div>
+			<div class="col text-center"><img src="aimg/b1.svg" class="img-fluid"></div>
+        </div>
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    
+    <script src="../../assets/assets.js"></script>
+</body>
+</html>
