@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubico el pasado mesoamericano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+		.map {
+			position: relative;
+		}
+		.map .selectable {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 20%;
+			height: 20%;
+		}
+		.map .selectable:nth-child(1) {
+			left: 45%;
+			top: 10%;
+		}
+
+		.bluecheck .checkbox {
+	display: none;
+}
+.bluecheck .check {
+	background: #f5f5f5;
+}
+.bluecheck .check .checktext {
+	width: 100%;
+	text-align: center;
+}
+.bluecheck .check.activecheck {
+	background: var(--clear);
+}
+
+
+.choose .options {
+	flex-direction: column;
+}
+.choose .options div {
+	margin: 10px;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Ubico el pasado mesoamericano</h1>
+
+        <div class="instruccion mt-5">Encierra en el mapa el estrecho de Bering.</div>
+        
+        <div class="justify-content-center mt-3 text-center">
+			<div class="map">
+				<img src="aimg/a1.svg" class="img-fluid">
+				<div class="selectables">
+					<selectable :isok="true" v-model="r[0]" :ref="'q'+0" @isright="right++"></selectable>
+				</div>
+			</div>
+		</div>
+
+
+        <div class="instruccion mt-5">Marca así <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> las culturas mesoamericanas.</div>
+        <div class="row wrap mt-3 ">
+			<div class="col-md-4" v-for="(i, index) in [
+				{a: false, t: 'Incas.'},
+				{a: true, t: 'Olmecas.'},
+				{a: false, t: 'Griegos.'},
+				{a: true, t: 'Mayas.'},
+				{a: false, t: 'Samuráis.'},
+				{a: true, t: 'Mexicas.'},
+			]"><check v-model="r[index+1]" :ref="'q'+index+1" @isright="right++" :answer="i.a" :text="i.t" /></div>
+		</div>
+		
+        <div class="instruccion mt-5">Colorea de <strong class="sec">azul</strong> los nombres de los dioses mesoamericanos.</div>
+        <div class="row wrap mt-3 ">
+			<div class="col-md-4 bluecheck" v-for="(i, index) in [
+				{a: false, t: 'Ra'},
+				{a: false, t: 'Anubis'},
+				{a: true, t: 'Huitzilopochtli'},
+				{a: true, t: 'Tláloc'},
+				{a: true, t: 'Quetzalcóatl'},
+				{a: false, t: 'Buda'},
+			]"><check v-model="r[index+7]" :ref="'q'+index+7" @isright="right++" :answer="i.a" :text="i.t" /></div>
+		</div>
+		
+
+
+		<div class="instruccion mt-5">Subraya la razón por la que iniciaron los viajes de expedición de los españoles y los portugueses.</div>
+
+		<div class="row mt-3">
+			<div class="col-12">
+				<choose v-model="r[12]" ref="q12" text=""
+                    :options="['a) Se acabaron los recursos necesarios en estos reinos.', 'b) Los turco-otomanos tomaron Constantinopla.', 'c) Los romanos invadieron sus territorios.']" @isright="right++" answer="c) Los romanos invadieron sus territorios."></choose>
+			</div>
+		</div>
+
+
+		<div class="instruccion mt-5">Marca así <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> la fecha de la llegada de Cristóbal Colón al continente americano.</div>
+        <div class="row wrap mt-3 ">
+			<div class="col-md-4" v-for="(i, index) in [
+			{a: false, t: '2 de mayo de 1453.'},
+			{a: true, t: '12 de octubre de 1492.'},
+			{a: false, t: '16 de septiembre de 1810.'},
+			]"><check v-model="r[index+13]" :ref="'q'+index+13" @isright="right++" :answer="i.a" :text="i.t" /></div>
+		</div>
+        
+		<div class="instruccion mt-5">Escribe el nombre del conquistador de México-Tenochtitlan.</div>
+		<div class="row mt-3">
+			<div class="col-12"><inputbox v-model="r[15]" ref="q15" @isright="right++" answer="Hernán Cortés" type="text" placeh="-"></inputbox></div>
+
+		</div>
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

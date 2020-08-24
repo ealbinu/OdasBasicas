@@ -41,13 +41,13 @@ Vue.component('check', {
         this.$emit('input', false)
     },
     template: `
-        <div class="check" :class="setclass">
+        <div class="check" :class="setclass"  :class="status ? 'activecheck':''">
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         <div class="label"><strong v-if="num">{{num}}</strong></div>
             <div class="checkbox" @click="clicked">
                 <img v-if="status" src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat">
             </div>
-            <div class="label" @click="clicked" v-html="text"></div>
+            <div class="label checktext" @click="clicked" v-html="text"></div>
         </div>
     `
 })
