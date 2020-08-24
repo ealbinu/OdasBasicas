@@ -41,7 +41,7 @@ Vue.component('check', {
         this.$emit('input', false)
     },
     template: `
-        <div class="check" :class="setclass"  :class="status ? 'activecheck':''">
+        <div class="check" :class="setclass + ' ' + (status ? 'activecheck':'') ">
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         <div class="label"><strong v-if="num">{{num}}</strong></div>
             <div class="checkbox" @click="clicked">

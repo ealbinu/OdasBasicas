@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendo sobre el sonido y el oído</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+.parrafo {
+	padding: 10px;
+	border-radius: 10px;
+	background: #FFF4CE;
+	font-size: 1.2rem;
+}
+.parrafo .inputbox {
+	display: inline-block;
+	max-width: 200px;
+}
+.parrafo .inputbox input {
+	font-size: 1.2rem;
+	padding: 2px;
+}
+.palabras {
+	background: #D4CADA;
+	color: #6A4287;
+	border-radius: 10px;
+	text-align: center;
+}
+.palabras strong {
+	display: block;
+    padding: 3px 10px;
+    background: #fff;
+    border-radius: 6px;
+    margin: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Aprendo sobre el sonido y el oído</h1>
+
+		
+		<div class="instruccion mt-5">Completa el párrafo con las palabras del recuadro.</div>
+		<div class="row wrap palabras justify-content-center">
+			<div class="col-md-4 col-6" v-for="i in ['transversales','decibeles','gaseoso','sonido','ondas sonoras','longitudinales','sólido','onda','líquido']"><strong>{{i}}</strong></div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12 parrafo">
+                El 
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="sonido" type="text" placeh="-"></inputbox>
+                se genera cuando se producen vibraciones en algún material, aun que no siempre lo podemos percibir.
+                Una
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="onda" type="text" placeh="-"></inputbox>
+                es el movimiento periódico del medio en el que se propaga, dicho medio puede ser 
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="gaseoso" type="text" placeh="-"></inputbox>
+                ,
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="líquido" type="text" placeh="-"></inputbox>
+                o
+                <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="sólido" type="text" placeh="-"></inputbox>
+                .
+                Existen dos tipos de ondas: 
+                <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="transversales" type="text" placeh="-"></inputbox>
+                y 
+                <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="longitudinales" type="text" placeh="-"></inputbox>
+                 .
+                Los sonidos que escuchamos se deben a este tipo de ondas. Lo que escuchamos se debe a que las 
+                <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="ondas sonoras" type="text" placeh="-"></inputbox>
+                se transmiten por el aire.También es posible escuchar sonidos dentro de los líquidos, como el agua, o a través de los sólidos como el suelo. La intensidad del sonido se mide en 
+                <inputbox v-model="r[8]" ref="q8" @isright="right++" answer="decibeles" type="text" placeh="-"></inputbox>
+                (dB). La Organización Mun- dial de la Salud (OMS) considera 85 dB como el límite superior deseable.
+
+			</div>
+        </div>
+        
+		<div class="instruccion mt-5">Marca así <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> los recuadros que mencionan las partes que conforman el oído.</div>
+        <div class="row mt-3 habits">
+            <div class="col-md-4 col-6" v-for="(i,index) in [
+                {c: true, t: 'Conducto auditivo'},
+                {c: false, t: 'Cristalino'},
+                {c: true, t: 'Martillo'},
+                {c: false, t: 'Retina'},
+                {c: true, t: 'Yunque'},
+                {c: true, t: 'Tímpano'},
+                {c: true, t: 'Estribo'},
+                {c: false, t: 'Córnea'},
+                {c: true, t: 'Cóclea'},
+            ]"><check v-model="r[index+9]" :ref="'q'+(index+9)" @isright="right++" :answer="i.c" :text="i.t"></check></div>
+        </div>
+		
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
