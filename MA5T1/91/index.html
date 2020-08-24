@@ -15,7 +15,6 @@
 			font-size: 1.5rem;
 		}
 		.sucesind {
-	border: 2px solid var(--main);
 	padding: 10px;
 	border-radius: 10px;
 	box-sizing: border-box;
@@ -31,11 +30,24 @@
 	font-size: 1.4rem;
 }
 .sucesind .col strong {
-	border: 2px solid #AAE0FA;
+	border: 2px solid #fff;
+	background: #FFF4CE;
 	padding: 8px;
 	margin: 0;
 	border-radius: 20px;
 }
+
+.sucesind{
+	border: 2px solid #fff;
+	background: #f5f5f5;
+}
+
+.s1{background: #E7F1D8;}
+.s2{background: #DDD6E2;}
+.s3{background: #E2F4F8;}
+.s4{background: #E7F1D8;}
+.s5{background: #DDD6E2;}
+.s6{background: #E2F4F8;}
 
     </style>
 </head>
@@ -63,7 +75,7 @@
 		<div class="instruccion mt-5">Completa las siguientes sucesiones simples y compuestas.</div>
 		<div class="row flex-wrap mt-3 suces">
 			<div class="col-lg-6 mt-3">
-					<div class="row justify-content-center align-items-center sucesind">
+					<div class="row justify-content-center align-items-center sucesind s1">
 					<template v-for="(i, index) in [ 5, 36, 10 , 30, 15, 24 , 20, 18 , '25' , 12 ]">
 						<div class="col" v-if="i==10"><inputbox v-model="r[2]" :ref="'q2'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==24"><inputbox  v-model="r[3]" :ref="'q3'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
@@ -73,7 +85,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mt-3">
-				<div class="row justify-content-center align-items-center sucesind">
+				<div class="row justify-content-center align-items-center sucesind s2">
 					<template v-for="(i, index) in [3, 6, 9 , 12, 15, 18 , 21, 24 , 27 , 30, 33]">
 						<div class="col" v-if="i==9"><inputbox v-model="r[5]" :ref="'q5'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==18"><inputbox  v-model="r[6]" :ref="'q6'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
@@ -85,7 +97,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mt-3">
-					<div class="row justify-content-center align-items-center sucesind">
+					<div class="row justify-content-center align-items-center sucesind s3">
 					<template v-for="(i, index) in [ 2, 40, 12 , 36 , 22, 32, 32 , 28, 42 , 24]">
 						<div class="col" v-if="i==12"><inputbox v-model="r[10]" :ref="'q10'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==36"><inputbox  v-model="r[11]" :ref="'q311'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
@@ -97,7 +109,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mt-3">
-				<div class="row justify-content-center align-items-center sucesind">
+				<div class="row justify-content-center align-items-center sucesind s4">
 					<template v-for="(i, index) in [40, 50 , 36 , 45 , 32, 40, 28 , 35, 24 , 30]">
 						<div class="col" v-if="i==9"><inputbox v-model="r[15]" :ref="'q15'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==50"><inputbox  v-model="r[16]" :ref="'q16'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
@@ -111,7 +123,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mt-3">
-					<div class="row justify-content-center align-items-center sucesind">
+					<div class="row justify-content-center align-items-center sucesind s5">
 					<template v-for="(i, index) in [50, 5 ,42,7, 34 ,9, 26 , 11 ,18, 13]">
 						<div class="col" v-if="i==5"><inputbox v-model="r[22]" :ref="'q22'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==34"><inputbox  v-model="r[23]" :ref="'q23'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
@@ -122,7 +134,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mt-3">
-				<div class="row justify-content-center align-items-center sucesind">
+				<div class="row justify-content-center align-items-center sucesind s6">
 					<template v-for="(i, index) in [8, 46 , 16 ,40,24, 34 , 32 ,28, 40, 22]">
 						<div class="col" v-if="i==46"><inputbox v-model="r[26]" :ref="'q26'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
 						<div class="col" v-else-if="i==16"><inputbox  v-model="r[27]" :ref="'q27'" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
