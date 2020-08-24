@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizo un relato histórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+
+
+.relato{
+	background: #E7E2D6;
+	font-size: 1.2rem;
+	border-radius: 10px;
+}
+
+.pers div {
+	background: #D3E4EE;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 14px;
+	color: #1A1919;
+	font-weight: bold;
+}
+.pers div strong {
+	font-size: 2rem;
+}
+.rel > div {
+	background: #FDE8CF;
+	padding: 10px;
+	border-radius: 2px 10px;
+	margin-bottom: 4px;
+}
+.rel > div .inputbox input {
+	border-color: #1A1919;
+	font-size: 1.6rem;
+}
+
+img{
+	max-width: 220px !important;
+}
+
+
+.frase{
+	font-size: 1.2rem;
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+.bx1{
+	background: #AE4E8F;
+	padding: 10px;
+	border-radius: 10px;
+}
+.bx2{
+	background: #00AEB5;
+	padding: 10px;
+	border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+		<h1>Comparo las fábulas y los refranes</h1>
+
+
+
+
+		<div class="instruccion mt-5">Lee con atención el siguiente relato histórico y contesta los ejercicios como se indica.</div>
+
+		<div class="row justify-content-center align-items-center relato">
+			<div class="col-md-8">
+				<strong>Porfirio Díaz</strong>
+				<p>La llegada de Porfirio Díaz a la presidencia no fue una casualidad. Tras combatir en la Guerra de Reforma y defender al país durante la Interven- ción francesa y el Segundo Imperio, se convirtió en uno de los principales detractores del presidente Benito Juárez cuando éste se reeligió en 1871. Porfirio Díaz lanzó el Plan de la Noria contra él, bajo el lema de la “No reelección”, pero la muerte de Juárez un año después puso a Porfirio en el camino del poder. Fue electo presidente en 1877 y desde entonces dirigió el país con la consigna de “Orden, paz y progreso”.</p>
+			</div>
+			<div class="col text-center"><img src="aimg/a1.png" alt="" class="img-fluid"></div>
+		</div>
+
+		<div class="instruccion mt-5">Relaciona la causa con su respectiva consecuencia.</div>
+
+
+		<div class="row mt-3">
+			<div class="col-5 pers">
+				<div><strong>1.</strong> Benito Juárez se reelige en 1871.</div>
+				<div><strong>2.</strong> Benito Juárez fallece en 1872.</div>
+			</div>
+			<div class="col-7 rel">
+				<div class="row align-items-center" v-for="(i,index) in [
+					{v: 2, t: 'Díaz queda en el camino al poder.'},
+					{v: 1, t: 'Díaz se lanza contra Juárez.'},
+				]">
+					<div class="col-3"><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox></div>
+					<div class="col"><div v-html="i.t"></div></div>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="instruccion mt-5">Ordena cronológicamente los sucesos del <strong>1</strong> al <strong>5</strong>.</div>
+		<div class="row mt-3">
+			<div class="col-md-8">
+				<div class="row align-items-center" v-for="(i,index) in [
+					{v: 5, t: 'Porfirio Díaz fue electo presidente de México.'},
+					{v: 1, t: 'Porfirio Díaz peleó en la guerra de Reforma.'},
+					{v: 3, t: 'Porfirio lanzó el Plan de la Noria en contra de la reelección de Juárez.'},
+					{v: 2, t: 'Díaz defendió al país de la Intervención francesa.'},
+					{v: 4, t: 'Benito Juárez falleció en 1872.'},
+				]">
+					<div class="col-3"><inputbox v-model="r[index+2]" :ref="'q'+(index+2)" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox></div>
+					<div class="col"><div v-html="i.t"></div></div>
+				</div>
+			</div>
+			<div class="col text-center"><img src="aimg/b1.png" alt="" class="img-fluid"></div>
+		</div>
+		
+
+		<div class="instruccion mt-5">Escribe a qué personajes hacen referencia las siguientes oraciones.</div>
+
+		<div class="row mt-3 text-center">
+			<div class="col-md-6 bx1">
+				<div class="frase">Porfirio Díaz lanzó el Plan de la Noria contra él.</div>
+				<inputbox v-model="r[7]" ref="q7" @isright="right++" answer="Benito Juárez" type="text" placeh="-"></inputbox>
+			</div>
+			<div class="col-md-6 bx2">
+				<div class="frase">Fue electo presidente en 1877.</div>
+				<inputbox v-model="r[8]" ref="q8" @isright="right++" answer="Porfirio Díaz" type="text" placeh="-"></inputbox>
+			</div>
+		</div>
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
