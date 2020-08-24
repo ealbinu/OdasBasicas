@@ -50,7 +50,7 @@
                 <choose v-model="r[5]" ref="q5" num="6." text="¿Cuál es un derecho que tienen todos los niños?"
                     :options="['Derecho a trabajar.', 'Derecho a no hacer la tarea.', 'Derecho a los servicios de salud.']" @isright="right++" answer="Derecho a los servicios de salud."></choose>
                 
-                <div class="label px-3"><strong>7.</strong> <span>Es un juguete de antes.</span></div>
+                <div class="label px-3"><strong>7.</strong> <span>Es un juguete antiguo.</span></div>
                 <selectableoptions v-model="r[6]" :ref="'q'+6" @isright="right++" :answer="2" :options="[{val:1, img:'aimg/i7.svg'},  {val:2, img:'aimg/i8.svg'},  {val:3, img:'aimg/i9.svg'}]" customclass="col-sm-4">
                     <template v-slot:option="{option}">
                         <img :src="option.img" class="img-fluid">

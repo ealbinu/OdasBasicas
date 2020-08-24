@@ -34,6 +34,21 @@
             display: inline-block;
         }
 
+        .selectable {
+	flex-direction: column;
+}
+.selectable .dial {
+	background: #f5f5f5;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.dial.d1{background: #D3E4EE; }
+.dial.d2{background: #E8E1D0; }
+.dial.d3{background: #EFDEE6; }
+.dial.d4{background: #FDE8CF; }
+
+
     </style>
 </head>
 <body>
@@ -61,17 +76,37 @@
         <div class="instruccion mt-5">Lee los siguientes chistes y marca  los que utilizan el discurso directo.</div>
 
         <div class="row mt-3">
-            <div class="col-md-6">
-                <selectable :isok="true" v-model="r[2]" ref="q2" @isright="right++"><img src="aimg/i1.png" class="img-fluid"></selectable>
+            <div class="col-md-6 mt-3">
+                <selectable :isok="true" v-model="r[2]" ref="q2" @isright="right++">
+                    <div class="dial d1">
+                        - Carlos, ¿sabías que mi hermano anda en bicicleta desde los 4 años?<br>
+                        — ¡Uy, pues ya ha de ir muy lejos!
+                    </div>
+                    <img src="aimg/i1.png" class="img-fluid">
+                </selectable>
             </div>
-            <div class="col-md-6">
-                <selectable :isok="false" v-model="r[3]" ref="q3" @isright="right++"><img src="aimg/i2.png" class="img-fluid"></selectable>
+            <div class="col-md-6 mt-3">
+                <selectable :isok="false" v-model="r[3]" ref="q3" @isright="right++">
+                    <div class="dial d2">
+                        Dos niños entran tarde a clases y la maestra les pregunta por qué no llegaron a tiempo.<br>
+                        El primero responde que estuvo soñando que recorría el mundo entero y visitaba cientos de países, y el segundo niño dice que tuvo que ir al aeropuerto a recogerlo.
+                    </div>
+                    <img src="aimg/i2.png" class="img-fluid"></selectable>
             </div>
-            <div class="col-md-6">
-                <selectable :isok="false" v-model="r[4]" ref="q4" @isright="right++"><img src="aimg/i3.png" class="img-fluid"></selectable>
+            <div class="col-md-6 mt-3">
+                <selectable :isok="false" v-model="r[4]" ref="q4" @isright="right++">
+                    <div class="dial d3">
+                        Un pollito chocó con un zorrito que hablaba inglés. El zorrito se levantó y dijo: “I’m sorry”, y el pollito, que no hablaba inglés, le contestó: “I’m pollito”.
+                    </div>
+                    <img src="aimg/i3.png" class="img-fluid"></selectable>
             </div>
-            <div class="col-md-6">
-                <selectable :isok="true" v-model="r[5]" ref="q5" @isright="right++"><img src="aimg/i4.png" class="img-fluid"></selectable>
+            <div class="col-md-6 mt-3">
+                <selectable :isok="true" v-model="r[5]" ref="q5" @isright="right++">
+                    <div class="dial d4">
+                        — Mamá, en el colegio me llaman distraído. <br>
+                        — Niño, tú vives en la casa de enfrente.
+                    </div>
+                    <img src="aimg/i4.png" class="img-fluid"></selectable>
             </div>
         </div>
 
