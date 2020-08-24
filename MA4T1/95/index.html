@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuerdo las tablas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+.circ {
+	position: relative;
+	margin-bottom: 40px;
+}
+.circ .inputbox {
+	position: absolute;
+	width: 20%;
+}
+.circ .inputbox input {
+	font-size: 1.3rem;
+	padding: 4px;
+	background: #EBF6F2;
+}
+.circ .inputbox:nth-child(1) {
+	left: 52%;
+	top: 1%;
+}
+.circ .inputbox:nth-child(2) {
+	left: 72%;
+	top: 16%;
+}
+.circ .inputbox:nth-child(3) {
+	left: 78%;
+	top: 41%;
+}
+.circ .inputbox:nth-child(4) {
+	left: 72%;
+	top: 65%;
+}
+.circ .inputbox:nth-child(5) {
+	left: 52%;
+	top: 81%;
+}
+.circ .inputbox:nth-child(6) {
+	right: 52%;
+	top: 1%;
+}
+.circ .inputbox:nth-child(7) {
+	right: 72%;
+	top: 16%;
+}
+.circ .inputbox:nth-child(8) {
+	right: 78%;
+	top: 41%;
+}
+.circ .inputbox:nth-child(9) {
+	right: 72%;
+	top: 65%;
+}
+.circ .inputbox:nth-child(10) {
+	right: 52%;
+	top: 81%;
+}
+@media (max-width: 768px) {
+	.circ .inputbox {
+		height: 14%;
+	}
+	.circ .inputbox input {
+		height: 100%;
+	}
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Recuerdo las tablas</h1>
+
+        <div class="instruccion mt-5">Multiplica el número del centro por cada uno de los números anaranjados y escribe el resul- tado donde corresponda. Observa los ejemplos.</div>
+
+        <div class="row mt-3">
+            
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a1.svg" class="img-fluid">
+                <div class="boxes"><div class="inputbox" v-for="a in 3"></div><inputbox v-for="(i, index) in [4,5,6,7,8,9,10]" v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="number" placeh="#"></inputbox></div>
+            </div>
+           
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a2.svg" class="img-fluid">
+                <div class="boxes"><inputbox v-for="(i, index) in 10" v-model="r[index+7]" :ref="'q'+(index+7)" @isright="right++" :answer="i*2" type="number" placeh="#"></inputbox></div>
+            </div>
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a2.svg" class="img-fluid">
+                <div class="boxes"><inputbox v-for="(i, index) in 10" v-model="r[index+17]" :ref="'q'+(index+17)" @isright="right++" :answer="i*3" type="number" placeh="#"></inputbox></div>
+            </div>
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a2.svg" class="img-fluid">
+                <div class="boxes"><inputbox v-for="(i, index) in 10" v-model="r[index+27]" :ref="'q'+(index+27)" @isright="right++" :answer="i*4" type="number" placeh="#"></inputbox></div>
+            </div>
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a3.svg" class="img-fluid">
+                <div class="boxes"><inputbox v-for="(i, index) in 10" v-model="r[index+37]" :ref="'q'+(index+37)" @isright="right++" :answer="i*5" type="number" placeh="#"></inputbox></div>
+            </div>
+            <div class="col-md-4 text-center circ">
+                <img src="aimg/a4.svg" class="img-fluid">
+                <div class="boxes"><inputbox v-for="(i, index) in 10" v-model="r[index+47]" :ref="'q'+(index+47)" @isright="right++" :answer="i*6" type="number" placeh="#"></inputbox></div>
+            </div>
+           
+            
+        </div>
+
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>

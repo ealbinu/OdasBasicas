@@ -2100,11 +2100,11 @@
 		"oAP": "\/ES4T1\/19\/index.html",
 		"oF": 0
 		},
-	"\/ES4T1\/24\/aimg\/sector1.svg": {
+	"\/ES4T1\/24\/aimg\/a1.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "\/ES4T1\/24\/aimg\/sector1.svg",
+		"oAP": "\/ES4T1\/24\/aimg\/a1.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
@@ -4569,6 +4569,73 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/MA4T1\/122\/index.html",
+		"oF": 0
+		},
+	"\/MA4T1\/95\/aimg\/a1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/aimg\/a2.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a2.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/aimg\/a3.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a3.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/aimg\/a4.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a4.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/aimg\/a5.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a5.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/aimg\/a6.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/MA4T1\/95\/aimg\/a6.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/MA4T1\/95\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA4T1\/95\/index.html",
 		"oF": 0
 		},
 	"\/MA4T1\/99\/aimg\/i1.png": {
