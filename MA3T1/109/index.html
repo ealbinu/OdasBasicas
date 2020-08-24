@@ -37,12 +37,12 @@
         <div class="row mt-3 justify-content-center align-items-center">
             <div class="col-md-6">
                <div class="ex1" v-for="(i, index) in [
-                { a: 'El elefante.', p: '¿Cuál es el más pesado?'},
-                { a:'La palma.', p:'¿Cuál es el más alto?' },
-                { a:'La hormiga.', p:'¿Cuál es el que pesa menos?' },
+                { a:'El elefante', p: '¿Cuál es el más pesado?'},
+                { a:'La palma', p:'¿Cuál es el más alto?' },
+                { a:'La hormiga', p:'¿Cuál es el que pesa menos?' },
                ]">
-                <div><strong class="accent">{{index+1}}.</strong> {{i.p}}</div>
-                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
+                    <div><strong class="accent">{{index+1}}.</strong> {{i.p}}</div>
+                    <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
                </div>
             </div>
             <div class="col"><img src="aimg/a1.svg" class="img-fluid"></div>
