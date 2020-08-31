@@ -3,22 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Adivino la figura</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+
+    <style type="text/css">
+        .contenedor{
+              font-size: 1.2rem;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+            border:2px solid #fff;
+        }
+
+        span{
+            color: blue;
+        }
+
+        input{
+
+            width:100%;
+          height: 100%;
+        }
+
+        .in input{
+            height: 200px;
+        }
+
+           
+    </style>
+        
+
+        
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Adivino la figura</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5">Lee la descripción de cada figura y dibújala en el espacio correspondiente.</div>
         <div class="row mt-3">
-           
+            <div class="col-md-4 col-6 contenedor mt-3">
+                <p>Tengo <span>más de dos lados y menos de cuatro.</span> Mi lado que descansa sobre el suelo es muy largo.</p>
+            </div>
+            <div class="col-md-6 col-6  mt-3 text-right">
+              <input>
+            </div>         
         </div>
+         <div class="row mt-3">
+            <div class="col-md-4 col-6 contenedor mt-3">
+                <p>Tengo <span>cuatro lados,</span> dos cortos y dos largos, aunque no soy un rectángulo.</p>
+            </div>
+            <div class="col-md-6 col-6  mt-3 text-right">
+              <input>
+            </div>         
+        </div>
+         <div class="row mt-3">
+            <div class="col-md-4 col-6 contenedor mt-3">
+                <p>Tengo <span>cuatro lados rectos.</span> El cuadrado es mi amigo, pero soy más largo que él.</p>
+            </div>
+            <div class="col-md-6 col-6  mt-3 text-right">
+              <input>
+            </div>         
+        </div>
+         <div class="row mt-3">
+            <div class="col-md-4 col-6 contenedor mt-3">
+                <p>Tengo <span>más de 4 lados y menos de 6,</span> el trapecio y el triángulo siempre me van bien.</p>
+            </div>
+            <div class="col-md-6 col-6  mt-3 text-right">
+              <input>
+            </div>         
+        </div>
+
+
+         <div class="instruccion mt-5">Elige una figura diferente a las anteriores, crea tu propia descripción y realiza
+el dibujo correspondiente.</div>
+
+ <div class="row mt-3 in">
+            <div class="col-md-4 col-6 contenedor mt-3">
+                <input>
+
+            </div>
+            <div class="col-md-6 col-6  mt-3 text-right">
+              <input>
+            </div>         
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         
 
 

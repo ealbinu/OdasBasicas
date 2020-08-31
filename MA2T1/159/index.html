@@ -3,22 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Cuento los elementos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+
+    <style type="text/css">
+
+       .img{
+max-width:100%;
+}
+
+        .contenedor{
+              font-size: 1.2rem;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+            border:2px solid #fff;
+            text-align: center;
+
+
+        }
+
+        .contenedor .in{
+            max-width: 300px;
+            height:100px;
+        }
+
+        label{
+            display: inline-block;
+        }
+
+        input{
+            max-width: 80px;
+        }
+
+        .t{
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Cuento los elementos</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
+        <div class="instruccion mt-5">Estos muros han perdido algunos de sus ladrillos con el paso del tiempo.
+Escribe en los recuadros cuántos ladrillos tenía cada muro originalmente
+y las operaciones que hiciste para saberlo.</div>
+        <div class="row mt-5">
+            <div class="col-md-4 contenedor">             
+                <label>Tenia</label>
+                <input>
+                <p>ladrillos porque</p>
+                <input class="in">            
+            </div>
+             <div class="col-md-4 contenedor">             
+                <label>Tenia</label>
+                <input>
+                <p>ladrillos porque</p>
+                <input class="in">
+            </div>
+            <div class="col-md-4 contenedor">             
+                <label>Tenia</label>
+                <input>
+                <p>ladrillos porque</p>
+                <input class="in">
+            </div>
            
         </div>
+
+         <div class="row mt-1 t">
+            <div class="col-md-4">             
+               <img src="aimg/1x.svg" alt="">          
+            </div>
+             <div class="col-md-4 tc">             
+               <img src="aimg/2x.svg" alt="">          
+            </div>
+            <div class="col-md-4 tc">             
+               <img src="aimg/3x.svg" alt="">          
+            </div>        
+        </div>
+
+
+         <div class="instruccion mt-5">Observa la siguiente imagen y contesta las preguntas.</div>
+         <div class="row mt-3">
+             <div class="col-md-6 contenedor">
+                 <img src="aimg/bomberos.svg" alt="">
+             </div>
+              <div class="col-md-6 contenedor">
+                <p>1.- ¿Cuántos bomberos hay en total?</p>
+                <input> bomberos
+                 <p class="mt-3">2.- Si hubiera una columna más de 6
+                        bomberos, ¿cuántos bomberos serían
+                        en total?</p>
+                <input> bomberos
+             </div>
+         </div>
+
+
+
+
+
+
         
 
 
