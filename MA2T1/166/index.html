@@ -3,21 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Sumo hasta 100</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .cont input{
+          margin-bottom: 1rem;
+        }
+    </style>   
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Sumo hasta 100</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
+        <div class="instruccion mt-5">Completa la tabla escribiendo cada número en donde corresponde según
+su valor posicional. Después escribe la cantidad que falta para completar
+una centena. Observa el ejemplo.</div>
+        <div class="row mt-5">
+            
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Decenas</th>
+      <th scope="col">Unidades</th>
+      <th scope="col">¿Cuanto falta para completar una centena?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">35</th>
+      <td>3</td>
+      <td>5</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th scope="row">45</th>
+      <td>4</td>
+      <td><input></td>
+      <td><input></td>
+    </tr>
+    <tr>
+      <th scope="row">90</th>
+      <td><input></td>
+      <td>0</td>
+      <td><input></td>
+    </tr>
+     <tr>
+      <th scope="row">85</th>
+      <td><input></td>
+      <td><input></td>
+      <td><input></td>
+    </tr>
+     <tr>
+      <th scope="row">75</th>
+      <td>7</td>
+      <td><input></td>
+      <td><input></td>
+    </tr>
+     <tr>
+      <th scope="row">15</th>
+      <td>1</td>
+      <td><input></td>
+      <td><input></td>
+    </tr>
+  </tbody>
+</table>
            
+        </div>
+
+        <div class="instruccion mt-5">Escribe en cada recuadro el número que falta para completar una centena.</div>
+
+        <div class="row mt-3">
+            <div class="col-md-4 cont mt-3">
+                65 + <input> = 100<br>
+                35 + <input> = 100<br>
+                <input> + 60 = 100<br>
+                25 + <input> = 100<br>
+                30 + <input> = 100<br>
+                80 + <input> = 100<br>
+                45 + <input> = 100 <br>
+            </div>
+            <div class="col-md-4 cont mt-3">
+                10 + <input> = 100<br>
+                85 + <input> = 100<br>
+                <input> + 40 = 100<br>
+                <input> + 50 = 100<br>
+                95 + <input> = 100<br>
+                15 + <input> = 100<br>
+                55 + <input> = 100<br>
+              
+            </div>
+            <div class="col-md-4">
+                <img src="aimg/1x.svg">
+            </div>
+            
+            
+
         </div>
         
 

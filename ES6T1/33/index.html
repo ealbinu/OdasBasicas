@@ -3,56 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciono la información</title>
+    <title>TITULO</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        .cont{
-            margin: 0 4rem;
-        }
-        input{
-            max-width: 200px;
-        }
+
+
     </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>Selecciono la información</h1>
+        <h1>TITULO</h1>
 
-        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Relaciona las siguientes fichas con las portadas de los libros escribiendo
-el número correspondiente.</div>
+        <div class="instruccion mt-5">INSTRUCCIONES</div>
+
         <div class="row mt-3">
-            <img src="aimg/1x.svg" alt="">       
-        </div>
-        <div class="mt-5">
-            <img src="aimg/2x.svg" alt="">
-        </div>
-        <div class="row cont mt-3"> 
-            <div class="col-md-6"><input></div>
-            <div ><input></div>
+           
         </div>
 
-         <div class="mt-5">
-            <img src="aimg/3x.svg" alt="">
-        </div>
-        <div class="row cont mt-3"> 
-            <div class="col-md-6"><input></div>
-            <div ><input></div>
-        </div>
-        
 
 
-        
-        
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
+    
+    
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
