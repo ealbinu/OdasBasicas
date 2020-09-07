@@ -1,115 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultamos la biblioteca escolar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
-    <link rel="stylesheet" href="../../assets/assets.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultamos la biblioteca escolar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+  <link rel="stylesheet" href="../../assets/assets.css">
 
-    <style type="text/css">
-        .im img{
-            max-width: 500px;
-        }
+  <style type="text/css">
+    h2 {
+      color: black;
 
-        h2{
-            color: black;
+    }
 
-        }
-        hr{
-            max-width: 100px;
+    hr {
+      max-width: 100px;
 
-        }
-    </style>
+    }
+
+    .cualfue {
+	background: #DDF0EE;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #00ABB2;
+}
+table {
+  border: none;
+	background: #DDF0EE;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+table tr th {
+	background: #00ABB2;
+  color: #fff;
+  border: none;
+}
+table tr td,
+table tr th {
+	border-radius: 10px;
+  font-size: 1.1rem;
+  border: none;
+}
+table tr td strong,
+table tr th strong {
+	color: #00ABB2;
+}
+table tr .inputbox {
+	max-width: 140px;
+}
+table tr .inputbox input {
+	padding: 6px;
+}
+
+.cualfue {
+	font-size: 1.2rem;
+}
+.cualfue .inputbox input {
+	font-size: 1.2rem;
+}
+
+
+.tally {
+	width: 2px;
+	height: 20px;
+	background: #000;
+	margin: 1px 2px;
+}
+.tally:nth-child(5n) {
+	transform: rotate(290deg);
+	height: 30px;
+	position: relative;
+	left: -15px;
+	top: 5px;
+	margin-right: 1px;
+	margin-top: -10px;
+}
+
+  </style>
 
 
 </head>
+
 <body>
-    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>Consultamos la biblioteca escolar</h1>
+  <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+    <h1>Consultamos la biblioteca escolar</h1>
 
-        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Revisa los títulos de los siguientes libros y observa la cantidad de niños que
-los leyeron en este trimestre. Después contesta la pregunta.</div>
-        <div class="row mt-3">
+    <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
+    <div class="instruccion mt-5">Revisa los títulos de los siguientes libros y observa la cantidad de niños que los leyeron en este trimestre. Después contesta la pregunta.</div>
+    <div class="row mt-3 justify-content-center align-items-center">
 
-            <div class="col-md-6">
-                <table class="table table-bordered mt-5">
-                   <thead>
-    <tr>
-      <th >#</th>
-      <th >Libros</th>
-      <th >Conteo</th>
-    </tr>
-  </thead>
-   <tbody>
-    <tr>
-      <th >1</th>
-      <td>Cuentos de Mamá Margarita</td>
-      <td>IIIII III</td>
-     
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Los burritos</td>
-      <td>II</td>
-     
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>María y su abuela</td>
-      <td>IIIII I</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>El niño vampiro</td>
-      <td>IIIII IIIII</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Los tres cerditos y el lobo</td>
-      <td>IIIII II</td>
-    </tr>
-  </tbody>
+      <div class="col-md-6">
+        <table class="table table-bordered mt-5">
+          <thead>
+            <tr>
+              <th>Libros</th>
+              <th>Conteo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1.</strong>  Cuentos de Mamá Margarita</td>
+              <td>
+                <div class="row  w-100"><div class="tally" v-for="(i, index) in 8"></div></div>
+              </td>
 
+            </tr>
+            <tr>
+              <td><strong>2.</strong> Los burritos</td>
+              <td>
+                <div class="row  w-100"><div class="tally" v-for="(i, index) in 2"></div></div>
+              </td>
 
-                    
-                </table>
-                <p>¿Cuál fue el libro que más se leyó?</p><span><input></span>
-            </div>
+            </tr>
+            <tr>
+              <td><strong>3.</strong> María y su abuela</td>
+              <td>
+                <div class="row  w-100"><div class="tally" v-for="(i, index) in 6"></div></div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>4.</strong> El niño vampiro</td>
+              <td>
+                <div class="row  w-100"><div class="tally" v-for="(i, index) in 12"></div></div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>5.</strong> Los tres cerditos y el lobo</td>
+              <td>
+                <div class="row w-100"><div class="tally" v-for="(i, index) in 8"></div></div>
+              </td>
+            </tr>
+          </tbody>
 
-            <div class="col-md-6 col-6 im">
-                <img src="aimg/155.svg" alt="">
-            </div>
-           
-        </div>
+        </table>
+      </div>
 
-        <div>
-           
-        </div>
-        
+      <div class="col-md-6 text-center">
+        <img src="aimg/155.svg" class="img-fluid w-100">
+      </div>
 
 
-        
-        
-
-        <!-- ENDING -->
-        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
-        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
-    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
-    <script src="../../assets/modulos/selectable.js"></script>
-    <script src="../../assets/modulos/selectableoptions.js"></script>
-    <script src="../../assets/modulos/check.js"></script>
-    <script src="../../assets/modulos/inputbox.js"></script>
-    <script src="../../assets/modulos/choose.js"></script>
-    <script src="../../assets/modulos/finalize.js"></script>
-    <script src="../../assets/assets.js"></script>
-    <script></script>
+
+    <div class="row mt-3 justify-content-center align-items-center cualfue">
+      <div class="col-6">¿Cuál fue el libro que más se leyó?</div>
+      <div class="col"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="El niño vampiro" type="text" placeh="-"></inputbox></div>
+    </div>
+
+
+
+
+
+
+    <!-- ENDING -->
+    <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+  </div>
+
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+  <script src="../../assets/modulos/selectable.js"></script>
+  <script src="../../assets/modulos/selectableoptions.js"></script>
+  <script src="../../assets/modulos/check.js"></script>
+  <script src="../../assets/modulos/inputbox.js"></script>
+  <script src="../../assets/modulos/choose.js"></script>
+  <script src="../../assets/modulos/finalize.js"></script>
+  <script src="../../assets/assets.js"></script>
+  <script></script>
 </body>
+
 </html>
