@@ -12,23 +12,27 @@
 
     <style type="text/css">
         
-        .contenedor{
-              font-size: 1.2rem;
-            background: #f5f5f5;
-            border-radius: 10px;
-            padding: 10px;
-            border:2px solid #fff;
-            text-align: center;
-                   }
+        .flexi {
+	display: flex;
+	flex-direction: column;
+}
+.box {
+	flex-grow: 1;
+	background: #f5f5f5;
+	font-size: 1.2rem;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+}
+.box strong {
+	font-size: 3rem;
+}
+.box .inputbox input {
+	font-size: 1.4rem;
+	padding: 6px;
+}
 
-        .head{
-             display: flex;
-            justify-content: space-between;
 
-        }
-        img{
-            width: 100%;
-        }
     </style>
 
 </head>
@@ -37,63 +41,40 @@
         <h1>Cuido mi cuerpo</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Relaciona las piezas que se complementan y dibújalas del mismo color. Después lee con
-atención la información y coméntala con tus compañeros.</div>
-        <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>Son factores internos que pueden alterar las defensas.</p>               
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>La defensa del cuerpo ante organismos infecciosos y otros invasores.</p>               
-            </div>         
-        </div>
-          <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>Son factores externos que pueden alterar las defensas.</p>               
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>Una buena alimentación y ejercicio físico.</p>               
-            </div>         
-        </div>
-         <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>La alimentación es un factor muy importante para el sistema inmunológico porque:</p>             
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>Las heridas tardan en cicatrizar, y existen dolores musculares sin haber hecho ejercicio.</p>       
-            </div>         
-        </div>
-         <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>Se debe sospechar que las defensas están bajas cuando:</p>             
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>Si es inadecuada o insu!ciente se produce una caída de las defensas; si es equilibrada, las tiene en forma y las fortalece.</p>       
-            </div>         
-        </div>
-        <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>Son estrategias para aumentar la inmunidad del cuerpo de manera natural.</p>             
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>Una mala alimentación, el humo del tabaco, la cafeína, la contaminación ambiental, el estrés.</p>     
-            </div>         
-        </div>
-        <div class="row mt-3 head">
-            <div class="col-md-5 contenedor">
-                <p>El sistema inmunológico es:</p>             
-            </div>
-             <div class="col-md-5 contenedor">
-                <p>Enfermedades autoinmunes, cambios estacionales, ser una persona de la tercera edad.</p>     
-            </div>         
-        </div>
-        <div class="col-md-12 mt-5">
-            <img src="aimg/1x.svg" alt="">
-        </div>
-
-
+        <div class="instruccion mt-5">Relaciona las piezas que se complementan.</div>
         
-        
+        <div class="row mt-3">
+            <div class="col-md-6 flexi">
+                <template v-for="(i, index) in [
+                    'Son factores internos que pueden alterar las defensas.',
+                    'Son factores externos que pueden alterar las defensas.',
+                    'La alimentación es un factor muy importante para el sistema inmunológico porque:',
+                    'Se debe sospechar que las defensas están bajas cuando:',
+                    'Son estrategias para aumentar la inmunidad del cuerpo de manera natural.',
+                    'El sistema inmunológico es:',
+                ]">
+                    <div class="box row align-items-center">
+                        <div class="col-3 text-center"><strong class="clear">{{index+1}}</strong></div>
+                        <div class="txt col">{{i}}</div>
+                    </div>
+                </template>
+            </div>
+            <div class="col-md-6 flexi">
+                <template v-for="(i, index) in [
+                    {v:6, t:'La defensa del cuerpo ante organismos infecciosos y otros invasores.'},
+                    {v:5, t:'Una buena alimentación y ejercicio físico.'},
+                    {v:4, t:'Las heridas tardan en cicatrizar, y existen dolores musculares sin haber hecho ejercicio.'},
+                    {v:3, t:'Si es inadecuada o insu!ciente se produce una caída de las defensas; si es equilibrada, las tiene en forma y las fortalece.'},
+                    {v:2, t:'Una mala alimentación, el humo del tabaco, la cafeína, la contaminación ambiental, el estrés.'},
+                    {v:1, t:'Enfermedades autoinmunes, cambios estacionales, ser una persona de la tercera edad.'},
+                ]">
+                    <div class="box row align-items-center">
+                        <div class="col-3 text-center"><inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox></div>
+                        <div class="txt col">{{i.t}}</div>
+                    </div>
+                </template>
+            </div>
+        </div>
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
