@@ -1,125 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuento los elementos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
 
     <style type="text/css">
+        .img {
+            max-width: 100%;
+        }
 
-       .img{
-max-width:100%;
-}
-
-        .contenedor{
-              font-size: 1.2rem;
+        .contenedor {
+            font-size: 1.2rem;
             background: #f5f5f5;
             border-radius: 10px;
             padding: 10px;
-            border:2px solid #fff;
+            border: 2px solid #fff;
             text-align: center;
 
 
         }
 
-        .contenedor .in{
+        .contenedor .in {
             max-width: 300px;
-            height:100px;
+            height: 100px;
         }
 
-        label{
+        label {
             display: inline-block;
         }
 
-        input{
+        input {
             max-width: 80px;
         }
 
-        .t{
+        .t {
             text-align: center;
         }
+        .bomberos .inputbox {
+	color: #BC1B2A;
+}
+.bomberos .inputbox input {
+	font-size: 1.4rem;
+	border-color: #BC1B2A;
+	margin-right: 10px;
+}
+
     </style>
 
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
         <h1>Cuento los elementos</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Estos muros han perdido algunos de sus ladrillos con el paso del tiempo.
-Escribe en los recuadros cuántos ladrillos tenía cada muro originalmente
-y las operaciones que hiciste para saberlo.</div>
+        <div class="instruccion mt-5">Estos muros han perdido algunos de sus ladrillos con el paso del tiempo. Escribe en los recuadros cuántos ladrillos tenía cada muro originalmente.</div>
         <div class="row mt-5">
-            <div class="col-md-4 contenedor">             
-                <label>Tenia</label>
-                <input>
-                <p>ladrillos porque</p>
-                <input class="in">            
+            <div class="col-md-4 contenedor">
+                <div>Tenía
+                    <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="28" type="number" placeh="#">
+                    </inputbox>
+                    ladrillos</div>
+                <img src="aimg/1x.svg" class="img-fluid ">
             </div>
-             <div class="col-md-4 contenedor">             
-                <label>Tenia</label>
-                <input>
-                <p>ladrillos porque</p>
-                <input class="in">
+            <div class="col-md-4 contenedor">
+                <div>Tenía
+                    <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="36" type="number" placeh="#">
+                    </inputbox>
+                    ladrillos</div>
+                <img src="aimg/2x.svg" class="img-fluid ">
             </div>
-            <div class="col-md-4 contenedor">             
-                <label>Tenia</label>
-                <input>
-                <p>ladrillos porque</p>
-                <input class="in">
+            <div class="col-md-4 contenedor">
+                <div>Tenía
+                    <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="24" type="number" placeh="#">
+                    </inputbox>
+                    ladrillos</div>
+                <img src="aimg/3x.svg" class="img-fluid ">
             </div>
-           
-        </div>
 
-         <div class="row mt-1 t">
-            <div class="col-md-4">             
-               <img src="aimg/1x.svg" alt="">          
-            </div>
-             <div class="col-md-4 tc">             
-               <img src="aimg/2x.svg" alt="">          
-            </div>
-            <div class="col-md-4 tc">             
-               <img src="aimg/3x.svg" alt="">          
-            </div>        
         </div>
 
 
-         <div class="instruccion mt-5">Observa la siguiente imagen y contesta las preguntas.</div>
-         <div class="row mt-3">
-             <div class="col-md-6 contenedor">
-                 <img src="aimg/bomberos.svg" alt="">
-             </div>
-              <div class="col-md-6 contenedor">
-                <p>1.- ¿Cuántos bomberos hay en total?</p>
-                <input> bomberos
-                 <p class="mt-3">2.- Si hubiera una columna más de 6
-                        bomberos, ¿cuántos bomberos serían
-                        en total?</p>
-                <input> bomberos
-             </div>
-         </div>
+
+        <div class="instruccion mt-5">Observa la siguiente imagen y contesta las preguntas.</div>
+        <div class="row mt-3 bomberos">
+            <div class="col-md-6 contenedor">
+                <img src="aimg/bomberos.svg" alt="">
+            </div>
+            <div class="col-md-6 contenedor">
+                <p><strong class="accent">1.</strong> ¿Cuántos bomberos hay en total?</p>
+                <div>
+                    <inputbox v-model="r[3]" ref="q3" @isright="right++" :answer="48" type="number" placeh="#"><template
+                            v-slot:after> bomberos</template></inputbox>
+                </div>
+                <p class="mt-3"><strong class="accent">2.</strong> Si hubiera una columna más de 6
+                    bomberos, ¿cuántos bomberos serían
+                    en total?</p>
+                <div>
+                    <inputbox v-model="r[4]" ref="q4" @isright="right++" :answer="54" type="number" placeh="#"><template
+                            v-slot:after> bomberos</template></inputbox>
+                </div>
+            </div>
+        </div>
 
 
 
 
 
 
-        
 
 
-        
-        
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -131,4 +138,5 @@ y las operaciones que hiciste para saberlo.</div>
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
