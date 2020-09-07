@@ -10,21 +10,28 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style type="text/css">
-        img{
-            width: 100%;
-        }
+.reino {
+	text-align: center;
+	font-size: 2rem;
+	color: #877745;
+	background: #f5f5f5;
+	border: 2px solid #fff;
+	border-radius: 10px;
+}
+.imgfi {
+	margin-bottom: 20px;
+}
+.imgfi .inputbox {
+	margin-top: 10px;
+}
+.imgfi .inputbox input {
+	background: #E8E1D0;
+	border-color: #887544;
+	color: #887544;
+	font-size: 1.1rem;
+	padding: 6px 2px;
+}
 
-        .contenedor{
-              font-size: 1.2rem;
-            background: #f5f5f5;
-            border-radius: 10px;
-            padding: 10px;
-            border:2px solid #fff;
-            text-align: center;
-            margin: 1rem;
-
-
-        }
     </style>
 </head>
 <body>
@@ -32,25 +39,19 @@
         <h1>Identifico la biodiversidad</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Relaciona con una línea cada reino con la imagen que le corresponde. Observa el ejemplo.</div>
-        <div class="row mt-5">
-            <img src="aimg/CN5T1-185.svg" alt="">         
+        <div class="instruccion mt-5">Relaciona cada reino con la imagen que le corresponde.</div>
+        
+        <div class="row mt-5 justify-content-center align-items-center">
+            <div class="col-md col-6 reino" v-for="(i, index) in ['Protista', 'Monera', 'Fungi', 'Animal', 'Vegetal']">
+                <strong>{{i}}</strong>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-2 contenedor">
-                <p>Protista</p>
-            </div>
-            <div class="col-md-2 contenedor">
-                <p>Monera</p>
-            </div>
-            <div class="col-md-2 contenedor">
-                <p>Fungi</p>
-            </div>
-            <div class="col-md-2 contenedor">
-                <p>Animal</p>
-            </div>
-            <div class="col-md-2 contenedor">
-                <p>Vegetal</p>
+        
+        
+        <div class="row mt-5 justify-content-center align-items-center">
+            <div class="col-md col-6 imgfi" v-for="(i, index) in ['Fungi', 'Animal', 'Vegetal', 'Protista', 'Monera']">
+                <img :src="'aimg/a'+(index+1)+'.png'" class="img-fluid">
+                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
             </div>
         </div>
         
