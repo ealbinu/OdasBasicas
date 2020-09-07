@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>No corro, no grito, no empujo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .kar {
+            position: relative;
+        }
+        .selectable {
+            position: absolute;
+            width: 26%;
+            height: 100%;
+            top: 0;
+        }
+        .selectable:nth-child(2) {
+            left: 28%;
+        }
+        .selectable:nth-child(3) {
+            left: 67%;
+        }
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
-
+        <h1>No corro, no grito, no empujo</h1>
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Encierra la ilustración que indica cómo debe ser la participación en el proyecto.
         </div>
-        
+        <div class="row mt-3">
+            <div class="col h5"><p>La actitud y el desempeño que se debe mostrar en un proyecto es:</p></div>
+        </div>
 
-
-        
-        
+        <div class="row mt-3">
+            <div class=" col-12 kar">
+                <img src="aimg/1x.svg" class="img-fluid w-100">
+                <div class="opts">
+                    <template v-for="(i, index) in [true, true, true]">
+                        <selectable :isok="true" v-model="r[index]" :ref="'q'+index" @isright="right++"></selectable>
+                    </template>
+                </div>
+            </div>
+        </div>
 
         <!-- ENDING -->
+
+
+
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -41,4 +70,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
