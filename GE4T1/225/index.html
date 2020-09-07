@@ -1,91 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubico a México</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style type="text/css">
-        
-        .contenedor{
-              font-size: 1.2rem;
-            background: #f5f5f5;
-            border-radius: 10px;
+        .flexi,
+        .flexi2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flexi2 input {
+            border: 2px solid var(--main);
+        }
+
+        .box {
+            flex-grow: 1;
+            background: #E7F1D8;
+            font-size: 1.2rem;
             padding: 10px;
-            border:2px solid #fff;
-            text-align: center;
+            border-radius: 10px;
+            border: 2px solid #fff;
         }
-        input{
-            max-width: 50px;
-            height: 50px;
+
+        .box strong {
+            font-size: 3rem;
         }
-        .ct{
-            text-align:center;
+
+        .box .inputbox input {
+            font-size: 1.4rem;
+            padding: 6px;
         }
     </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
         <h1>Ubico a México</h1>
-
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Relaciona las columnas escribiendo en cada círculo la letra correspondiente.</div>
+        <div class="instruccion mt-5">Relaciona las columnas escribiendo la letra correspondiente.</div>
         <div class="row mt-3">
-            <div class="col-md-6 contenedor">
-                <p>A. Es el continente en el que se localiza México.</p>
-            </div>
-            <div class="col-md-6 ">
-                <input><span> Pacífico</span>
-            </div>           
-        </div>
-         <div class="row mt-3">
-            <div class="col-md-6 contenedor">
-                <p>B. Son los países con los que colinda México en su frontera sur.</p>
-            </div>
-            <div class="col-md-6">
-                <input><span> Americano</span>
-            </div>           
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-6 contenedor">
-                <p>C. Son los ríos que forman una frontera natural entre México y Estados Unidos de América.</p>
-            </div>
-            <div class="col-md-6 ">
-                <input><span> Estados Unidos de América</span>
-            </div>           
-        </div>
-         <div class="row mt-3">
-            <div class="col-md-6 contenedor">
-                <p>D. Es el océano que se encuentra al oeste de México.</p>
-            </div>
-            <div class="col-md-6 ">
-                <input><span> Bravo y Colorado</span>
-            </div>           
-        </div>
-         <div class="row mt-3">
-            <div class="col-md-6 contenedor">
-                <p>E. Es el país con el que México colinda al norte.</p>
-            </div>
-            <div class="col-md-6 ">
-                <input><span> Guatemala y Belice</span>
-            </div>           
-        </div>
-
-        
-
-
-        
-        
-
-        <!-- ENDING -->
+            <div class="col-md-7 flexi"> <template
+                    v-for="(i, index) in [ {v: 'A', t: 'Es el continente en el que se localiza México.' }, {v:'B', t:'Son los países con los que colinda México en su frontera sur.'}, {v:'C', t:'Son los ríos que forman una frontera natural entre México y Estados Unidos de América.'}, {v:'D', t:'Es el océano que se encuentra al oeste de México.'}, {v:'E', t:'Es el país con el que México colinda al norte.'}, ]">
+                    <div class="box row align-items-center">
+                        <div class="col-3 text-center"><strong class="main">{{i.v}}</strong></div>
+                        <div class="txt col">{{i.t}}</div>
+                    </div>
+                </template> </div>
+            <div class="col-md-5 flexi2"> <template
+                    v-for="(i, index) in [ {v:'D', t:'Pacífico.'}, {v:'A', t:'Americano.'}, {v:'E', t:'Estados Unidos de América.'}, {v:'C', t:'Bravo y Colorado.'}, {v:'B', t:'Guatemala y Belice.'}, ]">
+                    <div class="box row align-items-center">
+                        <div class="col-3 text-center">
+                            <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.v" type="text"
+                                placeh="-"></inputbox>
+                        </div>
+                        <div class="txt col">{{i.t}}</div>
+                    </div>
+                </template> </div>
+        </div> <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -97,4 +80,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
