@@ -11,17 +11,22 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style type="text/css">
-        .contenedor{
-            display: flex;
-            justify-content: space-between;
+        .options div{margin: 10px 20px;} 
+       span.accent{
+            color:var(--main);
+            display: inline-block;
+            padding: 0 10px;
+            margin: 0 4px;
+            background: #f5f5f5;
+            border-radius: 6px;
         }
 
-        input[type=radio] {
-    
-    width: 100%;
-    height: 2em;
-}
-
+        .options div img{
+            width: 100%;
+        }
+        .label span img{
+            max-width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -29,148 +34,30 @@
         <h1>Confirmo lo que aprendí</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-          <div class="instruccion mt-5">Marca así <i class="fa fa-circle"></i> la respuesta correcta.</div>
-      
-        <p class="mt-5">1. Es una narración sobre sucesos o hechos reales relacionados con la historia.</p>
-        <div class="contenedor">               
-                <div>
-                <input type="radio"> Leyenda.                
-                   
-                </div>
-                <div>
-                     <input type="radio"> Autobiografía.
-                </div>
-                <div>
-                    <input type="radio"> Relato histórico.
-                </div>         
+          <div class="instruccion mt-5">Marca la respuesta correcta.</div>
+          <div class="row mt-3">
+            <div class="col-sm-12">
+
+                <choose v-for="(i, index) in [
+                    { p: 'Es una narración sobre sucesos o hechos reales relacionados con la historia.', ops: ['Leyenda.', 'Autobiografía.', 'Relato histórico.'], a: 2 },
+                    { p: '¿Cómo se le llama a la oración que tiene la idea principal de un párrafo?', ops: ['Oración tópico.', 'Oración compuesta.', 'Oración simple.'], a: 0 },
+                    { p: 'Son las partes que componen un relato histórico.', ops: ['Título, ingredientes y procedimiento.', 'Inicio, desarrollo y desenlace.', 'Introducción, nudo y conclusión.'], a: 1 },
+                    { p: 'Son dichos cortos que intentan expresar una enseñanza.', ops: ['Adivinanzas.', 'Refranes.', 'Fábulas.'], a: 1 },
+                    { p: '¿Cómo se le nombra a la enseñanza que se transmite por medio de una fábula?', ops: ['Moraleja.', 'Chiste.', 'Refrán.'], a: 0 },
+                    { p: 'Es una característica de las fábulas.', ops: ['Sus personajes son animales u objetos ficticios.', 'Tienen un acertijo para adivinar.', 'Se puede dividir en dos partes.'], a: 2 },
+                    { p: 'Sirven para promover productos o servicios.', ops: ['Anuncios publicitarios.', 'Poemas.', 'Cuentos.'], a: 0 },
+                    { p: '¿Cómo debe ser un eslogan?', ops: ['Largo y con muchas palabras.', 'Corto, creativo y llamativo.', 'Largo y creativo.'], a: 1 },
+                    { p: 'Son una herramienta para buscar información en un texto.', ops: ['Fichas bibliográficas.', 'Ilustraciones.', 'Palabras clave.'], a: 2 },
+                    { p: 'Es la página en la que se encuentran todos los títulos y subtítulos de un libro.', ops: ['El índice.', 'La antología.', 'La ficha bibliográfica.'], a: 0 },
+
+                ]"
+                    :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p"
+                    :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+                
+            </div>
         </div>
 
-        <p class="mt-5">2. ¿Cómo se le llama a la oración que tiene la idea principal de un párrafo?</p>
-        <div class="contenedor">               
-                <div>
-                <input type="radio"> Oración tópico.               
-                   
-                </div>
-                <div>
-                     <input type="radio"> Oración compuesta.
-                </div>
-                <div>
-                    <input type="radio"> Oración simple.
-                </div>         
-        </div>
 
-         <p class="mt-5">3. Son las partes que componen un relato histórico.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Título, ingredientes y procedimiento.             
-                   
-                </div>
-                <div>
-                     <input type="radio"> Inicio, desarrollo y desenlace.
-                </div>
-                <div>
-                    <input type="radio"> Introducción, nudo y conclusión.
-                </div>         
-        </div>
-
-         <p class="mt-5">4. Son dichos cortos que intentan expresar una enseñanza.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Adivinanzas.            
-                   
-                </div>
-                <div>
-                     <input type="radio"> Refranes.
-                </div>
-                <div>
-                    <input type="radio"> Fábulas.Refranes.
-                </div>         
-        </div>
-
-         <p class="mt-5">5. ¿Cómo se le nombra a la enseñanza que se transmite por medio de una fábula?</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Moraleja.            
-                   
-                </div>
-                <div>
-                     <input type="radio"> Chiste.
-                </div>
-                <div>
-                    <input type="radio"> Refrán.
-                </div>         
-        </div>
-
-         <p class="mt-5">6. Es una característica de las fábulas.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Sus personajes son animales u objetos !cticios.            
-                   
-                </div>
-                <div>
-                     <input type="radio"> Tienen un acertijo para adivinar.
-                </div>
-                <div>
-                    <input type="radio"> Se puede dividir en dos partes.
-                </div>         
-        </div>
-
-          <p class="mt-5">7. Sirven para promover productos o servicios.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Anuncios publicitarios.            
-                   
-                </div>
-                <div>
-                     <input type="radio"> Poemas.
-                </div>
-                <div>
-                    <input type="radio"> Cuentos.
-                </div>         
-        </div>
-
-         <p class="mt-5">8. ¿Cómo debe ser un eslogan?</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Largo y con muchas palabras.            
-                   
-                </div>
-                <div>
-                     <input type="radio"> Corto, creativo y llamativo.
-                </div>
-                <div>
-                    <input type="radio"> Largo y creativo.
-                </div>         
-        </div>
-
-        <p class="mt-5">9. Son una herramienta para buscar información en un texto.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> Fichas bibliográ!cas.          
-                   
-                </div>
-                <div>
-                     <input type="radio"> CIlustraciones.
-                </div>
-                <div>
-                    <input type="radio"> Palabras clave.
-                </div>         
-        </div>
-
-        <p class="mt-5">10. Es la página en la que se encuentran todos los títulos y subtítulos de un libro.</p>
-        <div class="mt-3 contenedor">               
-                <div>
-                <input type="radio"> El índice.         
-                   
-                </div>
-                <div>
-                     <input type="radio"> La antología.
-                </div>
-                <div>
-                    <input type="radio"> La ficha bibliográ!ca.
-                </div>         
-        </div>
-        
 
 
         
