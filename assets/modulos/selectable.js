@@ -56,3 +56,7 @@ Vue.component('selectable', {
         </div>
     `
 })
+
+/*
+<selectable :isok="true" v-model="r[index]" :ref="'q'+index" @isright="right++"></selectable>
+*/

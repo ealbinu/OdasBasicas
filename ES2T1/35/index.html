@@ -10,12 +10,7 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        .cont{
-            margin: 0 4rem;
-        }
-        input{
-            max-width: 200px;
-        }
+        .booky{ max-width: 180px; }
     </style>
 </head>
 <body>
@@ -23,25 +18,20 @@
         <h1>Selecciono la información</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Relaciona las siguientes fichas con las portadas de los libros escribiendo
-el número correspondiente.</div>
+        <div class="instruccion mt-5">Relaciona las siguientes fichas con las portadas de los libros escribiendo el número correspondiente.</div>
+        
         <div class="row mt-3">
-            <img src="aimg/1x.svg" alt="">       
+            <div class="col-6"><img src="aimg/t1.svg" class="img-fluid"></div>
+            <div class="col-6"><img src="aimg/t2.svg" class="img-fluid"></div>
+            <div class="col-6"><img src="aimg/t3.svg" class="img-fluid"></div>
+            <div class="col-6"><img src="aimg/t4.svg" class="img-fluid"></div>
         </div>
-        <div class="mt-5">
-            <img src="aimg/2x.svg" alt="">
-        </div>
-        <div class="row cont mt-3"> 
-            <div class="col-md-6"><input></div>
-            <div ><input></div>
-        </div>
-
-         <div class="mt-5">
-            <img src="aimg/3x.svg" alt="">
-        </div>
-        <div class="row cont mt-3"> 
-            <div class="col-md-6"><input></div>
-            <div ><input></div>
+        
+        <div class="row mt-3 text-center">
+            <div class="col-6 mb-5" v-for="(i, index) in 4">
+                <img :src="'aimg/a'+(i)+'.svg'" class="img-fluid booky">
+                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="number" placeh="#" init></inputbox>
+            </div>
         </div>
         
 

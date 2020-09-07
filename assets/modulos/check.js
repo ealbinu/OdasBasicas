@@ -51,3 +51,8 @@ Vue.component('check', {
         </div>
     `
 })
+
+/*
+ <check v-model="r[4]" ref="q4" num="1." @isright="right++" :answer="false" text="Figurillas de arcilla" />
+ <check v-model="r[index]" :ref="'q'+index"  @isright="right++" :answer="i.val" :text="i.text" />
+*/

@@ -10,10 +10,19 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style type="text/css">
-        input{
-            max-width: 140px;
+.box {
+	background: #C0AB7C;
+}
+.box.b1 .inputbox input {
+	border: 16px solid #75C430;
+}
+.box.b2 .inputbox input {
+	border: 16px solid #C10F2D;
+}
+.box.b3 .inputbox input {
+	border: 16px solid #59A2A2;
+}
 
-        }
     </style>
 </head>
 <body>
@@ -21,22 +30,24 @@
         <h1>Juego con las palabras</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Cambia sólo las letras azules de cada anuncio por las que están en medio
-del periódico mural y escribe nuevas palabras. Observa el ejemplo.</div>
-        <div class="row mt-3">
-            <img src="aimg/1x.svg" alt="">
+        <div class="instruccion mt-5">Cambia sólo las letras azules de cada anuncio por las que están en medio del periódico mural y escribe nuevas palabras. Observa el ejemplo.</div>
+        <div class="row justify-content-center align-items-center mt-3">
+            <div class="col-md-12"><img src="aimg/1x.svg" class="img-fluid w-100"></div>
         </div>
 
-        <div class="mt-5">
-            <div><img src="aimg/2x.svg" alt=""><input class="ml-5"></div>
+        <div class="row justify-content-center align-items-center box b1">
+            <div class="col-md-8"><img src="aimg/2x.svg" class="img-fluid w-100"></div>
+            <div class="col"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="patones" type="text" placeh="-"></inputbox></div>
         </div>
 
-         <div class="mt-5">
-            <div><img src="aimg/3x.svg" alt=""><input class="ml-5"></div>
+         <div class="row  justify-content-center align-items-center box b2">
+            <div class="col-md-8"><img src="aimg/3x.svg" class="img-fluid w-100"></div>
+            <div class="col"><inputbox v-model="r[1]" ref="q1" @isright="right++" answer="masa" type="text" placeh="-"></inputbox></div>
         </div>
 
-         <div class="mt-5">
-            <div><img src="aimg/4x.svg" alt=""><input class="ml-5"></div>
+         <div class="row  justify-content-center align-items-center box b3">
+            <div class="col-md-8"><img src="aimg/4x.svg" class="img-fluid w-100"></div>
+            <div class="col"><inputbox v-model="r[2]" ref="q2" @isright="right++" answer="sopa" type="text" placeh="-"></inputbox></div>
         </div>
 
 
