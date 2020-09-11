@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jugamos con las palabras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css" />
+    <link rel="stylesheet" href="../../assets/assets.css" />
+    <style>
+        .thetext {
+            font-size: 1.2rem;
+            letter-spacing: 0.6px;
+        }
+
+        .selectable {
+            min-width: 16px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .selectable div {
+            display: inline;
+        }
+
+        .selectable .circledactive {
+            width: 100%;
+            border-radius: 6px;
+            border: 2px solid var(--main);
+        }
+
+        .selectable .isright,
+        .selectable .iswrong {
+            width: 20px;
+            height: 20px;
+        }
+        .box {
+	background: #FEECD5;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+	margin: 0;
+}
+.box .inputbox {
+	width: 40%;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Jugamos con las palabras</h1>
+        <h2>Signos de interrogación y admiración</h2>
+        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
+        <div class="instruccion mt-5">
+            Selecciona en el siguiente texto los signos de interrogación, los de
+            admiración y los guiones.
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-8 thetext">
+                Sandy y Juan son hermanitos. A Juan le gustaba mucho el dibujo de un
+                dragón y lo colgó en la pared de su sala, pero a Sandy no le pareció
+                buena idea y lo trasladó a otro lugar. Después de dos o tres veces que
+                sucedió lo mismo, se pusieron de mal humor y comenzaron a discutir, en
+                ese momento llegó su mamá y preguntó: <br />
+                <selectable :isok="true" v-model="r[0]" :ref="'q0'" @isright="right++">-</selectable>
+                <selectable :isok="true" v-model="r[1]" :ref="'q1'" @isright="right++">¿</selectable>Por qué discuten
+                <selectable :isok="true" v-model="r[2]" :ref="'q2'" @isright="right++">?</selectable>
+                <br />
+                Inmediatamente Juan señaló el dibujo y le dijo: <br />
+                <selectable :isok="true" v-model="r[4]" :ref="'q4'" @isright="right++">-</selectable>
+                <selectable :isok="true" v-model="r[5]" :ref="'q5'" @isright="right++">¡</selectable>Yo lo coloco y ella
+                lo quita<selectable :isok="true" v-model="r[6]" :ref="'q6'" @isright="right++">!</selectable>
+                <br />
+                Y su mamá le respondió: <br />
+                <selectable :isok="true" v-model="r[7]" :ref="'q7'" @isright="right++">-</selectable>Así es:
+                <selectable :isok="true" v-model="r[8]" :ref="'q8'" @isright="right++">¡</selectable>tú estás loco, loco
+                <selectable :isok="true" v-model="r[9]" :ref="'q9'" @isright="right++">!</selectable>, y ella,
+                <selectable :isok="true" v-model="r[10]" :ref="'q10'" @isright="right++">¡</selectable>totalmente
+                loquita<selectable :isok="true" v-model="r[11]" :ref="'q11'" @isright="right++">!</selectable>
+            </div>
+            <div class="col-md">
+                <img src="aimg/a1.svg" alt="" class="img-fluid" />
+            </div>
+        </div>
+        <div class="instruccion mt-5">
+            Lee los siguientes textos y escribe los signos correspondientes.
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6 align-items-center box row">
+                <div class="col-6">
+                    Son los signos que se utilizan para enunciados interrogativos.
+                </div>
+                <div class="col-6 row">
+                    <inputbox v-model="r[12]" ref="q12" @isright="right++" answer="¿" type="text" placeh="-"></inputbox>
+                    <inputbox v-model="r[13]" ref="q13" @isright="right++" answer="?" type="text" placeh="-"></inputbox>
+                </div>
+            </div>
+            <div class="col-md-6 align-items-center box row">
+                <div class="col-6">
+                    Estos signos se utilizan para expresar sorpresa, alegría, deseo, mandato, etcétera.
+                </div>
+                <div class="col-6 row">
+                    <inputbox v-model="r[14]" ref="q14" @isright="right++" answer="¡" type="text" placeh="-"></inputbox>
+                    <inputbox v-model="r[15]" ref="q15" @isright="right++" answer="!" type="text" placeh="-"></inputbox>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+
+</html>
