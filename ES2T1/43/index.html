@@ -1,35 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Leo un instructivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .inst {
+            background: #EFF5E3;
+            padding: 20px 0;
+            border-radius: 10px;
+        }
+        .step {
+            padding: 10px 0;
+        }
+        .step .inputbox strong {
+            display: inline-block;
+            width: 20%;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .step .inputbox input {
+            padding: 4px;
+            width: 20%;
+            font-size: 2rem;
+        }
+        .step .inputbox span {
+            display: inline-block;
+            width: 70%;
+            font-size: 0.9rem;
+            padding: 5px;
+        }
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Leo un instructivo</h1>
+        <h2>Con la música por dentro</h2>
 
-        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
         <div class="row mt-3">
-           
+            <div class="col"><img src="aimg/tecuento.svg" class="w-100"></div>
         </div>
-        
+        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
+        <div class="instruccion mt-5">Lee el siguiente instructivo.Después escribe los números que faltan en los
+            recuadros para ordenar las instrucciones correctamente.</div>
+        <div class="row mt-3 inst">
+            <div class="col-12 text-center  mb-4">
+                <strong class="main h4">Portarretratos de palitos de paleta</strong>
+            </div>
+            <div class="col-md-8">
+                <p><strong class="accent">Material:</strong> 20 palitos de paleta, una foto o postal y pegamento blanco.</p>
+                <p><strong class="accent">Procedimiento:</strong></p>
+                <div class="step">
+                    <div class="inputbox"><strong class="accent">1.</strong> <span>Selecciona una foto o postal que te guste.</span></div>
+                </div>
+                <div class="step">
+                    <div class="inputbox"><strong class="accent">2.</strong> <span>Alinea de manera vertical varios palitos de paleta sobre una mesa. Cuida que queden uno al lado del otro, muy pegaditos. Pon los palitos que necesites para que cubran toda tu foto o postal.</span></div>
+                </div>
+                <div class="step">
+                    <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+                        <template v-slot:after><span>Deja que seque el pegamento para poder continuar.</span></template>
+                    </inputbox>
+                </div>
+                <div class="step">
+                    <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+                        <template v-slot:after><span>Cubre con pegamento dos de los palitos de paleta y pégalos arriba
+                            y abajo de los que tienes acomodados para unirlos todos.</span></template>
+                    </inputbox>
+                </div>
+                <div class="step">
+                    <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+                        <template v-slot:after><span>Cubre con pegamento el reverso de la foto y pégala sobre los palitos.</span></template>
+                    </inputbox>
+                </div>
+            </div>
+            <div class="col">
+                <img src="aimg/a2.png" class="img-fluid">
+                <img src="aimg/a1.png" class="img-fluid">
+            </div>
+        </div>
 
 
-        
-        
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -41,4 +109,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>

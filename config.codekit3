@@ -2365,6 +2365,38 @@
 		"oAP": "\/ES2T1\/40\/index.html",
 		"oF": 0
 		},
+	"\/ES2T1\/43\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 508559,
+		"oA": 0,
+		"oAP": "\/ES2T1\/43\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T1\/43\/aimg\/a2.png": {
+		"ft": 32768,
+		"iS": 261823,
+		"oA": 0,
+		"oAP": "\/ES2T1\/43\/aimg\/a2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T1\/43\/aimg\/tecuento.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/ES2T1\/43\/aimg\/tecuento.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
 	"\/ES2T1\/43\/index.html": {
 		"cB": 0,
 		"ft": 8192,
