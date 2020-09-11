@@ -5,6 +5,7 @@ var s_ok = new Howl({ src: ['../../assets/asound/ok.mp3'] });
 var s_select = new Howl({ src: ['../../assets/asound/select.mp3'] });
 var s_win = new Howl({ src: ['../../assets/asound/win.mp3'] });
 
+var counterRef = 0
 
 
 /* ################ */
@@ -32,15 +33,26 @@ var app = new Vue({
         }
     },
     methods: {
+        refCount($e){
+            let ct = 'rf_'+counterRef
+            counterRef = counterRef+1
+            return ct
+        },
         reset () { location.reload() },
         finalizar () {
             s_win.play()
             this.total = this.r.length
+
+
             for(var i in this.$refs){
-                if(Array.isArray(this.$refs[i])){
-                    this.$refs[i][0].verify()
-                } else {
-                    this.$refs[i].verify()
+                if(this.$refs[i]!=undefined){
+                    if(Array.isArray(this.$refs[i])){
+                        if(this.$refs[i][0]!=undefined){
+                            this.$refs[i][0].verify()
+                        }
+                    } else {
+                        this.$refs[i].verify()
+                    }
                 }
             }
             this.resultado = true

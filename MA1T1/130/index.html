@@ -1,118 +1,243 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmo lo que aprendí</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        input{
-            max-width: 70px;
-        }
-        .cont{
+        .redboxes {
+            text-align: center;
+            height: 100px;
             display: flex;
-            justify-content: space-between;
-        }
-        .cont1 input{
-             max-width: 80px;
-             margin: 0 3rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        table{
-            width: 40%;
-          
+        .redbox {
+            width: 10%;
+            max-width: 20px;
+            margin: 1px;
         }
+
+        .boxy {
+            background: #F0EBDE;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .boxy .redboxes {
+            margin-bottom: 20px;
+        }
+
+        .boxy .inputbox {
+            font-size: 1.2rem;
+        }
+
+        .boxy .inputbox input {
+            margin: 0 8px;
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+
+        .numbx {
+            width: 60px;
+            min-width: 60px;
+            max-width: 60px;
+            height: 60px;
+            font-size: 1.3rem;
+            background: #734D8E;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .numbx .inputbox input {
+            background: #fff;
+            font-size: 1.3rem;
+            padding: 4px;
+            color: #734D8E;
+        }
+        .suma {
+	background: #f5f5f5;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	padding: 10px;
+}
+
+.suma2 {
+	background: #EDF6FA;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	padding: 10px;
+}
+
+.suma .inputbox input, .suma2 .inputbox input {
+	padding: 6px;
+	font-size: 1.4rem;
+	max-width: 50%;
+}
+.suma .inputbox strong , .suma2 .inputbox strong {
+	color: #007F71;
+	font-size: 1.4rem;
+}
+.suma .inputbox strong:nth-child(2), .suma2 .inputbox strong:nth-child(2) {
+	background: #fff;
+	padding: 6px 10px;
+	border-radius: 20px;
+}
+.imgopt img{max-width: 200px;}
+
+
+.suma2 .inputbox input {
+	max-width: 30%;
+}
     </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
         <h1>Confirmo lo que aprendí</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">6. Cuenta los cubos rojos y escribe cuántas decenas forman.</div>
+        <div class="instruccion mt-5">Cuenta los cubos rojos y escribe cuántas decenas forman.</div>
         <div class="row mt-3">
-            <img src="aimg/1x.svg">      
+            <div class="col-md-4 text-scene boxy">
+                <div class="redboxes"><img class="redbox" src="aimg/a1.svg" v-for="i in 10"></div>
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+                    <template v-slot:before>Son </template>
+                    <template v-slot:after> decena.</template>
+                </inputbox>
+            </div>
+            
+            <div class="col-md-4 text-scene boxy">
+                <div class="redboxes"><img class="redbox" src="aimg/a1.svg" v-for="i in 30"></div>
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+                    <template v-slot:before>Son </template>
+                    <template v-slot:after> decenas.</template>
+                </inputbox>
+            </div>
+            <div class="col-md-4 text-scene boxy">
+                <div class="redboxes"><img class="redbox" src="aimg/a1.svg" v-for="i in 20"></div>
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+                    <template v-slot:before>Son </template>
+                    <template v-slot:after> decenas.</template>
+                </inputbox>
+            </div>
         </div>
-        <div class="col-md-7 cont mt-3">
-            <div> <p>Es <input> decena</p></div>
-            <div> <p>Son <input> decenas</p></div>
-            <div> <p>Son <input> decenas</p></div>
+
+
+        <div class="instruccion mt-5">Escribe los números que faltan para completar la serie.</div>
+        <div class="row mt-3 text-center align-items-center">
+            <template v-for="(i, index) in [
+                    { i: false, n: 9 },
+                    { i: false, n: 10 },
+                    { i: 3, n: 11 },
+                    { i: 4, n: 12 },
+                    { i: 5, n: 13 },
+                    { i: 6, n: 14 },
+                    { i: 7, n: 15 },
+                    { i: 8, n: 16 },
+                    { i: 9, n: 17 },
+                    { i: false, n: 18 },
+                    { i: 10, n: 19 },
+                    { i: 11, n: 20 },
+                    { i: 12, n: 21 },
+                    { i: 13, n: 22 },
+                    { i: 14, n: 23 },
+                    { i: 15, n: 24 },
+                    { i: false, n: 25 },
+                    { i: 16, n: 26 },
+                    { i: 17, n: 27 },
+                    { i: 18, n: 28 },
+                    { i: 19, n: 29 },
+                    { i: false, n: 30 },
+                ]">
+                <div class="numbx col-1" v-if="!i.i"><strong class="c8">{{i.n}}</strong></div>
+                <div class="numbx col-1" v-if="i.i">
+                    <inputbox v-model="r[i.i]" :ref="refCount()" @isright="right++" :answer="i.n" type="number"
+                        placeh="#"></inputbox>
+                </div>
+            </template>
         </div>
-        
-           <div class="instruccion mt-5">7. Escribe los números que faltan para completar la serie.</div>
-           <div class="mt-3">
-               <table>
-                   <tr>
-                       <td><input value="9" readonly=""></td>
-                       <td><input value="10" readonly=""></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                      <td><input value="18" readonly=""></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       
-                   </tr>
-                    <tr>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input value="25" readonly=""></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input></td>
-                       <td><input value="30" readonly=""></td>
-                       
-                   </tr>
-               </table>
-           </div>
 
-            <div class="instruccion mt-5">8. Descompón los siguientes números en decenas y sobrantes. Observa
-el ejemplo.</div>
-
-<div class="col-md-12 cont1 mt-5">
-    24 = <input value="10+10+4" readonly="">
-     30 = <input>
-</div>
-
-<div class="col-md-12 cont1 mt-3">
-    19 = <input>
-     25 = <input>
-</div>
+        <div class="instruccion mt-5">Descompón los siguientes números en decenas y sobrantes. Observa el ejemplo.</div>
+        <div class="row mt-3">
+            <div class="col-md-6 suma"><div class="inputbox"><strong>24 = </strong><strong>10+10+4</strong></div></div>
+            <div class="col-md-6 suma">
+                <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" answer="10+10+10" type="text" placeh="#+#+#">
+                    <template v-slot:before><strong>30 = </strong></template>
+                </inputbox>
+            </div>
+            <div class="col-md-6 suma">
+                <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" answer="10+9" type="text" placeh="#+#">
+                    <template v-slot:before><strong>19 = </strong></template>
+                </inputbox>
+            </div>
+            <div class="col-md-6 suma">
+                <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" answer="10+10+5" type="text" placeh="#+#+#">
+                    <template v-slot:before><strong>25 = </strong></template>
+                </inputbox>
+            </div>
+        </div>
 
 
-<div class="instruccion mt-5">9. Encierra el objeto que es más largo.</div>
-<div class="mt-3">
-    <img src="aimg/2x.svg" alt="">
-</div>
+        <div class="instruccion mt-5">Encierra el objeto que es más largo.</div>
+        <div class="mt-3 text-center">
+            <selectableoptions v-model="r[23]" :ref="refCount()" @isright="right++" answer="uno" :options="[{val:'uno', img:'aimg/b1.svg'}, {val:'dos',img:'aimg/b2.svg'}]" customclass="col-sm-6 imgopt">
+                <template v-slot:option="{option}">
+                    <img :src="option.img" class="img-fluid">
+                </template>
+            </selectableoptions>
+        </div>
 
-<div class="instruccion mt-5">10. Resuelve las siguientes sumas.</div>
-<div class="mt-3 cont1">
-    18 + 8 <input>
-    16 + 4 <input>
-    25 + 5 <input>
-    17 + 8 <input>
-</div>
+        <div class="instruccion mt-5">Resuelve las siguientes sumas.</div>
+        <div class="row mt-3">
+            <div class="row mt-3">
+                <div class="col-md-6 suma2">
+                    <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
+                        <template v-slot:before><strong>18 + 8 = </strong></template>
+                    </inputbox>
+                </div>
+                <div class="col-md-6 suma2">
+                    <inputbox v-model="r[25]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#">
+                        <template v-slot:before><strong>16 + 4 = </strong></template>
+                    </inputbox>
+                </div>
+                <div class="col-md-6 suma2">
+                    <inputbox v-model="r[26]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+                        <template v-slot:before><strong>25 + 5 = </strong></template>
+                    </inputbox>
+                </div>
+                <div class="col-md-6 suma2">
+                    <inputbox v-model="r[27]" :ref="refCount()" @isright="right++" :answer="25" type="number" placeh="#">
+                        <template v-slot:before><strong>17 + 8 = </strong></template>
+                    </inputbox>
+                </div>
+            </div>
+        </div>
 
 
-        
-        
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -124,4 +249,5 @@ el ejemplo.</div>
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>

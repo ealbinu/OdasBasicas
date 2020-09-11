@@ -58,8 +58,8 @@ Vue.component('inputbox', {
 
 
 /*
-<inputbox v-model="r[0]" ref="q0" @isright="right++" answer="txt" type="text" placeh="-"></inputbox>
+<inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="txt" type="text" placeh="-"></inputbox>
 
-<inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="90" type="number" placeh="#"></inputbox>
-<inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="number" placeh="#"></inputbox>
+<inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#"></inputbox>
+<inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#"></inputbox>
 */
