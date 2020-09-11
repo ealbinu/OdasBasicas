@@ -3,21 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Estudio la Tierra</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .text {
+	background: #F5DDE4;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	font-size: 1.2rem;
+}
+.im {
+	background: #f5f5f5;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+}
+.im .mint {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.im .mint .inputbox {
+	display: inline-block;
+	width: 20%;
+	margin-right: 10px;
+}
+.im .mint .inputbox input {
+	font-size: 1.2rem;
+	padding: 4px;
+	border-color: var(--main);
+	color: var(--main);
+}
+.im img.img-fluid.mintimg {
+	max-width: 120px;
+	max-height: 120px;
+}
+
+    </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Estudio la Tierra</h1>
+        <h2>Proyecciones cartográficas</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5">Lee la información de las diferentes proyecciones cartográficas y relaciona las columnas anotando en cada paréntesis el número que corresponda. Consulta las páginas 20 y 21 de tu Atlas de Geografía SEP.</div>
         <div class="row mt-3">
-           
+           <div class="col-md-6">
+               <div class="text" v-for="(i, index) in [
+                { n: 1, t: 'En ella, los meridianos se curvan de forma muy suave, con lo que se disminuye la distorsión de las regiones polares.'},
+                { n: 2, t: 'Representación de la forma de los continentes muy parecida a la real. Mantiene la proporción de tamaño entre los territorios representados.'},
+                { n: 3, t: 'En ella se pueden apreciar los meridianos y paralelos de forma recta y perpendicular. Los territorios cercanos al ecuador mantienen sus proporciones, pero al acer- carse a los polos, la imagen proyectada se distorsiona de forma considerable.'},
+                { n: 4, t: 'La Tierra se ve desde los polos hacia el ecuador. Sólo representa una mitad del globo terrestre.'},
+                { n: 5, t: 'La imagen es más exacta, el cono hace contacto con la superficie terrestre. Con ella se representan regiones de latitudes medias.'},
+               ]">
+                <strong class="main">{{i.n}}.</strong> {{i.t}}
+               </div>
+           </div>
+           <div class="col text-center">
+               <div class="im" v-for="(i, index) in [
+               {a: 4, t: 'Proyección plana o acimutal.'},
+               {a: 5, t: 'Proyección cónica.'},
+               {a: 1, t: 'Proyección de Robinson.'},
+               {a: 3, t: 'Proyección cilíndrica.'},
+               {a: 2, t: 'Proyección de Goode.'},
+               ]">
+                <div class="mint">
+                    <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.a" type="number" placeh="#"></inputbox> {{i.t}}
+                </div>
+               <img class="img-fluid mintimg" :src="'aimg/a'+(index+1)+'.png'">
+            </div>
+           </div>
         </div>
         
 
