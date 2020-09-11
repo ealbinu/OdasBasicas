@@ -1,35 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Planeamos nuestro directorio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .esbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        .esq1 .inputbox,
+        .esq2 .inputbox {
+            max-width: 140px;
+            display: inline-block;
+            margin: 0 6px;
+        }
+
+        .esq1 .inputbox input,
+        .esq2 .inputbox input {
+            font-size: 1.1rem;
+            padding: 0;
+        }
+
+        .esq1 {
+            background: #E4F4F9;
+            border-radius: 20px;
+        }
+
+        .esq1>div:first-child {
+            border: 6px solid #6CB743;
+            border-radius: 20px 0 0 20px;
+            border-right-color: #87C68E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        .esq1>div:nth-child(2) {
+            border: 6px solid #6CB743;
+            border-radius: 0 20px 20px 0;
+            border-left-color: #CDE6C4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            font-size: 1.2rem;
+            justify-content: start;
+        }
+
+        .esq1 input {
+            border-color: #6CB743;
+        }
+
+        .esq2 {
+            background: #E3E389;
+            border-radius: 20px;
+        }
+
+        .esq2>div:first-child {
+            border: 6px solid #FBD01E;
+            border-radius: 20px 0 0 20px;
+            border-right-color: #E5CF86;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        .esq2>div:nth-child(2) {
+            border: 6px solid #FBD01E;
+            border-radius: 0 20px 20px 0;
+            border-left-color: #F9EAAB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            font-size: 1.2rem;
+            justify-content: start;
+        }
+
+        .esq2 input {
+            border-color: #FBD01E;
+        }
+
+        .dir {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .dir .inputbox {
+            margin: 10px auto;
+            width: 68px;
+        }
+
+        .dir .inputbox input {
+            border-radius: 50%;
+        }
+
+        .dir.d1 {
+            background: #C8DDEA;
+        }
+
+        .dir.d2 {
+            background: #D1E4B9;
+        }
+
+        .dir.d3 {
+            background: #D6CFDD;
+        }
+
+        .dir.d4 {
+            background: #F9D4AD;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Planeamos nuestro directorio</h1>
+        <h2>Lo que conozco</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Completa el esquema. Consulta la página 29 de tu libro de texto SEP.</div>
+        <div class="row mt-3 esq1">
+            <div class="col-md-6">En un directorio se registran:</div>
+            <div class="col">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="nombres" type="text" placeh="-">
+                </inputbox>, direcciones y
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="teléfonos" type="text" placeh="-">
+                </inputbox> de personas y
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="servicios" type="text" placeh="-">
+                </inputbox>.
+            </div>
         </div>
-        
+
+        <div class="row mt-3 esq2">
+            <div class="col-md-6">
+                Tienen la misma
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="función" type="text" placeh="-">
+                </inputbox> que un directorio telefónico:
+
+            </div>
+            <div class="col">
+                las
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="agendas" type="text" placeh="-">
+                </inputbox>.
+            </div>
+        </div>
+
+        <div class="instruccion mt-5">Los siguientes datos corresponden al directorio de los niños de 3o A. ¿Quién debe
+            estar primero según el orden alfabético? Escribe 1, 2, 3 o 4 en el círculo que corresponde.</div>
+
+        <div class="row mt-3">
+
+            <div class="col-lg-3 col-6">
+                <div class="dir d1">
+                    <strong>Ramírez Soto, José Eduardo</strong><br>
+                    Dirección:<br>
+                    Colegio Militar Núm. 135-2, Colonia Roma, Ciudad de México. C.P. 06958.<br>
+                    Tel. 55-27-36-45<br>
+                    josers@gmail.com
+                    <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#">
+                    </inputbox>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="dir d2">
+                    <strong>López Rivera, Susana</strong><br>
+                    Dirección:<br>
+                    Av. Las Torres Núm. 46, Colonia Roma, Ciudad de México. C.P. 06958.<br>
+                    Tel. 55-14-16-21<br>
+                    susanalopez25@hotmail.com
+                    <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#">
+                    </inputbox>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="dir d3">
+                    <strong>Cevallos Méndez, Maritza</strong><br>
+                    Dirección:<br>
+                    Hidalgo Núm. 809, Colonia Roma, Ciudad de México. C.P. 06958.<br>
+                    Tel. 55-92-14-55<br>
+                    cevallosm@hotmail.com
+                    <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#">
+                    </inputbox>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="dir d4">
+                    <strong>Zavala Rojas, Martín</strong><br>
+                    Dirección:<br>
+                    Turmalina Núm.1248, Colonia Roma, Ciudad de México. C.P. 06958.<br>
+                    Tel. 55-16-98-25<br>
+                    mzavala@yahoo.com
+                    <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#">
+                    </inputbox>
+                </div>
+            </div>
+
+        </div>
 
 
-        
-        
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -41,4 +241,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>

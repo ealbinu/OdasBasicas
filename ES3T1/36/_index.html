@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizo mi propio directorio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .dir {
+	background: #f5f5f5;
+	border-radius: 0 10px 10px 0;
+	padding: 10px;
+	margin-bottom: 6px;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+.dir.dir1 {
+	background: #F5E9EE;
+}
+.dir.dir2 {
+	background: #EFF5E3;
+}
+.dir.dir3 {
+	background: #E9F4F3;
+}
+.dir > div {
+	margin-top: 10px;
+}
+.dir .inputbox input {
+	font-size: 1.2rem;
+	padding: 6px;
+}
+.ans {
+	background: #f5f5f5;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #fff;
+}
+.ans strong {
+	font-size: 2rem;
+	color: #858789;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Organizo mi propio directorio</h1>
+        <h2>Práctica 3. Organizar datos en un directorio. Lo que conozco</h2>
+
+        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
+        <div class="instruccion mt-5">Observa los directorios de la página 30 de tu libro de texto SEP y relaciona los recuadros con la información que se pide.</div>
+        <div class="row mt-3">
+           <div class="col-6 text-center justify-content-center align-items-center">
+
+                <div class="dir dir1">
+                    <strong class="main h4">Directorio 1</strong>
+                    <div>
+                        ¿Qué tipo de información organiza?
+                        <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-"></inputbox>
+                    </div>
+                    <div>
+                        ¿Qué datos contiene?
+                        <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-"></inputbox>
+                    </div>
+                </div>
+
+                <div class="dir dir2">
+                    <strong class="accent h4">Directorio 2</strong>
+                    <div>
+                        ¿Qué tipo de información organiza?
+                        <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+                    </div>
+                    <div>
+                        ¿Qué datos contiene?
+                        <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+                    </div>
+                </div>
+                <div class="dir dir3">
+                    <strong class="sec h4">Directorio 3</strong>
+                    <div>
+                        ¿Qué tipo de información organiza?
+                        <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-"></inputbox>
+                    </div>
+                    <div>
+                        ¿Qué datos contiene?
+                        <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+                    </div>
+                </div>
+
+           </div>
+
+           <div class="col-6">
+               <div class="row ans" v-for="(i, index) in [
+                ['A', 'Nombre, dirección y teléfono.'],
+                ['B', 'Sobre el directorio médico.'],
+                ['C', 'Especialidad, nombre del médico, domicilio del consultorio y teléfono.'],
+                ['D', 'Sobre los compañeros del club de lectura.'],
+                ['E', 'Sobre el directorio familiar.'],
+                ['F', 'Nombre y número telefónico.'],
+               ]">
+                   <strong class="col-3 text-center">{{i[0]}}.</strong>
+                   <div class="col">{{i[1]}}</div>
+               </div>
+           </div>
+        </div>
+        
+
+
+        
+        
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+</html>
