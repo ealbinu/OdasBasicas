@@ -10,9 +10,39 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        .cont input{
-          margin-bottom: 1rem;
-        }
+        .table tr th {
+	background: #AE4E8F;
+	border-radius: 6px;
+	border: 2px solid #fff;
+	font-weight: bold;
+	color: #fff;
+}
+.table tr td {
+	background: #f5f5f5;
+	border-radius: 6px;
+	border: 2px solid #fff;
+	font-size: 1.2rem;
+}
+.table tr td strong {
+	color: #AE4E8F;
+}
+.inputbox {
+	font-size: 1.2rem;
+}
+.inputbox input {
+	padding: 0 4px;
+	font-size: 1.2rem;
+	max-width: 60px;
+	border-radius: 4px;
+	margin: 0 4px;
+}
+.sum {
+	background: #f5f5f5;
+	border-radius: 10px;
+	padding: 4px;
+	border: 2px solid #fff;
+}
+
     </style>   
 </head>
 <body>
@@ -24,81 +54,84 @@
 su valor posicional. Después escribe la cantidad que falta para completar
 una centena. Observa el ejemplo.</div>
         <div class="row mt-5">
+
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Decenas</th>
+                <th>Unidades</th>
+                <th>¿Cuánto falta para completar una centena?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>35</td>
+                <td><strong>3</strong></td>
+                <td><strong>5</strong></td>
+                <td><strong>65</strong></td>
+              </tr>
+              <tr v-for="(x, index) in [
+                  [{ n: 45 }, { n: 4 }, {i: 0, n: 5 }, {i: 1, n: 55 }],
+                  [{ n: 90 }, {i: 2, n: 9 }, { n: 0 }, {i: 3, n: 10 }],
+                  [{ n: 85 }, {i: 4, n: 8 }, {i: 5, n: 5 }, {i: 6, n: 15 }],
+                  [{ n: 75 }, {i: 7, n: 7 }, { n: 5 }, {i: 8, n: 25 }],
+                  [{ n: 15 }, { n: 1 }, {i: 9, n: 5 }, {i: 10, n: 85 }],
+              ]">
+                <template v-for="(i, index) in x">
+                  <td v-if="i.i==undefined">{{i.n}}</td>
+                  <td v-else><inputbox v-model="r[i.i]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#"></inputbox></td>
+                </template>
+              </tr>
+            </tbody>
+          </table>
             
-            <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Numero</th>
-      <th scope="col">Decenas</th>
-      <th scope="col">Unidades</th>
-      <th scope="col">¿Cuanto falta para completar una centena?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">35</th>
-      <td>3</td>
-      <td>5</td>
-      <td>65</td>
-    </tr>
-    <tr>
-      <th scope="row">45</th>
-      <td>4</td>
-      <td><input></td>
-      <td><input></td>
-    </tr>
-    <tr>
-      <th scope="row">90</th>
-      <td><input></td>
-      <td>0</td>
-      <td><input></td>
-    </tr>
-     <tr>
-      <th scope="row">85</th>
-      <td><input></td>
-      <td><input></td>
-      <td><input></td>
-    </tr>
-     <tr>
-      <th scope="row">75</th>
-      <td>7</td>
-      <td><input></td>
-      <td><input></td>
-    </tr>
-     <tr>
-      <th scope="row">15</th>
-      <td>1</td>
-      <td><input></td>
-      <td><input></td>
-    </tr>
-  </tbody>
-</table>
+            
            
         </div>
 
-        <div class="instruccion mt-5">Escribe en cada recuadro el número que falta para completar una centena.</div>
+        <div class="instruccion mt-5">Escribe en cada recuadro el número que falta para completar una <strong>centena</strong>.</div>
 
         <div class="row mt-3">
-            <div class="col-md-4 cont mt-3">
-                65 + <input> = 100<br>
-                35 + <input> = 100<br>
-                <input> + 60 = 100<br>
-                25 + <input> = 100<br>
-                30 + <input> = 100<br>
-                80 + <input> = 100<br>
-                45 + <input> = 100 <br>
-            </div>
-            <div class="col-md-4 cont mt-3">
-                10 + <input> = 100<br>
-                85 + <input> = 100<br>
-                <input> + 40 = 100<br>
-                <input> + 50 = 100<br>
-                95 + <input> = 100<br>
-                15 + <input> = 100<br>
-                55 + <input> = 100<br>
-              
+            <div class="col-md-4">
+              <div class="sum" v-for="(i, index) in [
+                ['65', 35],
+                ['35', 65],
+                [40, '60'],
+                ['25', 75],
+                ['30', 70],
+                ['80', 20],
+                ['45', 55]
+              ]">
+              <inputbox v-model="r[index+18]" :ref="refCount()" @isright="right++" :answer="typeof i[0] === 'string'? i[1] : i[0]" type="number" placeh="#">
+                <template v-slot:before v-if="typeof i[0] === 'string'">{{i[0]}} + </template>
+                    <template v-slot:after>
+                      <template  v-if="typeof i[1] === 'string'"> + {{i[1]}}</template>
+                      = 100
+                    </template>
+                  </inputbox>
+              </div>
             </div>
             <div class="col-md-4">
+              <div class="sum" v-for="(i, index) in [
+                ['10', 90],
+                ['85', 15],
+                [60, '40'],
+                [50, '50'],
+                ['95', 5],
+                ['15', 85],
+                ['55', 45],
+              ]">
+                  <inputbox v-model="r[index+18]" :ref="refCount()" @isright="right++" :answer="typeof i[0] === 'string'? i[1] : i[0]" type="number" placeh="#">
+                    <template v-slot:before v-if="typeof i[0] === 'string'">{{i[0]}} + </template>
+                    <template v-slot:after>
+                      <template  v-if="typeof i[1] === 'string'"> + {{i[1]}}</template>
+                      = 100
+                    </template>
+                  </inputbox>
+              </div>
+            </div>
+            <div class="col">
                 <img src="aimg/1x.svg">
             </div>
             
