@@ -1,88 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmo lo que aprendí</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style type="text/css">
-
-        img{
-max-width:100%;
+        .imgone{ max-width: 80%;}
+        .imgtwo{ max-height: 110px;}
+        .optnum img{ height: 60px; }
+        .ex3 strong {
+	display: block;
+	width: 50%;
+	font-size: 1.4rem;
 }
-      
-        .cont{
-            display: flex;
-            justify-content: space-between;
-
-        }
-
-        .cont input{
-            max-width: 100px;
-        }
+.ex3 .inputbox input {
+	font-size: 1.4rem;
+}
+.ex3 img{max-height: 120px;}
     </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
         <h1>Resuelve como se indica.</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">1. Cuenta los elementos de cada conjunto y escribe el total en el
-recuadro correspondiente.</div>
+        <div class="instruccion mt-5">Cuenta los elementos de cada conjunto y escribe el total en el recuadro correspondiente.</div>
+        <div class="row mt-3 align-items-end">
+            <div class="col-md-4 text-center">
+                <img src="aimg/a1.svg" class="img-fluid mb-3 imgone">
+                <inputbox v-model="r[0]" ref="q0" @isright="right++" :answer="15" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="aimg/a2.svg" class="img-fluid mb-3 imgone">
+                <inputbox v-model="r[1]" ref="q1" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="aimg/a3.svg" class="img-fluid mb-3 imgone">
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" :answer="13" type="number" placeh="#"></inputbox>
+            </div>
+        </div>
+       
+
+        <div class="instruccion mt-5">Selecciona el número que representa el total de frutas si juntas 4 manzanas y 8 naranjas.</div>
+        <div class="mt-3">
+            <selectableoptions  v-model="r[3]" ref="q3" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/b1.svg'},  {val:'no', img:'aimg/b2.svg'}, {val:'no2', img:'aimg/b3.svg'}]" customclass="col-4 optnum text-center">
+                <template v-slot:option="{option}">
+                    <img :src="option.img" class="img-fluid">
+                </template>
+            </selectableoptions>
+        </div>
+
+
+        <div class="instruccion mt-5">Escribe el nombre de cada número.</div>
         <div class="row mt-3">
-            <img src="aimg/1x.svg" alt="">          
+            <div class="col-md-3 text-center">
+                <img src="aimg/c1.svg" class="img-fluid mb-3 imgtwo">
+                <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="diez" type="text" placeh="-"></inputbox>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="aimg/c2.svg" class="img-fluid mb-3 imgtwo">
+                <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="ocho" type="text" placeh="-"></inputbox>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="aimg/c3.svg" class="img-fluid mb-3 imgtwo">
+                <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="siete" type="text" placeh="-"></inputbox>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="aimg/c4.svg" class="img-fluid mb-3 imgtwo">
+                <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="nueve" type="text" placeh="-"></inputbox>
+            </div>
+           
         </div>
-        <div class="col-md-6 mt-3 cont">
-            <input>
-            <input>
-            <input>
+
+        <div class="instruccion mt-5">Cuenta las siguientes figuras y resuelve las sumas.</div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6 text-center ex3">
+                <img src="aimg/d1.svg" class="img-fluid mb-3">
+                <inputbox v-model="r[8]" ref="q8" @isright="right++" answer="nueve" type="text" placeh="-"><template v-slot:before><strong class="accent">9 + 4 =</strong></template></inputbox>
+            </div>
+            <div class="col-md-6 text-center ex3">
+                <img src="aimg/d2.svg" class="img-fluid mb-3">
+                <inputbox v-model="r[9]" ref="q9" @isright="right++" answer="nueve" type="text" placeh="-"><template v-slot:before><strong class="accent">5 + 5 =</strong></template></inputbox>
+            </div>
         </div>
 
-        <div class="instruccion mt-5">2. Encierra el número que representa el total de frutas si juntas 4
-manzanas y 8 naranjas.</div>
 
-<div class="mt-3">
-    <img src="aimg/2x.svg" alt="">
-</div>
-
-
-<div class="instruccion mt-5">3. Une con líneas de distintos colores cada número con su nombre.</div>
-<div class="mt-3">
-    <img src="aimg/3x.svg"><br><br><br>
-     <img src="aimg/4x.svg">
-</div>
-
-<div class="instruccion mt-5">4. Cuenta las siguientes figuras y resuelve las sumas.</div>
-<div class="mt-5">
-    <img src="aimg/5x.svg" alt="">
-</div>
-<div class="col-md-6 mt-3 cont"> 
-    9+4 = <input>
-    5+5 =<input>
-</div>
-
-<div class="instruccion mt-5">5. Ángel tenía 8 canicas y le ganó 5 a su amigo Daniel. ¿Cuántas
-canicas tiene ahora?</div>
-<div class="mt-3">
-    <input> canicas
-</div>
+        <div class="instruccion mt-5">Ángel tenía 8 canicas y le ganó 5 a su amigo Daniel. ¿Cuántas canicas tiene ahora?</div>
+        <div class="row mt-3">
+            <div class="col">
+                <inputbox v-model="r[10]" ref="q10" @isright="right++" :answer="13" type="number" placeh="#"></inputbox>
+            </div>
+        </div>
 
 
-        
 
 
-        
-        
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -94,4 +124,5 @@ canicas tiene ahora?</div>
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
