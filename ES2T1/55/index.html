@@ -1,36 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Canto una canción</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .song {
+            font-size: 1.4rem;
+        }
+
+        .song .h4 {
+            font-weight: bold;
+            font-size: 1.7rem;
+        }
+
+        .img-fluid.w-100 {
+            max-width: 220px;
+        }
+        .song p {
+            cursor: pointer;
+        }
+        .song p.active {
+            border-radius: 10px;
+            border: 2px solid var(--main);
+        }
+
+        .palabras {
+            background: #9EDCF9;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .palabras .row .option {
+            min-width: 120px;
+            font-size: 1.3rem;
+            display: flex;
+            text-align: center !important;
+        }
+        .palabras .row .option div {
+            width: 100%;
+        }
+        .selectableoptions {
+            flex-wrap: wrap;
+        }
+
+        .partes div {
+	height: 100px;
+	background: #94C774;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 10px 0 0 10px;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.descripciones .draggable div:first-child {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
+.descripciones .draggable div:first-child div {
+	height: 100px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 0 10px 10px 0;
+	font-weight: bold;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	cursor: move;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+.descripciones .draggable div:first-child div:nth-child(1) {
+	background: #DDD6E2;
+}
+.descripciones .draggable div:first-child div:nth-child(2) {
+	background: #FDE8CF;
+}
+.descripciones .draggable div:first-child div:nth-child(3) {
+	background: #E7F1D8;
+}
+.descripciones .draggable div:first-child div:nth-child(4) {
+	background: #DDF0EE;
+}
+
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Canto una canción</h1>
+        <h2>Unas palabras por otras / Completa la idea</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5">Canta la canción y selecciona la estrofa que más te guste. Después selecciona la
+            palabra en la que hiciste una pausa al cantarla.</div>
         <div class="row mt-3">
-           
+            <div class="col-md-5 offset-1 col-7 song">
+                <div class="h4">Tengo una muñeca vestida de azul</div>
+                <selectableoptions v-model="r[0]" :ref="refCount()" @isright="right++" :answer="['1', '2', '3']" :options="[
+                    {val:'1', txt:'Tengo una muñeca vestida de azul, zapatitos blancos y gorro de tul.'},
+                    {val:'2', txt:'La llevé de paseo y se me constipó, la tengo en la cama con un gran dolor.'},
+                    {val:'3', txt:'Esta mañanita me dijo el doctor que le dé jarabe con un tenedor.'},
+                ]" customclass="col-12">
+                    <template v-slot:option="{option}"><p>{{option.txt}}</p></template>
+                </selectableoptions>
+            </div>
+            <div class="col-md-4 col ">
+                <img src="aimg/a1.png" class="img-fluid w-100">
+            </div>
         </div>
-        
+
+        <div class="w-100 mt-3 palabras text-center">
+            <selectableoptions v-model="r[1]" :ref="refCount()" @isright="right++" :answer="['1', '2', '3']" :options="[
+                    {val:'1', txt:'azul'},
+                    {val:'2', txt:'constipó'},
+                    {val:'no', txt:'muñeca'},
+                    {val:'3', txt:'doctor'},
+                    {val:'no1', txt:'mañanita'},
+                ]" customclass="col">
+                    <template v-slot:option="{option}"><div>{{option.txt}}</div></template>
+                </selectableoptions>
+        </div>
 
 
-        
-        
+        <div class="instruccion mt-5">Relaciona cada concepto con su significado correspondiente.</div>
+
+        <div class="row mt-3">
+            <div class="col-4">
+                <div class="row flex-column partes">
+                    <div>Acento</div>
+                    <div>Pausa</div>
+                    <div>Ritmo</div>
+                </div>
+            </div>
+            <div class="col-8 descripciones text-left">
+                <dragdrop @isright="right++" v-model="r[2]" :ref="refCount()" 
+                    :options="['Se consigue por medio de los acentos y las pausas.', 'Se pone en ciertas sílabas porque se pronuncian con mayor intensidad.', 'Sirve para marcar silencios o tiempos de descanso.']"
+                    :options-ok="['Se pone en ciertas sílabas porque se pronuncian con mayor intensidad.', 'Sirve para marcar silencios o tiempos de descanso.', 'Se consigue por medio de los acentos y las pausas.']"></dragdrop>
+            </div>
+        </div>
+
+
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <!--sortable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <!-- /sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
@@ -39,6 +178,8 @@
     <script src="../../assets/modulos/choose.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script></script>
+    <script>
+    </script>
 </body>
+
 </html>
