@@ -1,5 +1,5 @@
 Vue.component('dragdrop', {
-    props: ['value', 'isok', 'options', 'optionsOk'],
+    props: ['value', 'isok', 'options', 'optionsOk','ignoreOrder'],
     data() {
         return {
             status: false,
@@ -41,7 +41,17 @@ Vue.component('dragdrop', {
         verify () { 
             
             this.evaluate = true
-            if(_.isEqual(this.optionsDraggable, this.optionsOk)){
+
+            let optionsAreEqual = _.isEqual(this.optionsDraggable, this.optionsOk)
+
+            if(this.ignoreOrder!=undefined){
+                let od = this.optionsDraggable.sort()
+                let oo = this.optionsOk.sort()
+                optionsAreEqual = _.isEqual(od, oo)
+                console.log('ignoreOptions')
+            }
+
+            if(optionsAreEqual){
                 this.$emit('isright', true)
                 this.result = true
             }

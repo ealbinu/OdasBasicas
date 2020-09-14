@@ -269,12 +269,12 @@
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/modulos\/Copia de check.js": {
+	"\/assets\/modulos\/dragdropMod.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/modulos\/Copia de check-min.js",
+		"oAP": "\/assets\/modulos\/dragdropMod-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
@@ -2904,6 +2904,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/ES4T1\/28\/index.html",
+		"oF": 0
+		},
+	"\/ES4T1\/29\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES4T1\/29\/index.html",
 		"oF": 0
 		},
 	"\/ES4T1\/34\/index.html": {
