@@ -3,21 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Conozco los mapas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .draggableModule {
+        position: relative;
+    }
+
+    .draggable,
+    .answers {
+        background: #FFF4D2;
+        width: 100%;
+        border-radius: 10px 0 0 10px;
+        padding: 10px;
+    }
+
+    .draggable {
+        padding-right: 0;
+    }
+
+    .answers {
+        padding-left: 0;
+    }
+
+    .answers {
+        border-radius: 0 10px 10px 0;
+    }
+
+    .draggable>div,
+    .answers {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        cursor: move;
+    }
+
+    .draggable>div strong {
+        font-size: 1.5rem;
+        display: block;
+        color: var(--sec);
+    }
+
+    .draggable>div div,
+    .ans {
+        background: #fff;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        margin: 2px;
+        padding: 10px;
+    }
+
+    .draggable>div div {
+        border-radius: 10px 0 0 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .ans {
+        border-radius: 0 10px 10px 0;
+        border-color: #F5F5F5;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .draggable>div div:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    .draggable>div {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .img-fluid{max-width: 120px !important;}
+    .draggable{
+	height: 100%;
+}
+.dragdrop{
+	height: 100%;
+}
+
+.ans{
+	height: 20%;
+	min-height: 100px;
+	display: flex;
+	align-items: center;
+}
+    </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Conozco los mapas</h1>
+        <h2>La escala en los mapas</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5"> Consulta la sección Te cuento que... y la página 21 de tu libro de texto SEP para completar el esquema.</div>
         <div class="row mt-3">
-           
+           <div class="col-12"><img class="img-fluid w-100" src="aimg/tecuento.svg"></div>
+        </div>
+
+        <div class="row mt-3 align-items-center">
+            <div class="col-md-2"><img src="aimg/a1.svg" class="img-fluid w-100"></div>
+            <div class="col-md-10">
+                <div class="row no-gutters">
+                    <div class="col-4 text-right">
+                        <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[
+                        'Coordenadas', 'Simbología', 'Orientación', 'Escala', 'Título', 
+                        ]" :options-ok="[
+                        'Título', 'Simbología', 'Escala', 'Orientación', 'Coordenadas'
+                        ]"></dragdrop>
+                    </div>
+                    <div class="col-8 tex-left answers">
+                        <div v-for="(i, index) in [
+                        'Nos da a conocer el lugar, el territorio, el país o el continente que está representado en el mapa.',
+                        'Conjunto de signos, figuras y colores que dan mayor informa- ción sobre un territorio.',
+                        'Indica cuántas veces se ha reducido la superficie que se representa en un mapa. Hay dos tipos: numérica y gráfica.',
+                        'Los puntos cardinales Norte (N), Sur (S), Este (E) y Oeste (O) se indican en los mapas y planos para orientar la dirección y ubicar lugares.',
+                        'Son los paralelos y meridianos en los mapas que nos ayudan a localizar con exactitud un lugar sobre la superficie terrestre.',
+                        ]"
+                            class="ans">{{i}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
 
@@ -31,9 +142,15 @@
     </div>
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <!--sortable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <!-- /sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
     <script src="../../assets/modulos/check.js"></script>
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
