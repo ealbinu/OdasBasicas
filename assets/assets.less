@@ -192,7 +192,7 @@ strong {
 }
 
 
-.check, .choose, .inputbox, .selectable, .selectableoptions {
+.check, .choose, .inputbox, .selectable, .selectableoptions, .draggableModule {
     position: relative;
     &.isright{
         border: 2px solid @rightcol;
@@ -227,6 +227,12 @@ strong {
     }
 }
 
+.draggableModule{
+    position: relative;
+    .isright, .iswrong{
+        top: -2%;
+    }
+}
 
 
 .inputbox {

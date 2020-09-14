@@ -2903,22 +2903,11 @@
 		"oAP": "\/ES4T1\/34\/index.html",
 		"oF": 0
 		},
-	"\/ES4T1\/40\/aimg\/sector1@3x.png": {
+	"\/ES4T1\/40\/aimg\/a1.png": {
 		"ft": 32768,
 		"iS": 613024,
 		"oA": 0,
-		"oAP": "\/ES4T1\/40\/aimg\/sector1@3x.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/ES4T1\/40\/aimg\/sector1@4x.png": {
-		"ft": 32768,
-		"iS": 831896,
-		"oA": 0,
-		"oAP": "\/ES4T1\/40\/aimg\/sector1@4x.png",
+		"oAP": "\/ES4T1\/40\/aimg\/a1.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -5568,6 +5557,16 @@
 		"oA": 0,
 		"oAP": "\/MA3T1\/109\/index.html",
 		"oF": 0
+		},
+	"\/MA3T1\/114\/dragdrop-3.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/MA3T1\/114\/dragdrop-3-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
 		},
 	"\/MA3T1\/114\/index.html": {
 		"cB": 0,

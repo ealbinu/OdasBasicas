@@ -63,7 +63,7 @@ var app = new Vue({
             domtoimage.toPng(document.body).then(function (dataUrl) {
                 _this.screen.push(dataUrl)
                 _this.ended()
-            }).catch(function (error) { console.error('oops, something went wrong!', error); });
+            }).catch(function (error) { console.error(error) })
 
 
 

@@ -3,21 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Descubrimos la escritura</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .opt > div {
+	background: #f5f5f5;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 4px;
+	font-size: 1.1rem;
+}
+.opt > div strong {
+	font-size: 1.2rem;
+}
+.ans {
+	font-size: 1.2rem;
+}
+.ans > div {
+	background: #FFFBD2;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 4px;
+}
+.ans > div .inputbox {
+	display: inline-block;
+	max-width: 60px;
+}
+.ans > div .inputbox input {
+	padding: 2px;
+	font-size: 1.6rem;
+}
+
+    </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Descubrimos la escritura</h1>
+        <h2>La invención de la escritura y las primeras ciudades</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Relaciona las columnas escribiendo el número que corresponda en cada círculo. Consulta las páginas 26 y 27 de tu libro de texto SEP.</div>
+        <div class="row mt-3 align-items-center">
+            <div class="col-md-6 opt">
+                <div><strong class="accent">1.</strong> País actual donde se encontraba una de las primeras urbanizaciones: Catal Huyuk.</div>
+                <div><strong class="accent">2.</strong> La invención de la escritura marca el fin de esta era.</div>
+                <div><strong class="accent">3.</strong> Se le dio este nombre porque los signos tienen forma de cuña.</div>
+                <div><strong class="accent">4.</strong> Está compuesta por grafías que representan sonidos.</div>
+                <div><strong class="accent">5.</strong> Surgió con fines utilitarios, como la contabilidad.</div>
+                <div><strong class="accent">6.</strong> Una de las ciudades más antiguas de Mesopotamia.</div>
+                <div><strong class="accent">7.</strong> Concentración de viviendas, obras ceremoniales, comercio y gobierno.</div>
+                <div><strong class="accent">8.</strong> En estas civilizaciones se inventaron los primeros sistemas de escritura.</div>
+                <div><strong class="accent">9.</strong> Esta escritura está compuesta por signos que representan ideas y sonidos.</div>
+                <div><strong class="accent">10.</strong> Impulsaron el intercambio de productos y conocimientos.</div>
+            </div>
+            <div class="col-md-6 ans">
+
+                <div><inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox> Escritura cuneiforme.</div>
+                <div><inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox> Características de las primeras ciudades.</div>
+                <div><inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox> Ur.</div>
+                <div><inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox> Escritura jeroglífica.</div>
+                <div><inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox> Turquía.</div>
+                <div><inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox> Escritura alfabética.</div>
+                <div><inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox> Civilizaciones agrícolas.</div>
+                <div><inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox> Escritura.</div>
+                <div><inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox> Prehistoria.</div>
+                <div><inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox> Las primeras ciudades.</div>
+            </div>
         </div>
         
 
