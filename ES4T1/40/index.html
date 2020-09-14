@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localizo información</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/assets.css">
+</head>
+
+<style>
+    .quest p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+        
+    }
+    .inputbox {
+        display: inline-block;
+        max-width: 140px;
+    }
+    .inputbox input {
+        padding: 2px;
+        font-size: 1.2rem;
+    }
+
+</style>
+
+<body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+        <h1>Localizo información</h1>
+        <h2>Lo que conozco</h2>
+
+        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
+        <div class="instruccion mt-5">Lee el texto. Después completa los enunciados de abajo.</div>
+        <div class="row mt-3 booky">
+            <div class="col-12">
+                <img class="img-fluid w-100" src="aimg/a1.png">
+            </div>
+        </div>
+
+        <div class="row mt-5 quest">
+            <div class="col-12">
+            <p>
+                <strong class="accent">1.</strong> A los coras también se les conoce como
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="nayeri" type="text" placeh="-"></inputbox>, su lengua es el 
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="cora" type="text" placeh="-"></inputbox>, aunque muchos son 
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="bilingües" type="text" placeh="-"></inputbox> porque, además, hablan el 
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="español" type="text" placeh="-"></inputbox>.
+            </p>
+            <p>
+                <strong class="accent">2.</strong> El estado en el que viven se llama 
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Nayarit" type="text" placeh="-"></inputbox>. Un dato curioso es que a sus fiestas les llaman 
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="mitotes" type="text" placeh="-"></inputbox> y son en honor al 
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="cultivo del maíz" type="text" placeh="-"></inputbox>; empiezan en 
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="mayo" type="text" placeh="-"></inputbox> y terminan en 
+                <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="junio" type="text" placeh="-"></inputbox>.
+            </p>
+            <p>
+                <strong class="accent">3.</strong> En la Mesa del Nayar se encuentra su 
+                <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="centro ceremonial" type="text" placeh="-"></inputbox>. Las artesanías que sobresalen son los 
+                <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="morrales de lana" type="text" placeh="-"></inputbox>, los sombreros de 
+                <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="yute" type="text" placeh="-"></inputbox> y los 
+                <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="huaraches" type="text" placeh="-"></inputbox> con suela de llanta.
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+        <!-- ENDING -->
+        <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+        <!--<blockquote class="blockquote">{{r}}</blockquote>-->
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script></script>
+</body>
+
+</html>

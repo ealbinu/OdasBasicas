@@ -2903,6 +2903,35 @@
 		"oAP": "\/ES4T1\/34\/index.html",
 		"oF": 0
 		},
+	"\/ES4T1\/40\/aimg\/sector1@3x.png": {
+		"ft": 32768,
+		"iS": 613024,
+		"oA": 0,
+		"oAP": "\/ES4T1\/40\/aimg\/sector1@3x.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES4T1\/40\/aimg\/sector1@4x.png": {
+		"ft": 32768,
+		"iS": 831896,
+		"oA": 0,
+		"oAP": "\/ES4T1\/40\/aimg\/sector1@4x.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES4T1\/40\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES4T1\/40\/index.html",
+		"oF": 0
+		},
 	"\/ES4T1\/48\/index.html": {
 		"cB": 0,
 		"ft": 8192,
