@@ -39,6 +39,7 @@ Vue.component('dragdrop', {
             }
         },
         verify () { 
+            
             this.evaluate = true
             if(_.isEqual(this.optionsDraggable, this.optionsOk)){
                 this.$emit('isright', true)

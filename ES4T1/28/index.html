@@ -1,36 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Expongo un tema de interés</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .simbols .opts .draggable {
+            width: 100%;
+            min-height: 30px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: #FEF7F8;
+        }
+
+        .simbols .opts .draggable>div {
+            min-height: 30px;
+            display: flex;
+            color: var(--main);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .simbols .opts .draggable>div div {
+            background: #f5f5f5;
+            width: 30px;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            cursor: move;
+            text-align: center;
+        }
+
+        .simbols .opts .draggable>div div:nth-child(1),
+        .simbols .opts .draggable>div div:nth-child(2),
+        .simbols .opts .draggable>div div:nth-child(3) {
+            background: #F8CFD5;
+        }
+
+        .word {
+            position: relative;
+        }
+
+        .word .theword {
+            display: flex;
+            flex-grow: 0;
+            flex-wrap: wrap;
+        }
+
+        .word .theword div {
+            min-width: 12px;
+            width: 20px;
+            height: 30px;
+            text-align: center;
+            line-height: 1.7;
+            color: var(--sec);
+            background: #F5F4BD;
+            border: 1px solid #fff;
+        }
+
+        .word .draggable {
+
+        }
+
+        .word .draggable>div {
+            display: flex;
+            flex-wrap: wrap;
+            color: var(--main);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-grow: 0;
+        }
+
+        .word .draggable>div div {
+            min-width: 12px;
+            width: 20px;
+            height: 30px;
+            border-radius: 3px;
+            cursor: move;
+            text-align: center;
+        }
+        @media (max-width: 680px){
+            .word .theword div, .word .draggable>div div{
+                width: 16px;
+            }
+            .word .draggable>div, .word .theword div{
+                font-size: 0.8rem;
+            }
+        }
+        .simbols{
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .word .draggable {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.word .draggable div {
+	border: 1px solid #f5f5f5;
+}
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Expongo un tema de interés</h1>
+        <h2>Lo que conozco</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Arrastra los acentos y los signos que hacen falta en las siguientes preguntas.
         </div>
         
-
-
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in '¿Que son los calamares  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                       '.split('')" :options-ok="'   ´                  ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
         
         
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' Donde viven  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                     '.split('')" :options-ok="'¿ ´         ?           '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' De que tamaño son  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                  '.split('')" :options-ok="'¿     ´           ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+        
+        
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in '¿Que comen  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'           '.split('')" :options-ok="'   ´      ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+        
+        
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' Como son  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'         '.split('')" :options-ok="'¿ ´      ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+        
+        
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in '¿Cuantos años viven  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                   '.split('')" :options-ok="'   ´               ? '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+        
+        
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' Cuantas clases de calamares hay  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                                '.split('')" :options-ok="'¿  ´                            ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+
+
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' En que regiones del mundo se les encuentra  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                                           '.split('')" :options-ok="'¿     ´                                    ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+        
+        
+        <div class="mt-3 simbols">
+            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="word">
+                <div class="theword">
+                    <div v-for="(i, index) in ' Por que es importante estudiarlos  '.split('')">{{i}}</div>
+                </div>
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
+                    :options="'                                  '.split('')" :options-ok="'¿      ´                          ?  '.split('')">
+                </dragdrop>
+            </div>
+        </div>
+
+
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <!--sortable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <!-- /sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
@@ -41,4 +264,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
