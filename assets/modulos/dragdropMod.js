@@ -67,7 +67,7 @@ Vue.component('dragdrop', {
 <div class="dragdrop" >
     <div class="draggable draggableModule" :class="setclass">
         <draggable v-model="optionsDraggable" group="stf" >
-        <div v-for="e in optionsDraggable" :key="e.l">{{e}}</div>
+        <div v-for="e in optionsDraggable" :key="e.l" v-html="e"></div>
         </draggable>
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
     </div>
