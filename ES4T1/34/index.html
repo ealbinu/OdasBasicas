@@ -1,35 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Pongo los acentos en las palabras</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
 </head>
+
+<style>
+    .booky{
+        border: 10px solid #F2AC4B;
+        box-shadow: 0 8px 12px rgba(0,0,0,0.5) inset;
+        background:#976f4d url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAwCAMAAAA8VkqRAAAAVFBMVEUAAACcclSsinSUaky0knykfmSsknS0moScdlykhmycckysimykgmS8moScelyUakScbky0knS8noSkelyshmykflyUbkysjnS0lnycdlSkhmSUZkTDPcHkAAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAt9JREFUOI0Vk9u2IyEIBSWtIYm0xiPX8P//Oc6rKAt2laV6rNoUbZMsfCtM6N3Qi7PX/jHgRXvEXGzOmYkl5bodmM3qd+az34KNerZyj4VIn0EPud22enWDpCzBddZGISST0HjrpL5fUGY8US2uGTvfxN23rx6+i+3rF2NCzBqaGtzhIlUoKuDqfFpNbkk74FeBgQp0rtvkDpRXzw7n6dypVhTTVfQd4kScfTbbAxHLrfJw3KPymreA1cY7Jq0Ct7Mged1gAf1hl+IfrE/JdxuV+tfoBOK9DrP4zCmlv70u3W5M/b2fv7H5A5BarGnziDu359Sf8LxobohCV796h2/0rmvOyXFtlf+xz5lLu6b/2Dtd37GfmtbL/gyEdJ4tFMVqf1S+8WQlj3MNa1Xyg/ECpmsoBpQRyfOJ9f0yxXUPbaJxsigKdPlZeMxGJDEOSjc1KHL3LnoGV2sfJLZGQxqdQpJnhdoJXufYMPlvg3+L5WlAL6RpHDbw1GQs6CWONiAIn4pyeNCtYdLCyp/YR5f5O/fBUU8IqA+NuwisiSvt7NgR4IYfLvfJ5ctTan/F1ClzqlQMj/aIsuU48Yd4hQX/glsb+2GSBbuMYR2q8KhJzDRx5qOXIUfiCvK0wFSPl225Xv/Rxr2c6qb5mu0bDYGTesxC+AMSj43aYHexSQL97qUty88Z9XkdR1osT//6c0Jh9WR/PI/wR9Jnn1y1dt6lXyAX0OdiSHS/kYf0+cuSJ7uhjC0yO97cvq3FxCxSB3MTzn1gv+aOSInzC8smp3Wh1B350U1GUBNPK6ReL63s5y8fjAGLXc3OgoD0eGAndc06neEkUpHKWCtBj9fjxnrs4Kn+QucyT89grDitTXlrX+9P32IFJSzht3/b+31tORSoNq/lisSNpDh4D6A6xTbTax6vzkgn3aNC6xGxLrvqA7U8DG67mPtDKYMnRe0S20v2lbJcfwc1h6ep3khJ/wBXqUW8qQlh9AAAAABJRU5ErkJggg==);
+        border-radius: 10px;
+    }
+    .sticky{
+        background: #DAE7EF;
+        margin: 20px 0;
+    }
+
+    .sticky .inputbox input{
+        font-size: 1.2rem;
+        padding: 0;
+        border-radius: 3px;
+        border-width: 1px;
+    }
+    .row.fullword {
+	padding: 10px;
+}
+.word {
+	font-size: 1.2rem;
+}
+.sticky .inps {
+	padding-right: 10px;
+}
+.sticky .inps .col {
+	margin: 0;
+	padding: 0px;
+}
+
+</style>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Pongo los acentos en las palabras</h1>
+        <h2>Las palabras en familia</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Separa las palabras en sílabas y escribe los acentos que faltan.</div>
+        <div class="row mt-3 booky">
+            <div class="col-md-6">
+                <div class="sticky">
+                <div class="row fullword align-items-center" v-for="(i, index) in [
+                    {w: 'volatil', sil: ['vo', 'lá', 'til'], in: 0},
+                    {w: 'huevería', sil: ['hue', 've', 'rí', 'a'], in: 3},
+                    {w: 'voladura', sil: ['vo', 'la', 'du', 'ra'], in: 7},
+                    {w: 'huevina', sil: ['hie', 'vi', 'na'], in: 11},
+                    {w: 'herbivoro', sil: ['her', 'bí', 'vo', 'ro'], in: 14},
+                    {w: 'hierbabuena', sil: ['hier', 'ba', 'bue', 'na'], in: 18},
+                    {w: 'arboreo', sil: ['ar', 'bó', 're', 'o'], in: 22},
+                    {w: 'arbusto', sil: ['ar', 'bus', 'to'], in: 26},
+                    ]">
+                    <div class="col-6 word">{{i.w}}</div>
+                    <div class="col-6">
+                        <div class="row inps">
+                            <div class="col" v-for="(sila, dx) in i.sil">
+                                <inputbox v-model="r[dx+i.in]" :ref="refCount()" @isright="right++" :answer="sila" type="text" placeh="-"></inputbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="sticky">
+                <div class="row fullword align-items-center" v-for="(i, index) in [
+                        {w: 'volador', sil: ['vo','la','dor'], in: 29},
+                        {w: 'arboleda', sil: ['ar','bo','le','da'], in: 32},
+                        {w: 'hievera', sil: ['hie','ve','ra'], in: 36},
+                        {w: 'arboricola', sil: ['ar','bo','rí','co','la'], in: 39},
+                        {w: 'voladero', sil: ['vo','la','de','ro'], in: 43},
+                        {w: 'huevar', sil: ['hue','var'], in: 47},
+                        {w: 'herbolaria', sil: ['her','bo','la','ria'], in: 49},
+                        {w: 'hierbajo', sil: ['hier','ba','jo'], in: 53},
+                    ]">
+                    <div class="col-6 word">{{i.w}}</div>
+                    <div class="col-6">
+                        <div class="row inps">
+                            <div class="col" v-for="(sila, dx) in i.sil">
+                                <inputbox v-model="r[dx+i.in]" :ref="refCount()" @isright="right++" :answer="sila" type="text" placeh="-"></inputbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
-        
 
 
-        
-        
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -41,4 +124,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
