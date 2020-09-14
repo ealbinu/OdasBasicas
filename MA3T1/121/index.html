@@ -1,36 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Multiplico por decenas y centenas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
 </head>
+
+<style>
+    .draggableModule {
+        position: relative;
+    }
+
+    .draggable,
+    .answers {
+        background: #f5f5f5;
+        width: 100%;
+        border-radius: 10px 0 0 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+
+    .draggable {
+        padding-right: 0;
+    }
+
+    .answers {
+        padding-left: 0;
+        background: #fff;
+
+    }
+
+    .answers {
+        border-radius: 0 10px 10px 0;
+    }
+
+    .draggable>div,
+    .answers {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        font-size: 1.2rem;
+        cursor: move;
+    }
+
+    .draggable>div strong {
+        font-size: 1.5rem;
+        display: block;
+        color: var(--sec);
+    }
+
+    .draggable>div div,
+    .ans {
+        background: #fff;
+        color: var(--sec);
+        border: 2px solid #eee;
+        border-radius: 10px;
+        margin: 2px;
+        padding: 10px;
+    }
+
+    .draggable>div div {
+        border-radius: 10px 0 0 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .ans {
+        border-radius: 0 10px 10px 0;
+        border-color: #F5F5F5;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .draggable>div div:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    .draggable.options>div {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+</style>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Multiplico por decenas y centenas</h1>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5">Relaciona las operaciones con su resultado.</div>
         <div class="row mt-3">
-           
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-7 text-right">
+                        <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[
+                        '9 x 200 = ',
+                        '9 x 1 000 = ',
+                        '1 000 x 7 = ',
+                        '100 x 11 = ',
+                        '9 x 10 = ',
+                        '11 x 10 = ',
+                        '18 x 10 = ',
+                        '8 x 100 = ',
+                        ]" :options-ok="[
+                        '1 000 x 7 = ',
+                        '11 x 10 = ',
+                        '9 x 200 = ',
+                        '100 x 11 = ',
+                        '9 x 10 = ',
+                        '8 x 100 = ',
+                        '9 x 1 000 = ',
+                        '18 x 10 = ',
+                        ]"></dragdrop>
+                    </div>
+                    <div class="col-5 tex-left answers mt-3">
+                        <div v-for="(i, index) in [ '7 000', '110', '1 800', '1 100', '180', '800', '90', '9 000' ]"
+                            class="ans">
+                            <strong>{{i}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-6 text-right">
+                        <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[
+                        '72 x 10 = ',
+                        '34 x 20 = ',
+                        '43 x 20 = ',
+                        '69 x 10 = ',
+                        '18 x 10 = ',
+                        '11 x 90 = ',
+                        '22 x 40 = ',
+                        '87 x 10 = ',
+                        '11 x 70 = ',
+                        ]" :options-ok="[
+                        '18 x 10 = ',
+                        '72 x 10 = ',
+                        '69 x 10 = ',
+                        '34 x 20 = ',
+                        '22 x 40 = ',
+                        '87 x 10 = ',
+                        '11 x 90 = ',
+                        '43 x 20 = ',
+                        '11 x 70 = ',
+                        ]"></dragdrop>
+                    </div>
+                    <div class="col-5 tex-left answers mt-3">
+                        <div v-for="(i, index) in [ '180', '720', '690', '680', '880', '870', '990', '860', '770' ]"
+                            class="ans">
+                            <strong>{{i}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
 
 
-        
-        
+
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <!--sortable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="dragdrop-4.js"></script>
+    <!-- /sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
@@ -39,6 +190,9 @@
     <script src="../../assets/modulos/choose.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script></script>
+    <script>
+        //app.$set(app.temps, 'b')
+    </script>
 </body>
+
 </html>
