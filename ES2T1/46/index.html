@@ -1,36 +1,203 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Analizo anuncios</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .palabras .dragdrop .draggable>div {
+            display: flex;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .palabras .dragdrop .draggable>div div {
+            padding: 10px;
+            border-radius: 10px;
+            background: var(--main);
+            color: #fff;
+            border: 2px solid #F5F5F5;
+            cursor: move;
+        }
+
+        .choco {
+            position: relative;
+        }
+
+        .choco .dragdrop {
+            position: absolute;
+            height: 50px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 6px solid var(--main);
+        }
+
+        .choco .dragdrop .draggable {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #603A13;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .choco .dragdrop .draggable>div:first-child {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .choco .dragdrop:nth-child(1) {
+            width: 20%;
+            left: 2%;
+            top: 1%;
+        }
+
+        .choco .dragdrop:nth-child(2) {
+            width: 20%;
+            left: 7%;
+            top: 86%;
+        }
+
+        .choco .dragdrop:nth-child(3) {
+            width: 20%;
+            left: 75%;
+            top: 45%;
+        }
+        .partes {
+	text-align: right;
+}
+.partes div {
+	height: 100px;
+	background: #FFF9E3;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 10px 0 0 10px;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+.partes div:nth-child(1) {
+	background: #DDD6E2;
+}
+.partes div:nth-child(2) {
+	background: #FDE8CF;
+}
+.partes div:nth-child(3) {
+	background: #E7F1D8;
+}
+.partes div:nth-child(4) {
+	background: #DDF0EE;
+}
+.descripciones .draggable div:first-child {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
+.descripciones .draggable div:first-child div {
+	height: 100px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 0 10px 10px 0;
+	font-weight: bold;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	cursor: move;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+.descripciones .draggable div:first-child div:nth-child(1) {
+	background: #DDD6E2;
+}
+.descripciones .draggable div:first-child div:nth-child(2) {
+	background: #FDE8CF;
+}
+.descripciones .draggable div:first-child div:nth-child(3) {
+	background: #E7F1D8;
+}
+.descripciones .draggable div:first-child div:nth-child(4) {
+	background: #DDF0EE;
+}
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Analizo anuncios</h1>
+        <h2>El poder de las palabras</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Coloca las palabras del recuadro en el espacio que corresponde según las características del anuncio.</div>
+        
+        <div class="mt-3 palabras">
+            <dragdrop @isright="right++" :options="['Título', 'Imagen', 'Eslogan']" :options-ok="[]"></dragdrop>
         </div>
         
-
-
+        <div class="row mt-3">
+            <div class="col-12 choco">
+                <img src="aimg/a.png" class="w-100">
+                <div class="drops">
+                    <dragdrop @isright="right++" v-model="r[0]" :ref="refCount()" :options="[]"
+                    :options-ok="['Título']"></dragdrop>
+                    <dragdrop @isright="right++" v-model="r[1]" :ref="refCount()" :options="[]"
+                    :options-ok="['Imagen']"></dragdrop>
+                    <dragdrop @isright="right++" v-model="r[2]" :ref="refCount()" :options="[]"
+                    :options-ok="['Eslogan']"></dragdrop>
+                </div>
+            </div>
+        </div>
         
         
+        
+        <div class="instruccion mt-5">Lee las descripciones y colócalas en las partes del cartel que corresponda.</div>
+
+        <div class="row mt-3">
+            <div class="col-4">
+                <div class="row flex-column partes">
+                    <div>Imagen</div>
+                    <div>Título</div>
+                    <div>Los colores</div>
+                    <div>Eslogan</div>
+                </div>
+            </div>
+            <div class="col-8 descripciones text-left">
+                <dragdrop @isright="right++" v-model="r[3]" :ref="refCount()" 
+                    :options="['Es una frase original, corta y fácil de recordar que se incluye en los anuncios publicitarios.','Es creada para llamar la atención.','Nos sirve para saber de qué se trata el anuncio.','Hacen que el anuncio sea llamativo.']"
+                    :options-ok="['Es creada para llamar la atención.','Nos sirve para saber de qué se trata el anuncio.','Hacen que el anuncio sea llamativo.','Es una frase original, corta y fácil de recordar que se incluye en los anuncios publicitarios.']"></dragdrop>
+            </div>
+        </div>
+
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <!--sortable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <!-- /sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
@@ -41,4 +208,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>

@@ -74,3 +74,8 @@ Vue.component('dragdrop', {
 </div>
     `
 })
+
+/*
+<p>{{optionsDraggable}}</p>
+<p>{{optionsOk}}</p>
+*/
