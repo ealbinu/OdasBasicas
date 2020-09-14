@@ -2938,6 +2938,24 @@
 		"oAP": "\/ES4T1\/40\/index.html",
 		"oF": 0
 		},
+	"\/ES4T1\/44\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 110873,
+		"oA": 0,
+		"oAP": "\/ES4T1\/44\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES4T1\/44\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES4T1\/44\/index.html",
+		"oF": 0
+		},
 	"\/ES4T1\/48\/index.html": {
 		"cB": 0,
 		"ft": 8192,
