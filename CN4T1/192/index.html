@@ -19,6 +19,51 @@
             border-radius: 10px;
             margin: 2px 0;
         }
+        .soup {
+	position: relative;
+}
+
+.boxes .selectable {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.boxes .selectable .circledactive {
+	border-radius: 10px;
+}
+
+.boxes {
+	position: absolute;
+	left: 0%;
+	top: 2%;
+	right: 1%;
+	bottom: 2%;
+}
+
+.boxes .selectable:nth-child(1) {
+	left: 0;
+	top: 81%;
+	width: 93%;
+	height: 11%;
+}
+.boxes .selectable:nth-child(2) {
+	left: 37.5%;
+	top: 16%;
+	width: 11%;
+	height: 60%;
+}
+.boxes .selectable:nth-child(3) {
+	left: 0%;
+	top: 7%;
+	width: 11%;
+	height: 69%;
+}
+.boxes .selectable:nth-child(4) {
+	left: 67.5%;
+	top: 0%;
+	width: 11%;
+	height: 76%;
+}
     </style>
 </head>
 <body>
@@ -30,17 +75,22 @@
 
         <div class="row mt-3 align-items-center">
             <div class="col-md-7">
-                <img src="aimg/cross.svg" class="img-fluid">
+                <div class="soup">
+                    <img src="aimg/cross.svg" class="img-fluid">
+                    <div class="boxes">
+                        <selectable v-for="(i, index) in 4" :isok="true" v-model="r[index+4]" :ref="refCount()" @isright="right++"></selectable>
+                    </div>
+                </div>
             </div>
             <div class="col-md-5">
                <div class="pregunta" v-for="(i, index) in [
                 {a:'Pentavalente', p:'Vacuna que protege contra la difteria y la tosferina, entre otras enfermedades.' },
-                {a:'Viruela', p:'Nombre de la vacuna que ya no se aplica porque la enfer- medad se erradicó en México en 1952.' },
+                {a:'Viruela', p:'Nombre de la vacuna que ya no se aplica porque la enfermedad se erradicó en México en 1952.' },
                 {a:'Varicela', p:'Es una de las enfermedades que se propaga cuando el enfermo entra en contacto con otras personas.' },
                 {a:'españoles', p:'¿Quiénes trajeron a México el virus de la viruela en 1520?' },
                ]">
                 <strong class="sec">{{index+1}}. </strong> {{i.p}}
-                <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
+                <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
             </div>
            </div>
            

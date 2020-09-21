@@ -19,6 +19,16 @@ h2 {
   font-size: 0.9rem;
   font-weight: bold;
 }
+h2.repaso {
+  background: #005093;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 50px 4px 10px;
+  border-radius: 2px 8px 8px 2px;
+  border: 2px solid #AAE1FA;
+  box-shadow: -4px 4px 0px rgba(0, 0, 0, 0.1);
+  color: #AAE1FA;
+}
 .instruccion {
   color: #005093;
   font-size: 1.4rem;

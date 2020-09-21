@@ -15,6 +15,13 @@
         .bg2 {background: #EFDFE6;  }
         .bg3 {background: #FDE8CF;  }
         .bg4 {background: #D2E5EF;  }
+
+        .ex{
+            background:#f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid #BCCDE1;
+        }
     </style>
 </head>
 <body>
@@ -24,7 +31,7 @@
 
         <div class="instruccion mt-5">Escribe con números la descomposición de cada conjunto en decenas y unidades. Después compáralos y selecciona si es <strong>es mayor que</strong> o <strong>es menor que</strong>, según corresponda.</div>
         
-        <div class="row justify-content-center align-items-center mt-5">
+        <div class="row justify-content-center align-items-center mt-5 ex">
             <div class="col-sm-4">
                 <img src="aimg/i1.png" class="img-fluid mb-4">
                 <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="1+1+1+1+1+1=6" type="text" placeh="1+1+1...=?"></inputbox>
@@ -36,14 +43,14 @@
             </div>
             <div class="col-sm-4">
                 <img src="aimg/i2.png" class="img-fluid mb-4">
-                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="10+2=12" type="text" placeh="10+?=?"></inputbox>
+                <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="10+1+1=12" type="text" placeh="10+?+?=?"></inputbox>
             </div>
         </div>
 
-        <div class="row justify-content-center align-items-center mt-5">
+        <div class="row justify-content-center align-items-center mt-5 ex">
             <div class="col-sm-4">
                 <img src="aimg/i3.png" class="img-fluid mb-4">
-                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="10+10+10+3=33" type="text" placeh="10+?+?+?=?"></inputbox>
+                <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="10+10+10+1+1+1=33" type="text" placeh="10+?+?+?+?+?=?"></inputbox>
             </div>
             <div class="col-sm-4">
                 <selectableoptions v-model="r[4]" ref="q4" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
@@ -58,44 +65,44 @@
 
         <div class="instruccion mt-5">Compara las cantidades y el resultado de las sumas, y selecciona si <strong>es mayor que</strong> o <strong>es menor que</strong>, según corresponda.</div>
         
-        <div class="row justify-content-center align-items-center mt-5 text-center">
+        <div class="row justify-content-center align-items-center mt-5 text-center ex">
             <div class="col-sm-4"><div class="bg1"><strong class="h3 sec">65</strong></div></div>
             <div class="col-sm-4">
                 <selectableoptions v-model="r[6]" ref="q6" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
                     <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-4"><div class="bg1"><strong class="h3 sec">55+5</strong></div></div>
+            <div class="col-sm-4"><div class="bg1"><strong class="h3 sec">55+5=</strong></div></div>
         </div>
 
-        <div class="row justify-content-center align-items-center mt-5 text-center">
+        <div class="row justify-content-center align-items-center mt-5 text-center ex">
             <div class="col-sm-4"><div class="bg2"><strong class="h3 sec">70</strong></div></div>
             <div class="col-sm-4">
                 <selectableoptions v-model="r[7]" ref="q7" @isright="right++" answer="menorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
                     <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-4"><div class="bg2"><strong class="h3 sec">60+20</strong></div></div>
+            <div class="col-sm-4"><div class="bg2"><strong class="h3 sec">60+20=</strong></div></div>
         </div>
 
-        <div class="row justify-content-center align-items-center mt-5 text-center">
+        <div class="row justify-content-center align-items-center mt-5 text-center ex">
             <div class="col-sm-4"><div class="bg3"><strong class="h3 sec">90</strong></div></div>
             <div class="col-sm-4">
                 <selectableoptions v-model="r[8]" ref="q8" @isright="right++" answer="mayorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
                     <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-4"><div class="bg3"><strong class="h3 sec">70+10</strong></div></div>
+            <div class="col-sm-4"><div class="bg3"><strong class="h3 sec">70+10=</strong></div></div>
         </div>
 
-        <div class="row justify-content-center align-items-center mt-5 text-center">
+        <div class="row justify-content-center align-items-center mt-5 text-center ex">
             <div class="col-sm-4"><div class="bg4"><strong class="h3 sec">85</strong></div></div>
             <div class="col-sm-4">
                 <selectableoptions v-model="r[9]" ref="q9" @isright="right++" answer="menorque" :options="[{val:'menorque', txt:'es menor que'}, {val:'mayorque', txt:'es mayor que'}]" customclass="col-sm-12 text-center">
                     <template v-slot:option="{option}"><div class="py-2"><strong class="h4 main">{{option.txt}}</strong></div></template>
                 </selectableoptions>
             </div>
-            <div class="col-sm-4"><div class="bg4"><strong class="h3 sec">90+5</strong></div></div>
+            <div class="col-sm-4"><div class="bg4"><strong class="h3 sec">90+5=</strong></div></div>
         </div>
 
 

@@ -1,11 +1,12 @@
 Vue.component('dragdrop', {
-    props: ['value', 'isok', 'options', 'optionsOk','ignoreOrder'],
+    props: ['value', 'isok', 'options', 'optionsOk','ignoreOrder', 'group'],
     data() {
         return {
             status: false,
             evaluate: false,
             result: false,
-            optionsDraggable: []
+            optionsDraggable: [],
+            groupdrag: 'groupdrag'
         }
     },
     computed:{
@@ -61,12 +62,16 @@ Vue.component('dragdrop', {
     mounted () {
        this.$emit('input', "")
        this.optionsDraggable = this.options
-       console.log(this.optionsOk)
+
+       if(this.group!=undefined){
+           this.groupdrag = this.group
+       }
+
     },
     template: `
 <div class="dragdrop" >
     <div class="draggable draggableModule" :class="setclass">
-        <draggable v-model="optionsDraggable" group="stf" >
+        <draggable v-model="optionsDraggable" :group="groupdrag" >
         <div v-for="e in optionsDraggable" :key="e.l" v-html="e"></div>
         </draggable>
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>

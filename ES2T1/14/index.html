@@ -60,11 +60,11 @@
         <h1>Reinvento rondas y cantos</h1>
 
 
-        <div class="instruccion mt-5">Lee la siguiente ronda,después utiliza las palabras del recuadro para cambiar las palabras resaltadas. Observa los ejemplos.</div>
+        <div class="instruccion mt-5">Lee la siguiente ronda, después utiliza las palabras del recuadro para cambiar las palabras resaltadas. Observa los ejemplos.</div>
         
         <div class="row mt-3">
             <div class="col-md-5">
-                <div class="palabras"><strong v-for="i in ['llamada','esposo','patita','pato','brilloso','desmayado','dado','cuac','Pato']">{{i}}</strong></div>
+                <div class="palabras"><strong v-for="i in ['llamada','esposo','patita','desmayado','dado','cuac','pato brilloso','pato']">{{i}}</strong></div>
                 <div class="canto">
                     <p>El señor don <strong>Gato</strong></p>
                     <p>Estaba el señor don <strong>Gato</strong> 
@@ -85,13 +85,13 @@
                     <p>El señor don <inputbox v-model="r[0]" ref="q0" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox></p>
                     <p>Estaba el señor don <inputbox v-model="r[1]" ref="q1" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox>
                         <br>sentadito en su tejado, 
-                        <br><strong>cuac</strong>, <strong>cuac</strong>, <strong>cuac</strong>, <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="Pato" type="text" placeh="-"></inputbox> .</p>
+                        <br><strong>cuac</strong>, <strong>cuac</strong>, <strong>cuac</strong>, <inputbox v-model="r[2]" ref="q2" @isright="right++" answer="cuac" type="text" placeh="-"></inputbox> .</p>
                     <p>Ha recibido una <inputbox v-model="r[3]" ref="q3" @isright="right++" answer="llamada" type="text" placeh="-"></inputbox> : 
                         <br>que si quiere ser <inputbox v-model="r[4]" ref="q4" @isright="right++" answer="esposo" type="text" placeh="-"></inputbox> 
                         <br>con una <inputbox v-model="r[5]" ref="q5" @isright="right++" answer="patita" type="text" placeh="-"></inputbox> blanca , 
                         <br>sobrina de un <inputbox v-model="r[6]" ref="q6" @isright="right++" answer="pato brilloso" type="text" placeh="-"></inputbox> .</p>
                     <p>Al recibir la <strong>llamada</strong>
-                        <br>se ha caído del <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="desmayado" type="text" placeh="-"></inputbox> , 
+                        <br>se ha caído <inputbox v-model="r[7]" ref="q7" @isright="right++" answer="desmayado" type="text" placeh="-"></inputbox> , 
                         <br>y un gran chipote se ha hecho 
                         <br>del susto que le han <inputbox v-model="r[8]" ref="q8" @isright="right++" answer="dado" type="text" placeh="-"></inputbox> .</p>
                 </div>

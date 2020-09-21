@@ -41,6 +41,7 @@
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
 		<h1>Observo los elementos de los poemas</h1>
+		<h2 class="repaso">Página de repaso</h2>
 
 		
 		<div class="instruccion mt-5">Completa el párrafo con las palabras del recuadro. Después responde el ejercicio como se indica.</div>
@@ -72,7 +73,7 @@
 		</div>
 		
 
-		<div class="instruccion mt-5">Escribe dentro del paréntesis <strong>L</strong> si el enunciado está en lenguaje literal o una <strong>F</strong> si es lenguaje figurado.</div>
+		<div class="instruccion mt-5">Escribe <strong>L</strong> si el enunciado está en lenguaje literal o una <strong>F</strong> si es lenguaje figurado.</div>
 		<div class="row mt-3">
 			<div class="col-md-6" v-for="(i,index) in [
 			{v: 'F', t: 'Los cachorros son pelotitas de felicidad.'},
@@ -85,7 +86,7 @@
 			{v: 'L', t: 'El clima en la playa es caliente.'},
 		]">
 				<div class="row align-items-center">
-					<div class="col-3"><inputbox v-model="r[index+9]" :ref="'q'+(index+9)" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox></div>
+					<div class="col-3"><inputbox v-model="r[index+9]" :ref="'q'+(index+9)" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox></div>
 					<div class="col"><div v-html="i.t"></div></div>
 				</div>
 			</div>

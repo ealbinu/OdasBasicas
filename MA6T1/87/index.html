@@ -139,6 +139,7 @@
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
         <h1>Identifico los elementos de la división</h1>
+		<h2 class="repaso">Página de repaso</h2>
 
         <div class="instruccion mt-5">Completa la siguiente tabla. Observa los ejemplos.</div>
         
@@ -177,7 +178,7 @@
 						<td v-if="Array.isArray(i.r)">
 							<inputbox v-model="r[i.r[1]]" :ref="'q'+i.r[1]" @isright="right++" :answer="i.r[0]" type="number" placeh="#"></inputbox>
 						</td>
-						<td v-else>{{i.d}}</td>
+						<td v-else>{{i.r}}</td>
 						<td>=</td>
 						<td v-if="Array.isArray(i.d2)">
 							<inputbox v-model="r[i.d2[1]]" :ref="'q'+i.d2[1]" @isright="right++" :answer="i.d2[0]" type="number" placeh="#"></inputbox>
@@ -245,7 +246,7 @@
 			</div>
 			<!--------------->
 			<div class="division col-lg-4">
-				<div class="in">346 ÷ 18 = <strong class="accent"><inputbox v-model="r[13]" :ref="'q'+13" @isright="right++" :answer="24" type="number" placeh="#"></inputbox> y sobran <inputbox v-model="r[14]" :ref="'q'+14" @isright="right++" :answer="18" type="number" placeh="#"></inputbox>.</strong></div>
+				<div class="in">522 ÷ 21 = <strong class="accent"><inputbox v-model="r[13]" :ref="'q'+13" @isright="right++" :answer="24" type="number" placeh="#"></inputbox> y sobran <inputbox v-model="r[14]" :ref="'q'+14" @isright="right++" :answer="18" type="number" placeh="#"></inputbox>.</strong></div>
 				<div class="ecu">
 					<div class="row">
 						<div class="col-2"></div><div class="col-2"></div><div class="col-2"></div>
@@ -291,13 +292,13 @@
 				<div class="comp">
 					<strong class="accent">Comprobación</strong>
 					<div>
-						<inputbox v-model="r[27]" :ref="'q'+27" @isright="right++" :answer="18" type="" placeh="#"></inputbox>
+						<inputbox v-model="r[27]" :ref="'q'+27" @isright="right++" :answer="21" type="" placeh="#"></inputbox>
 						 x 
-						<inputbox v-model="r[28]" :ref="'q'+28" @isright="right++" :answer="19" type="" placeh="#"></inputbox>
+						<inputbox v-model="r[28]" :ref="'q'+28" @isright="right++" :answer="24" type="" placeh="#"></inputbox>
 						 + 
-						<inputbox v-model="r[29]" :ref="'q'+29" @isright="right++" :answer="4" type="" placeh="#"></inputbox>
+						<inputbox v-model="r[29]" :ref="'q'+29" @isright="right++" :answer="18" type="" placeh="#"></inputbox>
 						 = 
-						<inputbox v-model="r[30]" :ref="'q'+30" @isright="right++" :answer="346" type="" placeh="#"></inputbox>
+						<inputbox v-model="r[30]" :ref="'q'+30" @isright="right++" :answer="522" type="" placeh="#"></inputbox>
 					</div>
 				</div>
 			</div>

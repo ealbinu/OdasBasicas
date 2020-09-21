@@ -34,9 +34,9 @@ img {
         <div class="instruccion mt-5">Observa los siguientes ángulos y anota en el recuadro cuántos grados miden.</div>
 
         <div class="row mt-3">
-           <div class="col-md-6 text-center" v-for="(i,index) in ['12º', '90º', '125º', '165º', '75º', '45º']">
+           <div class="col-md-6 text-center" v-for="(i,index) in [12, 90, 125, 165, 75, 45]">
             <img :src="'aimg/a'+(index+1)+'.svg'" class="img-fluid mb-2">
-            <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="text" placeh="#º"></inputbox>
+            <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="number" placeh="#"><template v-slot:after><strong class="main h1">º</strong></template></inputbox>
            </div>
         </div>
 

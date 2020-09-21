@@ -28,9 +28,9 @@
         </div>
         
         <div class="row mt-3 text-center">
-            <div class="col-6 mb-5" v-for="(i, index) in 4">
-                <img :src="'aimg/a'+(i)+'.svg'" class="img-fluid booky">
-                <inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="number" placeh="#" init></inputbox>
+            <div class="col-6 mb-5" v-for="(i, index) in [{b: 1, v: 1},{b: 2, v: 4},{b: 3, v: 2},{b: 4, v: 3}]">
+                <img :src="'aimg/a'+(i.b)+'.svg'" class="img-fluid booky">
+                <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#" init></inputbox>
             </div>
         </div>
         

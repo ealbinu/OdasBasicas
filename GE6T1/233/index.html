@@ -51,7 +51,11 @@
 	top: 81%;
 }
 
-
+.palabras{
+	background: #ECDAB0;
+	border-radius: 10px;
+	padding: 20px 10px;
+}
     </style>
 </head>
 <body>
@@ -59,6 +63,10 @@
         <h1>Conozco las capas de la Tierra</h1>
 
         <div class="instruccion mt-5">Completa las capas de la Tierra con las palabras del recuadro.</div>
+
+        <div class="row justify-content-center align-items-center text-center wrap palabras">
+            <div class="col" v-for="(i, index) in ['Atmósfera', 'Corteza', 'Manto', 'Núcleo externo', 'Núcleo interno']"><strong class="main">{{i}}</strong></div>
+        </div>
 
         <div class="row mt-3">
            <div class="diag col-12">

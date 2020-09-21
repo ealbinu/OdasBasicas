@@ -35,6 +35,7 @@ Vue.component('inputbox', {
             if(this.type == 'text' && this.caseSensitive==undefined){
                 theanswer = theanswer.toString().toLowerCase()
                 this.status = this.status.toLowerCase()
+                this.status = this.status.replace(/\.$/, "")
             }
             if(this.status == theanswer) {
                 this.$emit('isright', true)

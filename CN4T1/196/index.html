@@ -58,8 +58,8 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="ans col-md-12 col-6" v-for="(i,index) in _.shuffle(temps)">
-                        <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="index+1" type="number" placeh="#"></inputbox> {{i.p}}
+                    <div class="ans col-md-12 col-6" v-for="(i,index) in temps2">
+                        <inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.v" type="number" placeh="#"></inputbox> {{i.p}}
                     </div>
                 </div>
             </div>
@@ -86,18 +86,19 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/assets.js"></script>
     <script>
-        app.temps = [
-            {p: 'Helecho', t: 'Planta en cuyos soros se forman esporas, las cuales la ayudan a reproducirse.'},
-            {p: 'Pétalos', t: 'También conocida como corola, protege el interior de la flor.'},
-            {p: 'Estambres', t: 'Está compuesto de dos partes llamadas antera y filamento.'},
-            {p: 'Polen', t: 'Una de las estructuras del estambre contiene este elemento que se percibe como polvo.'},
-            {p: 'Androceo', t: 'Es el nombre de un conjunto de estambres. Se le conoce como el órgano sexual masculino de la planta.'},
-            {p: 'Gineceo', t: 'Es el nombre de el órgano femenino de la planta, el cual está compuesto por tres estructuras.También es conocido como pistilo.'},
-            {p: 'Ovario', t: 'Parte del órgano sexual femenino en el cual se encuentran los óvulos.'},
-            {p: 'Semilla', t: 'Es la capa que envuelve al óvulo fecundado desarrollado como embrión.'},
-            {p: 'Flor', t: 'Lugar de la planta donde ocurre la fecundación.'},
-            {p: 'Clavel', t: 'Es un ejemplo de planta que se reproduce asexualmente'},
-        ]
+        app.$set(app, 'temps', [
+            {p: 'Helecho', t: 'Planta en cuyos soros se forman esporas, las cuales la ayudan a reproducirse.', v:1 },
+            {p: 'Pétalos', t: 'También conocida como corola, protege el interior de la flor.', v:2},
+            {p: 'Estambres', t: 'Está compuesto de dos partes llamadas antera y filamento.', v:3},
+            {p: 'Polen', t: 'Una de las estructuras del estambre contiene este elemento que se percibe como polvo.', v:4},
+            {p: 'Androceo', t: 'Es el nombre de un conjunto de estambres. Se le conoce como el órgano sexual masculino de la planta.', v:5},
+            {p: 'Gineceo', t: 'Es el nombre de el órgano femenino de la planta, el cual está compuesto por tres estructuras.También es conocido como pistilo.', v:6},
+            {p: 'Ovario', t: 'Parte del órgano sexual femenino en el cual se encuentran los óvulos.', v:7},
+            {p: 'Semilla', t: 'Es la capa que envuelve al óvulo fecundado desarrollado como embrión.', v:8},
+            {p: 'Flor', t: 'Lugar de la planta donde ocurre la fecundación.', v:9},
+            {p: 'Clavel', t: 'Es un ejemplo de planta que se reproduce asexualmente', v:10},
+        ])
+        app.$set(app, 'temps2', _.shuffle(app.temps))
     </script>
 </body>
 </html>
