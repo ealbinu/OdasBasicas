@@ -183,7 +183,7 @@
 						<td v-if="Array.isArray(i.d2)">
 							<inputbox v-model="r[i.d2[1]]" :ref="'q'+i.d2[1]" @isright="right++" :answer="i.d2[0]" type="number" placeh="#"></inputbox>
 						</td>
-						<td v-else>{{i.d}}</td>
+						<td v-else>{{i.d2}}</td>
 						<td>{{i.div}}</td>
 					</tr>
 				</tbody>

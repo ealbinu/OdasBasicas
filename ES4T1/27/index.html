@@ -45,6 +45,10 @@
             font-size: 1.4rem;
         }
 
+        .ex4 .inputbox input {
+            font-size: 1.2rem;
+        }
+
 
     </style>
 </head>
@@ -130,20 +134,20 @@
 
 
         <div class="instruccion mt-5">Escribe correctamente las siguientes oraciones.</div>
-        <div class="row justify-content-center align-items-center text-center">
+        <div class="row justify-content-center align-items-center text-center ex4">
             <div class="col-12 py-4">
                 <div class="label text-left h3">
                     <strong class="accent">1.</strong>
-                    <span>miguel se tapa con el codoal estornudar o toSer</span>
+                    <span>miguel se tapa con el codo al estornudar o toser</span>
                 </div>
-                <inputbox v-model="r[22]" :ref="'q'+(22)" @isright="right++" answer="Miguel se tapa con el codo al estornudar o toser." type="text" placeh="---"></inputbox>
+                <inputbox v-model="r[22]" :ref="'q'+(22)" @isright="right++" answer="Miguel se tapa con el codo al estornudar o toser" type="text" placeh="---"></inputbox>
             </div>
             <div class="col-12 py-4">
                 <div class="label text-left h3">
                     <strong class="accent">2.</strong>
-                    <span>al cuidarnos a nosotros mismos, Cuidamos tambien alosdemas</span>
+                    <span>al cuidarnos a nosotros mismos, Cuidamos tambien a los demas</span>
                 </div>
-                <inputbox v-model="r[23]" :ref="'q'+(23)" @isright="right++" answer="Al cuidarnos a nosotros mismos, cuidamos también a los demás." type="text" placeh="---"></inputbox>
+                <inputbox v-model="r[23]" :ref="'q'+(23)" @isright="right++" answer="Al cuidarnos a nosotros mismos, cuidamos también a los demás" type="text" placeh="---"></inputbox>
             </div>
         </div>
 

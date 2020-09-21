@@ -65,15 +65,14 @@
         <div class="instruccion mt-5">Completa las capas de la Tierra con las palabras del recuadro.</div>
 
         <div class="row justify-content-center align-items-center text-center wrap palabras">
-            <div class="col" v-for="(i, index) in ['Atmósfera', 'Corteza', 'Manto', 'Núcleo externo', 'Núcleo interno']"><strong class="main">{{i}}</strong></div>
+            <div class="col" v-for="(i, index) in [ 'Corteza',  'Núcleo interno', 'Manto', 'Núcleo externo','Atmósfera',]"><strong class="main">{{i}}</strong></div>
         </div>
 
         <div class="row mt-3">
            <div class="diag col-12">
                <img src="aimg/a1.svg" class=" w-100">
                <div class="opts">
-                <inputbox v-for="(i, index) in ['Atmósfera', 'Corteza', 'Manto', 'Núcleo externo', 'Núcleo interno']" v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="text" placeh="-"></inputbox>
-
+                <inputbox v-for="(i, index) in ['Atmósfera', 'Corteza', 'Manto', 'Núcleo externo', 'Núcleo interno']" v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
                </div>
            </div>
         </div>
