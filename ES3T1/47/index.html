@@ -1,35 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Hablo en sentido figurado</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .poema {
+            background: #F9F5E8;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) inset;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .poema small {
+            opacity: 0.5;
+        }
+
+        .poema p {
+            padding: 8px;
+        }
+
+        .verso {
+            border-bottom: 2px solid #D8222A;
+        }
+
+        .estrofa {
+            border: 2px solid #00A3DA;
+            border-radius: 4px;
+        }
+
+        .boxwrite {
+            background: #F0F7EB;
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid #A7D9E5;
+        }
+
+        .boxwrite>div {
+            display: flex;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #A7D9E5;
+            padding: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .boxwrite>div {
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .boxwrite>div strong {
+                width: 100%;
+            }
+        }
+
+        .boxwrite strong {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            width: 25%;
+        }
+
+        .boxwrite .inputbox {
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        .boxwrite .inputbox input {
+            width: 90%;
+            font-size: 1.1rem;
+        }
+
+
+        .box {
+            background: linear-gradient(#5BA9D9, #F9B450);
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .box .inputbox {
+            margin-top: 10px;
+        }
+        .box .inputbox input {
+            border-color: #2A2625;
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+        .b1 {
+            border: 4px solid #336D97;
+        }
+        .b2 {
+            border: 4px solid #DCC499;
+        }
+
+    </style>
 </head>
+
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Hablo en sentido figurado</h1>
+        <h2>Los autores de los poemas</h2>
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
+        <div class="instruccion mt-5">Lean en voz alta el poema dándole la entonación y el ritmo adecuados. Después,
+            resuelve como se indica.</div>
         <div class="row mt-3">
-           
+            <div class="col-5">
+                <div class="poema">
+                    <h3>A mi madre</h3>
+                    <p>
+                        Te fuiste de mi lado,<br>
+                        en silencio fue tu partida.<br>
+                        Mi corazón se ha dañado,<br>
+                        por tan súbita despedida.
+                    </p>
+                    <p>
+                        <span class="verso">Tu espíritu luchador</span><br>
+                        a la vida se aferraba.<br>
+                        Mas Dios, desesperado,<br>
+                        a su lado te llamaba.
+                    </p>
+                    <p class="estrofa">
+                        En ángel te has convertido,<br>
+                        velando por nosotros estás.<br>
+                        Aguardando que se cumpla<br>
+                        la cita de reunirnos en la eternidad.
+                    </p>
+                    <p><small>Juan Meléndez Valdés.</small></p>
+                </div>
+            </div>
+            <div class="col-7">
+                <choose v-model="r[0]" :ref="refCount()" num="1." text="El subrayado  <span class=verso>rojo</span> es:"
+                    :options="['Un verso', 'Una estrofa']" @isright="right++" answer="Un verso"></choose>
+                <choose v-model="r[1]" :ref="refCount()" num="2."
+                    text="Lo que esta en <span class=estrofa>azul</span> es:" :options="['Un verso', 'Una estrofa']"
+                    @isright="right++" answer="Una estrofa"></choose>
+                <div class="choose"><strong class="accent">3.</strong> Escribe las palabras que riman.</div>
+                <div class="boxwrite">
+                    <div><strong class="main">Partida</strong> <span>rima con</span>
+                        <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="despedida" type="text"
+                            placeh="-"><template v-slot:after>.</template></inputbox>
+                    </div>
+                    <div><strong class="main">Aferraba</strong> <span>rima con</span>
+                        <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="llamaba" type="text"
+                            placeh="-"><template v-slot:after>.</template></inputbox>
+                    </div>
+                    <div><strong class="main">Lado</strong> <span>rima con</span>
+                        <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="dañado" type="text"
+                            placeh="-"><template v-slot:after>.</template></inputbox>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
+        <div class="instruccion mt-5">Escribe qué tipo de lenguaje se utiliza en cada descripción. <strong>Literal</strong> o <strong>figurado</strong>.</div>
+        <div class="row mt-3 justify-content-center align-items-center">
+            <div class="col-md-6"><img src="aimg/a1.png" class="img-fluid mxw"></div>
+            <div class="col-md-6">
+                <div class="box b1">
+                    Mariana, con su cabello largo y lacio, observa el sol junto al mar.
+                    <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Literal" type="text" placeh="-"></inputbox>
+                </div>
+                <div class="box b2">
+                    Mariana observa cómo el sol se acuesta en el lecho cálido del mar.
+                    <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Figurado" type="text" placeh="-"></inputbox>
+                </div>
+            </div>
+        </div>
 
 
-        
-        
+
 
         <!-- ENDING -->
         <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
         <!--<blockquote class="blockquote">{{r}}</blockquote>-->
     </div>
-    
+
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -41,4 +195,5 @@
     <script src="../../assets/assets.js"></script>
     <script></script>
 </body>
+
 </html>
