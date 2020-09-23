@@ -3,21 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITULO</title>
+    <title>Sabemos qué son los sismos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
+    <style>
+        .preg {
+	background: #D4EFFB;
+	padding: 20px 10px;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+.res {
+	background: #FED8B3;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+.res .inputbox input {
+	font-size: 1.6rem;
+}
+
+    </style>
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>TITULO</h1>
+        <h1>Sabemos qué son los sismos</h1>
+        <h2>Dinámica de la corteza terrestre</h2>
+
+        <img src="aimg/tecuento.svg" class="w100">
 
         <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">INSTRUCCION</div>
-        <div class="row mt-3">
-           
+        <div class="instruccion mt-5">Consulta la sección <b>Te cuento que...</b> y relaciona las preguntas con sus respuestas.</div>
+        <div class="row mt-3 justify-content-center align-items-center">
+           <div class="col-md-5 h-100 row justify-content-between flex-column">
+               <div class="preg w-100  row justify-content-center align-items-center" v-for="(i, index) in [
+               '¿Qué fenómenos ocurren cuando las placas tectónicas chocan, se separan o se deslizan?',
+               '¿Qué es una erupción?',
+               '¿Qué son los sismos?',
+               '¿Qué son las placas tectónicas?',
+               '¿Cuáles son los tipos de movimiento de las placas tectónicas?'
+               ]">
+                <div class="col-2 text-center h3"><strong class="main">{{index+1}}.</strong></div>
+                <div class="col">{{i}}</div>
+                </div>
+           </div>
+           <div class="col-md-7 h-100 row justify-content-between flex-column">
+               <div class="res w-100 row justify-content-center align-items-center" v-for="(i, index) in [
+               {a: 3, t: 'Son movimientos vibratorios originados por la energía que se libera al chocar las placas tectónicas.'},
+               {a: 1, t: 'Sismos, erupciones volcánicas y formación de montañas.'},
+                {a: 5, t: 'Separación, deslizamiento y contacto.'},
+                {a: 2, t: 'La expulsión de magma y otros gases acumulados en el interior de la Tierra.'},
+                {a: 4, t: 'Son trozos o partes de litósfera que forman la corteza terrestre.'},
+               ]">
+                    <div class="col-3"><inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.a" type="number" placeh="#"></inputbox></div>
+                    <div class="col"><p>{{i.t}}</p></div>
+                </div>
+           </div>
         </div>
         
 
