@@ -31,13 +31,19 @@ Vue.component('inputbox', {
         verify () { 
             this.evaluate = true
             var theanswer = this.answer
+            let userAnswer = this.status
             
             if(this.type == 'text' && this.caseSensitive==undefined){
                 theanswer = theanswer.toString().toLowerCase()
-                this.status = this.status.toLowerCase()
-                this.status = this.status.replace(/\.$/, "")
+                userAnswer = userAnswer.toLowerCase()
+                
+                if(userAnswer.length>3){
+                    userAnswer = userAnswer.replace(/\.$/, "")
+                }
+
             }
-            if(this.status == theanswer) {
+            
+            if(userAnswer == theanswer) {
                 this.$emit('isright', true)
                 this.result = true
             }
