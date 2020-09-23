@@ -18,7 +18,8 @@
             background: #FEE8B6;
         }
         .inputbox input{
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            padding: 2px;
         }
         .img-fluid{max-width: 200px; margin: 10px auto;}
     </style>
@@ -128,7 +129,7 @@
                     ]">
                         <td><strong class="h2 sec">{{i.n}}</strong></td>
                         <td>
-                            <div class="row">
+                            <div class="row no-gutters">
                                 <div class="col"><inputbox v-model="r[i.i]" :ref="'q'+i.i" @isright="right++" :answer="i.a[0]" type="number" placeh="#"></inputbox></div>
                                 <div class="col"><strong class="h1 main">+</strong></div>
                                 <div class="col"><inputbox v-model="r[i.i+1]" :ref="'q'+i.i+1" @isright="right++" :answer="i.a[1]" type="number" placeh="#"></inputbox></div>
