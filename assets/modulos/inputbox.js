@@ -35,7 +35,7 @@ Vue.component('inputbox', {
             
             if(this.type == 'text' && this.caseSensitive==undefined){
                 theanswer = theanswer.toString().toLowerCase()
-                userAnswer = userAnswer.toLowerCase()
+                userAnswer = userAnswer.toLowerCase().trim()
                 
                 if(userAnswer.length>3){
                     userAnswer = userAnswer.replace(/\.$/, "")

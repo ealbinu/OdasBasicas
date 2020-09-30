@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expongo un tema de interés</title>
+    <title>Elegimos un tema interesante</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -12,233 +12,173 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
-        .simbols .opts .draggable {
-            width: 100%;
-            min-height: 30px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            background: #FEF7F8;
+        .pregunta {
+            text-align: center;
         }
-
-        .simbols .opts .draggable>div {
-            min-height: 30px;
+        .pregunta .options {
+            min-height: 60px;
+        }
+        .pregunta .options .draggable > div {
             display: flex;
+            justify-content: center;
+            font-family: 'barnacle_boyregular';
             color: var(--main);
-            font-weight: bold;
-            font-size: 1.2rem;
         }
-
-        .simbols .opts .draggable>div div {
+        .pregunta .options .draggable > div div {
+            cursor: pointer;
+            font-size: 1.6rem;
+            padding: 10px 20px;
             background: #f5f5f5;
-            width: 30px;
-            border: 1px solid #fff;
-            border-radius: 3px;
-            cursor: move;
+            margin: 4px;
+            border-radius: 6px;
+        }
+        .pregunta .preg {
+            justify-content: center;
+            align-items: center;
             text-align: center;
-        }
-
-        .simbols .opts .draggable>div div:nth-child(1),
-        .simbols .opts .draggable>div div:nth-child(2),
-        .simbols .opts .draggable>div div:nth-child(3) {
-            background: #F8CFD5;
-        }
-
-        .word {
-            position: relative;
-        }
-
-        .word .theword {
-            display: flex;
-            flex-grow: 0;
-            flex-wrap: wrap;
-        }
-
-        .word .theword div {
-            min-width: 12px;
-            width: 20px;
-            height: 30px;
-            text-align: center;
-            line-height: 1.7;
-            color: var(--sec);
-            background: #F5F4BD;
-            border: 1px solid #fff;
-        }
-
-        .word .draggable {
-
-        }
-
-        .word .draggable>div {
-            display: flex;
-            flex-wrap: wrap;
-            color: var(--main);
-            font-weight: bold;
             font-size: 1.2rem;
-            flex-grow: 0;
-        }
-
-        .word .draggable>div div {
-            min-width: 12px;
-            width: 20px;
-            height: 30px;
-            border-radius: 3px;
-            cursor: move;
-            text-align: center;
-        }
-        @media (max-width: 680px){
-            .word .theword div, .word .draggable>div div{
-                width: 16px;
-            }
-            .word .draggable>div, .word .theword div{
-                font-size: 0.8rem;
-            }
-        }
-        .simbols{
-            background: #fff;
-            padding: 10px;
+            padding: 20px;
+            border: 2px solid var(--sec);
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            background: #DAF2FD;
+            margin: 0;
+        }
+        .pregunta .preg .draggable {
+            background: #025193;
+            border: 2px solid #fff;
+            margin: 0 10px;
+            border-radius: 10px;
+        }
+        .pregunta .preg .texto{
+            flex-shrink: 1;
+
+        }
+        .pregunta .preg .draggable > div {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            font-family: 'barnacle_boyregular';
+            color: #fff;
+        }
+        .pregunta .preg .draggable > div > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        .pregunta .preg .result {
+            transform: scale(0.6);
+            left: 26px;
+            top: -26px;
+            border-radius: 50% !important;
         }
 
-        .word .draggable {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.word .draggable div {
-	border: 1px solid #f5f5f5;
-}
+        .pregunta .preg {
+            flex-shrink: 1;
+        }
+        .pregunta .preg .texto {
+            max-width: 60%;
+        }
+
 
     </style>
 </head>
 
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>Expongo un tema de interés</h1>
-        <h2>Lo que conozco</h2>
+        <h1>Elegimos un tema interesante</h1>
 
-        <!-- <img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat"> -->
-        <div class="instruccion mt-5">Arrastra los acentos y los signos que hacen falta en las siguientes preguntas.
-        </div>
+        <div class="instruccion mt-5">Arrastra los símbolos de interrogación que hacen falta en las siguientes preguntas.</div>
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in '¿Que son los calamares  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                       '.split('')" :options-ok="'   ´                  ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]"></dragdrop>
+                <div class="texto">¿Qué son los calamares</div>
+                <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
         
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' Donde viven  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                     '.split('')" :options-ok="'¿ ´         ?           '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">Dónde viven</div>
+                <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
 
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' De que tamaño son  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                  '.split('')" :options-ok="'¿     ´           ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">De qué tamaño son</div>
+                <dragdrop v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
         
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in '¿Que comen  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'           '.split('')" :options-ok="'   ´      ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[6]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]"></dragdrop>
+                <div class="texto">¿Qué comen</div>
+                <dragdrop v-model="r[7]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
         
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' Como son  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'         '.split('')" :options-ok="'¿ ´      ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[8]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">Cómo son</div>
+                <dragdrop v-model="r[9]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
         
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in '¿Cuantos años viven  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                   '.split('')" :options-ok="'   ´               ? '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[10]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]"></dragdrop>
+                <div class="texto">¿Cuántos años viven</div>
+                <dragdrop v-model="r[11]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
         
         
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' Cuantas clases de calamares hay  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                                '.split('')" :options-ok="'¿  ´                            ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[12]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">Cuántas clases de calamares hay</div>
+                <dragdrop v-model="r[13]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
+        
+        
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[14]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">En qué regiones del mundo se les encuentra</div>
+                <dragdrop v-model="r[15]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
+            </div>
+        </div>
+        
 
-
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' En que regiones del mundo se les encuentra  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                                           '.split('')" :options-ok="'¿     ´                                    ?  '.split('')">
-                </dragdrop>
+        <div class="row mt-3 pregunta">
+            <div class="col-12 options"><dragdrop :options="['¿', '?']" :options-ok="[]"></dragdrop></div>
+            <div class="col-12 row preg">
+                <dragdrop v-model="r[16]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['¿']"></dragdrop>
+                <div class="texto">Por qué es importante estudiarlos</div>
+                <dragdrop v-model="r[17]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['?']"></dragdrop>
             </div>
         </div>
-        
-        
-        <div class="mt-3 simbols">
-            <div class="opts"><dragdrop @isright="right++" :options="['¿', '´', '?']" :options-ok="[]"></dragdrop></div>
-            <div class="word">
-                <div class="theword">
-                    <div v-for="(i, index) in ' Por que es importante estudiarlos  '.split('')">{{i}}</div>
-                </div>
-                <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++"
-                    :options="'                                  '.split('')" :options-ok="'¿      ´                          ?  '.split('')">
-                </dragdrop>
-            </div>
-        </div>
-
-
-
 
 
 

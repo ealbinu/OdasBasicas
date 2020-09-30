@@ -74,54 +74,31 @@
 .mapa .inputs .inputbox input {
 	border-color: #EB058C;
 }
-.mapa .inputs .inputbox:nth-child(1) {
-	left: 4%;
-	top: 28%;
-}
-.mapa .inputs .inputbox:nth-child(2) {
-	left: 30%;
-	top: 77%;
-}
-.mapa .inputs .inputbox:nth-child(3) {
-	left: 88%;
-	top: 69%;
-}
-.mapa .inputs .inputbox:nth-child(4) {
-	left: 32%;
-	top: 37%;
-}
-.mapa .inputs .inputbox:nth-child(5) {
-	left: 65%;
-	top: 62%;
-}
-.mapa .inputs .inputbox:nth-child(6) {
-	left: 44%;
-	top: 69%;
-}
-.mapa .inputs .inputbox:nth-child(7) {
-	left: 44%;
-	top: 84%;
-}
-.mapa .inputs .inputbox:nth-child(8) {
-	left: 48%;
-	top: 34%;
-}
-.mapa .inputs .inputbox:nth-child(9) {
-	left: 63%;
-	top: 76%;
-}
-.mapa .inputs .inputbox:nth-child(10) {
-	left: 16%;
-	top: 12%;
-}
-.mapa .inputs .inputbox:nth-child(11) {
-	left: 72%;
-	top: 69.5%;
-}
-.mapa .inputs .inputbox:nth-child(12) {
-	left: 76%;
-	top: 79%;
-}
+.mapa .inputs .inputbox:nth-child(1) { left: 4%; top: 30%; } /* bajacalifornia */
+.mapa .inputs .inputbox:nth-child(2) { left: 29%; top: 68%; } /* colima */
+.mapa .inputs .inputbox:nth-child(3) { left: 83%; top: 60%; } /* campeche */
+.mapa .inputs .inputbox:nth-child(4) { left: 33%; top: 28%; } /* durango*/ 
+.mapa .inputs .inputbox:nth-child(5) { left: 46%; top: 57%; } /* estado de mexico */
+.mapa .inputs .inputbox:nth-child(6) { left: 35%; top: 78%; } /* michoacan */
+.mapa .inputs .inputbox:nth-child(7) { left: 50%; top: 80%; } /* morelos */
+.mapa .inputs .inputbox:nth-child(8) { left: 56%; top: 30%; } /* nuevo leon */
+.mapa .inputs .inputbox:nth-child(9) { left: 61%; top: 52%; } /* veracruz */
+.mapa .inputs .inputbox:nth-child(10) { left: 30%; top: 12%; } /* sonora */
+.mapa .inputs .inputbox:nth-child(11) { left: 66%; top: 66%; } /* tlaxcala */
+.mapa .inputs .inputbox:nth-child(12) { left: 72%; top: 83%; } /* tabasco */
+
+.mapa .inputs .inputbox:nth-child(1) input{border:4px solid #0C6F9A; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* bajacalifornia */
+.mapa .inputs .inputbox:nth-child(2) input{border:4px solid #8080FF; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* colima */
+.mapa .inputs .inputbox:nth-child(3) input{border:4px solid #FFC17E; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* campeche */
+.mapa .inputs .inputbox:nth-child(4) input{border:4px solid #FD8AC0; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* durango*/ 
+.mapa .inputs .inputbox:nth-child(5) input{border:4px solid #6E9188; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* estado de mexico */
+.mapa .inputs .inputbox:nth-child(6) input{border:4px solid #F5DA77; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* michoacan */
+.mapa .inputs .inputbox:nth-child(7) input{border:4px solid #C0F094; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* morelos */
+.mapa .inputs .inputbox:nth-child(8) input{border:4px solid #77F4F4; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* nuevo leon */
+.mapa .inputs .inputbox:nth-child(9) input{border:4px solid #77A2F5; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* veracruz */
+.mapa .inputs .inputbox:nth-child(10) input{border:4px solid #CFABF4; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* sonora */
+.mapa .inputs .inputbox:nth-child(11) input{border:4px solid #F55D5F; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* tlaxcala */
+.mapa .inputs .inputbox:nth-child(12) input{border:4px solid #78F5B5; box-shadow: 4px 4px 0 rgba(0,0,0,0.2);} /* tabasco */
 
 
     </style>
@@ -131,7 +108,7 @@
         <h1>Sé cómo se organiza mi país</h1>
         <h2>México y su división política</h2>
 
-        <div class="instruccion mt-5">Completa los enunciados con las palabras del recuadro. Algunas palabras se repiten. Des- pués escribe el número del enunciado en la entidad correspondiente en el mapa de abajo.</div>
+        <div class="instruccion mt-5">Completa los enunciados con las palabras del recuadro. Algunas palabras se repiten. Después escribe el número del enunciado en la entidad correspondiente en el mapa de abajo.</div>
 		
 		<div class="row mt-3 inst text-center wrap justify-content-center align-items-center">
 			<div class="col" v-for="i in ['norte','sur','este','oeste','centro','noroeste','sureste']"><strong>{{i}}</strong></div>
@@ -140,7 +117,7 @@
 		<div class="row mt-3">
 			
 			<div class="col-12 pregunta" v-for="(i, index) in [
-				{t1: 'Baja California Sur se encuentra al ',a:'noroeste',t2:' de México. Su capital es La Paz.'},
+				{t1: 'Baja California Sur se encuentra al ', a:'noroeste',t2:' de México. Su capital es La Paz.'},
 				{t1: 'El estado de Colima está en la zona ',a:'oeste',t2:' del país.Ahí está el importante puerto de Manzanillo.'},
 				{t1: 'Campeche está al ',a:'sureste',t2:' de México, en la costa del Golfo de México.'},
 				{t1: 'El estado de Durango se encuentra al ',a:'sur',t2:' del estado de Chihuahua. En Durango se localiza la Zona del Silencio.'},
@@ -154,7 +131,7 @@
 				{t1: 'La capital de Tabasco es Villahermosa. Esta entidad está ubicada al ',a:'sureste',t2:' de la república mexicana.'},
 			]">
 				<strong class="accent">{{index+1}}.</strong> {{i.t1}} 
-				<inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="90" type="text" placeh="-"></inputbox>
+				<inputbox v-model="r[index]" :ref="'q'+(index)" @isright="right++" :answer="i.a" type="text" placeh="-"></inputbox>
 				{{i.t2}}
 
 			</div>
