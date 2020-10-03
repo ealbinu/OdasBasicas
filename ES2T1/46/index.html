@@ -103,12 +103,8 @@
 .partes div:nth-child(4) {
 	background: #DDF0EE;
 }
-.descripciones .draggable div:first-child {
-	display: flex;
-	justify-content: space-around;
-	flex-direction: column;
-}
-.descripciones .draggable div:first-child div {
+
+.descripciones .draggable div div {
 	height: 100px;
 	margin-bottom: 10px;
 	padding: 10px;
@@ -122,6 +118,7 @@
 	border: 2px solid #fff;
 	box-sizing: border-box;
 }
+
 .descripciones .draggable div:first-child div:nth-child(1) {
 	background: #DDD6E2;
 }
@@ -177,10 +174,10 @@
                     <div>Eslogan</div>
                 </div>
             </div>
-            <div class="col-8 descripciones text-left">
-                <dragdrop @isright="right++" v-model="r[3]" :ref="refCount()"  group="ex2"
-                    :options="['Es una frase original, corta y fácil de recordar que se incluye en los anuncios publicitarios.','Es creada para llamar la atención.','Nos sirve para saber de qué se trata el anuncio.','Hacen que el anuncio sea llamativo.']"
-                    :options-ok="['Es creada para llamar la atención.','Nos sirve para saber de qué se trata el anuncio.','Hacen que el anuncio sea llamativo.','Es una frase original, corta y fácil de recordar que se incluye en los anuncios publicitarios.']"></dragdrop>
+            <div class="col-8 descripciones text-left animate__animated animate__pulse animate__infinite animate__slower">
+                <dragdrop @isright="right++" v-model="r[3]" :ref="refCount()" group="ex2"
+                    :options="['Frase que representa una idea o el producto.','Se utiliza para transmitir un mensaje sin palabras.','Expresa la idea principal del enunciado.','Hacen que el anuncio sea llamativo.']"
+                    :options-ok="['Se utiliza para transmitir un mensaje sin palabras.','Expresa la idea principal del enunciado.','Hacen que el anuncio sea llamativo.','Frase que representa una idea o el producto.']"></dragdrop>
             </div>
         </div>
 
