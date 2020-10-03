@@ -49,7 +49,7 @@ Vue.component('selectable', {
        this.$emit('input', "")
     },
     template: `
-        <div class="selectable" :class="setclass"  @click="clicked">
+        <div class="selectable" :class="setclass + ' ' + (status ? 'on':'off')"  @click="clicked">
             <div :class="this.status ? 'circledactive' : ''"></div>
             <slot></slot>
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>

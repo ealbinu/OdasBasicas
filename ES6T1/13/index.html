@@ -22,17 +22,18 @@
 		border-radius: 10px;
 		background: #FDE8CF;
 	}
-	.selectableoptions {
+	.soptions {
 		justify-content: space-around !important;
 		text-align: center;
 	}
-	.selectableoptions img {
-		max-width: 30px;
+
+	.soptions img {
+		width: 30px;
 	}
-	.selectableoptions .option {
+	.soptions .selectable {
 		padding: 10px 0;
 	}
-	.selectableoptions .off img {
+	.soptions .off img {
 		filter:grayscale();
 		opacity: 0.5;
 	}
@@ -60,35 +61,59 @@
         <div class="row mt-3 align-items-center bodys">
 			<div class="col-6">Son narraciones con inicio, desarrollo y final.</div>
 			<div class="col-6">
+				<div class="row justify-content-center align-items-center soptions">
+					<div class="col-3 option"><selectable :isok="true" v-model="r[0]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+					<div class="col-3 option"><selectable :isok="false" v-model="r[1]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+				</div>
+				<!--	
 				<selectableoptions v-model="r[0]" ref="q0" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/markcheck.svg'},  {val:'no', img:'aimg/markcheck.svg'}]" customclass="col-3">
 					<template v-slot:option="{option}">
 						<img :src="option.img" class="img-fluid">
 					</template>
 				</selectableoptions>
+			-->
 			</div>
         </div>
         <div class="row mt-3 align-items-center bodys">
 			<div class="col-6">Transmiten una enseñanza.</div>
 			<div class="col-6">
+				<div class="row justify-content-center align-items-center soptions">
+					<div class="col-3 option"><selectable :isok="true" v-model="r[2]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+					<div class="col-3 option"><selectable :isok="true" v-model="r[3]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+				</div>
+				<!--
 				<selectableoptions v-model="r[1]" ref="q1" @isright="right++" :answer="['yes', 'no']" :options="[{val:'yes', img:'aimg/markcheck.svg'},  {val:'no', img:'aimg/markcheck.svg'}]" customclass="col-3">
 					<template v-slot:option="{option}"><img :src="option.img" class="img-fluid"></template>
 				</selectableoptions>
+				-->
 			</div>
         </div>
         <div class="row mt-3 align-items-center bodys">
 			<div class="col-6">Son expresiones de sabiduría popular.</div>
 			<div class="col-6">
+				<div class="row justify-content-center align-items-center soptions">
+					<div class="col-3 option"><selectable :isok="false" v-model="r[4]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+					<div class="col-3 option"><selectable :isok="true" v-model="r[5]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+				</div>
+				<!--
 				<selectableoptions v-model="r[2]" ref="q2" @isright="right++" answer="no" :options="[{val:'yes', img:'aimg/markcheck.svg'},  {val:'no', img:'aimg/markcheck.svg'}]" customclass="col-3">
 					<template v-slot:option="{option}"><img :src="option.img" class="img-fluid"></template>
 				</selectableoptions>
+				-->
 			</div>
         </div>
         <div class="row mt-3 align-items-center bodys">
 			<div class="col-6">Los protagonistas son animales y objetos animados.</div>
 			<div class="col-6">
+				<div class="row justify-content-center align-items-center soptions">
+					<div class="col-3 option"><selectable :isok="true" v-model="r[6]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+					<div class="col-3 option"><selectable :isok="false" v-model="r[7]" :ref="refCount()" @isright="right++"><img src="aimg/markcheck.svg"></selectable></div>
+				</div>
+				<!--
 				<selectableoptions v-model="r[3]" ref="q3" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/markcheck.svg'},  {val:'no', img:'aimg/markcheck.svg'}]" customclass="col-3">
 					<template v-slot:option="{option}"><img :src="option.img" class="img-fluid"></template>
 				</selectableoptions>
+			-->
 			</div>
         </div>
 		
