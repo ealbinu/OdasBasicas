@@ -69,7 +69,6 @@
 					{i: 5, t: 'Organización de las Naciones Unidas.'},
 					{i: 3, t: 'Avenida.'},
 				]" class="relacion">
-					<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.i" type="text" placeh="-">
 						<template v-slot:after>
 							{{i.t}}
 						</template>
@@ -96,7 +95,7 @@
 			]">
 				<div class="col-md-3 mt-4 text-center">
 					<img :src="'aimg/a'+(index+1)+'.svg'" class="img-fluid">
-					<inputbox v-model="r[index+11]" :ref="'q'+index+11" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+					<inputbox v-model="r[index+10]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
 				</div>
 			</template>
 		</div>
