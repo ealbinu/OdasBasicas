@@ -197,7 +197,8 @@ strong.sec {
 .inputbox,
 .selectable,
 .selectableoptions,
-.draggableModule {
+.draggableModule,
+.dropdowns {
   position: relative;
 }
 .check.isright,
@@ -205,7 +206,8 @@ strong.sec {
 .inputbox.isright,
 .selectable.isright,
 .selectableoptions.isright,
-.draggableModule.isright {
+.draggableModule.isright,
+.dropdowns.isright {
   border: 2px solid #5EB246;
 }
 .check.iswrong,
@@ -213,7 +215,8 @@ strong.sec {
 .inputbox.iswrong,
 .selectable.iswrong,
 .selectableoptions.iswrong,
-.draggableModule.iswrong {
+.draggableModule.iswrong,
+.dropdowns.iswrong {
   border: 2px solid #DB3E34;
 }
 .check .isright,
@@ -222,12 +225,14 @@ strong.sec {
 .selectable .isright,
 .selectableoptions .isright,
 .draggableModule .isright,
+.dropdowns .isright,
 .check .iswrong,
 .choose .iswrong,
 .inputbox .iswrong,
 .selectable .iswrong,
 .selectableoptions .iswrong,
-.draggableModule .iswrong {
+.draggableModule .iswrong,
+.dropdowns .iswrong {
   position: absolute;
   right: -2%;
   top: -10%;
@@ -241,12 +246,14 @@ strong.sec {
 .selectable .isright:after,
 .selectableoptions .isright:after,
 .draggableModule .isright:after,
+.dropdowns .isright:after,
 .check .iswrong:after,
 .choose .iswrong:after,
 .inputbox .iswrong:after,
 .selectable .iswrong:after,
 .selectableoptions .iswrong:after,
-.draggableModule .iswrong:after {
+.draggableModule .iswrong:after,
+.dropdowns .iswrong:after {
   content: "";
   display: block;
   width: 100%;
@@ -261,7 +268,8 @@ strong.sec {
 .inputbox .isright,
 .selectable .isright,
 .selectableoptions .isright,
-.draggableModule .isright {
+.draggableModule .isright,
+.dropdowns .isright {
   background: #5EB246;
 }
 .check .isright:after,
@@ -269,7 +277,8 @@ strong.sec {
 .inputbox .isright:after,
 .selectable .isright:after,
 .selectableoptions .isright:after,
-.draggableModule .isright:after {
+.draggableModule .isright:after,
+.dropdowns .isright:after {
   background-image: url(aimg/isright.svg);
 }
 .check .iswrong,
@@ -277,7 +286,8 @@ strong.sec {
 .inputbox .iswrong,
 .selectable .iswrong,
 .selectableoptions .iswrong,
-.draggableModule .iswrong {
+.draggableModule .iswrong,
+.dropdowns .iswrong {
   background: #DB3E34;
 }
 .draggableModule {
@@ -302,6 +312,23 @@ strong.sec {
 .inputbox.iswrong input,
 .inputbox.iswrong textarea {
   border: 2px solid #DB3E34;
+}
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'barnacle_boyregular';
+  font-size: 1.6rem;
+  border-radius: 20px;
+}
+.dropdowns select {
+  border: 2px solid #AAE1FA;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: normal;
+  color: #005093;
+  outline: none !important;
+  text-align: center;
 }
 /* HIDE INPUT NUMBER ARROWS*/
 /* Chrome, Safari, Edge, Opera */

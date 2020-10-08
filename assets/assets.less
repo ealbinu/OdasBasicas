@@ -203,7 +203,7 @@ strong {
 }
 
 
-.check, .choose, .inputbox, .selectable, .selectableoptions, .draggableModule {
+.check, .choose, .inputbox, .selectable, .selectableoptions, .draggableModule, .dropdowns {
     position: relative;
     &.isright{
         border: 2px solid @rightcol;
@@ -259,6 +259,27 @@ strong {
         border: 2px solid @wrongcol;
     }
 }
+
+
+.dropdowns{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'barnacle_boyregular';
+    font-size: 1.6rem;
+    border-radius: 20px;
+	select{
+		border: 2px solid @clear;
+        padding: 6px 10px;
+        border-radius: 20px;
+        font-weight: normal;
+        color: @sec;
+        text-align:center;
+        outline: none !important;
+		text-align: center;
+	}
+}
+
 
 /* HIDE INPUT NUMBER ARROWS*/
 /* Chrome, Safari, Edge, Opera */

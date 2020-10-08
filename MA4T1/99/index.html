@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
 
-        .inputbox input{ font-size: 1.4rem; }
+        .inputbox{max-width: 100px; display: inline-block; margin-left: 10px;}
+        .inputbox input{ font-size: 1.4rem;}
+        .text-center{text-align: center;}
     </style>
 </head>
 <body>
@@ -23,21 +25,45 @@
         <div class="row mt-3">
             <div class="col-md-3 text-center">
                 <img src="aimg/i1.png" class="img-fluid">
-                <div class="mt-3"><inputbox v-model="r[0]" ref="q0" @isright="right++" answer="04:15" type="time" placeh="00:00"></inputbox></div>
+                <div class="mt-3">
+                    <dropdowns v-model="r[0]" :ref="refCount()"  @isright="right++" :options="[
+                        {options: [0,1, 2, 3, 4, 5, 6, 7,8,9, 10, 11, 12], answer: 4, placeholder: '0'},
+                        {text: ' : '},
+                        {options: ['00',15, 20, 25, 30, 35, 40, 45, 50, 55], answer: 15, placeholder: '00'}
+                    ]"></dropdowns>
+                </div>
+
             </div>
             <div class="col-md-3 text-center">
                 <img src="aimg/i2.png" class="img-fluid">
-                <div class="mt-3"><inputbox v-model="r[1]" ref="q1" @isright="right++" answer="07:15" type="time" placeh="00:00"></inputbox></div>
+                <div class="mt-3">
+                    <dropdowns v-model="r[1]" :ref="refCount()"  @isright="right++" :options="[
+                        {options: [0,1, 2, 3, 4, 5, 6, 7,8,9, 10, 11, 12], answer: 7, placeholder: '0'},
+                        {text: ' : '},
+                        {options: ['00',15, 20, 25, 30, 35, 40, 45, 50, 55], answer: 15, placeholder: '00'}
+                    ]"></dropdowns>
+                </div>
 
             </div>
             <div class="col-md-3  text-center">
                 <img src="aimg/i3.png" class="img-fluid">
-                <div class="mt-3"><inputbox v-model="r[2]" ref="q2" @isright="right++" answer="02:30" type="time" placeh="00:00"></inputbox></div>
-
+                <div class="mt-3">
+                    <dropdowns v-model="r[2]" :ref="refCount()"  @isright="right++" :options="[
+                        {options: [0,1, 2, 3, 4, 5, 6, 7,8,9, 10, 11, 12], answer: 2, placeholder: '0'},
+                        {text: ' : '},
+                        {options: ['00',15, 20, 25, 30, 35, 40, 45, 50, 55], answer: 30, placeholder: '00'}
+                    ]"></dropdowns>
+                </div>
             </div>
             <div class="col-md-3 text-center">
                 <img src="aimg/i4.png"  class="img-fluid">
-                <div class="mt-3"><inputbox v-model="r[3]" ref="q3" @isright="right++" answer="05:45" type="time" placeh="00:00"></inputbox></div>
+                <div class="mt-3">
+                    <dropdowns v-model="r[3]" :ref="refCount()"  @isright="right++" :options="[
+                        {options: [0,1, 2, 3, 4, 5, 6, 7,8,9, 10, 11, 12], answer: 5, placeholder: '0'},
+                        {text: ' : '},
+                        {options: ['00',15, 20, 25, 30, 35, 40, 45, 50, 55], answer: 45, placeholder: '00'}
+                    ]"></dropdowns>
+                </div>
             </div>
         </div>
         
@@ -48,11 +74,13 @@
             <div class="col-md">
                 <div>
                     <strong class="h5 main">Esteban tardó:</strong>
-                    <div><inputbox v-model="r[4]" ref="q4" @isright="right++" answer="02:30" type="time" placeh="00:00"></inputbox></div>
+                    <div class="text-center"><strong>Horas:</strong><inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="02" type="number" placeh="#"></inputbox></div>
+                    <div class="text-center"><strong>Minutos:</strong><inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#"></inputbox></div>
                 </div>
                 <div class="mt-5">
                     <strong class="h5 main">Luisa tardó:</strong>
-                    <div><inputbox v-model="r[5]" ref="q5" @isright="right++" answer="01:00" type="time" placeh="00:00"></inputbox></div>
+                    <div class="text-center"><strong>Horas:</strong><inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox></div>
+                    <div class="text-center"><strong>Minutos:</strong><inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'0'" type="number" placeh="#"></inputbox></div>
                 </div>
             </div>
         </div>
@@ -66,6 +94,7 @@
     
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
     <script src="../../assets/modulos/selectableoptions.js"></script>
     <script src="../../assets/modulos/check.js"></script>

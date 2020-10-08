@@ -65,6 +65,16 @@
 }
 
 
+.ex2 .inputbox {
+	font-size: 2rem;
+	color: var(--sec);
+}
+.ex2 .inputbox input {
+	max-width: 180px;
+	margin-right: 10px;
+}
+
+
     </style>
 </head>
 
@@ -133,19 +143,19 @@
 
         <div class="instruccion mt-5">Analiza la siguiente situación y resuelve los problemas.</div>
 
-        <div class="row mt-3">
+        <div class="row mt-3 ex2">
             <div class="col-md-6 text-center">
                 <img src="aimg/a1.png" class="w-100">
                 <div class="mt-4">
                     <p class="h5">Las dimensiones del jardin <strong class="main">A</strong> son:</p>
-                    <inputbox v-model="r[29]" :ref="refCount()" @isright="right++" answer="27.550m" type="text" placeh="##.###m"></inputbox>
+                    <inputbox v-model="r[29]" :ref="refCount()" @isright="right++" answer="27.550" type="text" placeh="##.###"><template v-slot:after><strong>m</strong></template></inputbox>
                 </div>
             </div>
             <div class="col-md-6 text-center">
                 <img src="aimg/a2.png" class="w-100">
                 <div class="mt-4">
                     <p class="h5">Las dimensiones del jardin <strong class="main">B</strong> son:</p>
-                    <inputbox v-model="r[30]" :ref="refCount()" @isright="right++" answer="31.2m" type="text" placeh="##.#m"></inputbox>
+                    <inputbox v-model="r[30]" :ref="refCount()" @isright="right++" answer="31.2" type="text" placeh="##.#"><template v-slot:after><strong>m</strong></template></inputbox>
                 </div>
             </div>
         </div>
