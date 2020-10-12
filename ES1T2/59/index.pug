@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'Titulo!!!'
-- subtitle = ''
+- title = 'Escribo notas informativas'
+- subtitle = 'Noticias de mi comunidad'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,12 +17,13 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .text-center.mt-5: img(src="aimg/a0.png").img-fluid
+            .instruccion.mt-5 Observa los formatos de notas informativas y selecciona el más adecuado según la imagen que esta arriba.
 
-            .row.mt-3
-            
-
-
+            .row.mt-3.text-center
+                    selectableoptions(v-model="r[0]" :ref="refCount()" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/a1.png'},  {val:'no1', img:'aimg/a2.png'}, {val:'no2', img:'aimg/a3.png'}, {val:'no3', img:'aimg/a4.png'}]" customclass="col-6")
+                        template(v-slot:option="{option}")
+                            img(src="aimg/a1.png").img-fluid.mb-4
 
 
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Titulo!!!</title>
+    <title>Escribo notas informativas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -17,9 +17,15 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Titulo!!!</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Escribo notas informativas</h1>
+      <h2>Noticias de mi comunidad</h2>
+      <div class="text-center mt-5"><img class="img-fluid" src="aimg/a0.png"/></div>
+      <div class="instruccion mt-5">Observa los formatos de notas informativas y selecciona el más adecuado según la imagen que esta arriba.</div>
+      <div class="row mt-3 text-center">
+        <selectableoptions v-model="r[0]" :ref="refCount()" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/a1.png'},  {val:'no1', img:'aimg/a2.png'}, {val:'no2', img:'aimg/a3.png'}, {val:'no3', img:'aimg/a4.png'}]" customclass="col-6">
+          <template v-slot:option="{option}"><img class="img-fluid mb-4" src="aimg/a1.png"/></template>
+        </selectableoptions>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -33,6 +39,7 @@
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
     <script>//app.$set(app, 'temps', [])</script>
   </body>
