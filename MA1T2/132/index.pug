@@ -1,0 +1,46 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Sé qué objeto es el más largo'
+- subtitle = 'A ordenar estaturas / ¿Cuál eligieron?'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            /*
+            .ex1 {}
+            */
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Ordena las plumas de #[strong menor a mayor] tamaño escribiendo los números #[strong 1], #[strong 2], #[strong 3], #[strong 4] y #[strong 5].
+
+            .row.mt-3
+                .col
+                    img(src="aimg/a1.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="#")
+                .col
+                    img(src="aimg/a2.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#")
+                .col
+                    img(src="aimg/a3.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#")
+                .col
+                    img(src="aimg/a4.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#")
+                .col
+                    img(src="aimg/a5.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#")
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app, 'temps', [])
