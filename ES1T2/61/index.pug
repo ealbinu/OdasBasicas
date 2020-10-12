@@ -22,10 +22,6 @@ html(lang="es")
             .row.mt-3
                 .col-12
                     choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]" v-for="(i, index) in temps")
-            
-
-
-
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
