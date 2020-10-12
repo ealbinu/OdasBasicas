@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Confirmo lo que aprendí</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      /*
+      .ex1 {}
+      */
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Marca la respuesta correcta.</div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <choose :key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]" v-for="(i, index) in temps"></choose>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+      app.$set(app, 'temps', [
+          {
+              p: '¿Qué hay en todas las obras de teatro?',
+              ops: ['Personajes.', 'Marionetas.', 'Páginas.'],
+              a:0
+          },
+          {
+              p: 'Es el nombre de una ronda infantil.',
+              ops: ['Cielito lindo.','Las mañanitas.','Naranja dulce.'],
+              a:2
+          },
+          {
+              p: 'Son palabras que riman.',
+              ops: ['Gusta y come.','Daremos y sentaremos.','Cantamos y cantan.'],
+              a:1
+          },
+          {
+              p: 'Es un personaje del cuento Los tres cerditos.',
+              ops: ['El lobo.','El patito.', 'La oveja.'],
+              a:0
+          },
+          {
+              p: '¿Cuál es una sección del periódico?',
+              ops: ['Escenarios.','Artículos domésticos.','Deportes.'],
+              a:2
+          },
+          {
+              p: 'Es una característica de las notas informativas.',
+              ops: ['Son largas.','Son breves.', 'Son de colores.'],
+              a:1
+          },
+      ])
+    </script>
+  </body>
+</html>

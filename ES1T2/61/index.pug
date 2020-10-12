@@ -1,0 +1,65 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Confirmo lo que aprendí'
+- subtitle = ''
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            /*
+            .ex1 {}
+            */
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Marca la respuesta correcta.
+
+            .row.mt-3
+                .col-12
+                    choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]" v-for="(i, index) in temps")
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app, 'temps', [
+                    {
+                        p: '¿Qué hay en todas las obras de teatro?',
+                        ops: ['Personajes.', 'Marionetas.', 'Páginas.'],
+                        a:0
+                    },
+                    {
+                        p: 'Es el nombre de una ronda infantil.',
+                        ops: ['Cielito lindo.','Las mañanitas.','Naranja dulce.'],
+                        a:2
+                    },
+                    {
+                        p: 'Son palabras que riman.',
+                        ops: ['Gusta y come.','Daremos y sentaremos.','Cantamos y cantan.'],
+                        a:1
+                    },
+                    {
+                        p: 'Es un personaje del cuento Los tres cerditos.',
+                        ops: ['El lobo.','El patito.', 'La oveja.'],
+                        a:0
+                    },
+                    {
+                        p: '¿Cuál es una sección del periódico?',
+                        ops: ['Escenarios.','Artículos domésticos.','Deportes.'],
+                        a:2
+                    },
+                    {
+                        p: 'Es una característica de las notas informativas.',
+                        ops: ['Son largas.','Son breves.', 'Son de colores.'],
+                        a:1
+                    },
+                ])
