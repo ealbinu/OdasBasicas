@@ -341,4 +341,33 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.imgbgMod {
+  position: relative;
+}
+.imgbgMod .inputbox {
+  position: absolute;
+  width: 20%;
+  left: 1%;
+  top: 1%;
+}
+.imgbgMod .inputbox input {
+  font-size: 1.4.rem;
+}
+@media (max-width: 990px) {
+  .imgbgMod .inputbox input {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .imgbgMod .inputbox input {
+    font-size: 1.1rem;
+    padding: 5px;
+  }
+}
+@media (max-width: 680px) {
+  .imgbgMod .inputbox input {
+    font-size: 1rem;
+    padding: 0;
+  }
+}
 /*# sourceMappingURL=assets.css.map */
