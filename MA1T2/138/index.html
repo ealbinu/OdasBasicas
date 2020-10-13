@@ -3,23 +3,99 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Titulo!!!</title>
+    <title>Cuento decenas y unidades</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          position: absolute;
+          width: 12%;
+      }
+      .ex1 .inputbox:nth-child(1) {
+          left: 7%;
+          top: 13%;
+      }
+      .ex1 .inputbox:nth-child(2) {
+          left: 36%;
+          top: 13%;
+      }
+      .ex1 .inputbox:nth-child(3) {
+          left: 69%;
+          top: 14%;
+      }
+      .ex1 .inputbox:nth-child(4) {
+          left: 81.7%;
+          top: 14%;
+      }
+      .ex1 .inputbox:nth-child(5) {
+          left: 7%;
+          top: 38%;
+      }
+      .ex1 .inputbox:nth-child(6) {
+          left: 36%;
+          top: 38%;
+      }
+      .ex1 .inputbox:nth-child(7) {
+          left: 69%;
+          top: 39%;
+      }
+      .ex1 .inputbox:nth-child(8) {
+          left: 81.7%;
+          top: 39%;
+      }
+      .ex1 .inputbox:nth-child(9) {
+          left: 7%;
+          top: 64%;
+      }
+      .ex1 .inputbox:nth-child(10) {
+          left: 36%;
+          top: 64%;
+      }
+      .ex1 .inputbox:nth-child(11) {
+          left: 69%;
+          top: 65.5%;
+      }
+      .ex1 .inputbox:nth-child(12) {
+          left: 81.7%;
+          top: 65.5%;
+      }
+      .ex1 .inputbox:nth-child(13) {
+          left: 7%;
+          top: 90%;
+      }
+      .ex1 .inputbox:nth-child(14) {
+          left: 36%;
+          top: 90%;
+      }
+      .ex1 .inputbox:nth-child(15) {
+          left: 69%;
+          top: 91%;
+      }
+      .ex1 .inputbox:nth-child(16) {
+          left: 81.7%;
+          top: 91%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Titulo!!!</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Cuento decenas y unidades</h1>
+      <h2>Arregla el relajo</h2>
+      <div class="instruccion mt-5">Observa las siguientes imágenes y después escribe las decenas y unidades que representan. Observa el ejemplo.</div>
+      <div class="row mt-3">
+        <div class="col"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <imgbg img="aimg/a2.png" initclass="ex1">
+            <inputbox v-for="(i, index) in temps" v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+          </imgbg>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -35,6 +111,13 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app, 'temps', [])</script>
+    <script>
+      app.$set(app, 'temps', [
+          4, 7, 4, 7,
+          3, 3, 3, 3,
+          3, 5, 3, 5,
+          4, 2, 4, 2
+      ])
+    </script>
   </body>
 </html>
