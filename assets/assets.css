@@ -187,6 +187,7 @@ strong.sec {
 .choose .options div {
   cursor: pointer;
   border-bottom: 2px solid #AAE1FA;
+  text-align: center;
 }
 .choose .options div.active {
   border-bottom: 6px solid #ED1846;

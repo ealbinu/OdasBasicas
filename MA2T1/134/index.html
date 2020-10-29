@@ -103,6 +103,15 @@
 	padding: 10px;
 	border-radius: 10px;
 }
+.pregs .inputbox input {
+	max-width: 120px;
+	margin-right: 10px;
+	border-color: #513241;
+}
+.pregs .inputbox strong {
+	color: #513241;
+}
+
 
     </style>
 </head>
@@ -129,15 +138,21 @@
 
         <div class="row align-items-center mt-3 pregs">
             <div class="col-md-8"><strong class="accent">1.</strong> ¿Cuántas horas tiene un día?</div>
-            <div class="col"><inputbox v-model="r[14]" ref="q14" @isright="right++" answer="24 horas" type="text" placeh="-"></inputbox></div>
+            <div class="col"><inputbox v-model="r[14]" ref="q14" @isright="right++" answer="24" type="number" placeh="#">
+                <template v-slot:after><strong>horas.</strong></template>
+            </inputbox></div>
         </div>
         <div class="row align-items-center mt-3 pregs">
             <div class="col-md-8"><strong class="accent">2.</strong> ¿Cuántos días tiene una semana?</div>
-             <div class="col"><inputbox v-model="r[15]" ref="q15" @isright="right++" answer="7 días" type="text" placeh="-"></inputbox></div>
+             <div class="col"><inputbox v-model="r[15]" ref="q15" @isright="right++" answer="7" type="number" placeh="#">
+                <template v-slot:after><strong>dias.</strong></template>
+            </inputbox></div>
         </div>
         <div class="row align-items-center mt-3 pregs">
             <div class="col-md-8"><strong class="accent">3.</strong> ¿Cuántos meses tiene un año?</div>
-             <div class="col"><inputbox v-model="r[16]" ref="q16" @isright="right++" answer="12 meses" type="text" placeh="-"></inputbox></div>
+             <div class="col"><inputbox v-model="r[16]" ref="q16" @isright="right++" answer="12" type="number" placeh="#">
+                <template v-slot:after><strong>meses.</strong></template>
+            </inputbox></div>
         </div>
         
 

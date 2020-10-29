@@ -86,7 +86,7 @@
 </head>
 <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-        <h1>Conocemos </h1>
+        <h1>Conocemos poemas y rimas</h1>
 
         <div class="instruccion mt-5">Completa el crucigrama para identificar las características de los poemas.</div>
        
@@ -114,7 +114,7 @@
                         
                         <!--verticales-->
                         <div v-for="(b,index) in [1, ['R',18], false, ['M',19]]" v-if="y==3+index && x==8"><div v-if="index == 0" class="number">{{b}}</div><div v-else-if="b!=false" class="cell"><inputbox v-model="r[b[1]]" :ref="refCount()" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox></div></div>
-                        <div v-for="(b,index) in [2, 'V', 'E', 'R', 'S', 'O']" v-if="y==1+index && x==13"><div v-if="index == 0" class="number">{{b}}</div><<div v-else-if="b!=false" class="cell demo"><strong>{{b}}</strong></div></div>
+                        <div v-for="(b,index) in [2, 'V', 'E', 'R', 'S', 'O']" v-if="y==1+index && x==13"><div v-if="index == 0" class="number">{{b}}</div><div v-else-if="b!=false" class="cell demo"><strong>{{b}}</strong></div></div>
                        
                     </div>
                 </template>

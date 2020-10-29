@@ -28,24 +28,55 @@ Vue.component('inputbox', {
                 s_error.play()
             }
         },
+        cleanLowText (txt) {
+            if(txt.length>3){
+                txt = txt.replace(/\.$/, "")
+            }
+            return txt.toLowerCase().trim()
+        },
         verify () { 
             this.evaluate = true
             var theanswer = this.answer
             let userAnswer = this.status
             
+
+
             if(this.type == 'text' && this.caseSensitive==undefined){
-                theanswer = theanswer.toString().toLowerCase()
-                userAnswer = userAnswer.toLowerCase().trim()
+
+
+                userAnswer = this.cleanLowText(userAnswer)
                 
+                /* IS ARRAY? */
+                if(Array.isArray(theanswer)){
+                    for(u in theanswer){
+                        theanswer[u] = this.cleanLowText(theanswer[u])
+                    }
+                } else {
+                    //Simple text
+                    theanswer = this.cleanLowText(theanswer)
+                }
+/*
+                userAnswer = userAnswer.toLowerCase().trim()
                 if(userAnswer.length>3){
                     userAnswer = userAnswer.replace(/\.$/, "")
                 }
+*/
 
             }
-            
-            if(userAnswer == theanswer) {
-                this.$emit('isright', true)
-                this.result = true
+            /* FINAL RESULT */
+            if(Array.isArray(theanswer)){
+                console.log('Arra:',userAnswer)
+                for(u in theanswer){
+                    if(theanswer[u]==userAnswer){
+                        this.$emit('isright', true)
+                        this.result = true
+                    }
+                }
+            } else {
+                if(userAnswer == theanswer) {
+                    this.$emit('isright', true)
+                    this.result = true
+                }
             }
         }
     },

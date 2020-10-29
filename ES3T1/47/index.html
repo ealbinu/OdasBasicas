@@ -138,10 +138,10 @@
                 </div>
             </div>
             <div class="col-7">
-                <choose v-model="r[0]" :ref="refCount()" num="1." text="El subrayado  <span class=verso>rojo</span> es:"
+                <choose v-model="r[0]" :ref="refCount()" num="1." text="Lo subrayado  <span class=verso>rojo</span> es:"
                     :options="['Un verso', 'Una estrofa']" @isright="right++" answer="Un verso"></choose>
                 <choose v-model="r[1]" :ref="refCount()" num="2."
-                    text="Lo que esta en <span class=estrofa>azul</span> es:" :options="['Un verso', 'Una estrofa']"
+                    text="Lo que está en <span class=estrofa>azul</span> es:" :options="['Un verso', 'Una estrofa']"
                     @isright="right++" answer="Una estrofa"></choose>
                 <div class="choose"><strong class="accent">3.</strong> Escribe las palabras que riman.</div>
                 <div class="boxwrite">
@@ -154,7 +154,7 @@
                             placeh="-"><template v-slot:after>.</template></inputbox>
                     </div>
                     <div><strong class="main">Lado</strong> <span>rima con</span>
-                        <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="dañado" type="text"
+                        <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="['desesperado', 'dañado']" type="text"
                             placeh="-"><template v-slot:after>.</template></inputbox>
                     </div>
                 </div>
