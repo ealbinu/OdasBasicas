@@ -57,10 +57,13 @@ Vue.component('dragdrop', {
 <div class="dragdrop" >
     <div class="row mt-3">
         <div class="draggable draggableModule" :class="setclass">
-            <draggable v-model="optionsDraggable" group="stf" >
-            <div v-for="e in optionsDraggable" :key="e.l">{{e}}</div>
+            <draggable v-model="optionsDraggable" group="stf">
+            <div v-for="(e, index) in optionsDraggable" :key="e.l">
+                {{e}}
+                <div v-if="evaluate && e!=optionsOk[index]" class="iswrong"></div>
+            </div>
             </draggable>
-            <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
+            <!--<div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>-->
         </div>
     </div>    
 </div>
