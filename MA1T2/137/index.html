@@ -3,23 +3,154 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Titulo!!!</title>
+    <title>Completamos la serioe</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          border: 2px solid #fff;
+          border-radius: 8px;
+          background: #f5f5f5;
+          padding: 2px 0;
+      }
+      .ex1 .box strong {
+          display: block;
+          padding: 2px;
+          font-size: 1.4rem;
+      }
+      .ex1 .box .inputbox input {
+          padding: 2px;
+          font-size: 1.4rem;
+      }
+      @media (max-width: 680px) {
+          .ex1 .box strong {
+              font-size: 1rem;
+          }
+          .ex1 .box .inputbox input {
+              font-size: 1rem;
+              padding: 0;
+          }
+      }
+      .ex1 .box:nth-child(4){
+          background-color: #94C774;
+      }
+      .ex1.col1{border-bottom: 6px solid  #DDF0EE; }
+      .ex1.col2{border-bottom: 6px solid  #E9E4EA; }
+      .ex1.col3{border-bottom: 6px solid  #FFF4CE;}
+      @media (max-width: 680px) {
+          .ex2 .inputbox input {
+              padding: 2px;
+              font-size: 1.2rem;
+          }
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Titulo!!!</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Completamos la serioe</h1>
+      <h2>Hasta el 50</h2>
+      <div class="instruccion mt-5">Cuenten en voz alta del <strong>1 al 50</strong>. Después completen la tabla con los números que faltan.</div>
+      <div class="row mt-3 ex1 col1">
+              <div class="col box"><img class="img-fluid" src="aimg/1a.png"/><strong>1</strong></div>
+              <div class="col box" v-for="(i, index) in 8"><img class="img-fluid" src="aimg/1a.png"/>
+                <inputbox v-model="r[index+0]" :ref="refCount()" @isright="right++" :answer="i+1" type="number" placeh="-"></inputbox>
+              </div>
+              <div class="col box"><img class="img-fluid" src="aimg/1a.png"/><strong>10</strong></div>
+      </div>
+      <div class="row mt-3 ex1">
+              <div class="col box"><img class="img-fluid" src="aimg/1b.png"/><strong>11</strong></div>
+              <div class="col box" v-for="(i, index) in 8"><img class="img-fluid" src="aimg/1b.png"/>
+                <inputbox v-model="r[index+8]" :ref="refCount()" @isright="right++" :answer="i+11" type="number" placeh="-"></inputbox>
+              </div>
+              <div class="col box"><img class="img-fluid" src="aimg/1b.png"/><strong>20</strong></div>
+      </div>
+      <div class="row mt-3 ex1 col2">
+              <div class="col box"><img class="img-fluid" src="aimg/1c.png"/><strong>21</strong></div>
+              <div class="col box" v-for="(i, index) in 8"><img class="img-fluid" src="aimg/1c.png"/>
+                <inputbox v-model="r[index+16]" :ref="refCount()" @isright="right++" :answer="i+21" type="number" placeh="-"></inputbox>
+              </div>
+              <div class="col box"><img class="img-fluid" src="aimg/1c.png"/><strong>30</strong></div>
+      </div>
+      <div class="row mt-3 ex1">
+              <div class="col box"><img class="img-fluid" src="aimg/1d.png"/><strong>31</strong></div>
+              <div class="col box" v-for="(i, index) in 8"><img class="img-fluid" src="aimg/1d.png"/>
+                <inputbox v-model="r[index+24]" :ref="refCount()" @isright="right++" :answer="i+31" type="number" placeh="-"></inputbox>
+              </div>
+              <div class="col box"><img class="img-fluid" src="aimg/1d.png"/><strong>40</strong></div>
+      </div>
+      <div class="row mt-3 ex1 col3">
+              <div class="col box"><img class="img-fluid" src="aimg/1e.png"/><strong>41</strong></div>
+              <div class="col box" v-for="(i, index) in 8"><img class="img-fluid" src="aimg/1e.png"/>
+                <inputbox v-model="r[index+32]" :ref="refCount()" @isright="right++" :answer="i+41" type="number" placeh="-"></inputbox>
+              </div>
+              <div class="col box"><img class="img-fluid" src="aimg/1e.png"/><strong>50</strong></div>
+      </div>
+      <div class="instruccion mt-5">De acuerdo a la tabla anterior,realiza lo que se pide.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 label"><strong>1.</strong><span>Escribe de <strong>mayor a menor</strong> los números de la fila de conejos.</span></div>
+        <div class="col-12">
+          <div class="row no-gutters">
+            <template v-for="(i, index) in [10, 9, 8, 7 , 6, 5, 4, 3, 2, 1]">
+              <div class="col boxcol">
+                <inputbox v-model="r[index+40]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 label"><strong>2.</strong><span>Copia los números de la columna verde.</span></div>
+        <div class="col-12">
+          <div class="row no-gutters">
+            <template v-for="(i, index) in [4, 14, 24, 34, 44]">
+              <div class="col boxcol">
+                <inputbox v-model="r[index+50]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 label"><strong>3.</strong><span>Escribe el número más grande de la fila de osos.</span></div>
+        <div class="col-12">
+          <div class="row no-gutters">
+            <div class="col boxcol">
+              <inputbox v-model="r[55]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 label"><strong>4.</strong><span>¿Cuál número es el más pequeño de la fila de las vacas?</span></div>
+        <div class="col-12">
+          <div class="row no-gutters">
+            <div class="col boxcol">
+              <inputbox v-model="r[56]" :ref="refCount()" @isright="right++" :answer="21" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 label"><strong>5.</strong><span>Escribe los números de <strong>mayor a menor</strong> de la fila de gatos.</span></div>
+        <div class="col-12">
+          <div class="row no-gutters">
+            <template v-for="(i, index) in [20, 19, 18, 17, 16, 15, 14, 13, 12, 11]">
+              <div class="col boxcol">
+                <inputbox v-model="r[index+57]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
