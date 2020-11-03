@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Uso verbos en imperativo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ex1 .inputbox {
+          justify-content: flex-start;
+          width: 100%;
+          background: #FFFCE6;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 8px;
+      }
+      .ex1 .inputbox input {
+          width: 80px;
+          font-size: 1.4rem;
+          margin-right: 20px;
+      }
+      .wireo{
+          background-image: url(aimg/2b.png);
+          background-size: 100%;
+          
+      }
+      .ex2 .cuadernotext {
+          font-size: 1.2rem;
+      }
+      .ex2 .inputbox {
+          display: inline-block;
+          max-width: 140px;
+          margin-right: 8px;
+      }
+      .ex2 .inputbox input {
+          font-size: 1.1rem;
+          padding: 2px;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Uso verbos en imperativo</h1>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Observa el siguiente instructivo. Después escribe el número de cada paso en la línea de la instrucción correspondiente.</div>
+      <div class="row mt-3">
+        <div class="col-12"><img class="w-100" src="aimg/1a.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#">
+            <template v-slot:after=""><span>{{i.txt}}</span></template>
+          </inputbox>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Completa el párrafo con las palabras del recuadro.</div>
+      <div class="row">
+        <div class="col-12"><img class="img-fluid w-100" src="aimg/2a.png"/></div>
+      </div>
+      <div class="row mt-3 ex2 h-100 row-eq-height">
+        <div class="col-1"></div>
+        <div class="col-11 cuadernotext">
+          <div>Los 
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="pasos" type="text" placeh="-"></inputbox>en un instructivo deben estar 
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="numerados" type="text" placeh="-"></inputbox>para saber el orden exacto de su realización en el procedimiento. Es importante conocer la 
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="lista" type="text" placeh="-"></inputbox>de ingredientes o 
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="materiales" type="text" placeh="-"></inputbox>a utilizar, de esta forma sabemos con precisión todo aquello que necesitamos conseguir para realizar la receta o el objeto del que trata el instructivo. Los 
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="verbos" type="text" placeh="-"></inputbox>en los instructivos, por lo general, se escriben en
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="imperativo" type="text" placeh="-"></inputbox>para enfatizar la acción a realizar.
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {n: 1, txt: 'Derrite los 100 g de chocolate amargo en una cacerola.'},
+          {n: 4, txt: 'Vacía la mezcla hasta la mitad de un vaso.'},
+          {n: 6, txt: 'Espolvorea chocolate y canela en polvo.'},
+          {n: 2, txt: 'Bate el chocolate y luego añade crema líquida y azúcar.'},
+          {n: 5, txt: 'Agrega crema batida al gusto.'},
+          {n: 3, txt: 'Vierte el café en la cacerola y sigue batiendo.'},
+      ])
+    </script>
+  </body>
+</html>
