@@ -3585,6 +3585,110 @@
 		"oAP": "\/ES6T1\/42\/index.html",
 		"oF": 0
 		},
+	"\/ES6T2\/43\/aimg\/1a.png": {
+		"ft": 32768,
+		"iS": 88293,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1a.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/1b.png": {
+		"ft": 32768,
+		"iS": 101399,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1b.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/1c.png": {
+		"ft": 32768,
+		"iS": 120246,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1c.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/1d.png": {
+		"ft": 32768,
+		"iS": 183691,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1d.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/1e.png": {
+		"ft": 32768,
+		"iS": 107440,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1e.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/1f.png": {
+		"ft": 32768,
+		"iS": 157665,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/1f.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/escenario.png": {
+		"ft": 32768,
+		"iS": 8387,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/escenario.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/aimg\/personaje.png": {
+		"ft": 32768,
+		"iS": 9636,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/aimg\/personaje.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES6T2\/43\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/index.html",
+		"oF": 0
+		},
+	"\/ES6T2\/43\/index.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 0,
+		"oAP": "\/ES6T2\/43\/index.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/GE4T1\/225\/index.html": {
 		"cB": 0,
 		"ft": 8192,

@@ -1,0 +1,62 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Identifico cuentos de misterio o terror'
+- subtitle = 'Lo que conozco'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .tagimg.img-fluid{
+                max-width: 200px;
+            }
+            .ex2 {
+                border: 10px solid #68AD41;
+                borde-radius: 10px;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .ex2 .inputbox input {
+                font-size: 1.2rem;
+                border-color: #68AD41;
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Selecciona los elementos que pertenecen a un cuento de misterio o terror.
+
+            .row: .col-12.text-center: img(src="aimg/personaje.png").img-fluid.tagimg
+            .row.mt-3.ex1
+                selectableoptions(v-model="r[0]" :ref="refCount()" @isright="right++" answer="ok" :options="[{val:'no', img:'aimg/1a.png'},  {val:'ok', img:'aimg/1b.png'},  {val:'no2', img:'aimg/1c.png'}]" customclass="col-4")
+                    template(v-slot:option="{option}"): img(:src="option.img").img-fluid
+                
+            
+            .row.mt-3: .col-12.text-center: img(src="aimg/escenario.png").img-fluid.tagimg
+            .row.mt-3.ex1
+                selectableoptions(v-model="r[1]" :ref="refCount()" @isright="right++" answer="ok" :options="[{val:'ok', img:'aimg/1d.png'},  {val:'no', img:'aimg/1e.png'},  {val:'no2', img:'aimg/1f.png'}]" customclass="col-4")
+                    template(v-slot:option="{option}"): img(:src="option.img").img-fluid
+
+            .instruccion.mt-5 Ordena las partes del cuento escribiendo las palabras #[strong Inicio], #[strong Nudo] o #[strong Desenlace] donde corresponda.
+
+            .row.mt-3.ex2.justify-content-center.align-items-center
+                .col-md-8 Muy pronto se dio cuenta que esconderse no era la mejor idea. El callejón estaba oscuro y cerrado en su otro extremo. Sintió cómo su corazón se aceleraba rápidamente.
+                .col: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Nudo" type="text" placeh="-")
+            .row.mt-3.ex2.justify-content-center.align-items-center
+                .col-md-8 Cuco caminaba por la ciudad sin saber lo que le sucedería. Sintió detrás de él unos pasos cada vez más cercanos, por lo que decidió acelerar el paso y meterse en el primer callejón que se encontró.
+                .col: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Inicio" type="text" placeh="-")
+            .row.mt-3.ex2.justify-content-center.align-items-center
+                .col-md-8 En medio de la oscuridad brillaron un par de ojos monstruosos que pronto se acercaron a Cuco que, sin salida, se pegó cada vez más a la pared. Cuando el monstruo estuvo a punto de saltar sobre él, el resplandor de las luces de un carro iluminaron el callejón, revelando al tenebroso monstruo como un tierno gatito.
+                .col: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Desenlace" type="text" placeh="-")
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app, 'temps', [])

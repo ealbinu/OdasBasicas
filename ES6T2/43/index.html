@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identifico cuentos de misterio o terror</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .tagimg.img-fluid{
+          max-width: 200px;
+      }
+      .ex2 {
+          border: 10px solid #68AD41;
+          borde-radius: 10px;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .ex2 .inputbox input {
+          font-size: 1.2rem;
+          border-color: #68AD41;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Identifico cuentos de misterio o terror</h1>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Selecciona los elementos que pertenecen a un cuento de misterio o terror.</div>
+      <div class="row">
+        <div class="col-12 text-center"><img class="img-fluid tagimg" src="aimg/personaje.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <selectableoptions v-model="r[0]" :ref="refCount()" @isright="right++" answer="ok" :options="[{val:'no', img:'aimg/1a.png'},  {val:'ok', img:'aimg/1b.png'},  {val:'no2', img:'aimg/1c.png'}]" customclass="col-4">
+          <template v-slot:option="{option}"><img class="img-fluid" :src="option.img"/></template>
+        </selectableoptions>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-center"><img class="img-fluid tagimg" src="aimg/escenario.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <selectableoptions v-model="r[1]" :ref="refCount()" @isright="right++" answer="ok" :options="[{val:'ok', img:'aimg/1d.png'},  {val:'no', img:'aimg/1e.png'},  {val:'no2', img:'aimg/1f.png'}]" customclass="col-4">
+          <template v-slot:option="{option}"><img class="img-fluid" :src="option.img"/></template>
+        </selectableoptions>
+      </div>
+      <div class="instruccion mt-5">Ordena las partes del cuento escribiendo las palabras <strong>Inicio</strong>, <strong>Nudo</strong> o <strong>Desenlace</strong> donde corresponda.</div>
+      <div class="row mt-3 ex2 justify-content-center align-items-center">
+        <div class="col-md-8">Muy pronto se dio cuenta que esconderse no era la mejor idea. El callejón estaba oscuro y cerrado en su otro extremo. Sintió cómo su corazón se aceleraba rápidamente.</div>
+        <div class="col">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Nudo" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 justify-content-center align-items-center">
+        <div class="col-md-8">Cuco caminaba por la ciudad sin saber lo que le sucedería. Sintió detrás de él unos pasos cada vez más cercanos, por lo que decidió acelerar el paso y meterse en el primer callejón que se encontró.</div>
+        <div class="col">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Inicio" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 justify-content-center align-items-center">
+        <div class="col-md-8">En medio de la oscuridad brillaron un par de ojos monstruosos que pronto se acercaron a Cuco que, sin salida, se pegó cada vez más a la pared. Cuando el monstruo estuvo a punto de saltar sobre él, el resplandor de las luces de un carro iluminaron el callejón, revelando al tenebroso monstruo como un tierno gatito.</div>
+        <div class="col">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Desenlace" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app, 'temps', [])</script>
+  </body>
+</html>

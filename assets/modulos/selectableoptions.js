@@ -71,6 +71,10 @@ Vue.component('selectableoptions', {
 
 
 /*
+selectableoptions(v-model="r[index+4]" :ref="refCount()" @isright="right++" :answer="ok" :options="[{val:'no', img:'aimg/markerr.svg'},  {val:'ok', img:'aimg/markcheck.svg'},  {val:'no2', img:'aimg/markcheck.svg'}]" customclass="col-sm-6")
+    template(v-slot:option="{option}")
+        img(:src="option.img").img-fluid
+
 <selectableoptions v-model="r[0]" :ref="refCount()" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/i2.png'},  {val:'no', img:'aimg/i2.png'}]" customclass="col-sm-6">
     <template v-slot:option="{option}">
         <img :src="option.img" class="img-fluid">
