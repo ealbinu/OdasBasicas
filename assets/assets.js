@@ -43,6 +43,9 @@ var app = new Vue({
             return ct
         },
         reset () { location.reload() },
+        debugg(content){
+            console.log(content)
+        },
         finalizar () {
             s_win.play()
             this.total = this.r.length

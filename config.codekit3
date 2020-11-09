@@ -6261,21 +6261,37 @@
 		"oAP": "\/MA3T1\/109\/index.html",
 		"oF": 0
 		},
-	"\/MA3T1\/114\/dragdrop-3.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "\/MA3T1\/114\/dragdrop-3-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
 	"\/MA3T1\/114\/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/MA3T1\/114\/index.html",
+		"oF": 0
+		},
+	"\/MA3T1\/114\/index.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 0,
+		"oAP": "\/MA3T1\/114\/index.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/MA3T1\/114_back\/dragdrop-3.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/MA3T1\/114_back\/dragdrop-3-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/MA3T1\/114_back\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA3T1\/114_back\/index.html",
 		"oF": 0
 		},
 	"\/MA3T1\/115\/aimg\/bg.svg": {
