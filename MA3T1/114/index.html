@@ -97,7 +97,7 @@
             <dragdrop v-model="r[index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[i]" group="one"></dragdrop>
           </div>
           <div class="col-3 col-xs-2">
-            <div class="respo">{{tempsobj.res[index]}}</div>
+            <div class="respo">= {{tempsobj.res[index]}}</div>
           </div>
         </template>
       </div>
@@ -112,7 +112,7 @@
             <dragdrop v-model="r[index+10]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[i]" group="two"></dragdrop>
           </div>
           <div class="col-3 col-xs-2">
-            <div class="respo">{{tempsobj.res2[index]}}</div>
+            <div class="respo">= {{tempsobj.res2[index]}}</div>
           </div>
         </template>
       </div>
