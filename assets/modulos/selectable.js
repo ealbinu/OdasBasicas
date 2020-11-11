@@ -58,5 +58,6 @@ Vue.component('selectable', {
 })
 
 /*
+selectable(:isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
 <selectable :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++"></selectable>
 */

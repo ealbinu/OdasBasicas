@@ -1,26 +1,146 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose .options {justify-content: space-around; }
+            .options div{ margin: 10px; }
+            
+            .pre3 .inputbox, .pre5 .inputbox {
+                display: inline-block;
+                font-size: 1.2rem;
+            }
+            .pre3 .inputbox input {
+                font-size: 1.2rem;
+                width: 80px;
+                padding: 0;
+                margin: 0 4px;
+            }
+            .pre3 .ope {
+                background: #f5f5f5;
+                padding: 6px;
+                border-radius: 6px;
+                border: 2px solid #fff;
+                text-align: center;
+            }
+            .pre3 .ope strong{
+                color: var(--sec);
+            }
+            .selectable{
+                padding: 10px;
+                background: #f5f5f5;
+                border-radius: 10px;
+            }
+            .p1 .selectable{margin-bottom: 6px; }
+            .p2 .inputbox strong {font-size: 2rem;}
+            .p2 .inputbox input {font-size: 2rem; max-width: 140px; margin-left: 6px; }
+            .serie {
+                position: relative;
+            }
+            .serie .inputbox {
+                width: 7%;
+                position: absolute;
+            }
+            .serie .inputbox input {
+                font-size: 1rem;
+                padding: 20% 0;
+                border-radius: 50%;
+            }
+            .serie .inputbox:nth-child(1) {
+                left: 5.3%;
+                top: 40%;
+            }
+            .serie .inputbox:nth-child(2) {
+                left: 10.3%;
+                top: 58.7%;
+            }
+            .serie .inputbox:nth-child(3) {
+                left: 17%;
+                top: 65%;
+            }
+            .serie .inputbox:nth-child(4) {
+                left: 25.7%;
+                top: 24%;
+            }
+            .serie .inputbox:nth-child(5) {
+                left: 31.3%;
+                top: 10%;
+            }
+            .serie .inputbox:nth-child(6) {
+                left: 38%;
+                top: 7.5%;
+            }
+            .serie .inputbox:nth-child(7) {
+                left: 46%;
+                top: 40%;
+            }
+            .serie .inputbox:nth-child(8) {
+                left: 50.3%;
+                top: 59%;
+            }
+            .serie .inputbox:nth-child(9) {
+                left: 57%;
+                top: 65%;
+            }
+            .serie .inputbox:nth-child(10) {
+                left: 63.4%;
+                top: 24%;
+            }
+            .serie .inputbox:nth-child(11) {
+                left: 69%;
+                top: 10.5%;
+            }
+            .serie .inputbox:nth-child(12) {
+                left: 75.4%;
+                top: 13%;
+            }
+            @media (max-width: 680px){
+                .serie .inputbox input {
+                    padding: 8% 0;
+                    font-size: 0.9rem;
+
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve como se indica.
 
-            .row.mt-3
+            .row.mt-3.p1
+                .col-12
+                    .choose: labeltext(num="1.") Marca las sumas que dan como resultado #[strong 50].
+                    .row.justify-content-around.align-items-center.pre3
+                        selectable(:isok="false" v-model="r[0]" :ref="refCount()" @isright="right++") 40 + 20 = 
+                        selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++") 19 + 11 +20 =
+                        selectable(:isok="true" v-model="r[2]" :ref="refCount()" @isright="right++") 30 + 10 + 10 =
+                        selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++") 12 + 8 + 30 =
+                        selectable(:isok="true" v-model="r[4]" :ref="refCount()" @isright="right++") 25 + 25 =
+                    
+                    .choose: labeltext(num="2.") Suma los precios de los juguetes.
+                    .row.justify-content-around.align-items-center.p2
+                        .col-7: img(src="aimg/2a.png").img-fluid
+                        .col: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="69" type="number" placeh="#")
+                            template(v-slot:before=""): numbers $
+                    choose(v-model="r[6]" :ref="refCount()" num="3." text="Selecciona la figura que tiene <strong>5</strong> lados." :options="['<img src=aimg/3a.png class=img-fluid>', '<img src=aimg/3b.png class=img-fluid>', '<img src=aimg/3c.png class=img-fluid>', '<img src=aimg/3d.png class=img-fluid>', '<img src=aimg/3e.png class=img-fluid>']" @isright="right++" answer="<img src=aimg/3e.png class=img-fluid>")
             
+            .row.mt-3
+                .col-12
+                    .choose: labeltext(num="4.") Completa la serie escribiendo de #[strong 5] en #[strong 5] hasta el #[strong 100].
+                    .row
+                        .col-12.serie
+                            img(src="aimg/4.png").w-100
+                            .inputs
+                                template(v-for="(i, index) in tempsobj.a")
+                                    inputbox(v-model="r[index+7]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
 
 
 
@@ -29,4 +149,4 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [25, 30, 35, 45, 50, 55, 65, 70, 75, 85, 90, 95])
