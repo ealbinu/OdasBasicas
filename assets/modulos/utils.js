@@ -7,6 +7,14 @@ Vue.component('numbers', {
     template: `<div :class="'numbers ' + (c!=undefined?'c'+c:'')"><slot></slot></div>`
 })
 
+Vue.component('labeltext', {
+    props: ['num'],
+    template: `<div :class="'label '">
+            <strong v-if="num">{{num}}</strong>
+            <slot></slot>
+        </div>`
+})
+
 Vue.component('markex', {
     template: `<img src="../../assets/aimg/markex.svg" class="animate__animated animate__heartBeat">`
 })
