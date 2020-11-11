@@ -27,6 +27,60 @@
           margin: 0 10px;
       }
       
+      .ex2 {
+          background-image: url("aimg/2a.png");
+      }
+      .ex3 {
+          background-image: url("aimg/2b.png");
+      }
+      .ex2,
+      .ex3 {
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          padding: 0 20%;
+          min-height: 200px;
+      }
+      .ex2 .inputbox input,
+      .ex3 .inputbox input {
+          font-size: 1.6rem;
+          padding: 4px 2px;
+      }
+      .ex2 .inputbox .inp_example,
+      .ex3 .inputbox .inp_example {
+          background: #fff;
+          border-radius: 10px;
+          padding: 6px;
+          width: 100%;
+          text-align: center;
+      }
+      .ex2 .inputbox .inp_example .numbers,
+      .ex3 .inputbox .inp_example .numbers {
+          line-height: 1;
+          font-size: 1.6rem
+      }
+      @media (max-width: 992px) {
+          .ex2, .ex3{
+              background-size: cover;
+              background-position: right;
+              padding: 4%;
+          }
+          .ex2 .col,
+          .ex3 .col {
+              min-width: 60px;
+          }
+          .ex2 .inputbox .inp_example .numbers,
+          .ex3 .inputbox .inp_example .numbers {
+              font-size: 1.1rem;
+          }
+          .ex2 .inputbox input,
+          .ex3 .inputbox input {
+              font-size: 1.1rem;
+              padding: 2px;
+          }
+      }
+      
+      
     </style>
   </head>
   <body>
@@ -95,6 +149,20 @@
           </div>
         </div>
       </div>
+      <div class="instruccion mt-5">Completa la serie de <strong>10</strong> en <strong>10</strong> hasta <strong>100</strong>.</div>
+      <div class="row mt-3 ex2 justify-content-center align-items-center no-gutters flex-wrap wrap">
+        <div class="col" v-for="(i, index) in tempsobj.a">
+          <inputbox v-model="r[i.model]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="-" v-if="i.model"></inputbox>
+          <inputbox :answer="i.val" :example="true" v-else="i.model"></inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa la serie de <strong>20</strong> en <strong>20</strong> hasta <strong>100</strong>.</div>
+      <div class="row mt-3 ex3 justify-content-center align-items-center no-gutters flex-wrap wrap">
+        <div class="col" v-for="(i, index) in tempsobj.b">
+          <inputbox v-model="r[i.model]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="-" v-if="i.model"></inputbox>
+          <inputbox :answer="i.val" :example="true" v-else="i.model"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -112,6 +180,26 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app, 'temps', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          { val: 10 },
+          {model: 9, val: 20 },
+          {model: 10, val: 30 },
+          {model: 11, val: 40 },
+          {model: 12, val: 50 },
+          {model: 13, val: 60 },
+          {model: 14, val: 70 },
+          {model: 15, val: 80 },
+          {val: 90 },
+          {model: 16, val: 100 }
+      ])
+      app.$set(app.tempsobj, 'b', [
+          { val: 20 },
+          { val: 40 },
+          {model: 16, val: 60 },
+          {model: 17, val: 80 },
+          {model: 18, val: 100 },
+      ])
+    </script>
   </body>
 </html>
