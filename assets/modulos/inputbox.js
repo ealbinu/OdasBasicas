@@ -1,5 +1,5 @@
 Vue.component('inputbox', {
-    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive'],
+    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive', 'example'],
     data() {
         return {
             status: "",
@@ -86,8 +86,13 @@ Vue.component('inputbox', {
     template: `
         <div class="inputbox" :class="setclass">
             <slot name="before"></slot>
-            <input v-model="status" :placeholder="placeh" :type="type" @input="inputed" :disabled="evaluate" v-if="textarea==undefined" />
-            <textarea v-model="status" :placeholder="placeh" @input="inputed" :disabled="evaluate" v-if="textarea!=undefined"></textarea>
+            <template v-if="example!=undefined">
+                <div class="inp_example"><numbers>{{answer}}</numbers></div> 
+            </template>
+            <template v-else>
+                <input v-model="status" :placeholder="placeh" :type="type" @input="inputed" :disabled="evaluate" v-if="textarea==undefined" />
+                <textarea v-model="status" :placeholder="placeh" @input="inputed" :disabled="evaluate" v-if="textarea!=undefined"></textarea>
+            </template>
             <slot name="after"></slot>
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         </div>
