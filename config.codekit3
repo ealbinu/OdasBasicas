@@ -2624,13 +2624,6 @@
 		"oAP": "\/ES2T1\/43\/index.html",
 		"oF": 0
 		},
-	"\/ES2T1\/46.zip": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/ES2T1\/46.zip",
-		"oF": 0
-		},
 	"\/ES2T1\/46\/aimg\/a.png": {
 		"ft": 32768,
 		"iS": 719172,
@@ -5058,6 +5051,39 @@
 		"oAP": "\/MA1T2\/140\/index.html",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/MA1T2\/144\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 78347,
+		"oA": 0,
+		"oAP": "\/MA1T2\/144\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA1T2\/144\/aimg\/azul.png": {
+		"ft": 32768,
+		"iS": 19222,
+		"oA": 0,
+		"oAP": "\/MA1T2\/144\/aimg\/azul.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA1T2\/144\/aimg\/roja.png": {
+		"ft": 32768,
+		"iS": 19092,
+		"oA": 0,
+		"oAP": "\/MA1T2\/144\/aimg\/roja.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"\/MA1T2\/144\/index.html": {
 		"cB": 0,

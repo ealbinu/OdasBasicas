@@ -70,7 +70,6 @@ Vue.component('dragdrop', {
            this.groupdrag = this.group
        }
 
-       console.log(this.options)
 
     },
     template: `

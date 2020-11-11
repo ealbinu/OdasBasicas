@@ -2,6 +2,11 @@ Vue.component('checkmark', {
     template: `<img src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat">`
 })
 
+Vue.component('numbers', {
+    props: ['c'],
+    template: `<div :class="'numbers ' + (c!=undefined?'c'+c:'')"><slot></slot></div>`
+})
+
 Vue.component('markex', {
     template: `<img src="../../assets/aimg/markex.svg" class="animate__animated animate__heartBeat">`
 })
