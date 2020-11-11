@@ -1,25 +1,51 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Llegamos a 100'
+- subtitle = 'Cien cosas en la caja / Junto 100'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 img {
+                max-width: 180px;
+            }
+            .ex1 .inputbox {
+                width: 30%;
+                font-size: 1.6rem;
+                background: var(--clear);
+                border-radius: 10px;
+                padding: 4px;
+            }
+            .ex1 .inputbox input,
+            .ex1 .inputbox .numbers {
+                font-size: 1.6rem;
+                padding: 0;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe el número que falta en cada operación para que el resultado sea #[strong 100]. Observa el ejemplo.
+            
+            .row.mt-3.ex1
+                .col-md-4().text-center
+                    img(src="aimg/1a.png").img-fluid
+                    .row.justify-content-center.align-items-center.text-center
+                        inputbox(:answer="50" type="number" placeh="#" :example="true")
+                        numbers(c=2) +
+                        inputbox(:answer="50" type="number" placeh="#" :example="true")
+                .col-md-4(v-for="(i, index) in tempsobj.a").text-center
+                    img(src="aimg/1a.png").img-fluid
+                    .row.justify-content-center.align-items-center.text-center
+                        inputbox(:answer="i.v1" type="number" placeh="#" :example="true")
+                        numbers(c=2) +
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v2" type="number" placeh="#")
 
-            .row.mt-3
             
 
 
@@ -29,4 +55,13 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app, 'temps', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v1: 40, v2: 60 },
+                    {v1: 10, v2: 90 },
+                    {v1: 20, v2: 80 },
+                    {v1: 70, v2: 30 },
+                    {v1: 25, v2: 75 },
+                    {v1: 55, v2: 45 },
+                    {v1: 65, v2: 35 },
+                    {v1: 85, v2: 15 },
+                ])
