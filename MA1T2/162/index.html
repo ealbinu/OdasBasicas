@@ -3,23 +3,153 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Confirmo lo que aprendí</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .choose .options {justify-content: space-around; }
+      .options div{ margin: 10px; }
+      img{ max-width: 180px; }
+      .choose:nth-child(2) .options{align-items: flex-end; }
+      .choose:nth-child(2) img{ width: 60%; }
+      .pre3 .inputbox, .pre5 .inputbox {
+          display: inline-block;
+          font-size: 1.2rem;
+      }
+      .pre3 .inputbox input {
+          font-size: 1.2rem;
+          width: 80px;
+          padding: 0;
+          margin: 0 4px;
+      }
+      .pre3 .ope {
+          background: #f5f5f5;
+          padding: 6px;
+          border-radius: 6px;
+          border: 2px solid #fff;
+          text-align: center;
+      }
+      .pre3 .ope strong{
+          color: var(--sec);
+      }
+      .pre4 .inputbox .numbers {
+          font-size: 1.6rem;
+          color: var(--accent);
+      }
+      .pre4 .inputbox input {
+          font-size: 1.6rem;
+          margin: 0 4px;
+          width: 140px;
+      }
+      .pre6 .ope {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .pre6 .ope img {
+          max-width: 60%;
+          max-height: 70px;
+      }
+      .pre6 .ope .inputbox .numbers {
+          display: inline;
+          font-size: 1.6rem;
+          margin-left: 6px;
+      }
+      .pre6 .ope .inputbox input {
+          margin-left: 2px;
+      }
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Resuelve como se indica.</div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <template v-for="(i, index) in tempsobj.a">
+            <choose :key="index" v-model="r[index]" :ref="'q'+index" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+          </template>
+          <div class="choose">
+            <labeltext num="3.">Escribe en los espacios el número que falta.</labeltext>
+          </div>
+          <div class="row justify-content-around align-items-center pre3">
+            <div class="col-md-4 ope"><strong>a)</strong>
+              <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#">
+                <template v-slot:after="">, 41 y 42.</template>
+              </inputbox>
+            </div>
+            <div class="col-md-4 ope"><strong>b)</strong>
+              <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+                <template v-slot:before="">29,</template>
+                <template v-slot:after="">y 31.</template>
+              </inputbox>
+            </div>
+            <div class="col-md-4 ope"><strong>c)</strong>
+              <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="22" type="number" placeh="#">
+                <template v-slot:before="">20, 21 y </template>
+                <template v-slot:after="">.</template>
+              </inputbox>
+            </div>
+          </div>
+          <div class="choose">
+            <labeltext num="4.">Inés compró un raspado que costó 14 pesos y Rodrigo compró otro que costó 6 pesos más caro. ¿Cuánto costó el raspado de Rodrigo?</labeltext>
+          </div>
+          <div class="row justify-content-around align-items-center pre4">
+            <div class="col-12">
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#">
+                <template v-slot:after="">
+                  <numbers>pesos.</numbers>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+          <div class="choose">
+            <labeltext num="5.">Calcula el resultado de las siguientes operaciones.</labeltext>
+          </div>
+          <div class="row justify-content-around align-items-center pre3">
+            <div class="col-md-4 ope"><strong>a)</strong>
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="32" type="number" placeh="#">
+                <template v-slot:before="">25 + 7 =</template>
+              </inputbox>
+            </div>
+            <div class="col-md-4 ope"><strong>b)</strong>
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+                <template v-slot:before="">50 - 20 =</template>
+              </inputbox>
+            </div>
+            <div class="col-md-4 ope"><strong>c)</strong>
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="41" type="number" placeh="#">
+                <template v-slot:before="">48 - 7 =</template>
+              </inputbox>
+            </div>
+          </div>
+          <div class="choose">
+            <labeltext num="6.">Escribe en los recuadros la cantidad de dinero de cada conjunto.</labeltext>
+          </div>
+          <div class="row justify-content-around align-items-center pre3 pre6">
+            <div class="col-md-6 ope"><strong>a)</strong>
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#">
+                <template v-slot:before=""><img class="img-fluid" src="aimg/6a.png"/>= 
+                  <numbers c="1">$</numbers>
+                </template>
+              </inputbox>
+            </div>
+            <div class="col-md-6 ope"><strong>b)</strong>
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#">
+                <template v-slot:before=""><img class="img-fluid" src="aimg/6b.png"/>= 
+                  <numbers c="1">$</numbers>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +167,19 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {
+              p: 'Identifica el conjunto que tiene <strong>10</strong> objetos y enciérralo.',
+              ops: ['<img src=aimg/1a.png class=img-fluid>','<img src=aimg/1b.png class=img-fluid>','<img src=aimg/1c.png class=img-fluid>'],
+              a: 2
+          },
+          {
+              p: 'Selecciona el recipiente que tenga mayor capacidad.',
+              ops: ['<img src=aimg/2a.png class=img-fluid>','<img src=aimg/2b.png class=img-fluid>','<img src=aimg/2c.png class=img-fluid>'],
+              a: 0
+          },
+      ])
+    </script>
   </body>
 </html>
