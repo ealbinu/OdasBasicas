@@ -23,7 +23,7 @@
       <div class="instruccion mt-5">Observa los formatos de notas informativas y selecciona el más adecuado según la imagen que esta arriba.</div>
       <div class="row mt-3 text-center">
         <selectableoptions v-model="r[0]" :ref="refCount()" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/a1.png'},  {val:'no1', img:'aimg/a2.png'}, {val:'no2', img:'aimg/a3.png'}, {val:'no3', img:'aimg/a4.png'}]" customclass="col-6">
-          <template v-slot:option="{option}"><img class="img-fluid mb-4" src="aimg/a1.png"/></template>
+          <template v-slot:option="{option}"><img class="img-fluid mb-4" :src="option.img"/></template>
         </selectableoptions>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>

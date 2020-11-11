@@ -23,7 +23,7 @@ html(lang="es")
             .row.mt-3.text-center
                     selectableoptions(v-model="r[0]" :ref="refCount()" @isright="right++" answer="yes" :options="[{val:'yes', img:'aimg/a1.png'},  {val:'no1', img:'aimg/a2.png'}, {val:'no2', img:'aimg/a3.png'}, {val:'no3', img:'aimg/a4.png'}]" customclass="col-6")
                         template(v-slot:option="{option}")
-                            img(src="aimg/a1.png").img-fluid.mb-4
+                            img(:src="option.img").img-fluid.mb-4
 
 
 

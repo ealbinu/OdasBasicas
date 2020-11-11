@@ -114,7 +114,7 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Resuelve las siguientes sumas
+            .instruccion.mt-5 Resuelve las siguientes sumas.
             .row.mt-3.ex1
                 .col-md-4.col-6.text-right(v-for="(i, index) in tempsobj.a")
                         inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.r" type="number" placeh="#")
