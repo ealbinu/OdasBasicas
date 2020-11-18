@@ -3,23 +3,112 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro las diferencias</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .hr{
+          width: 50%;
+          margin-left: auto;
+          margin-right: auto;
+          border-top: 2px dashed #8C6F54;
+      }
+      .ex1{
+          border: 2px dashed #8C6F54;
+      }
+      .ex1 {
+          background: #FEF3E1;
+          padding: 20px 10px;
+          border-radius: 10px;
+      }
+      .ex1 .inputbox, .ex2 .inputbox {
+          font-size: 1.6rem;
+          color: #8C6F54;
+      }
+      .ex1 .inputbox input, .ex2 .inputbox input {
+          max-width: 120px;
+          margin: 0 6px;
+          font-size: 1.6rem;
+          border-color: #8C6F54;
+          color: #8C6F54;
+          padding: 4px;
+      }
+      .card1,
+      .card2 {
+          background: #f5f5f5;
+          padding: 10px;
+          height: 100%;
+          border-radius: 10px;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+          border: 2px solid #fff;
+      }
+      .card1 img,
+      .card2 img {
+          max-height: 140px;
+      }
+      .card1 p,
+      .card2 p {
+          margin: 20px 0;
+          font-size: 1.4rem;
+      }
+      .card1 {
+          background: #FEF0DD;
+          border-color: #F4BC84;
+      }
+      .card2 {
+          background: #EFF5E3;
+          border-color: #B3D595;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro las diferencias</h1>
+      <h2>Algo simple / Hagamos cuentas</h2>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Resuelve las multiplicaciones de acuerdo a los procedimientos del ejemplo anterior.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3042" type="number" placeh="#">
+            <template v-slot:before=""><strong>78 × 39 = </strong></template>
+          </inputbox>
+        </div>
+        <div class="hr my-4"></div>
+        <div class="col-12">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="5292" type="number" placeh="#">
+            <template v-slot:before=""><strong>84 × 63 = </strong></template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <div class="card1">
+            <div class="text-center"><img class="img-fluid" src="aimg/2a.png"/></div>
+            <p>Juan y Manuel tienen que limpiar los vidrios de un edificio de 9 pisos. En cada piso hay 8 ventanas y cada una de ellas tiene 6 cristales. ¿Cuántos cristales van a limpiar?</p>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="432" type="number" placeh="#">
+              <template v-slot:after=""><strong>cristales.</strong></template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card2">
+            <div class="text-center"><img class="img-fluid" src="aimg/2b.png"/></div>
+            <p>En un establo hay 150 vacas. Cada vaca produce 20 litros de leche diariamente. Si el litro de leche se vende en $15.00, ¿cuánto dinero se obtiene de la venta de leche en 2 días?</p>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="90000" type="number" placeh="#">
+              <template v-slot:before=""><strong>$</strong></template>
+              <template v-slot:after=""><strong>en dos días.</strong></template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
