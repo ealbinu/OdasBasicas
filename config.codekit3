@@ -8256,6 +8256,22 @@
 		"oAP": "\/MA6T1\/97\/index.html",
 		"oF": 0
 		},
+	"\/MA6T2\/108\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/MA6T2\/108\/index.html",
+		"oF": 0
+		},
+	"\/MA6T2\/108\/index.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 0,
+		"oAP": "\/MA6T2\/108\/index.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/MA6T2\/110\/aimg\/a1.png": {
 		"ft": 32768,
 		"iS": 27229,
