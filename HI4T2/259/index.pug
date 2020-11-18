@@ -1,0 +1,132 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Distingo los grupos sociales'
+- subtitle = 'La sociedad virreinal'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .ex1 {
+                background: #FEF0DD;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .ex1 .colu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                gap: 20px;
+            }
+            .ex1 .colu .inputbox {
+                justify-content: flex-start;
+                align-items: center;
+                background: rgba(0,0,0,0.05);
+                border-radius: 8px;
+                padding: 4px;
+                margin-bottom: 10px;
+            }
+            .ex1 .colu .inputbox input {
+                width: 80px;
+                font-size: 1.6rem;
+                border-color: var(--main);
+                padding: 2px;
+                margin-right: 10px;
+            }
+            .ex1 .colu strong {
+                font-size: 1.6rem;
+                color: var(--main);
+            }
+            .castas {
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                background: #f5f5f5;
+                gap: 6px;
+                padding: 4px;
+                border-radius: 10px;
+                margin-bottom: 40px;
+                margin-top: 10px;
+            }
+            .castas div {
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 1.2rem;
+                background: #C3E4E0;
+                color:#00969C;
+            }
+            .ex2 .inputbox {
+                margin: 10px 0 16px;
+                border-radius: 10px;
+                box-shadow: 6px 6px 0 #00969C;
+            }
+            .ex2 .inputbox input {
+                border-radius: 10px;
+                border-color: #00B0B6;
+                color: #00B0B6;
+                font-size: 1.4rem;
+            }
+            .ex2 p {
+                background: #EBF6F5;
+                padding: 10px;
+                text-align: left;
+                border-radius: 10px;
+            }
+
+
+
+            
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Relaciona el nombre de cada casta con el concepto correspondiente. Consulta la página 118 de tu libro de texto SEP.
+
+            .row.mt-3.ex1
+                .col-4.colu
+                     div #[strong A.] Moriscos.
+                     div #[strong B.] Mulatos.
+                     div #[strong C.] Mestizos.
+                     div #[strong D.] Chinos.
+                .col.colu
+                    template(v-for="(i, index) in tempsobj.a")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.l" type="text" placeh="-")
+                            template(v-slot:after="")
+                                div {{i.t}}
+            
+            .instruccion.mt-5 Observa las ilustraciones, lee cómo vivía cada casta en la sociedad de Nueva España y escribe su nombre según las palabras del recuadro.
+
+            .castas: div(v-for="(i, index) in ['Esclavos.','Indígenas.','Españoles.']"): strong {{i}}
+
+            .row.mt-3.ex2
+                .col-md-4.text-center
+                    img(src="aimg/2a.png").img-fluid
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="españoles" type="text" placeh="-")
+                    p Tenían privilegios, tierras, sirvientes y esclavos. Ocupaban los altos rangos en el gobierno y tenían el control político y económico de Nueva España.
+                .col-md-4.text-center
+                    img(src="aimg/2b.png").img-fluid
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="indígenas" type="text" placeh="-")
+                    p Vivían en poblados donde los españoles podían cobrarles tributos y evangelizarlos. Al igual que los mestizos, trabajaban vendiendo distintos productos o realizando diversas actividades.
+                .col-md-4.text-center
+                    img(src="aimg/2c.png").img-fluid
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="esclavos" type="text" placeh="-")
+                    p Fueron traídos por los españoles desde África como esclavos. Trabajaban largas horas y no tenían derechos. Generalmente eran vendidos a otros españoles.
+
+            
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {l:'C',t:'Hijos de indígena y español.'},
+                    {l:'A',t:'Hijos de mulato y española.'},
+                    {l:'D',t:'Hijos de morisco y española.'},
+                    {l:'B',t:'Hijos de africana y español.'},
+                ])
