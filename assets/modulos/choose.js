@@ -1,5 +1,5 @@
 Vue.component('choose', {
-    props: ['value', 'text', 'options', 'answer', 'num'],
+    props: ['value', 'text', 'options', 'answer', 'num', 'initclass'],
     data() {
         return {
             status: null,
@@ -39,7 +39,7 @@ Vue.component('choose', {
         this.$emit('input', null)
     },
     template: `
-        <div class="choose" :class="setclass">
+        <div class="choose" :class="setclass + ' ' + (initclass?initclass:' ')">
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
             <div class="label"><strong v-if="num">{{num}}</strong> <span v-html="text"></span></div>
             <div class="options">

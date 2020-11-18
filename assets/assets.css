@@ -184,7 +184,7 @@ strong.sec {
 }
 .choose .options {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 20px;
 }
 .choose .options div {

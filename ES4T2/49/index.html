@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conozco los instructivos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .options div {
+          padding: 10px;
+          border-radius: 6px;
+          border: none !important;
+          font-weight: bold;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .options div.active {
+          color: #fff !important;
+          background: var(--main) !important;
+      }
+      .c1 .options div {
+          background: #DDF0EE;
+          color: #00AEB5;
+      }
+      .c2 .options div {
+          background: #DCD5E1;
+          color: #7E5F99;
+      }
+      .c3 .options div {
+          background: #E7F1D8;
+          color: #6CB743;
+      }
+      .c4 .options div {
+          background: #FDE8CF;
+          color: #E9832C;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Conozco los instructivos</h1>
+      <h2>Lo que conozco</h2>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Lee las preguntas y encierra la respuesta correcta. Consulta las páginas 61 a 64 de tu libro de texto SEP y la sección Te cuento que...</div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="¿Qué tipo de textos son necesarios para hacer una manualidad?" :options="['Los instructivos.','Los expositivos.']" @isright="right++" answer="Los instructivos." initclass="c1"></choose>
+        </div>
+        <div class="col-12">
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="¿Cómo deben ser las indicaciones de un instructivo?" :options="['Extensas y bien explicadas.','Breves pero comprensibles.']" @isright="right++" answer="Breves pero comprensibles." initclass="c2"></choose>
+        </div>
+        <div class="col-12">
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="¿Qué debe contener un instructivo para saber cómo debe quedar lo que haremos?" :options="['Imágenes.','Una conclusión.']" @isright="right++" answer="Imágenes." initclass="c3"></choose>
+        </div>
+        <div class="col-12">
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="¿En qué forma están los verbos que terminan en –ar, –er, –ir?" :options="['En gerundio.','En infinitivo.']" @isright="right++" answer="En infinitivo." initclass="c4"></choose>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
