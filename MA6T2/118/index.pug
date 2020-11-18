@@ -1,0 +1,91 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Identifico los múltiplos'
+- subtitle = 'La pulga y las trampas / El número venenoso y otros juegos'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .listanums {
+                background: #00AEB5;
+                color: #fff;
+                padding: 6px 10px;
+                border-radius: 10px;
+                gap: 2px 10px;
+            }
+            .listanums strong {
+                padding: 1px 10px;
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 6px;
+            }
+            .ex1 .mainnum {
+                background: #DDF0EE;
+                border-radius: 10px;
+            }
+            .ex1 .mainnum small {
+                color: #0EADB5;
+                font-size: 0.8rem;
+                display: block;
+                margin-top: 10px;
+            }
+            .ex1 .inputbox input {
+                padding: 6px 0;
+                border-color: #0EADB5;
+                font-size: 1.2rem;
+                min-width: 50px;
+            }
+            .ex1 .col {
+                min-width: 54px;
+                padding: 2px;
+            }
+
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Organiza los siguientes números en la tabla de acuerdo a la cifra entre la cual son divisibles exactamente. Algunos números se pueden repetir.
+
+            .listanums.row.flex-wrap.justify-content-around: strong(v-for="(i, index) in [8, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 27, 30, 46, 55, 100, 110, 200]") {{i}}
+
+            .row.mt-3.no-gutters.flex-wrap.align-items-center.ex1
+                .col-md-2.col-12.text-center.mainnum
+                    small Divisibles entre:
+                    numbers(c=2) 2
+                .col(v-for="(i, index) in tempsobj.a")
+                    inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+            .row.mt-3.no-gutters.flex-wrap.align-items-center.ex1
+                .col-md-2.col-12.text-center.mainnum
+                    small Divisibles entre:
+                    numbers(c=2) 3
+                .col(v-for="(i, index) in tempsobj.b")
+                    inputbox(v-model="r[index+tempsobj.a.length]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+            .row.mt-3.no-gutters.flex-wrap.align-items-center.ex1
+                .col-md-2.col-12.text-center.mainnum
+                    small Divisibles entre:
+                    numbers(c=2) 5
+                .col(v-for="(i, index) in tempsobj.c")
+                    inputbox(v-model="r[index+tempsobj.a.length+tempsobj.b.length]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+            .row.mt-3.no-gutters.flex-wrap.align-items-center.ex1
+                .col-md-2.col-12.text-center.mainnum
+                    small Divisibles entre:
+                    numbers(c=2) 10
+                .col(v-for="(i, index) in tempsobj.d")
+                    inputbox(v-model="r[index+tempsobj.a.length+tempsobj.b.length+tempsobj.c.length]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [8,10,12,14,16,18,20,22,24,30,46,100,110,200])
+                app.$set(app.tempsobj, 'b', [12,15,18,21,24,27,30])
+                app.$set(app.tempsobj, 'c', [10,15,20,25,30,55,100,110,200])
+                app.$set(app.tempsobj, 'd', [10,20,30,100,110,200])
