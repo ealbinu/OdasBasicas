@@ -1,0 +1,141 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Calculo los impuestos'
+- subtitle = 'El IVA'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .edocuenta {
+                position: relative;
+            }
+            .edocuenta .inputboxes .inputbox {
+                position: absolute;
+                width: 13%;
+                color: #008F67;
+                font-size: 1.4rem;
+            }
+            .edocuenta .inputboxes .inputbox input {
+                font-size: 1.2rem;
+                padding: 0;
+                border-color: #008F67;
+            }
+            .edocuenta .inputbox:nth-child(1) {
+                left: 13%;
+                top: 34%;
+            }
+            .edocuenta .inputbox:nth-child(2) {
+                left: 9%;
+                top: 51%;
+            }
+            .edocuenta .inputbox:nth-child(3) {
+                left: 16%;
+                top: 74%;
+            }
+            .edocuenta .inputbox:nth-child(4) {
+                left: 66%;
+                top: 41%;
+            }
+            .edocuenta .inputbox:nth-child(5) {
+                left: 66%;
+                top: 49.5%;
+            }
+            .edocuenta .inputbox:nth-child(6) {
+                left: 66%;
+                top: 75%;
+            }
+            .edocuenta .inputbox:nth-child(7) {
+                left: 66%;
+                top: 83.5%;
+            }
+            .edocuenta {
+                position: relative;
+            }
+            .edocuenta .inputboxes .inputbox {
+                position: absolute;
+                width: 13%;
+                color: #008F67;
+                font-size: 1.4rem;
+            }
+            .edocuenta .inputboxes .inputbox input {
+                font-size: 1.2rem;
+                padding: 0;
+                border-color: #008F67;
+            }
+            .edocuenta .inputbox:nth-child(1) {
+                left: 13%;
+                top: 34%;
+            }
+            .edocuenta .inputbox:nth-child(2) {
+                left: 9%;
+                top: 51%;
+            }
+            .edocuenta .inputbox:nth-child(3) {
+                left: 16%;
+                top: 74%;
+            }
+            .edocuenta .inputbox:nth-child(4) {
+                left: 66%;
+                top: 41%;
+            }
+            .edocuenta .inputbox:nth-child(5) {
+                left: 66%;
+                top: 49.5%;
+            }
+            .edocuenta .inputbox:nth-child(6) {
+                left: 66%;
+                top: 75%;
+            }
+            .edocuenta .inputbox:nth-child(7) {
+                left: 66%;
+                top: 83.5%;
+            }
+            @media (max-width: 1024px) {
+                .edocuenta .inputboxes .inputbox {
+                    font-size: 0.9rem;
+                }
+                .edocuenta .inputboxes .inputbox input {
+                    font-size: 0.8rem;
+                    border: 1px solid #398C6B;
+                    padding: 0;
+                }
+            }
+            @media (max-width: 680px) {
+                .edocuenta .inputboxes .inputbox {
+                    font-size: 0.7rem;
+                }
+                .edocuenta .inputboxes .inputbox input {
+                    font-size: 0.5rem;
+                    border: 1px solid #398C6B;
+                    padding: 0;
+                }
+            }
+
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Completa el estado de cuenta y resuelve como se indica.
+
+            .row.mt-3.ex1
+                .col-12
+                    .edocuenta
+                        img(src="aimg/a1.png").w-100
+                        .inputboxes
+                            template(v-for="(i, index) in [584.00, 93.44, 677.44, 93.44, 677.44, 677.44, 677.44]")
+                                inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="0.00")
+                                    template(v-slot:before=""): strong $
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
