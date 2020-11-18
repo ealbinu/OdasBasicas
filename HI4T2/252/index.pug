@@ -1,0 +1,90 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Ubicamos la ruta de Colón'
+- subtitle = 'Ubicación temporal y espacial de los viajes de exploración de Cristóbal Colón en América y de la Conquista de México'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .thedate {
+                background: var(--clear);
+                background-image: linear-gradient(to left, #FFD566, var(--accent));
+                text-align: center;
+                padding: 4px;
+            }
+            .thedate .inputbox input {
+                font-size: 1.6rem;
+                border-color: #EF9739;
+            }
+            .thedate .numbers {
+                font-size: 1.3rem;
+            }
+            .thedate.end {
+                width: 0;
+                height: 0;
+                border-top: 70px solid transparent;
+                border-bottom: 70px solid transparent;
+                border-left: 26px solid var(--accent);
+                background: #fff;
+                flex-grow: 0;
+            }
+            .ex1 p {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 3px;
+            }
+            .ex1 p strong {
+                color: var(--main);
+                font-size: 2rem;
+            }
+
+            @media (max-width: 680px){
+                .thedate .inputbox input {
+                    font-size: 1.2rem;
+                }
+                .thedate .numbers {
+                    font-size: 1rem;
+                }
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Consulta las páginas 78 a 81 de tu libro de texto SEP y ordena en la línea de tiempo los acontecimientos históricos. Escribe cada letra en el año correspondiente.
+
+            .row.mt-3.ex1
+                .col-12.pals
+                    p #[strong A.] Primera gran epidemia de viruela.
+                    p #[strong B.] Cristóbal Colón llega a América.
+                    p #[strong C.] Hernán Cortés llega a México-Tenochtitlan.
+                    p #[strong D.] Viaje de Cristóbal Colón a Guadalupe, Puerto Rico. E. Moctezuma Xocoyotzin asume el gobierno mexica. F. Inicia la ruta de Juan de Grijalva.
+                    p #[strong G.] Inicia la ruta de Córdoba.
+            .row.mt-3.ex2.flex-wrap.justify-content-center.align-items-center
+                .col.thedate(v-for="(i, index) in tempsobj.a")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.l" type="text" placeh="-")
+                        numbers(c=2) {{i.d}}
+                .col.thedate.end
+
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {l:'B',d:1492},
+                    {l:'D',d:1496},
+                    {l:'E',d:1502},
+                    {l:'G',d:1517},
+                    {l:'F',d:1518},
+                    {l:'C',d:1519},
+                    {l:'A',d:1520}
+                    ])
