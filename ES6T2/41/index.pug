@@ -1,0 +1,113 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Ordeno las instrucciones'
+- subtitle = 'Nuestro manual'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .card {
+                position: relative;
+            }
+            .inputbox:nth-child(2) {
+                position: absolute;
+                width: 15%;
+                border-radius: 50%;
+                box-shadow: 4px 4px 0 #CD5662;
+            }
+            .inputbox:nth-child(2) input {
+                font-size: 1.2rem;
+                padding: 20% 10%;
+                border-radius: 50%;
+                border: 4px solid var(--main);
+            }
+            .inputbox:nth-child(3) {
+                position: absolute;
+                width: 47%;
+            }
+            .inputbox:nth-child(3) input {
+                font-size: 1.2rem;
+                padding: 4px;
+                border: 4px solid #AE7B65;
+                border-radius: 6px;
+            }
+            .card1 .inputbox:nth-child(2) {
+                left: 0;
+                top: 1%;
+            }
+            .card1 .inputbox:nth-child(3) {
+                left: 48%;
+                top: 24%;
+            }
+            .card2 .inputbox:nth-child(2) {
+                left: 1%;
+                top: 1.5%;
+            }
+            .card2 .inputbox:nth-child(3) {
+                left: 49%;
+                top: 3%;
+            }
+            .card3 .inputbox:nth-child(2) {
+                left: 1%;
+                top: 1%;
+            }
+            .card3 .inputbox:nth-child(3) {
+                left: 49%;
+                top: 4%;
+            }
+            .card4 .inputbox:nth-child(2) {
+                left: 1%;
+                top: 1%;
+            }
+            .card4 .inputbox:nth-child(3) {
+                left: 49%;
+                top: 4%;
+            }
+            @media (max-width: 680px){
+                .inputbox:nth-child(3) input{
+                    font-size: 1rem;
+                }
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 ¡Vamos a jugar Timbiriche! Ordena las instrucciones escribiendo los números #[strong 1], #[strong 2], #[strong 3] y #[strong 4] donde corresponda. Después escribe los adverbios #[strong primero], #[strong después], #[strong luego] y #[strong finalmente] en los recuadros.
+
+            .row.mt-3.ex1
+                .col-md-6.card1
+                    .card
+                        img(src="aimg/a1.png").w-100
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="finalmente" type="text" placeh="-")
+                .col-md-6.card2
+                    .card
+                        img(src="aimg/a2.png").w-100
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                        inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="luego" type="text" placeh="-")
+                .col-md-6.card3
+                    .card
+                        img(src="aimg/a3.png").w-100
+                        inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="primero" type="text" placeh="-")
+                .col-md-6.card4
+                    .card
+                        img(src="aimg/a4.png").w-100
+                        inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="después" type="text" placeh="-")
+
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
