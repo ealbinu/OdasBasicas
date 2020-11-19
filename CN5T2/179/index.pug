@@ -1,0 +1,170 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Mezclamos las sustancias'
+- subtitle = ''
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .preguntas .label{
+                font-size: 0.9rem;
+            }
+            .label{
+                background: #f5f5f5;
+                border-radius: 4px;
+                margin-bottom: 4px;
+                padding: 4px;
+            }
+
+            /*cross*/
+            .crucigrama {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .crucigrama .box {
+                width: 7.6%;
+                min-height: 30px;
+            }
+            .crucigrama .box div {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .crucigrama .box .inputbox {
+                height: 100%;
+            }
+            .crucigrama .box .inputbox input {
+                height: 100%;
+                padding: 0;
+                border-radius: 2px;
+                font-size: 1rem;
+            }
+            .crucigrama {
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .crucigrama .number {
+                background: #9DC73C;
+                width: 100%;
+                border-radius: 3px;
+                color: #fff;
+            }
+            .crucigrama .cell.demo {
+                width: 100%;
+                border: 1px solid #6EB745;
+            }
+            /* .box{outline: 1px solid rgba(0,0,0,0.1);} */
+
+
+            .draggable {
+                min-height: 60px;
+            }
+            .draggable > div:not(.result) {
+                min-height: 60px;
+                display: flex;
+                gap: 4px;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                background: #f5f5f5;
+                border-radius: 10px;
+                padding: 10px 0;
+            }
+            .draggable > div:not(.result) > div:not(.result) {
+                text-align: center;
+                background: #FDE6D7;
+                border-radius: 4px;
+                padding: 2px;
+                cursor: pointer;
+            }
+            .ex2 .dragdrop {
+                height: 100%;
+            }
+            .ex2 .dragdrop .draggable {
+                height: 100%;
+            }
+            .ex2 .dragdrop .draggable > div:not(.result) {
+                height: 100%;
+            }
+            .ex2 .dragdrop .draggable > div:not(.result) > div:not(.result) {
+                margin: 8px;
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Lee la página 90 de tu libro de texto SEP y resuelve el crucigrama.
+
+            .row.mt-3.ex1
+                .col-md-5.preguntas
+                    labeltext(num="1.") Es la separación de las partículas sólidas que no se disuelven en un líquido, o la de dos líquidos que no se disuelven entre sí.
+                    labeltext(num="2.") Fenómeno por el que, algunos metales que contienen hierro y que, al estar en contacto con un imán, adquieren la propiedad de atraer otros metales que también contienen hierro.
+                    labeltext(num="3.") Consiste en calentar la mezcla hasta el punto de ebullición de uno de los componentes, pues se evapora primero el que tenga el punto de ebullición de menor temperatura. Los otros componentes quedarán en el recipiente cuando aquel se haya evaporado.
+                    labeltext(num="4.")  Se basa en que alguno de los componentes de la mezcla no sea soluble en el otro, de modo que uno permanezca sólido y el otro líquido. La mezcla se deposita en una coladera o un papel filtro; el componente sólido se quedará en el filtro y el otro pasará.
+                .col-md
+                    mixin crossword(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="x=="+ex+"+index && y=="+ye)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell")
+                                    inputbox(v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-")
+                    mixin crosswordDemo(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="x=="+ex+"+index && y=="+ye)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell demo") {{b}}
+                    mixin crosswordVertical(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="y=="+ye+"+index && x=="+ex)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell")
+                                    inputbox(v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-")
+
+
+
+
+                    .crucigrama
+                        template(v-for="y in 15")
+                            template(v-for="x in 13")
+                                div(:class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y")
+                                    // HORIZONTALES
+                                    +crossword("[1, ['D',32], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]", "1", "4" )
+                                    +crossword("[3, ['E',11],['V',12],['A',13],['P',14],['O',15],['R',16],['A',17],['C',18],['I',19],['Ó',20],['N',21]]", "2", "7" )
+
+                                    //+crosswordDemo("[2, 'S', 'Ó', 'L', 'I', 'D', 'O']", "1", "7" )
+                                    // VERTICALES
+                                    +crosswordVertical("[2, ['I',22], ['M',23], false, ['N',24], ['T',25], false, ['C',26], ['I',27], ['Ó',28], ['N',29]]", "5", "1" )
+                                    +crosswordVertical("[4, ['F',30], false, ['L',31], ['T',33], ['R',34], ['A',35], ['C',36], ['I',37], ['Ó',38], ['N',43]]", "11", "5" )
+
+
+            .instruccion.mt-5 Coloca las opciones en la sección correcta de acuerdo al método de separación.
+            
+            .opciones: dragdrop(:options="_.shuffle(['<strong>Imantación.</strong>', 'Separar clavos de los palillos.', '<strong>Tamizado.</strong>', 'Separar piedras de la arena.', '<strong>Filtración.</strong>', 'Separar el grano molido del café del agua caliente.', '<strong>Decantación.</strong>', 'Separar agua y aceite.'])")
+
+            .row.mt-3.ex2
+                .col-md-6.mb-4
+                    .row
+                        .col-6: img(src="aimg/1a.png").img-fluid
+                        .col-6: dragdrop(v-model="r[42]" :ref="refCount()" :options="[]" :options-ok="['<strong>Imantación.</strong>', 'Separar clavos de los palillos.']" ignore-order)
+                .col-md-6.mb-4
+                    .row
+                        .col-6: img(src="aimg/1b.png").img-fluid
+                        .col-6: dragdrop(v-model="r[39]" :ref="refCount()" :options="[]" :options-ok="['<strong>Tamizado.</strong>', 'Separar piedras de la arena.']" ignore-order)
+                .col-md-6.mb-4
+                    .row
+                        .col-6: img(src="aimg/1c.png").img-fluid
+                        .col-6: dragdrop(v-model="r[40]" :ref="refCount()" :options="[]" :options-ok="['<strong>Filtración.</strong>', 'Separar el grano molido del café del agua caliente.']" ignore-order)
+                .col-md-6.mb-4
+                    .row
+                        .col-6: img(src="aimg/1d.png").img-fluid
+                        .col-6: dragdrop(v-model="r[41]" :ref="refCount()" :options="[]" :options-ok="['<strong>Decantación.</strong>', 'Separar agua y aceite.']" ignore-order)
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])

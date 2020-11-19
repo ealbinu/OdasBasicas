@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mezclamos las sustancias</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .preguntas .label{
+          font-size: 0.9rem;
+      }
+      .label{
+          background: #f5f5f5;
+          border-radius: 4px;
+          margin-bottom: 4px;
+          padding: 4px;
+      }
+      
+      /*cross*/
+      .crucigrama {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+      }
+      .crucigrama .box {
+          width: 7.6%;
+          min-height: 30px;
+      }
+      .crucigrama .box div {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .crucigrama .box .inputbox {
+          height: 100%;
+      }
+      .crucigrama .box .inputbox input {
+          height: 100%;
+          padding: 0;
+          border-radius: 2px;
+          font-size: 1rem;
+      }
+      .crucigrama {
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .crucigrama .number {
+          background: #9DC73C;
+          width: 100%;
+          border-radius: 3px;
+          color: #fff;
+      }
+      .crucigrama .cell.demo {
+          width: 100%;
+          border: 1px solid #6EB745;
+      }
+      /* .box{outline: 1px solid rgba(0,0,0,0.1);} */
+      
+      
+      .draggable {
+          min-height: 60px;
+      }
+      .draggable > div:not(.result) {
+          min-height: 60px;
+          display: flex;
+          gap: 4px;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          background: #f5f5f5;
+          border-radius: 10px;
+          padding: 10px 0;
+      }
+      .draggable > div:not(.result) > div:not(.result) {
+          text-align: center;
+          background: #FDE6D7;
+          border-radius: 4px;
+          padding: 2px;
+          cursor: pointer;
+      }
+      .ex2 .dragdrop {
+          height: 100%;
+      }
+      .ex2 .dragdrop .draggable {
+          height: 100%;
+      }
+      .ex2 .dragdrop .draggable > div:not(.result) {
+          height: 100%;
+      }
+      .ex2 .dragdrop .draggable > div:not(.result) > div:not(.result) {
+          margin: 8px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Mezclamos las sustancias</h1>
+      <div class="instruccion mt-5">Lee la página 90 de tu libro de texto SEP y resuelve el crucigrama.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-5 preguntas">
+          <labeltext num="1.">Es la separación de las partículas sólidas que no se disuelven en un líquido, o la de dos líquidos que no se disuelven entre sí.</labeltext>
+          <labeltext num="2.">Fenómeno por el que, algunos metales que contienen hierro y que, al estar en contacto con un imán, adquieren la propiedad de atraer otros metales que también contienen hierro.</labeltext>
+          <labeltext num="3.">Consiste en calentar la mezcla hasta el punto de ebullición de uno de los componentes, pues se evapora primero el que tenga el punto de ebullición de menor temperatura. Los otros componentes quedarán en el recipiente cuando aquel se haya evaporado.</labeltext>
+          <labeltext num="4."> Se basa en que alguno de los componentes de la mezcla no sea soluble en el otro, de modo que uno permanezca sólido y el otro líquido. La mezcla se deposita en una coladera o un papel filtro; el componente sólido se quedará en el filtro y el otro pasará.</labeltext>
+        </div>
+        <div class="col-md">
+          <div class="crucigrama">
+            <template v-for="y in 15">
+              <template v-for="x in 13">
+                <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
+                  <!-- HORIZONTALES-->
+                            <div v-for="(b, index) in [1, ['D',32], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]" v-if="x==1+index &amp;&amp; y==4">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [3, ['E',11],['V',12],['A',13],['P',14],['O',15],['R',16],['A',17],['C',18],['I',19],['Ó',20],['N',21]]" v-if="x==2+index &amp;&amp; y==7">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                  <!--+crosswordDemo("[2, 'S', 'Ó', 'L', 'I', 'D', 'O']", "1", "7" )-->
+                  <!-- VERTICALES-->
+                            <div v-for="(b, index) in [2, ['I',22], ['M',23], false, ['N',24], ['T',25], false, ['C',26], ['I',27], ['Ó',28], ['N',29]]" v-if="y==1+index &amp;&amp; x==5">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [4, ['F',30], false, ['L',31], ['T',33], ['R',34], ['A',35], ['C',36], ['I',37], ['Ó',38], ['N',43]]" v-if="y==5+index &amp;&amp; x==11">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Coloca las opciones en la sección correcta de acuerdo al método de separación.</div>
+      <div class="opciones">
+        <dragdrop :options="_.shuffle(['&lt;strong&gt;Imantación.&lt;/strong&gt;', 'Separar clavos de los palillos.', '&lt;strong&gt;Tamizado.&lt;/strong&gt;', 'Separar piedras de la arena.', '&lt;strong&gt;Filtración.&lt;/strong&gt;', 'Separar el grano molido del café del agua caliente.', '&lt;strong&gt;Decantación.&lt;/strong&gt;', 'Separar agua y aceite.'])"></dragdrop>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6 mb-4">
+          <div class="row">
+            <div class="col-6"><img class="img-fluid" src="aimg/1a.png"/></div>
+            <div class="col-6">
+              <dragdrop v-model="r[42]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Imantación.&lt;/strong&gt;', 'Separar clavos de los palillos.']" ignore-order="ignore-order"></dragdrop>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="row">
+            <div class="col-6"><img class="img-fluid" src="aimg/1b.png"/></div>
+            <div class="col-6">
+              <dragdrop v-model="r[39]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Tamizado.&lt;/strong&gt;', 'Separar piedras de la arena.']" ignore-order="ignore-order"></dragdrop>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="row">
+            <div class="col-6"><img class="img-fluid" src="aimg/1c.png"/></div>
+            <div class="col-6">
+              <dragdrop v-model="r[40]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Filtración.&lt;/strong&gt;', 'Separar el grano molido del café del agua caliente.']" ignore-order="ignore-order"></dragdrop>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="row">
+            <div class="col-6"><img class="img-fluid" src="aimg/1d.png"/></div>
+            <div class="col-6">
+              <dragdrop v-model="r[41]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Decantación.&lt;/strong&gt;', 'Separar agua y aceite.']" ignore-order="ignore-order"></dragdrop>
+            </div>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
