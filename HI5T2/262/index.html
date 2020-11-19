@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quiero ser presidente</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .names,
+      .descs {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          gap: 6px;
+      }
+      .name {
+          background: #FBE0C2;
+          text-align: center;
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid var(--sec);
+          box-shadow: 4px 4px 0 #004082;
+      }
+      .name strong {
+          font-size: 2rem;
+          color: #005093;
+      }
+      .desc {
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid var(--clear);
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .desc .inputbox {
+          text-align: center;
+      }
+      .desc .inputbox input {
+          max-width: 120px;
+          font-size: 1.4rem;
+      }
+      .desc:nth-child(1) {
+          background: #FEEFBA;
+      }
+      .desc:nth-child(2) {
+          background: #ABCDE2;
+      }
+      .desc:nth-child(3) {
+          background: #E0C2D4;
+      }
+      .desc:nth-child(4) {
+          background: #F9D4AD;
+      }
+      .desc:nth-child(5) {
+          background: #ABCDE2;
+      }
+      @media (max-width:680px){
+          .name, .desc{
+              font-size: 0.8rem;
+          }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Quiero ser presidente</h1>
+      <h2>De los caudillos al presidencialismo</h2>
+      <div class="instruccion mt-5">Relaciona los nombres con cada descripción. Consulta las páginas 118 a 120 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-4 names">
+          <div class="name"><strong>A</strong>
+            <p>Plutarco Elías Calles.</p>
+          </div>
+          <div class="name"><strong>B</strong>
+            <p>Venustiano Carranza.</p>
+          </div>
+          <div class="name"><strong>C</strong>
+            <p>Álvaro Obregón.</p>
+          </div>
+          <div class="name"><strong>D</strong>
+            <p>Adolfo de la Huerta.</p>
+          </div>
+        </div>
+        <div class="col-8 descs">
+          <div class="desc">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-"></inputbox>
+            <p>Tuvo la responsabilidad de inaugurar y poner en funcionamiento el nuevo gobierno posrevolucionario.</p>
+          </div>
+          <div class="desc">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-"></inputbox>
+            <p>Ocupó la presidencia temporalmente mien- tras se realizaban elecciones. Duró seis meses en el cargo.</p>
+          </div>
+          <div class="desc">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            <p>Presidente de grandes habilidades políticas y militares. Llevó a cabo el reparto agrario, protegió la propiedad privada, ganó el apo- yo de los obreros, arregló los problemas con Estados Unidos y fundó la SEP.</p>
+          </div>
+          <div class="desc">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+            <p>Este presidente creó el Banco de México en 1925 y negoció con otros gobiernos para un mayor beneficio de México en la explotación de sus recursos naturales.</p>
+          </div>
+          <div class="desc">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            <p>Presidente electo que fue asesinado antes de tomar posesión del cargo por segunda ocasión.</p>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
