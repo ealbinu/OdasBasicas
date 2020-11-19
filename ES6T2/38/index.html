@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conozco los instructivos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .inputbox input {
+          font-size: 1.2rem;
+      }
+      .selectable {
+          display: inline-block;
+          border-radius: 0;
+          margin-right: 4px;
+          border-bottom: 4px solid transparent;
+      }
+      .selectable .circledactive {
+          display: none;
+      }
+      .selectable.on {
+          border-bottom: 4px solid var(--main);
+      }
+      .ex1, .ex2, .ex3{
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex1{ background: #FDE8CF; }
+      .ex2{ background: #EFDEE6; }
+      .ex3{ background: #E5F5FE; }
+      
+      img{ max-width: 180px !important;}
+      .frac {
+          display: inline-block;
+          text-align: center;
+          vertical-align: middle;
+          margin-right: 6px;
+      }
+      .frac hr {
+          margin: 0;
+          border-top: 2px solid var(--sec);
+          width: 20px;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Conozco los instructivos</h1>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Escribe la palabra <strong>Materiales</strong>, <strong>Ingredientes</strong> o <strong>Instrucciones</strong> donde corresponda. Después selecciona los verbos en infinitivo.</div>
+      <div class="row mt-3 justify-content-center align-items-center ex1">
+        <div class="col-12 h3">Manualidad</div>
+        <div class="col-md-8">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Materiales" type="text" placeh="-"> </inputbox>
+          <ul>
+            <li>Vela circular.</li>
+            <li>Listón satinado lila.</li>
+            <li>Hojas de organza verde.</li>
+            <li>Cinco flores amarillas.</li>
+            <li>Alfileres con cabeza. </li>
+          </ul>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Instrucciones" type="text" placeh="-"> </inputbox>
+          <ol>
+            <li>
+              <selectable :isok="true" v-model="r[2]" :ref="refCount()" @isright="right++">Unir</selectable>las hojas a las flores y
+              <selectable :isok="true" v-model="r[3]" :ref="refCount()" @isright="right++">formar</selectable>un ramo.
+            </li>
+            <li> 
+              <selectable :isok="true" v-model="r[4]" :ref="refCount()" @isright="right++">Fijar</selectable>el ramo a la vela con los alfileres.
+            </li>
+            <li>
+              <selectable :isok="true" v-model="r[5]" :ref="refCount()" @isright="right++">Pegar</selectable>el listón alrededor de la vela.
+            </li>
+          </ol>
+        </div>
+        <div class="col-md-4 text-center"><img class="img-fluid" src="aimg/1a.png"/></div>
+      </div>
+      <div class="row mt-3 justify-content-center align-items-center ex2">
+        <div class="col-12 h3">Receta</div>
+        <div class="col-md-8">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Ingredientes" type="text" placeh="-"> </inputbox>
+          <ul>
+            <li>1 kilogramo de fresas limpias.</li>
+            <li><div class="frac">1<hr>2</div> taza de azúcar.</li>
+            <li>7 tazas de hielo raspado o molido en la licuadora</li>
+          </ul>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="Instrucciones" type="text" placeh="-"> </inputbox>
+          <ol>
+            <li>
+              <selectable :isok="true" v-model="r[8]" :ref="refCount()" @isright="right++">Apartar</selectable>unas cuantas fresas para 
+              <selectable :isok="true" v-model="r[9]" :ref="refCount()" @isright="right++">adornar</selectable>.
+            </li>
+            <li> 
+              <selectable :isok="true" v-model="r[10]" :ref="refCount()" @isright="right++">Mezclar</selectable>el resto de las fresas con el azúcar y machacarlas.
+            </li>
+            <li> 
+              <selectable :isok="true" v-model="r[11]" :ref="refCount()" @isright="right++">Dejar</selectable>
+              <selectable :isok="true" v-model="r[12]" :ref="refCount()" @isright="right++">reposar</selectable>durante una hora fuera del refrigerador.
+            </li>
+            <li> 
+              <selectable :isok="true" v-model="r[13]" :ref="refCount()" @isright="right++">Llenar</selectable>vasos grandes con el hielo molido y 
+              <selectable :isok="true" v-model="r[14]" :ref="refCount()" @isright="right++">añadir </selectable>un poco de la mezcla de frutas.
+            </li>
+            <li> 
+              <selectable :isok="true" v-model="r[15]" :ref="refCount()" @isright="right++">Decorar </selectable>a su gusto.
+            </li>
+          </ol>
+        </div>
+        <div class="col-md-4 text-center"><img class="img-fluid" src="aimg/1b.png"/></div>
+      </div>
+      <div class="row mt-3 justify-content-center align-items-center ex3">
+        <div class="col-12 h3">Juego</div>
+        <div class="col-md-8">
+          <p>Se necesitan:</p>
+          <ul>
+            <li>Dos capitanes para 
+              <selectable :isok="true" v-model="r[16]" :ref="refCount()" @isright="right++">escoger</selectable>a los integrantes de cada grupo.
+            </li>
+            <li>Un cuartel para 
+              <selectable :isok="true" v-model="r[17]" :ref="refCount()" @isright="right++">encerrar</selectable>a los ladrones que atrapen los policías.
+            </li>
+          </ul>
+          <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" answer="Instrucciones" type="text" placeh="-"> </inputbox>
+          <p> 
+            <selectable :isok="true" v-model="r[19]" :ref="refCount()" @isright="right++">Instalar</selectable>un cuartel en el grupo de policías.
+            <selectable :isok="true" v-model="r[20]" :ref="refCount()" @isright="right++">Correr</selectable>para 
+            <selectable :isok="true" v-model="r[21]" :ref="refCount()" @isright="right++">atrapar</selectable>a los ladrones a la voz de “ya”. 
+            <selectable :isok="true" v-model="r[22]" :ref="refCount()" @isright="right++">Evitar</selectable>que otros ladrones toquen a sus compañeros para que no recuperen su libertad y 
+            <selectable :isok="true" v-model="r[23]" :ref="refCount()" @isright="right++">volver</selectable>a 
+            <selectable :isok="true" v-model="r[24]" :ref="refCount()" @isright="right++">comenzar </selectable>cuando todos los ladrones sean atrapados.
+          </p>
+        </div>
+        <div class="col-md-4 text-center"><img class="img-fluid" src="aimg/1c.png"/></div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
