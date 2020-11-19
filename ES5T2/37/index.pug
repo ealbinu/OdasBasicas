@@ -1,0 +1,141 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Resumo y clasifico'
+- subtitle = 'Lo que conozco'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .dragdrop {
+                padding: 4px;
+                background: #E8E1D0;
+                border-radius: 10px;
+            }
+            .dragdrop .draggable{
+                min-height: 20px;
+            }
+            .dragdrop .draggable > div > div {
+                padding: 6px;
+                border-radius: 5px;
+                background: #fff;
+                cursor: move;
+                box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            }
+            .opciones .dragdrop {
+                min-height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .opciones .dragdrop .draggable > div {
+                display: flex;
+                gap: 4px;
+                text-align: center;
+                flex-wrap: wrap;
+                justify-content:center;
+                align-items:center;
+                width: 100%;
+                height: 100%;
+                min-height: 40px;
+            }
+            .diag {
+                position: relative;
+            }
+            .drops .dragdrop {
+                border: 2px solid #A48EB6;
+                width: 18%;
+                position: absolute;
+                min-height: 10%;
+                text-align: center;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content:center;
+                align-items: center;
+            }
+            .drops .dragdrop .draggable{
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                width: 100%; height: 100%;
+            }
+
+            .drops .dragdrop:nth-child(1) {
+                left: 40%;
+                top: 38%;
+            }
+            .drops .dragdrop:nth-child(2) {
+                left: 79%;
+                top: 2%;
+            }
+            .drops .dragdrop:nth-child(3) {
+                left: 79%;
+                top: 38%;
+            }
+            .drops .dragdrop:nth-child(4) {
+                left: 79%;
+                top: 58%;
+            }
+            .drops .dragdrop:nth-child(5) {
+                left: 79%;
+                top: 80%;
+            }
+            @media (max-width:1024px){
+                .drops .dragdrop .draggable > div > div{
+                    padding: 2px;
+                    line-height: 1.1;
+                    width: 100%;
+                }
+                .drops .dragdrop .draggable{
+                    font-size: 0.8rem;
+                }
+            }
+            @media (max-width:680px){
+                .draggable{
+                    font-size: 0.6rem;
+                }
+                .drops .dragdrop{
+                    padding: 0;
+                }
+                .drops .dragdrop .draggable{
+                    font-size: 0.4rem;
+                }
+                .drops .dragdrop .draggable > div{
+                    width: 100%; height: 100%;
+                }
+                .drops .dragdrop .draggable > div > div{
+                    padding: 1px 0;
+                    line-height: 1.1;
+                    width: 100%;
+                }
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Coloca los conceptos del recuadro en el lugar que corresponde para completar el siguiente mapa conceptual.
+            .row.opciones
+                .col-12: dragdrop(:options="['de 1876 a 1911.','los latifundios y la explotación.','la inversión extranjera','Francia, Inglaterra y Estados Unidos.','Madero fue presidente.']")
+
+            .row: .col-12.diag
+                img(src="aimg/1a.png").w-100
+                .drops
+                    dragdrop(v-model="r[0]" :ref="refCount()" :options="[]" :options-ok="['la inversión extranjera']")
+                    dragdrop(v-model="r[1]" :ref="refCount()" :options="[]" :options-ok="['de 1876 a 1911.']")
+                    dragdrop(v-model="r[2]" :ref="refCount()" :options="[]" :options-ok="['Francia, Inglaterra y Estados Unidos.']")
+                    dragdrop(v-model="r[3]" :ref="refCount()" :options="[]" :options-ok="['los latifundios y la explotación.']")
+                    dragdrop(v-model="r[4]" :ref="refCount()" :options="[]" :options-ok="['Madero fue presidente.']")
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
