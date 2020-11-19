@@ -1,0 +1,45 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Reconozco los aportes de las culturas'
+- subtitle = 'Las expresiones de la cultura mesoamericana'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .check{
+                background: #F0F7F6;
+                padding: 10px;
+                border: 2px solid #0083BF;
+            }
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las características de Mesoamérica. Consulta las páginas 60 a 70 de tu libro de texto SEP.
+
+            .row.mt-3.ex1
+                .col-md-6(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {t: 'Asociaban los fenómenos naturales con la astronomía.', v:true},
+                    {t: 'Los sacerdotes se encargaban de los estudios astronómicos.', v:true},
+                    {t: 'Hacían representaciones mediante los pictogramas, los glifos ideográficos y los glifos fonéticos.', v:true},
+                    {t: 'Usaban plantas para curar enfermos.', v:true},
+                    {t: 'Creían en un único dios.', v:false},
+                    {t: 'Utilizaban los papiros para su escritura.', v:false},
+                    {t: 'Practicaban el cultivo de arroz.', v:false},
+                    {t: 'Sus fiestas eran para agradar a los dioses y evitar su ira.', v:true},
+                ])
