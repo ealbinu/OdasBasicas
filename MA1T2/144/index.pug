@@ -52,13 +52,13 @@ html(lang="es")
             
             .row.mt-3.ex1
                 .col-8: .row.wrap
-                        img(src="aimg/roja.png" v-for="(i, index) in 3").img-fluid.card
-                        img(src="aimg/azul.png" v-for="(i, index) in 2").img-fluid.card
+                        img(src="aimg/roja.png" v-for="(i, index) in 5").img-fluid.card
+                        img(src="aimg/azul.png" v-for="(i, index) in 0").img-fluid.card
                 .col: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
             .row.mt-3.ex1
                 .col-8: .row.wrap
-                        img(src="aimg/roja.png" v-for="(i, index) in 4").img-fluid.card
-                        img(src="aimg/azul.png" v-for="(i, index) in 1").img-fluid.card
+                        img(src="aimg/roja.png" v-for="(i, index) in 3").img-fluid.card
+                        img(src="aimg/azul.png" v-for="(i, index) in 2").img-fluid.card
                 .col: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="32" type="number" placeh="#")
             .row.mt-3.ex1
                 .col-8: .row.wrap
