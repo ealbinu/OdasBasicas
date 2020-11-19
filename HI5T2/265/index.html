@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Analizo la República Restaurada</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ex1{
+          background: url(aimg/bg.png);
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .preguntas .label{
+          font-size: 0.9rem;
+      }
+      .label{
+          background: #f5f5f5;
+          border-radius: 4px;
+          margin-bottom: 4px;
+          padding: 4px;
+      }
+      
+      /*cross*/
+      .crucigrama {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+      }
+      .crucigrama .box {
+          width: 6.666%;
+          min-height: 30px;
+      }
+      .crucigrama .box div {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .crucigrama .box .inputbox {
+          height: 100%;
+      }
+      .crucigrama .box .inputbox input {
+          height: 100%;
+          padding: 0;
+          border-radius: 2px;
+          font-size: 1rem;
+      }
+      .crucigrama {
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .crucigrama .number {
+          background: #EDA76F;
+          width: 100%;
+          border-radius: 3px;
+          color: #fff;
+      }
+      .crucigrama .cell.demo {
+          width: 100%;
+          border: 1px solid #6EB745;
+      }
+      .box{outline: 1px solid rgba(0,0,0,0.1);}
+      
+      .x5y7, .x11y14{
+          background: #EDA76F;
+      }
+      .preguntas .inputbox {
+          display: inline-block;
+          margin: 0 4px;
+      }
+      .preguntas .inputbox input {
+          font-size: 1rem;
+          padding: 0 2px;
+          border-color: #EDA76F;
+          
+      }
+      
+      .ex2 .inputbox input {
+          font-size: 1rem;
+          padding: 3px 1px;
+          color: var(--main);
+      }
+      .ex2 .caja {
+          padding: 4px 0;
+          border-bottom: 4px dashed #f5f5f5;
+      }
+      
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Analizo la República Restaurada</h1>
+      <h2>La restauración de la República</h2>
+      <div class="instruccion mt-5">Completa los enunciados y escribe las respuestas en el crucigrama. Consulta la página 61 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-5 preguntas">
+          <p><strong>Vertical</strong></p>
+          <labeltext num="1.">Los 
+            <inputbox v-model="r[52]" :ref="refCount()" @isright="right++" answer="jefes militares" type="text" placeh="- -"></inputbox>controlaron, durante la guerra, las actividades económicas de algunas regiones del interior de la República y se apropiaron de esos recursos.
+          </labeltext>
+          <labeltext num="2.">La 
+            <inputbox v-model="r[53]" :ref="refCount()" @isright="right++" answer="carencia" type="text" placeh="-"></inputbox>de recursos fue uno de los principales problemas de la República Restaurada.
+          </labeltext>
+          <labeltext num="3.">La República 
+            <inputbox v-model="r[54]" :ref="refCount()" @isright="right++" answer="restaurada" type="text" placeh="-"></inputbox>es el nombre con el que se le conoce al periodo entre 1867 y 1876.
+          </labeltext>
+          <p><strong>Horizontal</strong></p>
+          <labeltext num="4."> 
+            <inputbox v-model="r[55]" :ref="refCount()" @isright="right++" answer="juárez" type="text" placeh="-"></inputbox>regresó triunfante a la capital después de la derrota del Imperio de Maximiliano.
+          </labeltext>
+          <labeltext num="5.">Miembros del partido
+            <inputbox v-model="r[56]" :ref="refCount()" @isright="right++" answer="liberal" type="text" placeh="-"></inputbox>se oponían a la reelección de Benito Juárez como presidente.
+          </labeltext>
+          <labeltext num="6."> 
+            <inputbox v-model="r[57]" :ref="refCount()" @isright="right++" answer="Porfirio Díaz" type="text" placeh="- -"></inputbox>fue uno de los militares que protestaron contra Juárez por no haber sido incluido en el gabinete del gobierno.
+          </labeltext>
+        </div>
+        <div class="col-md">
+          <div class="crucigrama">
+            <template v-for="y in 16">
+              <template v-for="x in 15">
+                <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
+                  <!-- HORIZONTALES-->
+                            <div v-for="(b, index) in [4, ['J',0], ['U',1],['Á',2],['R',3],['E',4],['Z',5]]" v-if="x==4+index &amp;&amp; y==2">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [5, ['L',6],['I',7],['B',8],['E',9],['R',10],['A',11],['L',12]]" v-if="x==1+index &amp;&amp; y==5">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [6, ['P',13],['O',14],['R',15],['F',16],['I',17],['R',18],['I',19],['O',20],false,['D',21],['Í',22],['A',23],['Z',24]]" v-if="x==2+index &amp;&amp; y==14">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                  <!--+crosswordDemo("[2, 'S', 'Ó', 'L', 'I', 'D', 'O']", "1", "7" )-->
+                  <!-- VERTICALES-->
+                            <div v-for="(b, index) in [1, false,['E',25],['F',26],false,['S',27],false,['M',28],['I',29],['L',30],['I',31],['T',32],['A',33],false,['E',34],['S',35]]" v-if="y==1+index &amp;&amp; x==5">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [2, ['C',36],false,['R',37],['E',38],['N',39],['C',40],['I',41],['A',42]]" v-if="y==3+index &amp;&amp; x==7">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [3, ['R',43],['E',44],['S',45],['T',46],['A',47],['U',48],['R',49],false,['D',50],['A',51],]" v-if="y==6+index &amp;&amp; x==14">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Lee las siguientes situaciones de la República Restaurada y escribe <strong>S</strong> si se trata de una solución o <strong>P</strong> si es un problema.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <template v-for="(i, index) in tempsobj.a">
+            <div class="row caja align-items-center">
+              <div class="col-10">
+                <labeltext :num="(index+1)+'.'">{{i.t}}</labeltext>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[index+58]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="S o P"></inputbox>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {t: 'División del partido liberal.', v: 's'},
+          {t: 'Protesta militar para ocupar cargos en el gobierno.', v: 'p'},
+          {t: 'Quitarle poder a jefes militares que controlaban regiones del interior del país.', v: 's'},
+          {t: 'Descontento de los militares en contra del presidente de la República.', v: 'p'},
+          {t: 'Impulsar la economía.', v: 's'},
+          {t: 'Reactivar la producción agrícola.', v: 's'},
+          {t: 'Fomentar la industria.', v: 's'},
+          {t: 'Construir ferrocarriles.', v: 's'},
+          {t: 'Poblar regiones no habitadas.', v: 's'},
+      ])
+    </script>
+  </body>
+</html>

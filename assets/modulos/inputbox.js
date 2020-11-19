@@ -22,11 +22,14 @@ Vue.component('inputbox', {
                 return false
             }
             this.$emit('input', this.status)
+            s_ok.play()
+            /*
             if(this.status) {
                 s_ok.play()
             } else {
                 s_error.play()
             }
+            */
         },
         cleanLowText (txt) {
             if(txt.length>3){

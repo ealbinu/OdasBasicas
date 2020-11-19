@@ -10,54 +10,53 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css">
     <link rel="stylesheet" href="../../assets/assets.css">
     <style>
+		.esc {
+			margin: 10px;
+			border: 2px solid #7A693D;
+			border-radius: 10px;
+			padding: 10px;
+			background: #F0F2F0;
+			font-size: 1.1rem;
+		}
+		.esc .inputbox input {
+			font-size: 1.4rem;
+			border: 2px solid #7A693D;
+		}
 
-.esc {
-	margin: 10px;
-	border: 2px solid #7A693D;
-	border-radius: 10px;
-	padding: 10px;
-	background: #F0F2F0;
-	font-size: 1.1rem;
-}
-.esc .inputbox input {
-	font-size: 1.4rem;
-	border: 2px solid #7A693D;
-}
-
-.map {
-	position: relative;
-}
-.inputs .inputbox {
-	width: 10%;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-.inputs .inputbox input {
-	font-size: 1.4rem;
-	border-color: #4FACBA;
-	color: var(--main);
-}
-.inputs .inputbox:nth-child(1) {
-	left: 45%;
-	top: 50%;
-}
-.inputs .inputbox:nth-child(2) {
-	left: 68%;
-	top: 20%;
-}
-.inputs .inputbox:nth-child(3) {
-	left: 50%;
-	top: 10%;
-}
-.inputs .inputbox:nth-child(4) {
-	left: 80%;
-	top: 65%;
-}
-.inputs .inputbox:nth-child(5) {
-	left: 13%;
-	top: 25%;
-}
+		.map {
+			position: relative;
+		}
+		.inputs .inputbox {
+			width: 10%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.inputs .inputbox input {
+			font-size: 1.4rem;
+			border-color: #4FACBA;
+			color: var(--main);
+		}
+		.inputs .inputbox:nth-child(1) {
+			left: 45%;
+			top: 50%;
+		}
+		.inputs .inputbox:nth-child(2) {
+			left: 68%;
+			top: 20%;
+		}
+		.inputs .inputbox:nth-child(3) {
+			left: 50%;
+			top: 10%;
+		}
+		.inputs .inputbox:nth-child(4) {
+			left: 80%;
+			top: 65%;
+		}
+		.inputs .inputbox:nth-child(5) {
+			left: 13%;
+			top: 25%;
+		}
 
 
     </style>
@@ -84,7 +83,7 @@
 				<div class="row esc align-items-center">
 					<div class="txt col-10">{{i.t}}</div>
 					<div class="inpt col-2">
-						<inputbox v-model="r[index]" :ref="'q'+index" @isright="right++" :answer="i.v" type="text" placeh="#"></inputbox>
+						<inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-"></inputbox>
 					</div>
 				</div>
 			</template>
@@ -95,7 +94,7 @@
 			<div class="map">
 				<img src="aimg/map.svg" class="mapimg w-100 img-fluid">
 				<div class="inputs">
-					<inputbox v-for="(i,index) in [1,2,3,4,5]" v-model="r[index+8]" :ref="'q'+(index+8)" @isright="right++" :answer="i" type="text" placeh="#"></inputbox>
+					<inputbox v-for="(i,index) in [1,2,3,4,5]" v-model="r[index+8]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
 				</div>
 			</div>
 		</div>
