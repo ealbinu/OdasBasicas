@@ -1,0 +1,119 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Sé cómo viaja el sonido'
+- subtitle = 'La propagación del sonido y la audición'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .preguntas .label{
+                font-size: 0.9rem;
+            }
+            .label{
+                background: #f5f5f5;
+                border-radius: 4px;
+                margin-bottom: 4px;
+                padding: 4px;
+            }
+
+            /*cross*/
+            .crucigrama {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .crucigrama .box {
+                width: 8.333%;
+                min-height: 20px;
+            }
+            .crucigrama .box div {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .crucigrama .box .inputbox {
+                height: 100%;
+            }
+            .crucigrama .box .inputbox input {
+                height: 100%;
+                padding: 0;
+                border-radius: 2px;
+                font-size: 1rem;
+            }
+            .crucigrama {
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .crucigrama .number {
+                background: var(--accent);
+                width: 100%;
+                border-radius: 3px;
+                color: #fff;
+            }
+            .crucigrama .cell.demo {
+                width: 100%;
+                border: 1px solid #6EB745;
+            }
+            /* .box{outline: 1px solid rgba(0,0,0,0.1);} */
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Consulta las páginas 107 a 110 de tu libro de texto SEP y resuelve el crucigrama. Observa el ejemplo.
+
+            .row.mt-3.ex1
+                .col-md-5.preguntas
+                    labeltext(num="1.") Es el tipo de onda que se genera al arrojar una piedra al agua.
+                    labeltext(num="2.") Es un medio a través del cual viaja el sonido.
+                    labeltext(num="3.")  Es la unidad que nos ayuda a medir la intensidad del sonido.
+                    labeltext(num="4.")  Es una representación del movimiento periódico del medio en el que se propaga el sonido.
+                    labeltext(num="5.")  Es el tipo de onda que se genera cuando estiramos un resorte.
+                    labeltext(num="6.")  Se propaga, dependiendo del medio, a través de ondas transversales o longitudinales.
+                    labeltext(num="7.") Es la percepción sensorial para explorar el medio ambiente físico a través de sonidos.
+                .col-md
+                    mixin crossword(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="x=="+ex+"+index && y=="+ye)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell")
+                                    inputbox(v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-")
+                    mixin crosswordDemo(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="x=="+ex+"+index && y=="+ye)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell demo") {{b}}
+                    mixin crosswordVertical(word,ex, ye)
+                        div(v-for="(b, index) in "+word v-if="y=="+ye+"+index && x=="+ex)
+                                div(v-if="typeof b == 'number'" class="number") {{b}}
+                                div(v-else-if="b!=false" class="cell")
+                                    inputbox(v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-")
+
+
+
+
+                    .crucigrama
+                        template(v-for="y in 16")
+                            template(v-for="x in 12")
+                                div(:class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y")
+                                    // HORIZONTALES
+                                    +crossword("[1, ['T',0], ['R',1], ['A',2], ['N',3], ['S',4], ['V',5], ['E',6], ['R',7], ['S',8], ['A',9], ['L',10]]", "1", "5" )
+                                    +crosswordDemo("[2, 'S', 'Ó', 'L', 'I', 'D', 'O']", "1", "7" )
+                                    +crossword("[3, ['D',11],['E',12],['C',13],['I',14],['B',15],['E',16],['L',17]]", "1", "11" )
+                                    +crossword("[4, ['O',18],['N',19],['D',20],['A',21]]", "8", "12" )
+
+                                    // VERTICALES
+                                    +crosswordVertical("[5, ['L',22], ['O',23], false, ['G',24], false, ['T',25], ['U',26], ['D',27], false, ['N',28], ['A',29], ['L',30]]", "5", "2" )
+                                    +crosswordVertical("[6, false, ['O',31], ['N',32], ['I',33], ['D',34], ['O',35]]", "10", "4" )
+                                    +crosswordVertical("[7, ['E',36], ['C',37], ['O',38], false, ['O',39], ['C',40], ['A',41], ['L',42], ['I',43], ['Z',44], false, ['C',45], ['I',46], ['Ó',47], ['N',48]]", "12", "1" )
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])

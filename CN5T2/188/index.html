@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sé cómo viaja el sonido</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .preguntas .label{
+          font-size: 0.9rem;
+      }
+      .label{
+          background: #f5f5f5;
+          border-radius: 4px;
+          margin-bottom: 4px;
+          padding: 4px;
+      }
+      
+      /*cross*/
+      .crucigrama {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+      }
+      .crucigrama .box {
+          width: 8.333%;
+          min-height: 20px;
+      }
+      .crucigrama .box div {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .crucigrama .box .inputbox {
+          height: 100%;
+      }
+      .crucigrama .box .inputbox input {
+          height: 100%;
+          padding: 0;
+          border-radius: 2px;
+          font-size: 1rem;
+      }
+      .crucigrama {
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .crucigrama .number {
+          background: var(--accent);
+          width: 100%;
+          border-radius: 3px;
+          color: #fff;
+      }
+      .crucigrama .cell.demo {
+          width: 100%;
+          border: 1px solid #6EB745;
+      }
+      /* .box{outline: 1px solid rgba(0,0,0,0.1);} */
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Sé cómo viaja el sonido</h1>
+      <h2>La propagación del sonido y la audición</h2>
+      <div class="instruccion mt-5">Consulta las páginas 107 a 110 de tu libro de texto SEP y resuelve el crucigrama. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-5 preguntas">
+          <labeltext num="1.">Es el tipo de onda que se genera al arrojar una piedra al agua.</labeltext>
+          <labeltext num="2.">Es un medio a través del cual viaja el sonido.</labeltext>
+          <labeltext num="3."> Es la unidad que nos ayuda a medir la intensidad del sonido.</labeltext>
+          <labeltext num="4."> Es una representación del movimiento periódico del medio en el que se propaga el sonido.</labeltext>
+          <labeltext num="5."> Es el tipo de onda que se genera cuando estiramos un resorte.</labeltext>
+          <labeltext num="6."> Se propaga, dependiendo del medio, a través de ondas transversales o longitudinales.</labeltext>
+          <labeltext num="7.">Es la percepción sensorial para explorar el medio ambiente físico a través de sonidos.</labeltext>
+        </div>
+        <div class="col-md">
+          <div class="crucigrama">
+            <template v-for="y in 16">
+              <template v-for="x in 12">
+                <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
+                  <!-- HORIZONTALES-->
+                            <div v-for="(b, index) in [1, ['T',0], ['R',1], ['A',2], ['N',3], ['S',4], ['V',5], ['E',6], ['R',7], ['S',8], ['A',9], ['L',10]]" v-if="x==1+index &amp;&amp; y==5">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [2, 'S', 'Ó', 'L', 'I', 'D', 'O']" v-if="x==1+index &amp;&amp; y==7">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell demo" v-else-if="b!=false">{{b}}</div>
+                            </div>
+                            <div v-for="(b, index) in [3, ['D',11],['E',12],['C',13],['I',14],['B',15],['E',16],['L',17]]" v-if="x==1+index &amp;&amp; y==11">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [4, ['O',18],['N',19],['D',20],['A',21]]" v-if="x==8+index &amp;&amp; y==12">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                  <!-- VERTICALES-->
+                            <div v-for="(b, index) in [5, ['L',22], ['O',23], false, ['G',24], false, ['T',25], ['U',26], ['D',27], false, ['N',28], ['A',29], ['L',30]]" v-if="y==2+index &amp;&amp; x==5">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [6, false, ['O',31], ['N',32], ['I',33], ['D',34], ['O',35]]" v-if="y==4+index &amp;&amp; x==10">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                            <div v-for="(b, index) in [7, ['E',36], ['C',37], ['O',38], false, ['O',39], ['C',40], ['A',41], ['L',42], ['I',43], ['Z',44], false, ['C',45], ['I',46], ['Ó',47], ['N',48]]" v-if="y==1+index &amp;&amp; x==12">
+                              <div class="number" v-if="typeof b == 'number'">{{b}}</div>
+                              <div class="cell" v-else-if="b!=false">
+                                <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
+                              </div>
+                            </div>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
