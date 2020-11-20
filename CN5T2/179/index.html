@@ -115,7 +115,7 @@
               <template v-for="x in 13">
                 <div :class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y">
                   <!-- HORIZONTALES-->
-                            <div v-for="(b, index) in [1, ['D',32], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]" v-if="x==1+index &amp;&amp; y==4">
+                            <div v-for="(b, index) in [1, ['D',0], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]" v-if="x==1+index &amp;&amp; y==4">
                               <div class="number" v-if="typeof b == 'number'">{{b}}</div>
                               <div class="cell" v-else-if="b!=false">
                                 <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
@@ -135,7 +135,7 @@
                                 <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
                               </div>
                             </div>
-                            <div v-for="(b, index) in [4, ['F',30], false, ['L',31], ['T',33], ['R',34], ['A',35], ['C',36], ['I',37], ['Ó',38], ['N',43]]" v-if="y==5+index &amp;&amp; x==11">
+                            <div v-for="(b, index) in [4, ['F',30], false, ['L',31], ['T',32], ['R',33], ['A',34], ['C',35], ['I',36], ['Ó',37], ['N',38]]" v-if="y==5+index &amp;&amp; x==11">
                               <div class="number" v-if="typeof b == 'number'">{{b}}</div>
                               <div class="cell" v-else-if="b!=false">
                                 <inputbox v-model="r[b[1]]" :ref="'q'+(b[1])" @isright="right++" :answer="b[0]" type="text" placeh="-"></inputbox>
@@ -156,7 +156,7 @@
           <div class="row">
             <div class="col-6"><img class="img-fluid" src="aimg/1a.png"/></div>
             <div class="col-6">
-              <dragdrop v-model="r[42]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Imantación.&lt;/strong&gt;', 'Separar clavos de los palillos.']" ignore-order="ignore-order"></dragdrop>
+              <dragdrop v-model="r[39]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;strong&gt;Imantación.&lt;/strong&gt;', 'Separar clavos de los palillos.']" ignore-order="ignore-order"></dragdrop>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@
           <div class="row">
             <div class="col-6"><img class="img-fluid" src="aimg/1b.png"/></div>
             <div class="col-6">
-              <dragdrop v-model="r[39]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Tamizado.&lt;/strong&gt;', 'Separar piedras de la arena.']" ignore-order="ignore-order"></dragdrop>
+              <dragdrop v-model="r[40]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;strong&gt;Tamizado.&lt;/strong&gt;', 'Separar piedras de la arena.']" ignore-order="ignore-order"></dragdrop>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@
           <div class="row">
             <div class="col-6"><img class="img-fluid" src="aimg/1c.png"/></div>
             <div class="col-6">
-              <dragdrop v-model="r[40]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Filtración.&lt;/strong&gt;', 'Separar el grano molido del café del agua caliente.']" ignore-order="ignore-order"></dragdrop>
+              <dragdrop v-model="r[41]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;strong&gt;Filtración.&lt;/strong&gt;', 'Separar el grano molido del café del agua caliente.']" ignore-order="ignore-order"></dragdrop>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@
           <div class="row">
             <div class="col-6"><img class="img-fluid" src="aimg/1d.png"/></div>
             <div class="col-6">
-              <dragdrop v-model="r[41]" :ref="refCount()" :options="[]" :options-ok="['&lt;strong&gt;Decantación.&lt;/strong&gt;', 'Separar agua y aceite.']" ignore-order="ignore-order"></dragdrop>
+              <dragdrop v-model="r[42]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;strong&gt;Decantación.&lt;/strong&gt;', 'Separar agua y aceite.']" ignore-order="ignore-order"></dragdrop>
             </div>
           </div>
         </div>

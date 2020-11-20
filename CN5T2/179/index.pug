@@ -132,13 +132,13 @@ html(lang="es")
                             template(v-for="x in 13")
                                 div(:class="'box ' + 'x'+x+'y'+y" :data="x+'-'+y")
                                     // HORIZONTALES
-                                    +crossword("[1, ['D',32], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]", "1", "4" )
+                                    +crossword("[1, ['D',0], ['E',1], ['C',2], ['A',3], ['N',4], ['T',5], ['A',6], ['C',7], ['I',8], ['Ó',9], ['N',10]]", "1", "4" )
                                     +crossword("[3, ['E',11],['V',12],['A',13],['P',14],['O',15],['R',16],['A',17],['C',18],['I',19],['Ó',20],['N',21]]", "2", "7" )
 
                                     //+crosswordDemo("[2, 'S', 'Ó', 'L', 'I', 'D', 'O']", "1", "7" )
                                     // VERTICALES
                                     +crosswordVertical("[2, ['I',22], ['M',23], false, ['N',24], ['T',25], false, ['C',26], ['I',27], ['Ó',28], ['N',29]]", "5", "1" )
-                                    +crosswordVertical("[4, ['F',30], false, ['L',31], ['T',33], ['R',34], ['A',35], ['C',36], ['I',37], ['Ó',38], ['N',43]]", "11", "5" )
+                                    +crosswordVertical("[4, ['F',30], false, ['L',31], ['T',32], ['R',33], ['A',34], ['C',35], ['I',36], ['Ó',37], ['N',38]]", "11", "5" )
 
 
             .instruccion.mt-5 Coloca las opciones en la sección correcta de acuerdo al método de separación.
@@ -149,19 +149,19 @@ html(lang="es")
                 .col-md-6.mb-4
                     .row
                         .col-6: img(src="aimg/1a.png").img-fluid
-                        .col-6: dragdrop(v-model="r[42]" :ref="refCount()" :options="[]" :options-ok="['<strong>Imantación.</strong>', 'Separar clavos de los palillos.']" ignore-order)
+                        .col-6: dragdrop(v-model="r[39]" :ref="refCount()"  @isright="right++" :options="[]" :options-ok="['<strong>Imantación.</strong>', 'Separar clavos de los palillos.']" ignore-order)
                 .col-md-6.mb-4
                     .row
                         .col-6: img(src="aimg/1b.png").img-fluid
-                        .col-6: dragdrop(v-model="r[39]" :ref="refCount()" :options="[]" :options-ok="['<strong>Tamizado.</strong>', 'Separar piedras de la arena.']" ignore-order)
+                        .col-6: dragdrop(v-model="r[40]" :ref="refCount()"  @isright="right++" :options="[]" :options-ok="['<strong>Tamizado.</strong>', 'Separar piedras de la arena.']" ignore-order)
                 .col-md-6.mb-4
                     .row
                         .col-6: img(src="aimg/1c.png").img-fluid
-                        .col-6: dragdrop(v-model="r[40]" :ref="refCount()" :options="[]" :options-ok="['<strong>Filtración.</strong>', 'Separar el grano molido del café del agua caliente.']" ignore-order)
+                        .col-6: dragdrop(v-model="r[41]" :ref="refCount()"  @isright="right++" :options="[]" :options-ok="['<strong>Filtración.</strong>', 'Separar el grano molido del café del agua caliente.']" ignore-order)
                 .col-md-6.mb-4
                     .row
                         .col-6: img(src="aimg/1d.png").img-fluid
-                        .col-6: dragdrop(v-model="r[41]" :ref="refCount()" :options="[]" :options-ok="['<strong>Decantación.</strong>', 'Separar agua y aceite.']" ignore-order)
+                        .col-6: dragdrop(v-model="r[42]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['<strong>Decantación.</strong>', 'Separar agua y aceite.']" ignore-order)
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
