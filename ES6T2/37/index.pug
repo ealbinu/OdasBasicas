@@ -1,0 +1,41 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Escribo el borrador de mi cuento'
+- subtitle = 'Producto final'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .check{
+                background: #E9F4F3;
+                padding: 10px;
+                border: 2px solid #00AEB5;
+            }
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los elementos que contienen un cuento.
+
+            .row.mt-3.ex1.justify-content-center.align-items-center
+                .col-md-6(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+            
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {t: 'Presenta inicio, nudo y final.', v:true},
+                    {t: 'Describe las características de los personajes.', v:true},
+                    {t: 'Describe las características de los escenarios.', v:true},
+                    {t: 'Usa conectivos que crean tensión.', v:true},
+                    {t: 'Contiene metáforas o símiles.', v:true},
+                    {t: 'Usa verbos que crean continuidad y simultaneidad en las acciones.', v:true},
+                    {t: 'Está redactado en primera o tercera persona.', v:true},
+                ])

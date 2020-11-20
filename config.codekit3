@@ -3726,6 +3726,15 @@
 		"oAP": "\/ES6T1\/42\/index.html",
 		"oF": 0
 		},
+	"\/ES6T2\/37\/index.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 0,
+		"oAP": "\/ES6T2\/37\/index.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/ES6T2\/38\/aimg\/1a.png": {
 		"ft": 32768,
 		"iS": 69649,
@@ -8647,11 +8656,11 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/MA6T2\/128\/aimg\/Captura de Pantalla 2020-11-20 a la(s) 0.20.50.png": {
+	"\/MA6T2\/128\/aimg\/1b.png": {
 		"ft": 32768,
 		"iS": 83681,
 		"oA": 0,
-		"oAP": "\/MA6T2\/128\/aimg\/Captura de Pantalla 2020-11-20 a la(s) 0.20.50.png",
+		"oAP": "\/MA6T2\/128\/aimg\/1b.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
