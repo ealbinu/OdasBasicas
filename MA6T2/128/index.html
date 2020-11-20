@@ -151,7 +151,7 @@
       <div class="row mt-3 ex2">
         <div class="col-12 order">
           <div class="starter">5</div>
-          <dragdrop v-model="r[7]" :ref="refCount()" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a"></dragdrop>
+          <dragdrop v-model="r[7]" :ref="refCount()" @isright="right++" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a"></dragdrop>
           <div class="ender">10</div>
         </div>
       </div>

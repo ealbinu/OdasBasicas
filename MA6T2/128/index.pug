@@ -145,7 +145,7 @@ html(lang="es")
             .row.mt-3.ex2
                 .col-12.order
                     div.starter 5
-                    dragdrop(v-model="r[7]" :ref="refCount()" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a")
+                    dragdrop(v-model="r[7]" :ref="refCount()" @isright="right++" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a")
                     div.ender 10
             
             .row.mt-3.ex3
