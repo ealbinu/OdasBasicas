@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identifico los sonidos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .palabras {
+          background: #FBE9EB;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .palabras .numbers {
+          font-size: 1.8rem;
+      }
+      .ex1 {
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid var(--main);
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ex1 .inputbox {
+          display: inline-block;
+      }
+      .ex1 .inputbox input {
+          border: 2px solid var(--main);
+          background: #F9E7E9;
+          color: var(--main);
+          font-size: 1.2rem;
+      }
+      @media (max-width: 680px) {
+          .ex1 img {
+              max-width: 240px;
+          }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Identifico los sonidos</h1>
+      <h2>¿Cómo conozco lo que no veo??</h2>
+      <div class="instruccion mt-5">Observa las imágenes y utiliza las palabras en el recuadro para escribir la que completa cada enunciado.</div>
+      <div class="palabras text-center row justify-content-center align-items-center">
+        <div class="col" v-for="(i, index) in ['lluvia','ruidoso','bonito']">
+          <numbers c="1">{{i}} </numbers>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 justify-content-center align-items-center">
+        <div class="col-md-4 text-center"><img class="img-fluid" src="i/1a.png"/></div>
+        <div class="col-md-8">
+          <labeltext num="1.">El sonido de la 
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="lluvia" type="text" placeh="-"></inputbox>, cuando es ligera, puede ser muy tranquilo y relajante.
+          </labeltext>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 justify-content-center align-items-center">
+        <div class="col-md-4 text-center"><img class="img-fluid" src="i/1b.png"/></div>
+        <div class="col-md-8">
+          <labeltext num="1.">El sonido de la batería es muy fuerte y
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="ruidoso" type="text" placeh="-"></inputbox>.
+          </labeltext>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 justify-content-center align-items-center">
+        <div class="col-md-4 text-center"><img class="img-fluid" src="i/1c.png"/></div>
+        <div class="col-md-8">
+          <labeltext num="1.">El sonido del canto del ave es muy 
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="bonito" type="text" placeh="-"></inputbox>.
+          </labeltext>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
