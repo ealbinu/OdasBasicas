@@ -1,0 +1,162 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Analizo los datos'
+- subtitle = 'La edad más representativa / Número de hijos por familia / México en números'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .mgmain{
+                border-radius: 10px;
+                border: 2px solid #3268A1;
+                box-shadow: 6px 6px 0 #3268A1;
+            }
+            .mouse {
+                border-radius: 50%;
+                border: 2px solid #3268A1;
+                box-shadow: 6px 6px 0 #3268A1;
+                margin-bottom: 20px;
+                max-width: 160px !important;
+            }
+            .frectable .head div {
+                background: #EBD5E0;
+                padding: 8px 4px;
+                color: #AE4E8F;
+                border: 2px solid #AE4E8F;
+                border-radius: 8px;
+            }
+            @media (max-width: 680px) {
+                .frectable .head div {
+                    font-size: 1.1rem;
+                }
+            }
+            .frectable .bode {
+                justify-content: space-around;
+            }
+            .frectable .bode > div {
+                border: 2px solid #AE4E8F;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                padding: 6px;
+                color: #AE4E8F;
+                font-weight: bold;
+            }
+            .frectable .bode > div .inputbox input {
+                font-size: 1.2rem;
+                border: none;
+                padding: 0;
+                color: var(--main);
+            }
+            .frectable .bode > div strong {
+                color: var(--main);
+            }
+            .moda {
+                background: #FDF1F3;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .moda .inputbox input {
+                border-color: #AE508F;
+                background: #D2CFDE;
+            }
+
+            .order {
+                display: flex;
+            }
+            .order .dragdrop {
+                width: 100%;
+            }
+            .order .dragdrop .draggable {
+                width: 100%;
+            }
+            .order .dragdrop .draggable > div:not(.result) {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                font-size: 1.2rem;
+            }
+            .order .dragdrop .draggable > div:not(.result) > div {
+                background: #FFF6D8;
+                padding: 2px;
+                border-radius: 3px;
+                cursor: move;
+                flex-grow: 1;
+                text-align: center;
+                margin: 1px;
+                box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            }
+            .order .starter,
+            .order .ender {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #A36739 !important;
+                color: #fff;
+                padding: 2px 8px;
+                border-radius: 3px;
+                font-weight: bold;
+            }
+            .ex3 > div {
+                background: #F9D4AD;
+                padding: 10px;
+                border-radius: 10px;
+                border: 2px solid #fff;
+            }
+            .ex3 > div .inputbox input {
+                font-size: 1.4rem;
+            }
+
+
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Observa las calificaciones que obtuvieron 35 alumnos de 6°. Después completa la tabla con las frecuencias de las calificaciones reportadas. Observa el ejemplo. 
+
+            .row: .col-12: img(src="aimg/1a.png").w-100.mgmain
+            
+            .row.mt-5.ex1
+                .col-md-8.frectable
+                    .row.align-items-center.justify-content-center.head.text-center
+                        .col-6.h4 Calificación
+                        .col-6.h4 Frecuencia
+                    .row.align-items-center.justify-content-center.text-center.bode
+                        .col-6 5
+                        .col-6: strong 5
+                    .row.align-items-center.justify-content-center.text-center.bode(v-for="(i, index) in [[6,6], [7,4], [8,6],[9,6],[10,8],['Total:',35]]")
+                        .col-6 {{i[0]}}
+                        .col-6: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[1]" type="number" placeh="-")
+
+
+                .col-md.moda
+                    .text-center: img(src="aimg/1b.png").img-fluid.mouse
+                    labeltext ¿Cuál es la #[strong moda] de los datos anteriores?
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
+
+            .instruccion.mt-5 Ordena las calificaciones de #[strong mayor a menor] y resuelve como se indica.  
+            
+            .row.mt-3.ex2
+                .col-12.order
+                    div.starter 5
+                    dragdrop(v-model="r[7]" :ref="refCount()" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a")
+                    div.ender 10
+            
+            .row.mt-3.ex3
+                .col-md-6
+                    labeltext La mediana es:
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                .col-md-6
+                    labeltext El promedio es:
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="7.74" type="number" placeh="#")
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [5,5,5,5,6,6,6,6,6,6,7,7,7,7,8,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10])

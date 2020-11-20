@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Analizo los datos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .mgmain{
+          border-radius: 10px;
+          border: 2px solid #3268A1;
+          box-shadow: 6px 6px 0 #3268A1;
+      }
+      .mouse {
+          border-radius: 50%;
+          border: 2px solid #3268A1;
+          box-shadow: 6px 6px 0 #3268A1;
+          margin-bottom: 20px;
+          max-width: 160px !important;
+      }
+      .frectable .head div {
+          background: #EBD5E0;
+          padding: 8px 4px;
+          color: #AE4E8F;
+          border: 2px solid #AE4E8F;
+          border-radius: 8px;
+      }
+      @media (max-width: 680px) {
+          .frectable .head div {
+              font-size: 1.1rem;
+          }
+      }
+      .frectable .bode {
+          justify-content: space-around;
+      }
+      .frectable .bode > div {
+          border: 2px solid #AE4E8F;
+          border-radius: 8px;
+          font-size: 1.2rem;
+          padding: 6px;
+          color: #AE4E8F;
+          font-weight: bold;
+      }
+      .frectable .bode > div .inputbox input {
+          font-size: 1.2rem;
+          border: none;
+          padding: 0;
+          color: var(--main);
+      }
+      .frectable .bode > div strong {
+          color: var(--main);
+      }
+      .moda {
+          background: #FDF1F3;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .moda .inputbox input {
+          border-color: #AE508F;
+          background: #D2CFDE;
+      }
+      
+      .order {
+          display: flex;
+      }
+      .order .dragdrop {
+          width: 100%;
+      }
+      .order .dragdrop .draggable {
+          width: 100%;
+      }
+      .order .dragdrop .draggable > div:not(.result) {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          font-size: 1.2rem;
+      }
+      .order .dragdrop .draggable > div:not(.result) > div {
+          background: #FFF6D8;
+          padding: 2px;
+          border-radius: 3px;
+          cursor: move;
+          flex-grow: 1;
+          text-align: center;
+          margin: 1px;
+          box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+      }
+      .order .starter,
+      .order .ender {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #A36739 !important;
+          color: #fff;
+          padding: 2px 8px;
+          border-radius: 3px;
+          font-weight: bold;
+      }
+      .ex3 > div {
+          background: #F9D4AD;
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid #fff;
+      }
+      .ex3 > div .inputbox input {
+          font-size: 1.4rem;
+      }
+      
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Analizo los datos</h1>
+      <h2>La edad más representativa / Número de hijos por familia / México en números</h2>
+      <div class="instruccion mt-5">Observa las calificaciones que obtuvieron 35 alumnos de 6°. Después completa la tabla con las frecuencias de las calificaciones reportadas. Observa el ejemplo. </div>
+      <div class="row">
+        <div class="col-12"><img class="w-100 mgmain" src="aimg/1a.png"/></div>
+      </div>
+      <div class="row mt-5 ex1">
+        <div class="col-md-8 frectable">
+          <div class="row align-items-center justify-content-center head text-center">
+            <div class="col-6 h4">Calificación</div>
+            <div class="col-6 h4">Frecuencia</div>
+          </div>
+          <div class="row align-items-center justify-content-center text-center bode">
+            <div class="col-6">5</div>
+            <div class="col-6"><strong>5</strong></div>
+          </div>
+          <div class="row align-items-center justify-content-center text-center bode" v-for="(i, index) in [[6,6], [7,4], [8,6],[9,6],[10,8],['Total:',35]]">
+            <div class="col-6">{{i[0]}}</div>
+            <div class="col-6">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[1]" type="number" placeh="-"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md moda">
+          <div class="text-center"><img class="img-fluid mouse" src="aimg/1b.png"/></div>
+          <labeltext>¿Cuál es la <strong>moda</strong> de los datos anteriores?</labeltext>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Ordena las calificaciones de <strong>mayor a menor</strong> y resuelve como se indica.  </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 order">
+          <div class="starter">5</div>
+          <dragdrop v-model="r[7]" :ref="refCount()" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a"></dragdrop>
+          <div class="ender">10</div>
+        </div>
+      </div>
+      <div class="row mt-3 ex3">
+        <div class="col-md-6">
+          <labeltext>La mediana es:</labeltext>
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col-md-6">
+          <labeltext>El promedio es:</labeltext>
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="7.74" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>app.$set(app.tempsobj, 'a', [5,5,5,5,6,6,6,6,6,6,7,7,7,7,8,8,8,8,8,8,9,9,9,9,9,9,10,10,10,10,10,10,10])</script>
+  </body>
+</html>
