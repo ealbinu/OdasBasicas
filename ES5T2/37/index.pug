@@ -14,7 +14,7 @@ html(lang="es")
                 border-radius: 10px;
             }
             .dragdrop .draggable{
-                min-height: 20px;
+                min-height: 40px;
             }
             .dragdrop .draggable > div > div {
                 padding: 6px;
@@ -23,6 +23,7 @@ html(lang="es")
                 cursor: move;
                 box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
             }
+            
             .opciones .dragdrop {
                 min-height: 40px;
                 display: flex;
@@ -124,11 +125,11 @@ html(lang="es")
             .row: .col-12.diag
                 img(src="aimg/1a.png").w-100
                 .drops
-                    dragdrop(v-model="r[0]" :ref="refCount()" :options="[]" :options-ok="['la inversión extranjera']")
-                    dragdrop(v-model="r[1]" :ref="refCount()" :options="[]" :options-ok="['de 1876 a 1911.']")
-                    dragdrop(v-model="r[2]" :ref="refCount()" :options="[]" :options-ok="['Francia, Inglaterra y Estados Unidos.']")
-                    dragdrop(v-model="r[3]" :ref="refCount()" :options="[]" :options-ok="['los latifundios y la explotación.']")
-                    dragdrop(v-model="r[4]" :ref="refCount()" :options="[]" :options-ok="['Madero fue presidente.']")
+                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['la inversión extranjera']")
+                    dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['de 1876 a 1911.']")
+                    dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Francia, Inglaterra y Estados Unidos.']")
+                    dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['los latifundios y la explotación.']")
+                    dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Madero fue presidente.']")
             
 
 

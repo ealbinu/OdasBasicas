@@ -1,8 +1,8 @@
 Vue.component('finalize', {
-    props: ['resultado', 'right', 'total'],
+    props: ['resultado', 'right', 'total', 'fieldsText'],
     data() {
         return {
-
+            ftext: 'preguntas'
         }
     },
 
@@ -10,7 +10,9 @@ Vue.component('finalize', {
         
     },
     mounted () {
-        
+        if(this.fieldsText != undefined){
+            this.ftext = this.fieldsText
+        }
     },
     template: `
         <div class="finalize">
@@ -20,7 +22,7 @@ Vue.component('finalize', {
 
             <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
                 <h3>Resultado</h3>
-                <div><strong>{{right}} correctas </strong> de {{total}} preguntas</div>
+                <div><strong>{{right}} correctas </strong> de {{total}} {{ftext}}</div>
                 <button class="finalizar" @click="$emit('reset')">Volver a intentar</button>
             </div>
         
