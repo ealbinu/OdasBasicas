@@ -47,7 +47,7 @@
       <h2>¿Cómo conozco lo que no veo?</h2>
       <div class="instruccion mt-5">Observa las imágenes y utiliza las palabras en el recuadro para escribir la que completa cada enunciado.</div>
       <div class="palabras text-center row justify-content-center align-items-center">
-        <div class="col" v-for="(i, index) in ['lluvia','ruidoso','bonito']">
+        <div class="col" v-for="(i, index) in _.shuffle(['lluvia','ruidoso','bonito'])">
           <numbers c="1">{{i}} </numbers>
         </div>
       </div>

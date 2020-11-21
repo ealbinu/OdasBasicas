@@ -16,6 +16,13 @@
 		"oAP": "\/.gitattributes",
 		"oF": 0
 		},
+	"\/Archivo.zip": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/Archivo.zip",
+		"oF": 0
+		},
 	"\/assets\/aimg\/bullet.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -1001,6 +1008,39 @@
 		"oA": 0,
 		"oAP": "\/CM2T1\/275\/index.html",
 		"oF": 0
+		},
+	"\/CM2T2\/276\/i\/1a.png": {
+		"ft": 32768,
+		"iS": 39372,
+		"oA": 0,
+		"oAP": "\/CM2T2\/276\/i\/1a.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CM2T2\/276\/i\/1b.png": {
+		"ft": 32768,
+		"iS": 31234,
+		"oA": 0,
+		"oAP": "\/CM2T2\/276\/i\/1b.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CM2T2\/276\/i\/1c.png": {
+		"ft": 32768,
+		"iS": 15863,
+		"oA": 0,
+		"oAP": "\/CM2T2\/276\/i\/1c.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"\/CM2T2\/276\/index.html": {
 		"cB": 0,

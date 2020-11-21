@@ -44,7 +44,7 @@ html(lang="es")
                 h2 #{subtitle}
 
             .instruccion.mt-5 Observa las imágenes y utiliza las palabras en el recuadro para escribir la que completa cada enunciado.
-            .palabras.text-center.row.justify-content-center.align-items-center: .col(v-for="(i, index) in ['lluvia','ruidoso','bonito']"): numbers(c=1) {{i}} 
+            .palabras.text-center.row.justify-content-center.align-items-center: .col(v-for="(i, index) in _.shuffle(['lluvia','ruidoso','bonito'])"): numbers(c=1) {{i}} 
             .row.mt-3.ex1.justify-content-center.align-items-center
                 .col-md-4.text-center: img(src="i/1a.png").img-fluid
                 .col-md-8
