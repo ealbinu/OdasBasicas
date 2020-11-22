@@ -18,7 +18,13 @@
       .dragdrop .draggable{
           min-height: 40px;
       }
+      .dragdrop .draggable > div {
+          min-height: 40px;
+          width: 100%;
+      }
+      
       .dragdrop .draggable > div > div {
+      
           padding: 6px;
           border-radius: 5px;
           background: #fff;
@@ -113,6 +119,25 @@
               width: 100%;
           }
       }
+      .dragdrop {
+          display: flex;
+          justify-content: flex-start;
+          padding: 0;
+          align-items: stretch;
+          flex-direction: column;
+      }
+      .dragdrop .draggable {
+          flex-grow: 1;
+          align-items: stretch;
+          flex-direction: column;
+      }
+      .dragdrop .draggable > div {
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      
       
     </style>
   </head>
