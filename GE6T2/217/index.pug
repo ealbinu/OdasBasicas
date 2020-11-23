@@ -1,25 +1,77 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Admiremos el agua de los océanos'
+- subtitle = 'Aguas continentales y oceánicas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .op {
+                display: flex;
+                margin-bottom: 20px;
+            }
+            .op .label {
+                background: #DDD6E2;
+                padding: 10px;
+                border-radius: 10px;
+                flex-grow: 1;
+                box-shadow: 4px 4px 0 #D476A4;
+                font-size: 1rem;
+            }
+            .op .inputbox {
+                width: 30%;
+                max-width: 80px;
+                background: #DDD6E2;
+                border-radius: 10px;
+                padding: 5px;
+                box-shadow: 4px 4px 0 #D476A4;
+                margin: 0 10px;
+                min-width: 60px;
+            }
+            .op .inputbox input {
+                font-size: 1.2rem;
+            }
+            .op:nth-child(even) .label,
+            .op:nth-child(even) .inputbox {
+                background: #D3E4EE;
+                box-shadow: 4px 4px 0 #0883BF;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .row: .col-12: img(src="aimg/a0.png").w-100
+            .row: .col-12: img(src="aimg/a1.png").w-100
 
-            .row.mt-3
+            .instruccion.mt-5 Escribe en cada enunciado #[strong V] si es verdadero o #[strong F] si es falso. Consulta la sección Te cuento que... y la información anterior.
+
+            .row.mt-3.ex1
+                .col-12.op
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-")
+                    labeltext Los lugares donde se concentra la mayor parte del agua del planeta son los océanos.
+                .col-12.op
+                    labeltext Las aguas oceánicas son saladas.
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-")
+                .col-12.op
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-")
+                    labeltext La atracción gravitacional de la Luna y el Sol provoca las mareas.
+                .col-12.op
+                    labeltext El 0.639 % del agua está destinado para el consumo humano.
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-")
+                .col-12.op
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-")
+                    labeltext Las aguas oceánicas tienen color azul.
+                .col-12.op
+                    labeltext El agua oceánica une los continentes y es dulce.
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-")
+                .col-12.op
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-")
+                    labeltext Las mareas, las olas y las corrientes océanicas afectan la dinámica climática de la Tierra.
             
 
 
