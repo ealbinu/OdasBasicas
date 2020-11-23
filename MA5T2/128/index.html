@@ -3,23 +3,121 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Determino el área</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      img.img-fluid {
+          max-width: 280px;
+      }
+      .opera {
+          margin: 0;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px 10px 0 0;
+          justify-content: center;
+          align-items: center;
+      }
+      .opera .numbers {
+          font-size: 1.6rem;
+      }
+      .opera .inputbox {
+          display: inline-block;
+          max-width: 60px;
+          margin: 0 4px;
+      }
+      .opera .inputbox input {
+          font-size: 1.3rem;
+          padding: 0;
+      }
+      .final {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          border-radius: 0 0 10px 10px;
+      }
+      .final.a,
+      .final.c {
+          background: #E67F59;
+      }
+      .final.b,
+      .final.d {
+          background: #0175B0;
+      }
+      .final .numbers {
+          font-size: 1.8rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Determino el área</h1>
+      <h2>El romboide / el rombo</h2>
+      <div class="instruccion mt-5">Calcula el área de los siguientes romboides.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 mt-5">
+          <div class="text-center"><img class="img-fluid" src="aimg/1a.png"/></div>
+          <div class="row opera">
+            <numbers>A =</numbers>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+            <numbers c="1">x</numbers>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+            <numbers c="1">=</numbers>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="24" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="final a">
+            <numbers c="2">A = {{r[2]}} cm<sup>2</sup></numbers>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="text-center"><img class="img-fluid" src="aimg/1b.png"/></div>
+          <div class="row opera">
+            <numbers>A =</numbers>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            <numbers c="1">x</numbers>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+            <numbers c="1">=</numbers>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="28" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="final b">
+            <numbers c="4">A = {{r[5]}} cm<sup>2</sup></numbers>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="text-center"><img class="img-fluid" src="aimg/1c.png"/></div>
+          <div class="row opera">
+            <numbers>A =</numbers>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+            <numbers c="1">x</numbers>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            <numbers c="1">=</numbers>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="final c">
+            <numbers c="2">A = {{r[8]}} cm<sup>2</sup></numbers>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="text-center"><img class="img-fluid" src="aimg/1d.png"/></div>
+          <div class="row opera">
+            <numbers>A =</numbers>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+            <numbers c="1">x</numbers>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            <numbers c="1">=</numbers>
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="final d">
+            <numbers c="4">A = {{r[11]}} cm<sup>2</sup></numbers>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
