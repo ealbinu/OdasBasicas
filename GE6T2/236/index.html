@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conozco las corrientes marinas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ocean{ max-width: 200px; }
+      .choose {
+          border: 2px solid #f5f5f5;
+          border-radius: 10px;
+          padding: 6px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .choose .label {
+          font-size: 1rem;
+      }
+      .choose .options {
+          margin: 0;
+      }
+      .choose .options > div {
+          border: none;
+          background: #fff;
+          padding: 4px 10px;
+          border-radius: 10px;
+      }
+      .choose .options > div.active {
+          border: none;
+          background: var(--main);
+          color: #fff;
+      }
+      .choose:nth-child(1) {
+          background: #EFDEE6;
+          border-color: #AE4E8F;
+      }
+      .choose:nth-child(2) {
+          background: #DDF0EE;
+          border-color: #00AEB5;
+      }
+      .choose:nth-child(3) {
+          background: #E7F1D8;
+          border-color: #6CB743;
+      }
+      .choose:nth-child(4) {
+          background: #FDE8CF;
+          border-color: #E9832C;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Conozco las corrientes marinas</h1>
+      <h2>Aguas continentales y oceánicas</h2>
+      <div class="instruccion mt-5">Selecciona <strong>V</strong> si la oración es verdadera o <strong>F</strong> si es falsa. Consulta la página 37 de tu Atlas de geografía del mundo SEP.</div>
+      <div class="row mt-3 ex1 align-items-center">
+        <div class="col-md-8">
+          <choose v-model="r[0]" :ref="refCount()" text="Las corrientes marinas se deben a la rotación terrestre y a la diferencia de temperaturas de las aguas oceánicas." :options="['V', 'F']" @isright="right++" answer="V"></choose>
+          <choose v-model="r[1]" :ref="refCount()" text="Las mareas ayudan a regular el clima y la distribución de calor. Además, facilitan las rutas de navegación." :options="['V', 'F']" @isright="right++" answer="F"></choose>
+          <choose v-model="r[2]" :ref="refCount()" text="Las mareas son el resultado de la fuerza de atracción de la Luna y el Sol sobre la Tierra." :options="['V', 'F']" @isright="right++" answer="V"></choose>
+          <choose v-model="r[3]" :ref="refCount()" text="A los movimientos de ascenso y descenso de las mareas se les llama bajamar y pleamar." :options="['V', 'F']" @isright="right++" answer="V"></choose>
+        </div>
+        <div class="col text-center"><img class="img-fluid ocean" src="aimg/a1.png"/></div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
