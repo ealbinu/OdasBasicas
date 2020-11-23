@@ -1,28 +1,170 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico la constante'
+- subtitle = 'El ahorro / Factor constante / Tablas de proporcionalidad'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .tablemod {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin: 6px;
+                box-shadow: 6px 6px 0 #A6CC5A;
+                border: 2px solid #A6CC5A;
+            }
+            .tablemod .inputbox input,
+            .tablemod .inputbox .numbers {
+                font-size: 1.2rem;
+                border-color: #A6CC5A;
+                padding: 0;
+            }
+            .tablemod .row {
+                margin: 0;
+                border-bottom: 2px solid #A6CC5A;
+                padding: 10px 0;
+                align-items: center;
+            }
+            .tablemod .row .strong {
+                font-weight: bold;
+                font-size: 0.9rem;
+            }
+            .tablemod .head {
+                font-weight: bold;
+                color: #3C9B47;
+                text-align: center;
+                line-height: 1;
+            }
+            .tablemod .head img {
+                border-radius: 10px;
+            }
+            .tably {
+                margin: 4px;
+                background: #FCEADB;
+                border: 2px solid #E9832C;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .tably .h4 {
+                background: #E9832C;
+                background-image: linear-gradient(#F3B485, #E9832C);
+                color: #fff;
+                text-align: center;
+                margin-bottom: 0;
+                font-size: 1.2rem;
+                border-radius: 8px 8px 0 0;
+            }
+            .tably > .inputbox {
+                background: #E9832C;
+                margin-top: 0;
+                padding-bottom: 6px;
+            }
+            .tably > .inputbox input {
+                font-size: 1.4rem;
+                padding: 2px;
+                max-width: 80px;
+                border-color: #FCEADB;
+            }
+            .tably .row {
+                text-align: center;
+                font-size: 1.2rem;
+                margin: 0;
+            }
+            .tably .row > div {
+                border: 1px solid #E9832C;
+                padding: 6px 0;
+            }
+            .tably .row > div > .inputbox input {
+                font-size: 1.2rem;
+                padding: 0;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la siguiente tabla y completa los datos que faltan.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.justify-content-center.align-items-center
+                .col-md-6.text-center: img(src="aimg/a1.png").img-fluid
+                .col-md-6: .tablemod
+                    .row.head
+                        .col-5: img(src="aimg/a2.png").img-fluid
+                        .col Medidas del dibujo (cm)
+                        .col Medidas reales del parque (m)
+                    .row
+                        .col-5.strong Largo del parque.
+                        .col: inputbox(answer="12" example)
+                        .col: inputbox(answer="240" example)
+                    .row
+                        .col-5.strong Ancho del parque.
+                        .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#")
+                        .col: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="180" type="number" placeh="#")
+                    .row
+                        .col-5.strong Largo de la jardinera.
+                        .col: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                        .col: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="80" type="number" placeh="#")
+                    .row
+                        .col-5.strong Ancho de la jardinera.
+                        .col: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="1.6" type="number" placeh="#")
+                        .col: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="32" type="number" placeh="#")
+                    .row
+                        .col-5.strong Diámetro de la fuente.
+                        .col: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1.8" type="number" placeh="#")
+                        .col: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="36" type="number" placeh="#")
 
 
+            .instruccion.mt-5 Encuentra el factor constante en cada tabla y completa los datos que faltan.
+
+            .row.mt-3.ex2
+                .col-md-4: .tably
+                    .h4 La constante es:
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
+                    .row.flex-wrap
+                        .col-6 3
+                        .col-6 30
+                        .col-6: inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                        .col-6 18
+                        .col-6 15
+                        .col-6 150
+                        .col-6 30
+                        .col-6: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="300" type="number" placeh="#")
+                        .col-6: inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#")
+                        .col-6 420
+                .col-md-4: .tably
+                    .h4 La constante es:
+                    inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                    .row.flex-wrap
+                        .col-6: inputbox(v-model="r[13]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                        .col-6 32
+                        .col-6 16
+                        .col-6: inputbox(v-model="r[14]" :ref="refCount()" @isright="right++" :answer="128" type="number" placeh="#")
+                        .col-6 20
+                        .col-6 160
+                        .col-6: inputbox(v-model="r[15]" :ref="refCount()" @isright="right++" :answer="38" type="number" placeh="#")
+                        .col-6 304
+                        .col-6 50
+                        .col-6 400
+                .col-md-4: .tably
+                    .h4 La constante es:
+                    inputbox(v-model="r[16]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                    .row.flex-wrap
+                        .col-6 8
+                        .col-6: inputbox(v-model="r[17]" :ref="refCount()" @isright="right++" :answer="32" type="number" placeh="#")
+                        .col-6 14
+                        .col-6 56
+                        .col-6: inputbox(v-model="r[18]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
+                        .col-6 104
+                        .col-6 35
+                        .col-6 140
+                        .col-6 60
+                        .col-6: inputbox(v-model="r[19]" :ref="refCount()" @isright="right++" :answer="240" type="number" placeh="#")
 
 
 
