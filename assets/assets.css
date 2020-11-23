@@ -394,4 +394,35 @@ input[type=number] {
 .numbers.c4 {
   color: #EB8B2E;
 }
+.recuadropalabras {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 4px;
+}
+.recuadropalabras strong {
+  display: block;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+.parrafoinputs {
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.parrafoinputs .inputbox {
+  display: inline-block;
+  padding: 0 2px;
+}
+.parrafoinputs .inputbox input {
+  padding: 0;
+  font-size: 1.2rem;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  border-width: 1px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+}
 /*# sourceMappingURL=assets.css.map */

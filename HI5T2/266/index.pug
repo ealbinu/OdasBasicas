@@ -1,25 +1,33 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Reconozco la democracia y soberanía'
+- subtitle = 'Benito Juárez y los liberales'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras{ background: #E1D9C5; }
+            .recuadropalabras strong{ color: #887544; }
+            .parrafoinputs{ background: #FEF0DD; }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa el texto con las palabras del recuadro.
+    
+            
+            
+            recuadropalabras(:palabras="['cultura','gobierno','violencia','constitución','democracia','civiles','presidenciales','militares']")
+            
+            .row.mt-3.ex1
+                .col-12
+                    +parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],', es decir, no eran',['militares', 1],'. Consideraban que se debía cambiar lentamente la forma de gobernar, para evitar la',['violencia', 2],'. Para ello plantearon la creación de una nueva',['constitución', 3],'. Las acciones de los liberales desarrollaron la',['democracia', 4],'del país y dieron pie a cambios como las elecciones',['presidenciales', 5],'y la separación de la Iglesia en los asuntos del',['gobierno', 6 ],'. Asimismo, fueron grandes partícipes en la',['cultura', 7],'de la época.'])
 
-            .row.mt-3
             
 
 
@@ -29,4 +37,4 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                // app.$set(app.tempsobj, 'a', [])

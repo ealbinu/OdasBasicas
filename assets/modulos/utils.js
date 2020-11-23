@@ -19,6 +19,18 @@ Vue.component('markex', {
     template: `<img src="../../assets/aimg/markex.svg" class="animate__animated animate__heartBeat">`
 })
 
+Vue.component('recuadropalabras', {
+    props: ['palabras'],
+    template: `
+        <div class="recuadropalabras row flex-wrap justify-content-around align-items-center">
+            <div v-for="(i, index) in palabras">
+                <strong>{{i}}</strong>
+            </div>
+        </div>
+    `
+})
+
+
 
 
 Vue.component('imgbg', {

@@ -1,0 +1,7 @@
+mixin parrafoinputs(palabras)
+    .parrafoinputs
+        each val in palabras
+            if typeof val === 'string'
+                span=val+' '
+            else
+                inputbox(v-model="r["+val[1]+"]" :ref="refCount()" @isright="right++" :answer="'"+val[0]+"'" type="text" placeh="-")

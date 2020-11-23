@@ -3,23 +3,38 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco la democracia y soberanía</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras{ background: #E1D9C5; }
+      .recuadropalabras strong{ color: #887544; }
+      .parrafoinputs{ background: #FEF0DD; }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco la democracia y soberanía</h1>
+      <h2>Benito Juárez y los liberales</h2>
+      <div class="instruccion mt-5">Completa el texto con las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['cultura','gobierno','violencia','constitución','democracia','civiles','presidenciales','militares']"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>La mayoría de los liberales eran </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="'civiles'" type="text" placeh="-"></inputbox><span>, es decir, no eran </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="'militares'" type="text" placeh="-"></inputbox><span>. Consideraban que se debía cambiar lentamente la forma de gobernar, para evitar la </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="'violencia'" type="text" placeh="-"></inputbox><span>. Para ello plantearon la creación de una nueva </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="'constitución'" type="text" placeh="-"></inputbox><span>. Las acciones de los liberales desarrollaron la </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'democracia'" type="text" placeh="-"></inputbox><span>del país y dieron pie a cambios como las elecciones </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'presidenciales'" type="text" placeh="-"></inputbox><span>y la separación de la Iglesia en los asuntos del </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'gobierno'" type="text" placeh="-"></inputbox><span>. Asimismo, fueron grandes partícipes en la </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'cultura'" type="text" placeh="-"></inputbox><span>de la época. </span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +52,6 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>// app.$set(app.tempsobj, 'a', [])</script>
   </body>
 </html>

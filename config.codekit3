@@ -319,6 +319,16 @@
 		"sC": 0,
 		"tS": 0
 		},
+	"\/assets\/modulos\/parrafoinputs.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/assets\/modulos\/parrafoinputs-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
 	"\/assets\/modulos\/selectable.js": {
 		"ft": 64,
 		"ma": 0,
@@ -355,6 +365,15 @@
 		"ft": 512,
 		"oA": 1,
 		"oAP": "\/assets\/pug\/_head.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/assets\/pug\/_parrafosinput.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 1,
+		"oAP": "\/assets\/pug\/_parrafosinput.html",
 		"oF": 0,
 		"oS": 0
 		},
