@@ -3,23 +3,119 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco cómo funciona el oído</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .oido {
+          position: relative;
+      }
+      .oido .inputbox {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 30%;
+      }
+      .oido .inputbox input {
+          font-size: 1.2rem;
+          background: #fff;
+          padding: 2px;
+      }
+      @media (max-width: 760px) {
+          .oido .inputbox input {
+              font-size: 0.9rem;
+              
+          }
+      }
+      .oido .inputbox:nth-child(1) {
+          left: 0;
+          top: 2%;
+      }
+      .oido .inputbox:nth-child(2) {
+          left: 30%;
+          top: 2%;
+      }
+      .oido .inputbox:nth-child(3) {
+          left: 60%;
+          top: 2%;
+      }
+      .oido .inputbox:nth-child(4) {
+          left: 0;
+          top: 86%;
+      }
+      .oido .inputbox:nth-child(5) {
+          left: 30%;
+          top: 86%;
+      }
+      .choose {
+          position: relative;
+          text-align: center;
+      }
+      .choose .options {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+      }
+      .choose .options div {
+          border: none;
+          background: #f5f5f5;
+          padding: 4px;
+          border-radius: 10px;
+          border: 6px solid #f5f5f5;
+          box-shadow: 6px 6px 0px var(--sec);
+      }
+      .choose .options div img {
+          width: 30px;
+          height: 30px;
+      }
+      .choose .options div.active {
+          border-radius: 50%;
+          border: 6px solid var(--main);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco cómo funciona el oído</h1>
+      <h2>Exploro el mundo a partir de lo que escucho / Reconozco sonidos</h2>
+      <div class="instruccion mt-5">Repasa los nombres de las partes del oído.</div>
+      <div class="row mt-3 ex1">
+        <div class="col oido"><img class="w-100" src="aimg/a1.png"/>
+          <div class="inps">
+            <template v-for="(i, index) in ['oído externo', 'oído medio','oído interno', 'oreja', 'tímpano']">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las imágenes que representan un sonido agradable y así <markex></markex> los que te pueden ocasionar daño.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b1.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/markex.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b2.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b3.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/markex.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b4.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/markex.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b5.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/b6.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

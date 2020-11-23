@@ -1,28 +1,106 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco cómo funciona el oído'
+- subtitle = 'Exploro el mundo a partir de lo que escucho / Reconozco sonidos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .oido {
+                position: relative;
+            }
+            .oido .inputbox {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 30%;
+            }
+            .oido .inputbox input {
+                font-size: 1.2rem;
+                background: #fff;
+                padding: 2px;
+            }
+            @media (max-width: 760px) {
+                .oido .inputbox input {
+                    font-size: 0.9rem;
+                    
+                }
+            }
+            .oido .inputbox:nth-child(1) {
+                left: 0;
+                top: 2%;
+            }
+            .oido .inputbox:nth-child(2) {
+                left: 30%;
+                top: 2%;
+            }
+            .oido .inputbox:nth-child(3) {
+                left: 60%;
+                top: 2%;
+            }
+            .oido .inputbox:nth-child(4) {
+                left: 0;
+                top: 86%;
+            }
+            .oido .inputbox:nth-child(5) {
+                left: 30%;
+                top: 86%;
+            }
+            .choose {
+                position: relative;
+                text-align: center;
+            }
+            .choose .options {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0;
+            }
+            .choose .options div {
+                border: none;
+                background: #f5f5f5;
+                padding: 4px;
+                border-radius: 10px;
+                border: 6px solid #f5f5f5;
+                box-shadow: 6px 6px 0px var(--sec);
+            }
+            .choose .options div img {
+                width: 30px;
+                height: 30px;
+            }
+            .choose .options div.active {
+                border-radius: 50%;
+                border: 6px solid var(--main);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Repasa los nombres de las partes del oído.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col.oido
+                    img(src="aimg/a1.png").w-100
+                    .inps
+                        template(v-for="(i, index) in ['oído externo', 'oído medio','oído interno', 'oreja', 'tímpano']")
+                            inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
+
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las imágenes que representan un sonido agradable y así <markex></markex> los que te pueden ocasionar daño.
             
-
-
+            .row.mt-3.ex2
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b1.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b2.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b3.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b4.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b5.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b6.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
 
 
 
