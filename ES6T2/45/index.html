@@ -40,25 +40,25 @@
       <div class="row mt-3 ex1">
         <div class="col-9">El pastor gritaba desesperado pidiendo ayuda, después llegaron los habitantes del pueblo a auxiliarlo.</div>
         <div class="col">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
         </div>
       </div>
       <div class="row mt-3 ex1">
         <div class="col-9">El Lobo Feroz derribó primero la casa de paja, después la casita de madera y al final llegó hasta la de ladrillo.</div>
         <div class="col">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
         </div>
       </div>
       <div class="row mt-3 ex1">
         <div class="col-9">Veía pasar las horas sentado en mi estudio, casi dormido, en tanto la tetera silbaba sobre el fuego en la cocina.</div>
         <div class="col">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
         </div>
       </div>
       <div class="row mt-3 ex1">
         <div class="col-9">Caminaba temeroso por aquel viejo callejón oscuro y a mi paso se iban abriendo de par en par brillantes ojos en la oscuridad.</div>
         <div class="col">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
