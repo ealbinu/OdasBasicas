@@ -1,25 +1,50 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sucesión y simultaneidad'
+- subtitle = 'Los recursos descriptivos en los relatos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 {
+                background: #E9E4EA;
+                padding: 10px;
+                border-radius: 10px;
+                align-items: center;
+                font-size: 1.1rem;
+                margin: 4px;
+                box-shadow: 4px 4px 0 var(--clear);
+            }
+            .inputbox input {
+                font-size: 1.2rem;
+                padding: 1px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe AC si el fragmento relata acciones continuas, o AS si el fragmento relata acciones simultáneas.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-9 El Lobo caminaba por el espeso bosque mientras Caperucita recorría el camino pacífico y claro.
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-")
+            .row.mt-3.ex1
+                .col-9 El pastor gritaba desesperado pidiendo ayuda, después llegaron los habitantes del pueblo a auxiliarlo.
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-")
+            .row.mt-3.ex1
+                .col-9 El Lobo Feroz derribó primero la casa de paja, después la casita de madera y al final llegó hasta la de ladrillo.
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-")
+            .row.mt-3.ex1
+                .col-9 Veía pasar las horas sentado en mi estudio, casi dormido, en tanto la tetera silbaba sobre el fuego en la cocina.
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-")
+            .row.mt-3.ex1
+                .col-9 Caminaba temeroso por aquel viejo callejón oscuro y a mi paso se iban abriendo de par en par brillantes ojos en la oscuridad.
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-")
             
 
 

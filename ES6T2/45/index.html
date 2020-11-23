@@ -3,23 +3,64 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprendo sucesión y simultaneidad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          background: #E9E4EA;
+          padding: 10px;
+          border-radius: 10px;
+          align-items: center;
+          font-size: 1.1rem;
+          margin: 4px;
+          box-shadow: 4px 4px 0 var(--clear);
+      }
+      .inputbox input {
+          font-size: 1.2rem;
+          padding: 1px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprendo sucesión y simultaneidad</h1>
+      <h2>Los recursos descriptivos en los relatos</h2>
+      <div class="instruccion mt-5">Escribe AC si el fragmento relata acciones continuas, o AS si el fragmento relata acciones simultáneas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-9">El Lobo caminaba por el espeso bosque mientras Caperucita recorría el camino pacífico y claro.</div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-9">El pastor gritaba desesperado pidiendo ayuda, después llegaron los habitantes del pueblo a auxiliarlo.</div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-9">El Lobo Feroz derribó primero la casa de paja, después la casita de madera y al final llegó hasta la de ladrillo.</div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AC" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-9">Veía pasar las horas sentado en mi estudio, casi dormido, en tanto la tetera silbaba sobre el fuego en la cocina.</div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-9">Caminaba temeroso por aquel viejo callejón oscuro y a mi paso se iban abriendo de par en par brillantes ojos en la oscuridad.</div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="AS" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
