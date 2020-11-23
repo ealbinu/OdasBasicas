@@ -3,23 +3,87 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco las amenazas para la Tierra</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .img-fluid{
+          border-radius: 10px;
+          max-width: 220px;
+      }
+      .choose .options {
+          flex-wrap: wrap;
+          font-size: 1rem;
+          margin: 0;
+      }
+      .choose .options div {
+          padding: 8px;
+          border-radius: 6px;
+          background: #f5f5f5;
+          margin: 4px;
+          border: none;
+          line-height: 1;
+      }
+      .choose .options div.active {
+          border: none;
+          background: var(--main);
+          color: #fff;
+      }
+      .ex {
+          background: #FDE8CF;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ex:nth-child(even) {
+          background: #E7F1D8;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco las amenazas para la Tierra</h1>
+      <div class="instruccion mt-5">Observa las imágenes y selecciona los nombres correspondientes de las actividades que dañan a los ecosistemas.</div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[0]" key="0" :ref="refCount()" text="Provoca el agotamiento de las propiedades del suelo, por eso se recomienda la rotación de cultivos." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Monocultivo"></choose>
+        </div>
+      </div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a2.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[1]" key="1" :ref="refCount()" text="La tala indiscriminada provoca la erosión del suelo, la cual a su vez afecta el ciclo del agua disminuyendo la filtración a los mantos acuíferos." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Tala de árboles"></choose>
+        </div>
+      </div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a3.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[2]" key="2" :ref="refCount()" text="Las cadenas alimentarias se rompen, y provocan la extinción de especies." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Caza indiscriminada"></choose>
+        </div>
+      </div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a4.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[3]" key="3" :ref="refCount()" text="El ecosistema se deteriora dejando a muchos seres vivos sin su hábitat." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Incendios"></choose>
+        </div>
+      </div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a5.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[4]" key="4" :ref="refCount()" text="Provoca aridez al suelo, ya sea por la creación de pastizales, o por el pisoteo del ganado." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Ganadería"></choose>
+        </div>
+      </div>
+      <div class="row mt-3 ex">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/a6.png"/></div>
+        <div class="col-12">
+          <choose v-model="r[5]" key="5" :ref="refCount()" text="Al cambiar el cauce de los ríos se producen sequías o inundaciones afectando la flora y la fauna." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Construcción de presas"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
