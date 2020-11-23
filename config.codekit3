@@ -16,13 +16,6 @@
 		"oAP": "\/.gitattributes",
 		"oF": 0
 		},
-	"\/Archivo.zip": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/Archivo.zip",
-		"oF": 0
-		},
 	"\/assets\/aimg\/bullet.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -5830,6 +5823,17 @@
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA1T2\/158\/aimg\/3a.png": {
+		"ft": 32768,
+		"iS": 232138,
+		"oA": 0,
+		"oAP": "\/MA1T2\/158\/aimg\/3a.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},

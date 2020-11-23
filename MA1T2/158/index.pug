@@ -78,6 +78,83 @@ html(lang="es")
                 }
             }
 
+            .playeras {
+                position: relative;
+            }
+            .playeras .inputbox {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 5.5%;
+            }
+            .playeras .inputbox input {
+                padding: 2px 0;
+                font-size: 1rem;
+                border-color: #CD7C9E;
+            }
+            @media (max-width: 768px) {
+                .playeras .inputbox input {
+                    border-width: 1px;
+                    padding: 0;
+                }
+            }
+            .playeras .inputbox:nth-child(1) {
+                left: 30.5%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(2) {
+                left: 39.2%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(3) {
+                left: 49%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(4) {
+                left: 58.5%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(5) {
+                left: 69.5%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(6) {
+                left: 78.5%;
+                top: 25%;
+            }
+            .playeras .inputbox:nth-child(7) {
+                left: 14%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(8) {
+                left: 22.4%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(9) {
+                left: 29.6%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(10) {
+                left: 37.7%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(11) {
+                left: 46%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(12) {
+                left: 55%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(13) {
+                left: 62.5%;
+                top: 77%;
+            }
+            .playeras .inputbox:nth-child(14) {
+                left: 70.9%;
+                top: 77%;
+            }
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -131,7 +208,14 @@ html(lang="es")
                 .col(v-for="(i, index) in tempsobj.b")
                     inputbox(v-model="r[i.model]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="-" v-if="i.model")
                     inputbox(:answer="i.val" :example="true" v-else="i.model")
+            
+            .instruccion.mt-5 Completa la serie de 1 en 1.
 
+            .row.mt-3.ex4
+                .col-12.playeras
+                    img(src="aimg/3a.png").w-100 
+                    .inps
+                        inputbox(v-for="(i, index) in tempsobj.c" :key="i.model" v-model="r[i.model]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="#")
 
 
 
@@ -150,10 +234,29 @@ html(lang="es")
                     {val: 90 },
                     {model: 16, val: 100 }
                 ])
+
                 app.$set(app.tempsobj, 'b', [
                     { val: 20 },
                     { val: 40 },
                     {model: 16, val: 60 },
                     {model: 17, val: 80 },
                     {model: 18, val: 100 },
+                ])
+
+                app.$set(app.tempsobj, 'c', [
+                    {model: 19, val: 18 },
+                    {model: 20, val: 17 },
+                    {model: 21, val: 16 },
+                    {model: 22, val: 15 },
+                    {model: 23, val: 14 },
+                    {model: 24, val: 13 },
+                    
+                    {model: 25, val: 19 },
+                    {model: 26, val: 18 },
+                    {model: 27, val: 17 },
+                    {model: 28, val: 16 },
+                    {model: 29, val: 15 },
+                    {model: 30, val: 14 },
+                    {model: 31, val: 13 },
+                    {model: 32, val: 12 },
                 ])
