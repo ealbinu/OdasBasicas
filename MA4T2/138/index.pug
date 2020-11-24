@@ -1,29 +1,122 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Utilizo el grado como unidad'
+- subtitle = 'Dale vueltas al reloj / Trazo de ángulos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                margin: 20px 0;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                padding: 2px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .ang1 input {
+                border-color: #F69B86;
+            }
+            .ang2 input {
+                border-color: #A9D48A;
+            }
+            .ang3 input {
+                border-color: #7CCFD9;
+            }
+            .ang4 input {
+                border-color: #FBB675;
+            }
+            .ex1 .img-fluid{ max-width: 340px; }
+
+            .sopa {
+                position: relative;
+            }
+            .boxes .selectable {
+                position: absolute;
+                width: 8%;
+                height: 8%;
+                border-radius: 6px;
+            }
+            .boxes .selectable .circledactive {
+                display: none;
+            }
+            .boxes .selectable.on {
+                border: 2px solid var(--main);
+            }
+            .boxes .selectable:nth-child(1) {
+                left: 2%;
+                top: 0;
+                height: 36%;
+            }
+            .boxes .selectable:nth-child(2) {
+                left: 56.3%;
+                top: 21%;
+                height: 36%;
+            }
+            .boxes .selectable:nth-child(3) {
+                left: 56.3%;
+                top: 0;
+                width: 41%;
+            }
+            .boxes .selectable:nth-child(4) {
+                left: 83.5%;
+                top: 28%;
+            }
+            .boxes .selectable:nth-child(5) {
+                left: 42.8%;
+                top: 0;
+                height: 93%;
+            }
+            .boxes .selectable:nth-child(6) {
+                left: 9%;
+                top: 92%;
+                width: 42%;
+            }
+            .boxes .selectable:nth-child(7) {
+                left: 56.3%;
+                top: 56%;
+                height: 44%;
+            }
+            .boxes .selectable:nth-child(8) {
+                left: 64%;
+                top: 84.8%;
+                width: 33.5%;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe #[strong agudo], #[strong obtuso] o #[strong recto] según la medida de cada ángulo.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.justify-content-center.align-items-end
+                .col-md-6.text-center.ang1
+                    img(src="aimg/1a.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Agudo" type="text" placeh="-")
+                .col-md-6.text-center.ang2
+                    img(src="aimg/1b.png").img-fluid
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="Agudo" type="text" placeh="-")
+                .col-md-6.text-center.ang3
+                    img(src="aimg/1c.png").img-fluid
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Obtuso" type="text" placeh="-")
+                .col-md-6.text-center.ang4
+                    img(src="aimg/1d.png").img-fluid
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Recto" type="text" placeh="-")
 
 
-
+            .instruccion.mt-5 Encierra en la sopa de letras las palabras del recuadro.
+            .row.mt-3.ex2.justify-content-center.items-align-center
+                .col-md-4: img(src="aimg/2a.png").img-fluid
+                .col
+                    .sopa
+                        img(src="aimg/2b.png").img-fluid
+                    .boxes
+                        selectable(v-for="(i, index) in 8" :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

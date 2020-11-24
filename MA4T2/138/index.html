@@ -3,23 +3,122 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Utilizo el grado como unidad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          margin: 20px 0;
+      }
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ang1 input {
+          border-color: #F69B86;
+      }
+      .ang2 input {
+          border-color: #A9D48A;
+      }
+      .ang3 input {
+          border-color: #7CCFD9;
+      }
+      .ang4 input {
+          border-color: #FBB675;
+      }
+      .ex1 .img-fluid{ max-width: 340px; }
+      
+      .sopa {
+              position: relative;
+          }
+          .boxes .selectable {
+              position: absolute;
+              width: 8%;
+              height: 8%;
+              border-radius: 6px;
+          }
+          .boxes .selectable .circledactive {
+              display: none;
+          }
+          .boxes .selectable.on {
+              border: 2px solid var(--main);
+          }
+          .boxes .selectable:nth-child(1) {
+              left: 2%;
+              top: 0;
+              height: 36%;
+          }
+          .boxes .selectable:nth-child(2) {
+              left: 56.3%;
+              top: 21%;
+              height: 36%;
+          }
+          .boxes .selectable:nth-child(3) {
+              left: 56.3%;
+              top: 0;
+              width: 41%;
+          }
+          .boxes .selectable:nth-child(4) {
+              left: 83.5%;
+              top: 28%;
+          }
+          .boxes .selectable:nth-child(5) {
+              left: 42.8%;
+              top: 0;
+              height: 93%;
+          }
+          .boxes .selectable:nth-child(6) {
+              left: 9%;
+              top: 92%;
+              width: 42%;
+          }
+          .boxes .selectable:nth-child(7) {
+              left: 56.3%;
+              top: 56%;
+              height: 44%;
+          }
+          .boxes .selectable:nth-child(8) {
+              left: 64%;
+              top: 84.8%;
+              width: 33.5%;
+          }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Utilizo el grado como unidad</h1>
+      <h2>Dale vueltas al reloj / Trazo de ángulos</h2>
+      <div class="instruccion mt-5">Escribe <strong>agudo</strong>, <strong>obtuso</strong> o <strong>recto</strong> según la medida de cada ángulo.</div>
+      <div class="row mt-3 ex1 justify-content-center align-items-end">
+        <div class="col-md-6 text-center ang1"><img class="img-fluid" src="aimg/1a.png"/>
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Agudo" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6 text-center ang2"><img class="img-fluid" src="aimg/1b.png"/>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Agudo" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6 text-center ang3"><img class="img-fluid" src="aimg/1c.png"/>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Obtuso" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6 text-center ang4"><img class="img-fluid" src="aimg/1d.png"/>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Recto" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Encierra en la sopa de letras las palabras del recuadro.</div>
+      <div class="row mt-3 ex2 justify-content-center items-align-center">
+        <div class="col-md-4"><img class="img-fluid" src="aimg/2a.png"/></div>
+        <div class="col">
+          <div class="sopa"><img class="img-fluid" src="aimg/2b.png"/></div>
+          <div class="boxes">
+            <selectable v-for="(i, index) in 8" :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++"></selectable>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
