@@ -58,7 +58,7 @@
       <div class="instruccion mt-5">Selecciona las reglas que <strong>no</strong> se respetaron en el texto anterior. </div>
       <div class="row mt-3 ex2">
         <div class="col-6" v-for="(i, index) in tempsobj.a">
-          <check v-model="r[index+4]" :ref="refCount()" @isright="right++" :answer="true" :text="i.t"></check>
+          <check v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="true" :text="i.t"></check>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>

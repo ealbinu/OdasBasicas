@@ -68,7 +68,7 @@ html(lang="es")
             .instruccion.mt-5 Selecciona las reglas que #[strong no] se respetaron en el texto anterior. 
             .row.mt-3.ex2
                 .col-6(v-for="(i, index) in tempsobj.a")
-                    check(v-model="r[index+4]" :ref="refCount()"  @isright="right++" :answer="true" :text="i.t")
+                    check(v-model="r[index+5]" :ref="refCount()"  @isright="right++" :answer="true" :text="i.t")
 
 
 
