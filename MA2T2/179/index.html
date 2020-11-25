@@ -3,23 +3,361 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sé qué sigue</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .start,
+      .mid,
+      .end {
+          border-top: 2px solid var(--main);
+          text-align: center;
+          position: relative;
+          padding-top: 10px;
+          font-size: 1.3rem;
+      }
+      .start .numbers,
+      .mid .numbers,
+      .end .numbers {
+          font-size: 1.3rem;
+      }
+      .start:after,
+      .mid:after,
+      .end:after {
+          content: "";
+          display: block;
+          width: 2px;
+          height: 20px;
+          background: var(--main);
+          position: absolute;
+          top: -10px;
+          left: 50%;
+      }
+      .start .inputbox input,
+      .mid .inputbox input,
+      .end .inputbox input {
+          font-size: 1.2rem;
+          padding: 0;
+      }
+      .start:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid var(--main);
+          position: absolute;
+          left: -4px;
+          top: -10px;
+      }
+      .end:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-left: 10px solid var(--main);
+          position: absolute;
+          right: -4px;
+          top: -10px;
+      }
+      .ex1 {
+          padding: 20px 30px;
+          border-radius: 10px;
+          margin: 10px;
+          background: #FEF0DD;
+      }
+      .ex1 .start,
+      .ex1 .mid,
+      .ex1 .end {
+          border-top: 2px solid #E9832C;
+          color: #E9832C;
+      }
+      .ex1 .start:after,
+      .ex1 .mid:after,
+      .ex1 .end:after {
+          background: #E9832C;
+      }
+      .ex1 .start .numbers,
+      .ex1 .mid .numbers,
+      .ex1 .end .numbers {
+          color: #E9832C;
+      }
+      .ex1 .start .inputbox input,
+      .ex1 .mid .inputbox input,
+      .ex1 .end .inputbox input {
+          border-color: #E9832C;
+      }
+      .ex1 .start:before {
+          border-right: 10px solid #E9832C;
+      }
+      .ex1 .end:before {
+          border-left: 10px solid #E9832C;
+      }
+      .ex2 {
+          padding: 20px 30px;
+          border-radius: 10px;
+          margin: 10px;
+          background: #EFF5E3;
+      }
+      .ex2 .start,
+      .ex2 .mid,
+      .ex2 .end {
+          border-top: 2px solid #76BC50;
+          color: #76BC50;
+      }
+      .ex2 .start:after,
+      .ex2 .mid:after,
+      .ex2 .end:after {
+          background: #76BC50;
+      }
+      .ex2 .start .numbers,
+      .ex2 .mid .numbers,
+      .ex2 .end .numbers {
+          color: #76BC50;
+      }
+      .ex2 .start .inputbox input,
+      .ex2 .mid .inputbox input,
+      .ex2 .end .inputbox input {
+          border-color: #76BC50;
+      }
+      .ex2 .start:before {
+          border-right: 10px solid #76BC50;
+      }
+      .ex2 .end:before {
+          border-left: 10px solid #76BC50;
+      }
+      .ex3 {
+          padding: 20px 30px;
+          border-radius: 10px;
+          margin: 10px;
+          background: #E9E4EA;
+      }
+      .ex3 .start,
+      .ex3 .mid,
+      .ex3 .end {
+          border-top: 2px solid #6A4287;
+          color: #6A4287;
+      }
+      .ex3 .start:after,
+      .ex3 .mid:after,
+      .ex3 .end:after {
+          background: #6A4287;
+      }
+      .ex3 .start .numbers,
+      .ex3 .mid .numbers,
+      .ex3 .end .numbers {
+          color: #6A4287;
+      }
+      .ex3 .start .inputbox input,
+      .ex3 .mid .inputbox input,
+      .ex3 .end .inputbox input {
+          border-color: #6A4287;
+      }
+      .ex3 .start:before {
+          border-right: 10px solid #6A4287;
+      }
+      .ex3 .end:before {
+          border-left: 10px solid #6A4287;
+      }
+      .ex4 {
+          padding: 20px 30px;
+          border-radius: 10px;
+          margin: 10px;
+          background: #E9F4F3;
+      }
+      .ex4 .start,
+      .ex4 .mid,
+      .ex4 .end {
+          border-top: 2px solid #00AEB5;
+          color: #00AEB5;
+      }
+      .ex4 .start:after,
+      .ex4 .mid:after,
+      .ex4 .end:after {
+          background: #00AEB5;
+      }
+      .ex4 .start .numbers,
+      .ex4 .mid .numbers,
+      .ex4 .end .numbers {
+          color: #00AEB5;
+      }
+      .ex4 .start .inputbox input,
+      .ex4 .mid .inputbox input,
+      .ex4 .end .inputbox input {
+          border-color: #00AEB5;
+      }
+      .ex4 .start:before {
+          border-right: 10px solid #00AEB5;
+      }
+      .ex4 .end:before {
+          border-left: 10px solid #00AEB5;
+      }
+      .ex5 {
+          padding: 20px 30px;
+          border-radius: 10px;
+          margin: 10px;
+          background: #F5E9EE;
+      }
+      .ex5 .start,
+      .ex5 .mid,
+      .ex5 .end {
+          border-top: 2px solid #AE4E8F;
+          color: #AE4E8F;
+      }
+      .ex5 .start:after,
+      .ex5 .mid:after,
+      .ex5 .end:after {
+          background: #AE4E8F;
+      }
+      .ex5 .start .numbers,
+      .ex5 .mid .numbers,
+      .ex5 .end .numbers {
+          color: #AE4E8F;
+      }
+      .ex5 .start .inputbox input,
+      .ex5 .mid .inputbox input,
+      .ex5 .end .inputbox input {
+          border-color: #AE4E8F;
+      }
+      .ex5 .start:before {
+          border-right: 10px solid #AE4E8F;
+      }
+      .ex5 .end:before {
+          border-left: 10px solid #AE4E8F;
+      }
+      
+      @media (max-width:768px){
+          .start, .mid, .end, .inputbox input, .numbers{
+              font-size: 0.6rem !important;
+          }
+          .ex1,.ex2,.ex3,.ex4,.ex5{
+              padding: 20px 10px;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sé qué sigue</h1>
+      <h2>¡Juntemos 1 000 frijoles! / Números en la recta numérica</h2>
+      <div class="instruccion mt-5">Completa las siguientes series numéricas.Observa el ejemplo.</div>
+      <div class="ex1">
+        <div class="row mt-3 no-gutters">
+          <div class="col start">500</div>
+          <div class="col mid">600</div>
+          <div class="col mid">
+            <numbers>700</numbers>
+          </div>
+          <div class="col mid">
+            <numbers>800</numbers>
+          </div>
+          <div class="col mid">900</div>
+          <div class="col end">
+            <numbers>1000</numbers>
+          </div>
+        </div>
+      </div>
+      <div class="ex2">
+        <div class="row mt-3 no-gutters">
+          <div class="col start">500</div>
+          <div class="col mid">498</div>
+          <div class="col mid">496</div>
+          <div class="col mid">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="494" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="492" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="490" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="488" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col end">
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="486" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="ex3">
+        <div class="row mt-3 no-gutters">
+          <div class="col start">600</div>
+          <div class="col mid">500</div>
+          <div class="col mid">
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="400" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="300" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="200" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col end">100</div>
+        </div>
+      </div>
+      <div class="ex4">
+        <div class="row mt-3 no-gutters">
+          <div class="col start">493</div>
+          <div class="col mid">492</div>
+          <div class="col mid">
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="491" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="490" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="489" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="488" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="487" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="486" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="485" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="484" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col end">483</div>
+        </div>
+      </div>
+      <div class="ex5">
+        <div class="row mt-3 no-gutters">
+          <div class="col start">600</div>
+          <div class="col mid">650</div>
+          <div class="col mid">
+            <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="700" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="750" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="800" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="850" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" :answer="900" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col mid">
+            <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="950" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="col end">1000</div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
