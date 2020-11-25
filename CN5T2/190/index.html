@@ -3,23 +3,113 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprendo sobre los recursos naturales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .choose {
+          position: relative;
+          text-align: center;
+      }
+      .choose .options {
+          position: absolute;
+          bottom: -20px;
+          left: 0;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+      }
+      .choose .options div {
+          border: none;
+          background: #f5f5f5;
+          padding: 2px;
+          border-radius: 8px;
+          border: 6px solid #f5f5f5;
+          box-shadow: 4px 4px 0px #71A042;
+      }
+      .choose .options div img {
+          width: 26px;
+          height: 26px;
+      }
+      .choose .options div.active {
+          border-radius: 50%;
+          border: 6px solid var(--main);
+      }
+      .recuadropalabras {
+          background: #DDF0EE;
+          color: #00AEB5;
+      }
+      .recuadropalabras strong {
+          background: rgba(255, 255, 255, 0.5);
+      }
+      .parrafoinputs {
+          background: none;
+          padding: 0;
+      }
+      .parrafoinputs .label {
+          margin-bottom: 20px;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprendo sobre los recursos naturales</h1>
+      <h2>Las sociedades industrializadas</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los recursos renovables y así <markex></markex> los no renovables.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4">
+          <choose v-model="r[0]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1a.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/markex.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[1]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1b.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[2]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1c.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[3]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1d.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[4]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1e.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/markex.svg&gt;"></choose>
+        </div>
+        <div class="col-md-4">
+          <choose v-model="r[5]" :ref="refCount()" text="&lt;img class=img-fluid src=aimg/1f.png&gt;" :options="['&lt;img src=../../assets/aimg/check.svg&gt;', '&lt;img src=../../assets/aimg/markex.svg&gt;']" @isright="right++" answer="&lt;img src=../../assets/aimg/check.svg&gt;"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa los siguientes enunciados con ayuda de las palabras del recuadro.</div>
+      <div class="mt-3">
+        <recuadropalabras :palabras="['petróleo','ambiente','industrializadas','renovables','no renovables','bienes']"></recuadropalabras>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 parrafoinputs">
+          <labeltext num="1.">Las sociedades 
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="industrializadas" type="text" placeh="-"></inputbox>generan y desperdician una gran cantidad de recursos que no son necesarios para el consumo de las personas.
+          </labeltext>
+          <labeltext num="2.">Los recursos 
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="no renovables" type="text" placeh="-"></inputbox>son aquellos bienes que al terminarse no pueden volver a usarse.
+          </labeltext>
+          <labeltext num="3.">El ejemplo más notorio de un recurso no renovable es el 
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="petróleo" type="text" placeh="-"></inputbox>.
+          </labeltext>
+          <labeltext num="4.">Los recursos 
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="renovables" type="text" placeh="-"></inputbox>son aquellos que se pueden volver a utilizar porque pueden regenerarse.
+          </labeltext>
+          <labeltext num="5.">Los 
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="bienes" type="text" placeh="-"></inputbox>o recursos naturales son productos que se obtienen de los animales y las plantas.
+          </labeltext>
+          <labeltext num="6.">El 
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="ambiente" type="text" placeh="-"></inputbox>provee recursos que se pueden reciclar rápidamente y produce condiciones que nos ayudan a seguir vivos.
+          </labeltext>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

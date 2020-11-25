@@ -1,29 +1,101 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sobre los recursos naturales'
+- subtitle = 'Las sociedades industrializadas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose {
+                position: relative;
+                text-align: center;
+            }
+            .choose .options {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0;
+            }
+            .choose .options div {
+                border: none;
+                background: #f5f5f5;
+                padding: 2px;
+                border-radius: 8px;
+                border: 6px solid #f5f5f5;
+                box-shadow: 4px 4px 0px #71A042;
+            }
+            .choose .options div img {
+                width: 26px;
+                height: 26px;
+            }
+            .choose .options div.active {
+                border-radius: 50%;
+                border: 6px solid var(--main);
+            }
+            .recuadropalabras {
+                background: #DDF0EE;
+                color: #00AEB5;
+            }
+            .recuadropalabras strong {
+                background: rgba(255, 255, 255, 0.5);
+            }
+            .parrafoinputs {
+                background: none;
+                padding: 0;
+            }
+            .parrafoinputs .label {
+                margin-bottom: 20px;
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
 
-            .row.mt-3
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los recursos renovables y así <markex></markex> los no renovables.
             
+            .row.mt-3.ex2
+                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/1a.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[1]" :ref="refCount()" text="<img class=img-fluid src=aimg/1b.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[2]" :ref="refCount()" text="<img class=img-fluid src=aimg/1c.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[3]" :ref="refCount()" text="<img class=img-fluid src=aimg/1d.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[4]" :ref="refCount()" text="<img class=img-fluid src=aimg/1e.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[5]" :ref="refCount()" text="<img class=img-fluid src=aimg/1f.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
 
+            .instruccion.mt-5 Completa los siguientes enunciados con ayuda de las palabras del recuadro.
+            
+            .mt-3: recuadropalabras(:palabras="['petróleo','ambiente','industrializadas','renovables','no renovables','bienes']")
 
-
+            .row.mt-3.ex2
+                .col-12.parrafoinputs
+                    labeltext(num="1.") Las sociedades 
+                        inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="industrializadas" type="text" placeh="-")
+                        | generan y desperdician una gran cantidad de recursos que no son necesarios para el consumo de las personas.
+                    labeltext(num="2.") Los recursos 
+                        inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="no renovables" type="text" placeh="-")
+                        | son aquellos bienes que al terminarse no pueden volver a usarse.
+                    labeltext(num="3.") El ejemplo más notorio de un recurso no renovable es el 
+                        inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="petróleo" type="text" placeh="-")
+                        | .
+                    labeltext(num="4.") Los recursos 
+                        inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="renovables" type="text" placeh="-")
+                        | son aquellos que se pueden volver a utilizar porque pueden regenerarse.
+                    labeltext(num="5.") Los 
+                        inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="bienes" type="text" placeh="-")
+                        | o recursos naturales son productos que se obtienen de los animales y las plantas.
+                    labeltext(num="6.") El 
+                        inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" answer="ambiente" type="text" placeh="-")
+                        | provee recursos que se pueden reciclar rápidamente y produce condiciones que nos ayudan a seguir vivos.
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
