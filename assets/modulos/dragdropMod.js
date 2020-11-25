@@ -85,6 +85,6 @@ Vue.component('dragdrop', {
 })
 
 /*
-<p>{{optionsDraggable}}</p>
-<p>{{optionsOk}}</p>
+dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]]")
+
 */
