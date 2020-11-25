@@ -1,32 +1,83 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Corrijo textos y conjugo verbos'
+- subtitle = '¡A escribir la autobiografía!'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .selectable {
+                display: inline-block;
+                padding: 0 1px;
+            }
+            .selectable.on {
+                background: var(--main);
+                color:#ECF5F5;
+            }
+            .selectable.on .circledactive {
+                display: none;
+            }
+            .text span {
+                margin-right: 4px;
+                white-space: nowrap;
+            }
+            .end .selectable {
+                color: #ECF5F5;
+                padding: 0 3px;
+            }
+            .text {
+                background: #ECF5F5;
+                padding: 14px;
+                border-radius: 10px;
+                box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+                letter-spacing: 1px;
+                font-size: 1.2rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee el relato y selecciona los errores en el uso de los puntos y mayúsculas.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12: .text
+                    span
+                        selectable(:isok="true" v-model="r[0]" :ref="refCount()" @isright="right++") e
+                        | l
+                    | momento más feliz de mi vida no lo puedo decir porque he tenido muchos. Uno de ellos es cuando mi hermano 
+                    span
+                        selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++") d
+                        | aniel
+                    | ganó un premio estatal de literatura por un cuento y nos fuimos a cenar unas tostadas con el dinero que le dieron. 
+                    span
+                        selectable(:isok="true" v-model="r[2]" :ref="refCount()" @isright="right++") t
+                        | enía
+                    | yo seis años y me sentí muy orgulloso de que mi hermano escribiera cuentos. Otro momento feliz fue cuando dejé el salvavidas y pude nadar solo, sin ayuda. Esto sucedió cuando tenía siete años, el año pasado. Ahora cuando vamos a 
+                    span
+                        selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++") c
+                        | amécuaro,
+                    | no me da miedo meterme al lago. Me balanceo en las cuerdas que cuelgan de los árboles y me dejo caer. El agua está fría, pero un ratito después, se siente muy rica
+                    span.end: selectable(:isok="true" v-model="r[4]" :ref="refCount()" @isright="right++") .
             
 
-
+            .instruccion.mt-5 Selecciona las reglas que #[strong no] se respetaron en el texto anterior. 
+            .row.mt-3.ex2
+                .col-6(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index+4]" :ref="refCount()"  @isright="right++" :answer="true" :text="i.t")
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {t: 'Mayúscula al principio del texto.'},
+                    {t: 'Mayúsculas después de punto y seguido.'},
+                    {t: 'Mayúsculas en los nombres propios.'},
+                    {t: 'Punto final al terminar el párrafo.'},
+                ])
