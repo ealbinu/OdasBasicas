@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Convivo en mi escuela</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .personas {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+      }
+      .personas .persona {
+          border: 2px solid var(--accent);
+          border-radius: 10px;
+          position: relative;
+          margin: 6px;
+      }
+      .personas .persona img {
+          max-height: 180px;
+      }
+      .personas .persona .inputbox {
+          position: absolute;
+          width: 60px;
+          top: -6px;
+          left: -6px;
+      }
+      .personas .persona .inputbox input {
+          border-radius: 50%;
+          font-size: 1.4rem;
+          padding: 8px;
+          border: 4px solid var(--accent);
+          box-shadow: 4px 4px 0 var(--accent);
+      }
+      .activs {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+      }
+      .activs .label {
+          font-size: 1.3rem;
+      }
+      .activs .label strong {
+          font-size: 2rem;
+      }
+      @media (max-width: 760px) {
+          .activs .label {
+              font-size: 1rem;
+          }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Convivo en mi escuela</h1>
+      <h2>Aprendo a convivir en mi escuela. Mi comunidad escolar</h2>
+      <div class="instruccion mt-5">Relaciona a las personas con las actividades que realizan.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-6 text-center personas">
+          <div class="persona"><img class="img-fluid" src="aimg/a1.png"/>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="persona"><img class="img-fluid" src="aimg/a2.png"/>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="persona"><img class="img-fluid" src="aimg/a3.png"/>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+        <div class="col-6 activs">
+          <labeltext num="1.">Son quienes reciben la enseñanza que les permite crecer como personas y mejorar su entorno.</labeltext>
+          <labeltext num="2.">Trabajan en cooperación con los maestros para la enseñanza de los alumnos, y se encargan de promover un ambiente familiar sano.</labeltext>
+          <labeltext num="3.">Se dedican a enseñar, trabajar en la escuela y ayudar a los alumnos a aprender.</labeltext>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa las imágenes y marca así <checkmark></checkmark> a las personas que trabajan en una escuela.</div>
+      <div class="row mt-3 ex2 justify-content-around align-items-center wrap">
+        <div class="col-md col-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b1.png"/></check>
+        </div>
+        <div class="col-md col-6">
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="false"><img class="img-fluid" src="aimg/b2.png"/></check>
+        </div>
+        <div class="col-md col-6">
+          <check v-model="r[5]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b3.png"/></check>
+        </div>
+        <div class="col-md col-6">
+          <check v-model="r[6]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b4.png"/></check>
+        </div>
+        <div class="col-md col-6">
+          <check v-model="r[7]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b5.png"/></check>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>

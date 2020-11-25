@@ -1,0 +1,105 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Convivo en mi escuela'
+- subtitle = 'Aprendo a convivir en mi escuela. Mi comunidad escolar'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .personas {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .personas .persona {
+                border: 2px solid var(--accent);
+                border-radius: 10px;
+                position: relative;
+                margin: 6px;
+            }
+            .personas .persona img {
+                max-height: 180px;
+            }
+            .personas .persona .inputbox {
+                position: absolute;
+                width: 60px;
+                top: -6px;
+                left: -6px;
+            }
+            .personas .persona .inputbox input {
+                border-radius: 50%;
+                font-size: 1.4rem;
+                padding: 8px;
+                border: 4px solid var(--accent);
+                box-shadow: 4px 4px 0 var(--accent);
+            }
+            .activs {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .activs .label {
+                font-size: 1.3rem;
+            }
+            .activs .label strong {
+                font-size: 2rem;
+            }
+            @media (max-width: 760px) {
+                .activs .label {
+                    font-size: 1rem;
+                }
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Relaciona a las personas con las actividades que realizan.
+
+            .row.mt-3.ex1
+                .col-6.text-center.personas
+                    div.persona
+                        img(src="aimg/a1.png").img-fluid
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                    div.persona
+                        img(src="aimg/a2.png").img-fluid
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                    div.persona
+                        img(src="aimg/a3.png").img-fluid
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                .col-6.activs
+                    labeltext(num="1.") Son quienes reciben la enseñanza que les permite crecer como personas y mejorar su entorno.
+                    labeltext(num="2.") Trabajan en cooperación con los maestros para la enseñanza de los alumnos, y se encargan de promover un ambiente familiar sano.
+                    labeltext(num="3.") Se dedican a enseñar, trabajar en la escuela y ayudar a los alumnos a aprender.
+
+            
+            .instruccion.mt-5 Observa las imágenes y marca así <checkmark></checkmark> a las personas que trabajan en una escuela.
+
+            .row.mt-3.ex2.justify-content-around.align-items-center.wrap
+                .col-md.col-6
+                    check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/b1.png").img-fluid
+                .col-md.col-6
+                    check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="false")
+                        img(src="aimg/b2.png").img-fluid
+                .col-md.col-6
+                    check(v-model="r[5]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/b3.png").img-fluid
+                .col-md.col-6
+                    check(v-model="r[6]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/b4.png").img-fluid
+                .col-md.col-6
+                    check(v-model="r[7]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/b5.png").img-fluid
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])

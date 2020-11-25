@@ -43,7 +43,8 @@ Vue.component('check', {
     template: `
         <div class="check" :class="setclass + ' ' + (status ? 'activecheck':'') ">
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
-        <div class="label"><strong v-if="num">{{num}}</strong></div>
+        <div class="label"><strong v-if="num">{{num}}</strong> <slot></slot></div>
+           
             <div class="checkbox" @click="clicked">
                 <img v-if="status" src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat">
             </div>
