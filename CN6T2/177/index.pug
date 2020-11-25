@@ -1,0 +1,75 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'No contamino el aire'
+- subtitle = 'Relación de la contaminación del aire con el calentamiento global y el cambio climático'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .ex1 > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .ex1 .inputbox {
+                font-size: 1.2rem;
+                justify-content: flex-start;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                max-width: 80px;
+                padding: 6px 1px;
+                margin-right: 4px;
+            }
+            .ex1 .label {
+                font-size: 1.1rem;
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 4px;
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Escribe en cada paréntesis el número de la respuesta correcta.
+
+            .row.mt-3.ex1
+                .col-md-6
+                    labeltext(num="1.")  Es una mezcla de gases que rodea la Tierra y que contiene elementos como nitrógeno, oxígeno, dióxido de carbono, vapor de agua y ozono, entre otros.
+                    labeltext(num="2.") La atmósfera regula el clima y la:
+                    labeltext(num="3.") Gas que ayuda a realizar la combustión de elementos.
+                    labeltext(num="4.") Se comenzaron a utilizar en el siglo XIX durante la Revolución Industrial para aumentar la producción de bienes manufacturados.
+                    labeltext(num="5.") Es el gas que se desprende al quemar combustibles.
+                    labeltext(num="6.") Es lo que sucede en la atmósfera al aumentar la producción de dióxido de carbono.
+                    labeltext(num="7.") Son sustancias orgánicas que quedaron atrapadas en condiciones especiales de temperatura y presión. Con el tiempo se transformaron en gas y petróleo.
+                .col-md-6
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="#")
+                        template(v-slot:after="") El dióxido de carbono.
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="6" type="number" placeh="#")
+                        template(v-slot:after="") Calentamiento global.
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#")
+                        template(v-slot:after="") Las máquinas a gran escala.
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#")
+                        template(v-slot:after="") La atmósfera.
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#")
+                        template(v-slot:after="") Temperatura.
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="7" type="number" placeh="#")
+                        template(v-slot:after="") Combustibles fósiles.
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#")
+                        template(v-slot:after="") El oxígeno.
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
