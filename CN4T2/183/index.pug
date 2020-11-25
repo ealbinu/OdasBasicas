@@ -1,28 +1,133 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Comprendo una cadena trófica / Conozco otros organismos'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .conceptos,
+            .significados {
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .conceptos {
+                margin-bottom: 10px;
+            }
+            .conceptos div {
+                font-size: 1.2rem;
+                background: #C2CBB6;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .conceptos .numbers {
+                display: inline-block;
+                font-size: 1.6rem;
+                color: #6CB743;
+            }
+            .significados > div {
+                background: #E7F1D8;
+                padding: 6px;
+                border-radius: 10px;
+                display: flex;
+            }
+            .significados > div .inputbox {
+                width: 20%;
+                min-width: 80px;
+            }
+            .significados > div .inputbox input {
+                font-size: 1.4rem;
+                padding: 2px;
+                border-color: #6CB743;
+                margin-right: 6px;
+            }
+            .org {
+                background: #FDE8CF;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 #E9832C;
+            }
+            .org .inputbox {
+                width: 80px;
+                margin: -20px auto -10px;
+            }
+            .org .inputbox input {
+                font-size: 1.6rem;
+                box-shadow: 4px 4px 0 #E9832C;
+                border-color: #E9832C;
+                padding: 4px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona cada concepto con su significado. Consulta las páginas 64 a 67 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex2
+                .col-md-5.conceptos
+                    div
+                        numbers A.
+                        | Productores.
+                    div
+                        numbers B.
+                        | Consumidores.
+                    div
+                        numbers C.
+                        | Descomponedores.
+                    div
+                        numbers D. 
+                        | Consumidores primarios.
+                    div
+                        numbers E. 
+                        | Consumidores secundarios.
+                    div
+                        numbers F. 
+                        | Consumidores terciarios.
+
+                .col-md.significados
+                    div
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-")
+                        .txt Son capaces de producir su propio alimento gracias a la acción solar y del agua, entre otros.
+                    div
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-")
+                        .txt Aprovechan las propiedades de los organismos muertos para reintegrar su materia al ambiente.
+                    div
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-")
+                        .txt Se les conoce también con el nombre de herbívoros y se alimentan directamente de las plantas.
+                    div
+                        inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-")
+                        .txt Con este nombre se denomina a todos los organismos incapaces de producir su propio alimento.
+                    div
+                        inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-")
+                        .txt Se alimentan de los herbívoros. También se les llama carnívoros.
+                    div
+                        inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-")
+                        .txt También llamados carnívoros secundarios. Éstos se alimentan de carnívoros primarios (o consumidores secundarios).
+
+            .instruccion.mt-5 Observa las imágenes y escribe los números del #[strong 1] al #[strong 4] para ordenar la cadena alimenticia. Comienza por los organismos productores. 
             
-
-
+            .row.mt-3.ex2
+                .col-md-6.text-center: .org
+                    img(src="aimg/1a.png").img-fluid
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                .col-md-6.text-center: .org
+                    img(src="aimg/1b.png").img-fluid
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                .col-md-6.text-center: .org
+                    img(src="aimg/1c.png").img-fluid
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                .col-md-6.text-center: .org
+                    img(src="aimg/1d.png").img-fluid
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
 
 
 

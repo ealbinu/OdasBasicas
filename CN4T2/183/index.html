@@ -3,23 +3,146 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comprendo una cadena trófica / Conozco otros organismos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .conceptos,
+      .significados {
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          gap: 8px;
+      }
+      .conceptos {
+          margin-bottom: 10px;
+      }
+      .conceptos div {
+          font-size: 1.2rem;
+          background: #C2CBB6;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .conceptos .numbers {
+          display: inline-block;
+          font-size: 1.6rem;
+          color: #6CB743;
+      }
+      .significados > div {
+          background: #E7F1D8;
+          padding: 6px;
+          border-radius: 10px;
+          display: flex;
+      }
+      .significados > div .inputbox {
+          width: 20%;
+          min-width: 80px;
+      }
+      .significados > div .inputbox input {
+          font-size: 1.4rem;
+          padding: 2px;
+          border-color: #6CB743;
+          margin-right: 6px;
+      }
+      .org {
+          background: #FDE8CF;
+          margin-bottom: 20px;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 #E9832C;
+      }
+      .org .inputbox {
+          width: 80px;
+          margin: -20px auto -10px;
+      }
+      .org .inputbox input {
+          font-size: 1.6rem;
+          box-shadow: 4px 4px 0 #E9832C;
+          border-color: #E9832C;
+          padding: 4px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comprendo una cadena trófica / Conozco otros organismos</h1>
+      <div class="instruccion mt-5">Relaciona cada concepto con su significado. Consulta las páginas 64 a 67 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-5 conceptos">
+          <div>
+            <numbers>A.</numbers>Productores.
+          </div>
+          <div>
+            <numbers>B.</numbers>Consumidores.
+          </div>
+          <div>
+            <numbers>C.</numbers>Descomponedores.
+          </div>
+          <div>
+            <numbers>D. </numbers>Consumidores primarios.
+          </div>
+          <div>
+            <numbers>E. </numbers>Consumidores secundarios.
+          </div>
+          <div>
+            <numbers>F. </numbers>Consumidores terciarios.
+          </div>
+        </div>
+        <div class="col-md significados">
+          <div>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+            <div class="txt">Son capaces de producir su propio alimento gracias a la acción solar y del agua, entre otros.</div>
+          </div>
+          <div>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            <div class="txt">Aprovechan las propiedades de los organismos muertos para reintegrar su materia al ambiente.</div>
+          </div>
+          <div>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-"></inputbox>
+            <div class="txt">Se les conoce también con el nombre de herbívoros y se alimentan directamente de las plantas.</div>
+          </div>
+          <div>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-"></inputbox>
+            <div class="txt">Con este nombre se denomina a todos los organismos incapaces de producir su propio alimento.</div>
+          </div>
+          <div>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+            <div class="txt">Se alimentan de los herbívoros. También se les llama carnívoros.</div>
+          </div>
+          <div>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-"></inputbox>
+            <div class="txt">También llamados carnívoros secundarios. Éstos se alimentan de carnívoros primarios (o consumidores secundarios).</div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa las imágenes y escribe los números del <strong>1</strong> al <strong>4</strong> para ordenar la cadena alimenticia. Comienza por los organismos productores. </div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6 text-center">
+          <div class="org"><img class="img-fluid" src="aimg/1a.png"/>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="org"><img class="img-fluid" src="aimg/1b.png"/>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="org"><img class="img-fluid" src="aimg/1c.png"/>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="org"><img class="img-fluid" src="aimg/1d.png"/>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
