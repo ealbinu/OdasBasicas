@@ -54,7 +54,7 @@ html(lang="es")
             }
             .choose .options {
                 position: absolute;
-                bottom: 0;
+                bottom: -20px;
                 left: 0;
                 width: 100%;
                 box-sizing: border-box;
@@ -63,14 +63,14 @@ html(lang="es")
             .choose .options div {
                 border: none;
                 background: #f5f5f5;
-                padding: 4px;
-                border-radius: 10px;
+                padding: 2px;
+                border-radius: 8px;
                 border: 6px solid #f5f5f5;
                 box-shadow: 6px 6px 0px var(--sec);
             }
             .choose .options div img {
-                width: 30px;
-                height: 30px;
+                width: 26px;
+                height: 26px;
             }
             .choose .options div.active {
                 border-radius: 50%;
@@ -95,12 +95,12 @@ html(lang="es")
             .instruccion.mt-5 Marca así <checkmark></checkmark> las imágenes que representan un sonido agradable y así <markex></markex> los que te pueden ocasionar daño.
             
             .row.mt-3.ex2
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b1.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b2.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b3.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b4.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b5.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
-                .col-md-4: choose(v-model="r[0]" :ref="refCount()" text="<img class=img-fluid src=aimg/b6.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[5]" :ref="refCount()" text="<img class=img-fluid src=aimg/b1.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[6]" :ref="refCount()" text="<img class=img-fluid src=aimg/b2.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[7]" :ref="refCount()" text="<img class=img-fluid src=aimg/b3.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[8]" :ref="refCount()" text="<img class=img-fluid src=aimg/b4.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/markex.svg>")
+                .col-md-4: choose(v-model="r[9]" :ref="refCount()" text="<img class=img-fluid src=aimg/b5.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
+                .col-md-4: choose(v-model="r[10]" :ref="refCount()" text="<img class=img-fluid src=aimg/b6.png>" :options="['<img src=../../assets/aimg/check.svg>', '<img src=../../assets/aimg/markex.svg>']" @isright="right++" answer="<img src=../../assets/aimg/check.svg>")
 
 
 
