@@ -69,7 +69,7 @@
 					{i: 5, t: 'Organización de las Naciones Unidas.'},
 					{i: 3, t: 'Avenida.'},
 				]" class="relacion">
-					<inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.i" type="text" placeh="-">
+					<inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.i" type="number" placeh="#">
 						<template v-slot:after>
 							{{i.t}}
 						</template>
