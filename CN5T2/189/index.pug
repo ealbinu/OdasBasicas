@@ -50,22 +50,22 @@ html(lang="es")
 
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a1.png").img-fluid
-                .col-12: choose(v-model="r[0]" key="0" :ref="refCount()" text="Provoca el agotamiento de las propiedades del suelo, por eso se recomienda la rotación de cultivos." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Monocultivo")
+                .col-12: choose(v-model="r[0]" key="0" :ref="refCount()" text="Provoca el agotamiento de las propiedades del suelo, por eso se recomienda la rotación de cultivos." :options="tempsobj.a" @isright="right++" answer="Monocultivo")
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a2.png").img-fluid
-                .col-12: choose(v-model="r[1]" key="1" :ref="refCount()" text="La tala indiscriminada provoca la erosión del suelo, la cual a su vez afecta el ciclo del agua disminuyendo la filtración a los mantos acuíferos." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Tala de árboles")
+                .col-12: choose(v-model="r[1]" key="1" :ref="refCount()" text="La tala indiscriminada provoca la erosión del suelo, la cual a su vez afecta el ciclo del agua disminuyendo la filtración a los mantos acuíferos." :options="tempsobj.a" @isright="right++" answer="Tala de árboles")
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a3.png").img-fluid
-                .col-12: choose(v-model="r[2]" key="2" :ref="refCount()" text="Las cadenas alimentarias se rompen, y provocan la extinción de especies." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Caza indiscriminada")
+                .col-12: choose(v-model="r[2]" key="2" :ref="refCount()" text="Las cadenas alimentarias se rompen, y provocan la extinción de especies." :options="tempsobj.a" @isright="right++" answer="Caza indiscriminada")
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a4.png").img-fluid
-                .col-12: choose(v-model="r[3]" key="3" :ref="refCount()" text="El ecosistema se deteriora dejando a muchos seres vivos sin su hábitat." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Incendios")
+                .col-12: choose(v-model="r[3]" key="3" :ref="refCount()" text="El ecosistema se deteriora dejando a muchos seres vivos sin su hábitat." :options="tempsobj.a" @isright="right++" answer="Incendios")
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a5.png").img-fluid
-                .col-12: choose(v-model="r[4]" key="4" :ref="refCount()" text="Provoca aridez al suelo, ya sea por la creación de pastizales, o por el pisoteo del ganado." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Ganadería")
+                .col-12: choose(v-model="r[4]" key="4" :ref="refCount()" text="Provoca aridez al suelo, ya sea por la creación de pastizales, o por el pisoteo del ganado." :options="tempsobj.a" @isright="right++" answer="Ganadería")
             .row.mt-3.ex
                 .col-12.text-center: img(src="aimg/a6.png").img-fluid
-                .col-12: choose(v-model="r[5]" key="5" :ref="refCount()" text="Al cambiar el cauce de los ríos se producen sequías o inundaciones afectando la flora y la fauna." :options="_.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])" @isright="right++" answer="Construcción de presas")
+                .col-12: choose(v-model="r[5]" key="5" :ref="refCount()" text="Al cambiar el cauce de los ríos se producen sequías o inundaciones afectando la flora y la fauna." :options="tempsobj.a" @isright="right++" answer="Construcción de presas")
             
 
 
@@ -75,4 +75,6 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', 
+                    _.shuffle(['Monocultivo', 'Tala de árboles', 'Construcción de presas', 'Ganadería', 'Caza indiscriminada', 'Incendios'])
+                )
