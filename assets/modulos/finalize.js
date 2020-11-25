@@ -2,7 +2,7 @@ Vue.component('finalize', {
     props: ['resultado', 'right', 'total', 'fieldsText'],
     data() {
         return {
-            ftext: 'preguntas'
+            ftext: 'preguntas',
         }
     },
 

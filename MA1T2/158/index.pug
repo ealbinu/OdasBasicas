@@ -8,6 +8,36 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
+            .boxes {
+                display: flex;
+                justify-content: center;
+            }
+            .boxes .selectable {
+                flex-direction: column;
+            }
+            .boxes .selectable .box {
+                width: 16px;
+                height: 16px;
+                border: 1px solid #fff;
+                background: var(--clear);
+                border-radius: 4px;
+            }
+            .boxes .selectable:hover:not(.dis) {
+                cursor: pointer;
+            }
+            .boxes .selectable:hover:not(.dis) .box {
+                background: var(--main);
+            }
+            .boxes .selectable.on .circledactive {
+                display: none;
+            }
+            .boxes .selectable.on .box {
+                background: var(--main);
+            }
+            .boxes .selectable.on.first .box {
+                background: var(--accent);
+            }
+
             .ex1 {
                 background: #f5f5f5;
                 padding: 10px;
@@ -162,6 +192,29 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
+            .instruccion.mt-5 Colorea la cantidad que se indica de izquierda a derecha. Observa el ejemplo.
+
+            .row.mt-3.ex0.justify-content-center
+                .col-md-4.col-6.text-center
+                    .boxes
+                        .selectable(v-for="(i, index) in 10" :class="index==0?'on first':'dis'"): .box(v-for="(i, index) in 10")
+                    numbers 10
+                .col-md-4.col-6.text-center
+                    .boxes
+                        selectable(:isok="index<2" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    numbers 20
+                .col-md-4.col-6.text-center
+                    .boxes
+                        selectable(:isok="index<3" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    numbers 30
+                .col-md-4.col-6.text-center
+                    .boxes
+                        selectable(:isok="index<4" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    numbers 40
+                .col-md-4.col-6.text-center
+                    .boxes
+                        selectable(:isok="index<5" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    numbers 50
             .instruccion.mt-5 Observa las placas anteriores y contesta las siguientes preguntas.
             .row.mt-3.ex1
                 .col-12
@@ -219,7 +272,7 @@ html(lang="es")
 
 
 
-            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total" fields-text="opciones")
         +scripts
             script.
                 app.$set(app.tempsobj, 'a', [

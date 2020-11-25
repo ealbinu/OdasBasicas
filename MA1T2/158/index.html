@@ -10,6 +10,36 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
+      .boxes {
+          display: flex;
+          justify-content: center;
+      }
+      .boxes .selectable {
+          flex-direction: column;
+      }
+      .boxes .selectable .box {
+          width: 16px;
+          height: 16px;
+          border: 1px solid #fff;
+          background: var(--clear);
+          border-radius: 4px;
+      }
+      .boxes .selectable:hover:not(.dis) {
+          cursor: pointer;
+      }
+      .boxes .selectable:hover:not(.dis) .box {
+          background: var(--main);
+      }
+      .boxes .selectable.on .circledactive {
+          display: none;
+      }
+      .boxes .selectable.on .box {
+          background: var(--main);
+      }
+      .boxes .selectable.on.first .box {
+          background: var(--accent);
+      }
+      
       .ex1 {
           background: #f5f5f5;
           padding: 10px;
@@ -164,6 +194,49 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Cuento hasta 100</h1>
       <h2>Hasta 100 / Tablero de 100</h2>
+      <div class="instruccion mt-5">Colorea la cantidad que se indica de izquierda a derecha. Observa el ejemplo.</div>
+      <div class="row mt-3 ex0 justify-content-center">
+        <div class="col-md-4 col-6 text-center">
+          <div class="boxes">
+            <div class="selectable" v-for="(i, index) in 10" :class="index==0?'on first':'dis'">
+              <div class="box" v-for="(i, index) in 10"></div>
+            </div>
+          </div>
+          <numbers>10</numbers>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <div class="boxes">
+            <selectable :isok="index&lt;2" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10">
+              <div class="box" v-for="(i, index) in 10"></div>
+            </selectable>
+          </div>
+          <numbers>20</numbers>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <div class="boxes">
+            <selectable :isok="index&lt;3" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10">
+              <div class="box" v-for="(i, index) in 10"></div>
+            </selectable>
+          </div>
+          <numbers>30</numbers>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <div class="boxes">
+            <selectable :isok="index&lt;4" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10">
+              <div class="box" v-for="(i, index) in 10"></div>
+            </selectable>
+          </div>
+          <numbers>40</numbers>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <div class="boxes">
+            <selectable :isok="index&lt;5" v-model="r[index]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10">
+              <div class="box" v-for="(i, index) in 10"></div>
+            </selectable>
+          </div>
+          <numbers>50</numbers>
+        </div>
+      </div>
       <div class="instruccion mt-5">Observa las placas anteriores y contesta las siguientes preguntas.</div>
       <div class="row mt-3 ex1">
         <div class="col-12">
@@ -248,7 +321,7 @@
           </div>
         </div>
       </div>
-      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total" fields-text="opciones"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
