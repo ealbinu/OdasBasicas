@@ -63,6 +63,7 @@ html(lang="es")
             .boxes .selectable:nth-child(4) {
                 left: 83.5%;
                 top: 28%;
+                height: 36%;
             }
             .boxes .selectable:nth-child(5) {
                 left: 42.8%;
@@ -112,12 +113,12 @@ html(lang="es")
 
             .instruccion.mt-5 Encierra en la sopa de letras las palabras del recuadro.
             .row.mt-3.ex2.justify-content-center.items-align-center
-                .col-md-4.text-center: img(src="aimg/2a.png").img-fluid.pals
+                .col-lg-4.text-center: img(src="aimg/2a.png").img-fluid.pals
                 .col
                     .sopa
-                        img(src="aimg/2b.png").img-fluid
+                        img(src="aimg/2b.png").w-100
                     .boxes
-                        selectable(v-for="(i, index) in 8" :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
+                        selectable(v-for="(i, index) in 8" :isok="true" v-model="r[index+4]" :ref="refCount()" @isright="right++")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
