@@ -68,7 +68,7 @@ html(lang="es")
 
             .row.mt-3.ex1
                 .col-6.objetos
-                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="_.shuffle(tempsobj.a)" :options-ok="tempsobj.a" v-if="tempsobj.a")
+                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="['Librero', 'Paraguas', 'Vaso']" :options-ok="tempsobj.a" v-if="tempsobj.a")
                 .col-6.propiedades
                     div Está hecho de vidrio y sus propiedades lo favorecen porque tiene dureza y tenacidad.
                     div Está hecho de madera y sus propiedades lo favorecen porque es rígido y resistente.
