@@ -72,7 +72,7 @@ html(lang="es")
                     inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer=">" type="text" placeh="> o <")
                     img(src="aimg/1h.png").img-fluid
             
-            .instruccion.mt-5 Escribe los números del #[strong 1] al #[strong 6] para ordenar las siguientes figuras de menor a mayor, de acuerdo a la fracción que representan.
+            .instruccion.mt-5 Escribe los números del #[strong 1] al #[strong 6] para ordenar las siguientes figuras de menor a mayor, de acuerdo a la fracción que representan.
             
             .row.mt-3.ex2
                 .col-md-4.col-6: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"): template(v-slot:before=""): img(src="aimg/2a.png").img-fluid
