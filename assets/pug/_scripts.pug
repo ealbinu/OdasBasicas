@@ -1,4 +1,4 @@
-mixin scripts
+mixin scripts(extrascript)
     script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js")
     script(src="https://unpkg.com/vue@2.6.11/dist/vue.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js")
@@ -15,6 +15,9 @@ mixin scripts
     script(src="../../assets/modulos/choose.js")
     script(src="../../assets/modulos/finalize.js")
     script(src="../../assets/modulos/utils.js")
+    if extrascript
+        script(src=extrascript)
+
     script(src="../../assets/assets.js")
     if block
         block

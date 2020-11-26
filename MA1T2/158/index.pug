@@ -189,13 +189,58 @@ html(lang="es")
             }
 
 
+
+            /* MOD tenbox*/
+
+            .boxes {
+                position: relative;
+            }
+            .boxes.isright {
+                border: 2px solid var(--rightcol);
+            }
+            .boxes.iswrong {
+                border: 2px solid var(--wrongcol);
+            }
+            .boxes .isright,
+            .boxes .iswrong {
+                position: absolute;
+                right: -2%;
+                top: -10%;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .boxes .isright:after,
+            .boxes .iswrong:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-image: url("../../assets/aimg/iswrong.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 70%;
+            }
+            .boxes .isright {
+                background: var(--rightcol);
+            }
+            .boxes .isright:after {
+                background-image: url("../../assets/aimg/isright.svg");
+            }
+            .boxes .iswrong {
+                background: var(--wrongcol);
+            }
+
+            
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Colorea la cantidad que se indica de izquierda a derecha. Observa el ejemplo.
+            .instruccion.mt-5 Colorea la cantidad que se indica. Observa el ejemplo.
 
             .row.mt-3.ex0.justify-content-center
                 .col-md-4.col-6.text-center
@@ -203,53 +248,53 @@ html(lang="es")
                         .selectable(v-for="(i, index) in 10" :class="index==0?'on first':'dis'"): .box(v-for="(i, index) in 10")
                     numbers 10
                 .col-md-4.col-6.text-center
-                    .boxes
-                        selectable(:isok="index<2" v-model="r[index+9]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    tenboxes(:howmany="2" v-model="r[0]" key="0" :ref="refCount()")
+                    //selectable(:isok="index<2" v-model="r[index+9]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 20
                 .col-md-4.col-6.text-center
-                    .boxes
-                        selectable(:isok="index<3" v-model="r[index+18]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    tenboxes(:howmany="3" v-model="r[1]"  key="1" :ref="refCount()")
+                    //selectable(:isok="index<3" v-model="r[index+18]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 30
                 .col-md-4.col-6.text-center
-                    .boxes
-                        selectable(:isok="index<4" v-model="r[index+27]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    tenboxes(:howmany="4" v-model="r[2]"  key="2" :ref="refCount()")
+                    //selectable(:isok="index<4" v-model="r[index+27]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 40
                 .col-md-4.col-6.text-center
-                    .boxes
-                        selectable(:isok="index<5" v-model="r[index+36]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
+                    tenboxes(:howmany="5" v-model="r[3]"  key="3" :ref="refCount()")
+                    //selectable(:isok="index<5" v-model="r[index+36]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 50
             .instruccion.mt-5 Observa las placas anteriores y contesta las siguientes preguntas.
             .row.mt-3.ex1
                 .col-12
                     labeltext(num="1.") ¿Cuántos cubos quedaron sin colorear en la primera placa?
-                    inputbox(v-model="r[37]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#")
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#")
                     labeltext Entonces:
-                    inputbox(v-model="r[38]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
                         template(v-slot:before=""): numbers 10 + 90 = 
             .row.mt-3.ex1
                 .col-12
                     labeltext(num="2.") ¿Cuántos cubos quedaron sin colorear en la segunda placa?
-                    inputbox(v-model="r[39]" :ref="refCount()" @isright="right++" :answer="80" type="number" placeh="#")
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="80" type="number" placeh="#")
                     labeltext Entonces:
-                    inputbox(v-model="r[40]" :ref="refCount()" @isright="right++" :answer="80" type="number" placeh="#")
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="80" type="number" placeh="#")
                         template(v-slot:before=""): numbers 20 + 
                         template(v-slot:after=""): numbers = 100 
             .row.mt-3.ex1
                 .col-12
                     labeltext(num="3.") ¿Cuántos cubos quedaron sin colorear en la primera placa?
-                    inputbox(v-model="r[41]" :ref="refCount()" @isright="right++" :answer="70" type="number" placeh="#")
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="70" type="number" placeh="#")
                     labeltext Entonces:
-                    inputbox(v-model="r[42]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
                         template(v-slot:before=""): numbers 30 + 70 = 
             .row.mt-3.ex1
                 .col-12
                     labeltext(num="4.") ¿Cuántos cubos quedaron sin colorear en la primera placa?
                     .row.justify-content-center.align-items-center.text-center.no-gutters
-                        .col: inputbox(v-model="r[43]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
+                        .col: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
                         .col-1: numbers +
-                        .col: inputbox(v-model="r[44]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
+                        .col: inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
                         .col-1: numbers =
-                        .col: inputbox(v-model="r[45]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
+                        .col: inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
             
             .instruccion.mt-5 Completa la serie de #[strong 10] en #[strong 10] hasta #[strong 100].
 
@@ -276,43 +321,44 @@ html(lang="es")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total" fields-text="opciones")
-        +scripts
+        +scripts('tenboxes.js')
             script.
                 app.$set(app.tempsobj, 'a', [
                     { val: 10 },
-                    {model: 46, val: 20 },
-                    {model: 47, val: 30 },
-                    {model: 48, val: 40 },
-                    {model: 49, val: 50 },
-                    {model: 50, val: 60 },
-                    {model: 51, val: 70 },
-                    {model: 52, val: 80 },
+                    {model: 13, val: 20 },
+                    {model: 14, val: 30 },
+                    {model: 15, val: 40 },
+                    {model: 16, val: 50 },
+                    {model: 17, val: 60 },
+                    {model: 18, val: 70 },
+                    {model: 19, val: 80 },
                     {val: 90 },
-                    {model: 53, val: 100 }
+                    {model: 20, val: 100 }
                 ])
 
                 app.$set(app.tempsobj, 'b', [
                     { val: 20 },
                     { val: 40 },
-                    {model: 54, val: 60 },
-                    {model: 55, val: 80 },
-                    {model: 56, val: 100 },
+                    {model: 21, val: 60 },
+                    {model: 22, val: 80 },
+                    {model: 23, val: 100 },
                 ])
 
                 app.$set(app.tempsobj, 'c', [
-                    {model: 57, val: 18 },
-                    {model: 58, val: 17 },
-                    {model: 59, val: 16 },
-                    {model: 60, val: 15 },
-                    {model: 61, val: 14 },
-                    {model: 62, val: 13 },
+                    {model: 24, val: 18 },
+                    {model: 25, val: 17 },
+                    {model: 26, val: 16 },
+                    {model: 27, val: 15 },
+                    {model: 28, val: 14 },
+                    {model: 29, val: 13 },
                     
-                    {model: 63, val: 19 },
-                    {model: 64, val: 18 },
-                    {model: 65, val: 17 },
-                    {model: 66, val: 16 },
-                    {model: 67, val: 15 },
-                    {model: 68, val: 14 },
-                    {model: 69, val: 13 },
-                    {model: 70, val: 12 },
+                    {model: 30, val: 19 },
+                    {model: 31, val: 18 },
+                    {model: 32, val: 17 },
+                    {model: 33, val: 16 },
+                    {model: 34, val: 15 },
+                    {model: 35, val: 14 },
+                    {model: 36, val: 13 },
+                    {model: 37, val: 12 },
                 ])
+                
