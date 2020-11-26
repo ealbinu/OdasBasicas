@@ -1,25 +1,30 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Conozco el agua'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .itm{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Selecciona los materiales insolubles en agua. 
 
-            .row.mt-3
+            .row.mt-3.ex1.flex-wrap.justify-content-around
+                .col-md-3.col-4(v-for="(i, index) in tempsobj.a").itm
+                    selectable(:isok="i.ok" v-model="r[index]" :ref="refCount()" @isright="right++")
+                        img(:src="'aimg/'+i.img+'.png'").img-fluid
             
 
 
@@ -29,4 +34,16 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {img: 'a1', ok: false}, //vino
+                    {img: 'a2', ok: true}, //acetona
+                    {img: 'a3', ok: true}, //eter
+                    {img: 'a4', ok: false}, //azucar
+                    {img: 'a5', ok: true}, //tinta
+                    {img: 'a6', ok: true}, //arena
+                    {img: 'a7', ok: false}, //piloncillo
+                    {img: 'a8', ok: true}, //gasolina
+                    {img: 'a9', ok: true}, //aceite
+                    {img: 'a10', ok: true}, //petroleo
+                    {img: 'a11', ok: false}, //sal
+                ])
