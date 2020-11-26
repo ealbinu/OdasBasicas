@@ -64,8 +64,7 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Ordena cada objeto con sus propiedades arrastrándolo.
-
+            .instruccion.mt-5 Ordena cada objeto con sus propiedades moviéndolo.
             .row.mt-3.ex1
                 .col-6.objetos
                     dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="['Librero', 'Paraguas', 'Vaso']" :options-ok="tempsobj.a" v-if="tempsobj.a")
