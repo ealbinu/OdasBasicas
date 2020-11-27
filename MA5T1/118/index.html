@@ -161,7 +161,7 @@
                     </tr>
                     <tr>
                         <td><img src="aimg/i2.svg" class="img-fluid"></td>
-                        <td v-for="(i, index) in [[25,14], ['$25'], [75,15], [150,16], [200,17], [225,18], [250,19]]">
+                        <td v-for="(i, index) in [[25,14], ['$50'], [75,15], [150,16], [200,17], [225,18], [250,19]]">
                             <strong class="accent" v-if="typeof i[0] == 'string'">{{i[0]}}</strong>
                             <div v-else><inputbox v-model="r[i[1]]" :ref="'q'+(i[1])" @isright="right++" :answer="i[0]" type="text" placeh="#"><template v-slot:before><strong class="accent">$</strong></template></inputbox></div>
                         </td>

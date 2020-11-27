@@ -3,23 +3,255 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro decimales entre los números</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          position: relative;
+      }
+      .ex1 .inputbox {
+          width: 8%;
+          position: absolute;
+      }
+      .ex1 .inputbox input {
+          font-size: 1.3rem;
+          padding: 0;
+          border-radius: 4px;
+          border: 2px solid #363B31;
+          background: #E8F2CE;
+      }
+      @media (max-width: 960px) {
+          .ex1 .inputbox input {
+              font-size: 0.8rem;
+          }
+      }
+      @media (max-width: 768px) {
+          .ex1 .inputbox input {
+              font-size: 0.6rem;
+              border-width: 1px;
+          }
+      }
+      .ex1 .inputbox:nth-child(1) {
+          top: 50%;
+          left: 12%;
+      }
+      .ex1 .inputbox:nth-child(2) {
+          top: 50%;
+          left: 20%;
+      }
+      .ex1 .inputbox:nth-child(3) {
+          top: 50%;
+          left: 28%;
+      }
+      .ex1 .inputbox:nth-child(4) {
+          top: 50%;
+          left: 36%;
+      }
+      .ex1 .inputbox:nth-child(5) {
+          top: 50%;
+          left: 44%;
+      }
+      .ex1 .inputbox:nth-child(6) {
+          top: 50%;
+          left: 52%;
+      }
+      .ex1 .inputbox:nth-child(7) {
+          top: 50%;
+          left: 60%;
+      }
+      .ex1 .inputbox:nth-child(8) {
+          top: 73%;
+          left: 12%;
+      }
+      .ex1 .inputbox:nth-child(9) {
+          top: 73%;
+          left: 20%;
+      }
+      .ex1 .inputbox:nth-child(10) {
+          top: 73%;
+          left: 28%;
+      }
+      .ex1 .inputbox:nth-child(11) {
+          top: 73%;
+          left: 36%;
+      }
+      .ex1 .inputbox:nth-child(12) {
+          top: 73%;
+          left: 44%;
+      }
+      .ex1 .inputbox:nth-child(13) {
+          top: 73%;
+          left: 52%;
+      }
+      .ex1 .inputbox:nth-child(14) {
+          top: 73%;
+          left: 60%;
+      }
+      .ex1 .inputbox:nth-child(15) {
+          top: 73%;
+          left: 68%;
+      }
+      .ex1 .inputbox:nth-child(16) {
+          top: 73%;
+          left: 76%;
+      }
+      .nums .inputbox input{
+          font-size: 1.4rem;
+      }
+      .ex3 {
+          position: relative;
+      }
+      .ex3 .inps {
+          display: flex;
+          position: absolute;
+          left: 28%;
+          right: 5.2%;
+          top: 15%;
+      }
+      @media (max-width: 960px) {
+          .ex3 .inps {
+              left: 28.5%;
+              right: 6%;
+              top: 17%;
+          }
+      }
+      @media (max-width: 768px) {
+          .ex3 .inps {
+              left: 28.8%;
+              right: 6.6%;
+          }
+      }
+      .ex3 .inputbox {
+          flex-grow: 1;
+          margin: 0 1.1%;
+      }
+      .ex3 .inputbox input {
+          padding: 14% 6%;
+          font-size: 1.3rem;
+          border: 4px solid #ED8A2E;
+      }
+      @media (max-width: 960px) {
+          .ex3 .inputbox input {
+              padding: 4%;
+              border-radius: 10px;
+          }
+      }
+      @media (max-width: 680px) {
+          .ex3 .inputbox input {
+              padding: 8% 4%;
+          }
+      }
+      @media (max-width: 768px) {
+          .ex3 .inputbox input {
+              padding: 3%;
+              border-radius: 10px;
+              border: 2px solid #ED8A2E;
+              font-size: 1rem;
+          }
+      }
+      .ex3 .inps2 {
+          display: flex;
+          position: absolute;
+          left: 22.7%;
+          right: 10.8%;
+          top: 56%;
+      }
+      @media (max-width: 960px) {
+          .ex3 .inps2 {
+              left: 23%;
+              right: 11.3%;
+          }
+      }
+      @media (max-width: 768px) {
+          .ex3 .inps2 {
+              top: 56%;
+              left: 23.5%;
+              right: 11.6%;
+          }
+      }
+      @media (max-width: 480px) {
+          .ex3 .inps {
+              top: 14%;
+              left: 29.4%;
+              right: 7.5%;
+          }
+          .ex3 .inps2 {
+              top: 55%;
+              left: 23.8%;
+              right: 13%;
+          }
+      }
+      .ex3 .inps2 .inputbox input {
+          border-color: #A9E0FA !important;
+      }
+      .recuadropalabras {
+          background: var(--accent);
+      }
+      .recuadropalabras > div strong {
+          background: #fff;
+          color: var(--accent);
+      }
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro decimales entre los números</h1>
+      <h2>¿Cuál es el sucesor?</h2>
+      <div class="instruccion mt-5">Escribe los números que van entre las siguientes cantidades. Observa el ejemplo.</div>
+      <div class="row">
+        <div class="col-12 ex1"><img class="w-100" src="aimg/1a.png"/>
+          <div class="inps">
+            <template v-for="(i, index) in [2.05,2.06,2.07,2.08,2.09,2.10,2.11, 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9]">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Resuelve como se indica.</div>
+      <div class="row mt-3 ex2 align-items-center">
+        <div class="col-md-8">
+          <choose v-model="r[16]" :ref="refCount()" num="1." text="Selecciona el antecesor del número 2.652." :options="[2.653,2.651,2.650]" @isright="right++" :answer="2.651"></choose>
+          <choose v-model="r[17]" :ref="refCount()" num="2." text="Selecciona el sucesor del número 5.097." :options="[5.0971,5.096,5.099]" @isright="right++" :answer="5.0971"></choose>
+          <div class="choose">
+            <labeltext num="3.">Escribe tres números que estén entre 0.3 y 0.4.</labeltext>
+          </div>
+          <div class="row nums">
+            <div class="col">
+              <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="false" :min="0.3" :max="0.4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="false" :min="0.3" :max="0.4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="false" :min="0.3" :max="0.4" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md"><img class="img-fluid" src="aimg/2a.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Ordena los siguientes números de menor a mayor <strong class="accent">(naranjas)</strong> y escribe un número que se pueda incluir entre cada número en la serie <strong class="clear">(azules)</strong>. Observa el ejemplo.</div>
+      <recuadropalabras :palabras="[0.8, 0.79, 0.816, 0.865, 0.9, 0.82, 0.87, 0.85]"></recuadropalabras>
+      <div class="row">
+        <div class="col-12 ex3"><img class="w-100" src="aimg/3a.png"/>
+          <div class="inps">
+            <template v-for="(i, index) in [0.816, 0.82, 0.85, 0.865, 0.87, 0.9]">
+              <inputbox v-model="r[index+21]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+            </template>
+          </div>
+          <div class="inps2">
+            <template v-for="(i, index) in [[0.8,0.816], [0.816, 0.82], [.82,0.85], [.85,0.865], [.865,0.87], [.87,0.9]]">
+              <inputbox v-model="r[index+27]" :ref="refCount()" @isright="right++" :answer="false" :min="i[0]" :max="i[1]" type="number" placeh="#"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

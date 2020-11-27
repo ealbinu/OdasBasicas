@@ -1,5 +1,7 @@
 Vue.component('inputbox', {
-    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive', 'example'],
+    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive', 'example', 
+        'min', 'max' //evalua el valor entre min y max
+    ],
     data() {
         return {
             status: "",
@@ -67,8 +69,8 @@ Vue.component('inputbox', {
 
             }
             /* FINAL RESULT */
+            //Verificar Array
             if(Array.isArray(theanswer)){
-                console.log('Arra:',userAnswer)
                 for(u in theanswer){
                     if(theanswer[u]==userAnswer){
                         this.$emit('isright', true)
@@ -76,10 +78,21 @@ Vue.component('inputbox', {
                     }
                 }
             } else {
-                if(userAnswer == theanswer) {
-                    this.$emit('isright', true)
-                    this.result = true
+                if(this.min!=undefined && this.max!=undefined){
+                    // Evaluación entre min y max
+                    if(userAnswer > this.min && userAnswer < this.max){
+                        this.$emit('isright', true)
+                        this.result = true
+                    }
+                } else {
+                    // Evaluacion directa numérica
+                    if(userAnswer == theanswer) {
+                        this.$emit('isright', true)
+                        this.result = true
+                    }
+                    
                 }
+                
             }
         }
     },

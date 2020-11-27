@@ -10,16 +10,90 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .b1,
+      .b2,
+      .b3 {
+          padding: 10px;
+          text-align: right;
+          background: #f5f5f5;
+          border: 10px;
+          border-radius: 10px;
+          position: relative;
+          margin-bottom: 20px;
+      }
+      .b1 .label:not(.checktext),
+      .b2 .label:not(.checktext),
+      .b3 .label:not(.checktext) {
+          width: 100%;
+          font-weight: bold;
+          font-size: 1.2rem;
+      }
+      .b1 .checkbox,
+      .b2 .checkbox,
+      .b3 .checkbox {
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: #fff;
+      }
+      .b1 .check,
+      .b2 .check,
+      .b3 .check {
+          margin: 0;
+      }
+      .b1 {
+          background: #DDD6E2;
+          border: 2px dashed #6A4287;
+      }
+      .b2 {
+          background: #FDE8CF;
+          border: 2px dashed #E9832C;
+      }
+      .b3 {
+          background: #E9E2D0;
+          border: 2px dashed #887544;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <div class="instruccion mt-5">Resuelve el problema y marca así <checkmark></checkmark> las expresiones que representan su resultado.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <labeltext>Para un evento escolar se colocaron en el patio de la escuela 7 filas de 4 sillas cada una. ¿Cuántas sillas hay en total?</labeltext>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <div class="b1">
+            <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="false">
+              <div>10 + 10 + 10 + 8 =</div>
+              <div>7 ×5 =</div>
+              <div>10 × 3 + 8 =</div>
+            </check>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="b2">
+            <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="true">
+              <div>10 + 10 + 8 =</div>
+              <div>7 × 4 =</div>
+              <div>10 × 2 + 8 =</div>
+            </check>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="b3">
+            <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="false">
+              <div>20 + 10 + 8 =</div>
+              <div>7 × 8 =</div>
+              <div>20 × 2 + 8 =</div>
+            </check>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

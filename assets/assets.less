@@ -236,9 +236,11 @@ strong {
     .isright{
         background: @rightcol;
         &:after{ background-image: url(aimg/isright.svg); }
+        @media (max-width: 680px){ transform: scale(.6); }
     }
     .iswrong{
         background: @wrongcol;
+        @media (max-width: 680px){ transform: scale(.6); }
     }
 }
 

@@ -285,6 +285,17 @@ strong.sec {
 .dropdowns .isright:after {
   background-image: url(aimg/isright.svg);
 }
+@media (max-width: 680px) {
+  .check .isright,
+  .choose .isright,
+  .inputbox .isright,
+  .selectable .isright,
+  .selectableoptions .isright,
+  .draggableModule .isright,
+  .dropdowns .isright {
+    transform: scale(0.6);
+  }
+}
 .check .iswrong,
 .choose .iswrong,
 .inputbox .iswrong,
@@ -293,6 +304,17 @@ strong.sec {
 .draggableModule .iswrong,
 .dropdowns .iswrong {
   background: #DB3E34;
+}
+@media (max-width: 680px) {
+  .check .iswrong,
+  .choose .iswrong,
+  .inputbox .iswrong,
+  .selectable .iswrong,
+  .selectableoptions .iswrong,
+  .draggableModule .iswrong,
+  .dropdowns .iswrong {
+    transform: scale(0.6);
+  }
 }
 .draggableModule {
   position: relative;
