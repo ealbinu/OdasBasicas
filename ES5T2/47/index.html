@@ -3,23 +3,119 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Diseño un boletín informativo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .sec {
+          background: #f5f5f5;
+          margin: 10px;
+          padding: 10px;
+          border-radius: 6px;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+      }
+      .sec .choose {
+          padding: 0;
+      }
+      .sec .choose .options {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          justify-content: center;
+          font-size: 0.8rem;
+          flex-wrap: wrap;
+      }
+      .sec .choose .options div {
+          margin: 4px;
+          border: none;
+          opacity: 0.6;
+          background: #fff;
+          padding: 4px;
+          border-radius: 4px;
+      }
+      .sec .choose .options div.active {
+          width: 100%;
+          font-size: 2rem;
+          border-bottom: 0;
+          opacity: 1;
+          font-weight: bold;
+          background: transparent;
+          order: 1;
+      }
+      .sec.s1 {
+          background: #F2E2E7;
+      }
+      .sec.s2 {
+          background: #FFF1DE;
+      }
+      .sec.s3 {
+          background: #EBF3E3;
+      }
+      .sec.s4 {
+          background: #E6F2F4;
+      }
+      .sec .selectable {
+          display: inline-block;
+          margin-right: 4px;
+      }
+      .sec .selectable.on {
+          border: 2px solid var(--main);
+          border-radius: 2px;
+          padding: 0 4px;
+      }
+      .sec .selectable.on .circledactive {
+          display: none !important;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Diseño un boletín informativo</h1>
+      <h2>Planificamos nuestro boletín</h2>
+      <div class="instruccion mt-5">Lee los siguientes textos y elige la sección a la que pertenecen. Después selecciona los tecnicismos que encuentres.</div>
+      <div class="row mt-3 ex1 wrap align-items-center">
+        <div class="col-md-6">
+          <div class="sec s1">
+            <choose v-model="r[0]" :ref="refCount()" :options="['Economía', 'Política', 'Cultura', 'Deportes']" @isright="right++" answer="Deportes"></choose>
+            <div class="txt">La nadadora olímpica de Guadalajara ha puesto en alto al deporte mexicano al ser la primera mujer del país en lograr la medalla de oro en la competencia de 
+              <selectable :isok="true" v-model="r[4]" :ref="refCount()" @isright="right++">crol</selectable>de 100 metros.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sec s2">
+            <choose v-model="r[1]" :ref="refCount()" :options="['Economía', 'Política', 'Cultura', 'Deportes']" @isright="right++" answer="Cultura"></choose>
+            <div class="txt">Zacatecas será el primer estado en dar clases gratuitas de 
+              <selectable :isok="true" v-model="r[5]" :ref="refCount()" @isright="right++">figulino</selectable>, 
+              <selectable :isok="true" v-model="r[6]" :ref="refCount()" @isright="right++">carboncillo</selectable>y 
+              <selectable :isok="true" v-model="r[7]" :ref="refCount()" @isright="right++">gouache</selectable>en línea, con la finalidad de promover la medida preventiva de quedarse en casa.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sec s3">
+            <choose v-model="r[2]" :ref="refCount()" :options="['Economía', 'Política', 'Cultura', 'Deportes']" @isright="right++" answer="Política"></choose>
+            <div class="txt">El presidente de México hizo entrega de tarjetas para 
+              <selectable :isok="true" v-model="r[8]" :ref="refCount()" @isright="right++">pensión</selectable>a personas con 
+              <selectable :isok="true" v-model="r[9]" :ref="refCount()" @isright="right++">discapacidad</selectable>y anunció que dará apoyo constante a los más desprotegidos.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sec s4">
+            <choose v-model="r[3]" :ref="refCount()" :options="['Economía', 'Política', 'Cultura', 'Deportes']" @isright="right++" answer="Economía"></choose>
+            <div class="txt">Frente a la problemática del 
+              <selectable :isok="true" v-model="r[10]" :ref="refCount()" @isright="right++">COVID-19</selectable>, el gobierno mexicano apoyará a las 
+              <selectable :isok="true" v-model="r[11]" :ref="refCount()" @isright="right++">microempresas</selectable>con 
+              <selectable :isok="true" v-model="r[12]" :ref="refCount()" @isright="right++">recursos monetarios</selectable>para sobrellevar la situación de la cuarentena.
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
