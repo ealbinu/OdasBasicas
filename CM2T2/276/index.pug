@@ -44,7 +44,7 @@ html(lang="es")
                 h2 #{subtitle}
 
             .instruccion.mt-5 Observa las imágenes y utiliza las palabras en el recuadro para escribir la que completa cada enunciado.
-            .palabras.text-center.row.justify-content-center.align-items-center: .col(v-for="(i, index) in _.shuffle(['lluvia','ruidoso','bonito'])"): numbers(c=1) {{i}} 
+            .palabras.text-center.row.justify-content-center.align-items-center: .col(v-for="(i, index) in ['ruidoso','bonito', 'lluvia']"): numbers(c=1) {{i}} 
             .row.mt-3.ex1.justify-content-center.align-items-center
                 .col-md-4.text-center: img(src="i/1a.png").img-fluid
                 .col-md-8
@@ -54,13 +54,13 @@ html(lang="es")
             .row.mt-3.ex1.justify-content-center.align-items-center
                 .col-md-4.text-center: img(src="i/1b.png").img-fluid
                 .col-md-8
-                    labeltext(num="1.") El sonido de la batería es muy fuerte y
+                    labeltext(num="2.") El sonido de la batería es muy fuerte y
                         inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="ruidoso" type="text" placeh="-")
                         | .
             .row.mt-3.ex1.justify-content-center.align-items-center
                 .col-md-4.text-center: img(src="i/1c.png").img-fluid
                 .col-md-8
-                    labeltext(num="1.") El sonido del canto del ave es muy 
+                    labeltext(num="3.") El sonido del canto del ave es muy 
                         inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="bonito" type="text" placeh="-")
                         | .
             
