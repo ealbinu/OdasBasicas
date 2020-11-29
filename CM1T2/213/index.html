@@ -103,7 +103,7 @@
           <check v-model="r[6]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b4.png"/></check>
         </div>
         <div class="col-md col-6">
-          <check v-model="r[7]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/b5.png"/></check>
+          <check v-model="r[7]" :ref="refCount()" @isright="right++" :answer="false"><img class="img-fluid" src="aimg/b5.png"/></check>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
