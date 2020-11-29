@@ -25,7 +25,13 @@ html(lang="es")
             @media (max-width: 760px) {
                 .oido .inputbox input {
                     font-size: 0.9rem;
-                    
+                }
+                .recuadropalabras .dragdrop .draggable > div div, .ex1 .dragdrop .draggable > div:not(.result){
+                    font-size: 0.9rem;
+                    line-height: 1;
+                }
+                .ex1 .dragdrop .draggable > div:not(.result) div{
+                    font-size: 0.8rem;
                 }
             }
             .oido .inputbox:nth-child(1) {
@@ -76,6 +82,78 @@ html(lang="es")
                 border-radius: 50%;
                 border: 6px solid var(--main);
             }
+            .recuadropalabras .dragdrop .draggable > div {
+                display: flex;
+                justify-content: space-around;
+                font-size: 1.2rem;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .recuadropalabras .dragdrop .draggable > div div {
+                background: #fff;
+                padding: 4px 8px;
+                border-radius: 6px;
+                cursor: move;
+                min-width: 100px;
+                text-align:center;
+            }
+            .ex1 .dragdrop {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 15%;
+                min-height: 50px;
+            }
+            .ex1 .dragdrop .draggable {
+                border-radius: 10px;
+                margin: 4px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .ex1 .dragdrop .draggable > div:not(.result) {
+                border-radius: 10px;
+                background: #f5f5f5;
+                height: 100%;
+                border: 2px solid var(--accent);
+                box-shadow: 4px 4px 0 var(--accent);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-align:center;
+            }
+            
+            .oido .dragdrop {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 30%;
+            }
+            .oido .dragdrop:nth-child(1) {
+                left: 0;
+                top: 2%;
+            }
+            .oido .dragdrop:nth-child(2) {
+                left: 30%;
+                top: 2%;
+            }
+            .oido .dragdrop:nth-child(3) {
+                left: 60%;
+                top: 2%;
+            }
+            .oido .dragdrop:nth-child(4) {
+                left: 0;
+                top: 86%;
+            }
+            .oido .dragdrop:nth-child(5) {
+                left: 30%;
+                top: 86%;
+            }
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -83,14 +161,18 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Repasa los nombres de las partes del oído.
+            .instruccion.mt-5 Coloca los nombres de las partes del oído en la ubicación que corresponda.
+
+            .recuadropalabras
+                dragdrop(:options="['oreja',  'oído medio', 'oído externo', 'tímpano', 'oído interno']" :options-ok="[i]")
 
             .row.mt-3.ex1
                 .col.oido
                     img(src="aimg/a1.png").w-100
                     .inps
                         template(v-for="(i, index) in ['oído externo', 'oído medio','oído interno', 'oreja', 'tímpano']")
-                            inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
+                            dragdrop(:options="[]" :options-ok="[i]" v-model="r[index]" :ref="refCount()" @isright="right++")
+                            //inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
 
             .instruccion.mt-5 Marca así <checkmark></checkmark> las imágenes que representan un sonido agradable y así <markex></markex> los que te pueden ocasionar daño.
             
