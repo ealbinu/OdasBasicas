@@ -10,16 +10,51 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imagerelative .inputbox:nth-child(1) {
+          left: 3%;
+          top: 12%;
+      }
+      .imagerelative .inputbox:nth-child(2) {
+          left: 3%;
+          top: 26%;
+      }
+      .imagerelative .inputbox:nth-child(3) {
+          left: 70%;
+          top: 24%;
+      }
+      .imagerelative .inputbox:nth-child(4) {
+          left: 29%;
+          top: 56%;
+      }
+      .imagerelative .inputbox:nth-child(5) {
+          left: 63%;
+          top: 50%;
+      }
+      .recuadropalabras {
+          background: #DEEDCD;
+      }
+      .recuadropalabras strong {
+          background: rgba(255, 255, 255, 0.4);
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Lee con atención el artículo y después escribe las palabras del recuadro en la parte que corresponde.</div>
+      <recuadropalabras :palabras="['Subtítulo','Autor','Ilustración','Título','Cuadro de texto']"></recuadropalabras>
+      <div class="row">
+        <div class="col-12 imagerelative"><img class="w-100" src="aimg/1a.png"/>
+          <div class="items">
+            <template v-for="(i, index) in ['Título', 'Autor', 'Ilustración', 'Subtítulo', 'Cuadro de texto']">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

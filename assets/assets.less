@@ -380,3 +380,42 @@ input[type=number] {
 		}
 	}
 }
+
+
+
+
+
+.imagerelative{
+	position: relative;
+	.items{
+		& > div {
+			position: absolute;
+			left: 0%;
+			top: 0%;
+			width: 25%;
+			&.inputbox{
+				input{
+					font-size: 1.2rem;
+					border-radius: 6px;
+					box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+					padding: 4px;
+				}
+			}
+			@media (max-width: 768px){
+				&.inputbox{
+					input{
+						font-size: 0.8rem;
+					}
+				}
+            }
+            @media (max-width: 620px){
+				&.inputbox{
+					input{
+                        padding: 0;
+						font-size: 0.7rem;
+					}
+				}
+			}
+		}
+	}
+}
