@@ -3,23 +3,161 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Formo parte de Mesoamérica</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .options {
+          flex-wrap: wrap;
+      }
+      .options div{
+          margin: 10px;
+      }
+      .card .inputbox {
+          background: #f5f5f5;
+          padding: 6px;
+          border-radius: 10px;
+          margin-bottom: 6px;
+      }
+      .card .txt {
+          width: 60%;
+      }
+      .card input {
+          font-size: 0.9rem;
+          padding: 0;
+          width: 40%;
+          border-radius: 6px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .items .selectable {
+          width: 10%;
+          height: 8%;
+          border-radius: 6px;
+      }
+      .items .selectable.on {
+          border: 2px solid var(--main);
+      }
+      .items .selectable.on .circledactive {
+          display: none;
+      }
+      .items .selectable:nth-child(1) {
+          top: 42%;
+          left: 18%;
+          width: 63.6%;
+      }
+      .items .selectable:nth-child(2) {
+          top: 16%;
+          left: 15%;
+          width: 41%;
+          transform: rotate(45deg);
+          transform-origin: 0 0;
+      }
+      .items .selectable:nth-child(3) {
+          top: 75.4%;
+          left: 18%;
+          width: 56%;
+      }
+      .items .selectable:nth-child(4) {
+          top: 50.4%;
+          left: 10%;
+          width: 9%;
+          height: 25%;
+      }
+      .items .selectable:nth-child(5) {
+          top: 0;
+          left: 89%;
+          width: 8.5%;
+          height: 100%;
+      }
+      .items .selectable:nth-child(6) {
+          top: 83.5%;
+          left: 2.5%;
+          width: 87%;
+      }
+      .items .selectable:nth-child(7) {
+          top: 16.5%;
+          left: 81%;
+          width: 8.5%;
+          height: 59%;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Formo parte de Mesoamérica</h1>
+      <h2>Las civilizaciones mesoamericanas</h2>
+      <div class="instruccion mt-5">Selecciona la respuesta correcta. Consulta las páginas 64 y 65 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="Principal ciudad de Mesoamérica durante el periodo Clásico." :options="['Tikal.','Teotihuacan.','Monte Albán.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="Fueron ciudades que alcanzaron poblaciones de miles de habitantes." :options="['Tikal, Teotihuacan, Monte Albán.', 'Xochicalco, Cacaxtla, Copán.', 'Teotenango, Lambityeco, Zaachila.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="¿Hacia qué año comenzó a decaer la ciudad de Teotihuacan?" :options="['900 d.C.','650 d.C.','250 d.C.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="Las ciudades de Lambityeco y Zaachila se ubicaban en lo que actualmente es el territo- rio de este estado." :options="['Veracruz.','Campeche.','Oaxaca.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[4]" :ref="refCount()" num="5." text="Dioses a los que dirigían los teotihuacanos sus ritos de la lluvia y la fertilidad." :options="['Tláloc y Quetzalcóatl.','Itzam Ná e Ix Chel.','Totec y Xipe.']" @isright="right++" :answer-num="0"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe en los recuadros los aspectos correspondientes a las civilizaciones tolteca y mexica. Después, enciérralos en la sopa de letras. Consulta las páginas 66 y 67 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6 justify-content-center align-items-center">
+          <div class="card">
+            <div class="card-body">
+              <div class="h4">Toltecas</div>
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Huasteca" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Región que dominaron y que hoy corresponde a San Luis Potosí, Zacatecas y parte del centro de México.</div>
+                </template>
+              </inputbox>
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Tula" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Fue su centro urbano más importante.</div>
+                </template>
+              </inputbox>
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="Hidalgo" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Estado donde se encuentra actualmente la ciudad de Tula.</div>
+                </template>
+              </inputbox>
+              <div class="h4">Mexicas</div>
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="Sol" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Se hacían llamar “pueblo del</div>
+                </template>
+              </inputbox>
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="Tenochtitlan" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Ciudad cimentada sobre pilotes de madera.</div>
+                </template>
+              </inputbox>
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="sacrificios" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Usaban a los prisioneros de guerra para los</div>
+                </template>
+              </inputbox>
+              <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="Militar" type="text" placeh="-">
+                <template v-slot:before="">
+                  <div class="txt">Disciplina que les permitió dominar varias regiones de Mesoamérica.</div>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-12 imagerelative"><img class="w-100" src="aimg/2a.png"/>
+              <div class="items">
+                <template v-for="(i, index) in 7">
+                  <selectable :isok="true" v-model="r[index+12]" :ref="refCount()" @isright="right++"></selectable>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

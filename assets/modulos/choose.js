@@ -1,10 +1,11 @@
 Vue.component('choose', {
-    props: ['value', 'text', 'options', 'answer', 'num', 'initclass'],
+    props: ['value', 'text', 'options', 'answer', 'num', 'initclass', 'answerNum'],
     data() {
         return {
             status: null,
             evaluate: false,
-            result: false
+            result: false,
+            correctAnswer: ''
         }
     },
     computed:{
@@ -29,7 +30,7 @@ Vue.component('choose', {
         },
         verify () { 
             this.evaluate = true
-            if(this.status == this.answer) {
+            if(this.status == this.correctAnswer) {
                 this.$emit('isright', true)
                 this.result = true
             }
@@ -37,6 +38,11 @@ Vue.component('choose', {
     },
     mounted () {
         this.$emit('input', null)
+        if(this.answerNum != undefined){
+            this.correctAnswer = this.options[this.answerNum]
+        } else {
+            this.correctAnswer = this.answer
+        }
     },
     template: `
         <div class="choose" :class="setclass + ' ' + (initclass?initclass:' ')">
@@ -54,6 +60,7 @@ Vue.component('choose', {
 
 /*
 choose(v-model="r[0]" :ref="refCount()" num="1." text="Texto" :options="['rojo', 'amarillo', 'azul']" @isright="right++" answer="amarillo")
+choose(v-model="r[0]" :ref="refCount()" num="1." text="Texto" :options="['']" @isright="right++" :answer-num="0")
 
 <choose v-model="r[4]" :ref="refCount()" num="1." text="El vestido de la niña es:" :options="['rojo', 'amarillo', 'azul']" @isright="right++" answer="amarillo"></choose>
 */
