@@ -1,32 +1,121 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Ubico civilizaciones'
+- subtitle = 'Panorama del periodo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .mes,
+            .and {
+                color: #6CB743;
+            }
+            .mes .numbers,
+            .and .numbers {
+                color: #6CB743 !important;
+            }
+            .cultura {
+                background: #DEEDCD;
+                text-align: center;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+            }
+            .cultura .inputbox {
+                margin-bottom: 10px;
+            }
+            .cultura .inputbox input {
+                padding: 2px;
+                max-width: 120px;
+                font-size: 1.4rem;
+                box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+                border-radius: 6px;
+                border-color: #6CB743;
+            }
+            .cultura .dropdowns {
+                width: 100%;
+            }
+            .cultura .dropdowns select {
+                font-size: 1rem;
+                border-color: #E9843B;
+            }
+            .cultura .h6 {
+                font-size: 0.8rem;
+                background: #fff;
+                padding: 2px 6px;
+                border-radius: 4px;
+                display: inline-block;
+                margin-bottom: 0;
+                margin-top: 10px;
+                color: #888;
+            }
+            .cultura .h6.civi {
+                background: #6CB743;
+                color: #fff;
+            }
+            .cultura .h6.apa {
+                background: #E9843B;
+                color: #fff;
+            }
+            .cultura .txt {
+                font-weight: bold;
+                font-size: 2rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona cada cultura con la civilización a la que pertenece escribiendo #[strong M] si es Mesoamericana o #[strong A] si es Andina. Después elige el año en el que apareció cada una de las culturas. Consulta la línea del tiempo de las páginas 58 y 59 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-6.text-center.mes
+                    .h4 
+                        numbers M
+                        div Mesoamericana
+                .col-md-6.text-center.and
+                    .h4 
+                        numbers A
+                        div Andina
             
-
-
-
-
+            .row.mt-3.ex1.justify-content-center.align-items-center
+                    template(v-for="(i, index) in tempsobj.a")
+                        .col-md-4.rp: .cultura
+                            div.txt {{i.c}}
+                            div.h6.civi Civilización
+                            inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.civ" type="text" placeh="M o A")
+                            div.h6.apa Aparición
+                            dropdowns(v-model="r[index+10]" :ref="refCount()"  @isright="right++" :options="[{options:tempsobj.b, answer: i.y}]")
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {c: 'Olmeca', civ: 'M', y: '1200 - 400 a. C.' },
+                    {c: 'Maya (Clásico)', civ: 'M', y: '250 - 900 d. C.' },
+                    {c: 'Tiahuanaco', civ: 'A', y: '100 - 1200 d. C.' },
+                    {c: 'Nazca', civ: 'A', y: '100 - 800 d. C.' },
+                    {c: 'Zapoteca', civ: 'M', y: '500 a. C. - 950 d. C.' },
+                    {c: 'Huari', civ: 'A', y: '550 - 900 d. C.' },
+                    {c: 'Inca', civ: 'A', y: '1438 - 1532 d. C.' },
+                    {c: 'Moche', civ: 'A', y: '100 - 700 d. C.' },
+                    {c: 'Tolteca', civ: 'M', y: '950 - 1150 d. C.' },
+                    {c: 'Teotihuacana', civ: 'M', y: '100 a. C. - 750 d.C.' },
+                ])
+                app.$set(app.tempsobj, 'b', [ 
+                    '550 - 900 d. C.',
+                    '250 - 900 d. C.',
+                    '100 - 1200 d. C.',
+                    '500 a. C. - 950 d. C.',
+                    '100 - 800 d. C.',
+                    '100 a. C. - 750 d.C.',
+                    '1200 - 400 a. C.',
+                    '1438 - 1532 d. C.',
+                    '100 - 700 d. C.',
+                    '950 - 1150 d. C.',
+                ])

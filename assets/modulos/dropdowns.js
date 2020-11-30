@@ -64,6 +64,7 @@ Vue.component('dropdowns', {
             <template v-for="(i, index) in options">
                 <div v-if="i.text" v-html="i.text"></div>
                 <select v-if="i.options" v-model="answers[index]" :disabled="evaluate">
+                    <option v-if="i.placeholder" selected>{{i.placeholder}}</option>
                     <option v-for="(op, opindex) in i.options" v-html="op"></option>
                 </select>
                 <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>

@@ -3,23 +3,104 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Ubico civilizaciones</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .mes,
+      .and {
+          color: #6CB743;
+      }
+      .mes .numbers,
+      .and .numbers {
+          color: #6CB743 !important;
+      }
+      .cultura {
+          background: #DEEDCD;
+          text-align: center;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 10px;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+      }
+      .cultura .inputbox {
+          margin-bottom: 10px;
+      }
+      .cultura .inputbox input {
+          padding: 2px;
+          max-width: 120px;
+          font-size: 1.4rem;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+          border-radius: 6px;
+          border-color: #6CB743;
+      }
+      .cultura .dropdowns {
+          width: 100%;
+      }
+      .cultura .dropdowns select {
+          font-size: 1rem;
+          border-color: #E9843B;
+      }
+      .cultura .h6 {
+          font-size: 0.8rem;
+          background: #fff;
+          padding: 2px 6px;
+          border-radius: 4px;
+          display: inline-block;
+          margin-bottom: 0;
+          margin-top: 10px;
+          color: #888;
+      }
+      .cultura .h6.civi {
+          background: #6CB743;
+          color: #fff;
+      }
+      .cultura .h6.apa {
+          background: #E9843B;
+          color: #fff;
+      }
+      .cultura .txt {
+          font-weight: bold;
+          font-size: 2rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Ubico civilizaciones</h1>
+      <h2>Panorama del periodo</h2>
+      <div class="instruccion mt-5">Relaciona cada cultura con la civilización a la que pertenece escribiendo <strong>M</strong> si es Mesoamericana o <strong>A</strong> si es Andina. Después elige el año en el que apareció cada una de las culturas. Consulta la línea del tiempo de las páginas 58 y 59 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 text-center mes">
+          <div class="h4"> 
+            <numbers>M</numbers>
+            <div>Mesoamericana</div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center and">
+          <div class="h4"> 
+            <numbers>A</numbers>
+            <div>Andina</div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 justify-content-center align-items-center">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-4 rp">
+            <div class="cultura">
+              <div class="txt">{{i.c}}</div>
+              <div class="h6 civi">Civilización</div>
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.civ" type="text" placeh="M o A"></inputbox>
+              <div class="h6 apa">Aparición</div>
+              <dropdowns v-model="r[index+10]" :ref="refCount()" @isright="right++" :options="[{options:tempsobj.b, answer: i.y}]"></dropdowns>
+            </div>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +118,31 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {c: 'Olmeca', civ: 'M', y: '1200 - 400 a. C.' },
+          {c: 'Maya (Clásico)', civ: 'M', y: '250 - 900 d. C.' },
+          {c: 'Tiahuanaco', civ: 'A', y: '100 - 1200 d. C.' },
+          {c: 'Nazca', civ: 'A', y: '100 - 800 d. C.' },
+          {c: 'Zapoteca', civ: 'M', y: '500 a. C. - 950 d. C.' },
+          {c: 'Huari', civ: 'A', y: '550 - 900 d. C.' },
+          {c: 'Inca', civ: 'A', y: '1438 - 1532 d. C.' },
+          {c: 'Moche', civ: 'A', y: '100 - 700 d. C.' },
+          {c: 'Tolteca', civ: 'M', y: '950 - 1150 d. C.' },
+          {c: 'Teotihuacana', civ: 'M', y: '100 a. C. - 750 d.C.' },
+      ])
+      app.$set(app.tempsobj, 'b', [ 
+          '550 - 900 d. C.',
+          '250 - 900 d. C.',
+          '100 - 1200 d. C.',
+          '500 a. C. - 950 d. C.',
+          '100 - 800 d. C.',
+          '100 a. C. - 750 d.C.',
+          '1200 - 400 a. C.',
+          '1438 - 1532 d. C.',
+          '100 - 700 d. C.',
+          '950 - 1150 d. C.',
+      ])
+    </script>
   </body>
 </html>
