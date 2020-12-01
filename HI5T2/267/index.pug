@@ -8,25 +8,96 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .options div{
+                margin: 10px;
+            }
+
+            .dragdrop .draggable > div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .dragdrop .draggable > div:not(.result) > div {
+                text-align: center;
+                margin: 4px;
+                background: #6CB743;
+                padding: 4px 6px;
+                border-radius: 4px;
+                cursor: move;
+            }
+            .parrafoinputs {
+                vertical-align: middle;
+                line-height: 2.4;
+                background: #EFF3E1;
+            }
+            .parrafoinputs .dragdrop {
+                display: inline-block;
+                vertical-align: middle;
+                min-width: 100px;
+                min-height: 30px;
+                margin-right: 6px;
+            }
+            .parrafoinputs .dragdrop .draggable {
+                min-height: 30px;
+                display: flex;
+                flex-direction: column;
+            }
+            .parrafoinputs .dragdrop .draggable > div:not(.result) {
+                min-height: 30px;
+                background: #fff;
+                border-radius: 4px;
+                padding: 0;
+                box-shadow: 4px 4px 0 #6CB743;
+            }
+            .parrafoinputs .dragdrop .draggable > div:not(.result) > div {
+                margin: 0;
+                font-size: 1rem;
+                background: var(--accent);
+                width: 100%;
+                padding: 2px;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca la respuesta correcta. Consulta las páginas 63 y 64 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-12
+                    choose(v-model="r[0]" :ref="refCount()" num="1." text="Fue el compositor del Himno Nacional Mexicano." :options="['Hermenegildo Bustos.','José María Estrada.','Francisco González Bocanegra.']" @isright="right++" :answer-num="2")
+                    choose(v-model="r[1]" :ref="refCount()" num="2." text="Son las materias científicas que se impulsaron a partir del gobierno de Benito Juárez." :options="['Matemáticas y Física.','Biología, Geología y Medicina.','Medicina y Literatura.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[2]" :ref="refCount()" num="3." text="Son los espacios de esparcimiento que se construyeron tras los años de guerra." :options="['Ferias y teatros.','Teatros y palenques.','Cines y teatros.']" @isright="right++" :answer-num="1")
 
+            .instruccion.mt-5 Completa los siguientes enunciados con las palabras del recuadro. Consulta las páginas 63 a 69 de tu libro de texto SEP.
 
+            .recuadropalabras.mb-1: dragdrop(:options="tempsobj.a" :options-ok="[]" v-if="tempsobj.a")
 
+            .row.mt-3.ex2
+                .col-12
+                    .label.parrafoinputs.mb-2
+                        strong 1.
+                        | Los 
+                        dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['textos y las caricaturas']")
+                        | sirvieron para formular críticas y expresar ideas en los nuevos periódicos que se fundaron durante la presidencia de Juárez.
+                    .label.parrafoinputs.mb-2
+                        strong 2.
+                        | El 
+                        dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['nacionalismo']")
+                        | se expresó en novelas históricas y narraciones que describían las costumbres, formas de vida y particularidades del país.
+                    .label.parrafoinputs
+                        strong 3.
+                        | El paisajismo sobresalió en las pinturas del autor 
+                        dragdrop(v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['José María Velasco']")
+                        | .
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    'José María Velasco',
+                    'textos y las caricaturas',
+                    'nacionalismo',
+                ])
