@@ -1,32 +1,113 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Conozco el Imperio romano'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .dragdrop .draggable > div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .dragdrop .draggable > div:not(.result) > div {
+                text-align: center;
+                margin: 4px;
+                background: var(--accent);
+                padding: 4px 6px;
+                border-radius: 4px;
+                cursor: move;
+            }
+            .parrafoinputs {
+                vertical-align: middle;
+                line-height: 2.4;
+            }
+            .parrafoinputs .dragdrop {
+                display: inline-block;
+                vertical-align: middle;
+                min-width: 100px;
+                min-height: 30px;
+                margin-right: 6px;
+            }
+            .parrafoinputs .dragdrop .draggable {
+                min-height: 30px;
+                display: flex;
+                flex-direction: column;
+            }
+            .parrafoinputs .dragdrop .draggable > div:not(.result) {
+                min-height: 30px;
+                background: #fff;
+                border-radius: 4px;
+                padding: 0;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .parrafoinputs .dragdrop .draggable > div:not(.result) > div {
+                margin: 0;
+                font-size: 1rem;
+                background: var(--clear);
+                width: 100%;
+                padding: 2px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
-            
-
-
-
+            .instruccion.mt-5 Coloca las palabras para completar correctamente el siguiente relato sobre la expansión y la vida cotidiana de Roma.
+            .recuadropalabras.mb-1: dragdrop(:options="tempsobj.a" :options-ok="[]" v-if="tempsobj.a")
+            .parrafoinputs
+                | Roma extendió su imperio en territorios de 
+                dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Asia, Europa y África']")
+                | . Las 
+                dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['provincias']") 
+                | eran dirigidas por 
+                dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['gobernadores']") 
+                | designados por el emperador. La amplia red de vías, 
+                dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['puertos y caminos']") 
+                | favoreció la práctica 
+                dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['comercial']")
+                | . La 
+                dragdrop(v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['libertad religiosa']")
+                | estaba condicionada a no atentar contra la seguridad del 
+                dragdrop(v-model="r[6]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Imperio']")
+                | . El 
+                dragdrop(v-model="r[7]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['denario de plata']")
+                | fue la moneda circulante desde el siglo I hasta el siglo 
+                dragdrop(v-model="r[8]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['III']")
+                | d. C. Entre las actividades de esparcimiento estaban las luchas entre 
+                dragdrop(v-model="r[9]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['gladiadores']")
+                | , competencias de 
+                dragdrop(v-model="r[10]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['carros']")
+                | y el lanzamiento de 
+                dragdrop(v-model="r[11]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['disco o jabalina']")
+                | . Los niños jugaban a ser gladiadores y las niñas con muñecas de 
+                dragdrop(v-model="r[12]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['marfil']")
+                | y eran preparadas para el 
+                dragdrop(v-model="r[13]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['matrimonio']")
+                | desde los 7 años.
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    'Asia, Europa y África',
+                    'provincias',
+                    'gobernadores',
+                    'puertos y caminos',
+                    'comercial',
+                    'libertad religiosa',
+                    'Imperio',
+                    'denario de plata',
+                    'III',
+                    'gladiadores',
+                    'carros',
+                    'disco o jabalina',
+                    'marfil',
+                    'matrimonio',
+                ])

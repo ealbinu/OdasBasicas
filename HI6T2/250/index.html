@@ -3,23 +3,82 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco el Imperio romano</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .dragdrop .draggable > div {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+      .dragdrop .draggable > div:not(.result) > div {
+          text-align: center;
+          margin: 4px;
+          background: var(--accent);
+          padding: 4px 6px;
+          border-radius: 4px;
+          cursor: move;
+      }
+      .parrafoinputs {
+          vertical-align: middle;
+          line-height: 2.4;
+      }
+      .parrafoinputs .dragdrop {
+          display: inline-block;
+          vertical-align: middle;
+          min-width: 100px;
+          min-height: 30px;
+          margin-right: 6px;
+      }
+      .parrafoinputs .dragdrop .draggable {
+          min-height: 30px;
+          display: flex;
+          flex-direction: column;
+      }
+      .parrafoinputs .dragdrop .draggable > div:not(.result) {
+          min-height: 30px;
+          background: #fff;
+          border-radius: 4px;
+          padding: 0;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .parrafoinputs .dragdrop .draggable > div:not(.result) > div {
+          margin: 0;
+          font-size: 1rem;
+          background: var(--clear);
+          width: 100%;
+          padding: 2px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco el Imperio romano</h1>
+      <div class="instruccion mt-5">Coloca las palabras para completar correctamente el siguiente relato sobre la expansión y la vida cotidiana de Roma.</div>
+      <div class="recuadropalabras mb-1">
+        <dragdrop :options="tempsobj.a" :options-ok="[]" v-if="tempsobj.a"></dragdrop>
+      </div>
+      <div class="parrafoinputs">Roma extendió su imperio en territorios de 
+        <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Asia, Europa y África']"></dragdrop>. Las 
+        <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['provincias']"> </dragdrop>eran dirigidas por 
+        <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['gobernadores']"> </dragdrop>designados por el emperador. La amplia red de vías, 
+        <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['puertos y caminos']"> </dragdrop>favoreció la práctica 
+        <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['comercial']"></dragdrop>. La 
+        <dragdrop v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['libertad religiosa']"></dragdrop>estaba condicionada a no atentar contra la seguridad del 
+        <dragdrop v-model="r[6]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Imperio']"></dragdrop>. El 
+        <dragdrop v-model="r[7]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['denario de plata']"></dragdrop>fue la moneda circulante desde el siglo I hasta el siglo 
+        <dragdrop v-model="r[8]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['III']"></dragdrop>d. C. Entre las actividades de esparcimiento estaban las luchas entre 
+        <dragdrop v-model="r[9]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['gladiadores']"></dragdrop>, competencias de 
+        <dragdrop v-model="r[10]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['carros']"></dragdrop>y el lanzamiento de 
+        <dragdrop v-model="r[11]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['disco o jabalina']"></dragdrop>. Los niños jugaban a ser gladiadores y las niñas con muñecas de 
+        <dragdrop v-model="r[12]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['marfil']"></dragdrop>y eran preparadas para el 
+        <dragdrop v-model="r[13]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['matrimonio']"></dragdrop>desde los 7 años.
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +96,23 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          'Asia, Europa y África',
+          'provincias',
+          'gobernadores',
+          'puertos y caminos',
+          'comercial',
+          'libertad religiosa',
+          'Imperio',
+          'denario de plata',
+          'III',
+          'gladiadores',
+          'carros',
+          'disco o jabalina',
+          'marfil',
+          'matrimonio',
+      ])
+    </script>
   </body>
 </html>
