@@ -3,23 +3,145 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Clasifico los materiales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .card {
+          border-radius: 10px;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+      }
+      .card.c1 {
+          background: #FBABB6;
+      }
+      .card.c2 {
+          background: #AFC2D9;
+      }
+      .card.c3 {
+          background: #F8D2B0;
+      }
+      .card .numbers {
+          text-align: center;
+      }
+      .opcion {
+          text-align: center;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 10px;
+      }
+      .opcion .inputbox input {
+          font-size: 1.4rem;
+          max-width: 120px;
+      }
+      .opcion img {
+          max-width: 120px;
+          border-radius: 10px;
+          margin-top: 4px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Clasifico los materiales</h1>
+      <h2>Características de los estados físicos y sus cambios</h2>
+      <div class="instruccion mt-5">Relaciona las características con el estado de la materia y los ejemplos correspondientes.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-sm-4">
+          <div class="card c1">
+            <div class="card-body">
+              <numbers c="1">A.</numbers>
+              <ul>
+                <li>Tienen volumen definido.</li>
+                <li>Adquieren la forma del recipiente que los contiene.</li>
+                <li>Fluyen.</li>
+                <li>No tienen dureza.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card c2">
+            <div class="card-body">
+              <numbers c="2">B.</numbers>
+              <ul>
+                <li>No tienen volumen definido.</li>
+                <li>Se expanden o se comprimen en un recipiente.</li>
+                <li>Se dilatan al aumentar la temperatura.</li>
+                <li>Tienen elasticidad.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card c3">
+            <div class="card-body">
+              <numbers c="4">C.</numbers>
+              <ul>
+                <li>Tienen volumen y forma definida.</li>
+                <li>No se pueden comprimir.</li>
+                <li>No fluyen.</li>
+                <li>Se dilatan al aumentar la temperatura.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="A,B,C"></inputbox>
+            <numbers>Sólidos</numbers>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="A,B,C"></inputbox>
+            <numbers>Líquidos</numbers>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="A,B,C"></inputbox>
+            <numbers>Gaseosos</numbers>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="A,B,C"></inputbox><img src="aimg/2b.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="A,B,C"></inputbox><img src="aimg/3a.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="A,B,C"></inputbox><img src="aimg/1b.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="A,B,C"></inputbox><img src="aimg/2a.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="A,B,C"></inputbox><img src="aimg/1a.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="opcion">
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="A,B,C"></inputbox><img src="aimg/3b.png" alt=""/>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
