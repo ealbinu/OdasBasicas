@@ -4752,11 +4752,11 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/ES6T2\/48\/aimg\/Captura de Pantalla 2020-12-01 a la(s) 15.51.58.png": {
+	"\/ES6T2\/48\/aimg\/b2.png": {
 		"ft": 32768,
 		"iS": 150727,
 		"oA": 0,
-		"oAP": "\/ES6T2\/48\/aimg\/Captura de Pantalla 2020-12-01 a la(s) 15.51.58.png",
+		"oAP": "\/ES6T2\/48\/aimg\/b2.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -4819,6 +4819,17 @@
 		"oA": 0,
 		"oAP": "\/GE4T1\/228\/index.html",
 		"oF": 0
+		},
+	"\/GE4T2\/228\/aimg\/1a.png": {
+		"ft": 32768,
+		"iS": 363100,
+		"oA": 0,
+		"oAP": "\/GE4T2\/228\/aimg\/1a.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"\/GE4T2\/228\/index.html": {
 		"cB": 0,

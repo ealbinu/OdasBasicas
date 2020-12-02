@@ -1,25 +1,121 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Dependemos de la naturaleza'
+- subtitle = 'Diversas actividades, diversos productos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                background: none;
+            }
+            .recuadropalabras > div {
+                background: #C2E3E1;
+                color: #005093;
+                padding: 10px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            .recuadropalabras > div strong {
+                text-align: center;
+                font-size: 2rem;
+                background: transparent;
+            }
+            .imagerelative .items > div.inputbox {
+                width: 60px;
+                height: 60px;
+            }
+            .imagerelative .items > div.inputbox input {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                border-color: #C2E3E1;
+            }
+            @media (max-width: 992px) {
+                .imagerelative .items > div.inputbox input {
+                    width: 50px;
+                    height: 50px;
+                    margin: -13px 0 0 -18px;
+                }
+            }
+            @media (max-width: 768px) {
+                .imagerelative .items > div.inputbox input {
+                    width: 40px;
+                    height: 40px;
+                    margin: -40% 0 0 -40%;
+                }
+            }
+            @media (max-width: 576px) {
+                .imagerelative .items > div.inputbox input {
+                    width: 36px;
+                    height: 36px;
+                    margin: -40% 0 0 -40%;
+                }
+            }
+            .imagerelative .items > div.inputbox:nth-child(1) {
+                left: 71%;
+                top: 78%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(2) {
+                left: 4.4%;
+                top: 27.4%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(3) {
+                left: 5.3%;
+                top: 65%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(4) {
+                left: 27%;
+                top: 19%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(5) {
+                left: 32.4%;
+                top: 77%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(6) {
+                left: 52.7%;
+                top: 5.6%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(7) {
+                left: 83.5%;
+                top: 56%;
+            }
+            .imagerelative .items > div.inputbox:nth-child(8) {
+                left: 71.7%;
+                top: 26%;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe en cada círculo el número de la actividad que corresponde al lugar indicado.
 
-            .row.mt-3
+            .recuadropalabras
+                div #[strong 1.] Actividad pesquera.
+                div #[strong 2.] Actividad forestal.
+                div #[strong 3.] Agricultura temporal y extensiva.
+                div #[strong 4.] Agricultura de riego o intensiva.
+                div #[strong 5.] Ganadería extensiva.
+                div #[strong 6.] Ganadería intensiva.
+                div #[strong 7.] Ganadería de autoconsumo.
+                div #[strong 8.] Actividad maderera.
+
+            .row: .col-12.imagerelative
+                img(src="aimg/1a.png").w-100
+                .items
+                    template(v-for="(i, index) in 8")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+
             
 
 
