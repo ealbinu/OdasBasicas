@@ -1,11 +1,23 @@
 Vue.component('finalize', {
-    props: ['resultado', 'right', 'total', 'fieldsText'],
+    props: ['resultado', 'right', 'total', 'fieldsText', 'ifrightsis'],
     data() {
         return {
-            ftext: 'preguntas'
+            ftext: 'preguntas',
+            rights: 0,
+            totalquestions: 0
         }
     },
-
+    computed: {
+        finalRights() {
+            let rights = this.right
+            if(this.ifrightsis != undefined){
+                let sep = this.ifrightsis.split('=')
+                rights = (rights == sep[0]) ? sep[1] : rights
+                this.totalquestions = sep[1]
+            }
+            return rights
+        }
+    },
     methods: {
         
     },
@@ -13,6 +25,7 @@ Vue.component('finalize', {
         if(this.fieldsText != undefined){
             this.ftext = this.fieldsText
         }
+        this.totalquestions = this.total
     },
     template: `
         <div class="finalize">
@@ -22,7 +35,7 @@ Vue.component('finalize', {
 
             <div class="d-flex justify-content-center mt-5 resultado" v-if="resultado">
                 <h3>Resultado</h3>
-                <div><strong>{{right}} correctas </strong> de {{total}} {{ftext}}</div>
+                <div><strong>{{finalRights}} correctas </strong> de {{totalquestions}} {{ftext}}</div>
                 <button class="finalizar" @click="$emit('reset')">Volver a intentar</button>
             </div>
         

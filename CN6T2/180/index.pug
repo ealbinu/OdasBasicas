@@ -64,7 +64,7 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Ordena cada objeto con sus propiedades moviéndolo arriba o abajo.
+            .instruccion.mt-5 Mueve arriba o abajo cada objeto para que coincida con sus propiedades.
             .row.mt-3.ex1
                 .col-6.objetos
                     dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="['Librero', 'Paraguas', 'Vaso']" :options-ok="tempsobj.a" v-if="tempsobj.a")
@@ -74,7 +74,7 @@ html(lang="es")
                     div Está hecho de plástico y sus propiedades lo favorecen porque es ligero e impermeable.
 
 
-            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total" ifrightsis="1=3" fields-text="opciones")
         +scripts
             script.
                 app.$set(app.tempsobj, 'a', ['Vaso', 'Librero', 'Paraguas' ])
