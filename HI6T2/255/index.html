@@ -97,7 +97,7 @@
           <choose v-model="r[0]" :ref="refCount()" num="1." text="Principal ciudad de Mesoamérica durante el periodo Clásico." :options="['Tikal.','Teotihuacan.','Monte Albán.']" @isright="right++" :answer-num="1"></choose>
           <choose v-model="r[1]" :ref="refCount()" num="2." text="Fueron ciudades que alcanzaron poblaciones de miles de habitantes." :options="['Tikal, Teotihuacan, Monte Albán.', 'Xochicalco, Cacaxtla, Copán.', 'Teotenango, Lambityeco, Zaachila.']" @isright="right++" :answer-num="0"></choose>
           <choose v-model="r[2]" :ref="refCount()" num="3." text="¿Hacia qué año comenzó a decaer la ciudad de Teotihuacan?" :options="['900 d.C.','650 d.C.','250 d.C.']" @isright="right++" :answer-num="1"></choose>
-          <choose v-model="r[3]" :ref="refCount()" num="4." text="Las ciudades de Lambityeco y Zaachila se ubicaban en lo que actualmente es el territo- rio de este estado." :options="['Veracruz.','Campeche.','Oaxaca.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="Las ciudades de Lambityeco y Zaachila se ubicaban en lo que actualmente es el territorio de este estado." :options="['Veracruz.','Campeche.','Oaxaca.']" @isright="right++" :answer-num="2"></choose>
           <choose v-model="r[4]" :ref="refCount()" num="5." text="Dioses a los que dirigían los teotihuacanos sus ritos de la lluvia y la fertilidad." :options="['Tláloc y Quetzalcóatl.','Itzam Ná e Ix Chel.','Totec y Xipe.']" @isright="right++" :answer-num="0"></choose>
         </div>
       </div>
@@ -127,6 +127,9 @@
                 <template v-slot:before="">
                   <div class="txt">Se hacían llamar “pueblo del</div>
                 </template>
+                <template v-slot:after="">
+                  <div>".</div>
+                </template>
               </inputbox>
               <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="Tenochtitlan" type="text" placeh="-">
                 <template v-slot:before="">
@@ -136,6 +139,9 @@
               <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="sacrificios" type="text" placeh="-">
                 <template v-slot:before="">
                   <div class="txt">Usaban a los prisioneros de guerra para los</div>
+                </template>
+                <template v-slot:after="">
+                  <div>.</div>
                 </template>
               </inputbox>
               <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="Militar" type="text" placeh="-">
