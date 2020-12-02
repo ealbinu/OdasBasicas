@@ -18,6 +18,7 @@ var app = new Vue({
     data () {
         return {
             r: [],
+            g: [],
             right: 0,
             total: 0,
             resultado: false,

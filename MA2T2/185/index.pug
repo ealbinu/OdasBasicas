@@ -1,32 +1,120 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Sumo completando decenas'
+- subtitle = 'Números amigables para sumar'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ope {
+                padding: 10px;
+                border-radius: 10px;
+                background: #f5f5f5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 10px;
+                font-size: 1.6rem;
+            }
+           
+            .ope .inputbox input {
+                padding: 0;
+                font-size: 1.2rem;
+                max-width: 60px;
+            }
+            .ope .numbers {
+                font-size: 1.6rem;
+                margin: 0 4px;
+            }
+            .ope .inp_example .numbers {
+                font-size: 1.6rem;
+                color: var(--accent);
+            }
+            .ex2 .sum {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                text-align: right;
+                font-size: 1.4rem;
+                letter-spacing: 5px;
+            }
+            .ex2 .sum hr {
+                border-top: 3px solid var(--sec);
+            }
+            .ex2 .sum .inputbox input {
+                font-size: 1.4rem;
+                padding: 1px;
+                text-align: right;
+                border-radius: 4px;
+                letter-spacing: 5px;
+            }
+            @media (max-width: 680px){
+                .ope{
+                    font-size: 1rem;
+                }
+                .ope .inputbox input {
+                    font-size: 0.9rem;
+                }
+                .ope .inp_example .numbers {
+                    font-size: 1rem;
+                }
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve las siguientes sumas utilizando el procedimiento anterior. Observa el ejemplo.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-6(v-for="(i, index) in tempsobj.a"): .ope
+                    template(v-if="index==0")
+                        div.prev {{i.t}}
+                        inputbox(:answer="i.v1" type="number" placeh="#" example)
+                        numbers +
+                        inputbox(:answer="i.v2" type="number" placeh="#" example)
+                        numbers =
+                        inputbox(:answer="i.v1+i.v2" type="number" placeh="#" example)
+                    template(v-else)
+                        div.prev {{i.t}}
+                        suma(:answer="i.a" v-model="r[index-1]" :ref="refCount()" @isright="right++")
 
-
+            .instruccion.mt-5 Resuelve las siguientes operaciones.
+            .row.mt-3.ex2
+                .col-md-4.col-6(v-for="(i, index) in tempsobj.b"): .sum
+                    div {{i.v1}}
+                    div + {{i.v2}}
+                    hr
+                    inputbox(v-model="r[index+9]" :ref="refCount()" @isright="right++" :answer="i.v1+i.v2" type="number" placeh="#")
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
-        +scripts
+        +scripts('sumas.js')
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {t:'47 + 26 =', v1: 50, v2: 23 },
+                    {t:'13 + 17 =', a: 30},
+                    {t:'28 + 17 =', a: 100},
+                    {t:'24 + 58 =', a: 82},
+                    {t:'33 + 19 =', a: 52},
+                    {t:'36 + 48 =', a: 84},
+                    {t:'64 + 17 =', a: 81 },
+                    {t:'57 + 26 =', a: 83 },
+                    {t:'51 + 19 =', a: 70 },
+                    {t:'55 + 39 =', a: 94 },
+                ])
+                app.$set(app.tempsobj, 'b', [
+                    {v1: 63, v2: 58},
+                    {v1: 51, v2: 34},
+                    {v1: 73, v2: 59},
+                    {v1: 87, v2: 84},
+                    {v1: 32, v2: 99},
+                    {v1: 68, v2: 92},
+                ])

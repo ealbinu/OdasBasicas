@@ -32,7 +32,6 @@ Vue.component('finalize', {
         if(this.fieldsText != undefined){
             this.ftext = this.fieldsText
         }
-        console.log(this.total)
         this.totalquestions = this.total
     },
     template: `

@@ -10,16 +10,47 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .sum {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 10px;
+          text-align: right;
+          font-size: 1.4rem;
+          letter-spacing: 5px;
+      }
+      .ex1 .sum hr {
+          border-top: 3px solid var(--accent);
+      }
+      .ex1 .sum .inputbox input {
+          font-size: 1.4rem;
+          padding: 1px;
+          text-align: right;
+          border-radius: 4px;
+          letter-spacing: 5px;
+      }
+      .numbers{
+          display: inline-block;
+          font-size: 1.8rem;
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <div class="instruccion mt-5">Resuelve las siguientes sumas. Utiliza el procedimiento de la sección <em>Te cuento que...</em> de tu libro MDA 2º página 184.</div>
+      <div class="row mt-3 ex1 justify-content-center">
+        <div class="col-md-3 col-6" v-for="(i, index) in tempsobj.a">
+          <div class="sum">
+            <div>{{i.v1}}</div>
+            <div>
+              <numbers c="4">+</numbers> {{i.v2}}
+            </div>
+            <hr/>
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v1+i.v2" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +68,19 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v1: 19, v2: 63},
+          {v1: 31, v2: 38},
+          {v1: 24 , v2: 47},
+          {v1: 18, v2: 55},
+          {v1: 46, v2: 22},
+          {v1: 17, v2: 12},
+          {v1: 33, v2: 19},
+          {v1: 54, v2: 23},
+          {v1: 19, v2: 18},
+          {v1: 33, v2: 9},
+      ])
+    </script>
   </body>
 </html>
