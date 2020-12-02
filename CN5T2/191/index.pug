@@ -1,27 +1,149 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico problemas ambientales'
+- subtitle = 'Las prioridades ambientales'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .dragdrop {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                border: 2px solid #fff;
+            }
+            .dragdrop .draggable > div:not(.result) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                min-height: 80px;
+            }
+            .dragdrop .draggable > div:not(.result) > div {
+                margin: 2px 4px;
+                padding: 6px;
+                border-radius: 6px;
+                background: #fff;
+                cursor: move;
+            }
+            .area {
+                margin-top: 20px;
+            }
+            .area .dragdrop {
+                border: 2px dashed #fff;
+            }
+            .area .dragdrop .draggable > div:not(.result) {
+                min-height: 80px;
+            }
+            .area .dragdrop .draggable > div:not(.result) > div {
+                height: auto;
+                padding: 0;
+                margin: 0;
+                font-size: 1.2rem;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 2px;
+            }
+            .ex10 .dragdrop {
+                background: #DDD6E2;
+                border-color: #6A4287;
+            }
+            .ex11 .dragdrop {
+                background: #E8E1D0;
+                border-color: #887544;
+            }
+            .ex12 .dragdrop {
+                background: #D3E4EE;
+                border-color: #0083BF;
+            }
+            .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(2) {
+                margin-right: 10px;
+            }
+            .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(7) {
+                margin-right: 10px;
+            }
+            .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(8) {
+                margin-right: 10px;
+            }
+            .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(3) {
+                margin-right: 10px;
+            }
+            .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(4) {
+                margin-right: 10px;
+            }
+            .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(8) {
+                margin-right: 10px;
+            }
+            .ex12 .area .dragdrop .draggable > div:not(.result) > div:nth-child(3) {
+                margin-right: 10px;
+            }
+            .ex12 .area .dragdrop .draggable > div:not(.result) > div:nth-child(4) {
+                margin-right: 10px;
+            }
+
+            .ex2 {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .ex2 .inputbox input {
+                font-size: 1.4rem;
+                padding: 4px;
+            }
+            .ex2.x21 {
+                background: #FDE8CF;
+            }
+            .ex2.x22 {
+                background: #EFDEE6;
+            }
+            .ex2.x23 {
+                background: #DDF0EE;
+            }
+            .ex2.x24 {
+                background: #E7F1D8;
+            }
+            .ex2.x25 {
+                background: #FFF6D8;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa palabras con la información de los recuadros para formar los enunciados de los principales causantes de la disminución de la diversidad biológica.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.justify-content-center.align-items-center
+                .col-md-4.ex10.mb-3
+                    dragdrop(:options="['de','la','in','bo','Ta','mo','da','de','ár','ra','les.']" :options-ok="[]")
+                    .area: dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Ta','la','in','mo','de','ra','da','de','ár','bo','les.']")
+                .col-md-4.ex11.mb-3
+                    dragdrop(:options="['pe','te','se','De','cho','li','de','ma','sos.','ria','les','gro']" :options-ok="[]")
+                    .area: dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['De','se','cho','de','ma','te','ria','les','pe','li','gro','sos.']")
+                .col-md-4.ex12.mb-3
+                    dragdrop(:options="['bi','truc','há','tats.','de','Des','ción']" :options-ok="[]")
+                    .area: dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Des','truc','ción','de','há','bi','tats.']")
 
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadero o #[strong F] si es falso.
+
+            .row.mt-3.ex2.x21
+                .col-8: labeltext(num="1.") Además de acabar con los árboles, la tala de bosques destruye la vegetación.
+                .col: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F")
+            .row.mt-3.ex2.x22
+                .col-8: labeltext(num="2.") Le llamamos sotobosque a la vegetación que se produce gracias a la sombra de los árboles.
+                .col: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F")
+            .row.mt-3.ex2.x23
+                .col-8: labeltext(num="3.") Los hongos no ayudan a descomponer la materia orgánica.
+                .col: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="V o F")
+            .row.mt-3.ex2.x24
+                .col-8: labeltext(num="4.")  Las aves se quedan sin refugio y comida gracias a la tala de árboles.
+                .col: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F")
+            .row.mt-3.ex2.x25
+                .col-8: labeltext(num="5.") Todos los animales se pueden adaptar y sobrevivir al cambio de un ecosistema.
+                .col: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="V o F")
 
 
 

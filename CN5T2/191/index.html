@@ -3,23 +3,181 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico problemas ambientales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .dragdrop {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid #fff;
+      }
+      .dragdrop .draggable > div:not(.result) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          min-height: 80px;
+      }
+      .dragdrop .draggable > div:not(.result) > div {
+          margin: 2px 4px;
+          padding: 6px;
+          border-radius: 6px;
+          background: #fff;
+          cursor: move;
+      }
+      .area {
+          margin-top: 20px;
+      }
+      .area .dragdrop {
+          border: 2px dashed #fff;
+      }
+      .area .dragdrop .draggable > div:not(.result) {
+          min-height: 80px;
+      }
+      .area .dragdrop .draggable > div:not(.result) > div {
+          height: auto;
+          padding: 0;
+          margin: 0;
+          font-size: 1.2rem;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 2px;
+      }
+      .ex10 .dragdrop {
+          background: #DDD6E2;
+          border-color: #6A4287;
+      }
+      .ex11 .dragdrop {
+          background: #E8E1D0;
+          border-color: #887544;
+      }
+      .ex12 .dragdrop {
+          background: #D3E4EE;
+          border-color: #0083BF;
+      }
+      .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(2) {
+          margin-right: 10px;
+      }
+      .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(7) {
+          margin-right: 10px;
+      }
+      .ex10 .area .dragdrop .draggable > div:not(.result) > div:nth-child(8) {
+          margin-right: 10px;
+      }
+      .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(3) {
+          margin-right: 10px;
+      }
+      .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(4) {
+          margin-right: 10px;
+      }
+      .ex11 .area .dragdrop .draggable > div:not(.result) > div:nth-child(8) {
+          margin-right: 10px;
+      }
+      .ex12 .area .dragdrop .draggable > div:not(.result) > div:nth-child(3) {
+          margin-right: 10px;
+      }
+      .ex12 .area .dragdrop .draggable > div:not(.result) > div:nth-child(4) {
+          margin-right: 10px;
+      }
+      
+      .ex2 {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex2 .inputbox input {
+          font-size: 1.4rem;
+          padding: 4px;
+      }
+      .ex2.x21 {
+          background: #FDE8CF;
+      }
+      .ex2.x22 {
+          background: #EFDEE6;
+      }
+      .ex2.x23 {
+          background: #DDF0EE;
+      }
+      .ex2.x24 {
+          background: #E7F1D8;
+      }
+      .ex2.x25 {
+          background: #FFF6D8;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico problemas ambientales</h1>
+      <h2>Las prioridades ambientales</h2>
+      <div class="instruccion mt-5">Completa palabras con la información de los recuadros para formar los enunciados de los principales causantes de la disminución de la diversidad biológica.</div>
+      <div class="row mt-3 ex1 justify-content-center align-items-center">
+        <div class="col-md-4 ex10 mb-3">
+          <dragdrop :options="['de','la','in','bo','Ta','mo','da','de','ár','ra','les.']" :options-ok="[]"></dragdrop>
+          <div class="area">
+            <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Ta','la','in','mo','de','ra','da','de','ár','bo','les.']"></dragdrop>
+          </div>
+        </div>
+        <div class="col-md-4 ex11 mb-3">
+          <dragdrop :options="['pe','te','se','De','cho','li','de','ma','sos.','ria','les','gro']" :options-ok="[]"></dragdrop>
+          <div class="area">
+            <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['De','se','cho','de','ma','te','ria','les','pe','li','gro','sos.']"></dragdrop>
+          </div>
+        </div>
+        <div class="col-md-4 ex12 mb-3">
+          <dragdrop :options="['bi','truc','há','tats.','de','Des','ción']" :options-ok="[]"></dragdrop>
+          <div class="area">
+            <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Des','truc','ción','de','há','bi','tats.']"></dragdrop>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero o <strong>F</strong> si es falso.</div>
+      <div class="row mt-3 ex2 x21">
+        <div class="col-8">
+          <labeltext num="1.">Además de acabar con los árboles, la tala de bosques destruye la vegetación.</labeltext>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 x22">
+        <div class="col-8">
+          <labeltext num="2.">Le llamamos sotobosque a la vegetación que se produce gracias a la sombra de los árboles.</labeltext>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 x23">
+        <div class="col-8">
+          <labeltext num="3.">Los hongos no ayudan a descomponer la materia orgánica.</labeltext>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="V o F"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 x24">
+        <div class="col-8">
+          <labeltext num="4."> Las aves se quedan sin refugio y comida gracias a la tala de árboles.</labeltext>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 x25">
+        <div class="col-8">
+          <labeltext num="5.">Todos los animales se pueden adaptar y sobrevivir al cambio de un ecosistema.</labeltext>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="V o F"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
