@@ -35,6 +35,7 @@ Vue.component('tenboxes', {
             }
             if(counter == this.howmany){
                 s_ok.play()
+                this.$emit('isright', true)
                 this.result = true
             } else {
                 s_error.play()

@@ -248,19 +248,19 @@ html(lang="es")
                         .selectable(v-for="(i, index) in 10" :class="index==0?'on first':'dis'"): .box(v-for="(i, index) in 10")
                     numbers 10
                 .col-md-4.col-6.text-center
-                    tenboxes(:howmany="2" v-model="r[0]" key="0" :ref="refCount()")
+                    tenboxes(:howmany="2" v-model="r[0]" key="0" :ref="refCount()" @isright="right++")
                     //selectable(:isok="index<2" v-model="r[index+9]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 20
                 .col-md-4.col-6.text-center
-                    tenboxes(:howmany="3" v-model="r[1]"  key="1" :ref="refCount()")
+                    tenboxes(:howmany="3" v-model="r[1]"  key="1" :ref="refCount()" @isright="right++")
                     //selectable(:isok="index<3" v-model="r[index+18]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 30
                 .col-md-4.col-6.text-center
-                    tenboxes(:howmany="4" v-model="r[2]"  key="2" :ref="refCount()")
+                    tenboxes(:howmany="4" v-model="r[2]"  key="2" :ref="refCount()" @isright="right++")
                     //selectable(:isok="index<4" v-model="r[index+27]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 40
                 .col-md-4.col-6.text-center
-                    tenboxes(:howmany="5" v-model="r[3]"  key="3" :ref="refCount()")
+                    tenboxes(:howmany="5" v-model="r[3]"  key="3" :ref="refCount()" @isright="right++")
                     //selectable(:isok="index<5" v-model="r[index+36]" :ref="refCount()" @isright="right++" v-for="(i, index) in 10"): .box(v-for="(i, index) in 10")
                     numbers 50
             .instruccion.mt-5 Observa las placas anteriores y contesta las siguientes preguntas.
@@ -281,14 +281,14 @@ html(lang="es")
                         template(v-slot:after=""): numbers = 100 
             .row.mt-3.ex1
                 .col-12
-                    labeltext(num="3.") ¿Cuántos cubos quedaron sin colorear en la primera placa?
+                    labeltext(num="3.") ¿Cuántos cubos quedaron sin colorear en la tercera placa?
                     inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="70" type="number" placeh="#")
                     labeltext Entonces:
                     inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#")
                         template(v-slot:before=""): numbers 30 + 70 = 
             .row.mt-3.ex1
                 .col-12
-                    labeltext(num="4.") ¿Cuántos cubos quedaron sin colorear en la primera placa?
+                    labeltext(num="4.") ¿Con qué suma representarías la última placa?
                     .row.justify-content-center.align-items-center.text-center.no-gutters
                         .col: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
                         .col-1: numbers +
