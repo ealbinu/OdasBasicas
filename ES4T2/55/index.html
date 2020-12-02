@@ -1,25 +1,82 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco los reportes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+      }
+      .ex1 .fragmento {
+          padding: 10px;
+          background: #f5f5f5;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+      .ex1 .fragmento .selectable {
+          display: inline-block;
+      }
+      .ex1 .fragmento .selectable.on {
+          text-decoration: underline;
+          text-decoration-color: var(--main);
+      }
+      .ex1 .fragmento .selectable.on .circledactive {
+          display: none;
+      }
+      .recuadropalabras {
+          background: #00AEB5;
+      }
+      .recuadropalabras strong {
+          color: #fff;
+      }
+      .parrafoinputs {
+          line-height: 2;
+          background: #F4FAF9;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco los reportes</h1>
+      <h2>Los momentos: antes, durante y después</h2>
+      <div class="instruccion mt-5">Lee los siguientes fragmentos del reporte de dos entrevistas y escribe si se trata de <strong>discurso directo</strong> o <strong>discurso indirecto</strong>. Luego encuentra y selecciona la cita textual. Consulta las páginas 78 y 79 de tu libro de texto SEP.</div>
+      <div class="row mt-3 flex-wrap justify-content-center align-items-center ex1">
+        <div class="col-md-8">
+          <div class="fragmento">
+            <div class="txt">El doctor Alfredo nos contó en la entrevista que necesitamos consumir alimentos variados, además de frutas y verduras. Agregó que es importante el consumo de proteínas según nuestra edad.</div>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Discurso indirecto" type="text" placeh="- -"></inputbox>
+          </div>
+          <div class="fragmento">
+            <div class="txt">El doctor Pedro Gutiérrez expresó su opinión así:
+              <selectable :isok="true" v-model="r[1]" :ref="refCount()" @isright="right++">“Las bacterias se encuentran en mayor cantidad sobre objetos que tocamos a diario, tales como pasamanos o picaportes de las puertas”.</selectable>
+            </div>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Discurso directo" type="text" placeh="- -"></inputbox>
+          </div>
+        </div>
+        <div class="col-md text-center"><img class="img-fluid" src="aimg/1a.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Completa el reporte de entrevista con las palabras del recuadro.Consulta la página 80 de tu libro de texto SEP y la sección Te cuento que... de esta página.</div>
+      <div class="mt-3">
+        <recuadropalabras :palabras="['Por eso','Asimismo','afirmó','Finalmente','Debido a']"></recuadropalabras>
+      </div>
+      <div class="mt-3">
+        <div class="parrafoinputs">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="'Debido a'" type="text" placeh="-"></inputbox><span> que es la semana de la vacunación en la escuela “Benito Juárez”, me di a la tarea de buscar más información al respecto. </span>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'Por eso '" type="text" placeh="-"></inputbox><span>, entrevisté a la doctora Laura López de la clínica 11 del IMSS. Ella me contestó amablemente unas cuantas preguntas sobre las vacunas y su importancia para la salud. </span><span>La doctora  </span>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'afirmó'" type="text" placeh="-"></inputbox><span> que las vacunas son una de las mejores maneras de proteger a los bebés de hasta 14 enfermedades infantiles, incluso algunas mortales. </span>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'Asimismo'" type="text" placeh="-"></inputbox><span>, dijo que los niños mayores de 5 años deben acudir, acompañados de un adulto, a su centro de salud y vacunarse contra enfermedades como el sarampión y la viruela si no lo han hecho todavía. </span>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'Finalmente'" type="text" placeh="-"></inputbox><span>, la doctora habló sobre otras vacunas contra enfermedades más contagiosas como la influenza, la varicela, la difteria, la influenza y el rotavirus, entre otras. </span>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

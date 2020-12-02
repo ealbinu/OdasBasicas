@@ -1,28 +1,81 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco los reportes'
+- subtitle = 'Los momentos: antes, durante y después'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+            }
+            .ex1 .fragmento {
+                padding: 10px;
+                background: #f5f5f5;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            .ex1 .fragmento .selectable {
+                display: inline-block;
+            }
+            .ex1 .fragmento .selectable.on {
+                text-decoration: underline;
+                text-decoration-color: var(--main);
+            }
+            .ex1 .fragmento .selectable.on .circledactive {
+                display: none;
+            }
+            .recuadropalabras {
+                background: #00AEB5;
+            }
+            .recuadropalabras strong {
+                color: #fff;
+            }
+            .parrafoinputs {
+                line-height: 2;
+                background: #F4FAF9;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee los siguientes fragmentos del reporte de dos entrevistas y escribe si se trata de #[strong discurso directo] o #[strong discurso indirecto]. Luego encuentra y selecciona la cita textual. Consulta las páginas 78 y 79 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.flex-wrap.justify-content-center.align-items-center.ex1
+                .col-md-8
+                    div.fragmento
+                        div.txt El doctor Alfredo nos contó en la entrevista que necesitamos consumir alimentos variados, además de frutas y verduras. Agregó que es importante el consumo de proteínas según nuestra edad.
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Discurso indirecto" type="text" placeh="- -")
+                    div.fragmento
+                        div.txt El doctor Pedro Gutiérrez expresó su opinión así:
+                            selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++") “Las bacterias se encuentran en mayor cantidad sobre objetos que tocamos a diario, tales como pasamanos o picaportes de las puertas”.
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Discurso directo" type="text" placeh="- -")
+                .col-md.text-center: img(src="aimg/1a.png").img-fluid
+                
 
+            .instruccion.mt-5 Completa el reporte de entrevista con las palabras del recuadro.Consulta la página 80 de tu libro de texto SEP y la sección Te cuento que... de esta página.
 
+            .mt-3: recuadropalabras(:palabras="['Por eso','Asimismo','afirmó','Finalmente','Debido a']")
+            - var pals = []
+            - pals.push(['Debido a', 3])
+            - pals.push(' que es la semana de la vacunación en la escuela “Benito Juárez”, me di a la tarea de buscar más información al respecto.')
+            - pals.push(['Por eso ', 4])
+            - pals.push(', entrevisté a la doctora Laura López de la clínica 11 del IMSS. Ella me contestó amablemente unas cuantas preguntas sobre las vacunas y su importancia para la salud.')
+            - pals.push('La doctora ')
+            - pals.push(['afirmó', 5])
+            - pals.push(' que las vacunas son una de las mejores maneras de proteger a los bebés de hasta 14 enfermedades infantiles, incluso algunas mortales.')
+            - pals.push(['Asimismo', 6])
+            - pals.push(', dijo que los niños mayores de 5 años deben acudir, acompañados de un adulto, a su centro de salud y vacunarse contra enfermedades como el sarampión y la viruela si no lo han hecho todavía.')
+            - pals.push(['Finalmente', 7])
+            - pals.push(', la doctora habló sobre otras vacunas contra enfermedades más contagiosas como la influenza, la varicela, la difteria, la influenza y el rotavirus, entre otras.')
+            .mt-3: +parrafoinputs(pals)
 
 
 
