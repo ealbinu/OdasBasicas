@@ -8,18 +8,87 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1.cont {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            
+            .ex1.cont img{
+                max-width: 100%;
+            }
+            .ex1.cont > div {
+                background: #39B291;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border: 2px solid #fff;
+                color:#fff;
+            }
+            .ex1.cont > div:first-child {
+                background: #fff;
+            }
+            .ex1 .fraccion {
+                text-align: center;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+            .ex1 hr {
+                border-top: 3px solid var(--sec);
+                max-width: 100px;
+                margin: 2px auto;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.1rem;
+                padding: 4px;
+                border-radius: 4px;
+                max-width: 90px;
+            }
+            .head {
+                text-align: center;
+            }
+            .head > div {
+                background: #D2DB30;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #1A1919;
+            }
+            @media (max-width: 680px) {
+                .head > div {
+                    font-size: 0.5rem;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las siguientes figuras y completa los datos que faltan para representar la fracción coloreada.
 
-            .row.mt-3
+
+
+            .row.mt-3.ex1.head
+                .col-3 &nbsp;
+                .col-3 Numerador
+                .col-3 Denominador
+                .col-3 Fracción
+            .row.mt-3.ex1.cont
+                .col-3: img(src="aimg/f1.png")
+                .col-3: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                .col-3: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                .col-3: .fraccion
+                    div 1
+                    hr
+                    div 3
+            .row.mt-3.ex1.cont
+                .col-3: img(src="aimg/f2.png")
+                .col-3 3
+                .col-3: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                .col-3: .fraccion
+                    div: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                    hr
+                    div: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
             
 
 

@@ -8501,6 +8501,39 @@
 		"oAP": "\/MA3T1\/98\/index.html",
 		"oF": 0
 		},
+	"\/MA3T2\/140\/aimg\/f1.png": {
+		"ft": 32768,
+		"iS": 4041,
+		"oA": 0,
+		"oAP": "\/MA3T2\/140\/aimg\/f1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T2\/140\/aimg\/f2.png": {
+		"ft": 32768,
+		"iS": 4502,
+		"oA": 0,
+		"oAP": "\/MA3T2\/140\/aimg\/f2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T2\/140\/aimg\/f3.png": {
+		"ft": 32768,
+		"iS": 3856,
+		"oA": 0,
+		"oAP": "\/MA3T2\/140\/aimg\/f3.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/MA3T2\/140\/index.html": {
 		"cB": 0,
 		"ft": 8192,
