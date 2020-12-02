@@ -1,5 +1,5 @@
 Vue.component('choose', {
-    props: ['value', 'text', 'options', 'answer', 'num', 'initclass', 'answerNum'],
+    props: ['value', 'text', 'options', 'answer', 'num', 'initclass', 'answerNum', 'autoSelectNum'],
     data() {
         return {
             status: null,
@@ -18,13 +18,13 @@ Vue.component('choose', {
         }
     },
     methods: {
-        clicked (op) {
+        clicked (op, playsound) {
             if(this.evaluate) {
                 return false
             }
             this.status = op
             this.$emit('input', this.status)
-            if(this.status) {
+            if(this.status && playsound) {
                 s_ok.play()
             }
         },
@@ -43,6 +43,9 @@ Vue.component('choose', {
         } else {
             this.correctAnswer = this.answer
         }
+        if(this.autoSelectNum!=undefined){
+            this.clicked(this.options[this.autoSelectNum], false)
+        }
     },
     template: `
         <div class="choose" :class="setclass + ' ' + (initclass?initclass:' ')">
@@ -50,8 +53,8 @@ Vue.component('choose', {
             <div class="label"><strong v-if="num">{{num}}</strong> <span v-html="text"></span></div>
             <div class="options">
                 <template v-for="op in options">  
-                    <div @click="clicked(op)" v-if="status!=op" v-html="op"></div>
-                    <div @click="clicked(op)" v-if="status==op" class="active animate__animated animate__heartBeat" v-html="op"></div>
+                    <div @click="clicked(op, true)" v-if="status!=op" v-html="op"></div>
+                    <div @click="clicked(op, true)" v-if="status==op" class="active animate__animated animate__heartBeat" v-html="op"></div>
                 </template>
             </div>
         </div>
