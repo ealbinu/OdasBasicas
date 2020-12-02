@@ -1,0 +1,62 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = '¡Vamos a reciclar!'
+- subtitle = ''
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .inputbox {
+                justify-content: flex-start;
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 6px;
+            }
+            .inputbox input {
+                max-width: 100px;
+                font-size: 1.4rem;
+                box-shadow: 4px 4px 0 #F0A85F;
+                border-color: #F0A85F;
+                margin-right: 20px;
+            }
+            .inputbox .txt {
+                font-size: 1.2rem;
+            }
+            @media (max-width: 680px) {
+                .inputbox input {
+                    font-size: 1rem;
+                    padding: 1px;
+                }
+                .inputbox .txt {
+                    font-size: 1rem;
+                }
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Lee las siguientes situaciones respecto a las tres erres y escribe #[strong V] si se trata de una ventaja y #[strong D] si se trata de una desventaja.
+
+            .row.mt-3.ex1
+                .col-12(v-for="(i, index) in tempsobj.a")
+                    inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="V o D")
+                        template(v-slot:after=""): div.txt {{i.t}}
+            
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {v:'v', t:'Al usar sólo lo necesario, ahorramos recursos y reducimos la contaminación.'},
+                    {v:'d', t:'Hay algunos materiales, como el papel, que no duran mucho.'},
+                    {v:'v', t:'Al reciclar evitamos que tengan que fabricarse nuevos materiales que podrían contaminar.'},
+                    {v:'d', t:'No siempre podemos reducir, porque en ocasiones sí necesitamos cosas nuevas.'},
+                    {v:'v', t:'Al reusar lo que ya tenemos, ya sea para el mismo fin o darle un nuevo uso, ahorramos recursos.'},
+                    {v:'d', t:'En ocasiones el proceso de reciclaje es costoso o difícil.'},
+                ])
