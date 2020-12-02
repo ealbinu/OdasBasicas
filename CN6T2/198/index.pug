@@ -1,26 +1,63 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizo el calentamiento global'
+- subtitle = 'Un ejemplo de fábula'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras {
+                background: #DDD6E2;
+            }
+            .recuadropalabras strong {
+                background: #fff;
+                color: #6A4287;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las siguientes oraciones con las palabras del recuadro. Consulta las páginas 76 y 77 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            recuadropalabras(:palabras="['inundaciones','vapor','huracanes','dióxido','efecto invernadero', 'metano','calentamiento global','reducir el consumo']")
+
+            .parrafoinputs.mt-3
+                labeltext(num="1.")
+                    | El
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="efecto invernadero" type="text" placeh="-")
+                    | es un fenómeno natural en el que la Tierra conserva una temperatura adecuada para la existencia de los seres vivos.
+            .parrafoinputs
+                labeltext(num="2.")
+                    | Cuando los rayos del Sol entran a la atmósfera, quedan atrapados por gases como:
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="vapor" type="text" placeh="-")
+                    | de agua,
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="dióxido" type="text" placeh="-")
+                    | de carbono y
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="metano" type="text" placeh="-")
+                    | entre otros.
+            .parrafoinputs
+                labeltext(num="3.")
+                    | El
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="calentamiento global" type="text" placeh="-")
+                    | es el incremento de la temperatura media de la atmósfera de la Tierra.
+            .parrafoinputs
+                labeltext(num="4.")
+                    | Una de las consecuencias del calentamiento global es el aumento en la intensidad y frecuencia de los
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="huracanes" type="text" placeh="-")
+                    | , precipitaciones e
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="inundaciones" type="text" placeh="-")
+                    | .
+            .parrafoinputs
+                labeltext(num="5.")
+                    | Algunas de las medidas para reducir el calentamiento global son:
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="reducir el consumo" type="text" placeh="-")
+                    | de energía eléctrica, limitar el consumo de agua, reciclar, etcétera.
 
 
 

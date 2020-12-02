@@ -5,3 +5,7 @@ mixin parrafoinputs(palabras)
                 span=val+' '
             else
                 inputbox(v-model="r["+val[1]+"]" :ref="refCount()" @isright="right++" :answer="'"+val[0]+"'" type="text" placeh="-")
+
+
+
+//+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])

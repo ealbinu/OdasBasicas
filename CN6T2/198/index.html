@@ -1,25 +1,60 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo el calentamiento global</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras {
+          background: #DDD6E2;
+      }
+      .recuadropalabras strong {
+          background: #fff;
+          color: #6A4287;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo el calentamiento global</h1>
+      <h2>Un ejemplo de fábula</h2>
+      <div class="instruccion mt-5">Completa las siguientes oraciones con las palabras del recuadro. Consulta las páginas 76 y 77 de tu libro de texto SEP.</div>
+      <recuadropalabras :palabras="['inundaciones','vapor','huracanes','dióxido','efecto invernadero', 'metano','calentamiento global','reducir el consumo']"></recuadropalabras>
+      <div class="parrafoinputs mt-3">
+        <labeltext num="1.">El
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="efecto invernadero" type="text" placeh="-"></inputbox>es un fenómeno natural en el que la Tierra conserva una temperatura adecuada para la existencia de los seres vivos.
+        </labeltext>
+      </div>
+      <div class="parrafoinputs">
+        <labeltext num="2.">Cuando los rayos del Sol entran a la atmósfera, quedan atrapados por gases como:
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="vapor" type="text" placeh="-"></inputbox>de agua,
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="dióxido" type="text" placeh="-"></inputbox>de carbono y
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="metano" type="text" placeh="-"></inputbox>entre otros.
+        </labeltext>
+      </div>
+      <div class="parrafoinputs">
+        <labeltext num="3.">El
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="calentamiento global" type="text" placeh="-"></inputbox>es el incremento de la temperatura media de la atmósfera de la Tierra.
+        </labeltext>
+      </div>
+      <div class="parrafoinputs">
+        <labeltext num="4.">Una de las consecuencias del calentamiento global es el aumento en la intensidad y frecuencia de los
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="huracanes" type="text" placeh="-"></inputbox>, precipitaciones e
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="inundaciones" type="text" placeh="-"></inputbox>.
+        </labeltext>
+      </div>
+      <div class="parrafoinputs">
+        <labeltext num="5.">Algunas de las medidas para reducir el calentamiento global son:
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="reducir el consumo" type="text" placeh="-"></inputbox>de energía eléctrica, limitar el consumo de agua, reciclar, etcétera.
+        </labeltext>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
