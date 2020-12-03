@@ -70,7 +70,10 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Resuelve las siguientes sumas utilizando el procedimiento anterior. Observa el ejemplo.
+
+            .row: .col-12: img(src="aimg/teq.png").w-100
+
+            .instruccion.mt-5 Resuelve las siguientes sumas utilizando el método de completando decenas. Observa el ejemplo.
 
             .row.mt-3.ex1
                 .col-md-6(v-for="(i, index) in tempsobj.a"): .ope
@@ -101,7 +104,7 @@ html(lang="es")
                 app.$set(app.tempsobj, 'a', [
                     {t:'47 + 26 =', v1: 50, v2: 23 },
                     {t:'13 + 17 =', a: 30},
-                    {t:'28 + 17 =', a: 100},
+                    {t:'28 + 17 =', a: 45},
                     {t:'24 + 58 =', a: 82},
                     {t:'33 + 19 =', a: 52},
                     {t:'36 + 48 =', a: 84},

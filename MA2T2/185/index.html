@@ -72,7 +72,10 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Sumo completando decenas</h1>
       <h2>Números amigables para sumar</h2>
-      <div class="instruccion mt-5">Resuelve las siguientes sumas utilizando el procedimiento anterior. Observa el ejemplo.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/teq.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Resuelve las siguientes sumas utilizando el método de completando decenas. Observa el ejemplo.</div>
       <div class="row mt-3 ex1">
         <div class="col-md-6" v-for="(i, index) in tempsobj.a">
           <div class="ope">
@@ -124,7 +127,7 @@
       app.$set(app.tempsobj, 'a', [
           {t:'47 + 26 =', v1: 50, v2: 23 },
           {t:'13 + 17 =', a: 30},
-          {t:'28 + 17 =', a: 100},
+          {t:'28 + 17 =', a: 45},
           {t:'24 + 58 =', a: 82},
           {t:'33 + 19 =', a: 52},
           {t:'36 + 48 =', a: 84},
