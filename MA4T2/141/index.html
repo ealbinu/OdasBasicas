@@ -53,6 +53,37 @@
           background: #E9E2D0;
           border: 2px dashed #887544;
       }
+      .ex2 .inputbox {
+          font-size: 1.4rem;
+          background: #DDD6E2;
+          justify-content: space-around;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      @media (max-width: 760px) {
+          .ex2 .inputbox {
+              flex-direction: column;
+          }
+      }
+      .ex2 .inputbox .compa {
+          background: #fff;
+          border: 2px dashed #AE4E8F;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex2 .inputbox .compa .numbers {
+          color: #AE4E8F;
+          display: inline;
+          font-size: 1.8rem;
+      }
+      .ex2 .inputbox input {
+          max-width: 100px;
+          box-shadow: 6px 6px 0 #AE4E8F;
+          border-color: #AE4E8F;
+          font-size: 1.2rem;
+          margin: 10px;
+      }
+      
       
     </style>
   </head>
@@ -93,6 +124,49 @@
               <div>20 × 2 + 8 =</div>
             </check>
           </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa las siguientes operaciones y escribe <strong>V</strong> si las comparaciones son verdaderas o <strong>F</strong> si son falsas.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F">
+            <template v-slot:before="">
+              <div class="compa">1.5 × 3 
+                <numbers>=</numbers> 4.5
+              </div>y 
+              <div class="compa">1.5 + 1.5 + 1.5 
+                <numbers>=</numbers> 4.5
+              </div>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="V o F">
+            <template v-slot:before="">
+              <div class="compa">4.5 × 2 
+                <numbers>=</numbers> 9
+              </div>y
+              <div class="compa">4.5 + 4.5 + 4.5 
+                <numbers>=</numbers> 9
+              </div>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="V o F">
+            <template v-slot:before="">
+              <div class="compa">2.5 × 6 =
+                <numbers>=</numbers>15
+              </div>y
+              <div class="compa">8 + 4.5 + 2.5 
+                <numbers>=</numbers> 15
+              </div>
+            </template>
+          </inputbox>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
