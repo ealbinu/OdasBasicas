@@ -45,6 +45,33 @@ html(lang="es")
                 max-width: 180px;
                 
             }
+            .selectableoptions {
+                flex-grow: 1;
+                font-size: 4rem;
+                font-family: 'barnacle_boyregular';
+            }
+            .selectableoptions .option {
+                text-align: center;
+            }
+            .selectableoptions .option.off {
+                color: #888;
+            }
+            .selectableoptions .option.on {
+                color: var(--main);
+            }
+            .ex3 .label span[frac] {
+                display: inline-block;
+                vertical-align: middle;
+                width: 30px;
+                text-align: center;
+            }
+            .ex3 .label span[frac] hr {
+                border: none;
+                border-top: 3px solid var(--sec);
+                margin: 0;
+            }
+
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -57,19 +84,27 @@ html(lang="es")
             .row.mt-3.ex1
                 .col-md-6.text-center.fracomp
                     img(src="aimg/1a.png").img-fluid
-                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="<" type="text" placeh="> o <")
+                    //inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="<" type="text" placeh="> o <")
+                    selectableoptions(v-model="r[0]" :ref="refCount()" @isright="right++" answer="me" :options="[{val:'ma', sym:'>'},  {val:'me', sym:'<'},  ]" customclass="col-6")
+                        template(v-slot:option="{option}") {{option.sym}}
                     img(src="aimg/1b.png").img-fluid
                 .col-md-6.text-center.fracomp
                     img(src="aimg/1c.png").img-fluid
-                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer=">" type="text" placeh="> o <")
+                    //inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer=">" type="text" placeh="> o <")
+                    selectableoptions(v-model="r[1]" :ref="refCount()" @isright="right++" answer="ma" :options="[{val:'ma', sym:'>'},  {val:'me', sym:'<'},  ]" customclass="col-6")
+                        template(v-slot:option="{option}") {{option.sym}}
                     img(src="aimg/1d.png").img-fluid
                 .col-md-6.text-center.fracomp
                     img(src="aimg/1e.png").img-fluid
-                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="<" type="text" placeh="> o <")
+                    //inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="<" type="text" placeh="> o <")
+                    selectableoptions(v-model="r[2]" :ref="refCount()" @isright="right++" answer="me" :options="[{val:'ma', sym:'>'},  {val:'me', sym:'<'},  ]" customclass="col-6")
+                        template(v-slot:option="{option}") {{option.sym}}
                     img(src="aimg/1f.png").img-fluid
                 .col-md-6.text-center.fracomp
                     img(src="aimg/1g.png").img-fluid
-                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer=">" type="text" placeh="> o <")
+                    //inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer=">" type="text" placeh="> o <")
+                    selectableoptions(v-model="r[3]" :ref="refCount()" @isright="right++" answer="ma" :options="[{val:'ma', sym:'>'},  {val:'me', sym:'<'},  ]" customclass="col-6")
+                        template(v-slot:option="{option}") {{option.sym}}
                     img(src="aimg/1h.png").img-fluid
             
             .instruccion.mt-5 Escribe los números del #[strong 1] al #[strong 6] para ordenar las siguientes figuras de menor a mayor, de acuerdo a la fracción que representan.
@@ -86,14 +121,14 @@ html(lang="es")
 
             .row.mt-3.ex3
                 .col-12
-                    labeltext(num="1.") Manuel tiene tres parcelas, en la primera siembra 2/4 de maíz, en la segunda 4/6 de frijol y en la tercera 4/8 de soya.
+                    labeltext(num="1.") Manuel tiene tres parcelas, en la primera siembra <span frac>2<hr>4</span> de maíz, en la segunda <span frac>4<hr>6</span> de frijol y en la tercera <span frac>4<hr>8</span> de soya.
                     .text-center: img(src="aimg/3a.png").illu
                     choose(v-model="r[10]" :ref="refCount()" num="a)" text="¿Cuál producto es el que más siembra?" :options="['Siembra más frijol.','Siembra más maíz.','Siembra más soya.']" @isright="right++" answer="Siembra más frijol.")
                     choose(v-model="r[11]" :ref="refCount()" num="b)" text="¿Cuál de los otros dos productos siembra más?" :options="['Siembra más soya.','Siembra la misma cantidad.','Siembra más maíz.']" @isright="right++" answer="Siembra la misma cantidad.")
-                    labeltext(num="2.") Isabel fue al mercado y compró 5/6 kg de jitomates, 3/5 kg de chiles y 5/3 kg de cebollas.
+                    labeltext(num="2.") Isabel fue al mercado y compró <span frac>5<hr>6</span> kg de jitomates, <span frac>3<hr>5</span> kg de chiles y <span frac>5<hr>3</span> kg de cebollas.
                     .text-center: img(src="aimg/3b.png").illu
-                    choose(v-model="r[12]" :ref="refCount()" num="b)" text="¿De qué verdura compró menos?" :options="['Compró menos jitomates.','Compró menos chiles.','Compró menos cebollas.']" @isright="right++" answer="Compró menos chiles.")
-                    choose(v-model="r[13]" :ref="refCount()" num="b)" text="Escribe los productos de mayor a menor peso." :options="['Chiles, cebollas y jitomates.','Jitomates, chiles y cebollas.','Cebollas, jitomates y chiles.']" @isright="right++" answer="Cebollas, jitomates y chiles.")
+                    choose(v-model="r[12]" :ref="refCount()" num="a)" text="¿De qué verdura compró menos?" :options="['Compró menos jitomates.','Compró menos chiles.','Compró menos cebollas.']" @isright="right++" answer="Compró menos chiles.")
+                    choose(v-model="r[13]" :ref="refCount()" num="b)" text="Selecciona la opción que muestre los productos de mayor a menor peso." :options="['Chiles, cebollas y jitomates.','Jitomates, chiles y cebollas.','Cebollas, jitomates y chiles.']" @isright="right++" answer="Cebollas, jitomates y chiles.")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
