@@ -2261,11 +2261,11 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/CN4T2\/204\/aimg\/Captura de Pantalla 2020-12-10 a la(s) 7.01.44.png": {
+	"\/CN4T2\/204\/aimg\/tecuento.png": {
 		"ft": 32768,
 		"iS": 185692,
 		"oA": 0,
-		"oAP": "\/CN4T2\/204\/aimg\/Captura de Pantalla 2020-12-10 a la(s) 7.01.44.png",
+		"oAP": "\/CN4T2\/204\/aimg\/tecuento.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -8713,6 +8713,17 @@
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
+		},
+	"\/MA2T2\/189\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 484163,
+		"oA": 0,
+		"oAP": "\/MA2T2\/189\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
 		},
 	"\/MA2T2\/189\/index.html": {
 		"cB": 0,
