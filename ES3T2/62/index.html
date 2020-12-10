@@ -3,23 +3,93 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Escribo mi línea del tiempo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ops {
+          text-align: center;
+      }
+      .ops img {
+          width: 100%;
+          max-width: 180px;
+      }
+      .line .dragdrop {
+          background: var(--clear);
+          min-height: 100px;
+          margin: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 var(--sec);
+          color: var(--sec);
+      }
+      @media (max-width: 680px) {
+          .line .dragdrop {
+              flex-direction: column;
+          }
+      }
+      .line .dragdrop:before {
+          font-size: 2rem;
+          padding: 10px;
+      }
+      .line .dragdrop:nth-child(1):before {
+          content: "2010";
+      }
+      .line .dragdrop:nth-child(2):before {
+          content: "2011";
+      }
+      .line .dragdrop:nth-child(3):before {
+          content: "2013";
+      }
+      .line .dragdrop:nth-child(4):before {
+          content: "2015";
+      }
+      .line .dragdrop:nth-child(5):before {
+          content: "2016";
+      }
+      .line .dragdrop:nth-child(6):before {
+          content: "2020";
+      }
+      .line .dragdrop .draggable {
+          margin: 5px;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+      }
+      .line .dragdrop .draggable > div:not(.result) {
+          background: #fff;
+          border-radius: 10px;
+          min-height: 120px;
+          width: 90%;
+          max-width: 120px;
+          margin: 10px;
+      }
+      .line .dragdrop .draggable > div:not(.result) > div img {
+          max-width: 100%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Escribo mi línea del tiempo</h1>
+      <h2>Planifica tu autobiografía</h2>
+      <div class="instruccion mt-5">Coloca las ilustraciones con el año correspondiente.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-6 ops">
+          <dragdrop :options="tempsobj.a" :options-ok="[]" v-if="tempsobj.a"></dragdrop>
+        </div>
+        <div class="col-6 line">
+          <template v-for="(i, index) in [2010,2011,2013,2015,2016,2020]" v-if="tempsobj.b">
+            <dragdrop v-model="r[index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[tempsobj.b[index]]"></dragdrop>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +107,23 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          ' <img src=aimg/a2.png> ',
+          ' <img src=aimg/a6.png> ',
+          ' <img src=aimg/a5.png> ',
+          ' <img src=aimg/a3.png> ',
+          ' <img src=aimg/a4.png> ',
+          ' <img src=aimg/a1.png> ',
+      ])
+      app.$set(app.tempsobj, 'b', [
+          ' <img src=aimg/a1.png> ',
+          ' <img src=aimg/a2.png> ',
+          ' <img src=aimg/a3.png> ',
+          ' <img src=aimg/a4.png> ',
+          ' <img src=aimg/a5.png> ',
+          ' <img src=aimg/a6.png> ',
+      ])
+    </script>
   </body>
 </html>

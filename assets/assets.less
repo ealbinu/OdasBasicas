@@ -251,6 +251,19 @@ strong {
     }
 }
 
+.draggable{
+    display: flex;
+    min-height: 40px;
+    width: 100%;
+    flex-direction: column;
+    &>div:not(.result){
+        flex-grow: 1;
+        &>div{
+            cursor:move;
+        }
+    }
+}
+
 
 .inputbox {
     justify-content: center;

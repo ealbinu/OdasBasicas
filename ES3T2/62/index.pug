@@ -1,25 +1,93 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Escribo mi línea del tiempo'
+- subtitle = 'Planifica tu autobiografía'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ops {
+                text-align: center;
+            }
+            .ops img {
+                width: 100%;
+                max-width: 180px;
+            }
+            .line .dragdrop {
+                background: var(--clear);
+                min-height: 100px;
+                margin: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 var(--sec);
+                color: var(--sec);
+            }
+            @media (max-width: 680px) {
+                .line .dragdrop {
+                    flex-direction: column;
+                }
+            }
+            .line .dragdrop:before {
+                font-size: 2rem;
+                padding: 10px;
+            }
+            .line .dragdrop:nth-child(1):before {
+                content: "2010";
+            }
+            .line .dragdrop:nth-child(2):before {
+                content: "2011";
+            }
+            .line .dragdrop:nth-child(3):before {
+                content: "2013";
+            }
+            .line .dragdrop:nth-child(4):before {
+                content: "2015";
+            }
+            .line .dragdrop:nth-child(5):before {
+                content: "2016";
+            }
+            .line .dragdrop:nth-child(6):before {
+                content: "2020";
+            }
+            .line .dragdrop .draggable {
+                margin: 5px;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .line .dragdrop .draggable > div:not(.result) {
+                background: #fff;
+                border-radius: 10px;
+                min-height: 120px;
+                width: 90%;
+                max-width: 120px;
+                margin: 10px;
+            }
+            .line .dragdrop .draggable > div:not(.result) > div img {
+                max-width: 100%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Coloca las ilustraciones con el año correspondiente.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-6.ops
+                    dragdrop(:options="tempsobj.a" :options-ok="[]" v-if="tempsobj.a")
+
+                .col-6.line
+                    template(v-for="(i, index) in [2010,2011,2013,2015,2016,2020]" v-if="tempsobj.b")
+                        dragdrop(v-model="r[index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[tempsobj.b[index]]")
+                    
+
             
 
 
@@ -29,4 +97,19 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    ' <img src=aimg/a2.png> ',
+                    ' <img src=aimg/a6.png> ',
+                    ' <img src=aimg/a5.png> ',
+                    ' <img src=aimg/a3.png> ',
+                    ' <img src=aimg/a4.png> ',
+                    ' <img src=aimg/a1.png> ',
+                ])
+                app.$set(app.tempsobj, 'b', [
+                    ' <img src=aimg/a1.png> ',
+                    ' <img src=aimg/a2.png> ',
+                    ' <img src=aimg/a3.png> ',
+                    ' <img src=aimg/a4.png> ',
+                    ' <img src=aimg/a5.png> ',
+                    ' <img src=aimg/a6.png> ',
+                ])
