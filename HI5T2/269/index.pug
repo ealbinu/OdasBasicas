@@ -1,25 +1,32 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Describo el Porfiriato'
+- subtitle = 'Las diferencias políticas entre los liberales y la consolidación de la dictadura de Porfirio Díaz'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox{
+                background: #F8F0F2;
+                border: 2px solid #AE4E8F;
+                border-radius: 10px;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadera o #[strong F] si es falso. Consulta la página 82 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext(:num="(index+1)+'.'") {{i.t}}
             
 
 
@@ -29,4 +36,12 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v: 'F', t: 'El grupo civil era encabezado por Porfirio Díaz.'},
+                    {v: 'F', t: 'El grupo militar era liderado por Benito Juárez.'},
+                    {v: 'V', t: 'El grupo militar buscaba mejorar las relaciones con la Iglesia.'},
+                    {v: 'V', t: 'Porfirio Díaz proclamó el Plan de La Noria para desconocer el gobierno de Juárez.'},
+                    {v: 'F', t: 'Porfirio Díaz aplicó las Leyes de Reforma con rigidez.'},
+                    {v: 'V', t: 'Sebastián Lerdo de Tejada buscó reelegirse.'},
+                    {v: 'V', t: 'Porfirio Díaz elaboró el Plan de Tuxtepec en el que exigía la no reelección de Lerdo de Tejada.'},
+                ])
