@@ -3,23 +3,50 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Me preparo para estudiar</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .trueorfalse .inputbox {
+          justify-content: flex-start;
+          border-radius: 10px;
+      }
+      .trueorfalse .inputbox input {
+          margin-left: 0;
+          margin-right: 10px;
+      }
+      .trueorfalse .cl0 .inputbox,
+      .trueorfalse .cl3 .inputbox,
+      .trueorfalse .cl4 .inputbox {
+          background: linear-gradient(#C9E0EB, #9FC6E0);
+      }
+      .trueorfalse .cl1 .inputbox,
+      .trueorfalse .cl2 .inputbox,
+      .trueorfalse .cl5 .inputbox {
+          background: linear-gradient(#FFF4D1, #FFEDB1);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Me preparo para estudiar</h1>
+      <h2>Producto final</h2>
+      <div class="instruccion mt-5">Ordena del <strong>1</strong> al <strong>6</strong> los pasos para realizar un mapa conceptual o un cuadro sinóptico como herramienta de estudio.</div>
+      <div class="row mt-3 ex1 trueorfalse">
+        <template v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1">
+          <div class="col-md-6" :class="'cl'+index">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#">
+              <template v-slot:after="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +64,15 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          {v: 6, t: 'Realizar el gráfico y hacer las lecturas necesarias para el estudio del tema.'},
+          {v: 3, t: 'Tratar de agrupar las ideas y buscar las conexiones o relaciones.'},
+          {v: 2, t: 'Identificar las ideas principales o secundarias del tema.'},
+          {v: 4, t: 'Determinar la idea general del tema (título) y los conceptos clave (subtítulos).'},
+          {v: 5, t: 'Realizar un borrador para verificar que la relación entre los conceptos sea correcta.'},
+          {v: 1, t: 'Hacer una revisión general del tema para familiarizarse con los conocimientos.'},
+      ])
+    </script>
   </body>
 </html>

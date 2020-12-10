@@ -1,26 +1,45 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Me preparo para estudiar'
+- subtitle = 'Producto final'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .trueorfalse .inputbox {
+                justify-content: flex-start;
+                border-radius: 10px;
+            }
+            .trueorfalse .inputbox input {
+                margin-left: 0;
+                margin-right: 10px;
+            }
+            .trueorfalse .cl0 .inputbox,
+            .trueorfalse .cl3 .inputbox,
+            .trueorfalse .cl4 .inputbox {
+                background: linear-gradient(#C9E0EB, #9FC6E0);
+            }
+            .trueorfalse .cl1 .inputbox,
+            .trueorfalse .cl2 .inputbox,
+            .trueorfalse .cl5 .inputbox {
+                background: linear-gradient(#FFF4D1, #FFEDB1);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Ordena del #[strong 1] al #[strong 6] los pasos para realizar un mapa conceptual o un cuadro sinóptico como herramienta de estudio.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.trueorfalse
+                template(v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1")
+                    .col-md-6(:class="'cl'+index"): inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#")
+                        template(v-slot:after="")
+                            labeltext() {{i.t}}
 
 
 
@@ -29,4 +48,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v: 6, t: 'Realizar el gráfico y hacer las lecturas necesarias para el estudio del tema.'},
+                    {v: 3, t: 'Tratar de agrupar las ideas y buscar las conexiones o relaciones.'},
+                    {v: 2, t: 'Identificar las ideas principales o secundarias del tema.'},
+                    {v: 4, t: 'Determinar la idea general del tema (título) y los conceptos clave (subtítulos).'},
+                    {v: 5, t: 'Realizar un borrador para verificar que la relación entre los conceptos sea correcta.'},
+                    {v: 1, t: 'Hacer una revisión general del tema para familiarizarse con los conocimientos.'},
+                ])
