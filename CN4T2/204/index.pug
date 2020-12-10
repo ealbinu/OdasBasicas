@@ -17,6 +17,8 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
+            .row: .col-12: img(src="aimg/tecuento.png").w-100
+
             .instruccion.mt-5 Escribe #[strong V] si la afirmación es verdadera o #[strong F] si es falsa.
 
             .row.mt-3.ex1
@@ -36,8 +38,8 @@ html(lang="es")
             script.
                 app.$set(app.tempsobj, 'ex1', [
                     {v: 'V', t: 'Cuando un líquido llega a su punto de ebullición pasa al estado gaseoso.'},
-                    {v: 'F', t: 'Los gases tienen forma y volumen definidos. F'},
-                    {v: 'V', t: 'El agua hierve a los 100 oC aproximadamente.'},
+                    {v: 'F', t: 'Los gases tienen forma y volumen definidos.'},
+                    {v: 'V', t: 'El agua hierve a los 100 ºC aproximadamente.'},
                     {v: 'V', t: 'Al cuarto estado de la materia se le denomina plasma.'},
                     {v: 'V', t: 'Los materiales en estado sólido no se pueden comprimir.'},
                     {v: 'F', t: 'La propiedad de compresión de los materiales consiste en que recuperan su volumen al quitar una presión externa.'},
