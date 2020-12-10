@@ -1,27 +1,64 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Uso palabras de orden cronológico'
+- subtitle = 'Planifica tu autobiografía'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose {
+                background: #f5f5f5;
+            }
+            .choose .label {
+                padding: 10px;
+                background: #fff;
+            }
+            .choose img {
+                width: 100%;
+            }
+            .choose .options {
+                background: #DDD6E2;
+                border-radius: 10px;
+                padding: 10px;
+                flex-wrap: wrap;
+            }
+            .choose .options div {
+                border: none;
+                color: #6A4287;
+                background: #fff;
+                padding: 2px 10px;
+                border-radius: 20px;
+            }
+            .choose .options div.active {
+                border: none;
+                color: #fff;
+                background: #6A4287;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> la opción con ejemplos de causa y efecto.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-4: check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="false" text="Primero, mientras, después, finalmente.")
+                .col-md-4: check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="true" text="Porque, por eso, entonces, como consecuencia.")
+                .col-md-4: check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false" text="Planteamiento, desarrollo, desenlace.")
+
             
+            .instruccion.mt-5 Encierra los conectores de orden cronológico que consideres correctos para cada imagen.
 
+            .row.mt-3.ex2.text-center
+                .col-md-6
+                    choose(v-model="r[3]" :ref="refCount()" text="<img src=aimg/b1.png>" :options="['Primero', 'después', 'finalmente']" @isright="right++" :answer-num="1")
+                .col-md-6
+                    choose(v-model="r[4]" :ref="refCount()" text="<img src=aimg/b2.png>" :options="['Primero', 'después', 'finalmente']" @isright="right++" :answer-num="2")
+                .col-md-12
+                    choose(v-model="r[5]" :ref="refCount()" text="<img src=aimg/b3.png>" :options="['Primero', 'después', 'finalmente']" @isright="right++" :answer-num="0")
 
 
 
