@@ -428,6 +428,11 @@ input[type=number] {
 .numbers.c4 {
   color: #EB8B2E;
 }
+@media (max-width: 680px) {
+  .numbers {
+    font-size: 1.4rem;
+  }
+}
 .recuadropalabras {
   background: #f5f5f5;
   padding: 10px;

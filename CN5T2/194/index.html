@@ -3,23 +3,73 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comparo mezclas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras .dragdrop .draggable > div:not(.result) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          min-height: 120px;
+      }
+      .recuadropalabras .dragdrop .draggable > div:not(.result) > div {
+          background: #fff;
+          padding: 6px;
+          margin: 6px;
+          border-radius: 6px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ex1 .homo {
+          background: #00AEB5;
+      }
+      .ex1 .homo .numbers {
+          -webkit-text-stroke-color: #00AEB5;
+      }
+      .ex1 .hete {
+          background: #AE4E8F;
+      }
+      .ex1 .hete .numbers {
+          -webkit-text-stroke-color: #AE4E8F;
+      }
+      .ex1 .numbers {
+          color: #fff;
+          text-align: center;
+      }
+      .ex1 .dragdrop {
+          margin: 10px;
+          text-align: center;
+      }
+      .ex1 .dragdrop .draggable > div:not(.result) {
+          background: #fff;
+          border-radius: 10px;
+          min-height: 120px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comparo mezclas</h1>
+      <h2>Las mezclas y formas de separarlas</h2>
+      <div class="instruccion mt-5">Clasifica las mezclas del recuadro según su tipo.</div>
+      <div class="recuadropalabras">
+        <dragdrop :options="['Cemento.','Ensalada de lechuga y tomate.','Fruta en almíbar.','Masa para galletas.','Café con leche.','Agua y aceite.','Detergente con agua.','Agua con azúcar.','Sopa de verduras.','Papas con huevo.']" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 homo">
+          <numbers>Homogéneas</numbers>
+          <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" ignore-order="ignore-order" :options-ok="['Cemento.','Masa para galletas.','Café con leche.','Detergente con agua.','Agua con azúcar.']"></dragdrop>
+        </div>
+        <div class="col-md-6 hete">
+          <numbers>Heterogéneas</numbers>
+          <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" ignore-order="ignore-order" :options-ok="['Ensalada de lechuga y tomate.','Fruta en almíbar.','Sopa de verduras.','Papas con huevo.','Agua y aceite.']"></dragdrop>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

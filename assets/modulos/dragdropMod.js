@@ -59,6 +59,7 @@ Vue.component('dragdrop', {
         },
         itChanged (dt, dt2) {
             console.log(dt, dt2)
+            s_select.play()
             this.$emit('updated')
         }
     },
@@ -85,6 +86,6 @@ Vue.component('dragdrop', {
 })
 
 /*
-dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]]")
+dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[]")
 
 */
