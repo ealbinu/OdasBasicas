@@ -490,4 +490,13 @@ input[type=number] {
   justify-content: center;
   align-items: center;
 }
+.trueorfalse .inputbox {
+  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.trueorfalse .inputbox input {
+  margin-left: auto;
+  max-width: 80px;
+}
 /*# sourceMappingURL=assets.css.map */
