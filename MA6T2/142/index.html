@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>¿Qué conviene comprar?</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .options{
+          flex-wrap: wrap;
+      }
+      .options div{
+          margin:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>¿Qué conviene comprar?</h1>
+      <h2>¿Cuál es el mejor precio? / ¿Cuál está más concentrado?</h2>
+      <div class="instruccion mt-5">Lee los siguientes problemas y encierra la respuesta correcta.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="En una tienda te regalan 3 decenas de dulces si llevas 20 latas de aluminio para reciclar. ¿Cuántos dulces me regalarán si llevo 60 latas?" :options="['90 dulces.', '70 dulces.', '120 dulces.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="En una frutería venden 3 naranjas por $5.00. Si deseo comprar 2 docenas de naranjas, ¿cuánto pagaré en total?" :options="['$50.00', '$40.00', '$60.00']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="Si para alimentar a 8 vacas se necesitan 44 kg de pasto, ¿cuántas vacas se pueden alimentar con 110 kg de pasto?" :options="['20 vacas.', '30 vacas.', '40 vacas.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="Marcela vende 10 calcomanías por $5.00. Si Eva tiene $25.00, ¿cuántas calcomanías puede comprar?" :options="['30 calcomanías.', '40 calcomanías.', '50 calcomanías.']" @isright="right++" :answer-num="2"></choose>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>

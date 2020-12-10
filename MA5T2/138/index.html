@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Convierto las unidades cuadradas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .tab1 .col,
+      .tab2 .col,
+      .tab1 .col-2,
+      .tab2 .col-2 {
+          border: 2px solid #f0f0f0;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          min-width: 100px;
+      }
+      .tab1 .col-2{
+          background: #DDEED3;
+      }
+      .tab2 .col-2 {
+          background: #F8D1B4;
+      }
+      .tab1 .col-2 .numbers,
+      .tab2 .col-2 .numbers {
+          font-size: 1.3rem;
+      }
+      .tab1 .inputbox input,
+      .tab2 .inputbox input {
+          font-size: 1.2rem;
+          padding: 0;
+          border-radius: 4px;
+      }
+      .tab1 .inputbox .numbers,
+      .tab2 .inputbox .numbers {
+          font-size: 1.2rem;
+          color: var(--main);
+      }
+      
+      .ex2 .inputbox {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          margin: 10px;
+          border: 2px solid #00AEB5;
+          box-shadow: 4px 4px 0 #C7EBED;
+      }
+      .ex2 .inputbox input {
+          max-width: 120px;
+          padding: 0;
+          border-radius: 4px;
+          margin: 0 4px;
+          font-size: 1.2rem;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Convierto las unidades cuadradas</h1>
+      <h2>Unidades de superficie / Unidades agrarias</h2>
+      <div class="instruccion mt-5">Completa la siguiente tabla con los números que faltan. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-3"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <div class="col-md">
+          <div class="tab1">
+            <div class="row flex-wrap">
+              <div class="col-2">
+                <numbers>m<sup>2</sup></numbers>
+              </div>
+              <div class="col">2 000 000</div>
+              <div class="col">4 000 000</div>
+              <div class="col">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="10000000" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">20 000 000</div>
+              <div class="col">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="45000000" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row flex-wrap mt-3">
+              <div class="col-2">
+                <numbers>km<sup>2</sup> </numbers>
+              </div>
+              <div class="col">
+                <inputbox :answer="2" type="number" placeh="#" example="example"></inputbox>
+              </div>
+              <div class="col">4</div>
+              <div class="col">10</div>
+              <div class="col">20</div>
+              <div class="col">45</div>
+            </div>
+          </div>
+          <div class="tab2 mt-5">
+            <div class="row flex-wrap">
+              <div class="col-2">
+                <numbers>mm<sup>2</sup></numbers>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="5000" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">1 000</div>
+              <div class="col">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="2500" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">10 000</div>
+              <div class="col">14 000</div>
+            </div>
+            <div class="row flex-wrap mt-3">
+              <div class="col-2">
+                <numbers>cm<sup>2</sup> </numbers>
+              </div>
+              <div class="col">50</div>
+              <div class="col">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">25</div>
+              <div class="col">100</div>
+              <div class="col">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="140" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las siguientes conversiones con las unidades cuadradas que se indican.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer=".285" type="number" placeh="#">
+            <template v-slot:before="">28.5 dm<sup>2</sup> =  </template>
+            <template v-slot:after="">m<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6">
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="1000" type="number" placeh="#">
+            <template v-slot:before="">10 dam<sup>2</sup> = </template>
+            <template v-slot:after="">m<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6">
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="120000" type="number" placeh="#">
+            <template v-slot:before="">12 ha =  </template>
+            <template v-slot:after="">m<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6">
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="1900" type="number" placeh="#">
+            <template v-slot:before="">19 km<sup>2</sup> =  </template>
+            <template v-slot:after="">Hm<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6">
+          <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="0.025" type="number" placeh="#">
+            <template v-slot:before="">250 mm<sup>2</sup> =  </template>
+            <template v-slot:after="">dm<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6">
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+            <template v-slot:before="">500 cm<sup>2</sup> =  </template>
+            <template v-slot:after="">dm<sup>2</sup></template>
+          </inputbox>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
