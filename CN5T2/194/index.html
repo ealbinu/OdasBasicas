@@ -70,7 +70,7 @@
           <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" ignore-order="ignore-order" :options-ok="['Ensalada de lechuga y tomate.','Fruta en almíbar.','Sopa de verduras.','Papas con huevo.','Agua y aceite.']"></dragdrop>
         </div>
       </div>
-      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total" ifrightsis="2=10"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
