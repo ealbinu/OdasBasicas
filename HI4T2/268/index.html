@@ -1,25 +1,103 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco la unión de dos culturas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .trueorfalse .inputbox {
+          background: #E8E1D0;
+          border: 2px solid #887544;
+          border-radius: 10px;
+          color: #887544;
+      }
+      @media (max-width: 680px) {
+          .trueorfalse .inputbox {
+              flex-direction: column;
+          }
+      }
+      .trueorfalse .inputbox input {
+          max-width: 200px;
+          font-size: 1.2rem;
+          padding: 2px;
+          border-color: #887544;
+      }
+      .parrafoinputs{
+          margin-bottom: 20px;
+      }
+      .ex3 .inputbox {
+          margin-bottom: 40px;
+      }
+      .ex3 .inputbox input {
+          font-size: 1.2rem;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco la unión de dos culturas</h1>
+      <h2>Los primeros contactos de España en América</h2>
+      <div class="instruccion mt-5">Lee atentamente cada uno de los siguientes enunciados y escribe si es una causa o una consecuencia. Consulta las páginas 88 a 92 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12 trueorfalse">
+          <template v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:before="">
+                <labeltext>{{i.t}}</labeltext>
+                <!--labeltext(:num="(index+1)+'.'") {{i.t}}-->
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa los enunciados. Consulta la página 89 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span><strong>1.</strong> Algunos navegantes españoles se dedicaron a explorar el territorio descubierto y a recorrer sus costas con la autorización de  </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'los reyes españoles'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+          <div class="parrafoinputs"><span><strong>2.</strong> Después de dos décadas de haber llegado a América, los españoles continuaron las expediciones en busca de  </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'metales preciosos'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+          <div class="parrafoinputs"><span><strong>3.</strong> En 1517 los españoles llegaron a  </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'Champotón'" type="text" placeh="-"></inputbox><span>, donde pelearon contra los indígenas y murió el capitán  </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'Hernández de Córdoba'" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs"><span><strong>4.</strong> Juan de Grijalva recorrió  </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="'Veracruz'" type="text" placeh="-"></inputbox><span> hasta el río Pánuco, finalmente regresó a Cuba. </span>
+          </div>
+          <div class="parrafoinputs"><span><strong>5.</strong> La última expedición estuvo a cargo de  </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="'Hernán Cortés'" type="text" placeh="-"></inputbox><span>, y terminó con la conquista de Tenochtitlan. </span>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe quién o quiénes llevaron a cabo cada una de las siguientes acciones. Consulta las páginas 90 a 91 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-md-6">
+          <labeltext num="1.">Explorador que había naufragado, fue capturado y vivía bajo las órdenes de un gobernante maya, aprendió el lenguaje y fue de mucha utilidad a Hernán Cortés.</labeltext>
+          <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="Jerónimo de Aguilar" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6">
+          <labeltext num="3.">Gobernante mexica que al enterarse de la inminente llegada de los españoles decidió enviarles regalos para que éstos abandonaran la idea de llegar hasta Tenochtitlan.</labeltext>
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="Moctezuma" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6">
+          <labeltext num="2.">Mujer indígena que fue regalada a Hernán Cortés después de que su pueblo perdiera la batalla contra los españoles. Fue intérprete y consejera de Cortés.</labeltext>
+          <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="Malintzin-Malinche" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-md-6">
+          <labeltext num="4.">Pueblo indígena con el que los mexicas tenían rivalidad y que tras perder varias batallas con los españoles decidieron aliarse a ellos para terminar con el dominio mexica.</labeltext>
+          <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" answer="Tlaxcaltecas" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +115,13 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          {v: 'causa', t: 'Cristóbal Colón planeó dar la vuelta al mundo para ir a la India.'},
+          {v: 'causa', t: 'El viaje de Cristóbal Colón fue pagado por los reyes de España.'},
+          {v: 'consecuencia', t: 'Dos meses después de comenzar su viaje los exploradores españoles llegaron a un conjunto de islas a las cuales llamaron San Salvador.'},
+          {v: 'consecuencia', t: 'De regreso Cristóbal Colón llevó oro, animales e indígenas para mostrar a los reyes las riquezas de las tierras que había encontrado.'},
+      ])
+    </script>
   </body>
 </html>

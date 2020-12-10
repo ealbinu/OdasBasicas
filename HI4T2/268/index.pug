@@ -1,32 +1,91 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Reconozco la unión de dos culturas'
+- subtitle = 'Los primeros contactos de España en América'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .trueorfalse .inputbox {
+                background: #E8E1D0;
+                border: 2px solid #887544;
+                border-radius: 10px;
+                color: #887544;
+            }
+            @media (max-width: 680px) {
+                .trueorfalse .inputbox {
+                    flex-direction: column;
+                }
+            }
+            .trueorfalse .inputbox input {
+                max-width: 200px;
+                font-size: 1.2rem;
+                padding: 2px;
+                border-color: #887544;
+            }
+            .parrafoinputs{
+                margin-bottom: 20px;
+            }
+            .ex3 .inputbox {
+                margin-bottom: 40px;
+            }
+            .ex3 .inputbox input {
+                font-size: 1.2rem;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee atentamente cada uno de los siguientes enunciados y escribe si es una causa o una consecuencia. Consulta las páginas 88 a 92 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext() {{i.t}}
+                                //labeltext(:num="(index+1)+'.'") {{i.t}}
             
+            .instruccion.mt-5 Completa los enunciados. Consulta la página 89 de tu libro de texto SEP.
 
+            .row.mt-3.ex2
+                .col-12
+                    +parrafoinputs(['<strong>1.</strong> Algunos navegantes españoles se dedicaron a explorar el territorio descubierto y a recorrer sus costas con la autorización de ', ['los reyes españoles', 4], '.'])
+                    +parrafoinputs(['<strong>2.</strong> Después de dos décadas de haber llegado a América, los españoles continuaron las expediciones en busca de ', ['metales preciosos', 5], '.'])
+                    +parrafoinputs(['<strong>3.</strong> En 1517 los españoles llegaron a ', ['Champotón', 6], ', donde pelearon contra los indígenas y murió el capitán ', ['Hernández de Córdoba', 7]])
+                    +parrafoinputs(['<strong>4.</strong> Juan de Grijalva recorrió ', ['Veracruz', 8], ' hasta el río Pánuco, finalmente regresó a Cuba.'])
+                    +parrafoinputs(['<strong>5.</strong> La última expedición estuvo a cargo de ', ['Hernán Cortés', 9], ', y terminó con la conquista de Tenochtitlan.'])
 
+            .instruccion.mt-5 Escribe quién o quiénes llevaron a cabo cada una de las siguientes acciones. Consulta las páginas 90 a 91 de tu libro de texto SEP.
 
+            .row.mt-3.ex3
+                .col-md-6
+                    labeltext(num="1.") Explorador que había naufragado, fue capturado y vivía bajo las órdenes de un gobernante maya, aprendió el lenguaje y fue de mucha utilidad a Hernán Cortés.
+                    inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="Jerónimo de Aguilar" type="text" placeh="-")
+                .col-md-6
+                    labeltext(num="3.") Gobernante mexica que al enterarse de la inminente llegada de los españoles decidió enviarles regalos para que éstos abandonaran la idea de llegar hasta Tenochtitlan.
+                    inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" answer="Moctezuma" type="text" placeh="-")
+                .col-md-6
+                    labeltext(num="2.") Mujer indígena que fue regalada a Hernán Cortés después de que su pueblo perdiera la batalla contra los españoles. Fue intérprete y consejera de Cortés.
+                    inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" answer="Malintzin-Malinche" type="text" placeh="-")
+                .col-md-6
+                    labeltext(num="4.") Pueblo indígena con el que los mexicas tenían rivalidad y que tras perder varias batallas con los españoles decidieron aliarse a ellos para terminar con el dominio mexica.
+                    inputbox(v-model="r[13]" :ref="refCount()" @isright="right++" answer="Tlaxcaltecas" type="text" placeh="-")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v: 'causa', t: 'Cristóbal Colón planeó dar la vuelta al mundo para ir a la India.'},
+                    {v: 'causa', t: 'El viaje de Cristóbal Colón fue pagado por los reyes de España.'},
+                    {v: 'consecuencia', t: 'Dos meses después de comenzar su viaje los exploradores españoles llegaron a un conjunto de islas a las cuales llamaron San Salvador.'},
+                    {v: 'consecuencia', t: 'De regreso Cristóbal Colón llevó oro, animales e indígenas para mostrar a los reyes las riquezas de las tierras que había encontrado.'},
+                ])
