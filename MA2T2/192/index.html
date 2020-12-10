@@ -3,23 +3,172 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Descompongo los números</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .op.row {
+          background: #f5f5f5;
+          padding: 5px;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          justify-content: center;
+          align-items: center;
+          margin: 10px 3px;
+      }
+      .op.row .numbers {
+          font-size: 1.6rem;
+          margin: 0 6px;
+      }
+      .op.row .inputbox input {
+          max-width: 60px;
+          font-size: 1.2rem;
+          padding: 2px;
+      }
+      .ex2 .inputbox {
+          background: #ECF7FA;
+          border-radius: 10px;
+          padding: 10px;
+          margin-bottom: 10px;
+      }
+      .ex2 .inputbox input {
+          max-width: 60px;
+          font-size: 1.2rem;
+          padding: 2px;
+          margin-left: 6px;
+      }
+      .ex3 {
+          font-size: 1.2rem;
+          text-align: center;
+      }
+      .ex3 .row.head {
+          background: #F0EBDE;
+          color: #887544;
+          padding: 10px 4px;
+      }
+      @media (max-width: 680px) {
+          .ex3 .row.head {
+              font-size: 0.5rem;
+          }
+      }
+      .ex3 .row.body > div:first-child {
+          text-align: left;
+      }
+      .ex3 .row.body > div {
+          padding: 10px 4px;
+          border: 1px solid #f5f5f5;
+      }
+      @media (max-width: 680px) {
+          .ex3 .row.body > div {
+              font-size: 0.5rem;
+          }
+      }
+      .ex3 .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          border-radius: 4px;
+      }
+      @media (max-width: 680px) {
+          .ex3 .inputbox input {
+              font-size: 0.7rem;
+          }
+      }
+      .ex3 .inputbox .numbers {
+          font-size: 1.2rem;
+          color: var(--sec);
+      }
+      @media (max-width: 680px) {
+          .ex3 .inputbox .numbers {
+              font-size: 0.7rem;
+          }
+      }
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Descompongo los números</h1>
+      <h2>Cuarenta y ocho / Decenas completas</h2>
+      <div class="instruccion mt-5">Utiliza la suma o la resta para descomponer los siguientes números en decenas y unidades. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6">
+            <div class="op row">
+              <div>{{i.val}}</div>
+              <numbers>=</numbers>
+              <inputbox v-model.number="g[i.ga]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
+              <numbers>+</numbers>
+              <inputbox v-model.number="g[i.gb]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
+              <inputbox v-model="r[i.r]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="#" hidetilok="hidetilok">
+                <template v-slot:before="">
+                  <numbers>=</numbers>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Resuelve las siguientes sumas y restas utilizando el cálculo mental.</div>
+      <div class="row mt-3 ex2">
+        <template v-for="(i, index) in tempsobj.ex2">
+          <div class="col-md-3">
+            <inputbox v-model="r[index+8]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#">
+              <template v-slot:before="">{{i.sum}} = </template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Escribe los siguientes números y su descomposición numérica utilizando centenas, decenas y unidades. Observa el ejemplo.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-12">
+          <div class="row head">
+            <div class="col-5">Nombre</div>
+            <div class="col-3">Número</div>
+            <div class="col">Descomposición</div>
+          </div>
+          <div class="row body">
+            <div class="col-5">Quinientos ocho.</div>
+            <div class="col-3">
+              <inputbox answer="508" type="text" placeh="-" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox answer="500+8" type="text" placeh="-" example="example"></inputbox>
+            </div>
+          </div>
+          <div class="row body">
+            <div class="col-5">Trescientos sesenta y siete.</div>
+            <div class="col-3">
+              <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="367" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" answer="300+60+7" type="text" placeh="#+#+#"></inputbox>
+            </div>
+          </div>
+          <div class="row body">
+            <div class="col-5">Cuatrocientos cincuenta.</div>
+            <div class="col-3">
+              <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="450" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" answer="400+50" type="text" placeh="#+#"></inputbox>
+            </div>
+          </div>
+          <div class="row body">
+            <div class="col-5">Doscientos nueve.</div>
+            <div class="col-3">
+              <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="209" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" answer="200+9" type="text" placeh="#+#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +186,28 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {val:95, ga:0, gb: 1, r: 0},
+          {val:45, ga:2, gb: 3, r: 1},
+          {val:78, ga:4, gb: 5, r: 2},
+          {val:21, ga:6, gb: 7, r: 3},
+          {val:54, ga:8, gb: 9, r: 4},
+          {val:36, ga:10, gb: 11, r: 5},
+          {val:15, ga:12, gb: 13, r: 6},
+          {val:65, ga:14, gb: 15, r: 7},
+      ])
+      
+      app.$set(app.tempsobj, 'ex2', [
+          {sum: '90 – 5', v: 85}, 
+          {sum: '20 + 9', v: 29}, 
+          {sum: '40 – 4 ', v: 36}, 
+          {sum: '80 + 2', v: 82}, 
+          {sum: '100 – 7', v: 93 }, 
+          {sum: '40 + 4', v: 44}, 
+          {sum: '70 – 3', v: 67 }, 
+          {sum: '10 + 3', v: 13}, 
+      ])
+    </script>
   </body>
 </html>

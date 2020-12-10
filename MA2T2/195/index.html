@@ -3,23 +3,57 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Descompongo los números</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .op.row {
+          background: #f5f5f5;
+          padding: 5px;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          justify-content: center;
+          align-items: center;
+          margin: 10px 3px;
+      }
+      .op.row .numbers {
+          font-size: 1.6rem;
+          margin: 0 6px;
+      }
+      .op.row .inputbox input {
+          max-width: 60px;
+          font-size: 1.2rem;
+          padding: 2px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Descompongo los números</h1>
+      <h2>Cuarenta y ocho / Decenas completas</h2>
+      <div class="instruccion mt-5">Utiliza la suma o la resta para descomponer los siguientes números en decenas y unidades. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6">
+            <div class="op row">
+              <div>{{i.val}}</div>
+              <numbers>=</numbers>
+              <inputbox v-model.number="g[i.ga]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
+              <numbers>+</numbers>
+              <inputbox v-model.number="g[i.gb]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
+              <inputbox v-model="r[i.r]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="#" hidetilok="hidetilok">
+                <template v-slot:before="">
+                  <numbers>=</numbers>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +71,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {val:95, ga:0, gb: 1, r: 0},
+          {val:45, ga:2, gb: 3, r: 1},
+          {val:78, ga:4, gb: 5, r: 2},
+          {val:21, ga:6, gb: 7, r: 3},
+          {val:54, ga:8, gb: 9, r: 4},
+          {val:36, ga:10, gb: 11, r: 5},
+          {val:15, ga:12, gb: 13, r: 6},
+          {val:65, ga:14, gb: 15, r: 7},
+      ])
+    </script>
   </body>
 </html>

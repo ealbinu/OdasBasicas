@@ -1,12 +1,23 @@
 Vue.component('inputbox', {
-    props: ['value', 'text', 'answer', 'num', 'type', 'placeh', 'textarea', 'caseSensitive', 'example', 
-        'min', 'max' //evalua el valor entre min y max
+    props: ['value', 'text', 'answer', 'num',
+        'type',
+        'placeh',
+        'textarea',
+        'caseSensitive',
+        'example', 
+        'min', 'max', //evalua el valor entre min y max
+        'hidetilok', // oculto hasta que se evalua
     ],
     data() {
         return {
             status: "",
             evaluate: false,
             result: false
+        }
+    },
+    watch: {
+        value (nval){
+            this.status = nval
         }
     },
     computed:{
@@ -16,6 +27,17 @@ Vue.component('inputbox', {
             } else {
                 return ''
             }
+        },
+        hideorshow (){
+            if(this.hidetilok!=undefined){
+                if(!this.evaluate){
+                    return false
+                } else {
+                    return true
+                }
+            } else {
+                return true
+            }
         }
     },
     methods: {
@@ -24,6 +46,7 @@ Vue.component('inputbox', {
                 return false
             }
             this.$emit('input', this.status)
+            this.$emit('changed', this.status)
             s_ok.play()
             /*
             if(this.status) {
@@ -100,7 +123,7 @@ Vue.component('inputbox', {
         this.$emit('input', "")
     },
     template: `
-        <div class="inputbox" :class="setclass">
+        <div class="inputbox" :class="setclass" v-show="hideorshow">
             <slot name="before"></slot>
             <template v-if="example!=undefined">
                 <div class="inp_example"><numbers>{{answer}}</numbers></div> 

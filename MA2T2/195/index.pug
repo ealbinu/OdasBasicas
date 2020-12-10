@@ -1,25 +1,52 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Descompongo los números'
+- subtitle = 'Cuarenta y ocho / Decenas completas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .op.row {
+                background: #f5f5f5;
+                padding: 5px;
+                border-radius: 10px;
+                font-size: 1.2rem;
+                justify-content: center;
+                align-items: center;
+                margin: 10px 3px;
+            }
+            .op.row .numbers {
+                font-size: 1.6rem;
+                margin: 0 6px;
+            }
+            .op.row .inputbox input {
+                max-width: 60px;
+                font-size: 1.2rem;
+                padding: 2px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Utiliza la suma o la resta para descomponer los siguientes números en decenas y unidades. Observa el ejemplo.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6: .op.row
+                        div {{i.val}}
+                        numbers =
+                        inputbox(v-model.number="g[i.ga]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]")
+                        numbers +
+                        inputbox(v-model.number="g[i.gb]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]")
+                        inputbox(v-model="r[i.r]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="#" hidetilok)
+                            template(v-slot:before=""): numbers =
+
+
             
 
 
@@ -29,4 +56,13 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {val:95, ga:0, gb: 1, r: 0},
+                    {val:45, ga:2, gb: 3, r: 1},
+                    {val:78, ga:4, gb: 5, r: 2},
+                    {val:21, ga:6, gb: 7, r: 3},
+                    {val:54, ga:8, gb: 9, r: 4},
+                    {val:36, ga:10, gb: 11, r: 5},
+                    {val:15, ga:12, gb: 13, r: 6},
+                    {val:65, ga:14, gb: 15, r: 7},
+                ])
