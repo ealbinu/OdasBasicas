@@ -1,32 +1,125 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identificamos los tipos de conservación'
+- subtitle = 'La cocción y la descomposición de los alimentos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .soup {
+                position: relative;
+            }
+            .selec .selectable {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 10%;
+                height: 10%;
+            }
+            .selec .selectable.on {
+                border: 2px solid var(--main);
+                border-radius: 6px;
+            }
+            .selec .selectable.on .circledactive {
+                display: none;
+            }
+            .selec .selectable:nth-child(1) {
+                width: 100%;
+            }
+            .selec .selectable:nth-child(2) {
+                top: 45%;
+                left: 26%;
+                width: 28%;
+            }
+            .selec .selectable:nth-child(3) {
+                top: 81%;
+                left: 26%;
+                width: 61%;
+            }
+            .selec .selectable:nth-child(4) {
+                top: 27%;
+                left: 0;
+                width: 7%;
+                height: 64%;
+            }
+            .selec .selectable:nth-child(5) {
+                top: 10%;
+                left: 46%;
+                width: 7%;
+                height: 45%;
+            }
+            .selec .selectable:nth-child(6) {
+                top: 18%;
+                left: 92.5%;
+                width: 8%;
+                height: 46%;
+            }
+            .selec .selectable:nth-child(7) {
+                top: 22%;
+                left: 3%;
+                width: 8%;
+                height: 59%;
+                transform: rotate(-42deg);
+                transform-origin: top left;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa los alimentos y marca así <checkmark></checkmark> los enunciados que expresan para qué se cocinan.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-md-5
+                    img(src="aimg/a1.png").img-fluid
+                .col-md-7
+                    template(v-for="(i, index) in tempsobj.ex1")
+                        check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+                    
+            
+            .instruccion.mt-5 Completa los enunciados correctamente. Después encuentra las respuestas en la sopa de letras. Consulta las páginas 89 a 93 de tu libro de texto SEP.
             
 
 
+            - var arr = []
+            - arr.push('Cuando un alimento es sometido al ')
+            - arr.push(['calor', 5])
+            - arr.push(' cambian sus propiedades. <br>Cuando los alimentos se cuecen adquieren características como: ')
+            - arr.push(['color', 6])
+            - arr.push(', ')
+            - arr.push(['sabor', 7])
+            - arr.push(' y ')
+            - arr.push(['olor', 8])
+            - arr.push('. ')
+            - arr.push('<br>Las ')
+            - arr.push(['proteínas', 9])
+            - arr.push(', que se utiliza para reparar el organismo, son unos de los nutrimientos que se transforman al cocer alimentos. <br>Muchos ')
+            - arr.push(['microorganismos', 10])
+            - arr.push(' que descomponen la comida desaparecen con la cocción. <br>El ')
+            - arr.push(['ahumado', 11])
+            - arr.push(' es una técnica que consiste en una cocción lenta.')
 
-
+            .row.mt-3.ex2.centerrow
+                .col-md-6: +parrafoinputs(arr)
+                .col-md-6: .soup
+                    img(src="aimg/soup.png").img-fluid
+                    .selec
+                        template(v-for="(i, index) in 7")
+                            selectable(:isok="true" v-model="r[index+12]" :ref="refCount()" @isright="right++")
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v: true, t: 'Para hacerlos comestibles.'},
+                    {v: false, t: 'Identificamos.'},
+                    {v: true, t: 'Para hacer su sabor más agradable.'},
+                    {v: false, t: 'Para cambiar sus propiedades.'},
+                    {v: true, t: 'Para que se transformen sus nutrientes.'},
+                    {v: true, t: 'Para ablandarlos y facilitar su consumo.'},
+                ])

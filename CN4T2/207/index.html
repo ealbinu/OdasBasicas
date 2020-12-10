@@ -1,25 +1,111 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identificamos los tipos de conservación</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .soup {
+          position: relative;
+      }
+      .selec .selectable {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 10%;
+          height: 10%;
+      }
+      .selec .selectable.on {
+          border: 2px solid var(--main);
+          border-radius: 6px;
+      }
+      .selec .selectable.on .circledactive {
+          display: none;
+      }
+      .selec .selectable:nth-child(1) {
+          width: 100%;
+      }
+      .selec .selectable:nth-child(2) {
+          top: 45%;
+          left: 26%;
+          width: 28%;
+      }
+      .selec .selectable:nth-child(3) {
+          top: 81%;
+          left: 26%;
+          width: 61%;
+      }
+      .selec .selectable:nth-child(4) {
+          top: 27%;
+          left: 0;
+          width: 7%;
+          height: 64%;
+      }
+      .selec .selectable:nth-child(5) {
+          top: 10%;
+          left: 46%;
+          width: 7%;
+          height: 45%;
+      }
+      .selec .selectable:nth-child(6) {
+          top: 18%;
+          left: 92.5%;
+          width: 8%;
+          height: 46%;
+      }
+      .selec .selectable:nth-child(7) {
+          top: 22%;
+          left: 3%;
+          width: 8%;
+          height: 59%;
+          transform: rotate(-42deg);
+          transform-origin: top left;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identificamos los tipos de conservación</h1>
+      <h2>La cocción y la descomposición de los alimentos</h2>
+      <div class="instruccion mt-5">Observa los alimentos y marca así <checkmark></checkmark> los enunciados que expresan para qué se cocinan.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-5"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <div class="col-md-7">
+          <template v-for="(i, index) in tempsobj.ex1">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa los enunciados correctamente. Después encuentra las respuestas en la sopa de letras. Consulta las páginas 89 a 93 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6">
+          <div class="parrafoinputs"><span>Cuando un alimento es sometido al  </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'calor'" type="text" placeh="-"></inputbox><span> cambian sus propiedades. <br>Cuando los alimentos se cuecen adquieren características como:  </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'color'" type="text" placeh="-"></inputbox><span>,  </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'sabor'" type="text" placeh="-"></inputbox><span> y  </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="'olor'" type="text" placeh="-"></inputbox><span>.  </span><span><br>Las  </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="'proteínas'" type="text" placeh="-"></inputbox><span>, que se utiliza para reparar el organismo, son unos de los nutrimientos que se transforman al cocer alimentos. <br>Muchos  </span>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="'microorganismos'" type="text" placeh="-"></inputbox><span> que descomponen la comida desaparecen con la cocción. <br>El  </span>
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="'ahumado'" type="text" placeh="-"></inputbox><span> es una técnica que consiste en una cocción lenta. </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="soup"><img class="img-fluid" src="aimg/soup.png"/>
+            <div class="selec">
+              <template v-for="(i, index) in 7">
+                <selectable :isok="true" v-model="r[index+12]" :ref="refCount()" @isright="right++"></selectable>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +123,15 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          {v: true, t: 'Para hacerlos comestibles.'},
+          {v: false, t: 'Identificamos.'},
+          {v: true, t: 'Para hacer su sabor más agradable.'},
+          {v: false, t: 'Para cambiar sus propiedades.'},
+          {v: true, t: 'Para que se transformen sus nutrientes.'},
+          {v: true, t: 'Para ablandarlos y facilitar su consumo.'},
+      ])
+    </script>
   </body>
 </html>
