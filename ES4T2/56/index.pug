@@ -1,32 +1,108 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco una enciclopedia'
+- subtitle = 'Lo que conozco'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                justify-content: flex-start;
+                background: #f5f5f5;
+                margin: 10px;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .ex1 .inputbox input {
+                width: 80px;
+                margin-right: 10px;
+                font-size: 1.2rem;
+                padding: 4px;
+            }
+            .book{
+                max-width: 220px;
+            }
+            .ex2 .check img {
+                width: 100%;
+                max-width: 130px;
+            }
+            .recuadropalabras {
+                background: #E7F1D8;
+            }
+            .recuadropalabras strong {
+                background: transparent;
+                color: #6CB743;
+            }
+            .ex3 .inputbox {
+                margin: 8px 0;
+            }
+            .ex3 .inputbox input {
+                padding: 4px;
+                font-size: 1.2rem;
+                border-color: #6CB743;
+            }
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .row: .col-12: img(src="aimg/tecuento.png").w-100
 
-            .row.mt-3
+            .instruccion.mt-5 Escribe los números del #[strong 1] al #[strong 9] para ordenar los nombres de los temas como aparecen en una enciclopedia. Después, contesta la pregunta.
+
+            .row.mt-3.ex1
+                .col-md-4(v-for="(i, index) in tempsobj.ex1")
+                    inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        template(v-slot:after=""): labeltext {{i.t}}
+
+                .col-12
+                    choose(v-model="r[9]" :ref="refCount()" text="¿En qué sección de una enciclopedia tienes que buscar el tema que te interesa consultar? " :options="['El índice.','La sección de Español.','En mi materia preferida. ']" @isright="right++" :answer-num="0")
+                .col-12.text-center: img(src="aimg/b1.png").img-fluid.book
+
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las imágenes que representan una enciclopedia y una revista científica.
             
+            .row.mt-3.ex2
+                .col-md-4: check(v-model="r[10]" :ref="refCount()"  @isright="right++" :answer="true" text="<img src=aimg/a1.png>")
+                .col-md-4: check(v-model="r[11]" :ref="refCount()"  @isright="right++" :answer="false" text="<img src=aimg/a2.png>")
+                .col-md-4: check(v-model="r[12]" :ref="refCount()"  @isright="right++" :answer="true" text="<img src=aimg/a3.png>")
 
-
-
+            .instruccion.mt-5 Escribe en orden alfabético los siguientes temas de una enciclopedia.
+            
+            recuadropalabras(:palabras="['economía','futbol','internet','sistema nervioso','democracia','corazón','biología']")
+            .row.mt-3.ex3.centerrow
+                .col-md-3(v-for="(i, index) in tempsobj.ex3" v-if="tempsobj.ex3")
+                    inputbox(v-model="r[index+13]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {n:3, t:'Biología.'},
+                    {n:6, t:'Industria.'},
+                    {n:8, t:'Literatura.'},
+                    {n:2, t:'Astronomía.'},
+                    {n:1, t:'Arte.'},
+                    {n:9, t:'Zootecnia.'},
+                    {n:5, t:'Historia.'},
+                    {n:7, t:'Lenguaje.'},
+                    {n:4, t:'Ecología.'},
+                ])
+
+
+                app.$set(app.tempsobj, 'ex3', [
+                    'biología',
+                    'corazón',
+                    'democracia',
+                    'economía',
+                    'futbol',
+                    'internet',
+                    'sistema nervioso',
+                ])
+
