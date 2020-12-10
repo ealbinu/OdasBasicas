@@ -473,4 +473,9 @@ input[type=number] {
     font-size: 0.7rem;
   }
 }
+/* quick utils */
+.centerrow {
+  justify-content: center;
+  align-items: center;
+}
 /*# sourceMappingURL=assets.css.map */
