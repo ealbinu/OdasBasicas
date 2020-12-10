@@ -3,23 +3,184 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sé qué número sigue</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          position: relative;
+      }
+      .ex1 .nums .inputbox {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 8%;
+      }
+      .ex1 .nums .inputbox input {
+          font-size: 1rem;
+          padding: 8px 2px;
+          border-color: var(--accent);
+      }
+      @media (max-width: 720px) {
+          .ex1 .nums .inputbox input {
+              padding: 0 2px;
+              font-size: 0.8rem;
+          }
+      }
+      @media (max-width: 580px) {
+          .ex1 .nums .inputbox input {
+              font-size: 0.5rem;
+          }
+      }
+      .ex1 .nums .inputbox:nth-child(1) {
+          left: 23%;
+          top: 13%;
+      }
+      .ex1 .nums .inputbox:nth-child(2) {
+          left: 39%;
+          top: 8%;
+      }
+      .ex1 .nums .inputbox:nth-child(3) {
+          left: 49%;
+          top: 14%;
+      }
+      .ex1 .nums .inputbox:nth-child(4) {
+          left: 60%;
+          top: 6%;
+      }
+      .ex1 .nums .inputbox:nth-child(5) {
+          left: 79%;
+          top: 10%;
+      }
+      .ex1 .nums .inputbox:nth-child(6) {
+          left: 13%;
+          top: 47%;
+      }
+      .ex1 .nums .inputbox:nth-child(7) {
+          left: 23%;
+          top: 39%;
+      }
+      .ex1 .nums .inputbox:nth-child(8) {
+          left: 52%;
+          top: 47%;
+      }
+      .ex1 .nums .inputbox:nth-child(9) {
+          left: 62%;
+          top: 41%;
+      }
+      .ex1 .nums .inputbox:nth-child(10) {
+          left: 72%;
+          top: 47%;
+      }
+      .ex1 .nums .inputbox:nth-child(11) {
+          left: 81%;
+          top: 41%;
+      }
+      
+      .ex2 {
+          border-bottom: 4px solid #f5f5f5;
+          padding: 10px 0;
+      }
+      .consta {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #FBE0C2;
+          border-radius: 8px;
+          padding: 8px 2px;
+          color: #E9832C;
+          font-weight: bold;
+      }
+      .seq .inputbox {
+          background: #E9E4EA;
+          border-radius: 10px;
+          padding: 2px;
+          border: 2px solid #6A4287;
+          display: flex;
+          flex-direction: column;
+      }
+      .seq .inputbox .numbers {
+          font-size: 1.2rem;
+          padding: 8px;
+      }
+      .seq .inputbox input {
+          flex-grow: 1;
+          max-width: 50px;
+          font-size: 1.2rem;
+          padding: 0;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sé qué número sigue</h1>
+      <h2>El laberinto</h2>
+      <div class="instruccion mt-5">Escribe los números faltantes en las siguientes sucesiones.</div>
+      <div class="row">
+        <div class="col-12 ex1"><img class="w-100" src="aimg/a1.png"/>
+          <div class="nums">
+            <template v-for="(i, index) in [1975, 1961, 1954, 1947, 1933, 708, 716, 740, 748, 756, 764]">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las sucesiones utilizando las constantes indicadas.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-2">
+          <div class="consta">Sumar 6</div>
+        </div>
+        <div class="col-md">
+          <div class="row seq no-gutters">
+            <template v-for="(i, index) in tempsobj.c1">
+              <template v-if="Array.isArray(i)">
+                <inputbox v-model="r[i[1]]" :ref="refCount()" @isright="right++" :answer="i[0]" type="number" placeh="#"></inputbox>
+              </template>
+              <template v-else="v-else">
+                <inputbox :answer="i" type="number" placeh="#" example="example"></inputbox>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-2">
+          <div class="consta">Restar 8</div>
+        </div>
+        <div class="col-md">
+          <div class="row seq no-gutters">
+            <template v-for="(i, index) in tempsobj.c2">
+              <template v-if="Array.isArray(i)">
+                <inputbox v-model="r[i[1]]" :ref="refCount()" @isright="right++" :answer="i[0]" type="number" placeh="#"></inputbox>
+              </template>
+              <template v-else="v-else">
+                <inputbox :answer="i" type="number" placeh="#" example="example"></inputbox>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-2">
+          <div class="consta">Sumar 10</div>
+        </div>
+        <div class="col-md">
+          <div class="row seq no-gutters">
+            <template v-for="(i, index) in tempsobj.c3">
+              <template v-if="Array.isArray(i)">
+                <inputbox v-model="r[i[1]]" :ref="refCount()" @isright="right++" :answer="i[0]" type="number" placeh="#"></inputbox>
+              </template>
+              <template v-else="v-else">
+                <inputbox :answer="i" type="number" placeh="#" example="example"></inputbox>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +198,49 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'c1', [
+          12,
+          [18,11],
+          [24,12],
+          [30,13],
+          36,
+          42,
+          48,
+          54,
+          [60,14],
+          [66,15],
+          [72,16],
+          78,
+      ])
+      app.$set(app.tempsobj, 'c2', [
+          [90,17],
+          [82,18],
+          74,
+          66,
+          58,
+          50,
+          [42,19],
+          [34,20],
+          [26,21],
+          [18,22],
+          [10,23],
+          2
+      ])
+      app.$set(app.tempsobj, 'c3', [
+          [10,24],
+          [20,25],
+          [30,26],
+          [40,27],
+          50,
+          60,
+          [70,28],
+          [80,29],
+          [90,30],
+          100,
+          110,
+          120
+      ])
+    </script>
   </body>
 </html>
