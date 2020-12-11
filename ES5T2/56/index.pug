@@ -1,25 +1,36 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Mi opinión sobre un tema'
+- subtitle = 'Práctica 9. Expresar su opinión fundamentada en un debate. Lo que conozco'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                background: #F0EBDE;
+                border-radius: 10px;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                border-color: #716F69;
+                margin-right: 10px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee las siguientes oraciones y escribe una #[strong O] si el enunciado es una opinión o una #[strong A] si corresponde a un argumento.
 
-            .row.mt-3
+            .row.mt-3.ex1.trueorfalse
+                template(v-for="(i, index) in tempsobj.ex1" v-if="tempsobj.ex1")
+                    .col-md-6(:class="'cl'+index"): inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="O A")
+                        template(v-slot:after="")
+                            labeltext() {{i.t}}
             
 
 
@@ -29,4 +40,16 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v:'o', t: 'Creo que es mejor el helado de vainilla que el de chocolate.'},
+                    {v:'a', t: 'Debido a la fuerza de gravedad, todos los cuerpos caen al suelo.'},
+                    {v:'a', t: 'En la tienda todo es más caro, los productos cuestan $5 más que en el supermercado.'},
+                    {v:'o', t: 'Si comes ajo, espantarás a los vampiros.'},
+                    {v:'o', t: 'Pienso que el clima es perfecto el día de hoy.'},
+                    {v:'a', t: 'Es más rápido viajar en avión, ya que es mucho más veloz que cualquier otro transporte.'},
+                    {v:'a', t: 'La ropa lavada no se secará hoy, puesto que sigue lloviendo mucho.'},
+                    {v:'a', t: 'Las plantas son verdes porque tienen un pigmento llamado clorofila que absorbe la luz del sol.'},
+                    {v:'o', t: 'Yo creo que en la antigüedad los extraterrestres nos visitaron.'},
+                    {v:'o', t: 'En mi opinión, los perros son mejores que los gatos.'},
+                    
+                ])
