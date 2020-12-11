@@ -1,29 +1,87 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Estudio los movimientos obreros'
+- subtitle = 'La sociedad porfiriana y los movimientos de protesta: campesinos y obreros'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .img {
+                position: relative;
+            }
+            .inputbox {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .inputbox input {
+                font-size: 1rem;
+                padding: 0;
+                border: none;
+                border-radius: 4px;
+                text-align: center;
+            }
+            @media (max-width: 768px) {
+                .inputbox input {
+                    font-size: 0.7rem;
+                }
+            }
+            @media (max-width: 420px) {
+                .inputbox input {
+                    font-size: 0.4rem;
+                }
+            }
+            .inputbox:nth-child(1) {
+                left: 5%;
+                top: 24%;
+                width: 24%;
+            }
+            .inputbox:nth-child(2) {
+                left: 70%;
+                top: 25.3%;
+                width: 11%;
+            }
+            .inputbox:nth-child(3) {
+                left: 76.5%;
+                top: 32.2%;
+                width: 11%;
+            }
+            .inputbox:nth-child(4) {
+                left: 72%;
+                top: 65%;
+                width: 15%;
+            }
+            .inputbox:nth-child(5) {
+                left: 77%;
+                top: 71.3%;
+                width: 14%;
+            }
+            .inputbox:nth-child(6) {
+                left: 39%;
+                top: 88%;
+                width: 18%;
+            }
+            .inputbox:nth-child(7) {
+                left: 15%;
+                top: 77%;
+                width: 14%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa el esquema escribiendo las palabras que faltan. Consulta la página 94 de tu libro de texto SEP.
 
-            .row.mt-3
-            
-
-
-
+            .row.ex1: .col-12: .img
+                img(src="aimg/a1.png").w-100
+                .ins
+                    template(v-for="(i, index) in ['maltratados', 'vales', 'dinero', 'sindicatos', 'huelgas', 'trabajaban', 'ley']")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

@@ -3,23 +3,92 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Estudio los movimientos obreros</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .img {
+          position: relative;
+      }
+      .inputbox {
+          position: absolute;
+          left: 0;
+          top: 0;
+      }
+      .inputbox input {
+          font-size: 1rem;
+          padding: 0;
+          border: none;
+          border-radius: 4px;
+          text-align: center;
+      }
+      @media (max-width: 768px) {
+          .inputbox input {
+              font-size: 0.7rem;
+          }
+      }
+      @media (max-width: 420px) {
+          .inputbox input {
+              font-size: 0.4rem;
+          }
+      }
+      .inputbox:nth-child(1) {
+          left: 5%;
+          top: 24%;
+          width: 24%;
+      }
+      .inputbox:nth-child(2) {
+          left: 70%;
+          top: 25.3%;
+          width: 11%;
+      }
+      .inputbox:nth-child(3) {
+          left: 76.5%;
+          top: 32.2%;
+          width: 11%;
+      }
+      .inputbox:nth-child(4) {
+          left: 72%;
+          top: 65%;
+          width: 15%;
+      }
+      .inputbox:nth-child(5) {
+          left: 77%;
+          top: 71.3%;
+          width: 14%;
+      }
+      .inputbox:nth-child(6) {
+          left: 39%;
+          top: 88%;
+          width: 18%;
+      }
+      .inputbox:nth-child(7) {
+          left: 15%;
+          top: 77%;
+          width: 14%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Estudio los movimientos obreros</h1>
+      <h2>La sociedad porfiriana y los movimientos de protesta: campesinos y obreros</h2>
+      <div class="instruccion mt-5">Completa el esquema escribiendo las palabras que faltan. Consulta la página 94 de tu libro de texto SEP.</div>
+      <div class="row ex1">
+        <div class="col-12">
+          <div class="img"><img class="w-100" src="aimg/a1.png"/>
+            <div class="ins">
+              <template v-for="(i, index) in ['maltratados', 'vales', 'dinero', 'sindicatos', 'huelgas', 'trabajaban', 'ley']">
+                <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-"></inputbox>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
