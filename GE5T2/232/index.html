@@ -3,23 +3,74 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comparo los continentes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
-    <style>
-      /*
-      .ex1 {}
-      */
-    </style>
+    <style>.ex2 .inputbox input{font-size: 1.4rem;}</style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comparo los continentes</h1>
+      <h2>Países más y menos poblados</h2>
+      <div class="instruccion mt-5">Observa la siguiente gráfica y selecciona la opción que corresponde en cada enunciado.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." :answer-num="4" text="Es el continente con mayor población rural." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." :answer-num="3" text="Es el continente con menor población rural." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." :answer-num="0" text="Es el continente con mayor población urbana." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." :answer-num="4" text="Es el continente con menor población urbana." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa los datos de la siguiente tabla y ordénalos de menor a mayor de acuerdo a su densidad poblacional.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6"><img class="img-fluid" src="aimg/b1.png"/></div>
+        <div class="col-md-6">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Oceanía" type="text" placeh="-">
+            <template v-slot:before="">
+              <labeltext num="1."></labeltext>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="África" type="text" placeh="-">
+            <template v-slot:before="">
+              <labeltext num="2."></labeltext>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Europa" type="text" placeh="-">
+            <template v-slot:before="">
+              <labeltext num="3."></labeltext>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="América" type="text" placeh="-">
+            <template v-slot:before="">
+              <labeltext num="4."></labeltext>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="Asia" type="text" placeh="-">
+            <template v-slot:before="">
+              <labeltext num="5."></labeltext>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Contesta las siguientes preguntas. Consulta las páginas 70 y 71 de tu Atlas de Geografía del Mundo.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-12">
+          <div>
+            <labeltext num="1.">¿Cuál es el continente con la mayor cantidad de población con 80 años o más?</labeltext>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="Europa" type="text" placeh="-"></inputbox>
+          </div>
+          <div>
+            <labeltext num="2.">¿Cuál es el continente con la mayor cantidad de población entre los 0 y 4 años?</labeltext>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="África" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

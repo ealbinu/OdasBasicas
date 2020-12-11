@@ -1,28 +1,53 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Comparo los continentes'
+- subtitle = 'Países más y menos poblados'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex2 .inputbox input{font-size: 1.4rem;}
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la siguiente gráfica y selecciona la opción que corresponde en cada enunciado.
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            .row.mt-3.ex1
+                .col-12
+                    choose(v-model="r[0]" :ref="refCount()" num="1." :answer-num="4" text="Es el continente con mayor población rural." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++" )
+                    choose(v-model="r[1]" :ref="refCount()" num="2." :answer-num="3" text="Es el continente con menor población rural." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++" )
+                    choose(v-model="r[2]" :ref="refCount()" num="3." :answer-num="0" text="Es el continente con mayor población urbana." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++" )
+                    choose(v-model="r[3]" :ref="refCount()" num="4." :answer-num="4" text="Es el continente con menor población urbana." :options="['América.', 'Oceanía.', 'Asia.', 'Europa.', 'África.']" @isright="right++" )
 
-            .row.mt-3
-            
+            .instruccion.mt-5 Observa los datos de la siguiente tabla y ordénalos de menor a mayor de acuerdo a su densidad poblacional.
+            .row.mt-3.ex2.centerrow
+                .col-md-6: img(src="aimg/b1.png").img-fluid
+                .col-md-6
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Oceanía" type="text" placeh="-")
+                        template(v-slot:before=""): labeltext(num="1.")
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="África" type="text" placeh="-")
+                        template(v-slot:before=""): labeltext(num="2.")
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="Europa" type="text" placeh="-")
+                        template(v-slot:before=""): labeltext(num="3.")
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="América" type="text" placeh="-")
+                        template(v-slot:before=""): labeltext(num="4.")
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="Asia" type="text" placeh="-")
+                        template(v-slot:before=""): labeltext(num="5.")
 
-
+            .instruccion.mt-5 Contesta las siguientes preguntas. Consulta las páginas 70 y 71 de tu Atlas de Geografía del Mundo.
+            .row.mt-3.ex3
+                .col-12
+                    div
+                        labeltext(num="1.") ¿Cuál es el continente con la mayor cantidad de población con 80 años o más?
+                        inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="Europa" type="text" placeh="-")
+                    div
+                        labeltext(num="2.") ¿Cuál es el continente con la mayor cantidad de población entre los 0 y 4 años?
+                        inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="África" type="text" placeh="-")
 
 
 
