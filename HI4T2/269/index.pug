@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizamos la Conquista'
+- subtitle = 'La Conquista de México-Tenochtitlan'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,10 +17,12 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los aspectos que influyeron en la conquista de México-Tenochtitlan.Consulta las páginas 90 a 95 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-6(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+
 
 
 
@@ -29,4 +31,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:true, t:'Algunos pueblos que pagaban tributo a los mexicas estaban descontentos y se unieron a los españoles para derrotar al Imperio mexica. También se aliaron con los tlaxcaltecas.'},
+                    {v:true, t:'Pedro de Alvarado llevó a cabo una ma- tanza de nativos que celebraban una fiesta en honor a Huitzilopochtli (dios mexica de la guerra).'},
+                    {v:true, t:'Cortés, apoyado por los tlaxcaltecas, sitió Tenochtitlan. Los habitantes estaban muriendo de enfermedades como la viruela.'},
+                    {v:true, t:'La noche del 30 de junio de 1520, Cortés y sus hombres tuvieron que huir de Tenochtitlan. A esa noche se le conoce como “La noche triste”.'},
+                    {v:false, t:'En 1523 llegaron los frailes de las órdenes mendicantes (dominicos, franciscanos) para llevar a cabo la cristianización de los indios.'},
+                    {v:false, t:'Nuño Beltrán de Guzmán, quien estaba a cargo de la primera Real Audiencia de México, cometió muchas injusticias contra los indígenas.'},
+                ])
