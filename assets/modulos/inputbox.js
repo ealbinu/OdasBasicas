@@ -121,6 +121,7 @@ Vue.component('inputbox', {
     },
     mounted () {
         this.$emit('input', "")
+
     },
     template: `
         <div class="inputbox" :class="setclass" v-show="hideorshow">

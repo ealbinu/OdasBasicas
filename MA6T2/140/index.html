@@ -3,25 +3,196 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Intercambio el dinero</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .tab1,
+      .tab2 {
+          margin: 20px;
+      }
+      .tab1 > .numbers,
+      .tab2 > .numbers {
+          text-align: center;
+          font-size: 1.6rem;
+      }
+      .tab1 .head .numbers,
+      .tab2 .head .numbers {
+          color: #fff;
+          font-size: 1.8rem;
+          text-align: center;
+      }
+      .tab1 .body,
+      .tab2 .body {
+          font-size: 1.2rem;
+          text-align: center;
+      }
+      .tab1 .body > div,
+      .tab2 .body > div {
+          background: #f5f5f5;
+          border: 2px solid #fff;
+          padding: 4px;
+      }
+      .tab1 .inputbox input,
+      .tab2 .inputbox input {
+          font-size: 1.2rem;
+          padding: 0;
+          border-radius: 4px;
+      }
+      .tab1 .inputbox .numbers,
+      .tab2 .inputbox .numbers {
+          font-size: 1.4rem;
+      }
+      .tab1 .head {
+          background: #6A4287;
+      }
+      .tab2 .head {
+          background: #00AEB5;
+      }
+      
+      .ex2 .head {
+          background: #E9832C;
+          color: #fff;
+          text-align: center;
+      }
+      .ex2 .body > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 6px 0;
+      }
+      .ex2 .body:nth-child(even) {
+          background: #FDE8CF;
+      }
+      .ex2 .body:nth-child(even) > div:nth-child(1) {
+          background: #F6C8A5;
+      }
+      .ex2 .body:nth-child(odd) > div:nth-child(1) {
+          background: #f5f5f5;
+      }
+      @media (max-width: 680px) {
+          .ex2 {
+              font-size: 0.5rem;
+          }
+      }
+      .ex2 .inputbox input {
+          font-size: 1rem;
+          padding: 8px 0;
+          border-radius: 4px;
+      }
+      @media (max-width: 680px) {
+          .ex2 .inputbox input {
+              font-size: 0.5rem;
+          }
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Intercambio el dinero</h1>
+      <h2>Divisas</h2>
+      <div class="instruccion mt-5">Completa las siguientes tablas utilizando la información del precio de cada divisa. Para facilitarte el trabajo usa calculadora.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <div class="tab1">
+            <div class="numbers">A la venta</div>
+            <div class="row head">
+              <div class="col-6">
+                <numbers>Divisas</numbers>
+              </div>
+              <div class="col-6">
+                <numbers>Pesos</numbers>
+              </div>
+            </div>
+            <div class="row body" v-for="(i, index) in tempsobj.a">
+              <div class="col-6">{{i.t}}</div>
+              <div class="col-6">
+                <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.p" type="number" placeh="#">
+                  <template v-slot:before="">
+                    <numbers>$</numbers>
+                  </template>
+                </inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tab2">
+            <div class="numbers">A la compra</div>
+            <div class="row head">
+              <div class="col-6">
+                <numbers>Divisas</numbers>
+              </div>
+              <div class="col-6">
+                <numbers>Pesos</numbers>
+              </div>
+            </div>
+            <div class="row body" v-for="(i, index) in tempsobj.b">
+              <div class="col-6">
+                <inputbox v-model="r[index+9]" :ref="refCount()" @isright="right++" :answer="i.t" type="text" placeh="-"></inputbox>
+              </div>
+              <div class="col-6">{{i.p}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="row head">
+            <div class="col">&nbsp;</div>
+            <div class="col">Cantidad</div>
+            <div class="col">Dólar</div>
+            <div class="col">Euro</div>
+            <div class="col">Libra</div>
+            <div class="col">Yuan</div>
+          </div>
+          <div class="row body" v-for="(i, index) in tempsobj.c">
+            <template v-if="i.t=='c'">
+              <div class="col">Compra</div>
+              <div class="col">{{formatnum(i.v)}}</div>
+              <div class="col">
+                <inputbox v-model="r[i.mod]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/23.0100)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+1]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/25.7647)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+2]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/28.7684)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+3]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/0.22006)" type="number" placeh="#"></inputbox>
+              </div>
+            </template>
+            <template v-else-if="i.t=='v'">
+              <div class="col">Venta</div>
+              <div class="col">{{formatnum(i.v)}}</div>
+              <div class="col">
+                <inputbox v-model="r[i.mod]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/24)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+1]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/25.775)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+2]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/28.7787)" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[i.mod+3]" :ref="refCount()" @isright="right++" :answer="twoD(i.v/0.22013)" type="number" placeh="#"></inputbox>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
@@ -37,6 +208,52 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.formatnum = function (num){
+          return numeral(num).format('$0,0.00')
+      }
+      app.twoD = function(num) {
+          let fixed = 2
+          var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+          return num.toString().match(re)[0];
+      }
+      app.$set(app.tempsobj, 'a', [
+          { t: '15 yuanes', p: 3.30 },
+          { t: '10 libras', p: 287.78 },
+          { t: '20 dólares', p: 480.0 },
+          { t: '30 euros', p: 773.25 },
+          { t: '30 yuanes', p: 6.60 },
+          { t: '45 euros', p: 1159.87 },
+          { t: '50 euros', p: 1288.75 },
+          { t: '45 libras', p: 1295.04 },
+          { t: '40 dólares', p: 960 },
+      ])
+      app.$set(app.tempsobj, 'b', [
+          { t: '30 dólares', p: '$690.30' },
+          { t: '15 euros', p: '$386.47' },
+          { t: '40 yuanes', p: '$8.80' },
+          { t: '12 libras', p: '$345.22' },
+          { t: '60 dólares', p: '$1 380.60' },
+          { t: '30 euros', p: '$772.94' },
+          { t: '80 yuanes', p: '$17.60' },
+          { t: '24 libras', p: '$690.44' },
+          { t: '100 dólares', p: ' $2 301.00' },
+      ])
+      
+      app.$set(app.tempsobj, 'c', [
+          {t:'c', v: 5000, mod: 18},
+          {t:'v', v: 7200, mod:22 },
+          {t:'c', v: 4850, mod:26 },
+          {t:'v', v: 6000, mod:30 },
+          {t:'c', v: 7000, mod:34 },
+          {t:'c', v: 8000, mod:38 },
+          {t:'v', v: 9000, mod:42},
+          {t:'c', v: 10000, mod:46},
+          {t:'c', v: 3500, mod:50},
+      ])
+      
+      
+       
+    </script>
   </body>
 </html>

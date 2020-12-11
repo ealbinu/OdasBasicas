@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico datos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -17,9 +17,21 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico datos</h1>
+      <h2>Cajas de té / Las matemáticas en los envases</h2>
+      <div class="instruccion mt-5">Observa la ilustración y contesta las preguntas.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="¿Cuántos jugos se necesitan para llenar una jarra de 2 litros?" :options="['12 jugos.','9 jugos.','8 jugos.','10 jugos.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="¿Cuántos miligramos (mg) de sodio contiene?" :options="['208 g.','152 mg.','208 mg.','154 g.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="¿Cuántos carbohidratos consumirá alguien que tome dos litros de jugo?" :options="['152 mg.','528 g.','154 mg.','208 g.']" @isright="right++" :answer-num="3"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="¿Cuál NO es un ingrediente del jugo?" :options="['Pera.','Agua.','Zanahoria.','Naranja.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[4]" :ref="refCount()" num="5." text="Según la fecha de caducidad, ¿cuántos años faltan para que caduque este producto?" :options="['2 años.','3 meses.','1 año.','1 año y 2 meses.']" @isright="right++" :answer-num="2"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico datos'
+- subtitle = 'Cajas de té / Las matemáticas en los envases'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,11 +17,16 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la ilustración y contesta las preguntas.
 
-            .row.mt-3
-            
-
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            .row.mt-3.ex1
+                .col-12
+                    choose(v-model="r[0]" :ref="refCount()" num="1." text="¿Cuántos jugos se necesitan para llenar una jarra de 2 litros?" :options="['12 jugos.','9 jugos.','8 jugos.','10 jugos.']" @isright="right++" :answer-num="2")
+                    choose(v-model="r[1]" :ref="refCount()" num="2." text="¿Cuántos miligramos (mg) de sodio contiene?" :options="['208 g.','152 mg.','208 mg.','154 g.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[2]" :ref="refCount()" num="3." text="¿Cuántos carbohidratos consumirá alguien que tome dos litros de jugo?" :options="['152 mg.','528 g.','154 mg.','208 g.']" @isright="right++" :answer-num="3")
+                    choose(v-model="r[3]" :ref="refCount()" num="4." text="¿Cuál NO es un ingrediente del jugo?" :options="['Pera.','Agua.','Zanahoria.','Naranja.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[4]" :ref="refCount()" num="5." text="Según la fecha de caducidad, ¿cuántos años faltan para que caduque este producto?" :options="['2 años.','3 meses.','1 año.','1 año y 2 meses.']" @isright="right++" :answer-num="2")
 
 
 
