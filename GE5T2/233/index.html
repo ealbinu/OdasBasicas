@@ -3,23 +3,86 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Describo poblaciones urbanas y rurales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .items1,
+      .ex1 .items2 {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+      }
+      .ex1 .inputbox {
+          position: relative;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+      .ex1 .inputbox input {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          max-width: 80px;
+          font-size: 1.2rem;
+          background: #fff;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ex1 .inputbox img {
+          border-radius: 10px;
+      }
+      .choose {
+          display: flex;
+          background: #f5f5f5;
+      }
+      .choose .options {
+          margin: 0 0 0 auto;
+      }
+      .choose .options > div {
+          padding: 4px 8px;
+          border: none;
+          background: #fff;
+          border-radius: 4px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .choose .options > div.active {
+          border: none;
+          background: var(--main);
+          color: #fff;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Describo poblaciones urbanas y rurales</h1>
+      <h2>Lo urbano y lo rural</h2>
+      <div class="instruccion mt-5">Relaciona los párrafos con las imágenes correspondientes. Consulta la página 84 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 items1">
+          <labeltext num="1."> Lugar donde se concentran la mayoría de servicios, tales como hos- pitales, escuelas, empleos y centros de entretenimiento.</labeltext>
+          <labeltext num="2."> Lugar donde se concentra menos población, ya que las actividades como la agricultura o la ganadería, que se desarrollan en el campo, requieren de mayor espacio.</labeltext>
+        </div>
+        <div class="col-md-6 items2">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/a1.png"/></template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/a2.png"/></template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Selecciona <strong>U</strong> si se trata de una característica de la población urbana, o una <strong>R</strong> si se trata de una característica de la población rural.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <template v-for="(i, index) in tempsobj.a">
+            <choose v-model="r[index+2]" :ref="refCount()" :num="(index+1)+'.'" :text="i.t" :options="['R', 'U']" @isright="right++" :answer="i.a"></choose>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +100,14 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {a:'R', t:'Es el lugar donde hay escasez de servicios públicos.'},
+          {a:'R', t:'Su población se dedica principalmente a la agricultura o la ganadería.'},
+          {a:'U', t:'Su población cuenta con la mayoría de los servicios públicos.'},
+          {a:'U', t:'Es el espacio en donde se concentra la mayoría de la industria y el comercio. '},
+          {a:'R', t:'Las viviendas, en su gran mayoría, se encuentran dispersas.'},
+      ])
+    </script>
   </body>
 </html>
