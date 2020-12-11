@@ -1,25 +1,73 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Estudio los periodos de Mesoamérica</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex2 .check {
+          background: #f5f5f5;
+      }
+      .ex2 .check .label.checktext {
+          text-align: center;
+          width: 100%;
+      }
+      .ex2 .check .checkbox {
+          display: none;
+      }
+      .ex2 .check.activecheck {
+          background: var(--clear);
+      }
+      .recuadropalabras {
+          background: #E9F4F3;
+      }
+      .recuadropalabras strong {
+          background: #87D4D8;
+      }
+      .parrafoinputs{
+          line-height: 2;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Estudio los periodos de Mesoamérica</h1>
+      <h2>Mesoamérica, espacio cultural</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las características de la tierra en Mesoamérica.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4" v-for="(i, index) in [{val: false, text: 'Poco fértil'}, {val:true, text:'Húmeda y fértil.'}, {val:false, text:'Infértil.'}]">
+          <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.val" :text="i.text"></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Colorea los alimentos que se consumían en Mesoamérica.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-4" v-for="(i, index) in tempsobj.ex2">
+          <check v-model="r[index+3]" :ref="refCount()" @isright="right++" :answer="i.val" :text="i.text"></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa el siguiente texto con las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['Veracruz y Tabasco','Preclásico','ceremonias y rituales','obras de riego','Olmeca','escritura','canales','2500','cabezas']"></recuadropalabras>
+      <div class="mt-3">
+        <div class="parrafoinputs"><span>El </span>
+          <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="'Preclásico'" type="text" placeh="-"></inputbox><span> tuvo una duración de 2 700 años, aproximadamente. Este periodo empezó </span>
+          <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="'2500'" type="text" placeh="-"></inputbox><span> años a. C. y finalizó en el año 200 d. C.; la civilización más emblemática del periodo es la </span>
+          <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="'Olmeca'" type="text" placeh="-"></inputbox><span>, que ocupó los estados de  </span>
+          <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="'Veracruz y Tabasco'" type="text" placeh="-"></inputbox><span>. Los asentamientos más importantes fueron en San Lorenzo y La Venta. Esta civilización se caracterizó por la construcción de edificios para  </span>
+          <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="'ceremonias y rituales'" type="text" placeh="-"></inputbox><span>; su arte era de un estilo único al hacer esculturas de enormes  </span>
+          <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="'cabezas'" type="text" placeh="-"></inputbox><span>, además elaboraron calendarios y un sistema de  </span>
+          <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="'escritura'" type="text" placeh="-"></inputbox><span>. Todo lo anterior les ayudó para favorecer la producción agrícola. Luego construyeron  </span>
+          <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="'obras de riego'" type="text" placeh="-"></inputbox><span> represas,  </span>
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="'canales'" type="text" placeh="-"></inputbox><span> y terrazas. </span>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +85,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex2', [
+          {val: false, text:'Piña'},
+          {val: true, text:'Frijol'},
+          {val: true, text:'Calabaza'},
+          {val: true, text:'Aguacate'},
+          {val: true, text:'Maíz'},
+          {val: true, text:'Chile'},
+          {val: false, text:'Trigo'},
+          {val: true, text:'Cacao'},
+      ])
+    </script>
   </body>
 </html>
