@@ -3,23 +3,193 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Resuelvo la proporcionalidad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .pan {
+          background: #FEF6D8;
+          padding: 5px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 #CBA47C;
+          margin-bottom: 30px;
+      }
+      .pan > .inputbox input {
+          font-size: 1.2rem;
+          padding: 1px;
+          max-width: 80px;
+          border-color: #CBA47C;
+          border-radius: 4px;
+          margin-left: 2px;
+      }
+      .pan > .inputbox > .numbers {
+          font-size: 1.6rem;
+          color: #CBA47C;
+          margin-left: 6px;
+      }
+      .pan .row.head {
+          margin: 0;
+          background: #CBA47C;
+          line-height: 1;
+          padding: 10px 0;
+          font-size: 0.7rem;
+          font-weight: bold;
+      }
+      .pan .row.body {
+          margin: 0;
+      }
+      .pan .row.body > div {
+          border: 1px solid #CBA47C;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 40px;
+          padding: 0;
+      }
+      .pan .row.body > div .inputbox {
+          flex-grow: 1;
+          min-height: 100%;
+          background: #fff;
+      }
+      .pan .row.body > div .inputbox input {
+          border-radius: 0;
+          font-size: 1.2rem;
+          padding: 0;
+          border: none;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Resuelvo la proporcionalidad</h1>
+      <h2>Un valor intermedio / Ahorro compartido / Más problemas</h2>
+      <div class="instruccion mt-5">Completa las siguientes tablas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4">
+          <div class="pan text-center"><img class="img-fluid" src="aimg/a1.png"/>
+            <div class="row head centerrow">
+              <div class="col-6">Cantidad de panes</div>
+              <div class="col-6">Costo ($)</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">11</div>
+              <div class="col-6">33</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">8</div>
+              <div class="col-6">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="24" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row body">
+              <div class="col-6">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-6">18</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">4</div>
+              <div class="col-6">12</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">2</div>
+              <div class="col-6">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="3.00" type="number" placeh="#">
+              <template v-slot:before=""><span>1 pan =</span>
+                <numbers>$</numbers>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="pan text-center"><img class="img-fluid" src="aimg/a2.png"/>
+            <div class="row head">
+              <div class="col-6">Cantidad de panes</div>
+              <div class="col-6">Costo ($)</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">15</div>
+              <div class="col-6">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row body">
+              <div class="col-6">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-6">24</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-6">12</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">5</div>
+              <div class="col-6">10</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">4</div>
+              <div class="col-6">
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2.00" type="number" placeh="#">
+              <template v-slot:before=""><span>1 pan =</span>
+                <numbers>$</numbers>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="pan text-center"><img class="img-fluid" src="aimg/a3.png"/>
+            <div class="row head">
+              <div class="col-6">Cantidad de panes</div>
+              <div class="col-6">Costo ($)</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">13</div>
+              <div class="col-6">52</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">
+                <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-6">40</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">7</div>
+              <div class="col-6">
+                <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="28" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row body">
+              <div class="col-6">4</div>
+              <div class="col-6">16</div>
+            </div>
+            <div class="row body">
+              <div class="col-6">3</div>
+              <div class="col-6">
+                <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="4.00" type="number" placeh="#">
+              <template v-slot:before=""><span>1 pan =</span>
+                <numbers>$</numbers>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

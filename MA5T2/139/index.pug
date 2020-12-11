@@ -1,25 +1,149 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Resuelvo la proporcionalidad'
+- subtitle = 'Un valor intermedio / Ahorro compartido / Más problemas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .pan {
+                background: #FEF6D8;
+                padding: 5px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 #CBA47C;
+                margin-bottom: 30px;
+            }
+            .pan > .inputbox input {
+                font-size: 1.2rem;
+                padding: 1px;
+                max-width: 80px;
+                border-color: #CBA47C;
+                border-radius: 4px;
+                margin-left: 2px;
+            }
+            .pan > .inputbox > .numbers {
+                font-size: 1.6rem;
+                color: #CBA47C;
+                margin-left: 6px;
+            }
+            .pan .row.head {
+                margin: 0;
+                background: #CBA47C;
+                line-height: 1;
+                padding: 10px 0;
+                font-size: 0.7rem;
+                font-weight: bold;
+            }
+            .pan .row.body {
+                margin: 0;
+            }
+            .pan .row.body > div {
+                border: 1px solid #CBA47C;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 40px;
+                padding: 0;
+            }
+            .pan .row.body > div .inputbox {
+                flex-grow: 1;
+                min-height: 100%;
+                background: #fff;
+            }
+            .pan .row.body > div .inputbox input {
+                border-radius: 0;
+                font-size: 1.2rem;
+                padding: 0;
+                border: none;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las siguientes tablas.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-4: .pan.text-center
+                        img(src="aimg/a1.png").img-fluid
+                        .row.head.centerrow
+                            .col-6 Cantidad de panes
+                            .col-6 Costo ($)
+                        .row.body
+                            .col-6 11
+                            .col-6 33
+                        .row.body
+                            .col-6 8
+                            .col-6: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="24" type="number" placeh="#")
+                        .row.body
+                            .col-6: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                            .col-6 18
+                        .row.body
+                            .col-6 4
+                            .col-6 12
+                        .row.body
+                            .col-6 2
+                            .col-6: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                        inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="3.00" type="number" placeh="#")
+                            template(v-slot:before="")
+                                span 1 pan =
+                                numbers $
+                .col-md-4: .pan.text-center
+                        img(src="aimg/a2.png").img-fluid
+                        .row.head
+                            .col-6 Cantidad de panes
+                            .col-6 Costo ($)
+                        .row.body
+                            .col-6 15
+                            .col-6: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#")
+                            
+                        .row.body
+                            .col-6: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#")
+                            .col-6 24
+
+                        .row.body
+                            .col-6: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                            .col-6 12
+                        .row.body
+                            .col-6 5
+                            .col-6 10
+                        .row.body
+                            .col-6 4
+                            .col-6: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+
+                        inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2.00" type="number" placeh="#")
+                            template(v-slot:before="")
+                                span 1 pan =
+                                numbers $
+                .col-md-4: .pan.text-center
+                        img(src="aimg/a3.png").img-fluid
+                        .row.head
+                            .col-6 Cantidad de panes
+                            .col-6 Costo ($)
+                        .row.body
+                            .col-6 13
+                            .col-6 52
+                        .row.body
+                            .col-6: inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
+                            .col-6 40
+                        .row.body
+                            .col-6 7
+                            .col-6: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="28" type="number" placeh="#")
+                        .row.body
+                            .col-6 4
+                            .col-6 16
+                        .row.body
+                            .col-6 3
+                            .col-6: inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#")
+                        inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" :answer="4.00" type="number" placeh="#")
+                            template(v-slot:before="")
+                                span 1 pan =
+                                numbers $
             
 
 
