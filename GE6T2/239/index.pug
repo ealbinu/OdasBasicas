@@ -1,25 +1,46 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Comparo lo urbano y lo rural'
+- subtitle = 'Las aglomeraciones urbanas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose img {
+                width: 100%;
+            }
+            .choose .options {
+                margin: 2px;
+                justify-content: center;
+            }
+            .choose .options > div {
+                flex-grow: 1;
+                border: none;
+                font-size: 1.7rem;
+                background: #f5f5f5;
+                border-radius: 10px;
+            }
+            .choose .options > div.active {
+                border: none;
+                background: #9B3D86;
+                color: #fff;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Selecciona #[strong R] si la actividad es rural o #[strong U] si es urbana. Consulta las páginas 87 a 89 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-4(v-for="(i, index) in ['R', 'R','U','U','R','U']")
+                    choose(v-model="r[index]" :ref="refCount()" :text="'<img src=aimg/a'+(index+1)+'.jpg>'" :options="['R', 'U']" @isright="right++" :answer="i")
+
             
 
 
