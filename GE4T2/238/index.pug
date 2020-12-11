@@ -1,25 +1,44 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco dónde viven'
+- subtitle = 'Los efectos sociales y económicos en las localidades rurales'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose {
+                display: flex;
+                background: #EFDEE6;
+            }
+            .choose .options {
+                margin: 0 0 0 auto;
+            }
+            .choose .options > div {
+                padding: 4px 8px;
+                border: none;
+                background: #fff;
+                border-radius: 4px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .choose .options > div.active {
+                border: none;
+                background: var(--main);
+                color: #fff;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Selecciona #[strong R] si el enunciado corresponde a una población rural, o #[strong U] si corresponde a una urbana.
 
-            .row.mt-3
+            .row.mt-3.ex2
+                .col-12
+                    template(v-for="(i, index) in tempsobj.a")
+                        choose(v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.t" :options="['R', 'U']" @isright="right++" :answer="i.a")
             
 
 
@@ -29,4 +48,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {a:'U', t:'Las personas viven en las ciudades.'},
+                    {a:'R', t:'Las personas trabajan en el campo sembrando y cosechando.'},
+                    {a:'U', t:'Hay comercios, fábricas y centros comerciales, entre otros.'},
+                    {a:'R', t:'El número de habitantes que tiene es pequeño.'},
+                    {a:'U', t:'Cuenta con servicios de transporte como taxis, camiones y trenes.'},
+                    {a:'U', t:'La mayoría de casas o fincas cuentan con el servicio de luz eléctrica.'},
+                ])
