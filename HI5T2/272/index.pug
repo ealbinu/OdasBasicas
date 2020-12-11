@@ -1,26 +1,77 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizo la Revolución'
+- subtitle = 'La Revolución Mexicana'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex2 .items1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .ex2 .items1 .label {
+                background: #E8E1D0;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .ex2 .items2 .inputbox {
+                margin-bottom: 5px;
+            }
+            .ex2 .items2 .inputbox input {
+                margin-left: 10px;
+                margin-right: -40px;
+                position: relative;
+                z-index: 1;
+                font-size: 1.4rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Selecciona las opciones que mencionan las principales causas de la Revolución Mexicana. 
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-4: check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="true" text="La dictadura.")
+                .col-md-4: check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="false" text="Dar tierras a los indígenas.")
+                .col-md-4: check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="true" text="La desigualdad económica.")
+                .col-md-4: check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="false" text="La presencia de la democracia.")
+                .col-md-4: check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="true" text="Madero escapó de prisión y publicó el Plan de San Luis.")
+                .col-md-4: check(v-model="r[5]" :ref="refCount()"  @isright="right++" :answer="true" text="La entrevista de Porfirio Díaz con James Creelman.")
+
+            .instruccion.mt-5 Relaciona cada ideología con el personaje correspondiente.
+
+            .row.mt-3.ex2
+                .col-md-8.items1
+                    labeltext(num="1.") #[Plan de Ayala:] expresaba las demandas de los campesinos que, durante el gobierno de Porfirio Díaz, habían sido despojados de sus tierras. Por lo cual, muchos trabajadores y campesinos del país se unieron al movimiento.
+                    labeltext(num="2.") #[Ley General Agraria:] proponía terminar con las grandes propieda- des territoriales, realizar el reparto de tierras y expropiar terrenos para fundar poblados.
+                    labeltext(num="3.") #[Dirigente del bando carrancista:] apoyó a Carranza y se sumó al ejército constitucionalista. Concebía la idea de hacer de México un país moderno y próspero.
+                    labeltext(num="4.") #[Primer Jefe:] fue gobernador de Coahuila durante el gobierno de Francisco I. Madero, desconoció a Victoriano Huerta cuando usurpó la presidencia, y promulgó la Constitución de 1917.
+                .col-md.items2
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:after=""): img(src="aimg/b1.png").img-fluid
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                        template(v-slot:after=""): img(src="aimg/b2.png").img-fluid
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                        template(v-slot:after=""): img(src="aimg/b3.png").img-fluid
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        template(v-slot:after=""): img(src="aimg/b4.png").img-fluid
+
+
+
+            .instruccion.mt-5 Ordena de manera cronológica los siguientes eventos escribiendo los números del #[strong 1] al #[strong 6].
+   
+            .row.mt-3.ex3.trueorfalse
+                template(v-for="(i, index) in tempsobj.ex3" v-if="tempsobj.ex3")
+                    .col-md-6: inputbox(v-model="r[index+10]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#")
+                        template(v-slot:before="")
+                            labeltext() {{i.t}}
 
 
 
@@ -29,4 +80,12 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex3', [
+                    {v: 2, t: 'Decena Trágica.'},
+                    {v: 1, t: 'Gobierno maderista.'},
+                    {v: 4, t: 'Convención de Aguascalientes.'},
+                    {v: 5, t: 'División de los grupos revolucionarios.'},
+                    {v: 6, t: 'Victoria del ejército constitucionalista 6 sobre los zapatistas y villistas.'},
+                    {v: 3, t: 'Triunfo de las fuerzas revolucionarias sobre el gobierno de Victoriano Huerta.'},
+                    
+                ])

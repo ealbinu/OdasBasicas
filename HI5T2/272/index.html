@@ -3,23 +3,104 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo la Revolución</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex2 .items1 {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+      }
+      .ex2 .items1 .label {
+          background: #E8E1D0;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex2 .items2 .inputbox {
+          margin-bottom: 5px;
+      }
+      .ex2 .items2 .inputbox input {
+          margin-left: 10px;
+          margin-right: -40px;
+          position: relative;
+          z-index: 1;
+          font-size: 1.4rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo la Revolución</h1>
+      <h2>La Revolución Mexicana</h2>
+      <div class="instruccion mt-5">Selecciona las opciones que mencionan las principales causas de la Revolución Mexicana. </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4">
+          <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true" text="La dictadura."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="false" text="Dar tierras a los indígenas."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="true" text="La desigualdad económica."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="false" text="La presencia de la democracia."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="true" text="Madero escapó de prisión y publicó el Plan de San Luis."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[5]" :ref="refCount()" @isright="right++" :answer="true" text="La entrevista de Porfirio Díaz con James Creelman."></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Relaciona cada ideología con el personaje correspondiente.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-8 items1">
+          <labeltext num="1.">
+            <Plan>de Ayala:</Plan> expresaba las demandas de los campesinos que, durante el gobierno de Porfirio Díaz, habían sido despojados de sus tierras. Por lo cual, muchos trabajadores y campesinos del país se unieron al movimiento.
+          </labeltext>
+          <labeltext num="2.">
+            <Ley>General Agraria:</Ley> proponía terminar con las grandes propieda- des territoriales, realizar el reparto de tierras y expropiar terrenos para fundar poblados.
+          </labeltext>
+          <labeltext num="3.">
+            <Dirigente>del bando carrancista:</Dirigente> apoyó a Carranza y se sumó al ejército constitucionalista. Concebía la idea de hacer de México un país moderno y próspero.
+          </labeltext>
+          <labeltext num="4.">
+            <Primer>Jefe:</Primer> fue gobernador de Coahuila durante el gobierno de Francisco I. Madero, desconoció a Victoriano Huerta cuando usurpó la presidencia, y promulgó la Constitución de 1917.
+          </labeltext>
+        </div>
+        <div class="col-md items2">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/b1.png"/></template>
+          </inputbox>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/b2.png"/></template>
+          </inputbox>
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/b3.png"/></template>
+          </inputbox>
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:after=""><img class="img-fluid" src="aimg/b4.png"/></template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Ordena de manera cronológica los siguientes eventos escribiendo los números del <strong>1</strong> al <strong>6</strong>.</div>
+      <div class="row mt-3 ex3 trueorfalse">
+        <template v-for="(i, index) in tempsobj.ex3" v-if="tempsobj.ex3">
+          <div class="col-md-6">
+            <inputbox v-model="r[index+10]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="#">
+              <template v-slot:before="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -37,6 +118,16 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex3', [
+          {v: 2, t: 'Decena Trágica.'},
+          {v: 1, t: 'Gobierno maderista.'},
+          {v: 4, t: 'Convención de Aguascalientes.'},
+          {v: 5, t: 'División de los grupos revolucionarios.'},
+          {v: 6, t: 'Victoria del ejército constitucionalista 6 sobre los zapatistas y villistas.'},
+          {v: 3, t: 'Triunfo de las fuerzas revolucionarias sobre el gobierno de Victoriano Huerta.'},
+          
+      ])
+    </script>
   </body>
 </html>
