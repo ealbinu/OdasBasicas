@@ -1,27 +1,78 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Identifico actos y escenas'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose {
+                background: #f5f5f5;
+                padding: 10px;
+                border: 2px solid #fff;
+            }
+            .choose .label {
+                font-size: 1rem;
+            }
+            .choose .options {
+                margin: 0;
+                padding: 0;
+            }
+            .choose .options > div {
+                width: 40px;
+                height: 40px;
+                border: 2px solid #fff;
+                background: #f5f5f5;
+                border-radius: 50%;
+                text-indent: -999px;
+                overflow: hidden;
+            }
+            .choose .options > div.active {
+                border: 2px solid #fff;
+            }
+            .choose .options > div:nth-child(1) {
+                background: #6EB745;
+            }
+            .choose .options > div:nth-child(2) {
+                background: #6B4387;
+            }
+            .choose .options > div:nth-child(3) {
+                background: #0883BF;
+            }
+            .c_0 .choose {
+                background: #DEEECD;
+                border-color: #6EB745;
+                color: #2E7705;
+            }
+            .c_1 .choose {
+                background: #DDD6E2;
+                border-color: #6B4387;
+                color: #6B4387;
+            }
+            .c_2 .choose {
+                background: #D3E3EE;
+                border-color: #0883BF;
+                color: #0883BF;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Ordena los actos de la obra Alicia en el País de las Maravillas coloreando las descripciones con el color correspondiente a cada acto.
 
-            .row.mt-3
-            
-
+            .row.mt-3.ex1
+                .col-md-6: img(src="aimg/a1.png").img-fluid
+                .col-md-6
+                    div(:class="'c_'+r[0]"): choose(v-model="r[0]" :ref="refCount()" :options="[0,1,2]" @isright="right++" :answer-num="2" text="Alicia se siente abrumada por tantos sujetos raros e intenta salir del agujero sin lograr encontrar la salida. De pronto escucha una voz a lo lejos que le pide que despierte y descubre que todo era un sueño.")
+                    div(:class="'c_'+r[1]"): choose(v-model="r[1]" :ref="refCount()" :options="[0,1,2]" @isright="right++" :answer-num="0" text="Alicia toma el té plácidamente en el bosque cuando un conejo pasa junto a ella a toda prisa diciendo que se le hace tarde mientras mira su reloj. Alicia lo sigue a toda prisa entrando en un agujero en la tierra.")
+                    div(:class="'c_'+r[2]"): choose(v-model="r[2]" :ref="refCount()" :options="[0,1,2]" @isright="right++" :answer-num="1" text="Alicia cae en un mundo fantástico en el que come cosas extrañas y convive con personajes peculiares, algunos medio locos y otros tantos de la realeza, pero el conejo no aparece por ningún lado.")
+                    
+    
 
 
 
