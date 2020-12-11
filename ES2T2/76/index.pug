@@ -1,25 +1,82 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Uso los signos'
+- subtitle = '¿Qué pasa si cambiamos los signos?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox input {
+                max-width: 60px;
+                padding: 0;
+                margin: 0 6px;
+                font-size: 1.2rem;
+            }
+            .item {
+                background: #FFF6D8;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 #EC8B30;
+            }
+            .item .numbers {
+                color: var(--accent);
+                text-align: center;
+                font-size: 2rem;
+            }
+            .inl {
+                text-align: center;
+            }
+            .inl .inputbox {
+                display: inline-block;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe los signos #[strong ¿?] o #[strong ¡!] que faltan en los siguientes textos.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-5.items1: img(src="aimg/a1.png").img-fluid
+                .col
+                    div.item
+                        numbers Un día, en el viejo Oeste:
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="!" type="text" placeh="-")
+                            template(v-slot:before="") —¡Juan 
+                            template(v-slot:after="") ¡Sálvame, por favor!
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="!" type="text" placeh="-")
+                            template(v-slot:before="") —¡Queremos todo el dinero del banco 
+            .row.mt-3.ex1.centerrow
+                .col-5.items1: img(src="aimg/a2.png").img-fluid
+                .col
+                    div.item
+                        .inl
+                            inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="¿" type="text" placeh="-")
+                                template(v-slot:after="") Qué quieren, ladrones
+                            inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="?" type="text" placeh="-")
+                        inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="!" type="text" placeh="-")
+                            template(v-slot:before="") —¡No temas, Laura 
+                            template(v-slot:after="") Yo te salvaré.
+            
+            .row.mt-3.ex1.centerrow
+                .col-5.items1: img(src="aimg/a3.png").img-fluid
+                .col
+                    div.item
+                        .text-center Juan les entregó dos bolsas repletas.
+                        .inl
+                            inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="!" type="text" placeh="-")
+                                template(v-slot:before="") —¡Ja, ja
+                            inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="¡" type="text" placeh="-")
+                                template(v-slot:after="") Tenemos todo el dinero!
+                        inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="¡" type="text" placeh="-")
+                            template(v-slot:after="") Somos ricos!
+
+                        .text-center —No se dieron cuenta de que les di piedras —confesó Juan, riendo.
             
 
 
