@@ -1,25 +1,80 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Clasifico más mezclas'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .r1 .recuadropalabras {
+                background: var(--sec);
+            }
+            .r1 .recuadropalabras strong {
+                color: #fff;
+            }
+            .r2 .recuadropalabras {
+                margin-top: 10px;
+                background: var(--accent);
+            }
+            .r2 .recuadropalabras strong {
+                color: #fff;
+            }
+            .item {
+                padding: 10px;
+            }
+            .item .inputbox:nth-child(2) input {
+                border-color: var(--sec);
+            }
+            .item .inputbox:nth-child(3) input {
+                border-color: var(--accent);
+            }
+            .item .inputbox input {
+                font-size: 1.2rem;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Escribe en cada una de las imágenes los #[strong.sec componentes] que la conforman y el #[strong.accent tipo de mezcla] a la que pertenece.
+            .r1: recuadropalabras(:palabras="['Jabón y agua.', 'Aceite de esencia y alcohol.', 'Agua y café.', 'Chocolate y pasas.', 'Almíbar y duraznos.', 'Jabón y agua.', 'Agua y verduras.']")
+            .r2: recuadropalabras(:palabras="['Heterogénea.', 'Homogénea.']")
+            
+            .row.mt-3.ex1
+                .col-md-6: .item
+                    img(src="aimg/a1.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Chocolate y pasas" type="text" placeh="Componentes")
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="Heterogénea" type="text" placeh="Mezcla")
+            
+                .col-md-6: .item
+                    img(src="aimg/a2.png").img-fluid
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Agua y café" type="text" placeh="Componentes")
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Homogénea" type="text" placeh="Mezcla")
+            
+                .col-md-6: .item
+                    img(src="aimg/a3.png").img-fluid
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Agua y verduras" type="text" placeh="Componentes")
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="Heterogénea" type="text" placeh="Mezcla")
+            
+                .col-md-6: .item
+                    img(src="aimg/a4.png").img-fluid
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="Jabón y agua" type="text" placeh="Componentes")
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="Homogénea" type="text" placeh="Mezcla")
+            
+                .col-md-6: .item
+                    img(src="aimg/a5.png").img-fluid
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="Aceite de esencia y alcohol" type="text" placeh="Componentes")
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="Homogénea" type="text" placeh="Mezcla")
+            
+                .col-md-6: .item
+                    img(src="aimg/a6.png").img-fluid
+                    inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="Almíbar y duraznos" type="text" placeh="Componentes")
+                    inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" answer="Heterogénea" type="text" placeh="Mezcla")
             
 
 
