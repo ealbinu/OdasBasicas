@@ -3,56 +3,108 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Descompongo los números</title>
+    <title>Identifico los ángulos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      .op.row {
-          background: #f5f5f5;
-          padding: 5px;
-          border-radius: 10px;
-          font-size: 1.2rem;
-          justify-content: center;
-          align-items: center;
-          margin: 10px 3px;
+      .hou {
+          position: relative;
       }
-      .op.row .numbers {
-          font-size: 1.6rem;
-          margin: 0 6px;
+      .selectable {
+          width: 5%;
+          height: 5%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: rgba(100, 230, 100, 0.8);
+          border-radius: 50%;
       }
-      .op.row .inputbox input {
-          max-width: 60px;
-          font-size: 1.2rem;
-          padding: 2px;
+      .selectable .circledactive {
+          transform: scale(1.8);
+          border-width: 3px;
       }
+      .selectable:nth-child(1) {
+          left: 37%;
+          top: 23%;
+      }
+      .selectable:nth-child(2) {
+          left: 56%;
+          top: 25%;
+      }
+      .selectable:nth-child(3) {
+          left: 56%;
+          top: 45%;
+      }
+      .selectable:nth-child(4) {
+          left: 37%;
+          top: 48%;
+      }
+      .selectable:nth-child(5) {
+          left: 11%;
+          top: 92%;
+      }
+      .selectable:nth-child(6) {
+          left: 38.5%;
+          top: 92%;
+      }
+      .selectable:nth-child(7) {
+          left: 56.5%;
+          top: 61%;
+      }
+      .selectable:nth-child(8) {
+          left: 17%;
+          top: 59%;
+      }
+      .selectable:nth-child(9) {
+          left: 59%;
+          top: 93%;
+      }
+      .selectable:nth-child(10) {
+          left: 78%;
+          top: 59%;
+      }
+      .selectable:nth-child(11) {
+          left: 91%;
+          top: 93%;
+      }
+      .selectable:nth-child(12) {
+          left: 75.5%;
+          top: 82%;
+      }
+      .selectable:nth-child(13) {
+          left: 5%;
+          top: 39%;
+      }
+      .selectable:nth-child(14) {
+          left: 84%;
+          top: 34%;
+      }
+      .selectable:nth-child(15) {
+          left: 90%;
+          top: 39%;
+      }
+      
       
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Descompongo los números</h1>
-      <h2>Cuarenta y ocho / Decenas completas</h2>
-      <div class="instruccion mt-5">Utiliza la suma o la resta para descomponer los siguientes números en decenas y unidades. Observa el ejemplo.</div>
-      <div class="row mt-3 ex1">
-        <template v-for="(i, index) in tempsobj.a">
-          <div class="col-md-6">
-            <div class="op row">
-              <div>{{i.val}}</div>
-              <numbers>=</numbers>
-              <inputbox v-model.number="g[i.ga]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
-              <numbers>+</numbers>
-              <inputbox v-model.number="g[i.gb]" type="number" placeh="#" @changed="r[i.r]=g[i.ga]+g[i.gb]"></inputbox>
-              <inputbox v-model="r[i.r]" :ref="refCount()" @isright="right++" :answer="i.val" type="number" placeh="#" hidetilok="hidetilok">
-                <template v-slot:before="">
-                  <numbers>=</numbers>
-                </template>
-              </inputbox>
+      <h1>Identifico los ángulos</h1>
+      <h2>Cuadrados y rectángulos iguales</h2>
+      <div class="instruccion mt-5">Lee la sección Te cuento que... de tu libro MDA 2º página 195. Después, observa la siguiente figura y selecciona los lugares donde se forman ángulos rectos.</div>
+      <div class="row">
+        <div class="col-12">
+          <div class="hou"><img class="w-100" src="aimg/a1.png"/>
+            <div class="selec">
+              <template v-for="(i, index) in 15">
+                <selectable :isok="index&lt;=11" v-model="r[index]" :ref="refCount()" @isright="right++"></selectable>
+              </template>
             </div>
           </div>
-        </template>
+        </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
@@ -71,17 +123,6 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>
-      app.$set(app.tempsobj, 'a', [
-          {val:95, ga:0, gb: 1, r: 0},
-          {val:45, ga:2, gb: 3, r: 1},
-          {val:78, ga:4, gb: 5, r: 2},
-          {val:21, ga:6, gb: 7, r: 3},
-          {val:54, ga:8, gb: 9, r: 4},
-          {val:36, ga:10, gb: 11, r: 5},
-          {val:15, ga:12, gb: 13, r: 6},
-          {val:65, ga:14, gb: 15, r: 7},
-      ])
-    </script>
+    <script></script>
   </body>
 </html>
