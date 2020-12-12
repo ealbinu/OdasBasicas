@@ -88,7 +88,7 @@ html(lang="es")
 
             .instruccion.mt-5 Completa los textos con las palabras del recuadro y escribe los números del 1 al 6 para ordenar cronológicamente los acontecimientos. Consulta las páginas 90 a la 94 de tu libro de texto SEP.
             
-            .conquis: div(v-for="(i, index) in ['Pedro de Alvarado','Tenochtitlan','Malintzin','Cuitláhuac','la Villa Rica de la Vera Cruz','Moctezuma','Cuauhtémoc']"): strong {{i}}
+            .conquis: div(v-for="(i, index) in ['Pedro de Alvarado','Tenochtitlan','Malintzin','la Villa Rica de la Vera Cruz','Moctezuma','Cuauhtémoc']"): strong {{i}}
 
             .row.mt-3.ex1
                 
@@ -112,28 +112,26 @@ html(lang="es")
                     .texts
                         | En 1519, los españoles llegaron a Tenochtitlan. Cortés tomó prisioneros a 
                         inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="Moctezuma" type="text" placeh="-")
-                        | y a 
-                        inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="Cuitláhuac" type="text" placeh="-")
-                        | .
+                        | y a Cuitláhuac.
                 .col-md: .area.horizontal
-                    .numeric: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                    .numeric: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
                     .texts
                         | Cortés mandó traer armas, caballos y más hombres de
-                        inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="la Villa Rica de la Vera Cruz" type="text" placeh="-")
+                        inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="la Villa Rica de la Vera Cruz" type="text" placeh="-")
                         | Planeaba un nuevo ataque contra los mexicas.
                 .col-md-10: .area.horizontal
-                    .numeric: inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                    .numeric: inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
                     .texts
                         | Cuitláhuac murió de viruela, como cientos de mexicas, y fue sustituido por
-                        inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="Cuauhtémoc" type="text" placeh="-")
+                        inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="Cuauhtémoc" type="text" placeh="-")
                         | .
                     .img: img(src="aimg/a4.png").img-fluid.bottom
                 .col-md-12: .area.horizontal
                     .img: img(src="aimg/a5.png").img-fluid.bottom
-                    .numeric: inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                    .numeric: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
                     .texts
                         | Los regalos enviados por Moctezuma no convencieron a los españoles de abandonar sus planes de conquistar
-                        inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" answer="Tenochtitlan" type="text" placeh="-")
+                        inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" answer="Tenochtitlan" type="text" placeh="-")
                         | .
                     .img: img(src="aimg/a6.png").img-fluid.bottom
 

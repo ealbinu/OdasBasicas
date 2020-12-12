@@ -19,7 +19,7 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Analizamos la Conquista</h1>
       <h2>La Conquista de México-Tenochtitlan</h2>
-      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los aspectos que influyeron en la conquista de México-Tenochtitlan.Consulta las páginas 90 a 95 de tu libro de texto SEP.</div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los aspectos que influyeron en la conquista de México-Tenochtitlan. Consulta las páginas 90 a 95 de tu libro de texto SEP.</div>
       <div class="row mt-3 ex1">
         <div class="col-md-6" v-for="(i, index) in tempsobj.a">
           <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
