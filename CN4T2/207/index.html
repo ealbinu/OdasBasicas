@@ -87,7 +87,7 @@
       <div class="row mt-3 ex2 centerrow">
         <div class="col-md-6">
           <div class="parrafoinputs"><span>Cuando un alimento es sometido al  </span>
-            <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="'calor'" type="text" placeh="-"></inputbox><span> cambian sus propiedades. <br>Cuando los alimentos se cuecen adquieren características como:  </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'calor'" type="text" placeh="-"></inputbox><span> cambian sus propiedades. <br>Cuando los alimentos se cuecen adquieren características como:  </span>
             <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'color'" type="text" placeh="-"></inputbox><span>,  </span>
             <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'sabor'" type="text" placeh="-"></inputbox><span> y  </span>
             <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="'olor'" type="text" placeh="-"></inputbox><span>.  </span><span><br>Las  </span>
@@ -126,7 +126,6 @@
     <script>
       app.$set(app.tempsobj, 'ex1', [
           {v: true, t: 'Para hacerlos comestibles.'},
-          {v: false, t: 'Identificamos.'},
           {v: true, t: 'Para hacer su sabor más agradable.'},
           {v: false, t: 'Para cambiar sus propiedades.'},
           {v: true, t: 'Para que se transformen sus nutrientes.'},
