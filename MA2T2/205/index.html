@@ -3,23 +3,60 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Cuento cantidades</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          padding: 10px 0;
+          border-radius: 10px;
+          border: 6px solid #FDE9CF;
+      }
+      .inputbox input {
+          font-size: 1.2rem;
+          padding: 4px;
+      }
+      .col {
+          display: flex;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Cuento cantidades</h1>
+      <h2>Trayecto 8. Otra vez 1 000. Las papas de Tlanalapan / Pongámonos de acuerdo</h2>
+      <div class="instruccion mt-5">Observa las equivalencias y escribe en los recuadros los resultados de las sumas.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a0.png"/></div>
+      </div>
+      <div class="row mt-5 ex1 centerrrow">
+        <div class="col-9 text-right"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="111" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-5 ex1 centerrrow">
+        <div class="col-9 text-right"><img class="img-fluid" src="aimg/a2.png"/></div>
+        <div class="col">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="217" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-5 ex1 centerrrow">
+        <div class="col-9 text-right"><img class="img-fluid" src="aimg/a3.png"/></div>
+        <div class="col">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="224" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-5 ex1 centerrrow">
+        <div class="col-9 text-right"><img class="img-fluid" src="aimg/a4.png"/></div>
+        <div class="col">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="312" type="number" placeh="#"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

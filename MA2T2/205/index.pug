@@ -1,25 +1,48 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Cuento cantidades'
+- subtitle = 'Trayecto 8. Otra vez 1 000. Las papas de Tlanalapan / Pongámonos de acuerdo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 {
+                padding: 10px 0;
+                border-radius: 10px;
+                border: 6px solid #FDE9CF;
+            }
+            .inputbox input {
+                font-size: 1.2rem;
+                padding: 4px;
+            }
+            .col {
+                display: flex;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las equivalencias y escribe en los recuadros los resultados de las sumas.
 
-            .row.mt-3
+            .row: .col-12: img(src="aimg/a0.png").w-100
+
+            .row.mt-5.ex1.centerrrow
+                .col-9.text-right: img(src="aimg/a1.png").img-fluid
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="111" type="number" placeh="#")
+            .row.mt-5.ex1.centerrrow
+                .col-9.text-right: img(src="aimg/a2.png").img-fluid
+                .col: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="217" type="number" placeh="#")
+            .row.mt-5.ex1.centerrrow
+                .col-9.text-right: img(src="aimg/a3.png").img-fluid
+                .col: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="224" type="number" placeh="#")
+            .row.mt-5.ex1.centerrrow
+                .col-9.text-right: img(src="aimg/a4.png").img-fluid
+                .col: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="312" type="number" placeh="#")
             
 
 
