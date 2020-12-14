@@ -3,23 +3,62 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico las actividades económicas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .itm {
+          padding: 10px;
+          background: #f5f5f5;
+          margin: 10px;
+          border-radius: 10px;
+          box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+      }
+      .itm img {
+          border-radius: 10px;
+      }
+      .itm .inputbox {
+          margin-top: 20px;
+      }
+      .itm .inputbox input {
+          font-size: 1.2rem;
+      }
+      .itm:nth-child(odd) {
+          background: #FFeeaF;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico las actividades económicas</h1>
+      <h2>Diversas actividades, diversos productos</h2>
+      <div class="instruccion mt-5">Escribe <strong>agrícola</strong>, <strong>pesquero</strong>, <strong>forestal</strong> o <strong>ganadero</strong> debajo de cada imagen, de acuerdo al tipo de actividad productiva que corresponda.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <div class="itm"><img class="img-fluid" src="aimg/a1.png"/>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Agrícola" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="itm"><img class="img-fluid" src="aimg/a2.png"/>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Ganadero" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="itm"><img class="img-fluid" src="aimg/a3.png"/>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Pesquero" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="itm"><img class="img-fluid" src="aimg/a4.png"/>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Forestal" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
