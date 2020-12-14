@@ -58,9 +58,11 @@ Vue.component('dragdrop', {
             }
         },
         itChanged (dt, dt2) {
-            console.log(dt, dt2)
             s_select.play()
             this.$emit('updated')
+        },
+        itStarted (){
+            s_select.play()
         }
     },
     mounted () {
@@ -76,7 +78,7 @@ Vue.component('dragdrop', {
     template: `
 <div class="dragdrop" >
     <div class="draggable draggableModule" :class="setclass">
-        <draggable v-model="optionsDraggable" :group="groupdrag" @change="itChanged">
+        <draggable v-model="optionsDraggable" :group="groupdrag" @change="itChanged" @start="itStarted">
             <div v-for="e in optionsDraggable" :key="e.l" v-html="e"></div>
         </draggable>
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
