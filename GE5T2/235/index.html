@@ -1,0 +1,182 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identifico la migración</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .soup {
+          position: relative;
+      }
+      .selec .selectable {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 10%;
+          height: 10%;
+      }
+      .selec .selectable.on {
+          border: 2px solid var(--main);
+          border-radius: 6px;
+      }
+      .selec .selectable.on .circledactive {
+          display: none;
+      }
+      .selec .selectable:nth-child(1) {
+          top: 14%; left: 12%;
+          width: 57%; height: 7%;
+      }
+      .selec .selectable:nth-child(2) {
+          top: 47%; left: 18%;
+          width: 64%; height: 7%;
+      }
+      .selec .selectable:nth-child(3) {
+          top: 73%; left: 5%;
+          width: 90%; height: 7%;
+      }
+      .selec .selectable:nth-child(4) {
+          top: 8%; left: 81%;
+          width: 7%; height: 65%;
+      }
+      
+      .selec .selectable:nth-child(5) {
+          top: 61%; left: 22%;
+          width: 71%;
+          height: 7%;
+          transform: rotate(-46deg);
+          transform-origin: bottom left;
+      }
+      .parrafoinputs{margin-bottom: 20px;}
+      .parrafoinputs strong{color:#45C1CF;}
+      
+      .ex2 .inputbox {
+          justify-content: flex-start;
+          align-items: center;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 680px) {
+          .ex2 .inputbox {
+              flex-direction: column;
+          }
+      }
+      .ex2 .inputbox input {
+          font-size: 1.2rem;
+          max-width: 80px;
+          margin-right: 10px;
+          padding: 4px;
+          border-color: #EC8B30;
+          color:#EC8B30;
+      }
+      @media (max-width: 680px) {
+          .ex2 .inputbox {
+              font-size: 0.8rem;
+          }
+      }
+      .ex2 .label {
+          margin-bottom: 20px;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 680px) {
+          .ex2 .label {
+              font-size: 0.8rem;
+          }
+      }
+      .labelst,
+      .inputs {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          height: 100%;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Identifico la migración</h1>
+      <h2>La gente que viene y va</h2>
+      <div class="instruccion mt-5">Contesta lo siguiente y localiza las causas y las consecuencias de la migración en la sopa de letras. Consulta las páginas 90 y 91 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6">
+          <div class="parrafoinputs"><span><strong>1.</strong> Causas por las cuales la emigración es motivada por la búsqueda de una mejor calidad de vida. </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="'Económicas'" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs"><span><strong>2.</strong> Razones por la cuales se emigra para encontrarse con un ser querido. </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="'Familiares'" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs"><span><strong>3.</strong> Causas por las que se emigra debido a la represión por parte del gobierno. </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="'Políticas'" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs"><span><strong>4.</strong> Causas por las cuales se emigra debido a condiciones de salud, marginación y educación. </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="'Sociales'" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs"><span><strong>5.</strong> Consecuencia por la cual una persona, al inmigrar, recibe malos tratos. </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'Discriminación'" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="soup"><img class="img-fluid" src="aimg/soup.png"/>
+            <div class="selec">
+              <template v-for="(i, index) in 5">
+                <selectable :isok="true" v-model="r[index+5]" :ref="refCount()" @isright="right++"></selectable>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Relaciona las columnas anotando dentro del paréntesis la letra del inciso correspondiente. Consulta las páginas 91 y 92 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-6">
+          <div class="labelst">
+            <labeltext num="a)">Los principales países receptores de inmi- grantes en el mundo.</labeltext>
+            <labeltext num="b)">Las principales regiones de las que provie- nen la mayoría de los inmigrantes en Estados Unidos de América.</labeltext>
+            <labeltext num="c)">Los principales países de los que provenía el mayor flujo migratorio hacia Estados Unidos de América entre 1960 y 2000.</labeltext>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="inputs">
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="b" type="text" placeh="-">
+              <template v-slot:after="">América Latina y Asia.</template>
+            </inputbox>
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="c" type="text" placeh="-">
+              <template v-slot:after="">México, República Dominicana, Jamaica, Haití, El Salvador, Colombia, Perú, Guyana, Ecuador y Guatemala.</template>
+            </inputbox>
+            <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="a" type="text" placeh="-">
+              <template v-slot:after="">Francia, Reino Unido, Italia, España, Alemania y Estados Unidos de América.</template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
