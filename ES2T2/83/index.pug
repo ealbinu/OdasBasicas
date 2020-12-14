@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Escribo un texto'
+- subtitle = 'Escribimos nuestros textos / Revisamos nuestros textos / Compartimos nuestros textos'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,12 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca las así <checkmark></checkmark> las características que tiene un texto.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-6(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="true" :text="i")
+
             
 
 
@@ -29,4 +32,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    'Inicia con mayúscula. Tiene punto final.',
+                    'Tiene mayúsculas después de cada punto.',
+                    'Las oraciones están separadas por puntos.',
+                    'Las palabras están bien escritas.',
+                    'Tiene título.',
+                    'Tiene inicio, desarrollo y cierre.'
+                ])
