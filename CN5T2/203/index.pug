@@ -1,0 +1,36 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Sé identificar riesgos del calor'
+- subtitle = 'La conducción del calor y su aprovechamiento'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            /*
+            .ex1 {}
+            */
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Observa las imágenes y marca así <checkmark></checkmark> las que muestran situaciones de riesgo debido a la conducción del calor.
+
+            .row.mt-3.ex1
+                .col-md-4(v-for="(i, index) in [1,0,1,1,0,0]")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i")
+                        img(:src="'aimg/a'+(index+1)+'.png'").img-fluid
+
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
