@@ -1,10 +1,11 @@
 Vue.component('check', {
-    props: ['value', 'text', 'answer', 'num'],
+    props: ['value', 'text', 'answer', 'num', 'setMark'],
     data() {
         return {
             status: false,
             evaluate: false,
-            result: false
+            result: false,
+            mark: '../../assets/aimg/check.svg'
         }
     },
     computed:{
@@ -39,13 +40,16 @@ Vue.component('check', {
     },
     mounted () {
         this.$emit('input', false)
+        if(this.setMark!=undefined){
+            this.mark = this.setMark
+        }
     },
     template: `
         <div class="check" :class="setclass + ' ' + (status ? 'activecheck':'') ">
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         <div class="label" @click="clicked"><strong v-if="num">{{num}}</strong> <slot></slot></div>
             <div class="checkbox" @click="clicked">
-                <img v-if="status" src="../../assets/aimg/check.svg" class="animate__animated animate__heartBeat">
+                <img v-if="status" :src="mark" class="animate__animated animate__heartBeat">
             </div>
             <div class="label checktext" @click="clicked" v-html="text"></div>
         </div>

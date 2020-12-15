@@ -1,7 +1,7 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Reconozco cómo se mueve el sonido'
 - subtitle = ''
 
 <!DOCTYPE html>
@@ -17,9 +17,12 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las ilustraciones y marca así <markex></markex> aquellas que puedan afectar el oído por el exceso de ruido.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-3(v-for="(i, index) in [true, false, true, false, false, true, false, true]")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i" set-mark="../../assets/aimg/markex.svg")
+                        img(:src="'aimg/a'+(index+1)+'.png'").img-fluid
             
 
 
