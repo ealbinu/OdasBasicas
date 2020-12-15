@@ -1,26 +1,67 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Electrifico objetos'
+- subtitle = 'Electrización de materiales'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .col-md-4 .txt {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .col-md-4 .inputbox input {
+                font-size: 1.2rem;
+            }
+            .col-md-4:nth-child(1) .txt {
+                background: #FDE8CF;
+            }
+            .col-md-4:nth-child(2) .txt {
+                background: #DDF0EE;
+            }
+            .col-md-4:nth-child(3) .txt {
+                background: #E7F1D8;
+            }
+            .col-md-4:nth-child(4) .txt {
+                background: #EFDEE6;
+            }
+            .col-md-4:nth-child(5) .txt {
+                background: #E8E1D0;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5  Lee los enunciados y escribe el concepto del que trata cada uno. Consulta las páginas 111 a 113 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.flex-wrap.centerrow
+                .col-md-4
+                    .txt
+                        p Es la propiedad que tienen los relámpagos, las chispas que desprende la ropa, etcétera.
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Electricidad" type="text" placeh="-")
+                .col-md-4
+                    .txt
+                        p Es el proceso de transferir la electricidad de un cuerpo a otro.
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="Electrización" type="text" placeh="-")
+                .col-md-4
+                    .txt
+                        p Se transfiere electricidad al tocarse dos cuerpos, uno no electrizado y otro que sí posee electricidad.
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Contacto" type="text" placeh="-")
+                .col-md-4
+                    .txt
+                        p Es la manera de producir electricidad cuando hay un roce entre dos cuerpos.
+                        inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Frotamiento" type="text" placeh="-")
+                .col-md-4
+                    .txt
+                        p Es la forma de transferir electricidad en la cual un cuerpo ya electrizado se acerca a otro que no lo está, pero sin tocarlo.
+                        inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Inducción" type="text" placeh="-")
 
 
 
