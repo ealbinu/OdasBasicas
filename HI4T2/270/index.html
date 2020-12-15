@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco la nueva cultura</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -17,9 +18,31 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco la nueva cultura</h1>
+      <h2>Expansión y colonización a nuevos territorios</h2>
+      <div class="instruccion mt-5">Selecciona la respuesta correcta de cada pregunta. Consulta la página 96 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="¿En dónde se descubrieron yacimientos de plata entre 1534 y 1548?" :options="['En Jalisco, Zacatecas y Nuevo León.','En Guerrero, Zacatecas y Guanajuato.','En Querétaro,Yucatán y Guerrero.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="¿Quién inició una expedición hacia el sur para buscar metales preciosos y le exigió a los mayas sus riquezas?" :options="['Nuño Beltrán de Guzmán.','Hernán Cortés.','Pedro de Alvarado.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="¿Quién exploró la región de lo que hoy son los estados de Jalisco y Zacatecas?" :options="['Pedro de Alvarado.','Cristóbal de Olid.','Nuño Beltrán de Guzmán.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="¿En qué año se fundó Guadalajara?" :options="['En 1492.','En 1542.','En 1521.']" @isright="right++" :answer-num="1"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa el texto con las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['plaza principal','trigo','cultura','creencias religiosas','Conquista','náhuatl']"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>Después de la </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'Conquista'" type="text" placeh="-"></inputbox><span>, las ciudades comenzaron a modificarse, por lo que tenían una </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'plaza principal'" type="text" placeh="-"></inputbox><span> y calles rectas, muy al estilo europeo. En tanto, la </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'cultura'" type="text" placeh="-"></inputbox><span> y la vida diaria se vieron modificadas, ya que poco a poco la cocina indígena integró ingredientes europeos, como el </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'trigo'" type="text" placeh="-"></inputbox><span> y algunos animales. Además, los frailes se propusieron transformar las </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="'creencias religiosas'" type="text" placeh="-"></inputbox><span>. En tanto, según pasaron los años y había más convivencia, el idioma español fue tomando palabras del  </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="'náhuatl'" type="text" placeh="-"></inputbox><span>, como jitomate o metate. </span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

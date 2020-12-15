@@ -3,23 +3,56 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprecio el aire</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imagerelative .items > div {
+          position: absolute;
+          width: 12%;
+          height: 14%;
+      }
+      .imagerelative .items > div:nth-child(1) {
+          left: 50%;
+          top: 5%;
+      }
+      .imagerelative .items > div:nth-child(2) {
+          left: 65%;
+          top: 31%;
+      }
+      .imagerelative .items > div:nth-child(3) {
+          left: 30%;
+          top: 82%;
+      }
+      .imagerelative .items > div:nth-child(4) {
+          left: 58%;
+          top: 82%;
+      }
+      .imagerelative .items > div:nth-child(5) {
+          left: 77%;
+          top: 70%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprecio el aire</h1>
+      <div class="instruccion mt-5">Observa la imagen y selecciona los contaminantes del aire.</div>
+      <div class="row">
+        <div class="col-12">
+          <div class="imagerelative"><img class="w-100" src="aimg/a1.png"/>
+            <div class="items">
+              <template v-for="(i, index) in 5">
+                <selectable :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++"></selectable>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

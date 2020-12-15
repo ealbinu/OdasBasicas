@@ -1,25 +1,54 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Aprecio el aire'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .imagerelative .items > div {
+                position: absolute;
+                width: 12%;
+                height: 14%;
+            }
+            .imagerelative .items > div:nth-child(1) {
+                left: 50%;
+                top: 5%;
+            }
+            .imagerelative .items > div:nth-child(2) {
+                left: 65%;
+                top: 31%;
+            }
+            .imagerelative .items > div:nth-child(3) {
+                left: 30%;
+                top: 82%;
+            }
+            .imagerelative .items > div:nth-child(4) {
+                left: 58%;
+                top: 82%;
+            }
+            .imagerelative .items > div:nth-child(5) {
+                left: 77%;
+                top: 70%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la imagen y selecciona los contaminantes del aire.
 
-            .row.mt-3
+            .row: .col-12
+                .imagerelative
+                    img(src="aimg/a1.png").w-100
+                    .items
+                        template(v-for="(i, index) in 5")
+                            selectable(:isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
+
             
 
 
