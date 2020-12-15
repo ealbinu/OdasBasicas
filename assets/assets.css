@@ -430,6 +430,18 @@ input[type=number] {
 .numbers.c4 {
   color: #EB8B2E;
 }
+.numbers.c5 {
+  color: #6EB745;
+}
+.numbers.c6 {
+  color: #F460AB;
+}
+.numbers.c7 {
+  color: #B1BA24;
+}
+.numbers.c8 {
+  color: #C0A7D0;
+}
 @media (max-width: 680px) {
   .numbers {
     font-size: 1.4rem;
