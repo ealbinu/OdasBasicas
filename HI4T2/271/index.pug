@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Valoro el pasado'
+- subtitle = 'Distintas concepciones sobre la guerra: mesoamericanos y españoles'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,15 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los alimentos que son el resultado de la fusión de los alimentos mesoamericanos y europeos. Consulta las páginas 101 y 102 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.flex-wrap.text-center
+                .col-md-4: check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="true"): img(src="aimg/a1.png").w-100
+                .col-md-4: check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="false"): img(src="aimg/a2.png").w-100
+                .col-md-4: check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="true"): img(src="aimg/a3.png").w-100
+                .col-md-4: check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="true"): img(src="aimg/a4.png").w-100
+                .col-md-4: check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="false"): img(src="aimg/a5.png").w-100
+                .col-md-4: check(v-model="r[5]" :ref="refCount()"  @isright="right++" :answer="true"): img(src="aimg/a6.png").w-100
             
 
 
