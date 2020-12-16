@@ -64,13 +64,13 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Lee el texto Yerba Santa de las páginas 109 y 110 de tu libro de texto SEP. Después coloca cada imagein con la descripción correspondiente.
+            .instruccion.mt-5 Lee el texto Yerba Santa de las páginas 109 y 110 de tu libro de texto SEP. Después coloca cada imagen con la descripción correspondiente.
             .row.mt-3.ex1.no-gutters
                 .col-6(v-if="tempsobj.ok")
                     dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="tempsobj.nonok" :options-ok="tempsobj.ok")
                 .col-6: .items
                     div Son granos de maíz que se cuecen con cal y agua, luego se muelen para hacer tortillas.
-                    div Es una piedra rectangular que se usa en las zonas rurales de México.Ahí se muele el nixtamal para hacer tortillas.
+                    div Es una piedra rectangular que se usa en las zonas rurales de México. Ahí se muele el nixtamal para hacer tortillas.
                     div Son pedazos de madera y troncos que se usan para encender fuego.
                     div Instrumento de piedra muy utilizado en México. Sirve para moler especias y hacer salsas.
                     div Es un tejido de varas que se usa en las zonas rurales para guardar alimentos.
