@@ -1,27 +1,116 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = '¿Cuántas son diferentes?'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .fraccion {
+                font-size: 1.5rem;
+                text-align: center;
+                background: #f5f5f5;
+                border-radius: 10px;
+            }
+            .fraccion hr {
+                margin: 0 auto;
+                border: none;
+                border-top: 4px solid var(--sec);
+                max-width: 80px;
+            }
+            .ex1 {
+                padding: 10px;
+                border-radius: 10px;
+                border: 6px solid #f5f5f5;
+            }
+            .ex1 .fraccion{
+                background: #EFF5E3;
+            }
+            .ex1 .inputbox {
+                background: #EFF5E3;
+                padding: 10px;
+                border-radius: 10px;
+                max-width: fit-content;
+                margin: 0 auto;
+            }
+            .ex1 .inputbox input {
+                margin-right: 6px;
+                max-width: 100px;
+                font-size: 1.2rem;
+                padding: 8px 2px;
+                border-color: #4FA329;
+            }
+            .ex1 .inputbox .numbers {
+                font-size: 1.6rem;
+                color: #4FA329;
+            }
+
+            .ex2 .fraccion {
+                min-width: 60px;
+                display: inline-block;
+                background: none;
+                border: none !important;
+            }
+            .ex2 .choose .options > div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2rem;
+                border: none;
+                background: #f5f5f5;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .ex2 .choose .options > div.active {
+                border: 2px solid var(--main);
+            }
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las fracciones y calcula los elementos que representan del total.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-3: .fraccion 1<hr>4
+                .col-md
+                    div equivale a 10 elementos del total. ¿Cuántos elementos son en total?
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="40" type="text" placeh="-")
+                        template(v-slot:after=""): numbers elementos.
             
+            .row.mt-3.ex1
+                .col-md-3: .fraccion 2<hr>4
+                .col-md
+                    div equivalen a 12 elementos del total. ¿Cuántos elementos son en total?
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="24" type="text" placeh="-")
+                        template(v-slot:after=""): numbers elementos.
+            
+            .row.mt-3.ex1
+                .col-md-3: .fraccion 4<hr>6
+                .col-md
+                    div equivalen a 18 elementos del total. ¿Cuántos elementos son en total?
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="27" type="text" placeh="-")
+                        template(v-slot:after=""): numbers elementos.
+            
+            .row.mt-3.ex1
+                .col-md-3: .fraccion 3<hr>8
+                .col-md
+                    div equivalen a 33 elementos del total. ¿Cuántos elementos son en total?
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="88" type="text" placeh="-")
+                        template(v-slot:after=""): numbers elementos.
+            
+            .instruccion.mt-5 Lee los siguientes problemas y selecciona la respuesta correcta.
 
+            .row.mt-3.ex2
+                .col-12
+                    choose(v-model="r[4]" :ref="refCount()" num="1." text="Juan y Manuel tienen 24 cajas de galletas de sabores. Si tienen 8 cajas de sabor vainilla, ¿cuál es la fracción que representa las galletas de vainilla de acuerdo al total de cajas?" :options="['4<div class=fraccion>1<hr>2</div>', '<div class=fraccion>1<hr>3</div>', '<div class=fraccion>3<hr>4</div>']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[5]" :ref="refCount()" num="2." text="Ignacio compró 6 trompos azules, 9 rojos y 5 amarillos. ¿Cuál es la fracción que representa a los trompos amarillos?" :options="['<div class=fraccion>5<hr>9</div>', '<div class=fraccion>1<hr>2</div>', '<div class=fraccion>1<hr>4</div>']" @isright="right++" :answer-num="2")
 
 
 

@@ -4,23 +4,139 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>¿Cuántas son diferentes?</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .fraccion {
+          font-size: 1.5rem;
+          text-align: center;
+          background: #f5f5f5;
+          border-radius: 10px;
+      }
+      .fraccion hr {
+          margin: 0 auto;
+          border: none;
+          border-top: 4px solid var(--sec);
+          max-width: 80px;
+      }
+      .ex1 {
+          padding: 10px;
+          border-radius: 10px;
+          border: 6px solid #f5f5f5;
+      }
+      .ex1 .fraccion{
+          background: #EFF5E3;
+      }
+      .ex1 .inputbox {
+          background: #EFF5E3;
+          padding: 10px;
+          border-radius: 10px;
+          max-width: fit-content;
+          margin: 0 auto;
+      }
+      .ex1 .inputbox input {
+          margin-right: 6px;
+          max-width: 100px;
+          font-size: 1.2rem;
+          padding: 8px 2px;
+          border-color: #4FA329;
+      }
+      .ex1 .inputbox .numbers {
+          font-size: 1.6rem;
+          color: #4FA329;
+      }
+      
+      .ex2 .fraccion {
+          min-width: 60px;
+          display: inline-block;
+          background: none;
+          border: none !important;
+      }
+      .ex2 .choose .options > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2rem;
+          border: none;
+          background: #f5f5f5;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .ex2 .choose .options > div.active {
+          border: 2px solid var(--main);
+      }
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>¿Cuántas son diferentes?</h1>
+      <div class="instruccion mt-5">Observa las fracciones y calcula los elementos que representan del total.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="fraccion">1<hr>4</div>
+        </div>
+        <div class="col-md">
+          <div>equivale a 10 elementos del total. ¿Cuántos elementos son en total?</div>
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="40" type="text" placeh="-">
+            <template v-slot:after="">
+              <numbers>elementos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="fraccion">2<hr>4</div>
+        </div>
+        <div class="col-md">
+          <div>equivalen a 12 elementos del total. ¿Cuántos elementos son en total?</div>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="24" type="text" placeh="-">
+            <template v-slot:after="">
+              <numbers>elementos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="fraccion">4<hr>6</div>
+        </div>
+        <div class="col-md">
+          <div>equivalen a 18 elementos del total. ¿Cuántos elementos son en total?</div>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="27" type="text" placeh="-">
+            <template v-slot:after="">
+              <numbers>elementos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="fraccion">3<hr>8</div>
+        </div>
+        <div class="col-md">
+          <div>equivalen a 33 elementos del total. ¿Cuántos elementos son en total?</div>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="88" type="text" placeh="-">
+            <template v-slot:after="">
+              <numbers>elementos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Lee los siguientes problemas y selecciona la respuesta correcta.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <choose v-model="r[4]" :ref="refCount()" num="1." text="Juan y Manuel tienen 24 cajas de galletas de sabores. Si tienen 8 cajas de sabor vainilla, ¿cuál es la fracción que representa las galletas de vainilla de acuerdo al total de cajas?" :options="['4&lt;div class=fraccion&gt;1&lt;hr&gt;2&lt;/div&gt;', '&lt;div class=fraccion&gt;1&lt;hr&gt;3&lt;/div&gt;', '&lt;div class=fraccion&gt;3&lt;hr&gt;4&lt;/div&gt;']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[5]" :ref="refCount()" num="2." text="Ignacio compró 6 trompos azules, 9 rojos y 5 amarillos. ¿Cuál es la fracción que representa a los trompos amarillos?" :options="['&lt;div class=fraccion&gt;5&lt;hr&gt;9&lt;/div&gt;', '&lt;div class=fraccion&gt;1&lt;hr&gt;2&lt;/div&gt;', '&lt;div class=fraccion&gt;1&lt;hr&gt;4&lt;/div&gt;']" @isright="right++" :answer-num="2"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
