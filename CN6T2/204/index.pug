@@ -1,26 +1,63 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico las transformaciones'
+- subtitle = 'Importancia de la energía, su transformación e implicaciones de su uso'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .parrafoinputs{
+                line-height: 2;
+                text-align: left;
+            }
+            .recuadropalabras {
+                background: #E7F1D8;
+            }
+            .recuadropalabras strong {
+                color: #6CB743;
+                font-size: 1.6rem;
+                background: #fff;
+            }
+            .parrafoinputs {
+                background: #E7F1D8;
+            }
+            .parrafoinputs .inputbox input {
+                background: #fff;
+                border-color: #6CB743;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las siguientes cápsulas informativas con las palabras del recuadro. Consulta las páginas 126 a 128 de tu libro de texto SEP.
 
-            .row.mt-3
+            recuadropalabras(:palabras="['fotosíntesis','Sol','viento','valor','ley de la conservación de la energía','seres vivos','luminosa','viento','energía']")
             
+            .row.mt-3.ex1.text-center.centerrow
+                .col-4: img(src="aimg/a1.png").img-fluid
+                .col
+                    +parrafoinputs(['La ', ['energía',0], ' se encuentra en todas partes, por ejemplo: en los ', ['seres vivos',1], ', los alimentos, el agua y el ', ['viento', 2], '.'])
+            
+            .row.mt-3.ex1.text-center.centerrow
+                .col-4: img(src="aimg/a2.png").img-fluid
+                .col
+                    +parrafoinputs(['El ', ['sol',3], ' es la fuente principal de ', ['calor', 4], ' y luz de nuestro planeta, la puedes utilizar para calentar agua o cocinar algún alimento.'])
+            
+            .row.mt-3.ex1.text-center.centerrow
+                .col-4: img(src="aimg/a3.png").img-fluid
+                .col
+                    +parrafoinputs([' Cualquier tipo de energía puede transformarse en otro, cumpliendo con la', ['ley de la conservación de la energía', 5], '.'])
+            
+            .row.mt-3.ex1.text-center.centerrow
+                .col-4: img(src="aimg/a4.png").img-fluid
+                .col
+                    +parrafoinputs(['Las plantas verdes transforman la energía ', ['luminosa',6], 'del Sol, mediante el proceso de la ', ['fotosíntesis',7], ', en energía para su desarrollo.'])
 
 
 

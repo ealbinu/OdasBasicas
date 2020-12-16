@@ -1,25 +1,80 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico las transformaciones</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .parrafoinputs{
+          line-height: 2;
+          text-align: left;
+      }
+      .recuadropalabras {
+          background: #E7F1D8;
+      }
+      .recuadropalabras strong {
+          color: #6CB743;
+          font-size: 1.6rem;
+          background: #fff;
+      }
+      .parrafoinputs {
+          background: #E7F1D8;
+      }
+      .parrafoinputs .inputbox input {
+          background: #fff;
+          border-color: #6CB743;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico las transformaciones</h1>
+      <h2>Importancia de la energía, su transformación e implicaciones de su uso</h2>
+      <div class="instruccion mt-5">Completa las siguientes cápsulas informativas con las palabras del recuadro. Consulta las páginas 126 a 128 de tu libro de texto SEP.</div>
+      <recuadropalabras :palabras="['fotosíntesis','Sol','viento','valor','ley de la conservación de la energía','seres vivos','luminosa','viento','energía']"></recuadropalabras>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <div class="col-4"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <div class="col">
+          <div class="parrafoinputs"><span>La  </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="'energía'" type="text" placeh="-"></inputbox><span> se encuentra en todas partes, por ejemplo: en los  </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="'seres vivos'" type="text" placeh="-"></inputbox><span>, los alimentos, el agua y el  </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="'viento'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <div class="col-4"><img class="img-fluid" src="aimg/a2.png"/></div>
+        <div class="col">
+          <div class="parrafoinputs"><span>El  </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="'sol'" type="text" placeh="-"></inputbox><span> es la fuente principal de  </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'calor'" type="text" placeh="-"></inputbox><span> y luz de nuestro planeta, la puedes utilizar para calentar agua o cocinar algún alimento. </span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <div class="col-4"><img class="img-fluid" src="aimg/a3.png"/></div>
+        <div class="col">
+          <div class="parrafoinputs"><span> Cualquier tipo de energía puede transformarse en otro, cumpliendo con la </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'ley de la conservación de la energía'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <div class="col-4"><img class="img-fluid" src="aimg/a4.png"/></div>
+        <div class="col">
+          <div class="parrafoinputs"><span>Las plantas verdes transforman la energía  </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'luminosa'" type="text" placeh="-"></inputbox><span>del Sol, mediante el proceso de la  </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'fotosíntesis'" type="text" placeh="-"></inputbox><span>, en energía para su desarrollo. </span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
