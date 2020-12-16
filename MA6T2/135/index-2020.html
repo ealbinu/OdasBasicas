@@ -1,0 +1,172 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identifico diferentes múltiplos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ex1.head {
+          border-radius: 6px;
+          text-align: center;
+          font-weight: bold;
+      }
+      .ex1.head > div {
+          background: #FFF4CE;
+          margin: 2px;
+          border-radius: 4px;
+      }
+      .ex1.head > div:first-child {
+          background: #fff;
+          color: #0083BF;
+      }
+      .ex1.body > div {
+          text-align: center;
+          border-radius: 4px;
+          padding: 4px;
+          margin: 2px;
+          background: #f5f5f5;
+      }
+      .ex1.body > div:first-child {
+          background: #C6DDE9;
+          font-weight: bold;
+      }
+      .ex1.body > div .circledactive {
+          height: 150%;
+          top: -25%;
+      }
+      .ex2 .choose {
+          background: #f5f5f5;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+      }
+      .ex2 .choose .label {
+          font-size: 1.4rem;
+          font-weight: bold;
+      }
+      .ex2 .choose .options {
+          padding: 4px;
+          margin: 0;
+          font-size: 1rem;
+          margin-left: auto;
+          background: var(--accent);
+          border-radius: 4px;
+          border: 2px solid #fff;
+      }
+      .ex2 .choose .options div {
+          border: none;
+          background: #fff;
+          padding: 0 4px;
+          border-radius: 4px;
+          color: var(--main);
+          border: 1px solid var(--accent);
+          flex-grow: 1;
+      }
+      .ex2 .choose .options div.active {
+          background: var(--main);
+          color: #fff;
+      }
+      @media (max-width: 680px){
+          .ex2 .choose .options div{
+              font-size: 0.7rem;
+              padding: 0 2px;
+          }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Identifico diferentes múltiplos</h1>
+      <h2>Identifícalos fácilmente / ¿De cuánto en cuánto?</h2>
+      <div class="instruccion mt-5">Observa el siguiente fragmento de la tabla de Pitágoras y encierra todos los resultados que sean iguales.</div>
+      <div class="row mt-3 ex1 head no-gutters">
+        <div class="col">x</div>
+        <div class="col" v-for="(i, index) in 9">{{i}}</div>
+      </div>
+      <div class="row mt-3 ex1 body no-gutters">
+        <div class="col">3</div>
+        <div class="col" v-for="(i, index) in [3,6,9,12,15,18,21,24,27]">
+          <selectable :isok="i==6 || i==12 || i==15 || i==18 || i==24" v-model="r[index]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 body no-gutters">
+        <div class="col">5</div>
+        <div class="col" v-for="(i, index) in [5, 10, 15, 20, 25, 30, 35, 40, 45]">
+          <selectable :isok="i==10 || i==15 || i==20 || i==30 || i==40" v-model="r[index+9]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 body no-gutters">
+        <div class="col">6</div>
+        <div class="col" v-for="(i, index) in [6, 12, 18, 24, 30, 36, 42, 48, 54]">
+          <selectable :isok="i==6 || i==12 || i==18 || i==24 || i==30" v-model="r[index+18]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 body no-gutters">
+        <div class="col">10</div>
+        <div class="col" v-for="(i, index) in [10, 20, 30, 40, 50, 60, 70, 80, 90]">
+          <selectable :isok="i==10 || i==20 || i==30 || i==40 || i==40" v-model="r[index+28]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa el siguiente conjunto de números y selecciona si es múltiplo del <strong>3</strong> o del <strong>5</strong>.</div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [[2,'-'], [15, '5'], [86, '-'], [14,'-'], [18, '3'], [125, '5']]">
+          <div class="col">
+            <choose v-model="r[index+37]" :ref="refCount()" :text="i[0]" :options="['3','5','-']" @isright="right++" :answer="i[1]" :auto-select-num="2"></choose>
+          </div>
+        </template>
+      </div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [[6,'3'], [21, '3'], [29, '-'], [91, '-'], [25, '5'], [45, '5']]">
+          <div class="col">
+            <choose v-model="r[index+43]" :ref="refCount()" :text="i[0]" :options="['3','5','-']" @isright="right++" :answer="i[1]" :auto-select-num="2"></choose>
+          </div>
+        </template>
+      </div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [[4,'-'], [54, '3'], [8, '-'], [72, '3'], [40, '5'], [88, '-']]">
+          <div class="col">
+            <choose v-model="r[index+49]" :ref="refCount()" :text="i[0]" :options="['3','5','-']" @isright="right++" :answer="i[1]" :auto-select-num="2"></choose>
+          </div>
+        </template>
+      </div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [[10,'5'], [9, '3'], [27, '3'], [16, '-'], [87, '3'], [51, '3']]">
+          <div class="col">
+            <choose v-model="r[index+55]" :ref="refCount()" :text="i[0]" :options="['3','5','-']" @isright="right++" :answer="i[1]" :auto-select-num="2"></choose>
+          </div>
+        </template>
+      </div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [[24,'3'], [12, '3'], [20, '5'], [35, '5'], [101, '-'], [150, '3']]">
+          <div class="col">
+            <choose v-model="r[index+61]" :ref="refCount()" :text="i[0]" :options="['3','5','-']" @isright="right++" :answer="i[1]" :auto-select-num="2"></choose>
+          </div>
+        </template>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>

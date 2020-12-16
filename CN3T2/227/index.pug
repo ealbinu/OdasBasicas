@@ -1,28 +1,88 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Entiendo los cambios de la materia'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras .draggable > div:not(.result) {
+                display: flex;
+                justify-content: space-around;
+            }
+            .recuadropalabras .draggable > div:not(.result) div img {
+                max-width: 80px;
+            }
+            .state {
+                padding: 10px;
+                background: #f5f5f5;
+            }
+            .state .inputbox input {
+                font-size: 1.2rem;
+            }
+            .state.st1 {
+                background: #F5E9EE;
+            }
+            .state.st2 {
+                background: #E9F4F3;
+            }
+            .state.st3 {
+                background: #FEF0DD;
+            }
+            .state .draggable > div:not(.result) {
+                min-height: 80px;
+                background: #f5f5f5;
+                border: 2px dashed var(--clear);
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .state .draggable > div:not(.result) div img {
+                max-width: 120px;
+            }
+            .parrafoinputs strong {
+                font-size: 1.6rem;
+                color: var(--accent);
+            }
+            .parrafoinputs{
+                box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las siguientes descripciones de los estados de la materia y escribe de qué estado se trata. Después en coloca la imagen en el recuadro que corresponde.
 
-            .row.mt-3
+            .recuadropalabras: dragdrop(:options="['<img src=aimg/a1.png>','<img src=aimg/a2.png>','<img src=aimg/a3.png>']" :options-ok="[]")
+
+            .row.mt-3.ex1
+                .col-md-4.text-center: .state.st1
+                    dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['<img src=aimg/a3.png>']")
+                    .h4 Tienen una forma definida, son resistentes y duros.
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Sólido" type="text" placeh="-")
+                .col-md-4.text-center: .state.st2
+                    dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['<img src=aimg/a1.png>']")
+                    .h4 Su forma es la misma que el recipiente que los contiene, pueden fluir.
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Líquido" type="text" placeh="-")
+                .col-md-4.text-center: .state.st3
+                    dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['<img src=aimg/a2.png>']")
+                    .h4 No tienen forma y pueden encontrarse libres.
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="Gaseoso" type="text" placeh="-")
+
             
+            .instruccion.mt-5 Completa las oraciones escribiendo #[strong más calor] o #[strong menos calor] según corresponda.
 
-
+            .row.mt-3.ex2
+                .col-12
+                    +parrafoinputs(['<strong>1.</strong> Para que el agua pase del estado líquido al estado sólido necesitamos ', ['menos calor', 6], '.'])
+                    +parrafoinputs(['<strong>2.</strong> Para que el agua pase del estado sólido al estado líquido necesitamos ', ['más calor', 7], '.'])
+                    +parrafoinputs(['<strong>3.</strong> Necesitamos ', ['más calor', 8], ' para que una sustancia pase del estado líquido al gaseoso.'])
 
 
 

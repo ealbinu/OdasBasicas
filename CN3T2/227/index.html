@@ -1,25 +1,105 @@
-<!DOCTYPE html>
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Entiendo los cambios de la materia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras .draggable > div:not(.result) {
+          display: flex;
+          justify-content: space-around;
+      }
+      .recuadropalabras .draggable > div:not(.result) div img {
+          max-width: 80px;
+      }
+      .state {
+          padding: 10px;
+          background: #f5f5f5;
+      }
+      .state .inputbox input {
+          font-size: 1.2rem;
+      }
+      .state.st1 {
+          background: #F5E9EE;
+      }
+      .state.st2 {
+          background: #E9F4F3;
+      }
+      .state.st3 {
+          background: #FEF0DD;
+      }
+      .state .draggable > div:not(.result) {
+          min-height: 80px;
+          background: #f5f5f5;
+          border: 2px dashed var(--clear);
+          border-radius: 10px;
+          margin-bottom: 10px;
+      }
+      .state .draggable > div:not(.result) div img {
+          max-width: 120px;
+      }
+      .parrafoinputs strong {
+          font-size: 1.6rem;
+          color: var(--accent);
+      }
+      .parrafoinputs{
+          box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+          margin-bottom: 20px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Entiendo los cambios de la materia</h1>
+      <div class="instruccion mt-5">Observa las siguientes descripciones de los estados de la materia y escribe de qué estado se trata. Después en coloca la imagen en el recuadro que corresponde.</div>
+      <div class="recuadropalabras">
+        <dragdrop :options="['&lt;img src=aimg/a1.png&gt;','&lt;img src=aimg/a2.png&gt;','&lt;img src=aimg/a3.png&gt;']" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4 text-center">
+          <div class="state st1">
+            <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;img src=aimg/a3.png&gt;']"></dragdrop>
+            <div class="h4">Tienen una forma definida, son resistentes y duros.</div>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Sólido" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="state st2">
+            <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;img src=aimg/a1.png&gt;']"></dragdrop>
+            <div class="h4">Su forma es la misma que el recipiente que los contiene, pueden fluir.</div>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Líquido" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="state st3">
+            <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['&lt;img src=aimg/a2.png&gt;']"></dragdrop>
+            <div class="h4">No tienen forma y pueden encontrarse libres.</div>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Gaseoso" type="text" placeh="-"></inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las oraciones escribiendo <strong>más calor</strong> o <strong>menos calor</strong> según corresponda.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span><strong>1.</strong> Para que el agua pase del estado líquido al estado sólido necesitamos  </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'menos calor'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+          <div class="parrafoinputs"><span><strong>2.</strong> Para que el agua pase del estado sólido al estado líquido necesitamos  </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'más calor'" type="text" placeh="-"></inputbox><span>. </span>
+          </div>
+          <div class="parrafoinputs"><span><strong>3.</strong> Necesitamos  </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="'más calor'" type="text" placeh="-"></inputbox><span> para que una sustancia pase del estado líquido al gaseoso. </span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
