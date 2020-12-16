@@ -1,28 +1,128 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendemos la resta'
+- subtitle = '¿Cómo lo hizo?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                font-size: 1.2rem;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                padding: 0;
+                max-width: 130px;
+                margin-left: 4px;
+            }
+            .ex2 .opv {
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 1.2rem;
+            }
+            .ex2 .opv .up {
+                background: #E9832C;
+                padding: 10px;
+                border-radius: 10px;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            .ex2 .opv .inputbox {
+                justify-content: flex-end;
+            }
+            .ex2 .opv .inputbox div {
+                margin-left: auto;
+            }
+            .ex2 .opv .inputbox input {
+                font-size: 1.2rem;
+                max-width: 140px;
+            }
+            .ex2 .opv .inputbox .numbers {
+                margin-right: 4px;
+            }
+            .ex2 .opv hr {
+                border: none;
+                margin: 0 0 10px;
+                border-top: 4px solid var(--sec);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve las siguientes restas utilizando la descomposición.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-6
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="11" type="number" placeh="#")
+                        template(v-slot:before="") 25 − 14 =
+                .col-md-6
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="39" type="number" placeh="#")
+                        template(v-slot:before="") 99 − 60 =
+                .col-md-6
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="21" type="number" placeh="#")
+                        template(v-slot:before="") 72 − 51 =
+                .col-md-6
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#")
+                        template(v-slot:before="") 55 − 15 =
             
+            .instruccion.mt-5 Resuelve las siguientes operaciones utilizando la forma convencional.
 
-
+            .row.mt-3.ex2
+                .col-md-4: .opv
+                    div.up 32 − 11 =
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="32" type="number" placeh="#")
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="11" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="21" type="number" placeh="#")
+                .col-md-4: .opv
+                    div.up 25 − 13 =
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="25" type="number" placeh="#")
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="13" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#")
+                .col-md-4: .opv
+                    div.up 26 − 18 =
+                    inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
+                    inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="18" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                .col-md-4: .opv
+                    div.up 35 − 16 =
+                    inputbox(v-model="r[13]" :ref="refCount()" @isright="right++" :answer="35" type="number" placeh="#")
+                    inputbox(v-model="r[14]" :ref="refCount()" @isright="right++" :answer="16" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[15]" :ref="refCount()" @isright="right++" :answer="19" type="number" placeh="#")
+                .col-md-4: .opv
+                    div.up 89 − 18 =
+                    inputbox(v-model="r[16]" :ref="refCount()" @isright="right++" :answer="89" type="number" placeh="#")
+                    inputbox(v-model="r[17]" :ref="refCount()" @isright="right++" :answer="18" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[18]" :ref="refCount()" @isright="right++" :answer="71" type="number" placeh="#")
+                .col-md-4: .opv
+                    div.up 72 − 54 =
+                    inputbox(v-model="r[19]" :ref="refCount()" @isright="right++" :answer="72" type="number" placeh="#")
+                    inputbox(v-model="r[20]" :ref="refCount()" @isright="right++" :answer="54" type="number" placeh="#")
+                        template(v-slot:before=""): numbers -
+                    hr
+                    inputbox(v-model="r[21]" :ref="refCount()" @isright="right++" :answer="28" type="number" placeh="#")
 
 
 
