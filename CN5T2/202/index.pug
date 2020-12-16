@@ -1,25 +1,91 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Estudio la conducción y la aislación'
+- subtitle = 'La conducción del calor y su aprovechamiento'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras {
+                background: var(--clear);
+            }
+            .recuadropalabras .dragdrop .draggable > div:not(.result) {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .recuadropalabras .dragdrop .draggable > div:not(.result) > div {
+                display: block;
+                padding: 6px 10px;
+                background: #fff;
+                border-radius: 6px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                margin: 10px;
+            }
+            .imagerelative .items .dragdrop {
+                width: 20%;
+            }
+            .imagerelative .items .dragdrop .draggable > div:not(.result) {
+                background: #fff;
+                border-radius: 20px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .imagerelative .items .dragdrop:nth-child(1) {
+                left: 20%;
+                top: 11%;
+                font-family: 'barnacle_boyregular';
+            }
+            .imagerelative .items .dragdrop:nth-child(2) {
+                left: 66%;
+                top: 11%;
+                font-family: 'barnacle_boyregular';
+            }
+            .imagerelative .items .dragdrop:nth-child(3) {
+                left: 1%;
+                top: 80%;
+            }
+            .imagerelative .items .dragdrop:nth-child(4) {
+                left: 27%;
+                top: 80%;
+            }
+            .imagerelative .items .dragdrop:nth-child(5) {
+                left: 53%;
+                top: 80%;
+            }
+            .imagerelative .items .dragdrop:nth-child(6) {
+                left: 79%;
+                top: 80%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Coloca los nombres de los materiales y características donde corresponden según la imagen.
 
-            .row.mt-3
+            .recuadropalabras: dragdrop(:options="['Conductores.','Madera.', 'Aislantes.', 'Cobre.', 'Hule.', 'Aluminio.']" :options-ok="[]")
+
+            .row: .col-12
+                .imagerelative
+                    img(src="aimg/a1.png").w-100
+                    .items
+                        dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Conductores.']")
+                        dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Aislantes.']")
+                        dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Cobre.']")
+                        dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Aluminio.']")
+                        dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Hule.']")
+                        dragdrop(v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Madera.']")
+            
+
+
             
 
 
