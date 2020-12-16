@@ -4,23 +4,59 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Soy un consumidor responsable</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .check {
+          border: 2px solid #D81E42;
+      }
+      .check .checkbox {
+          display: none;
+      }
+      .activecheck {
+          background: #F7BED8;
+      }
+      .check .checktext{
+          width: 100%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Soy un consumidor responsable</h1>
+      <h2>Producto final</h2>
+      <div class="instruccion mt-5"> Lee las siguientes frases y  colorea las acciones que promueven el consumo responsable.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true" text="Reutilizar productos en buen estado."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="false" text="Cuidar el medioambiente."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="false" text="Comprar sólo productos empacados en bolsa plástica."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="false" text="Reutilizar y reciclar cosas en casa."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="false" text="Comprar juguetes todos los días."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[5]" :ref="refCount()" @isright="right++" :answer="true" text="Planificar las compras."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[7]" :ref="refCount()" @isright="right++" :answer="true" text="Comprar productos locales."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[6]" :ref="refCount()" @isright="right++" :answer="true" text="Leer la información de las etiquetas."></check>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

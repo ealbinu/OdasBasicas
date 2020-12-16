@@ -1,29 +1,43 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Soy un consumidor responsable'
+- subtitle = 'Producto final'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .check {
+                border: 2px solid #D81E42;
+            }
+            .check .checkbox {
+                display: none;
+            }
+            .activecheck {
+                background: #F7BED8;
+            }
+            .check .checktext{
+                width: 100%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5  Lee las siguientes frases y  colorea las acciones que promueven el consumo responsable.
 
-            .row.mt-3
-            
-
-
-
+            .row.mt-3.ex1
+                .col-md-6: check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="true" text="Reutilizar productos en buen estado.")
+                .col-md-6: check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="false" text="Cuidar el medioambiente.")
+                .col-md-6: check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="false" text="Comprar sólo productos empacados en bolsa plástica.")
+                .col-md-6: check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="false" text="Reutilizar y reciclar cosas en casa.")
+                .col-md-6: check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false" text="Comprar juguetes todos los días.")
+                .col-md-6: check(v-model="r[5]" :ref="refCount()"  @isright="right++" :answer="true" text="Planificar las compras.")
+                .col-md-6: check(v-model="r[7]" :ref="refCount()"  @isright="right++" :answer="true" text="Comprar productos locales.")
+                .col-md-6: check(v-model="r[6]" :ref="refCount()"  @isright="right++" :answer="true" text="Leer la información de las etiquetas.")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
