@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Comparo las etiquetas'
+- subtitle = 'Las etiquetas comerciales'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,17 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa las etiquetas de los frascos y después contesta las preguntas.
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            
+            .row.mt-3.ex1
+                .col-12
+                    choose(v-model="r[0]" :ref="refCount()" num="1." text="¿Cuál de las dos etiquetas no cuenta con fecha de caducidad?" :options="['Salsa Cátsup Tomatín.','Miel \"La abuela\".']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[1]" :ref="refCount()" num="2." text="¿Por qué la etiqueta de la miel no específica los ingredientes?" :options="['Porque quieren ocultarlos al consumidor.','Porque sólo contiene miel.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[2]" :ref="refCount()" num="3." text="¿Por qué es importante la fecha de caducidad en los productos?" :options="['Porque así cuidamos nuestra salud.','Para evitar la contaminación del aire.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[3]" :ref="refCount()" num="4." text="¿Cuál producto comprarías?" :options="['Salsa Cátsup Tomatín.','Miel \"La abuela\".']" @isright="right++" :answer-num="[0,1]")
 
-            .row.mt-3
+
             
 
 

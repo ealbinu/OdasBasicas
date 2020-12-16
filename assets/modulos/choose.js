@@ -5,7 +5,8 @@ Vue.component('choose', {
             status: null,
             evaluate: false,
             result: false,
-            correctAnswer: ''
+            correctAnswer: '',
+            extraCorrectAnswer: ''
         }
     },
     computed:{
@@ -30,6 +31,16 @@ Vue.component('choose', {
         },
         verify () { 
             this.evaluate = true
+
+            /* check double */
+            if(Array.isArray(this.answerNum)){
+                if(this.status == this.correctAnswer || this.status == this.extraCorrectAnswer) {
+                    this.$emit('isright', true)
+                    this.result = true
+                }
+                return false
+            }
+            /* normal flux */
             if(this.status == this.correctAnswer) {
                 this.$emit('isright', true)
                 this.result = true
@@ -39,6 +50,12 @@ Vue.component('choose', {
     mounted () {
         this.$emit('input', null)
         if(this.answerNum != undefined){
+            if(Array.isArray(this.answerNum)){
+                this.correctAnswer = this.options[this.answerNum[0]]
+                this.extraCorrectAnswer = this.options[this.answerNum[1]]
+                return false
+            }
+            /* normal flux */
             this.correctAnswer = this.options[this.answerNum]
         } else {
             this.correctAnswer = this.answer
