@@ -1,25 +1,130 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco los símbolos'
+- subtitle = 'Croquis y símbolos / Visita al zoológico'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .draggable > div:not(.result) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .draggable > div:not(.result) div {
+                margin: 4px;
+            }
+            .draggable > div:not(.result) div img {
+                max-width: 60px;
+            }
+            .imagerelative .items > div {
+                width: 18%;
+                height: 13%;
+                display: flex;
+                flex-direction: column;
+                overflow:hidden;
+            }
+            .imagerelative .items > div .draggable {
+                height: 100%;
+            }
+            .imagerelative .items > div .draggable > div:not(.result) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .imagerelative .items > div .draggable > div:not(.result) div {
+                text-align: center;
+            }
+            .imagerelative .items > div .draggable > div:not(.result) div img {
+                max-width: 70%;
+                height: auto;
+            }
+            .imagerelative .items > div:nth-child(1) {
+                left: 28%;
+                top: 2%;
+            }
+            .imagerelative .items > div:nth-child(2) {
+                left: 3%;
+                top: 22.5%;
+            }
+            .imagerelative .items > div:nth-child(3) {
+                left: 28%;
+                top: 22.5%;
+            }
+            .imagerelative .items > div:nth-child(4) {
+                left: 53.5%;
+                top: 22.5%;
+            }
+            .imagerelative .items > div:nth-child(5) {
+                left: 78.8%;
+                top: 22.5%;
+            }
+            .imagerelative .items > div:nth-child(6) {
+                left: 3%;
+                top: 42.5%;
+            }
+            .imagerelative .items > div:nth-child(7) {
+                left: 28%;
+                top: 42.5%;
+            }
+            .imagerelative .items > div:nth-child(8) {
+                left: 53.5%;
+                top: 42.5%;
+            }
+            .imagerelative .items > div:nth-child(9) {
+                left: 78.8%;
+                top: 42.5%;
+            }
+            .imagerelative .items > div:nth-child(10) {
+                left: 3%;
+                top: 62.5%;
+            }
+            .imagerelative .items > div:nth-child(11) {
+                left: 28%;
+                top: 62.5%;
+            }
+            .imagerelative .items > div:nth-child(12) {
+                left: 53.5%;
+                top: 62.5%;
+            }
+            .imagerelative .items > div:nth-child(13) {
+                left: 78.8%;
+                top: 62.5%;
+            }
+            .imagerelative .items > div:nth-child(14) {
+                left: 3%;
+                top: 82.5%;
+            }
+            .imagerelative .items > div:nth-child(15) {
+                left: 28%;
+                top: 82.5%;
+            }
+            .imagerelative .items > div:nth-child(16) {
+                left: 53.5%;
+                top: 82.5%;
+            }
+            .imagerelative .items > div:nth-child(17) {
+                left: 78.8%;
+                top: 82.5%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la imagen y coloca los símbolos del croquis donde corresponda.
 
-            .row.mt-3
+            .recuadropalabras: dragdrop(:options="tempsobj.b" :options-ok="[]" v-if="tempsobj.b")
+            .row.mt-3.ex1
+                .col-12
+                    .imagerelative
+                        img(src="aimg/map.png").w-100
+                        .items
+                            dragdrop(v-for="(i, index) in tempsobj.a" v-model="r[index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="[i]")
             
 
 
@@ -29,4 +134,24 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    '<img src=aimg/1.png>',
+                    '<img src=aimg/2.png>',
+                    '<img src=aimg/3.png>',
+                    '<img src=aimg/4.png>',
+                    '<img src=aimg/5.png>',
+                    '<img src=aimg/6.png>',
+                    '<img src=aimg/7.png>',
+                    '<img src=aimg/8.png>',
+                    '<img src=aimg/9.png>',
+                    '<img src=aimg/10.png>',
+                    '<img src=aimg/11.png>',
+                    '<img src=aimg/12.png>',
+                    '<img src=aimg/13.png>',
+                    '<img src=aimg/14.png>',
+                    '<img src=aimg/15.png>',
+                    '<img src=aimg/16.png>',
+                    '<img src=aimg/17.png>',
+                ])
+
+                app.$set(app.tempsobj, 'b', _.shuffle(app.tempsobj.a))
