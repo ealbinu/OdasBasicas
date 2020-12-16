@@ -4,23 +4,204 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico las civilizaciones de los Andes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .names,
+      .descs {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          gap: 6px;
+      }
+      .name {
+          background: #FEEFBA;
+          text-align: center;
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid var(--sec);
+          box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+      }
+      .name strong {
+          font-size: 1.8rem;
+          color: #005093;
+      }
+      .desc {
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px solid var(--clear);
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .name .inputbox {
+          text-align: center;
+      }
+      .name .inputbox input {
+          max-width: 120px;
+          font-size: 1.4rem;
+          padding: 2px;
+      }
+      .desc:nth-child(1) {
+          background: #FEEFBA;
+      }
+      .desc:nth-child(2) {
+          background: #E8E1D0;
+      }
+      .desc:nth-child(3) {
+          background: #E0C2D4;
+      }
+      .desc:nth-child(4) {
+          background: #F9D4AD;
+      }
+      .desc:nth-child(5) {
+          background: #E8E1D0;
+      }
+      @media (max-width:680px){
+          .desc .label{
+              font-size: 0.5rem;
+          }
+          .name strong, .name .inputbox input {
+              font-size: 0.8rem;
+          }
+          
+      }
+      .recuadropalabras strong {
+          color: #fff;
+          text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+      }
+      .recuadropalabras > div:nth-child(1) strong {
+          background: #6CB743;
+      }
+      .recuadropalabras > div:nth-child(2) strong {
+          background: #D8292F;
+      }
+      .recuadropalabras > div:nth-child(3) strong {
+          background: #007EB6;
+      }
+      .recuadropalabras > div:nth-child(4) strong {
+          background: #ffaa21;
+      }
+      .recuadropalabras > div:nth-child(5) strong {
+          background: #6B4488;
+      }
+      .choose .label {
+          background: #fff;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .choose .options {
+          margin: 10px 0 0;
+          padding: 0;
+      }
+      .choose .options > div {
+          width: 30px;
+          height: 30px;
+          overflow: hidden;
+          text-indent: -999px;
+          border: none;
+          border-radius: 4px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .choose .options > div:nth-child(1) {
+          background: #6CB743;
+      }
+      .choose .options > div:nth-child(2) {
+          background: #D8292F;
+      }
+      .choose .options > div:nth-child(3) {
+          background: #007EB6;
+      }
+      .choose .options > div:nth-child(4) {
+          background: #ffaa21;
+      }
+      .choose .options > div:nth-child(5) {
+          background: #6B4488;
+      }
+      .choose .options > div.active {
+          border: none;
+      }
+      .bx {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+      .bx.c_V {
+          background: #6CB743;
+      }
+      .bx.c_R {
+          background: #D8292F;
+      }
+      .bx.c_Az {
+          background: #007EB6;
+      }
+      .bx.c_Am {
+          background: #ffaa21;
+      }
+      .bx.c_M {
+          background: #6B4488;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico las civilizaciones de los Andes</h1>
+      <h2>Las civilizaciones anteriores a los incas: chavín, nazca, moche, tiahuanaco, huari</h2>
+      <div class="instruccion mt-5">Relaciona cada civilización con su descripción.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-8 col-6 descs">
+          <div class="desc">
+            <labeltext num="1.">Cultura en la que sus gobernantes tenían conocimientos astronómicos para elaborar calendarios agrícolas y organizaban el culto a las deidades.</labeltext>
+          </div>
+          <div class="desc">
+            <labeltext num="2.">Cultura que basó su economía en la crianza de llamas y alpacas; trabajó con metales blandos como el cobre, el oro y la plata</labeltext>
+          </div>
+          <div class="desc">
+            <labeltext num="3.">Civilización que hacía cerámica policromada con la cual representaban elementos como la tierra, el agua, el fuego, el mar y el cielo.</labeltext>
+          </div>
+          <div class="desc">
+            <labeltext num="4.">Cultura en la que su gobernante concentraba los poderes religiosos y políticos. En su cerámica representaban escenas de la vida cotidiana, animales, creencias religiosas y costumbres.</labeltext>
+          </div>
+          <div class="desc">
+            <labeltext num="5.">Civilización que tenía amuralladas sus ciudades, practicaron la agricultura y la ganadería, y construyeron una gran red de caminos para intercambiar productos.</labeltext>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 names">
+          <div class="name">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#"></inputbox>
+            <p><strong>Nazca</strong></p>
+          </div>
+          <div class="name">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#"></inputbox>
+            <p><strong>Chavín</strong></p>
+          </div>
+          <div class="name">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#"></inputbox>
+            <p><strong>Moche</strong></p>
+          </div>
+          <div class="name">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#"></inputbox>
+            <p><strong>Tlahuanaco</strong></p>
+          </div>
+          <div class="name">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="#"></inputbox>
+            <p><strong>Huari</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5"> Colorea como se indica los elementos característicos de las siguientes culturas.</div>
+      <recuadropalabras :palabras="['Chavín', 'Tiahuanaco', 'Nazca', 'Moche', 'Huari']"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4" v-for="(i, index) in tempsobj.a">
+          <div class="bx" :class="'c_'+r[index+5]">
+            <choose v-model="r[index+5]" :ref="refCount()" :text="i.t" :options="['V', 'R', 'Az', 'Am', 'M']" @isright="right++" :answer="i.r"></choose>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -38,6 +219,18 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {r: 'V', t: 'Regaban sus cultivos a través de canales.'},
+          {r: 'Am', t: 'Sus dioses se relacionaron con el mar, la agricultura y la tierra.'},
+          {r: 'R', t: 'La “Puerta del Sol” era su calendario agrícola.'},
+          {r: 'Az', t: 'Realizaron geoglifos para representar animales, humanos y figuras geométricas.'},
+          {r: 'M', t: 'Sus habitantes construyeron centros ceremoniales, canales y caminos.'},
+          {r: 'Az', t: 'Trabajaron el oro y la plata para hacer máscaras y adornos para la nariz y las orejas.'},
+          {r: 'R', t: 'Destacaron por el arte plumario y la elaboración de textiles.'},
+          {r: 'V', t: 'Sus deidades representaban a la fauna y la flora amazónicas.'},
+          {r: 'M', t: 'Tenían una arquitectura monumental.'},
+      ])
+    </script>
   </body>
 </html>
