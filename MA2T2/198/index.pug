@@ -48,11 +48,11 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Observa las monedas,súmalas si es necesario y multiplica su valor por el número indicado.
+            .instruccion.mt-5 Observa las monedas,súmalas si es necesario y multiplica su valor por el número indicado. Observa el ejemplo.
 
             .row.mt-3.ex1
                 .col-lg-4.col-md-6.mb-2
-                    inputbox(:answer="2" type="number" placeh="#")
+                    inputbox(:answer="2" type="number" placeh="#" example)
                         template(v-slot:before="")
                             numbers 2 x
                             .coins: div: img(src="aimg/1.png").img-fluid.c1
