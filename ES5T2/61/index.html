@@ -4,106 +4,38 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Identifico los elementos de la carta</title>
+    <title>Puedo interpretar gráficas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      .carta {
-          background: #F8F4ED;
-          padding: 10px;
-          border-radius: 10px;
-          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-      }
-      @media (max-width: 680px) {
-          .carta {
-              font-size: 0.6rem;
-          }
-      }
-      .carta .inputbox input {
-          font-size: 1rem;
-          padding: 0;
-          margin-left: 4px;
-          border-radius: 4px;
-      }
-      @media (max-width: 680px) {
-          .carta .inputbox input {
-              font-size: 0.6rem;
-          }
-      }
-      .carta .row {
-          align-items: center;
-          padding: 10px 0;
-          border-radius: 5px;
-          margin: 0;
-          background: linear-gradient(to right, #F8F4ED, #F0EEE6);
-      }
-      .inputbox + .inputbox{
-          margin-top: 20px;
-      }
-      
+      /*
+      .ex1 {}
+      */
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Identifico los elementos de la carta</h1>
-      <h2>Seleccionar una nota de interés para opinar sobre ella</h2>
-      <div class="instruccion mt-5">Escribe en la carta de opinión el número correcto para identificar cada una de sus partes.</div>
-      <div class="row mt-3">
-        <div class="col-md-4">
-          <labeltext num="1.">Nombre del remitente.</labeltext>
-          <labeltext num="2.">Opinión.</labeltext>
-          <labeltext num="3.">Despedida cordial.</labeltext>
-          <labeltext num="4.">Lugar y fecha.</labeltext>
-          <labeltext num="5.">Motivo de la carta.</labeltext>
-          <labeltext num="6.">Argumento que respalda la opinión.</labeltext>
-          <labeltext num="7.">Saludo cordial.</labeltext>
-          <labeltext num="8.">Datos del destinatario.</labeltext>
+      <h1>Puedo interpretar gráficas</h1>
+      <h2>Los artículos de divulgación científica</h2>
+      <div class="instruccion mt-5">Lee con atención el siguiente fragmento de un artículo y marca así <checkmark></checkmark> las gráficas y las tablas que representen la información contenida.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a0.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/a1.png"/></check>
         </div>
-        <div class="col-md">
-          <div class="carta">
-            <div class="row mt-3 no-gutters">
-              <div class="col text-right">Guanajuato, Gto., a 7 de mayo de 2020.</div>
-              <div class="col-2">
-                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-            <div class="row mt-3 no-gutters">
-              <div class="col">Lic. Antonio Roca. <br/>Presidente municipal.<br/>Presente.</div>
-              <div class="col-2">
-                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-            <div class="row mt-3 no-gutters">
-              <div class="col">Le extiendo un cordial <strong>saludo</strong> y le envío esta <strong>carta</strong> para comentarle mi punto de vista sobre la invasión de músicos informales en el centro histórico.</div>
-              <div class="col-2">
-                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
-                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-            <div class="row mt-3 no-gutters">
-              <div class="col">Considero que el ruido excesivo que producen las bandas de músicos informales en los restaurantes y bares de la ciudad está afectando al turismo considerablemente. Es bien sabido que las tradicionales estudiantinas son parte del folclor de nuestra ciudad y desde mi punto de vista los músicos informales han generado una <strong>competencia</strong> desleal ante tan tradicional forma de expresión. No estoy de acuerdo en que se les permita a los músicos informales acaparar al turismo que poco a poco se aleja de las tradiciones locales, ya que, según las estadísticas de la Secretaría de Turismo, los visitantes gastan un 25 % menos en estudiantinas durante la temporada alta.</div>
-              <div class="col-2">
-                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
-                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-            <div class="row mt-3 no-gutters">
-              <div class="col">Agradezco de antemano que lea esta <strong>carta</strong> y tome en cuenta mis opiniones para que nuestra ciudad siga mejorando y se preserven las tradiciones.</div>
-              <div class="col-2">
-                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-            <div class="row mt-3 no-gutters">
-              <div class="col text-center">
-                 Atentamente<br/>Esteban de Anda López.<br/>Líder de la “Estudiantina de Colores”.</div>
-              <div class="col-2">
-                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-6">
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="false"><img class="img-fluid" src="aimg/a2.png"/></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="false"><img class="img-fluid" src="aimg/a3.png"/></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/a4.png"/></check>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
