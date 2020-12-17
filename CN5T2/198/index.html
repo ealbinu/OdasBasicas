@@ -57,7 +57,7 @@
       <div class="instruccion mt-5">Selecciona las características del aire de las siguientes opciones. </div>
       <div class="row mt-3 ex1 flex-wrap">
         <div class="col-md-4" v-for="(i, index) in tempsobj.a">
-          <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          <check v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
