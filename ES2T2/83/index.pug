@@ -17,7 +17,11 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Marca las así <checkmark></checkmark> las características que tiene un texto.
+            .instruccion.mt-5 Lee el siguiente texto sobre la diferencia entre vivir con el servicio de agua potable y sin él.
+            
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las características que tiene el texto anterior.
 
             .row.mt-3.ex1
                 .col-md-6(v-for="(i, index) in tempsobj.a")

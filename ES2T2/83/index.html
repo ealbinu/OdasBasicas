@@ -20,7 +20,11 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Escribo un texto</h1>
       <h2>Escribimos nuestros textos / Revisamos nuestros textos / Compartimos nuestros textos</h2>
-      <div class="instruccion mt-5">Marca las así <checkmark></checkmark> las características que tiene un texto.</div>
+      <div class="instruccion mt-5">Lee el siguiente texto sobre la diferencia entre vivir con el servicio de agua potable y sin él.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las características que tiene el texto anterior.</div>
       <div class="row mt-3 ex1">
         <div class="col-md-6" v-for="(i, index) in tempsobj.a">
           <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="true" :text="i"></check>
