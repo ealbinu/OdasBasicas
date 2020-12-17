@@ -49,7 +49,11 @@ html(lang="es")
                         template(v-for="(i, index) in 5")
                             selectable(:isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
 
-            
+            .instruccion.mt-5 Selecciona las características del aire de las siguientes opciones. 
+
+            .row.mt-3.ex1.flex-wrap
+                .col-md-4(v-for="(i, index) in tempsobj.a")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
 
 
 
@@ -58,4 +62,14 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {t:'No tiene color.', v:true},
+                    {t:'Contiene sal.', v:false},
+                    {t:'No tiene forma.', v:true},
+                    {t:'No tiene sabor.', v:true},
+                    {t:'Tiene un volumen definido.', v:false},
+                    {t:'Está formado por gases.', v:true},
+                    {t:'No tiene peso.', v:false},
+                    {t:'Ejerce presión en objetos.', v:true}, 
+                    {t:'Tiene un sabor dulce.', v:false},
+                ])
