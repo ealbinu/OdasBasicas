@@ -4,23 +4,35 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Confirmo lo que aprendí</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .blank{border-bottom:2px solid var(--main);width:50px;display:inline-block}
+      .frc{display:inline-block;text-align:center;vertical-align:middle}
+      .choose .options div hr,.frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
+      .choose .options div{;padding:6px;border-bottom:none; border-radius: 10px; background:#f5f5f5;}
+      .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+      .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      .choose .options div img{ max-width: 120px; border-radius: 6px; }
+      img{ display: block; margin: 0 auto; width: 100%; max-width: 380px; }
+      .choose .options div img.im1{ max-width: 80px; }
+      .choose .options div img.im2{ max-width: 60px; }
     </style>
-  </head>
-  <body>
+    <body></body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Marca la respuesta correcta.</div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <template v-for="(i, index) in temps">
+            <choose :key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -38,6 +50,49 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
-  </body>
+    <script>
+      app.$set(app, 'temps', [
+          {
+              p: 'Es uno de los recursos que puedes utilizar para organizar la información que investigas sobre un tema.',
+              ops: ['Cuadro sinóptico.','Gráfica de barras.','Guion de teatro.'],
+              a:0
+          },
+          {
+              p: 'Es una manera de organizar la información en la cual el concepto más importante va al principio y los conceptos secundarios van relacionados con flechas y palabras de enlace.',
+              ops: ['Gráfica de barras.','Mapa conceptual.','Entrevista.'],
+              a:1
+          },
+          {
+              p: '¿Cuál es el género literario que nos permite comunicar sentimientos y sensaciones a través de la palabra?',
+              ops: ['La novela.','La fábula.','La poesía.'],
+              a:2
+          },
+          {
+              p: 'Son recursos literarios que se utilizan en los poemas, excepto uno. ¿Cuál es?',
+              ops: ['Metáfora.','Símil.','Onomatopeya.'],
+              a:2
+          },
+          {
+              p: 'Es una descripción que exagera una situación, un objeto o una cualidad.',
+              ops: ['Metáfora.','Símil.','Aliteración.'],
+              a:1
+          },
+          {
+              p: '¿Qué figura retórica consiste en la repetición de un sonido en un poema?',
+              ops: ['Metáfora.','Símil.','Aliteración.'],
+              a:2
+          },
+      
+      
+          /*
+          {
+              p: '',
+              ops: [''],
+              a:0
+          },
+          */
+          
+      ])
+    </script>
+  </head>
 </html>
