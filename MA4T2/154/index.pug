@@ -1,0 +1,182 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Conozco diferentes expresiones'
+- subtitle = 'Son equivalentes'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .frc{display:inline-block;text-align:center;vertical-align:middle;}
+            .frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0;}
+
+            .oper {
+                margin-bottom: 20px;
+                background: #FFFBEE;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 1.2rem;
+            }
+            .oper.o1 {
+                background: #EBD5E0;
+            }
+            .oper.o4 {
+                background: #C6DDE9;
+            }
+            .oper.o5 {
+                background: #DEEDCD;
+            }
+            .oper .inputbox input {
+                font-size: 1.2rem;
+                padding: 2px;
+                width: 100px;
+                border-radius: 4px;
+                margin-left: 6px;
+            }
+            .oper .inputbox .numbers {
+                font-size: 1.8rem;
+                margin-left: 6px;
+                color: var(--clear);
+            }
+            .ex2 .inputbox {
+                justify-content: flex-start;
+                margin-bottom: 20px;
+            }
+            .ex2 .inputbox input {
+                font-size: 1.2rem;
+                padding: 2px;
+                border-radius: 6px;
+                width: 200px;
+                margin: 6px;
+            }
+            .ex2 .inputbox strong {
+                margin-right: 6px;
+            }
+            .ex2 .inputbox:nth-child(1) {
+                color: #00AEB5;
+            }
+            .ex2 .inputbox:nth-child(1) .numbers {
+                color: #00AEB5;
+                font-size: 1.6rem;
+                border-bottom: 2px solid #00AEB5;
+            }
+            .ex2 .inputbox:nth-child(2) {
+                color: #887544;
+            }
+            .ex2 .inputbox:nth-child(2) input {
+                border-color: #887544;
+            }
+            .ex2 .inputbox:nth-child(3) {
+                color: #AE4E8F;
+            }
+            .ex2 .inputbox:nth-child(3) input {
+                border-color: #AE4E8F;
+            }
+            .ex2 .inputbox:nth-child(4) {
+                color: #6CB743;
+            }
+            .ex2 .inputbox:nth-child(4) input {
+                border-color: #6CB743;
+            }
+            .ex2 .d-flex .inputbox {
+                color: #E9832C;
+            }
+            .ex2 .d-flex .inputbox input {
+                border-color: #E9832C;
+            }
+
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Resuelve las siguientes operaciones. Observa el ejemplo.
+
+            .row.mt-3.ex1
+                .col-md-6: .oper.o1
+                    inputbox(:answer="2.308" type="number" placeh="#" example)
+                        template(v-slot:before="")
+                            | 2 + 
+                            .frc 3<hr>10
+                            | + 
+                            .frc 8<hr>10
+                            | + 
+                            .frc 8<hr>1000
+                            | = 
+                .col-md-6: .oper.o2
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="12.004" type="number" placeh="#")
+                        template(v-slot:before="")
+                            | 12 +
+                            .frc 4<hr>1000
+                            | = 
+                .col-md-6: .oper.o3
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="5.23" type="number" placeh="#")
+                        template(v-slot:before="")
+                            | 5 +
+                            .frc 2<hr>10
+                            | +
+                            .frc 3<hr>100
+                            | =
+                .col-md-6: .oper.o4
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="0.179" type="number" placeh="#")
+                        template(v-slot:before="")
+                            .frc 1<hr>10
+                            | +
+                            .frc 7<hr>100
+                            | +
+                            .frc 9<hr>1000
+                            | =
+                .col-md-6: .oper.o5
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="6.801" type="number" placeh="#")
+                        template(v-slot:before="")
+                            | 6 +
+                            .frc 8<hr>10
+                            | +
+                            .frc 1<hr>1000
+                            | =
+                .col-md-6: .oper.o6
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="0.245" type="number" placeh="#")
+                        template(v-slot:before="")
+                            .frc 2<hr>10
+                            | +
+                            .frc 4<hr>100
+                            | +
+                            .frc 5<hr>1000
+                            | =
+
+
+            
+            .instruccion.mt-5 Completa las siguientes sumas de números fraccionarios.Observa el ejemplo.
+
+            .row.mt-3.ex2
+                .col-12
+                    inputbox(answer="tres décimos" type="" placeh="-" example)
+                        template(v-slot:before="") #[strong 1.] Dos enteros + 
+                        template(v-slot:after="") + un milésimo = 2.301
+
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="cuatro centésimos" type="text" placeh="--")
+                        template(v-slot:before="") #[strong 2.] Ocho décimos + 
+                        template(v-slot:after="") + cinco milésimos = 0.845
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="Cinco enteros" type="text" placeh="--")
+                        template(v-slot:before="") #[strong 3.] Cinco enteros 
+                        template(v-slot:after="") + nueve décimos + siete centésimos + dos milésimos = 5.972
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="nueve milésimos" type="text" placeh="--")
+                        template(v-slot:before="") #[strong 4.]  Dos décimos +
+                        template(v-slot:after="") = 0.209
+                    .d-flex
+                        inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="Catorce enteros" type="text" placeh="--")
+                            template(v-slot:before="") #[strong 5.] 
+                            template(v-slot:after="") +
+                        inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="siete centésimos" type="text" placeh="--")
+                            template(v-slot:after="") + cinco milésimos = 14.075
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])

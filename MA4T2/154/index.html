@@ -1,0 +1,213 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conozco diferentes expresiones</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .frc{display:inline-block;text-align:center;vertical-align:middle;}
+      .frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0;}
+      
+      .oper {
+          margin-bottom: 20px;
+          background: #FFFBEE;
+          border-radius: 10px;
+          padding: 10px;
+          font-size: 1.2rem;
+      }
+      .oper.o1 {
+          background: #EBD5E0;
+      }
+      .oper.o4 {
+          background: #C6DDE9;
+      }
+      .oper.o5 {
+          background: #DEEDCD;
+      }
+      .oper .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          width: 100px;
+          border-radius: 4px;
+          margin-left: 6px;
+      }
+      .oper .inputbox .numbers {
+          font-size: 1.8rem;
+          margin-left: 6px;
+          color: var(--clear);
+      }
+      .ex2 .inputbox {
+          justify-content: flex-start;
+          margin-bottom: 20px;
+      }
+      .ex2 .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          border-radius: 6px;
+          width: 200px;
+          margin: 6px;
+      }
+      .ex2 .inputbox strong {
+          margin-right: 6px;
+      }
+      .ex2 .inputbox:nth-child(1) {
+          color: #00AEB5;
+      }
+      .ex2 .inputbox:nth-child(1) .numbers {
+          color: #00AEB5;
+          font-size: 1.6rem;
+          border-bottom: 2px solid #00AEB5;
+      }
+      .ex2 .inputbox:nth-child(2) {
+          color: #887544;
+      }
+      .ex2 .inputbox:nth-child(2) input {
+          border-color: #887544;
+      }
+      .ex2 .inputbox:nth-child(3) {
+          color: #AE4E8F;
+      }
+      .ex2 .inputbox:nth-child(3) input {
+          border-color: #AE4E8F;
+      }
+      .ex2 .inputbox:nth-child(4) {
+          color: #6CB743;
+      }
+      .ex2 .inputbox:nth-child(4) input {
+          border-color: #6CB743;
+      }
+      .ex2 .d-flex .inputbox {
+          color: #E9832C;
+      }
+      .ex2 .d-flex .inputbox input {
+          border-color: #E9832C;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Conozco diferentes expresiones</h1>
+      <h2>Son equivalentes</h2>
+      <div class="instruccion mt-5">Resuelve las siguientes operaciones. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <div class="oper o1">
+            <inputbox :answer="2.308" type="number" placeh="#" example="example">
+              <template v-slot:before="">2 + 
+                <div class="frc">3<hr>10</div>+ 
+                <div class="frc">8<hr>10</div>+ 
+                <div class="frc">8<hr>1000</div>= 
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oper o2">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="12.004" type="number" placeh="#">
+              <template v-slot:before="">12 +
+                <div class="frc">4<hr>1000</div>= 
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oper o3">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="5.23" type="number" placeh="#">
+              <template v-slot:before="">5 +
+                <div class="frc">2<hr>10</div>+
+                <div class="frc">3<hr>100</div>=
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oper o4">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="0.179" type="number" placeh="#">
+              <template v-slot:before="">
+                <div class="frc">1<hr>10</div>+
+                <div class="frc">7<hr>100</div>+
+                <div class="frc">9<hr>1000</div>=
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oper o5">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="6.801" type="number" placeh="#">
+              <template v-slot:before="">6 +
+                <div class="frc">8<hr>10</div>+
+                <div class="frc">1<hr>1000</div>=
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oper o6">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="0.245" type="number" placeh="#">
+              <template v-slot:before="">
+                <div class="frc">2<hr>10</div>+
+                <div class="frc">4<hr>100</div>+
+                <div class="frc">5<hr>1000</div>=
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las siguientes sumas de números fraccionarios.Observa el ejemplo.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <inputbox answer="tres décimos" type="" placeh="-" example="example">
+            <template v-slot:before=""><strong>1.</strong> Dos enteros + </template>
+            <template v-slot:after="">+ un milésimo = 2.301</template>
+          </inputbox>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="cuatro centésimos" type="text" placeh="--">
+            <template v-slot:before=""><strong>2.</strong> Ocho décimos + </template>
+            <template v-slot:after="">+ cinco milésimos = 0.845</template>
+          </inputbox>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Cinco enteros" type="text" placeh="--">
+            <template v-slot:before=""><strong>3.</strong> Cinco enteros </template>
+            <template v-slot:after="">+ nueve décimos + siete centésimos + dos milésimos = 5.972</template>
+          </inputbox>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="nueve milésimos" type="text" placeh="--">
+            <template v-slot:before=""><strong>4.</strong>  Dos décimos +</template>
+            <template v-slot:after="">= 0.209</template>
+          </inputbox>
+          <div class="d-flex">
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="Catorce enteros" type="text" placeh="--">
+              <template v-slot:before=""><strong>5.</strong> </template>
+              <template v-slot:after="">+</template>
+            </inputbox>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="siete centésimos" type="text" placeh="--">
+              <template v-slot:after="">+ cinco milésimos = 14.075</template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
