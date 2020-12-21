@@ -1,32 +1,67 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco las actividades económicas'
+- subtitle = 'Comercio'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                margin-bottom: 20px;
+                justify-content: flex-start;
+                background: #D3E4EE;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .inputbox input {
+                font-size: 1.4rem;
+                width: 60px;
+                margin-right: 6px;
+                padding: 4px;
+            }
+            .label{
+                background: #EFDEE6;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona las columnas anotando dentro del paréntesis la letra correcta.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-6.verticalrow
+                    labeltext(num="A.") Los productos agrícolas, ganaderos y mineros se distribuían a través de
+                    labeltext(num="B.") El comercio interno se llevaba a cabo en lugares como
+                    labeltext(num="C.") Los arrieros eran
+                    labeltext(num="D.") Eran los sitios con mayor actividad comercial.
+                    labeltext(num="E.") Los principales puertos eran
+                    labeltext(num="F.") Continente del que se importaba pólvora, especias, papel, entre otros.
+                    labeltext(num="G.") Productos que se importaban en el puerto de Acapulco.
+                    labeltext(num="H.") Productos que se intercambiaban en el puerto de Veracruz.
+                .col-md-6.verticalrow
+                    template(v-for="(i, index) in tempsobj.a")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:after="") {{i.t}}
 
-
-
-
+            .row.mt-3: .col-12: img(src="aimg/a0.png").w-100
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v: 'C', t:'los distribuidores de las mercancías.'},
+                    {v: 'A', t:'el comercio interno y el externo.'},
+                    {v: 'D', t:'Los puertos.'},
+                    {v: 'B', t:'tianguis y plazas.'},
+                    {v: 'E', t:'Veracruz y Acapulco.'},
+                    {v: 'G', t:'Mercancía de lujo, seda, marfil, ropa, especias, papel y pólvora.'},
+                    {v: 'H', t:'Materias primas, productos mineros, vainilla, palo de Campeche, etcétera.'},
+                    {v: 'F', t:'Asia.'},
+                ])

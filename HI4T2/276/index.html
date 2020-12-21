@@ -4,23 +4,61 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco las actividades económicas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          margin-bottom: 20px;
+          justify-content: flex-start;
+          background: #D3E4EE;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .inputbox input {
+          font-size: 1.4rem;
+          width: 60px;
+          margin-right: 6px;
+          padding: 4px;
+      }
+      .label{
+          background: #EFDEE6;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco las actividades económicas</h1>
+      <h2>Comercio</h2>
+      <div class="instruccion mt-5">Relaciona las columnas anotando dentro del paréntesis la letra correcta.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 verticalrow">
+          <labeltext num="A.">Los productos agrícolas, ganaderos y mineros se distribuían a través de</labeltext>
+          <labeltext num="B.">El comercio interno se llevaba a cabo en lugares como</labeltext>
+          <labeltext num="C.">Los arrieros eran</labeltext>
+          <labeltext num="D.">Eran los sitios con mayor actividad comercial.</labeltext>
+          <labeltext num="E.">Los principales puertos eran</labeltext>
+          <labeltext num="F.">Continente del que se importaba pólvora, especias, papel, entre otros.</labeltext>
+          <labeltext num="G.">Productos que se importaban en el puerto de Acapulco.</labeltext>
+          <labeltext num="H.">Productos que se intercambiaban en el puerto de Veracruz.</labeltext>
+        </div>
+        <div class="col-md-6 verticalrow">
+          <template v-for="(i, index) in tempsobj.a">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:after="">{{i.t}}</template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12"><img class="w-100" src="aimg/a0.png"/></div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -38,6 +76,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v: 'C', t:'los distribuidores de las mercancías.'},
+          {v: 'A', t:'el comercio interno y el externo.'},
+          {v: 'D', t:'Los puertos.'},
+          {v: 'B', t:'tianguis y plazas.'},
+          {v: 'E', t:'Veracruz y Acapulco.'},
+          {v: 'G', t:'Mercancía de lujo, seda, marfil, ropa, especias, papel y pólvora.'},
+          {v: 'H', t:'Materias primas, productos mineros, vainilla, palo de Campeche, etcétera.'},
+          {v: 'F', t:'Asia.'},
+      ])
+    </script>
   </body>
 </html>
