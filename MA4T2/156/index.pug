@@ -1,32 +1,96 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
-    body
+            .blank{border-bottom:2px solid var(--main);width:120px;display:inline-block}
+            .frc{display:inline-block;text-align:center;vertical-align:middle}
+            .choose .options div hr,.frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
+            .choose .options div{background:#f5f5f5;padding:6px;border-bottom:none;border-radius:6px}
+            .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+            img{
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 200px;
+            }
+        body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca la respuesta correcta.
 
             .row.mt-3
+                .col-12
+                    template(v-for="(i, index) in temps")
+                        choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]")
+
             
-
-
-
-
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app, 'temps', [
+                    {
+                        p: 'Figura que se conforma de cuatro lados iguales, 2 ángulos agudos y 2 obtusos.',
+                        ops: ['Cuadrado.','Rombo.','Rectángulo.'],
+                        a:1
+                    },
+                    {
+                        p: 'En una fábrica de canicas, <div class=frc>3<hr>6</div> de ellas son de color rojo. Si el registro de una máquina indica que se produjeron 1 800 canicas, ¿cuántas fueron rojas?',
+                        ops: ['1 000 canicas.','900 canicas.','700 canicas.'],
+                        a:1
+                    },
+                    {
+                        p: ' Es el resultado de la expresión matemática 3 × 2.25 + 0.48 =.',
+                        ops: ['7.23','6.75', '7.13'],
+                        a:0
+                    },
+                    {
+                        p: 'Es el valor que falta en la operación <div class=blank></div> + 8.88 = 19.',
+                        ops: ['12.50', '10.12', '10.02'],
+                        a:1
+                    },
+                    {
+                        p: 'El <div class="blank"></div> mide 90º.',
+                        ops: ['ángulo obtuso', 'ángulo recto', 'ángulo agudo'],
+                        a:1
+                    },
+                    {
+                        p: 'El ángulo <div class="blank"></div> es mayor a 90° y menor a 180°.',
+                        ops: ['llano', 'entrante', 'obtuso'],
+                        a:2
+                    },
+                    {
+                        p: 'Es la manera correcta de escribir 5 667.',
+                        ops: ['Cinco mil seiscientos sesenta y siete.','Cinco mil seiscientos secenta y siete.','Cinco mil seisientos sesenta y siete.'],
+                        a:0
+                    },
+                    {
+                        p: 'Es la expresión aditiva que tiene como resultado 42.',
+                        ops: ['10 + 10 + 10 + 10 + 2 = 42','6 × 7 = 42', '5 × 6 + 10 + 2 = 42'],
+                        a:0
+                    },
+                    {
+                        p: 'En una fiesta de cumpleaños se colocaron 15 cordones con 25 globos cada uno. ¿Cuántos globos se pusieron en total?',
+                        ops: ['375 globos.','385 globos.','395 globos.'],
+                        a:0
+                    },
+                    
+                    
+                    /*
+                    {
+                        p: '',
+                        ops: [''],
+                        a:0
+                    },
+                    */
+                    
+                ])
