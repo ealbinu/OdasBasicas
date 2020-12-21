@@ -1,32 +1,95 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
-    body
+            .blank{border-bottom:2px solid var(--main);width:50px;display:inline-block}
+            .frc{display:inline-block;text-align:center;vertical-align:middle}
+            .choose .options div hr,.frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
+            .choose .options div{background:#f5f5f5;padding:6px;border-bottom:none;border-radius:6px}
+            .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+            .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+            .choose .options div img{ max-width: 120px; border-radius: 6px; }
+            img{ display: block; margin: 0 auto; width: 100%; max-width: 380px; }
+            .choose .options div img.im1{ max-width: 80px; }
+            .choose .options div img.im2{ max-width: 60px; }
+        body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca la respuesta correcta.
 
             .row.mt-3
+                .col-12
+                    template(v-for="(i, index) in temps")
+                        choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]")
+
             
-
-
-
-
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app, 'temps', [
+                    {
+                        p: 'Es el mes del año que tiene menos de 30 días.',
+                        ops: ['Marzo.','Abril.','Febrero.'],
+                        a:2
+                    },
+                    {
+                        p: '¿Cuántas unidades, decenas y centenas tiene el número <strong>265</strong>?',
+                        ops: ['Dos centenas, seis decenas y cinco unidades.','Cinco centenas, dos decenas y seis unidades.','Seis decenas y cinco unidades.'],
+                        a:0
+                    },
+                    {
+                        p: '¿Cuál de las opciones representa el número <strong>500</strong>?',
+                        ops: ['100 + 100 + 100 =','100 + 100 + 100 + 100 =','100 + 100 + 100 + 100 + 100 ='],
+                        a:2
+                    },
+                    {
+                        p: '¿Cuál de las opciones completa esta serie? <strong>120, 130, <div class="blank"></div>, 150, 160, <div class="blank"></div>, 180, 190.</strong>',
+                        ops: ['140 y 160.','140 y 170.', '160 y 180.'],
+                        a:1
+                    },
+                    {
+                        p: 'Juan, María y Alicia hicieron una competencia de venta de caramelos. Si María vendió 902, Juan 290 y Alicia 390, ¿quién vendió más caramelos?',
+                        ops: ['María.','Juan.','Alicia.'],
+                        a:0
+                    },
+                    {
+                        p: 'Luis tenía 50 estampas coleccionables. Si su primo le regaló 13 y su mamá le compró 5 más, ¿cuántas estampas tiene Luis?',
+                        ops: ['68 estampas.','86 estampas.','66 estampas.'],
+                        a:0
+                    },
+                    {
+                        p: 'Es el número de lados que tiene una cancha de futbol.',
+                        ops: ['3 lados.','6 lados.','4 lados.'],
+                        a:2
+                    },
+                    {
+                        p: 'Si Ana tiene 2 cajas de 6 lápices de colores cada una, ¿cuántos lápices de colores tiene Ana en total?',
+                        ops: ['8 lápices.','12 lápices.','15 lápices.'],
+                        a:1
+                    },
+                    {
+                        p: 'Es el recipiente en el que pueden caber más de 3 litros de agua.',
+                        ops: ['<img src=aimg/9a.png class=im1>', '<img src=aimg/9b.png class=im2>', '<img src=aimg/9c.png>'],
+                        a:2
+                    },
+                    
+                    
+                    /*
+                    {
+                        p: '',
+                        ops: [''],
+                        a:0
+                    },
+                    */
+                    
+                ])
