@@ -1,0 +1,198 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Igualo los pesos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ope {
+          padding: 10px;
+          border-radius: 10px;
+          border: 4px solid #f5f5f5;
+          height: 100%;
+      }
+      .ope img {
+          max-width: 100px;
+      }
+      
+      .ope .numbers {
+          font-size: 1.6rem;
+          color: var(--clear);
+      }
+      .ope .inputbox input {
+          width: 60px;
+          font-size: 1.2rem;
+          margin: 0 6px;
+      }
+      .ex2 .prob {
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+      .ex2 .prob .inputbox input {
+          font-size: 1.6rem;
+          padding: 4px;
+          max-width: 120px;
+          margin-right: 6px;
+      }
+      .ex2 .prob .inputbox .numbers {
+          font-size: 1.6rem;
+          color: var(--sec);
+      }
+      .ex2 .prob.pr1 {
+          background: #E9E4EA;
+      }
+      .ex2 .prob.pr2 {
+          background: #FFF9E3;
+      }
+      .ex2 .prob.pr3 {
+          background: #FDE4D6;
+      }
+      .ex2 .prob.pr4 {
+          background: #E9F4F3;
+      }
+      @media(max-width:680px){
+          .ope img {
+              max-width: 60px;
+          }
+           .ope .numbers{
+               font-size: 1.1rem;
+           }
+           .ex2 .prob .inputbox input {
+               font-size: 1.2rem;
+               padding: 2px;
+           }
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Igualo los pesos</h1>
+      <h2>Trayecto 11. Experimentar con peso. Un montón de frutas / ¡A ordenar pesos!</h2>
+      <div class="instruccion mt-5">Calcula el peso total de las frutas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 mb-3">
+          <div class="ope">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+              <template v-slot:before=""><img class="img-fluid" src="aimg/a1.png"/>
+                <div class="numbers">+</div><img class="img-fluid" src="aimg/a2.png"/>
+                <div class="numbers">=</div>
+              </template>
+              <template v-slot:after="">
+                <div class="numbers">Kilos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="ope">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="19" type="number" placeh="#">
+              <template v-slot:before=""><img class="img-fluid" src="aimg/b1.png"/>
+                <div class="numbers">+</div><img class="img-fluid" src="aimg/b2.png"/>
+                <div class="numbers">=</div>
+              </template>
+              <template v-slot:after="">
+                <div class="numbers">Kilos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="ope">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#">
+              <template v-slot:before=""><img class="img-fluid" src="aimg/c1.png"/>
+                <div class="numbers">+</div><img class="img-fluid" src="aimg/c2.png"/>
+                <div class="numbers">=</div>
+              </template>
+              <template v-slot:after="">
+                <div class="numbers">gramos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="ope">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+              <template v-slot:before=""><img class="img-fluid" src="aimg/d1.png"/>
+                <div class="numbers">+</div><img class="img-fluid" src="aimg/d2.png"/>
+                <div class="numbers">=</div>
+              </template>
+              <template v-slot:after="">
+                <div class="numbers">gramos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Resuelve los problemas.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="prob pr1">
+            <labeltext num="1.">Mi mamá compró 7 kilos de naranjas y los metió en la bolsa que llevaba en la mano derecha, después compró 2 kilos de uvas y los metió en la bolsa que cargaba en la mano izquierda. Para balancear el peso de las dos bolsas, ¿cuántos kilogramos de plátanos tendría que comprar y meter en la bolsa de las uvas?</labeltext>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+              <template v-slot:after="">
+                <div class="numbers">kilos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="prob pr2">
+            <labeltext num="2.">Si una caja tiene 20 piñas de 2 kilos cada una, ¿cuántas piñas de 1 kilo deben meterse en otra caja para que pesen lo mismo?</labeltext>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#">
+              <template v-slot:after="">
+                <div class="numbers">piñas.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="prob pr3">
+            <labeltext num="3.">Si cada caja de cerezas pesa la mitad de un kilogramo, ¿cuántas cajas se necesitan para que pesen 10 kilogramos?</labeltext>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#">
+              <template v-slot:after="">
+                <div class="numbers">cajas.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="prob pr4">
+            <labeltext num="4.">En una caja metí 200 gramos de plumas, 50 gramos de hilo, 150 gramos de lana y 100 gramos de algodón. ¿Cuántos gramos de arena tendría que meter en otra caja para que pesen lo mismo?</labeltext>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="500" type="number" placeh="#">
+              <template v-slot:after="">
+                <div class="numbers">gramos.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>
