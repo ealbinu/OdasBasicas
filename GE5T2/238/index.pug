@@ -1,26 +1,56 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprecio los recursos naturales'
+- subtitle = 'Extracción de minerales e hidrocarburos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .check {
+                text-align: center;
+                justify-content: center;
+                padding: 0;
+                border-radius: 20px;
+                background: var(--sec);
+                color: #fff;
+            }
+            .check .checkbox {
+                display: none;
+            }
+            .check .checktext {
+                flex-grow: 1;
+                border: 4px solid #fff;
+                border-radius: 20px;
+            }
+            .check.activecheck {
+                border: 3px solid var(--main);
+                border-radius: 40px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Selecciona el continente al que corresponde cada enunciado. Consulta las páginas 122 y 123 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-12(v-if="tempsobj.ops")
+                    choose(v-model="r[0]" :ref="refCount()" num="1." text="Sus áreas industriales se encuentran en países como Alemania, Reino Unido y Francia." :options="tempsobj.ops" @isright="right++" :answer-num="2")
+                    choose(v-model="r[1]" :ref="refCount()" num="2." text="Sus países industrializados, recientemente, son Corea del Sur, Singapur y China." :options="tempsobj.ops" @isright="right++" :answer-num="3")
+                    choose(v-model="r[2]" :ref="refCount()" num="3." text="Sus regiones industriales se encuentran en los Grandes Lagos y en Estados Unidos." :options="tempsobj.ops" @isright="right++" :answer-num="2")
+                    choose(v-model="r[3]" :ref="refCount()" num="4." text="Japón tiene una mano de obra numerosa y trabaja con un alto nivel tecnológico." :options="tempsobj.ops" @isright="right++" :answer-num="3")
+
+
+            .instruccion.mt-5 Encierra los minerales que representan el mayor consumo a nivel mundial durante el siglo XX. Consulta las páginas 96 y 97 de tu Atlas de Geografía del Mundo.
+            .row.mt-3.ex2(v-if="tempsobj.checks").centerrow
+                template(v-for="(i, index) in tempsobj.checks")
+                    .col-md-3: check(v-model="r[index+4]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+
+           
 
 
 
@@ -29,4 +59,17 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ops', ['Oceanía.','América.','Europa.','Asia.','África.'])
+                app.$set(app.tempsobj, 'checks', [
+                        {v:true, t:'Cobre'},
+                        {v:false, t:'Diamante'},
+                        {v:true, t:'Petróleo'},
+                        {v:false, t:'Calcio'},
+                        {v:true, t:'Gas'},
+                        {v:true, t:'Carbón'},
+                        {v:false, t:'Plata'},
+                        {v:false, t:'Plomo'},
+                        {v:true, t:'Aluminio'},
+                        {v:false, t:'Platino'},
+                        {v:true, t:'Hierro'},
+                ])

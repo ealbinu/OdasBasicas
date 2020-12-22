@@ -4,23 +4,57 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprecio los recursos naturales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .check {
+          text-align: center;
+          justify-content: center;
+          padding: 0;
+          border-radius: 20px;
+          background: var(--sec);
+          color: #fff;
+      }
+      .check .checkbox {
+          display: none;
+      }
+      .check .checktext {
+          flex-grow: 1;
+          border: 4px solid #fff;
+          border-radius: 20px;
+      }
+      .check.activecheck {
+          border: 3px solid var(--main);
+          border-radius: 40px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprecio los recursos naturales</h1>
+      <h2>Extracción de minerales e hidrocarburos</h2>
+      <div class="instruccion mt-5">Selecciona el continente al que corresponde cada enunciado. Consulta las páginas 122 y 123 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12" v-if="tempsobj.ops">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="Sus áreas industriales se encuentran en países como Alemania, Reino Unido y Francia." :options="tempsobj.ops" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[1]" :ref="refCount()" num="2." text="Sus países industrializados, recientemente, son Corea del Sur, Singapur y China." :options="tempsobj.ops" @isright="right++" :answer-num="3"></choose>
+          <choose v-model="r[2]" :ref="refCount()" num="3." text="Sus regiones industriales se encuentran en los Grandes Lagos y en Estados Unidos." :options="tempsobj.ops" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[3]" :ref="refCount()" num="4." text="Japón tiene una mano de obra numerosa y trabaja con un alto nivel tecnológico." :options="tempsobj.ops" @isright="right++" :answer-num="3"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Encierra los minerales que representan el mayor consumo a nivel mundial durante el siglo XX. Consulta las páginas 96 y 97 de tu Atlas de Geografía del Mundo.</div>
+      <div class="row mt-3 ex2 centerrow" v-if="tempsobj.checks">
+        <template v-for="(i, index) in tempsobj.checks">
+          <div class="col-md-3">
+            <check v-model="r[index+4]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -38,6 +72,21 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ops', ['Oceanía.','América.','Europa.','Asia.','África.'])
+      app.$set(app.tempsobj, 'checks', [
+              {v:true, t:'Cobre'},
+              {v:false, t:'Diamante'},
+              {v:true, t:'Petróleo'},
+              {v:false, t:'Calcio'},
+              {v:true, t:'Gas'},
+              {v:true, t:'Carbón'},
+              {v:false, t:'Plata'},
+              {v:false, t:'Plomo'},
+              {v:true, t:'Aluminio'},
+              {v:false, t:'Platino'},
+              {v:true, t:'Hierro'},
+      ])
+    </script>
   </body>
 </html>
