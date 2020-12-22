@@ -1,25 +1,45 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Descubro tipos de movimiento'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                flex-direction: column;
+                margin-bottom: 20px;
+                padding: 10px;
+                border-radius: 10px;
+                background: #f5f5f5;
+            }
+            .inputbox img {
+                margin: 0 10px 20px 10px;
+                border-radius: 20px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .inputbox input {
+                font-size: 1.4rem;
+                padding: 6px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe el tipo de movimiento correspondiente a cada imagen.
 
-            .row.mt-3
+            .mt-3: recuadropalabras(:palabras="['Ondulatorio', 'Rectilíneo', 'Circular']")
+
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-4
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-")
+                            template(v-slot:before=""): img(:src="'aimg/a'+(index+1)+'.jpg'").img-fluid
             
 
 
@@ -29,4 +49,14 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    'Ondulatorio',
+                    'Circular',
+                    'Rectilíneo',
+                    'Rectilíneo',
+                    'Ondulatorio',
+                    'Circular',
+                    'Ondulatorio',
+                    'Circular',
+                    'Rectilíneo',
+                ])

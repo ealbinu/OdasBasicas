@@ -4,23 +4,48 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Descubro tipos de movimiento</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          flex-direction: column;
+          margin-bottom: 20px;
+          padding: 10px;
+          border-radius: 10px;
+          background: #f5f5f5;
+      }
+      .inputbox img {
+          margin: 0 10px 20px 10px;
+          border-radius: 20px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .inputbox input {
+          font-size: 1.4rem;
+          padding: 6px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Descubro tipos de movimiento</h1>
+      <div class="instruccion mt-5">Escribe el tipo de movimiento correspondiente a cada imagen.</div>
+      <div class="mt-3">
+        <recuadropalabras :palabras="['Ondulatorio', 'Rectilíneo', 'Circular']"></recuadropalabras>
+      </div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-4">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="text" placeh="-">
+              <template v-slot:before=""><img class="img-fluid" :src="'aimg/a'+(index+1)+'.jpg'"/></template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -38,6 +63,18 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          'Ondulatorio',
+          'Circular',
+          'Rectilíneo',
+          'Rectilíneo',
+          'Ondulatorio',
+          'Circular',
+          'Ondulatorio',
+          'Circular',
+          'Rectilíneo',
+      ])
+    </script>
   </body>
 </html>
