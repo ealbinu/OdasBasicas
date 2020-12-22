@@ -4,23 +4,156 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conecto ideas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .conector {
+          text-align: center;
+          border: 2px solid var(--clear);
+          margin-bottom: 20px;
+          border-radius: 6px;
+      }
+      .conector .numbers {
+          font-size: 1.4rem;
+          border-bottom: 2px solid var(--clear);
+          background: #E8F3FA;
+      }
+      .conector .inputbox {
+          padding: 6px;
+      }
+      .conector .inputbox input {
+          font-size: 1.1rem;
+          border-color: #EC8B30;
+      }
+      .conector .inputbox .numbers {
+          color: var(--main);
+          border: none;
+          background: transparent;
+      }
+      .conector .sec .inputbox input {
+          border-color: #70B84A;
+      }
+      .tablas {
+          height: 100%;
+      }
+      .tablas .numbers {
+          font-size: 1rem;
+      }
+      .tablas .verticalrow {
+          background: #FAE9DA;
+          border-radius: 10px;
+          border: 2px solid #fff;
+      }
+      .tablas .verticalrow .label {
+          font-size: 1rem;
+      }
+      .tablas .verticalrow .number {
+          font-size: 2rem;
+      }
+      .tablas .verticalrow:last-child {
+          background: #EFEFE2;
+      }
+      .tablas .verticalrow:last-child strong {
+          color: #70B849;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conecto ideas</h1>
+      <div class="instruccion mt-5">Relaciona cada conector con su función y el significado o valor que tiene. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-5 verticalrow">
+          <div class="conector">
+            <numbers c="3">Sin embargo</numbers>
+            <div class="row no-gutters">
+              <div class="col-6">
+                <inputbox answer="D" type="text" placeh="Función" example="example"></inputbox>
+              </div>
+              <div class="col-6">
+                <inputbox answer="2" type="number" placeh="Significado o valor" example="example"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="conector">
+            <numbers c="3">Asimismo</numbers>
+            <div class="row no-gutters">
+              <div class="col-6">
+                <div><small>Función</small></div>
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="Función"></inputbox>
+              </div>
+              <div class="col-6 sec">
+                <div><small>Significado o valor</small></div>
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="Valor"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="conector">
+            <numbers c="3">Mientras que</numbers>
+            <div class="row no-gutters">
+              <div class="col-6">
+                <div><small>Función</small></div>
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="Función"></inputbox>
+              </div>
+              <div class="col-6 sec">
+                <div><small>Significado o valor</small></div>
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="Valor"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="conector">
+            <numbers c="3">Por el contrario</numbers>
+            <div class="row no-gutters">
+              <div class="col-6">
+                <div><small>Función</small></div>
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="Función"></inputbox>
+              </div>
+              <div class="col-6 sec">
+                <div><small>Significado o valor</small></div>
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="Valor"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="conector">
+            <numbers c="3">Por una parte</numbers>
+            <div class="row no-gutters">
+              <div class="col-6">
+                <div><small>Función</small></div>
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="Función"></inputbox>
+              </div>
+              <div class="col-6 sec">
+                <div><small>Significado o valor</small></div>
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="Valor"></inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md verticalrow">
+          <div class="row tablas">
+            <div class="col-6 verticalrow">
+              <numbers c="4">Función</numbers>
+              <labeltext num="A.">Presentar una perspectiva</labeltext>
+              <labeltext num="B.">Oponer una idea</labeltext>
+              <labeltext num="C.">Identificar cuándo sucede una acción</labeltext>
+              <labeltext num="D.">Contrastar una idea</labeltext>
+              <labeltext num="E.">Añadir información</labeltext>
+            </div>
+            <div class="col-6 verticalrow">
+              <numbers c="5">Significado o valor</numbers>
+              <labeltext num="1.">Aspecto o lado</labeltext>
+              <labeltext num="2.">Adversativo</labeltext>
+              <labeltext num="3.">Simultaneidad</labeltext>
+              <labeltext num="4.">Diferencia</labeltext>
+              <labeltext num="5.">Igualdad o semejanza</labeltext>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

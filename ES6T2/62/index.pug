@@ -1,30 +1,131 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Conecto ideas'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .conector {
+                text-align: center;
+                border: 2px solid var(--clear);
+                margin-bottom: 20px;
+                border-radius: 6px;
+            }
+            .conector .numbers {
+                font-size: 1.4rem;
+                border-bottom: 2px solid var(--clear);
+                background: #E8F3FA;
+            }
+            .conector .inputbox {
+                padding: 6px;
+            }
+            .conector .inputbox input {
+                font-size: 1.1rem;
+                border-color: #EC8B30;
+            }
+            .conector .inputbox .numbers {
+                color: var(--main);
+                border: none;
+                background: transparent;
+            }
+            .conector .sec .inputbox input {
+                border-color: #70B84A;
+            }
+            .tablas {
+                height: 100%;
+            }
+            .tablas .numbers {
+                font-size: 1rem;
+            }
+            .tablas .verticalrow {
+                background: #FAE9DA;
+                border-radius: 10px;
+                border: 2px solid #fff;
+            }
+            .tablas .verticalrow .label {
+                font-size: 1rem;
+            }
+            .tablas .verticalrow .number {
+                font-size: 2rem;
+            }
+            .tablas .verticalrow:last-child {
+                background: #EFEFE2;
+            }
+            .tablas .verticalrow:last-child strong {
+                color: #70B849;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona cada conector con su función y el significado o valor que tiene. Observa el ejemplo.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-5.verticalrow
+                    .conector
+                        numbers(c=3) Sin embargo
+                        .row.no-gutters
+                            .col-6: inputbox(answer="D" type="text" placeh="Función" example)
+                            .col-6: inputbox(answer="2" type="number" placeh="Significado o valor" example)
+                    .conector
+                        numbers(c=3) Asimismo
+                        .row.no-gutters
+                            .col-6
+                                div: small Función
+                                inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="Función")
+                            .col-6.sec
+                                div: small Significado o valor
+                                inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="Valor")
+                    .conector
+                        numbers(c=3) Mientras que
+                        .row.no-gutters
+                            .col-6
+                                div: small Función
+                                inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="Función")
+                            .col-6.sec
+                                div: small Significado o valor
+                                inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="Valor")
+                    .conector
+                        numbers(c=3) Por el contrario
+                        .row.no-gutters
+                            .col-6
+                                div: small Función
+                                inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="Función")
+                            .col-6.sec
+                                div: small Significado o valor
+                                inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="Valor")
+                    .conector
+                        numbers(c=3) Por una parte
+                        .row.no-gutters
+                            .col-6
+                                div: small Función
+                                inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="Función")
+                            .col-6.sec
+                                div: small Significado o valor
+                                inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="Valor")
+                .col-md.verticalrow
+                    .row.tablas
+                        .col-6.verticalrow
+                            numbers(c=4) Función
+                            labeltext(num="A.") Presentar una perspectiva
+                            labeltext(num="B.") Oponer una idea
+                            labeltext(num="C.") Identificar cuándo sucede una acción
+                            labeltext(num="D.") Contrastar una idea
+                            labeltext(num="E.") Añadir información
 
-
-
-
+                        .col-6.verticalrow
+                            numbers(c=5) Significado o valor
+                            labeltext(num="1.") Aspecto o lado
+                            labeltext(num="2.") Adversativo
+                            labeltext(num="3.") Simultaneidad
+                            labeltext(num="4.") Diferencia
+                            labeltext(num="5.") Igualdad o semejanza
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
