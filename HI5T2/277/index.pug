@@ -1,25 +1,70 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sobre la rebelión cristera'
+- subtitle = 'La rebelión cristera'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .label {
+                margin-bottom: 10px;
+            }
+            .label img {
+                max-width: 26px;
+            }
+            .markcircle {
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background: #EE1F26;
+                display: inline-block;
+                vertical-align: middle;
+                border: none !important;
+            }
+            .choose {
+                background: #EFF5E3;
+                border: 2px solid #6CB743;
+                font-size: 1.2rem;
+            }
+            .choose .options {
+                margin: 0;
+                padding: 0;
+            }
+            .choose .options img {
+                width: 26px;
+            }
+            .choose .options > div {
+                border: none;
+                background: #fff;
+                padding: 2px;
+                border-radius: 6px;
+                border: 4px solid #fff;
+            }
+            .choose .options > div.active {
+                border: none;
+                border: 4px solid var(--main);
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Realiza lo que se indica con base en la información de las páginas 121 a 124 de tu libro de texto SEP.
+            .mt-3
+                ul
+                    li: labeltext() Marca así <markex></markex> las causas de la lucha de poder entre caudillos posrevolucionarios.
+                    li: labeltext() Marca así <checkmark></checkmark> las condiciones bajo las que se creó el PNR.
+                    li: labeltext() Marca así <div class="markcircle"></div> las acciones que impulsaron la creación de partidos de oposición.
+            
+            .row.mt-3.ex1(v-if="tempsobj.a")
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6: choose(v-model="r[index]" :ref="refCount()" :text="i.t" :options="['<img src=../../assets/aimg/markex.svg>','<img src=../../assets/aimg/check.svg>', '<div class=markcircle></div>']" @isright="right++" :answer-num="i.v")
+                
             
 
 
@@ -29,4 +74,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:2, t: ' Jesús Reyes Heroles impulsó una reforma electoral.'},
+                    {v:0, t: 'Inconformidad por las políticas de Carranza.'},
+                    {v:0, t: 'La Constitución de 1917 se veía como una amenaza.'},
+                    {v:1, t: 'Asesinato de Álvaro Obregón cuan- do intentó reelegirse.'},
+                    {v:0, t: 'Luchas políticas y rebeliones armadas.'},
+                    {v:2, t: 'Fraudes electorales.'},
+                ])
