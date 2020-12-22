@@ -1,26 +1,124 @@
 
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
 <!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Produzco sonidos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .parraf {
+          background: #E9E4EA;
+          color: #6A4287;
+          border-radius: 10px;
+          padding: 10px;
+          box-shadow: 4px 4px 0 #6A4287;
+      }
+      .parraf .inputbox {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      .parraf .inputbox input {
+          width: 60%;
+          border-color: #6A4287;
+      }
+      .item{
+          padding: 10px;
+          border-radius: 10px;
+          border: 4px solid #E9E4EA;
+      }
+      .recuadropalabras {
+          background: #E1EDF4;
+      }
+      .recuadropalabras strong {
+          color: #0083BF;
+          background: transparent;
+      }
+      .ex2 .parrafoinputs {
+          margin-bottom: 20px;
+          border: 2px solid #9DC73C;
+      }
+      .ex2 strong {
+          color: #9DC73C;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Produzco sonidos</h1>
+      <h2>Jugando a producir sonidos. ¿Con qué podemos producir sonido?</h2>
+      <div class="instruccion mt-5">Relaciona cada instrumento con la acción necesaria para que produzca sonido.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="item text-center"><img class="img-fluid" src="aimg/a1.png"/>
+            <numbers c="4">A</numbers>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="item text-center"><img class="img-fluid" src="aimg/a2.png"/>
+            <numbers c="4">B</numbers>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="item text-center"><img class="img-fluid" src="aimg/a3.png"/>
+            <numbers c="4">C</numbers>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="item text-center"><img class="img-fluid" src="aimg/a4.png"/>
+            <numbers c="4">D</numbers>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3">
+          <div class="parraf text-center">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            <p>Sacudir y golpear con la mano.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="parraf text-center">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+            <p>Presionar y rasgar las cuerdas con los dedos.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="parraf text-center">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-"></inputbox>
+            <p>Golpear con mazos las láminas.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="parraf text-center">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-"></inputbox>
+            <p>Soplar y tapar algunos de los orificios con los dedos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las oraciones con las palabras del recuadro para que conozcas con qué parte del cuerpo podemos producir diferentes sonidos.</div>
+      <recuadropalabras :palabras="['cantar','zapatear','silbar','aplaudir']"></recuadropalabras>
+      <div class="mt-3 ex2">
+        <div class="parrafoinputs"><span><strong>1.</strong> Si dejo pasar el aire por los labios apretados, puedo  </span>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'silbar'" type="text" placeh="-"></inputbox><span>. </span>
+        </div>
+        <div class="parrafoinputs"><span><strong>2.</strong> Si produzco sonidos melodiosos con la voz, puedo  </span>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="'cantar'" type="text" placeh="-"></inputbox><span>. </span>
+        </div>
+        <div class="parrafoinputs"><span><strong>3.</strong> Si golpeo las palmas de las manos repetidas veces, puedo  </span>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="'aplaudir'" type="text" placeh="-"></inputbox><span>. </span>
+        </div>
+        <div class="parrafoinputs"><span><strong>4.</strong> Si doy golpes en el suelo con los pies al ritmo de la música, puedo  </span>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="'zapatear'" type="text" placeh="-"></inputbox><span>. </span>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

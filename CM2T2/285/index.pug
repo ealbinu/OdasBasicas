@@ -1,29 +1,96 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Produzco sonidos'
+- subtitle = 'Jugando a producir sonidos. ¿Con qué podemos producir sonido?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .parraf {
+                background: #E9E4EA;
+                color: #6A4287;
+                border-radius: 10px;
+                padding: 10px;
+                box-shadow: 4px 4px 0 #6A4287;
+            }
+            .parraf .inputbox {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .parraf .inputbox input {
+                width: 60%;
+                border-color: #6A4287;
+            }
+            .item{
+                padding: 10px;
+                border-radius: 10px;
+                border: 4px solid #E9E4EA;
+            }
+            .recuadropalabras {
+                background: #E1EDF4;
+            }
+            .recuadropalabras strong {
+                color: #0083BF;
+                background: transparent;
+            }
+            .ex2 .parrafoinputs {
+                margin-bottom: 20px;
+                border: 2px solid #9DC73C;
+            }
+            .ex2 strong {
+                color: #9DC73C;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona cada instrumento con la acción necesaria para que produzca sonido.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-3: .item.text-center
+                    img(src="aimg/a1.png").img-fluid
+                    numbers(c=4) A
+                .col-md-3: .item.text-center
+                    img(src="aimg/a2.png").img-fluid
+                    numbers(c=4) B
+                .col-md-3: .item.text-center
+                    img(src="aimg/a3.png").img-fluid
+                    numbers(c=4) C
+                .col-md-3: .item.text-center
+                    img(src="aimg/a4.png").img-fluid
+                    numbers(c=4) D
+            .row.mt-3.ex1
+                .col-md-3: .parraf.text-center
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-")
+                    p Sacudir y golpear con la mano.
+                .col-md-3: .parraf.text-center
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-")
+                    p Presionar y rasgar las cuerdas con los dedos.
+                .col-md-3: .parraf.text-center
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-")
+                    p Golpear con mazos las láminas.
+                .col-md-3: .parraf.text-center
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-")
+                    p Soplar y tapar algunos de los orificios con los dedos.
 
 
+            .instruccion.mt-5 Completa las oraciones con las palabras del recuadro para que conozcas con qué parte del cuerpo podemos producir diferentes sonidos.
 
+            recuadropalabras(:palabras="['cantar','zapatear','silbar','aplaudir']")
+
+            .mt-3.ex2
+                +parrafoinputs(['<strong>1.</strong> Si dejo pasar el aire por los labios apretados, puedo ', ['silbar',4], '.'])
+                +parrafoinputs(['<strong>2.</strong> Si produzco sonidos melodiosos con la voz, puedo ', ['cantar',5], '.'])
+                +parrafoinputs(['<strong>3.</strong> Si golpeo las palmas de las manos repetidas veces, puedo ', ['aplaudir',6], '.'])
+                +parrafoinputs(['<strong>4.</strong> Si doy golpes en el suelo con los pies al ritmo de la música, puedo ', ['zapatear',7], '.'])
+           
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
