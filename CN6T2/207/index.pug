@@ -1,26 +1,86 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sobre las máquinas simples'
+- subtitle = 'Aprovechamiento e identificación del funcionamiento de las máquinas simples'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                position: relative;
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            .inputbox img {
+                max-width: 80%;
+                border-radius: 20px;
+            }
+            .inputbox input {
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                font-size: 1.2rem;
+                padding: 4px;
+                width: 60px;
+            }
+            @media (max-width: 680px) {
+                .inputbox {
+                    flex-direction: column;
+                }
+                .inputbox input {
+                    position: static;
+                }
+            }
+            .label {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .label strong {
+                font-size: 2rem;
+            }
+            .label:nth-child(1) {
+                background: #E9F4F3;
+            }
+            .label:nth-child(2) {
+                background: #FEF0DD;
+            }
+            .label:nth-child(3) {
+                background: #E9E4EA;
+            }
+            @media (max-width: 680px) {
+                .label {
+                    font-size: 0.8rem;
+                }
+                .label strong {
+                    font-size: 1.6rem;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona la definición con la imagen que la representa.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-6.verticalrow
+                    labeltext(num="A.")  Es una máquina formada por una barra rígida que puede girar libremente alrededor de un punto de apoyo fijo llamado fulcro.
+                    labeltext(num="B.")  Es una superficie plana que forma un ángulo agudo con el suelo, facilitando el trabajo de subir o bajar objetos pesados.
+                    labeltext(num="C.")  Es una rueda acanalada en su borde, donde se coloca una cuerda o cable, y se usa como elemento de transmisión para cambiar la dirección del movimiento.
+                .col-6.verticalrow
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-")
+                        template(v-slot:after=""): img(src="aimg/a1.png").img-fluid
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-")
+                        template(v-slot:after=""): img(src="aimg/a2.png").img-fluid
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-")
+                        template(v-slot:after=""): img(src="aimg/a3.png").img-fluid
 
 
 
