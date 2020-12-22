@@ -4,23 +4,53 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Practico parafrasear</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          margin-bottom: 20px;
+          background: #FDE8CF;
+          padding: 10px;
+          border-radius: 10px;
+          justify-content: flex-start;
+      }
+      .inputbox input {
+          width: 60px;
+          padding: 2px;
+          font-size: 1.6rem;
+          margin-right: 8px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Practico parafrasear</h1>
+      <h2>Los datos, los argumentos y las opiniones</h2>
+      <div class="instruccion mt-5">Escribe <strong>A</strong> si la oración es un argumento, <strong>D</strong> si es un dato u <strong>O</strong> si es una opinión.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-">
+            <template v-slot:after="">
+              <div class="t">Pienso que la migración en México podría eventualmente afectar el crecimiento de población.</div>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-">
+            <template v-slot:after="">
+              <div class="t">El nivel alto de migración no afecta el crecimiento de población en México.</div>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="D" type="text" placeh="-">
+            <template v-slot:after="">
+              <div class="t">El crecimiento de población en nuestro país se ha mantenido con una constante de 1 % anual desde el año 2014.</div>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
