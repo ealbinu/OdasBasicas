@@ -88,6 +88,9 @@
       .ex2 .d-flex .inputbox input {
           border-color: #E9832C;
       }
+      .ex2 .inputbox{
+          flex-wrap:wrap;
+      }
       
       
     </style>
@@ -180,7 +183,7 @@
             <template v-slot:before=""><strong>4.</strong>  Dos décimos +</template>
             <template v-slot:after="">= 0.209</template>
           </inputbox>
-          <div class="d-flex">
+          <div class="d-flex flex-wrap">
             <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="Catorce enteros" type="text" placeh="--">
               <template v-slot:before=""><strong>5.</strong> </template>
               <template v-slot:after="">+</template>

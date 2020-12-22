@@ -85,6 +85,9 @@ html(lang="es")
             .ex2 .d-flex .inputbox input {
                 border-color: #E9832C;
             }
+            .ex2 .inputbox{
+                flex-wrap:wrap;
+            }
 
 
     body
@@ -166,7 +169,7 @@ html(lang="es")
                     inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="nueve milésimos" type="text" placeh="--")
                         template(v-slot:before="") #[strong 4.]  Dos décimos +
                         template(v-slot:after="") = 0.209
-                    .d-flex
+                    .d-flex.flex-wrap
                         inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="Catorce enteros" type="text" placeh="--")
                             template(v-slot:before="") #[strong 5.] 
                             template(v-slot:after="") +
