@@ -96,7 +96,7 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Resuelve las siguientes operaciones. Observa el ejemplo.
+            .instruccion.mt-5 Resuelve las siguientes operaciones.
 
             .row.mt-3.ex1
                 .col-md-6: .oper.o1
@@ -152,7 +152,7 @@ html(lang="es")
 
 
             
-            .instruccion.mt-5 Completa las siguientes sumas de números fraccionarios.Observa el ejemplo.
+            .instruccion.mt-5 Completa las siguientes sumas de números fraccionarios. Observa el ejemplo.
 
             .row.mt-3.ex2
                 .col-12
@@ -164,7 +164,7 @@ html(lang="es")
                         template(v-slot:before="") #[strong 2.] Ocho décimos + 
                         template(v-slot:after="") + cinco milésimos = 0.845
                     inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" answer="Cinco enteros" type="text" placeh="--")
-                        template(v-slot:before="") #[strong 3.] Cinco enteros 
+                        template(v-slot:before="") #[strong 3.] 
                         template(v-slot:after="") + nueve décimos + siete centésimos + dos milésimos = 5.972
                     inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" answer="nueve milésimos" type="text" placeh="--")
                         template(v-slot:before="") #[strong 4.]  Dos décimos +
