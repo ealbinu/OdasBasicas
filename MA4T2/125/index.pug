@@ -70,8 +70,7 @@ html(lang="es")
 
             .row: .col-12: img(src="aimg/a1.png").w-100
 
-            .instruccion.mt-5 Resuelve las multiplicaciones de acuerdo a los procedimientos del ejemplo anterior.
-
+            .instruccion.mt-5 Resuelve en tu cuaderno las siguientes operaciones. Después escribe en los recuadros el resultado. 
             .row.mt-3.ex1
                 .col-12
                     inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3042" type="number" placeh="#")
@@ -81,7 +80,7 @@ html(lang="es")
                     inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="5292" type="number" placeh="#")
                         template(v-slot:before=""): strong 84 × 63 = 
                 
-            .instruccion.mt-5 Resuelve los siguientes problemas.
+            .instruccion.mt-5 Resuelve en tu cuaderno los siguientes problemas. Después escribe el resultado.
             .row.mt-3.ex2
                 .col-md-6: .card1
                     .text-center: img(src="aimg/2a.png").img-fluid
