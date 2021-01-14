@@ -1,27 +1,83 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Identifico adverbios y adjetivos'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras .draggable > div {
+                background: transparent;
+                border: none;
+            }
+            .recuadropalabras .draggable > div:not(.result) > div {
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .draggable {
+                background: #f5f5f5;
+            }
+            .draggable > div:not(.result) {
+                border: 2px dashed var(--pastel2);
+                border-radius: 10px;
+                margin: 4px;
+                background: var(--pastel1);
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                min-height: 80px;
+            }
+            .draggable > div:not(.result) > div {
+                background: #fff;
+                padding: 2px 8px;
+                margin: 2px;
+                border-radius: 6px;
+            }
+            .box {
+                background: #f5f5f5;
+                border: 2px solid #fff;
+                padding: 10px 0;
+                border-radius: 6px;
+            }
+            .box strong {
+                color: #887544;
+            }
+            .box .draggable > div:not(.result) {
+                background: #EFF5E3;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Coloca las palabras del recuadro en su clasificación correspondiente.
 
-            .row.mt-3
-            
+            .recuadropalabras(v-if="tempsobj.a")
+                dragdrop(:options="tempsobj.a" :options-ok="[]")
 
+            .row.mt-3.ex1
+                .col-12
+                    p Los #[strong adjetivos calificativos] describen las características del sustantivo al que acompañan. Algunos ejemplos son:
+                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order)
+                .col-12.mt-3
+                    p Los #[strong adverbios] expresan las circunstancias del verbo y algunas clasificaciones son las siguientes.
+                .col-md-3.text-center.box
+                    p: strong Modo: ¿cómo?
+                    dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['peor','mal','cuidadosamente','mejor']" ignore-order)
+                .col-md-3.text-center.box
+                    p: strong Cantidad: ¿cuánto?
+                    dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['mucho','nada','más','bastante','poco']" ignore-order)
+                .col-md-3.text-center.box
+                    p: strong Lugar: ¿dónde?
+                    dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['lejos','cerca','arriba','detrás','allá','debajo']" ignore-order)
+                .col-md-3.text-center.box
+                    p: strong Tiempo: ¿cuándo?
+                    dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['ayer','antier','antes','hoy']" ignore-order)
 
 
 
@@ -29,4 +85,31 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    'ayer',
+                    'bonita',
+                    'lejos',
+                    'peor',
+                    'mucho',
+                    'alto',
+                    'bajito',
+                    'cerca',
+                    'antier',
+                    'nada',
+                    'arriba',
+                    'antes',
+                    'rojo',
+                    'suave',
+                    'hoy',
+                    'café',
+                    'detrás',
+                    'más',
+                    'mejor',
+                    'allá',
+                    'agradable',
+                    'poco',
+                    'mal',
+                    'bastante',
+                    'cuidadosamente',
+                    'debajo'
+                ])

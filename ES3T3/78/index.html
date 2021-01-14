@@ -4,23 +4,88 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico adverbios y adjetivos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras .draggable > div {
+          background: transparent;
+          border: none;
+      }
+      .recuadropalabras .draggable > div:not(.result) > div {
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .draggable {
+          background: #f5f5f5;
+      }
+      .draggable > div:not(.result) {
+          border: 2px dashed var(--pastel2);
+          border-radius: 10px;
+          margin: 4px;
+          background: var(--pastel1);
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex-wrap: wrap;
+          min-height: 80px;
+      }
+      .draggable > div:not(.result) > div {
+          background: #fff;
+          padding: 2px 8px;
+          margin: 2px;
+          border-radius: 6px;
+      }
+      .box {
+          background: #f5f5f5;
+          border: 2px solid #fff;
+          padding: 10px 0;
+          border-radius: 6px;
+      }
+      .box strong {
+          color: #887544;
+      }
+      .box .draggable > div:not(.result) {
+          background: #EFF5E3;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico adverbios y adjetivos</h1>
+      <div class="instruccion mt-5">Coloca las palabras del recuadro en su clasificación correspondiente.</div>
+      <div class="recuadropalabras" v-if="tempsobj.a">
+        <dragdrop :options="tempsobj.a" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <p>Los <strong>adjetivos calificativos</strong> describen las características del sustantivo al que acompañan. Algunos ejemplos son:</p>
+          <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order="ignore-order"></dragdrop>
+        </div>
+        <div class="col-12 mt-3">
+          <p>Los <strong>adverbios</strong> expresan las circunstancias del verbo y algunas clasificaciones son las siguientes.</p>
+        </div>
+        <div class="col-md-3 text-center box">
+          <p><strong>Modo: ¿cómo?</strong></p>
+          <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['peor','mal','cuidadosamente','mejor']" ignore-order="ignore-order"></dragdrop>
+        </div>
+        <div class="col-md-3 text-center box">
+          <p><strong>Cantidad: ¿cuánto?</strong></p>
+          <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['mucho','nada','más','bastante','poco']" ignore-order="ignore-order"></dragdrop>
+        </div>
+        <div class="col-md-3 text-center box">
+          <p><strong>Lugar: ¿dónde?</strong></p>
+          <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['lejos','cerca','arriba','detrás','allá','debajo']" ignore-order="ignore-order"></dragdrop>
+        </div>
+        <div class="col-md-3 text-center box">
+          <p><strong>Tiempo: ¿cuándo?</strong></p>
+          <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['ayer','antier','antes','hoy']" ignore-order="ignore-order"></dragdrop>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -40,6 +105,35 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          'ayer',
+          'bonita',
+          'lejos',
+          'peor',
+          'mucho',
+          'alto',
+          'bajito',
+          'cerca',
+          'antier',
+          'nada',
+          'arriba',
+          'antes',
+          'rojo',
+          'suave',
+          'hoy',
+          'café',
+          'detrás',
+          'más',
+          'mejor',
+          'allá',
+          'agradable',
+          'poco',
+          'mal',
+          'bastante',
+          'cuidadosamente',
+          'debajo'
+      ])
+    </script>
   </body>
 </html>
