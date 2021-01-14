@@ -4,23 +4,237 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sumo y resto decenas y centenas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          background: var(--pastel2);
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex1 .inputbox .numbers,
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+          border-radius: 6px;
+          padding: 2px;
+      }
+      .ex1 .numbers {
+          color: #00AEB5;
+          -webkit-text-stroke: 0;
+      }
+      .ex2 .inputbox {
+          flex-direction: column;
+          align-items: flex-end;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 6px;
+          margin-bottom: 10px;
+          text-align: right;
+          font-size: 1.2rem;
+      }
+      .ex2 .inputbox input {
+          font-size: 1.2rem;
+          text-align: right;
+          margin: 0;
+          padding: 2px;
+      }
+      .ex2 .inputbox hr {
+          width: 100%;
+          border-top: 2px solid var(--main);
+          margin: 4px 0;
+      }
+      .opes:nth-child(3n+1) .inputbox {
+          background: var(--pastel1);
+      }
+      .opes:nth-child(3n+2) .inputbox {
+          background: var(--pastel2);
+      }
+      .opes:nth-child(3n+3) .inputbox {
+          background: var(--pastel3);
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sumo y resto decenas y centenas</h1>
+      <div class="instruccion mt-5">Completa las siguientes sucesiones y escribe si son <strong>ascendentes</strong> o <strong>descendentes</strong>. </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="230" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="330" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="430" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="530" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="630" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="730" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="830" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="910" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="810" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="710" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="610" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="510" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="410" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="310" type="number" example="example"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="30" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="130" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="230" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="330" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="430" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="530" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="630" type="number" example="example"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="815" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="805" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="795" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="785" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="775" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="765" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="755" type="number" example="example"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="723" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="623" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="523" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="423" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="323" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="223" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="123" type="number" example="example"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col">
+          <inputbox :answer="3" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="13" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" :answer="23" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="33" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="43" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="53" type="number" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" :answer="63" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="73" type="number" example="example"></inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Realiza las siguientes sumas.</div>
+      <div class="row mt-3 ex2 justify-content-around">
+        <div class="col-md-3 col-6 text-right opes" v-for="(i, index) in tempsobj.sumas">
+          <inputbox v-model="r[index+25]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="#">
+            <template v-slot:before="">
+              <div>{{i[0]}}</div>
+              <div>+ {{i[1]}}</div>
+              <hr/>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -40,6 +254,20 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sumas', [
+          [421, 238, 659],
+          [644, 314, 958],
+          [362, 523, 885],
+          [129, 540, 669],
+          [531, 347, 878],
+      
+          [324, 219, 543],
+          [831, 162, 993],
+          [298, 210, 508], 
+          [782, 165, 947],
+          [310, 333, 643],
+      ])
+    </script>
   </body>
 </html>
