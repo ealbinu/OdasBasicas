@@ -52,6 +52,7 @@
           }
           .inps .col-3 {padding: 0;}
       }
+      .relational .result{ top: 5%;}
       
       
     </style>
@@ -75,7 +76,7 @@
           <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Cebra" type="text" placeh="-"></inputbox>
         </div>
       </div>
-      <div class="row ex1">
+      <div class="row mt-2 ex1">
         <div class="col"></div>
         <relational v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks" anchors="Top" anchort="Bottom">
           <template v-slot:source="{source}"><img class="img-fluid" :src="source.i"/></template>

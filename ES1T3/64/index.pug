@@ -49,6 +49,7 @@ html(lang="es")
                 }
                 .inps .col-3 {padding: 0;}
             }
+            .relational .result{ top: 5%;}
 
 
     body
@@ -64,7 +65,7 @@ html(lang="es")
                 .col-3: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Cocodrilo" type="text" placeh="-")
                 .col-3: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Avestruz" type="text" placeh="-")
                 .col-3: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Cebra" type="text" placeh="-")
-            .row.ex1
+            .row.mt-2.ex1
                 .col
                 relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks" anchors="Top" anchort="Bottom")
                     template(v-slot:source="{source}"): img(:src="source.i").img-fluid
