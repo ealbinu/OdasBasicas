@@ -13,7 +13,10 @@ html(lang="es")
             .choose .options div hr,.frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
             .choose .options div{background:#f5f5f5;padding:6px;border-bottom:none;border-radius:6px}
             .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+            .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+            .choose .options div img{ max-width: 220px; border-radius: 6px; }
             img{ display: block; margin: 0 auto; width: 100%; max-width: 380px; }
+            img.im1{ max-width: 180px; }
             .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
             .choose .options div img{ max-width: 220px; border-radius: 6px; }
         body
@@ -46,7 +49,7 @@ html(lang="es")
                         a:2
                     },
                     {
-                        p: '3. De acuerdo con la siguiente gráfica, ¿cuál es el color menos preferido por las personas encuestadas? <img src=aimg/3.png>',
+                        p: 'De acuerdo con la siguiente gráfica, ¿cuál es el color menos preferido por las personas encuestadas? <img src=aimg/3.png>',
                         ops: ['Azul.', 'Rojo.', 'Verde.'],
                         a:2
                     },
@@ -63,6 +66,46 @@ html(lang="es")
                     {
                         p: '¿Cuál de las siguientes fracciones representa dos cuartos?',
                         ops: ['1<hr>4', '2<hr>4', '1<hr>8'],
+                        a:1
+                    },
+                    {
+                        p: '¿Cuál de las siguientes fracciones es equivalente a <div class=frc>1<hr>2</div> + <div class=frc>1<hr>4</div> ?',
+                        ops: ['1<hr>2', '3<hr>4', '7<hr>8'],
+                        a:1
+                    },
+                    {
+                        p: 'Observa la siguiente figura y elige la opción que representa la fracción coloreada. <img class=im1 src=aimg/2.png>',
+                        ops: ['1<hr>2', '3<hr>4', '1<hr>6'],
+                        a:0
+                    },
+                    {
+                        p: 'Paola y María quieren dividir un paquete con 6 plumones de colores entre ellas y 4 amigas más. ¿Qué fracción del paquete le corresponde a cada una?',
+                        ops: ['<div class=frc>1<hr>2</div> del paquete.', '<div class=frc>3<hr>4</div> del paquete.', '<div class=frc>1<hr>6</div> del paquete.'],
+                        a:2
+                    },
+                    {
+                        p: '¿Cuáles son los números que faltan en la siguiente sucesión? <img src=aimg/4.png>',
+                        ops: ['495, 485 y 457.', '460, 475 y 485.', '460, 475 y 492.'],
+                        a:1
+                    },
+                    {
+                        p: '¿Cuál es el resultado de restar 4 892 – 3 841?',
+                        ops: ['1 051','1 500', '1 151'],
+                        a:0
+                    },
+                    {
+                        p: 'Si Manuel tenía $562 pero gastó $150, ¿cuánto dinero le quedó?',
+                        ops: ['$415','$418', '$412'],
+                        a:2
+                    },
+                    {
+                        p: '¿Cuál de las siguientes fracciones impropias es equivalente a 1 <div class=frc>2<hr>4</div>?',
+                        ops: ['4<hr>2', '8<hr>4', '6<hr>4'],
+                        a:2
+                    },
+                    {
+                        p: 'Indica la fracción que es mayor que <div class=frc>1<hr>4</div>.',
+                        ops: ['1<hr>8', '2<hr>4', '1<hr>6'],
                         a:1
                     },
        
