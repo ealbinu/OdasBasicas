@@ -4,23 +4,353 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Ordeno los números</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .box {
+          padding: 10px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          font-size: 1.4rem;
+          text-align: center;
+      }
+      .box .numbers {
+          text-align: center;
+          font-size: 1.2rem;
+          background: #fff;
+          border-radius: 10px;
+          margin-bottom: 10px;
+      }
+      
+      @media (max-width: 768px){
+          .box .numbers{
+              font-size: 0.7rem;
+              -webkit-text-stroke: 1px rgba(255,255,255,.2);
+          }
+          .clow.img-fluid{
+              max-width: 180px !important;
+      
+          }
+      }
+      .box .inputbox input {
+          font-size: 1.4rem;
+          padding: 0;
+      }
+      .box.box1 {
+          background: var(--pastel4);
+      }
+      .box.box1 .numbers {
+          color: #A84C8B;
+      }
+      .box.box2 {
+          background: var(--pastel3);
+      }
+      .box.box2 .numbers {
+          color: #94C774;
+      }
+      
+      .ex2 .col {
+          order: 4;
+      }
+      .ex2 .col:nth-child(-n+3) {
+          order: 0;
+      }
+      .ex2 .col:nth-child(7) {
+          order: 1;
+      }
+      .ex2 .col:nth-child(4) {
+          order: 2;
+      }
+      .ex2 .col:nth-child(8) {
+          order: 3;
+      }
+      .ex2 .inputbox {
+          background-image: url("aimg/box.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          min-height: 100px;
+      }
+      .ex2 .inputbox input,
+      .ex2 .inputbox .numbers {
+          margin: 0 6px 0 2px;
+          font-size: 1.4rem;
+          padding: 0;
+          border-radius: 4px;
+      }
+      .ex2 .inputbox:after {
+          content: "";
+          width: 20px;
+          height: 20px;
+          background-image: url("aimg/arr.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          right: -20px;
+          position: absolute;
+      }
+      .ex2 > div {
+          width: 80px !important;
+          min-width: 80px;
+          max-width: 80px;
+      }
+      .ex2 > div:nth-child(6) .inputbox:after {
+          display: none !important;
+      }
+      .ex3 img {
+          max-width: 40px;
+          margin-bottom: 4px;
+      }
+      .ex3 {
+          background: var(--pastel3);
+          border-radius: 10px;
+          padding: 10px;
+      }
+      @media (max-width: 620px) {
+          .ex3 img {
+              max-width: 20px;
+          }
+      }
+      .ex3 .inputbox {
+          justify-content: flex-start;
+          font-size: 1.2rem;
+          padding: 6px;
+      }
+      @media (max-width: 768px) {
+          .ex3 .inputbox {
+              font-size: 0.9rem;
+          }
+      }
+      @media (max-width: 620px) {
+          .ex3 .inputbox {
+              font-size: 0.7rem;
+          }
+      }
+      .ex3 .inputbox + .inputbox {
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 6px;
+      }
+      .ex3 .inputbox input {
+          width: 60px;
+          font-size: 1.4rem;
+          margin-right: 6px;
+          padding: 8px;
+      }
+      @media (max-width: 768px) {
+          .ex3 .inputbox input {
+              font-size: 1rem;
+              padding: 2px;
+              width: 40px;
+          }
+      }
+      @media (max-width: 620px) {
+          .ex3 .inputbox input {
+              font-size: 0.7rem;
+              width: 22px;
+          }
+      }
+      .ex3 + .ex3 {
+          background: var(--pastel2);
+      }
+      
+      
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Ordeno los números</h1>
+      <h2>Del menor al mayor</h2>
+      <div class="instruccion mt-5">Escribe las decenas y las unidades que forman cada número. Observa el Ejemplo.</div>
+      <div class="row">
+        <div class="col-12 text-center"><img class="w-50" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-8">
+          <div class="box box1">
+            <div class="row">
+              <div class="col-4 offset-4">
+                <numbers>Decenas</numbers>
+              </div>
+              <div class="col-4">
+                <numbers>Unidades</numbers>
+              </div>
+            </div>
+            <div class="row centerrow">
+              <div class="col-4">43 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">28 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">30 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="0" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">54 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="box box2">
+            <div class="row">
+              <div class="col-4 offset-4">
+                <numbers>Decenas</numbers>
+              </div>
+              <div class="col-4">
+                <numbers>Unidades</numbers>
+              </div>
+            </div>
+            <div class="row centerrow">
+              <div class="col-4">17 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">71 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">66 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row centerrow mt-1">
+              <div class="col-4">19 =</div>
+              <div class="col-4">
+                <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col-4">
+                <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md text-center"><img class="img-fluid clow" src="aimg/a2.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Ordena las cantidades anteriores de <strong>mayor a menor</strong>.</div>
+      <div class="row mt-3 ex2 flex-wrap justify-content-center">
+        <div class="col" v-for="(i, index) in [71, 66, 54, 30, 19, 17]">
+          <inputbox v-model="r[index+16]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="43" type="number" placeh="#" example="example"></inputbox>
+        </div>
+        <div class="col">
+          <inputbox :answer="28" type="number" placeh="#" example="example"></inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa los racimos,cuenta las uvas y completa las siguientes operaciones.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:after="">decena + </template>
+          </inputbox>
+          <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#">
+            <template v-slot:after="">unidades + </template>
+          </inputbox>
+        </div>
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:after="">decena =</template>
+          </inputbox>
+          <inputbox v-model="r[25]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#">
+            <template v-slot:after="">unidades =</template>
+          </inputbox>
+        </div>
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center" v-for="(i, index) in 2"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[26]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:after="">decenas</template>
+          </inputbox>
+          <inputbox v-model="r[27]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#">
+            <template v-slot:after="">unidades</template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex3">
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center" v-for="(i, index) in 3"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[28]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:after="">decena + </template>
+          </inputbox>
+          <inputbox v-model="r[29]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+            <template v-slot:after="">unidades + </template>
+          </inputbox>
+        </div>
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center" v-for="(i, index) in 2"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[30]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:after="">decena =</template>
+          </inputbox>
+          <inputbox v-model="r[31]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#">
+            <template v-slot:after="">unidades =</template>
+          </inputbox>
+        </div>
+        <div class="col-4">
+          <div class="row justify-content-center centerrow no-gutters">
+            <div class="col text-center" v-for="(i, index) in 5"><img class="img-fluid" src="aimg/u.png"/></div>
+          </div>
+          <inputbox v-model="r[32]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+            <template v-slot:after="">decenas</template>
+          </inputbox>
+          <inputbox v-model="r[33]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#">
+            <template v-slot:after="">unidades</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

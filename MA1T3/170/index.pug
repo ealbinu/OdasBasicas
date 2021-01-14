@@ -1,30 +1,273 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Ordeno los números'
+- subtitle = 'Del menor al mayor'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .box {
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            .box .numbers {
+                text-align: center;
+                font-size: 1.2rem;
+                background: #fff;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+
+            @media (max-width: 768px){
+                .box .numbers{
+                    font-size: 0.7rem;
+                    -webkit-text-stroke: 1px rgba(255,255,255,.2);
+                }
+                .clow.img-fluid{
+                    max-width: 180px !important;
+
+                }
+            }
+            .box .inputbox input {
+                font-size: 1.4rem;
+                padding: 0;
+            }
+            .box.box1 {
+                background: var(--pastel4);
+            }
+            .box.box1 .numbers {
+                color: #A84C8B;
+            }
+            .box.box2 {
+                background: var(--pastel3);
+            }
+            .box.box2 .numbers {
+                color: #94C774;
+            }
+
+            .ex2 .col {
+                order: 4;
+            }
+            .ex2 .col:nth-child(-n+3) {
+                order: 0;
+            }
+            .ex2 .col:nth-child(7) {
+                order: 1;
+            }
+            .ex2 .col:nth-child(4) {
+                order: 2;
+            }
+            .ex2 .col:nth-child(8) {
+                order: 3;
+            }
+            .ex2 .inputbox {
+                background-image: url("aimg/box.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                min-height: 100px;
+            }
+            .ex2 .inputbox input,
+            .ex2 .inputbox .numbers {
+                margin: 0 6px 0 2px;
+                font-size: 1.4rem;
+                padding: 0;
+                border-radius: 4px;
+            }
+            .ex2 .inputbox:after {
+                content: "";
+                width: 20px;
+                height: 20px;
+                background-image: url("aimg/arr.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                right: -20px;
+                position: absolute;
+            }
+            .ex2 > div {
+                width: 80px !important;
+                min-width: 80px;
+                max-width: 80px;
+            }
+            .ex2 > div:nth-child(6) .inputbox:after {
+                display: none !important;
+            }
+            .ex3 img {
+                max-width: 40px;
+                margin-bottom: 4px;
+            }
+            .ex3 {
+                background: var(--pastel3);
+                border-radius: 10px;
+                padding: 10px;
+            }
+            @media (max-width: 620px) {
+                .ex3 img {
+                    max-width: 20px;
+                }
+            }
+            .ex3 .inputbox {
+                justify-content: flex-start;
+                font-size: 1.2rem;
+                padding: 6px;
+            }
+            @media (max-width: 768px) {
+                .ex3 .inputbox {
+                    font-size: 0.9rem;
+                }
+            }
+            @media (max-width: 620px) {
+                .ex3 .inputbox {
+                    font-size: 0.7rem;
+                }
+            }
+            .ex3 .inputbox + .inputbox {
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 6px;
+            }
+            .ex3 .inputbox input {
+                width: 60px;
+                font-size: 1.4rem;
+                margin-right: 6px;
+                padding: 8px;
+            }
+            @media (max-width: 768px) {
+                .ex3 .inputbox input {
+                    font-size: 1rem;
+                    padding: 2px;
+                    width: 40px;
+                }
+            }
+            @media (max-width: 620px) {
+                .ex3 .inputbox input {
+                    font-size: 0.7rem;
+                    width: 22px;
+                }
+            }
+            .ex3 + .ex3 {
+                background: var(--pastel2);
+            }
+
+
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Escribe las decenas y las unidades que forman cada número. Observa el Ejemplo.
             
+            .row: .col-12.text-center: img(src="aimg/a1.png").w-50
+            .row.mt-3.ex1.centerrow
+                .col-md-8
+                    .box.box1
+                        .row
+                            .col-4.offset-4: numbers Decenas
+                            .col-4: numbers Unidades
+                        .row.centerrow
+                            .col-4 43 =
+                            .col-4: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 28 =
+                            .col-4: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 30 =
+                            .col-4: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="0" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 54 =
+                            .col-4: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                    .box.box2
+                        .row
+                            .col-4.offset-4: numbers Decenas
+                            .col-4: numbers Unidades
+                        .row.centerrow
+                            .col-4 17 =
+                            .col-4: inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 71 =
+                            .col-4: inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 66 =
+                            .col-4: inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[13]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
+                        .row.centerrow.mt-1
+                            .col-4 19 =
+                            .col-4: inputbox(v-model="r[14]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                            .col-4: inputbox(v-model="r[15]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#")
+                .col-md.text-center
+                    img(src="aimg/a2.png").img-fluid.clow
 
+            .instruccion.mt-5 Ordena las cantidades anteriores de #[strong mayor a menor].
 
+            .row.mt-3.ex2.flex-wrap.justify-content-center
+                .col(v-for="(i, index) in [71, 66, 54, 30, 19, 17]"): inputbox(v-model="r[index+16]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+                .col: inputbox(:answer="43" type="number" placeh="#" example)
+                .col: inputbox(:answer="28" type="number" placeh="#" example)
 
+            .instruccion.mt-5 Observa los racimos,cuenta las uvas y completa las siguientes operaciones.
 
+            .row.mt-3.ex3
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col.text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        template(v-slot:after="") decena + 
+                    inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
+                        template(v-slot:after="") unidades + 
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col.text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        template(v-slot:after="") decena =
+                    inputbox(v-model="r[25]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
+                        template(v-slot:after="") unidades =
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col(v-for="(i, index) in 2").text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[26]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:after="") decenas
+                    inputbox(v-model="r[27]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
+                        template(v-slot:after="") unidades
+            
+            .row.mt-3.ex3
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col(v-for="(i, index) in 3").text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[28]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                        template(v-slot:after="") decena + 
+                    inputbox(v-model="r[29]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#")
+                        template(v-slot:after="") unidades + 
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col(v-for="(i, index) in 2").text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[30]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:after="") decena =
+                    inputbox(v-model="r[31]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
+                        template(v-slot:after="") unidades =
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        .col(v-for="(i, index) in 5").text-center: img(src="aimg/u.png").img-fluid
+                    inputbox(v-model="r[32]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                        template(v-slot:after="") decenas
+                    inputbox(v-model="r[33]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
+                        template(v-slot:after="") unidades
+
+                        
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
