@@ -223,18 +223,6 @@
           <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="instruccion mt-5">Realiza las siguientes sumas.</div>
-      <div class="row mt-3 ex2 justify-content-around">
-        <div class="col-md-3 col-6 text-right opes" v-for="(i, index) in tempsobj.sumas">
-          <inputbox v-model="r[index+25]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="#">
-            <template v-slot:before="">
-              <div>{{i[0]}}</div>
-              <div>+ {{i[1]}}</div>
-              <hr/>
-            </template>
-          </inputbox>
-        </div>
-      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

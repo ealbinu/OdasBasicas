@@ -120,15 +120,7 @@ html(lang="es")
                 .col-md-4: inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente")
 
 
-            .instruccion.mt-5 Realiza las siguientes sumas.
-
-            .row.mt-3.ex2.justify-content-around
-                .col-md-3.col-6(v-for="(i, index) in tempsobj.sumas").text-right.opes
-                    inputbox(v-model="r[index+25]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="#")
-                        template(v-slot:before="")
-                            div {{i[0]}}
-                            div + {{i[1]}}
-                            hr
+            
 
 
 
