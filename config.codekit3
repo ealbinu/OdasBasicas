@@ -5280,6 +5280,13 @@
 		"oT": 1,
 		"q": 100
 		},
+	"\/ES1T3\/64\/aimg\/animals.afdesign": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/ES1T3\/64\/aimg\/animals.afdesign",
+		"oF": 0
+		},
 	"\/ES1T3\/64\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -5768,6 +5775,50 @@
 		"oAP": "\/ES2T2\/90\/index.html",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/ES2T3\/92\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 290386,
+		"oA": 0,
+		"oAP": "\/ES2T3\/92\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T3\/92\/aimg\/b1.png": {
+		"ft": 32768,
+		"iS": 39188,
+		"oA": 0,
+		"oAP": "\/ES2T3\/92\/aimg\/b1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T3\/92\/aimg\/b2.png": {
+		"ft": 32768,
+		"iS": 12707,
+		"oA": 0,
+		"oAP": "\/ES2T3\/92\/aimg\/Captura de Pantalla 2021-01-14 a la(s) 10.11.24.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES2T3\/92\/aimg\/b3.png": {
+		"ft": 32768,
+		"iS": 39819,
+		"oA": 0,
+		"oAP": "\/ES2T3\/92\/aimg\/b3.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"\/ES2T3\/92\/index.html": {
 		"cB": 0,
