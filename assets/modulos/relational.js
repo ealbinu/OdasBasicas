@@ -1,23 +1,25 @@
 var epDrag = {
-    isSource:true, isTarget:false,
+    isSource:true, isTarget:true,
     connector: ["Bezier", {curviness: 100}],
     paintStyle: { stroke:'#70BF44', strokeWidth:6, fill: '#fff' },
     connectorPaintStyle:{ stroke:'#70BF44', strokeWidth:6, fill: '#fff' },
 }
 var epTarget = {
-    isSource:false, isTarget:true,
+    isSource:true, isTarget:true,
     paintStyle: { stroke:'#F88E26', strokeWidth:6, fill: '#fff' },
     maxConnections: -1
 } 
 
 Vue.component('relational', {
-    props: ['value', 'sources', 'targets', 'connections', 'oks', 'initclass'],
+    props: ['value', 'sources', 'targets', 'connections', 'oks', 'initclass', 'anchors', 'anchort'],
     data() {
         return {
             status: [],
             evaluate: false,
             result: false,
-            started: false
+            started: false,
+            anchorSource: 'Right',
+            anchorTarget: 'Left'
         }
     },
     computed:{
@@ -33,10 +35,10 @@ Vue.component('relational', {
         startConnections () {
             this.started = true
             for (item in this.sources) {
-                jsPlumb.addEndpoint('s_'+item, { anchor:"Right", uuid: 's_'+item }, epDrag )
+                jsPlumb.addEndpoint('s_'+item, { anchor:this.anchorSource, uuid: 's_'+item }, epDrag )
             }
             for (item in this.targets) {
-                jsPlumb.addEndpoint('t_'+item, { anchor:"Left", uuid: 't_'+item }, epTarget )
+                jsPlumb.addEndpoint('t_'+item, { anchor:this.anchorTarget, uuid: 't_'+item }, epTarget )
             }
             
             // Load connections
@@ -49,7 +51,7 @@ Vue.component('relational', {
         },
         verify () { 
             this.evaluate = true
-            var endResult = _.isEqual( this.status, this.oks.sort() )
+            var endResult = _.isEqual( this.status.sort(), this.oks.sort() )
             if(endResult){
                 this.$emit('isright', true)
                 this.result = true
@@ -62,6 +64,10 @@ Vue.component('relational', {
         //this.$emit('input', false)
 
         var _this = this
+
+        if(this.anchors!=undefined){ this.anchorSource = this.anchors }
+        if(this.anchors!=undefined){ this.anchorTarget = this.anchort }
+
         setTimeout(function () {    
             _this.startConnections()
         }, 400)
@@ -76,13 +82,14 @@ Vue.component('relational', {
 
             for(con in allconnections){
                 const conn = [allconnections[con].sourceId, allconnections[con].targetId]
-                userConnections.push(conn)
+                userConnections.push(conn.sort())
             }
             _this.status = userConnections.sort()
 
             _this.$emit('input', _this.status)
-
         })
+
+        
     },
     created() {
         window.addEventListener("resize", function (){

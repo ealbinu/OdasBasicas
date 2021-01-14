@@ -4,23 +4,84 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Describo animales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .relational {
+          flex-direction: column-reverse;
+          justify-content: space-around;
+      }
+      .relational .sources,
+      .relational .targets {
+          width: 100%;
+          display: flex;
+          background: #f5f5f5;
+          flex-direction: row;
+      }
+      .relational .sources > div,
+      .relational .targets > div {
+          margin: 1px;
+          padding: 4px;
+          max-width: 25%;
+          border-width: 1px;
+      }
+      .relational .sources {
+          margin-top: 100px !important;
+      }
+      .relational .sources > div img {
+          max-height: 180px;
+          margin: 10px;
+      }
+      @media (max-width: 680px) {
+          .relational .targets {
+              font-size: 0.6rem;
+          }
+      }
+      .inps .inputbox input {
+      
+          font-size: 1.2rem;
+          padding: 0;
+      }
+      @media (max-width: 680px) {
+          .inps .inputbox input {
+              font-size: 0.7rem;
+          }
+          .inps .col-3 {padding: 0;}
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Describo animales</h1>
+      <h2>Así era antes, así soy ahora / Así soy yo</h2>
+      <div class="instruccion mt-5">Lee las descripciones y escribe de qué animales se trata. Después, relaciona la descripción con la imagen del animal que corresponda.</div>
+      <div class="row mt-3 ex1 inps">
+        <div class="col-3">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Jirafa" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-3">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Cocodrilo" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-3">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Avestruz" type="text" placeh="-"></inputbox>
+        </div>
+        <div class="col-3">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Cebra" type="text" placeh="-"></inputbox>
+        </div>
+      </div>
+      <div class="row ex1">
+        <div class="col"></div>
+        <relational v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks" anchors="Top" anchort="Bottom">
+          <template v-slot:source="{source}"><img class="img-fluid" :src="source.i"/></template>
+          <template v-slot:target="{target}">{{target.t}}</template>
+        </relational>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -28,6 +89,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.5/js/jsplumb.js"></script>
     <script src="../../assets/modulos/dragdropMod.js"></script>
     <script src="../../assets/modulos/dropdowns.js"></script>
     <script src="../../assets/modulos/selectable.js"></script>
@@ -39,6 +101,25 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_1'],
+          ['s_1', 't_0'],
+          ['s_2', 't_3'],
+          ['s_3', 't_2'],
+      ])
+      app.$set(app.tempsobj, 'sources', [
+          {i: 'aimg/a2.png'},
+          {i: 'aimg/a1.png'},
+          {i: 'aimg/a4.png'},
+          {i: 'aimg/a3.png'},
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          {t: 'Tengo cuatro patas, las dos de atrás son más cortas que las de enfrente. Mi cuello es muy largo y mi cabeza es pequeña, con dos cuernitos. Mi piel es amarilla con manchas cafés y me gusta comer las hojas más altas de los árboles.'},
+          {t: 'Soy un animal muy grande, me alimento de carne, mi piel es dura y está cubierta por resistentes escamas. Vivo en ríos, lagos y pantanos.Tengo cuatro patas cortas y en mi boca dientes muy afilados.'},
+          {t: 'Tengo alas pero no puedo volar, mi cabeza es pequeña en comparación con mi cuerpo, mis ojos son grandes y mi pico es plano. Mi cuello es largo y sin plumas, y mis patas también son largas.'},
+          {t: 'Me parezco al caballo pero soy más pequeña. Soy muy veloz, tengo cuatro patas, cola y, en la parte de arriba de mi cabeza, pelo que se llama crin. Mi pelaje es de color blanco y negro.'},
+      ])
+    </script>
   </body>
 </html>

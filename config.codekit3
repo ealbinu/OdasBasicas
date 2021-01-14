@@ -5236,6 +5236,50 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/ES1T3\/64\/aimg\/a1.png": {
+		"ft": 32768,
+		"iS": 59012,
+		"oA": 0,
+		"oAP": "\/ES1T3\/64\/aimg\/a1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES1T3\/64\/aimg\/sector1.png": {
+		"ft": 32768,
+		"iS": 27604,
+		"oA": 0,
+		"oAP": "\/ES1T3\/64\/aimg\/sector1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES1T3\/64\/aimg\/sector2.png": {
+		"ft": 32768,
+		"iS": 29458,
+		"oA": 0,
+		"oAP": "\/ES1T3\/64\/aimg\/sector2.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES1T3\/64\/aimg\/sector3.png": {
+		"ft": 32768,
+		"iS": 40254,
+		"oA": 0,
+		"oAP": "\/ES1T3\/64\/aimg\/sector3.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/ES1T3\/64\/index.html": {
 		"cB": 0,
 		"ft": 8192,

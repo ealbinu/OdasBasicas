@@ -1,25 +1,74 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Describo animales'
+- subtitle = 'Así era antes, así soy ahora / Así soy yo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .relational {
+                flex-direction: column-reverse;
+                justify-content: space-around;
+            }
+            .relational .sources,
+            .relational .targets {
+                width: 100%;
+                display: flex;
+                background: #f5f5f5;
+                flex-direction: row;
+            }
+            .relational .sources > div,
+            .relational .targets > div {
+                margin: 1px;
+                padding: 4px;
+                max-width: 25%;
+                border-width: 1px;
+            }
+            .relational .sources {
+                margin-top: 100px !important;
+            }
+            .relational .sources > div img {
+                max-height: 180px;
+                margin: 10px;
+            }
+            @media (max-width: 680px) {
+                .relational .targets {
+                    font-size: 0.6rem;
+                }
+            }
+            .inps .inputbox input {
+
+                font-size: 1.2rem;
+                padding: 0;
+            }
+            @media (max-width: 680px) {
+                .inps .inputbox input {
+                    font-size: 0.7rem;
+                }
+                .inps .col-3 {padding: 0;}
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee las descripciones y escribe de qué animales se trata. Después, relaciona la descripción con la imagen del animal que corresponda.
 
-            .row.mt-3
+            .row.mt-3.ex1.inps
+                .col-3: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="Jirafa" type="text" placeh="-")
+                .col-3: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Cocodrilo" type="text" placeh="-")
+                .col-3: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Avestruz" type="text" placeh="-")
+                .col-3: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Cebra" type="text" placeh="-")
+            .row.ex1
+                .col
+                relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks" anchors="Top" anchort="Bottom")
+                    template(v-slot:source="{source}"): img(:src="source.i").img-fluid
+                    template(v-slot:target="{target}") {{target.t}}
             
 
 
@@ -29,4 +78,22 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_1'],
+                    ['s_1', 't_0'],
+                    ['s_2', 't_3'],
+                    ['s_3', 't_2'],
+                ])
+                app.$set(app.tempsobj, 'sources', [
+                    {i: 'aimg/a2.png'},
+                    {i: 'aimg/a1.png'},
+                    {i: 'aimg/a4.png'},
+                    {i: 'aimg/a3.png'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {t: 'Tengo cuatro patas, las dos de atrás son más cortas que las de enfrente. Mi cuello es muy largo y mi cabeza es pequeña, con dos cuernitos. Mi piel es amarilla con manchas cafés y me gusta comer las hojas más altas de los árboles.'},
+                    {t: 'Soy un animal muy grande, me alimento de carne, mi piel es dura y está cubierta por resistentes escamas. Vivo en ríos, lagos y pantanos.Tengo cuatro patas cortas y en mi boca dientes muy afilados.'},
+                    {t: 'Tengo alas pero no puedo volar, mi cabeza es pequeña en comparación con mi cuerpo, mis ojos son grandes y mi pico es plano. Mi cuello es largo y sin plumas, y mis patas también son largas.'},
+                    {t: 'Me parezco al caballo pero soy más pequeña. Soy muy veloz, tengo cuatro patas, cola y, en la parte de arriba de mi cabeza, pelo que se llama crin. Mi pelaje es de color blanco y negro.'},
+                ])
+                
