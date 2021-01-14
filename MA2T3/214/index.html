@@ -4,23 +4,147 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Descompongo cantidades</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .boxy {
+          text-align: center;
+          margin-bottom: 30px;
+      }
+      .boxy .numbers {
+          color: #6A4287;
+          background: #FDE8CF;
+          border-radius: 6px;
+          margin-bottom: 10px;
+      }
+      .boxy .row {
+          margin-bottom: 6px;
+      }
+      .boxy .row .inputbox {
+          width: 33%;
+          flex-direction: column;
+          color: #fff;
+          font-weight: bold;
+          border-radius: 6px;
+      }
+      .boxy .row .inputbox:nth-child(1) {
+          background: #EFA92C;
+      }
+      .boxy .row .inputbox:nth-child(2) {
+          background: #D8222A;
+      }
+      .boxy .row .inputbox:nth-child(3) {
+          background: #0083BF;
+      }
+      .boxy .inputbox input {
+          font-size: 1rem;
+          padding: 4px 0;
+          border-radius: 4px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Descompongo cantidades</h1>
+      <h2>¿Quién tiene más?</h2>
+      <div class="instruccion mt-5">Completa las tablas y escribe el nombre de cada cantidad.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 boxy">
+          <numbers c="2">364</numbers>
+          <div class="row">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Trescientos sesenta y cuatro" type="text" placeh="Nombre"></inputbox>
+        </div>
+        <div class="col-md-6 boxy">
+          <numbers c="2">54</numbers>
+          <div class="row">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="0" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="Cincuenta y cuatro" type="text" placeh="Nombre"></inputbox>
+        </div>
+        <div class="col-md-6 boxy">
+          <numbers c="2">742</numbers>
+          <div class="row">
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="Setecientos cuarenta y dos" type="text" placeh="Nombre"></inputbox>
+        </div>
+        <div class="col-md-6 boxy">
+          <numbers c="2">851</numbers>
+          <div class="row">
+            <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" answer="Ochocientos cincuenta y uno" type="text" placeh="Nombre"></inputbox>
+        </div>
+        <div class="col-md-6 boxy">
+          <numbers c="2">23</numbers>
+          <div class="row">
+            <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="0" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" answer="Veintitrés" type="text" placeh="Nombre"></inputbox>
+        </div>
+        <div class="col-md-6 boxy">
+          <numbers c="2">489</numbers>
+          <div class="row">
+            <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+              <template v-slot:before="">Centenas</template>
+            </inputbox>
+            <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#">
+              <template v-slot:before="">Decenas</template>
+            </inputbox>
+            <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#">
+              <template v-slot:before="">Unidades</template>
+            </inputbox>
+          </div>
+          <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" answer="Cuatrocientos ochenta y nueve" type="text" placeh="Nombre"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
