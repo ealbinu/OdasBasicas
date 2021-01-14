@@ -1,0 +1,74 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mi platillo favorito</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ex1 .check .checkbox {
+          position: absolute;
+          top: 10px;
+          right: 4px;
+          background: #fff;
+      }
+      .ex2 .opts:nth-child(odd) .check{
+          background: var(--pastel1);
+      }
+      .ex2 .opts:nth-child(even) .check{
+          background: var(--pastel2);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Mi platillo favorito</h1>
+      <h2>Los sabores y los olores de mi entorno. Identificamos olores</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los platillos que representan la comida típica mexicana.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4 col-6" v-for="(i, index) in [1,1,0,1,1,1,0,0,0]">
+          <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i"><img class="img-fluid" :src="'aimg/a'+(index+1)+'.jpg'"/></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los olores que son agradables para ti.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6 opts" v-for="(i, index) in tempsobj.a">
+          <check v-model="r[index+9]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/relational.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v:1, t:'Aroma de las flores.'},
+          {v:1, t:'Olor a pan recién horneado.'},
+          {v:0, t:'Olor a basura.'},
+          {v:1, t:'Aroma a tierra mojada.'},
+          {v:1, t:'Olor a perfume.'},
+          {v:0, t:'Olor a drenaje.'},
+      ])
+    </script>
+  </body>
+</html>

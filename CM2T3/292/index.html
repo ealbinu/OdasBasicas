@@ -1,0 +1,94 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cuido mis sentidos del gusto y del olfato</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .ex1 .check .checkbox{
+          position: absolute;
+          top: 10px; right: 4px;
+          background: #fff;
+      }
+      .ex2 .relational .sources img{
+          max-height: 140px;
+      }+
+      .ex2 .relational .targets > div {
+          background: var(--pastel1);
+      }
+      .ex2 .relational .targets .numbers{
+          text-align: center;
+          font-size: 1.4rem;
+          margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Cuido mis sentidos del gusto y del olfato</h1>
+      <h2>El cuidado del gusto y del olfato</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las acciones con las cuales puedes cuidar tus sentidos del gusto y del olfato.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-3 col-6">
+          <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/a1.png"/></check>
+        </div>
+        <div class="col-md-3 col-6">
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="false"><img class="img-fluid" src="aimg/a2.png"/></check>
+        </div>
+        <div class="col-md-3 col-6">
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/a3.png"/></check>
+        </div>
+        <div class="col-md-3 col-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" src="aimg/a4.png"/></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa las imágenes y une con una línea las recomendaciones que sean más adecuadas para cada situación.</div>
+      <div class="row mt-3 ex2">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="r[4]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="[['s_0', 't_1'], ['s_1', 't_0'], ['s_2', 't_2']]">
+            <template v-slot:source="{source}"><img class="img-fluid" :src="source.i"/></template>
+            <template v-slot:target="{target}">
+              <numbers c="2">{{target.t}}</numbers>
+            </template>
+          </relational>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.5/js/jsplumb.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/relational.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          { i: 'aimg/b1.png' },
+          { i: 'aimg/b2.png' },
+          { i: 'aimg/b3.png' },
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          { t: 'Avisar a todos y salir de la casa.' },
+          { t: 'No prender cerillos, avisarle a un adulto y salir de la casa.' },
+          { t: 'Abrir las ventanas.' },
+      ])
+    </script>
+  </body>
+</html>

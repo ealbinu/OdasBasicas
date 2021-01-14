@@ -1,0 +1,53 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Sugiero algunas reglas'
+- subtitle = 'Los acuerdos cambian'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .check .checkbox {
+                position: absolute;
+                top: 10px;
+                right: 4px;
+                background: #fff;
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Lee con atención cada situación y marca así <checkmark></checkmark> la acción con la que los niños pueden ayudar.
+
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            .row.mt-3.ex1
+                .col-md-6
+                    check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/a2.png").img-fluid
+                .col-md-6
+                    check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="false")
+                        img(src="aimg/a3.png").img-fluid
+                
+            .row: .col-12: img(src="aimg/b1.png").w-100
+            .row.mt-3.ex1
+                .col-md-6
+                    check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false")
+                        img(src="aimg/b2.png").img-fluid
+                .col-md-6
+                    check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="true")
+                        img(src="aimg/b3.png").img-fluid
+            
+
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                

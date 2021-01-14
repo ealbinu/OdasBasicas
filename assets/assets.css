@@ -5,6 +5,12 @@
   --rightcol: #5EB246;
   --wrongcol: #DB3E34;
   --clear: #5AAEDA;
+  --pastel1: #FDEDE2;
+  --pastel2: #D5EDF6;
+  --pastel3: #EAF5E5;
+  --pastel4: #F3E5EF;
+  --pastel5: #EEEAE3;
+  --pastel6: #DEF3F4;
 }
 body {
   font-family: 'Montserrat', sans-serif;
@@ -204,7 +210,8 @@ strong.sec {
 .selectable,
 .selectableoptions,
 .draggableModule,
-.dropdowns {
+.dropdowns,
+.relational {
   position: relative;
 }
 .check.isright,
@@ -213,7 +220,8 @@ strong.sec {
 .selectable.isright,
 .selectableoptions.isright,
 .draggableModule.isright,
-.dropdowns.isright {
+.dropdowns.isright,
+.relational.isright {
   border: 2px solid #5EB246;
 }
 .check.iswrong,
@@ -222,7 +230,8 @@ strong.sec {
 .selectable.iswrong,
 .selectableoptions.iswrong,
 .draggableModule.iswrong,
-.dropdowns.iswrong {
+.dropdowns.iswrong,
+.relational.iswrong {
   border: 2px solid #DB3E34;
 }
 .check .isright,
@@ -232,13 +241,15 @@ strong.sec {
 .selectableoptions .isright,
 .draggableModule .isright,
 .dropdowns .isright,
+.relational .isright,
 .check .iswrong,
 .choose .iswrong,
 .inputbox .iswrong,
 .selectable .iswrong,
 .selectableoptions .iswrong,
 .draggableModule .iswrong,
-.dropdowns .iswrong {
+.dropdowns .iswrong,
+.relational .iswrong {
   position: absolute;
   right: -2%;
   top: -10%;
@@ -253,13 +264,15 @@ strong.sec {
 .selectableoptions .isright:after,
 .draggableModule .isright:after,
 .dropdowns .isright:after,
+.relational .isright:after,
 .check .iswrong:after,
 .choose .iswrong:after,
 .inputbox .iswrong:after,
 .selectable .iswrong:after,
 .selectableoptions .iswrong:after,
 .draggableModule .iswrong:after,
-.dropdowns .iswrong:after {
+.dropdowns .iswrong:after,
+.relational .iswrong:after {
   content: "";
   display: block;
   width: 100%;
@@ -275,7 +288,8 @@ strong.sec {
 .selectable .isright,
 .selectableoptions .isright,
 .draggableModule .isright,
-.dropdowns .isright {
+.dropdowns .isright,
+.relational .isright {
   background: #5EB246;
 }
 .check .isright:after,
@@ -284,7 +298,8 @@ strong.sec {
 .selectable .isright:after,
 .selectableoptions .isright:after,
 .draggableModule .isright:after,
-.dropdowns .isright:after {
+.dropdowns .isright:after,
+.relational .isright:after {
   background-image: url(aimg/isright.svg);
 }
 @media (max-width: 680px) {
@@ -294,7 +309,8 @@ strong.sec {
   .selectable .isright,
   .selectableoptions .isright,
   .draggableModule .isright,
-  .dropdowns .isright {
+  .dropdowns .isright,
+  .relational .isright {
     transform: scale(0.6);
   }
 }
@@ -304,7 +320,8 @@ strong.sec {
 .selectable .iswrong,
 .selectableoptions .iswrong,
 .draggableModule .iswrong,
-.dropdowns .iswrong {
+.dropdowns .iswrong,
+.relational .iswrong {
   background: #DB3E34;
 }
 @media (max-width: 680px) {
@@ -314,7 +331,8 @@ strong.sec {
   .selectable .iswrong,
   .selectableoptions .iswrong,
   .draggableModule .iswrong,
-  .dropdowns .iswrong {
+  .dropdowns .iswrong,
+  .relational .iswrong {
     transform: scale(0.6);
   }
 }
@@ -522,5 +540,82 @@ input[type=number] {
 .trueorfalse .inputbox input {
   margin-left: auto;
   max-width: 80px;
+}
+/* RELATIONAL MODULE */
+.jtk-endpoint {
+  cursor: pointer;
+}
+.jtk-connector path {
+  stroke-width: 10;
+  stroke: #667788;
+  stroke-dasharray: 20 6;
+}
+.relational {
+  position: relative;
+}
+.relationalStart {
+  border-radius: 10px;
+  position: absolute;
+  background: rgba(200, 200, 200, 0.4);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.relationalStart img {
+  width: 50%;
+}
+.sources,
+.targets {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sources > div,
+.targets > div {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.relational .sources {
+  width: 40%;
+  text-align: right;
+}
+.relational .sources > div {
+  border: 4px solid var(--rightcol);
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+.relational .targets {
+  width: 40%;
+  text-align: left;
+}
+.relational .targets > div {
+  border: 4px solid #F78E26;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+/* RELATIONAL LINE COLORS */
+.jtk-connector path {
+  stroke: var(--main);
+}
+.jtk-connector + .jtk-connector path {
+  stroke: var(--sec);
+}
+.jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: var(--clear);
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: var(--accent);
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: var(--rightcol);
 }
 /*# sourceMappingURL=assets.css.map */

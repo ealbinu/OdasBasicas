@@ -1,0 +1,56 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Mi platillo favorito'
+- subtitle = 'Los sabores y los olores de mi entorno. Identificamos olores'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .ex1 .check .checkbox {
+                position: absolute;
+                top: 10px;
+                right: 4px;
+                background: #fff;
+            }
+            .ex2 .opts:nth-child(odd) .check{
+                background: var(--pastel1);
+            }
+            .ex2 .opts:nth-child(even) .check{
+                background: var(--pastel2);
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los platillos que representan la comida típica mexicana.
+
+            .row.mt-3.ex1
+                .col-md-4.col-6(v-for="(i, index) in [1,1,0,1,1,1,0,0,0]")
+                    check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i")
+                        img(:src="'aimg/a'+(index+1)+'.jpg'").img-fluid
+
+            
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los olores que son agradables para ti.
+            .row.mt-3.ex2
+                .col-md-6(v-for="(i, index) in tempsobj.a").opts
+                    check(v-model="r[index+9]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                app.$set(app.tempsobj, 'a', [
+                    {v:1, t:'Aroma de las flores.'},
+                    {v:1, t:'Olor a pan recién horneado.'},
+                    {v:0, t:'Olor a basura.'},
+                    {v:1, t:'Aroma a tierra mojada.'},
+                    {v:1, t:'Olor a perfume.'},
+                    {v:0, t:'Olor a drenaje.'},
+                ])
