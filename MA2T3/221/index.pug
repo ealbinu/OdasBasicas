@@ -1,26 +1,58 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Sumo hasta 1 000'
+- subtitle = 'Juntar centenas, decenas y unidades / Cajas y bolsas para sumar'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1,
+            .ex2,
+            .ex3 {
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .ex1 {
+                background: #F5E9EE;
+            }
+            .ex2 {
+                background: #EDF6F5;
+            }
+            .ex3 {
+                background: #EFF5E3;
+            }
+            .inputbox input {
+                padding: 4px;
+                font-size: 1.4rem;
+            }
+            @media (max-width: 768px) {
+                .inputbox input {
+                    font-size: 0.8rem;
+                    padding: 1px;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Suma las centenas, decenas y unidades, y escribe el resultado en el recuadro.
 
-            .row.mt-3
             
+            .row.mt-3.ex1.centerrow
+                .col-9: img(src="aimg/a1.png").img-fluid
+                .col: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="112" type="number" placeh="#")
+            .row.mt-3.ex2.centerrow
+                .col-9: img(src="aimg/a2.png").img-fluid
+                .col: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="434" type="number" placeh="#")
+            .row.mt-3.ex3.centerrow
+                .col-9: img(src="aimg/a3.png").img-fluid
+                .col: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="334" type="number" placeh="#")
 
 
 
