@@ -1,27 +1,55 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Resuelvo mentalmente'
+- subtitle = 'La dulcería'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .choose {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .choose .options {
+                width: 100% !important;
+                justify-content: center;
+                align-items: center;
+            }
+            .choose .options > div {
+                display: inline-block;
+                width: 140px;
+                background: var(--pastel2);
+                margin: 4px;
+                border-radius: 4px;
+                border: none;
+                box-shadow: 4px 4px 0 var(--clear);
+            }
+            .choose .options > div.active {
+                font-size: 2rem;
+                border: none;
+                background: var(--pastel1);
+                box-shadow: 4px 4px 0 var(--accent);
+                color: var(--accent);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Observa la ilustración, resuelve mentalmente los siguientes problemas y selecciona la respuesta correcta para cada uno.
             
-
+            .row: .col-12: img(src="aimg/a1.png").w-100
+            
+            .row.mt-3
+                .col-12
+                    template(v-for="(i, index) in temps")
+                        choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]")
 
 
 
@@ -29,4 +57,31 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app, 'temps', [
+                    {
+                        p: 'Joaquín compró 15 pelotitas azules y 2 pelotitas rayadas. Si pagó con 2 billetes de $20, ¿cuánto le dieron de cambio?',
+                        ops: ['$7','$10','$5','$8'],
+                        a:0
+                    },
+                    {
+                        p: 'Rodrigo compró 10 pelotitas amarillas, 1 morada y 5 rayadas. Si le sobraron $16, ¿cuánto dinero llevaba?',
+                        ops: ['$54','$70','$84','$60'],
+                        a:0
+                    },
+                    {
+                        p: 'Esteban quería comprar 50 pelotitas azules pero se dio cuenta de que sólo tenía $50. ¿Cuánto dinero le falta?',
+                        ops: ['$20','$5','$15','$25'],
+                        a:0
+                    },
+                    {
+                        p: 'Mariana compró 5 pelotitas rojas y 7 pelotitas amarillas. Si pagó con un billete de $50, ¿cuánto le dieron de cambio?',
+                        ops: ['$21','$10','$9','$11'],
+                        a:0
+                    },
+                    {
+                        p: 'Daniela compró 10 pelotitas azules y 1 pelotita rayada. Si le sobraron $30, ¿cuánto dinero llevaba? ',
+                        ops: ['$20','$25','$30','$35 '],
+                        a:0
+                    },
+                    
+                ])

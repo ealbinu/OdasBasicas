@@ -4,23 +4,58 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Resuelvo mentalmente</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .choose {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+      .choose .options {
+          width: 100% !important;
+          justify-content: center;
+          align-items: center;
+      }
+      .choose .options > div {
+          display: inline-block;
+          width: 140px;
+          background: var(--pastel2);
+          margin: 4px;
+          border-radius: 4px;
+          border: none;
+          box-shadow: 4px 4px 0 var(--clear);
+      }
+      .choose .options > div.active {
+          font-size: 2rem;
+          border: none;
+          background: var(--pastel1);
+          box-shadow: 4px 4px 0 var(--accent);
+          color: var(--accent);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Resuelvo mentalmente</h1>
+      <h2>La dulcería</h2>
+      <div class="instruccion mt-5">Observa la ilustración, resuelve mentalmente los siguientes problemas y selecciona la respuesta correcta para cada uno.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a1.png"/></div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <template v-for="(i, index) in temps">
+            <choose :key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]"></choose>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -40,6 +75,35 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app, 'temps', [
+          {
+              p: 'Joaquín compró 15 pelotitas azules y 2 pelotitas rayadas. Si pagó con 2 billetes de $20, ¿cuánto le dieron de cambio?',
+              ops: ['$7','$10','$5','$8'],
+              a:0
+          },
+          {
+              p: 'Rodrigo compró 10 pelotitas amarillas, 1 morada y 5 rayadas. Si le sobraron $16, ¿cuánto dinero llevaba?',
+              ops: ['$54','$70','$84','$60'],
+              a:0
+          },
+          {
+              p: 'Esteban quería comprar 50 pelotitas azules pero se dio cuenta de que sólo tenía $50. ¿Cuánto dinero le falta?',
+              ops: ['$20','$5','$15','$25'],
+              a:0
+          },
+          {
+              p: 'Mariana compró 5 pelotitas rojas y 7 pelotitas amarillas. Si pagó con un billete de $50, ¿cuánto le dieron de cambio?',
+              ops: ['$21','$10','$9','$11'],
+              a:0
+          },
+          {
+              p: 'Daniela compró 10 pelotitas azules y 1 pelotita rayada. Si le sobraron $30, ¿cuánto dinero llevaba? ',
+              ops: ['$20','$25','$30','$35 '],
+              a:0
+          },
+          
+      ])
+    </script>
   </body>
 </html>
