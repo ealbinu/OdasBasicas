@@ -4,23 +4,119 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sumo números de tres cifras</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          flex-direction: column;
+          align-items: flex-end;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 6px;
+          margin-bottom: 10px;
+          text-align: right;
+          font-size: 1.2rem;
+      }
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+          text-align: right;
+          margin: 0;
+          padding: 2px;
+      }
+      .ex1 .inputbox hr {
+          width: 100%;
+          border-top: 2px solid var(--main);
+          margin: 4px 0;
+      }
+      .opes:nth-child(3n+1) .inputbox {
+          background: var(--pastel1);
+      }
+      .opes:nth-child(3n+2) .inputbox {
+          background: var(--pastel2);
+      }
+      .opes:nth-child(3n+3) .inputbox {
+          background: var(--pastel3);
+      }
+      .ex2 .inputbox {
+          width: 100%;
+          display: flex;
+          background: #f5f5f5;
+          margin: 10px 0;
+      }
+      .ex2 .inputbox input {
+          width: 100px;
+          font-size: 1.2rem;
+          padding: 4px;
+          margin: 0 6px;
+          border-radius: 4px;
+      }
+      .ex2 .inputbox .numbers {
+          font-size: 1.2rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sumo números de tres cifras</h1>
+      <h2>Más números amigables</h2>
+      <div class="instruccion mt-5">Resuelve las siguientes sumas.</div>
+      <div class="row mt-3 ex1 justify-content-around">
+        <div class="col-md-3 col-6 text-right opes" v-for="(i, index) in tempsobj.sumas">
+          <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[3]" type="number" placeh="#">
+            <template v-slot:before="">
+              <div>{{i[0]}}</div>
+              <div>{{i[1]}} {{i[2]}}</div>
+              <hr/>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <labeltext num="1.">Don Pedro cosechó 342 kilos de algodón el lunes y 257 kilos el martes. ¿Cuántos kilos cosechó en total?</labeltext>
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="599" type="number" placeh="#">
+            <template v-slot:after="">
+              <numbers>kilos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+        <div class="col-12">
+          <labeltext num="2.">En un camión de carga transportan 456 jarros de barro y 513 jarros de cerámica. ¿Cuántos jarros faltan para completar 1 000?</labeltext>
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="969" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers>Transportan</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers>jarros.</numbers>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="31" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers>Faltan </numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers>jarros para completar 1 000.</numbers>
+            </template>
+          </inputbox>
+        </div>
+        <div class="col-12">
+          <labeltext num="3.">La semana pasada, Alfredo vendió 425 kilos de jitomate; esta semana, 363 kilos. ¿Cuántos kilos vendió en total?</labeltext>
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="788" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers>Vendió</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers>kilos de jitomate.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -40,6 +136,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sumas', [
+          [654, '+', 235, 889],
+          [461, '+', 325, 786],
+          [742, '+', 247, 989],
+          [886, '+', 112, 998],
+          [471, '+', 525, 996],
+          [253, '+', 534, 787],
+          [339, '+', 186, 525],
+          [473, '+', 315, 788],
+      ])
+    </script>
   </body>
 </html>
