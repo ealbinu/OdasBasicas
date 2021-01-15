@@ -1,32 +1,145 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Completo sumas con tres cifras'
+- subtitle = 'Tarjetas de colores para sumar 2'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 {
+                background: #f5f5f5;
+                border-radius: 10px;
+            }
+            .ex1 .inputbox input {
+                border-radius: 4px;
+            }
+            @media (max-width: 768px) {
+                .ex1 .inputbox input {
+                    padding: 0;
+                    font-size: 1rem;
+                }
+            }
+            .box {
+                background: #EDF3D2;
+                border-radius: 50%;
+                padding: 20px 0;
+                margin-bottom: 20px;
+            }
+            .box .inputbox {
+                flex-direction: column;
+            }
+            .box .inputbox .text {
+                background: #fff;
+                padding: 2px 6px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                margin: 0 0 10px;
+                font-size: 0.9rem;
+                border-radius: 6px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .box .inputbox input {
+                padding: 4px;
+                font-size: 1.6rem;
+                max-width: 100px;
+                border-color: #B3D595;
+            }
+            .ex3 .inputbox {
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 6px;
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+            }
+            .ex3 .inputbox input {
+                width: 60px;
+                font-size: 1.2rem;
+                margin-left: 6px;
+                border-radius: 6px;
+                padding: 2px;
+            }
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe la descomposición de las siguientes cantidades en centenas, decenas y unidades. Observa el ejemplo.
 
-            .row.mt-3
+            .tableex1
+                .row.mt-3.ex1.text-center.centerrow
+                    .col: numbers(c=2) 879
+                    .col: numbers(c=3) =
+                    .col: inputbox(:answer="800" type="number" placeh="#" example)
+                    .col: numbers(c=3) +
+                    .col: inputbox(:answer="70" type="number" placeh="#" example)
+                    .col: numbers(c=3) +
+                    .col: inputbox(:answer="9" type="number" placeh="#" example)
+                .row.mt-1.ex1.text-center(v-for="(i, index) in tempsobj.ex1").centerrow.no-gutters
+                    .col: numbers(c=2) {{i[0]}}
+                    .col: numbers(c=3) =
+                    .col: inputbox(v-model="r[index*3]" :ref="refCount()" @isright="right++" :answer="i[1]" type="number" placeh="-")
+                    .col: numbers(c=3) +
+                    .col: inputbox(v-model="r[(index*3)+1]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="-")
+                    .col: numbers(c=3) +
+                    .col: inputbox(v-model="r[(index*3)+2]" :ref="refCount()" @isright="right++" :answer="i[3]" type="number" placeh="-")
+
+            .instruccion.mt-5 Lee las siguientes descomposiciones y escribe la cantidad correspondiente dentro de cada recuadro. Observa el ejemplo.
+
+            .row.mt-3.ex2
+                .col-md-4.box
+                    inputbox(v-model="r[15]" :ref="refCount()" @isright="right++" :answer="456" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Cuatrocientos + cincuenta + seis =
+                .col-md-4.box
+                    inputbox(v-model="r[16]" :ref="refCount()" @isright="right++" :answer="624" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Seiscientos + veinte + cuatro =
+                .col-md-4.box
+                    inputbox(v-model="r[17]" :ref="refCount()" @isright="right++" :answer="899" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Ochocientos + noventa + nueve =
+                .col-md-4.box
+                    inputbox(v-model="r[18]" :ref="refCount()" @isright="right++" :answer="129" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Cien + veinte + nueve =
+                .col-md-4.box
+                    inputbox(v-model="r[19]" :ref="refCount()" @isright="right++" :answer="327" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Trescientos + veinte + siete =
+                .col-md-4.box
+                    inputbox(v-model="r[20]" :ref="refCount()" @isright="right++" :answer="521" type="number" placeh="#")
+                        template(v-slot:before=""): div.text Quinientos + veinte + uno =
             
+            .instruccion.mt-5 Resuelve mentalmente con descomposiciones y anota los resultados.
 
-
-
-
+            .row.mt-3.ex3
+                .col-md-6
+                    inputbox(v-model="r[21]" :ref="refCount()" @isright="right++" :answer="440" type="number" placeh="#")
+                        template(v-slot:before="") 119 + 321 =
+                .col-md-6
+                    inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" :answer="960" type="number" placeh="#")
+                        template(v-slot:before="") 128 + 832 =
+                .col-md-6
+                    inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" :answer="41" type="number" placeh="#")
+                        template(v-slot:before="") 27 + 14 =
+                .col-md-6
+                    inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" :answer="409" type="number" placeh="#")
+                        template(v-slot:before="") 284 + 125 =
+                .col-md-6
+                    inputbox(v-model="r[25]" :ref="refCount()" @isright="right++" :answer="60" type="number" placeh="#")
+                        template(v-slot:before="") 45 + 15 =
+                .col-md-6
+                    inputbox(v-model="r[26]" :ref="refCount()" @isright="right++" :answer="49" type="number" placeh="#")
+                        template(v-slot:before="") 13 + 36 =
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    [254, 200, 50, 4],
+                    [761, 700, 60, 1],
+                    [75, 0, 70, 5],
+                    [937, 900, 30, 7],
+                    [673, 600, 70, 3],
+                ])
