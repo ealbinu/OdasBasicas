@@ -1,25 +1,48 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Puedo dividir'
+- subtitle = 'Los números perdidos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .tablemod .row:first-child .col {
+                background: var(--pastel3);
+            }
+            .tablemod .row:first-child .col .numbers {
+                color: #6CB743;
+            }
+            .tablemod .col:first-child {
+                background: var(--pastel1);
+            }
+            .tablemod .col:first-child .numbers {
+                color: #6CB743;
+            }
+            .tablemod .col:nth-child(2) .numbers {
+                color: var(--clear);
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa la siguiente tabla. Observa los ejemplos.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12
+                    - tb = []
+                    - tb.push(['x', 2, [4], 5, [7]])
+                    - tb.push([4, 8, 16, [20,2], [28]])
+                    - tb.push([6, 12, [24], 30, 42])
+                    - tb.push([[8], 16, [32], [40], 56])
+                    - tb.push([[9], 18, 36, [45], [63]])
+                    +table(0, tb)
             
 
 

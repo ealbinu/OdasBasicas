@@ -396,6 +396,15 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/assets\/pug\/_table.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 1,
+		"oAP": "\/assets\/pug\/_table.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/CM1T1\/199\/aimg\/i1.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -14077,11 +14086,11 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/MA3T3\/151\/aimg\/Captura de Pantalla 2021-01-15 a la(s) 10.43.02.png": {
+	"\/MA3T3\/151\/aimg\/a1.png": {
 		"ft": 32768,
 		"iS": 274051,
 		"oA": 0,
-		"oAP": "\/MA3T3\/151\/aimg\/Captura de Pantalla 2021-01-15 a la(s) 10.43.02.png",
+		"oAP": "\/MA3T3\/151\/aimg\/a1.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,

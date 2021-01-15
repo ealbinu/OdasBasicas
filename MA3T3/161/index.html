@@ -1,26 +1,136 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- tb.push([[8], 16, [32], [40], 56])
+- tb.push([[9], 18, 36, [45], [63]])
++table(0, tb)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Puedo dividir</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .tablemod .row:first-child .col {
+          background: var(--pastel3);
+      }
+      .tablemod .row:first-child .col .numbers {
+          color: #6CB743;
+      }
+      .tablemod .col:first-child {
+          background: var(--pastel1);
+      }
+      .tablemod .col:first-child .numbers {
+          color: #6CB743;
+      }
+      .tablemod .col:nth-child(2) .numbers {
+          color: var(--clear);
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Puedo dividir</h1>
+      <h2>Los números perdidos</h2>
+      <div class="instruccion mt-5">Completa la siguiente tabla. Observa los ejemplos.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="tablemod">
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="x" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="2" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="[4]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="5" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="[7]" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="4" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="8" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="16" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="[20,2]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="[28]" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="6" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="12" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="[24]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="30" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="42" type="number" example="example"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="[8]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="16" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="[32]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="[40]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="56" type="number" example="example"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="[9]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="18" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="36" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="[45]" type="number" placeh="#"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="[63]" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

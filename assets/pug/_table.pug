@@ -1,0 +1,18 @@
+mixin table(indexvmodel, campos)
+    - var vmcount = 0
+    .tablemod
+        each row in campos
+            .row.no-gutters
+                each field in row
+                    if typeof field === 'object'
+                        .col
+                            inputbox(v-model="r["+(vmcount+indexvmodel)+"]" :ref="refCount()" @isright="right++" answer=field type="number" placeh="#")
+                        - vmcount++
+                    else 
+                        .col: inputbox(answer=field type="number" example)
+
+
+//
+    - tb.push([[8], 16, [32], [40], 56])
+    - tb.push([[9], 18, 36, [45], [63]])
+    +table(0, tb)
