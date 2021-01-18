@@ -79,7 +79,7 @@
         <div class="col-md-3 col-6 caja" v-for="(i, index) in [73, 89, 58, 99, 82, 100, 77, 70]">
           <inputbox v-model="r[index+8]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-">
             <template v-slot:before="">
-              <numbers c="1">{{i+1}}</numbers>
+              <numbers c="1">{{i-1}}</numbers>
             </template>
           </inputbox>
         </div>
@@ -89,9 +89,7 @@
         <div class="col-12 serie" v-if="tempsobj.serie">
           <template v-for="(i, index) in tempsobj.serie">
             <inputbox :answer="i.n" type="number" example="example" v-if="i.isdemo"></inputbox>
-            <inputbox v-model="r[i.vm+16]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="-" v-else="v-else">
-              <template v-slot:after=""></template>
-            </inputbox>
+            <inputbox v-model="r[i.vm+16]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="-" v-else="v-else"></inputbox>
           </template>
         </div>
       </div>

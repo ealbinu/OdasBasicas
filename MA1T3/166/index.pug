@@ -73,7 +73,7 @@ html(lang="es")
             .row.mt-3.ex2
                 .col-md-3.col-6(v-for="(i, index) in [73, 89, 58, 99, 82, 100, 77, 70]").caja
                     inputbox(v-model="r[index+8]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-")
-                        template(v-slot:before=""): numbers(c=1) {{i+1}}
+                        template(v-slot:before=""): numbers(c=1) {{i-1}}
             
             .instruccion.mt-5 Completa la serie del #[strong 1] al #[strong 100].
             .row.mt-3.ex3
