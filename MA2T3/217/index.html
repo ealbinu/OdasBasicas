@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
+      .ex1 .col{min-width: 40px;}
       .ex1 {
           background: var(--pastel2);
           padding: 10px;
@@ -21,6 +22,7 @@
           font-size: 1.2rem;
           border-radius: 6px;
           padding: 2px;
+          min-width: 40px;
       }
       .ex1 .numbers {
           color: #00AEB5;
@@ -56,6 +58,11 @@
       .opes:nth-child(3n+3) .inputbox {
           background: var(--pastel3);
       }
+      @media (max-width:680px){
+          .ex1 .col .inputbox input{
+              width: 40px;
+          }
+      }
       
       
     </style>
@@ -64,7 +71,7 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Sumo y resto decenas y centenas</h1>
       <div class="instruccion mt-5">Completa las siguientes sucesiones y escribe si son <strong>ascendentes</strong> o <strong>descendentes</strong>. </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters flex-wrap">
         <div class="col">
           <inputbox :answer="230" type="number" example="example"></inputbox>
         </div>
@@ -90,7 +97,7 @@
           <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters">
         <div class="col">
           <inputbox :answer="910" type="number" example="example"></inputbox>
         </div>
@@ -116,7 +123,7 @@
           <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters">
         <div class="col">
           <inputbox :answer="30" type="number" example="example"></inputbox>
         </div>
@@ -142,7 +149,7 @@
           <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="Ascendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters">
         <div class="col">
           <inputbox :answer="815" type="number" example="example"></inputbox>
         </div>
@@ -168,7 +175,7 @@
           <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters">
         <div class="col">
           <inputbox :answer="723" type="number" example="example"></inputbox>
         </div>
@@ -194,7 +201,7 @@
           <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" answer="Descendente" type="text" placeh="Ascendente o Descendente"></inputbox>
         </div>
       </div>
-      <div class="row mt-3 ex1 centerrow">
+      <div class="row mt-3 ex1 centerrow no-gutters">
         <div class="col">
           <inputbox :answer="3" type="number" example="example"></inputbox>
         </div>
