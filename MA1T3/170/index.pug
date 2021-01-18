@@ -230,14 +230,14 @@ html(lang="es")
                     .row.justify-content-center.centerrow.no-gutters
                         .col.text-center: img(src="aimg/u.png").img-fluid
                     inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
-                        template(v-slot:after="") decenas #[numbers + ]
+                        template(v-slot:after="") decena #[numbers + ]
                     inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers + ]
                 .col-4
                     .row.justify-content-center.centerrow.no-gutters
                         .col.text-center: img(src="aimg/u.png").img-fluid
                     inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
-                        template(v-slot:after="") decenas #[numbers = ]
+                        template(v-slot:after="") decena #[numbers = ]
                     inputbox(v-model="r[25]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers = ]
                 .col-4
@@ -253,14 +253,14 @@ html(lang="es")
                     .row.justify-content-center.centerrow.no-gutters
                         .col(v-for="(i, index) in 3").text-center: img(src="aimg/u.png").img-fluid
                     inputbox(v-model="r[28]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
-                        template(v-slot:after="") decena #[numbers + ]
+                        template(v-slot:after="") decenas #[numbers + ]
                     inputbox(v-model="r[29]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers + ]
                 .col-4
                     .row.justify-content-center.centerrow.no-gutters
                         .col(v-for="(i, index) in 2").text-center: img(src="aimg/u.png").img-fluid
                     inputbox(v-model="r[30]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
-                        template(v-slot:after="") decena #[numbers = ]
+                        template(v-slot:after="") decenas #[numbers = ]
                     inputbox(v-model="r[31]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers = ]
                 .col-4
