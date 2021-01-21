@@ -4,23 +4,39 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico las causas de las rebeliones</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox:nth-child(1){background: #E0C2D4; }
+      .inputbox:nth-child(2){background: #C2DDB2; }
+      .inputbox:nth-child(3){background: #D0CEAB; }
+      .inputbox:nth-child(4){background: #F9D4AD; }
+      .inputbox:nth-child(5){background: #BEE1E0; }
+      .inputbox:nth-child(6){background: #D4E0EB; }
+      .inputbox:nth-child(7){background: #FBEFD5; }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico las causas de las rebeliones</h1>
+      <h2>Motines, rebeliones y descontento social en el Virreinato</h2>
+      <div class="instruccion mt-5">Escribe la letra <strong>A</strong> si el enunciado corresponde a una causa y <strong>B</strong> si es una consecuencia de las rebeliones durante el Virreinato. Consulta las páginas 139 a 141 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 trueorfalse left">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:after="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png"/></div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +57,16 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 'A', t: 'Se buscaba la independencia de Nueva España.'},
+          {v: 'B', t: 'Detención y ejecución de participantes en las rebeliones.'},
+          {v: 'A', t: 'Descontento social por las reformas borbónicas.'},
+          {v: 'B', t: 'El virrey consiguió maíz, pan y otros alimentos.'},
+          {v: 'A', t: 'Desigualdad para los criollos.'},
+          {v: 'B', t: 'Hubo saqueos, asaltos e incendios al gobierno que brindara alimentos.'},
+          {v: 'B', t: 'Quema del palacio virreinal, saqueos, asaltos e incendios.'},
+      ])
+    </script>
   </body>
 </html>

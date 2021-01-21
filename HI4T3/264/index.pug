@@ -1,25 +1,37 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico las causas de las rebeliones'
+- subtitle = 'Motines, rebeliones y descontento social en el Virreinato'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox:nth-child(1){background: #E0C2D4; }
+            .inputbox:nth-child(2){background: #C2DDB2; }
+            .inputbox:nth-child(3){background: #D0CEAB; }
+            .inputbox:nth-child(4){background: #F9D4AD; }
+            .inputbox:nth-child(5){background: #BEE1E0; }
+            .inputbox:nth-child(6){background: #D4E0EB; }
+            .inputbox:nth-child(7){background: #FBEFD5; }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe la letra #[strong A] si el enunciado corresponde a una causa y #[strong B] si es una consecuencia de las rebeliones durante el Virreinato. Consulta las páginas 139 a 141 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+
+                .col-md-6.trueorfalse.left
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:after="")
+                                labeltext {{i.t}}
+                .col-md-6: img(src="aimg/a.png").img-fluid
+                
             
 
 
@@ -29,4 +41,12 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 'A', t: 'Se buscaba la independencia de Nueva España.'},
+                    {v: 'B', t: 'Detención y ejecución de participantes en las rebeliones.'},
+                    {v: 'A', t: 'Descontento social por las reformas borbónicas.'},
+                    {v: 'B', t: 'El virrey consiguió maíz, pan y otros alimentos.'},
+                    {v: 'A', t: 'Desigualdad para los criollos.'},
+                    {v: 'B', t: 'Hubo saqueos, asaltos e incendios al gobierno que brindara alimentos.'},
+                    {v: 'B', t: 'Quema del palacio virreinal, saqueos, asaltos e incendios.'},
+                ])

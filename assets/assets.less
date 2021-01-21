@@ -487,14 +487,31 @@ input[type=number] {
 
 .trueorfalse{
 	.inputbox{
+        border-radius: 6px;
 		background: #f5f5f5;
 		padding: 10px;
 		margin-bottom: 10px;
 		input{
-			margin-left: auto;
-			max-width: 80px;
-		}
-	}
+            max-width: 80px;
+            padding: 4px;
+            font-size: 1.6rem;
+        }
+    }
+    &:not(.left){
+        .inputbox{
+            input{
+                margin-left: auto;
+            }
+        }
+    }
+    &.left{
+        .inputbox{
+            justify-content: flex-start;
+            input{
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
 
