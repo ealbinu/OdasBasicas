@@ -1,0 +1,16 @@
+mixin parrafo(indexvmodel, campos)
+    - var vmcount = indexvmodel
+    .parrafoinputs
+        each field in campos
+            if typeof field === 'object'
+                inputbox(v-model="r["+(vmcount)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
+                - vmcount++
+            else 
+                span !{field}
+
+
+//
+    - var arr = []
+    - arr.push('El ')
+    - arr.push(['comercio'])
+    +parrafo(0, arr)

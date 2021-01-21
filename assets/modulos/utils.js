@@ -20,9 +20,9 @@ Vue.component('markex', {
 })
 
 Vue.component('recuadropalabras', {
-    props: ['palabras'],
+    props: ['palabras', 'c'],
     template: `
-        <div class="recuadropalabras row flex-wrap justify-content-around align-items-center">
+        <div class="recuadropalabras row flex-wrap justify-content-around align-items-center" :class="'c'+c">
             <div v-for="(i, index) in palabras">
                 <strong>{{i}}</strong>
             </div>

@@ -1,8 +1,9 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Valoro las actividades productivas'
+- subtitle = 'Comercio y turismo'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,10 +18,36 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe dentro de cada círculo #[strong V] si el enunciado es verdadero o #[strong F] si es falso. Consulta las páginas 135 a 138 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext(:num="(index+1)+'.'") {{i.t}}
+                  
+            .instruccion.mt-5 Completa el siguiente texto utilizando las palabras del recuadro.
+
+            recuadropalabras(:palabras="['exportación','bienes','terciarias','comercio','importación','servicios']" c=4)
+
+            .row.mt-3.ex1
+                .col-12
+                    - var arr = []
+                    - arr.push('El ')
+                    - arr.push(['comercio'])
+                    - arr.push(' es el intercambio monetario que hay entre las personas a cambio de un servicio o producto. Los ')
+                    - arr.push(['bienes'])
+                    - arr.push(' son los productos que satisfacen las necesidades de la población. Para satisfacer dichas necesidades se prestan ')
+                    - arr.push(['servicios'])
+                    - arr.push(' tales como alimentación, telecomunicación, educación, transporte y salud. El comercio forma parte de las actividades ')
+                    - arr.push(['terciarias'])
+                    - arr.push('. La ')
+                    - arr.push(['importación'])
+                    - arr.push(' y la ')
+                    - arr.push(['exportación'])
+                    - arr.push(' se originan cuando hay un intercambio comercial que se lleva a cabo entre países.')
+                    +parrafo(5, arr)
 
 
 
@@ -29,4 +56,10 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 'F', t: 'La ganadería, la agricultura, el turismo y la educación son ejemplos de servicios.'},
+                    {v: 'V', t: 'Existen dos tipos de comercio: el interno y el externo.'},
+                    {v: 'V', t: 'Las siglas TLCAN significan Tratado de Libre Comercio de América del Norte.'},
+                    {v: 'V', t: 'El turismo es considerado un servicio porque da la oportunidad de que las personas que viajan hagan actividades recreativas en diversos lugares.'},
+                    {v: 'F', t: 'La mayor fuente de ingresos de México se encuentra en el servicio de la educación.'},
+                ])

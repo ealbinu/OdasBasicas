@@ -477,6 +477,64 @@ input[type=number] {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
+.recuadropalabras.c1 {
+  background: #ED1846;
+}
+.recuadropalabras.c1 strong {
+  color: #ED1846;
+}
+.recuadropalabras.c2 {
+  background: #005093;
+}
+.recuadropalabras.c2 strong {
+  color: #005093;
+}
+.recuadropalabras.c3 {
+  background: #5AAEDA;
+}
+.recuadropalabras.c3 strong {
+  color: #5AAEDA;
+}
+.recuadropalabras.c4 {
+  background: #EB8B2E;
+}
+.recuadropalabras.c4 strong {
+  color: #EB8B2E;
+}
+.recuadropalabras.c5 {
+  background: #6EB745;
+}
+.recuadropalabras.c5 strong {
+  color: #6EB745;
+}
+.recuadropalabras.c6 {
+  background: #F460AB;
+}
+.recuadropalabras.c6 strong {
+  color: #F460AB;
+}
+.recuadropalabras.c7 {
+  background: #B1BA24;
+}
+.recuadropalabras.c7 strong {
+  color: #B1BA24;
+}
+.recuadropalabras.c8 {
+  background: #C0A7D0;
+}
+.recuadropalabras.c8 strong {
+  color: #C0A7D0;
+}
+.recuadropalabras.c1 strong,
+.recuadropalabras.c2 strong,
+.recuadropalabras.c3 strong,
+.recuadropalabras.c4 strong,
+.recuadropalabras.c5 strong,
+.recuadropalabras.c6 strong,
+.recuadropalabras.c7 strong,
+.recuadropalabras.c8 strong {
+  background: #fff;
+}
 .parrafoinputs {
   padding: 10px;
   background: #f5f5f5;

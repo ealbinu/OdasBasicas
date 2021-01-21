@@ -1,10 +1,16 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Valoro las actividades productivas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +24,34 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Valoro las actividades productivas</h1>
+      <h2>Comercio y turismo</h2>
+      <div class="instruccion mt-5">Escribe dentro de cada círculo <strong>V</strong> si el enunciado es verdadero o <strong>F</strong> si es falso. Consulta las páginas 135 a 138 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12 trueorfalse">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:before="">
+                <labeltext :num="(index+1)+'.'">{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa el siguiente texto utilizando las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['exportación','bienes','terciarias','comercio','importación','servicios']" c="4"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>El </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="comercio" type="text" placeh="-"></inputbox><span> es el intercambio monetario que hay entre las personas a cambio de un servicio o producto. Los </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="bienes" type="text" placeh="-"></inputbox><span> son los productos que satisfacen las necesidades de la población. Para satisfacer dichas necesidades se prestan </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="servicios" type="text" placeh="-"></inputbox><span> tales como alimentación, telecomunicación, educación, transporte y salud. El comercio forma parte de las actividades </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="terciarias" type="text" placeh="-"></inputbox><span>. La </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="importación" type="text" placeh="-"></inputbox><span> y la </span>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="exportación" type="text" placeh="-"></inputbox><span> se originan cuando hay un intercambio comercial que se lleva a cabo entre países.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +72,14 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 'F', t: 'La ganadería, la agricultura, el turismo y la educación son ejemplos de servicios.'},
+          {v: 'V', t: 'Existen dos tipos de comercio: el interno y el externo.'},
+          {v: 'V', t: 'Las siglas TLCAN significan Tratado de Libre Comercio de América del Norte.'},
+          {v: 'V', t: 'El turismo es considerado un servicio porque da la oportunidad de que las personas que viajan hagan actividades recreativas en diversos lugares.'},
+          {v: 'F', t: 'La mayor fuente de ingresos de México se encuentra en el servicio de la educación.'},
+      ])
+    </script>
   </body>
 </html>
