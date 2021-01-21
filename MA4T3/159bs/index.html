@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-6"><img class="img-fluid" src="aimg/b.png"/></div>
         <div class="col-md-6">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#">
             <template v-slot:before="">
               <numbers c="4">Área = </numbers>
             </template>
@@ -70,7 +70,7 @@
               <unidades>cuadradas.</unidades>
             </template>
           </inputbox>
-          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
             <template v-slot:before="">
               <numbers c="4">Perímetro = </numbers>
             </template>
