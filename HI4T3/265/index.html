@@ -4,23 +4,112 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Observo el legado virreinal</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .legado {
+          background: var(--pastel2);
+          display: inline-block;
+          padding: 40px;
+          border-radius: 50%;
+      }
+      .box {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+      .box div:first-child {
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .box .dragdrop {
+          margin-top: 10px;
+      }
+      .box .dragdrop .draggable > div:not(.result) {
+          background: #fff;
+          min-height: 40px;
+          text-align: center;
+          font-weight: bold;
+      }
+      .box:nth-child(1) div:first-child {
+          background: var(--pastel1);
+      }
+      .box:nth-child(2) div:first-child {
+          background: var(--pastel3);
+      }
+      .box:nth-child(3) div:first-child {
+          background: var(--pastel4);
+      }
+      .box:nth-child(4) div:first-child {
+          background: var(--pastel5);
+      }
+      .box:nth-child(5) div:first-child {
+          background: var(--pastel6);
+      }
+      .box{
+          margin-bottom: 10px;
+          background: #f5f5f5;
+          border-radius: 10px;
+          padding: 10px;
+          border: 2px solid #fff;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Observo el legado virreinal</h1>
+      <h2>Legado de la época virreinal</h2>
+      <div class="instruccion mt-5">Coloca las palabras en los espacios correspondientes para completar el mapa conceptual.</div>
+      <div class="recuadropalabras dragdrop">
+        <dragdrop :options="['barroca', 'asiática', 'europea', 'mexicanos', 'colonial']" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12 text-center">
+          <div class="legado h4">Legado virreinal</div>
+        </div>
+        <div class="col-12">
+          <div class="liner"></div>
+        </div>
+      </div>
+      <div class="row mt-1 ex1">
+        <div class="col-md col-6 box">
+          <div>La técnica de la cerámica de talavera es de origen:</div>
+          <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options-ok="['asiática']" :options="[]"></dragdrop>
+        </div>
+        <div class="col-md col-6 box">
+          <div>El ayuntamiento como forma de gobierno es parte de nuestro legado:</div>
+          <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options-ok="['colonial']" :options="[]"></dragdrop>
+        </div>
+        <div class="col-md col-6 box">
+          <div>La estructura y el trazo de las ciudades son de influencia:</div>
+          <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options-ok="['europea']" :options="[]"></dragdrop>
+        </div>
+        <div class="col-md col-6 box">
+          <div>El mole se elabora con productos europeos, asiáticos y:</div>
+          <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options-ok="['mexicanos']" :options="[]"></dragdrop>
+        </div>
+        <div class="col-md col-6 box">
+          <div>Sor Juana Inés de la Cruz destacó en la literatura:</div>
+          <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options-ok="['barroca']" :options="[]"></dragdrop>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe una <strong>V</strong> si el enunciado es verdadero o una <strong>F</strong> si es falso. Consulta las páginas 142 y 143 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 trueorfalse left">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:after="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +130,15 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 'V', t: 'La técnica de la cerámica de talavera es de origen árabe.'},
+          {v: 'V', t: 'El ayuntamiento como forma de gobierno es parte de nuestro legado colonial.'},
+          {v: 'F', t: 'El diseño y trazo de las ciudades virreinales tenía influencia asiática.'},
+          {v: 'F', t: 'El arte barroco sólo se expresó en la arquitectura.'},
+          {v: 'V', t: 'Sor Juana Inés de la Cruz destacó en la literatura barroca.'},
+          {v: 'V', t: 'El mole es un platillo con ingredientes europeos, asiáticos y de nuestro país.'},
+      ])
+    </script>
   </body>
 </html>

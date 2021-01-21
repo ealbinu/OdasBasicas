@@ -1,32 +1,112 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Observo el legado virreinal'
+- subtitle = 'Legado de la época virreinal'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .legado {
+                background: var(--pastel2);
+                display: inline-block;
+                padding: 40px;
+                border-radius: 50%;
+            }
+            .box {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .box div:first-child {
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .box .dragdrop {
+                margin-top: 10px;
+            }
+            .box .dragdrop .draggable > div:not(.result) {
+                background: #fff;
+                min-height: 40px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .box:nth-child(1) div:first-child {
+                background: var(--pastel1);
+            }
+            .box:nth-child(2) div:first-child {
+                background: var(--pastel3);
+            }
+            .box:nth-child(3) div:first-child {
+                background: var(--pastel4);
+            }
+            .box:nth-child(4) div:first-child {
+                background: var(--pastel5);
+            }
+            .box:nth-child(5) div:first-child {
+                background: var(--pastel6);
+            }
+            .box{
+                margin-bottom: 10px;
+                background: #f5f5f5;
+                border-radius: 10px;
+                padding: 10px;
+                border: 2px solid #fff;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Coloca las palabras en los espacios correspondientes para completar el mapa conceptual.
 
-            .row.mt-3
+            .recuadropalabras.dragdrop: dragdrop(:options="['barroca', 'asiática', 'europea', 'mexicanos', 'colonial']" :options-ok="[]")
+
+            .row.mt-3.ex1
+                .col-12.text-center: .legado.h4 Legado virreinal
+                .col-12: .liner
+            .row.mt-1.ex1
+                .col-md.col-6.box
+                    div La técnica de la cerámica de talavera es de origen:
+                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options-ok="['asiática']" :options="[]")
+                .col-md.col-6.box
+                    div El ayuntamiento como forma de gobierno es parte de nuestro legado:
+                    dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options-ok="['colonial']" :options="[]")
+                .col-md.col-6.box
+                    div La estructura y el trazo de las ciudades son de influencia:
+                    dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options-ok="['europea']" :options="[]")
+                .col-md.col-6.box
+                    div El mole se elabora con productos europeos, asiáticos y:
+                    dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options-ok="['mexicanos']" :options="[]")
+                .col-md.col-6.box
+                    div Sor Juana Inés de la Cruz destacó en la literatura:
+                    dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options-ok="['barroca']" :options="[]")
             
+            .instruccion.mt-5 Escribe una #[strong V] si el enunciado es verdadero o una #[strong F] si es falso. Consulta las páginas 142 y 143 de tu libro de texto SEP.
+            
+            .row.mt-3.ex2
 
-
+                .col-12.trueorfalse.left
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:after="")
+                                labeltext {{i.t}}
+              
+            
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 'V', t: 'La técnica de la cerámica de talavera es de origen árabe.'},
+                    {v: 'V', t: 'El ayuntamiento como forma de gobierno es parte de nuestro legado colonial.'},
+                    {v: 'F', t: 'El diseño y trazo de las ciudades virreinales tenía influencia asiática.'},
+                    {v: 'F', t: 'El arte barroco sólo se expresó en la arquitectura.'},
+                    {v: 'V', t: 'Sor Juana Inés de la Cruz destacó en la literatura barroca.'},
+                    {v: 'V', t: 'El mole es un platillo con ingredientes europeos, asiáticos y de nuestro país.'},
+                ])
