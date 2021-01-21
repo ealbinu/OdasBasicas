@@ -1,25 +1,64 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Conozco la diversidad de México'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .camps {
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .camps.pastel1 {
+                background: var(--pastel1);
+            }
+            .camps.pastel2 {
+                background: var(--pastel2);
+            }
+            .camps.pastel3 {
+                background: var(--pastel3);
+            }
+            .camps .inputbox {
+                margin-bottom: 20px;
+            }
+            .camps .inputbox input {
+                font-size: 1.2rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee las descripciones de los objetos que cada personaje quiere vender y escribe su significado en español.
 
-            .row.mt-3
+            .row: .col-12: img(src="aimg/a.png").w-100
+
+            .row.mt-3.ex1
+                .col-md-4
+                    .camps.pastel1
+                        labeltext(num="Úulum:") es un ave muy grande con plumas negras que se come de diversas formas, como en mole.
+                        inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Guajolote" type="text" placeh="-")
+                        labeltext(num="Nal:") es de forma alargada y tiene muchos granos, mi pueblo dice que de él crearon a los hombres.
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="Maíz" type="text" placeh="-")
+            
+                .col-md-4
+                    .camps.pastel2
+                        labeltext(num="Canári:") es un instrumento con seis cuerdas, tiene cuerpo curvo y un brazo largo.
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="Guitarra" type="text" placeh="-")
+                        labeltext(num="Tasíu:") es un animalito con orejas largas que corre muy rápido y brinca mucho.
+                        inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Conejo" type="text" placeh="-")
+            
+                .col-md-4
+                    .camps.pastel3
+                        labeltext(num="Chhe’e:") está hecho de barro, su forma es redonda y sirve para llevar agua o cocer los frijoles.
+                        inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" answer="Cántaro" type="text" placeh="-")
+                        labeltext(num="La’shana:") es un pedazo de tela con bordados de colores que usan las mujeres para el frío.
+                        inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" answer="Rebozo" type="text" placeh="-")
             
 
 
