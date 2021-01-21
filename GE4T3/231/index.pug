@@ -1,27 +1,64 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Los recursos minerales de mi país'
+- subtitle = 'Los tesoros de mi país'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .trueorfalse .inputbox {
+                justify-content: flex-start;
+            }
+            .trueorfalse .inputbox input{
+                margin-left: unset;
+                margin-right: 10px;
+            }
+            .trueorfalse .inputbox {
+                border-radius: 10px;
+            }
+            .trueorfalse .inputbox:nth-child(odd) {
+                background: var(--pastel1);
+            }
+            .trueorfalse .inputbox:nth-child(even) {
+                background: var(--pastel2);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .row: .col-12: img(src="aimg/tecuento.png").w-100
             
+            .instruccion.mt-5 Relaciona las columnas escribiendo en cada círculo el número de la respuesta correcta. Consulta la sección Te cuento que... anterior, las páginas 127 a 130 de tu libro de texto SEP y las páginas 56 a 59 de tu Atlas de México.
 
+            .row: .col-12: img(src="aimg/a.png").w-100
+            .row.mt-3.ex1.centerrow
+                    .col-md-6.trueorfalse
+                        .inputbox
+                            labeltext(num="1.") Metálicos, no metálicos y energéticos.
+                        .inputbox
+                            labeltext(num="2.") Petróleo y gas natural.
+                        .inputbox
+                            labeltext(num="3.") La minería.
+                        .inputbox
+                            labeltext(num="4.") Estados Unidos de América.
+                        .inputbox
+                            labeltext(num="5.") Sonora.
+                        .inputbox
+                            labeltext(num="6.") Golfo de México,Tabasco,Veracruz, Tamaulipas, Chiapas, Nuevo León y Puebla, entre otros.
+                        .inputbox
+                            labeltext(num="7.") Estado de México, Nuevo León, Ciudad de México, Veracruz, Coahuila, Guanajuato y Jalisco.
+            
+            
+                    .col-md-6.trueorfalse
+                        template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                            inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                                template(v-slot:after="")
+                                    labeltext {{i.t}}
 
 
 
@@ -29,4 +66,12 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 3, t: 'Es una actividad económica primaria.'},
+                    {v: 1, t: 'Es la clasificación de los minerales según su utilidad y características.'},
+                    {v: 4, t: 'País al que exportamos la mayor cantidad de petróleo.'},
+                    {v: 5, t: 'Principal productor de cobre a nivel nacional.'},
+                    {v: 2, t: 'Energéticos que se extraen del subsuelo, ya sea en tierra firme o en el mar.'},
+                    {v: 6, t: 'Entidades y zonas que producen energéticos naturales.'},
+                    {v: 7, t: 'Principales entidades de producción manufacturera en el país.'},
+                ])

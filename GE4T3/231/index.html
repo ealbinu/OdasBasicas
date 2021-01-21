@@ -4,23 +4,77 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Los recursos minerales de mi país</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .trueorfalse .inputbox {
+          justify-content: flex-start;
+      }
+      .trueorfalse .inputbox input{
+          margin-left: unset;
+          margin-right: 10px;
+      }
+      .trueorfalse .inputbox {
+          border-radius: 10px;
+      }
+      .trueorfalse .inputbox:nth-child(odd) {
+          background: var(--pastel1);
+      }
+      .trueorfalse .inputbox:nth-child(even) {
+          background: var(--pastel2);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Los recursos minerales de mi país</h1>
+      <h2>Los tesoros de mi país</h2>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/tecuento.png"/></div>
+      </div>
+      <div class="instruccion mt-5">Relaciona las columnas escribiendo en cada círculo el número de la respuesta correcta. Consulta la sección Te cuento que... anterior, las páginas 127 a 130 de tu libro de texto SEP y las páginas 56 a 59 de tu Atlas de México.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a.png"/></div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-6 trueorfalse">
+          <div class="inputbox">
+            <labeltext num="1.">Metálicos, no metálicos y energéticos.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="2.">Petróleo y gas natural.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="3.">La minería.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="4.">Estados Unidos de América.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="5.">Sonora.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="6.">Golfo de México,Tabasco,Veracruz, Tamaulipas, Chiapas, Nuevo León y Puebla, entre otros.</labeltext>
+          </div>
+          <div class="inputbox">
+            <labeltext num="7.">Estado de México, Nuevo León, Ciudad de México, Veracruz, Coahuila, Guanajuato y Jalisco.</labeltext>
+          </div>
+        </div>
+        <div class="col-md-6 trueorfalse">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:after="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +95,16 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 3, t: 'Es una actividad económica primaria.'},
+          {v: 1, t: 'Es la clasificación de los minerales según su utilidad y características.'},
+          {v: 4, t: 'País al que exportamos la mayor cantidad de petróleo.'},
+          {v: 5, t: 'Principal productor de cobre a nivel nacional.'},
+          {v: 2, t: 'Energéticos que se extraen del subsuelo, ya sea en tierra firme o en el mar.'},
+          {v: 6, t: 'Entidades y zonas que producen energéticos naturales.'},
+          {v: 7, t: 'Principales entidades de producción manufacturera en el país.'},
+      ])
+    </script>
   </body>
 </html>
