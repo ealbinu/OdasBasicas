@@ -1,26 +1,106 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Estudio la expropiación petrolera</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras.dragdrop .dragdrop .draggable > div:not(.result) > div {
+          width: 45%;
+      }
+      @media (max-width: 680px) {
+          .recuadropalabras.dragdrop .dragdrop .draggable > div:not(.result) > div {
+              font-size: 0.7rem;
+          }
+      }
+      .ex3 .numbers {
+          font-size: 1.2rem;
+          text-align: center;
+      }
+      .ex3 .ca {
+          border: 2px solid #025193;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .ex3 .co {
+          border: 2px solid #EE274D;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .ex3 .dragdrop .draggable > div:not(.result) {
+          background: #f5f5f5;
+          border-radius: 6px;
+          min-height: 180px;
+          border: 2px dashed #aaa;
+          align-items: space-around;
+          justify-content: space-around;
+      }
+      .ex3 .dragdrop .draggable > div:not(.result) > div {
+          background: #fff;
+          margin: 5%;
+          font-size: 0.8rem;
+          border-radius: 6px;
+          padding: 2px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Estudio la expropiación petrolera</h1>
+      <h2>El impulso a la economía</h2>
+      <div class="instruccion mt-5">Selecciona los problemas que provocaron un crecimiento económico bajo en México entre 1910 y 1930. Consulta la página 125 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <template v-for="(i, index) in tempsobj.ex1">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa el siguiente texto con las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['Mexicanos','proveedor','sociedad','ley','indemnización','gobierno']" c="4"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>La creación de Petróleos </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Mexicanos" type="text" placeh="-"></inputbox><span> (Pemex) fue la principal consecuencia para que varios sectores de la </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="sociedad" type="text" placeh="-"></inputbox><span> apoyaran a pagar a las compañías la </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="indemnización" type="text" placeh="-"></inputbox><span> que establecía la </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="ley" type="text" placeh="-"></inputbox><span>. Posteriormente, Pemex se convirtió en el principal </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="proveedor" type="text" placeh="-"></inputbox><span> de ingresos del </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="gobierno" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Ordena las siguientes oraciones en la categoría correspondiente de la tabla.</div>
+      <div class="recuadropalabras dragdrop c3">
+        <dragdrop :options="['La riqueza producida de la extracción de petróleo no era para México.','Se creó Petróleos Mexicanos (Pemex).','La industria petrolera pasó a ser la base de la economía nacional.','Los trabajadores de la industria se declararon en huelga demandando mejores salarios.','Las compañías petroleras no querían pagar impuestos.','La autoridad y la administración de la industria petrolera quedaron en manos del gobierno.']" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex3">
+        <div class="col-12 text-center mb-2">
+          <numbers c="3">Expropiación petrolera (18 de marzo de 1938)</numbers>
+        </div>
+        <div class="col-6 ca">
+          <numbers c="2">Causas</numbers>
+          <dragdrop v-model="r[10]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['La riqueza producida de la extracción de petróleo no era para México.','Las compañías petroleras no querían pagar impuestos.','Los trabajadores de la industria se declararon en huelga demandando mejores salarios.']" ignore-order="ignore-order"></dragdrop>
+        </div>
+        <div class="col-6 co">
+          <numbers c="1">Consecuencias</numbers>
+          <dragdrop v-model="r[11]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Se creó Petróleos Mexicanos (Pemex).', 'La industria petrolera pasó a ser la base de la economía nacional.', 'La autoridad y la administración de la industria petrolera quedaron en manos del gobierno.']" ignore-order="ignore-order"></dragdrop>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +121,13 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          {v: 1, t: 'La mayoría de la gente del campo vivía con grandes desigualdades.'},
+          {v: 1, t: 'En las ciudades prevalecía el desempleo, y los derechos de los trabajadores no eran respetados.'},
+          {v: 0, t: 'La relación con otros países favoreció el crecimiento económico de México.'},
+          {v: 1, t: 'Los inversionistas nacionales y extranjeros explotaban los recursos naturales con privilegios que los hacían más ricos.'},
+      ])
+    </script>
   </body>
 </html>
