@@ -39,7 +39,7 @@ html(lang="es")
                 .col-md-6
                     inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#")
                         template(v-slot:before=""): numbers(c=3) Área = 
-                        template(v-slot:after=""): unidades cuadradas.
+                        template(v-slot:after="") unidades cuadradas.
                     inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
                         template(v-slot:before=""): numbers(c=3) Perímetro = 
                         template(v-slot:after="") unidades.
@@ -51,7 +51,7 @@ html(lang="es")
                 .col-md-6
                     inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#")
                         template(v-slot:before=""): numbers(c=4) Área = 
-                        template(v-slot:after=""): unidades cuadradas.
+                        template(v-slot:after="") unidades cuadradas.
                     inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
                         template(v-slot:before=""): numbers(c=4) Perímetro = 
                         template(v-slot:after="") unidades.

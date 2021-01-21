@@ -44,9 +44,7 @@
             <template v-slot:before="">
               <numbers c="3">Área = </numbers>
             </template>
-            <template v-slot:after="">
-              <unidades>cuadradas.</unidades>
-            </template>
+            <template v-slot:after="">unidades cuadradas.</template>
           </inputbox>
           <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
             <template v-slot:before="">
@@ -66,9 +64,7 @@
             <template v-slot:before="">
               <numbers c="4">Área = </numbers>
             </template>
-            <template v-slot:after="">
-              <unidades>cuadradas.</unidades>
-            </template>
+            <template v-slot:after="">unidades cuadradas.</template>
           </inputbox>
           <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
             <template v-slot:before="">
