@@ -1,26 +1,91 @@
 
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
 <!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comprendo el circuito eléctrico</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .recuadropalabras {
+          background: var(--pastel1);
+      }
+      .recuadropalabras strong {
+          background: #fff;
+          color: #E9832C;
+      }
+      .parrafoinputs {
+          border: 2px solid #E9832C;
+          line-height: 2rem;
+      }
+      
+      .label {
+          background: var(--pastel2);
+          margin-bottom: 10px;
+          padding: 10px;
+          border-radius: 6px;
+      }
+      .imagerelative .items div:nth-child(1) {
+          left: 50%;
+          top: 4%;
+      }
+      .imagerelative .items div:nth-child(2) {
+          top: auto;
+          left: 60%;
+          bottom: 6%;
+      }
+      .imagerelative .items div:nth-child(3) {
+          left: 0;
+          top: 55%;
+      }
+      .imagerelative .items div:nth-child(4) {
+          left: auto;
+          right: 0;
+          top: 65%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comprendo el circuito eléctrico</h1>
+      <h2>El funcionamiento del circuito eléctrico y su aprovechamiento</h2>
+      <div class="instruccion mt-5">Completa el siguiente texto con las palabras del recuadro. Consulta las páginas 114 a 117 de tu libro de texto SEP.</div>
+      <recuadropalabras :palabras="['receptores','interruptores','circuito eléctrico','transmiten','proporcionar']"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>Un  </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="'circuito eléctrico'" type="text" placeh="-"></inputbox><span> tiene un conjunto de elementos conectados por el que circula la energía. Está conformado por los  </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="'interruptores'" type="text" placeh="-"></inputbox><span> que permiten o impiden el paso de la corriente eléctrica a través de un circuito. Los  </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="'receptores'" type="text" placeh="-"></inputbox><span> son los encargados de recibir y transformar la energía eléctrica, y los generadores se utilizan para  </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="'proporcionar'" type="text" placeh="-"></inputbox><span> energía. Por último, están los cables que  </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="'transmiten'" type="text" placeh="-"></inputbox><span> la energía desde el generador. </span>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe en el esquema el número que le corresponde a cada parte del circuito eléctrico. Consulta las páginas 114 y 115 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-4">
+          <labeltext num="1.">Receptor <tip>Convierte la energía eléctrica en energía luminosa.</tip></labeltext>
+          <labeltext num="2.">Generador <tip>Proporciona la energía necesaria.</tip></labeltext>
+          <labeltext num="3.">Conductor <tip>Sirve como vehículo para conducir la energía.</tip></labeltext>
+          <labeltext num="4.">Interruptor <tip>Activa o desactiva el flujo de energía.</tip></labeltext>
+        </div>
+        <div class="col-md">
+          <div class="imagerelative"><img class="w-100" src="aimg/c.png"/>
+            <div class="items">
+              <template v-for="(i, index) in 4">
+                <inputbox v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -36,6 +101,7 @@
     <script src="../../assets/modulos/check.js"></script>
     <script src="../../assets/modulos/inputbox.js"></script>
     <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/tip.js"></script>
     <script src="../../assets/modulos/relational.js"></script>
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>

@@ -66,6 +66,28 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"\/assets\/aimg\/tip.png": {
+		"ft": 32768,
+		"iS": 1266,
+		"oA": 0,
+		"oAP": "\/assets\/aimg\/tip.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/assets\/aimg\/tipclose.png": {
+		"ft": 32768,
+		"iS": 1195,
+		"oA": 0,
+		"oAP": "\/assets\/aimg\/tipclose.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/assets\/asound\/end.mp3": {
 		"cB": 0,
 		"ft": 8192,
@@ -355,6 +377,16 @@
 		"mi": 0,
 		"oA": 1,
 		"oAP": "\/assets\/modulos\/selectableoptions-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/assets\/modulos\/tip.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/assets\/modulos\/tip-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
@@ -4547,6 +4579,50 @@
 		"oAP": "\/CN5T2\/204\/index.html",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/CN5T3\/206\/aimg\/b.png": {
+		"ft": 32768,
+		"iS": 200099,
+		"oA": 0,
+		"oAP": "\/CN5T3\/206\/aimg\/b.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CN5T3\/206\/aimg\/c.png": {
+		"ft": 32768,
+		"iS": 52716,
+		"oA": 0,
+		"oAP": "\/CN5T3\/206\/aimg\/c.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CN5T3\/206\/aimg\/tip.png": {
+		"ft": 32768,
+		"iS": 1266,
+		"oA": 0,
+		"oAP": "\/CN5T3\/206\/aimg\/tip.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CN5T3\/206\/aimg\/tipclose.png": {
+		"ft": 32768,
+		"iS": 1195,
+		"oA": 0,
+		"oAP": "\/CN5T3\/206\/aimg\/tipclose.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"\/CN5T3\/206\/index.html": {
 		"cB": 0,

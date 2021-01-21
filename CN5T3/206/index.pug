@@ -1,29 +1,91 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafosinput
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Comprendo el circuito eléctrico'
+- subtitle = 'El funcionamiento del circuito eléctrico y su aprovechamiento'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .recuadropalabras {
+                background: var(--pastel1);
+            }
+            .recuadropalabras strong {
+                background: #fff;
+                color: #E9832C;
+            }
+            .parrafoinputs {
+                border: 2px solid #E9832C;
+                line-height: 2rem;
+            }
+
+            .label {
+                background: var(--pastel2);
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 6px;
+            }
+            .imagerelative .items div:nth-child(1) {
+                left: 50%;
+                top: 4%;
+            }
+            .imagerelative .items div:nth-child(2) {
+                top: auto;
+                left: 60%;
+                bottom: 6%;
+            }
+            .imagerelative .items div:nth-child(3) {
+                left: 0;
+                top: 55%;
+            }
+            .imagerelative .items div:nth-child(4) {
+                left: auto;
+                right: 0;
+                top: 65%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa el siguiente texto con las palabras del recuadro. Consulta las páginas 114 a 117 de tu libro de texto SEP.
 
-            .row.mt-3
+            recuadropalabras(:palabras="['receptores','interruptores','circuito eléctrico','transmiten','proporcionar']")
+
+            - var arr = []
+            - arr.push('Un ')
+            - arr.push(['circuito eléctrico', 0])
+            - arr.push(' tiene un conjunto de elementos conectados por el que circula la energía. Está conformado por los ')
+            - arr.push(['interruptores',1])
+            - arr.push(' que permiten o impiden el paso de la corriente eléctrica a través de un circuito. Los ')
+            - arr.push(['receptores',2])
+            - arr.push(' son los encargados de recibir y transformar la energía eléctrica, y los generadores se utilizan para ')
+            - arr.push(['proporcionar',3])
+            - arr.push(' energía. Por último, están los cables que ')
+            - arr.push(['transmiten', 4])
+            - arr.push(' la energía desde el generador.')
+            .row.mt-3.ex1
+                .col-12: +parrafoinputs(arr)
             
 
-
-
+            .instruccion.mt-5 Escribe en el esquema el número que le corresponde a cada parte del circuito eléctrico. Consulta las páginas 114 y 115 de tu libro de texto SEP.
+            
+            .row.mt-3.ex2.centerrow
+                .col-md-4
+                    labeltext(num="1.") Receptor <tip>Convierte la energía eléctrica en energía luminosa.</tip>
+                    labeltext(num="2.") Generador <tip>Proporciona la energía necesaria.</tip>
+                    labeltext(num="3.") Conductor <tip>Sirve como vehículo para conducir la energía.</tip>
+                    labeltext(num="4.") Interruptor <tip>Activa o desactiva el flujo de energía.</tip>
+                .col-md
+                    .imagerelative
+                        img(src="aimg/c.png").w-100
+                        .items
+                            template(v-for="(i, index) in 4")
+                                inputbox(v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
