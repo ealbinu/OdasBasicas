@@ -4,23 +4,80 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Cuento unidades cuadradas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          padding: 10px;
+          background: #f5f5f5;
+          border-radius: 10px;
+          margin: 20px 0;
+      }
+      .inputbox .numbers {
+          font-size: 1.4rem;
+      }
+      .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          width: 80px;
+          margin: 0 6px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Cuento unidades cuadradas</h1>
+      <h2>¿Cuántas veces cabe? / Contorno y superficie</h2>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-12">
+          <labeltext num="1.">Manuel tiene un terreno que mide 8 unidades de ancho y 5 unidades de largo. ¿Cuál es el área y el perímetro?</labeltext>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png"/></div>
+        <div class="col-md-6">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="3">Área = </numbers>
+            </template>
+            <template v-slot:after="">
+              <unidades>cuadradas.</unidades>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="3">Perímetro = </numbers>
+            </template>
+            <template v-slot:after="">unidades.</template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-12">
+          <labeltext num="2.">Pedro compró una mesa que mide 7 unidades de ancho y 6 unidades de largo. ¿Cuánto tiene de área y de perímetro su mesa?</labeltext>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/b.png"/></div>
+        <div class="col-md-6">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="4">Área = </numbers>
+            </template>
+            <template v-slot:after="">
+              <unidades>cuadradas.</unidades>
+            </template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="4">Perímetro = </numbers>
+            </template>
+            <template v-slot:after="">unidades.</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
