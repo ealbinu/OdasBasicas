@@ -1,26 +1,73 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo las acciones de la iglesia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .check:nth-child(1) {
+          background: var(--pastel1);
+      }
+      .check:nth-child(2) {
+          background: var(--pastel2);
+      }
+      .check:nth-child(3) {
+          background: var(--pastel3);
+      }
+      .check:nth-child(4) {
+          background: var(--pastel4);
+      }
+      .check:nth-child(5) {
+          background: var(--pastel5);
+      }
+      .parrafoinputs{
+          background: #FFFAE8;
+      
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo las acciones de la iglesia</h1>
+      <h2>La Iglesia novohispana</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> el enunciado que sea verdadero. Consulta las páginas 136 y 137 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <template v-for="(i, index) in tempsobj.ex1">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa el párrafo con las palabras del recuadro. Consulta las páginas 136 a 138 de tu libro de texto SEP.</div>
+      <recuadropalabras :palabras="['ciudades','escuelas','evangelización','festividades','Iglesia','hospitales','novohispana','religiosas','santos']" c="4"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>La </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Iglesia" type="text" placeh="-"></inputbox><span> era una de las instituciones más importantes de Nueva España: se encargaba de la </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="evangelización" type="text" placeh="-"></inputbox><span> y la educación. Gracias a su intervención se crearon </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="escuelas" type="text" placeh="-"></inputbox><span>,seminarios y universidades; además, las órdenes </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="religiosas" type="text" placeh="-"></inputbox><span> fundaron </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="hospitales" type="text" placeh="-"></inputbox><span> y orfanatos. La sociedad </span>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="novohispana" type="text" placeh="-"></inputbox><span> era muy religiosa, veneraba a muchos </span>
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="santos" type="text" placeh="-"></inputbox><span> y las </span>
+            <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="festividades" type="text" placeh="-"></inputbox><span> religiosas eran muy importantes tanto en el campo como en las </span>
+            <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" answer="ciudades" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +88,14 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          {v:1, t:'Al conquistar Mesoamérica, los españoles destruyeron templos, cultos y doctrinas antiguas para proclamar la religión católica como única.'},
+          {v:1, t:'Los españoles durante la Conquista impusieron la fe cristiana, por lo que los indígenas dejaron de ser politeístas.'},
+          {v:0, t:'Los indígenas de Mesoamérica no aceptaron al dios de los españoles y lucharon contra los frailes para mantener su fe en los dioses que tenían.'},
+          {v:1, t:'En las comunidades coloniales indígenas se representó en figuras de madera a diversos santos que eran una mezcla de las tradiciones indígenas y españolas.'},
+          {v:1, t:'Durante el Virreinato, las procesiones eran comunes y había participación de todos los grupos sociales.'},
+      ])
+    </script>
   </body>
 </html>

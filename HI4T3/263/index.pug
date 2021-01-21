@@ -1,32 +1,82 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizo las acciones de la iglesia'
+- subtitle = 'La Iglesia novohispana'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .check:nth-child(1) {
+                background: var(--pastel1);
+            }
+            .check:nth-child(2) {
+                background: var(--pastel2);
+            }
+            .check:nth-child(3) {
+                background: var(--pastel3);
+            }
+            .check:nth-child(4) {
+                background: var(--pastel4);
+            }
+            .check:nth-child(5) {
+                background: var(--pastel5);
+            }
+            .parrafoinputs{
+                background: #FFFAE8;
+
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> el enunciado que sea verdadero. Consulta las páginas 136 y 137 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12
+                    template(v-for="(i, index) in tempsobj.ex1")
+                        check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
             
+            .instruccion.mt-5 Completa el párrafo con las palabras del recuadro. Consulta las páginas 136 a 138 de tu libro de texto SEP.
 
+            recuadropalabras(:palabras="['ciudades','escuelas','evangelización','festividades','Iglesia','hospitales','novohispana','religiosas','santos']" c=4)
 
-
-
+            .row.mt-3.ex2
+                .col-12
+                    - var arr = []
+                    - arr.push('La ')
+                    - arr.push(['Iglesia'])
+                    - arr.push(' era una de las instituciones más importantes de Nueva España: se encargaba de la ')
+                    - arr.push(['evangelización'])
+                    - arr.push(' y la educación. Gracias a su intervención se crearon ')
+                    - arr.push(['escuelas'])
+                    - arr.push(',seminarios y universidades; además, las órdenes ')
+                    - arr.push(['religiosas'])
+                    - arr.push(' fundaron ')
+                    - arr.push(['hospitales'])
+                    - arr.push(' y orfanatos. La sociedad ')
+                    - arr.push(['novohispana'])
+                    - arr.push(' era muy religiosa, veneraba a muchos ')
+                    - arr.push(['santos'])
+                    - arr.push(' y las ')
+                    - arr.push(['festividades'])
+                    - arr.push(' religiosas eran muy importantes tanto en el campo como en las ')
+                    - arr.push(['ciudades'])
+                    - arr.push('.')
+                    +parrafo(5, arr)
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {v:1, t:'Al conquistar Mesoamérica, los españoles destruyeron templos, cultos y doctrinas antiguas para proclamar la religión católica como única.'},
+                    {v:1, t:'Los españoles durante la Conquista impusieron la fe cristiana, por lo que los indígenas dejaron de ser politeístas.'},
+                    {v:0, t:'Los indígenas de Mesoamérica no aceptaron al dios de los españoles y lucharon contra los frailes para mantener su fe en los dioses que tenían.'},
+                    {v:1, t:'En las comunidades coloniales indígenas se representó en figuras de madera a diversos santos que eran una mezcla de las tradiciones indígenas y españolas.'},
+                    {v:1, t:'Durante el Virreinato, las procesiones eran comunes y había participación de todos los grupos sociales.'},
+                ])
