@@ -41,9 +41,6 @@ html(lang="es")
                     .col-md-4: check(v-model="r[index+5]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
 
 
-
-
-
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
