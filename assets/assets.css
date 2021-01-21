@@ -649,4 +649,18 @@ input[type=number] {
   background: #fff;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
+/* drag options */
+.recuadropalabras.dragdrop .dragdrop .draggable > div:not(.result) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.recuadropalabras.dragdrop .dragdrop .draggable > div:not(.result) > div {
+  background: #fff;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
 /*# sourceMappingURL=assets.css.map */
