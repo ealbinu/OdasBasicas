@@ -1,28 +1,95 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco la luz'
+- subtitle = 'Reflexión y refracción de la luz'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .label {
+                margin: 20px 0 10px;
+                background: var(--pastel1);
+                padding: 10px;
+                color: var(--accent);
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            .recuadropalabras strong {
+                color: #E9832C;
+                background: #ffff;
+                font-size: 1.4rem;
+            }
+            .ex1 .inputbox {
+                height: 100%;
+                background: #f5f5f5;
+                padding: 6px;
+                border-radius: 10px;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                max-width: 80px;
+            }
+            .ex2 .inputbox {
+                margin-bottom: 10px;
+                background: #f5f5f5;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .ex2 .inputbox input {
+                position: absolute;
+                font-size: 1.2rem;
+                max-width: 80px;
+                left: 5px;
+                bottom: 5px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe el número de cada característica de los cuerpos en los recuadros de la definición y los ejemplos correspondientes.
 
-            .row.mt-3
+            labeltext Características de los cuerpos
+            
+            recuadropalabras(:palabras="['1. Opacos.', '2. Transparentes.', '3.Translúcidos.']")
+
+            labeltext Definición
+
+            .row.mt-3.ex1
+                .col-md-4
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:before="") Son cuerpos que permiten que los rayos del sol los atraviesen y que podamos ver a través de ellos.
+                .col-md-4
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        template(v-slot:before="") Son cuerpos que no permiten el paso de la luz a través de ellos, y proyectan una sombra.
+                .col-md-4
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                        template(v-slot:before="") Son cuerpos que permiten el paso de cierta cantidad de luz, por esto mismo generan sombra y provocan que el objeto que está detrás se vea borroso.
             
 
 
+            labeltext Objetos
+
+            .row.mt-3.ex2.flex-wrap
+                .col-md-4: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a1.png").img-fluid
+                .col-md-4: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a2.png").img-fluid
+                .col-md-4: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a3.png").img-fluid
+                .col-md-4: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a4.png").img-fluid
+                .col-md-4: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a5.png").img-fluid
+                .col-md-4: inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                    template(v-slot:before=""): img(src="aimg/a6.png").img-fluid
 
 
 

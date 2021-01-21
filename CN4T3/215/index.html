@@ -4,23 +4,113 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco la luz</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .label {
+          margin: 20px 0 10px;
+          background: var(--pastel1);
+          padding: 10px;
+          color: var(--accent);
+          font-weight: bold;
+          border-radius: 6px;
+      }
+      .recuadropalabras strong {
+          color: #E9832C;
+          background: #ffff;
+          font-size: 1.4rem;
+      }
+      .ex1 .inputbox {
+          height: 100%;
+          background: #f5f5f5;
+          padding: 6px;
+          border-radius: 10px;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-bottom: 10px;
+      }
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+          max-width: 80px;
+      }
+      .ex2 .inputbox {
+          margin-bottom: 10px;
+          background: #f5f5f5;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex2 .inputbox input {
+          position: absolute;
+          font-size: 1.2rem;
+          max-width: 80px;
+          left: 5px;
+          bottom: 5px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco la luz</h1>
+      <h2>Reflexión y refracción de la luz</h2>
+      <div class="instruccion mt-5">Escribe el número de cada característica de los cuerpos en los recuadros de la definición y los ejemplos correspondientes.</div>
+      <labeltext>Características de los cuerpos</labeltext>
+      <recuadropalabras :palabras="['1. Opacos.', '2. Transparentes.', '3.Translúcidos.']"></recuadropalabras>
+      <labeltext>Definición</labeltext>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:before="">Son cuerpos que permiten que los rayos del sol los atraviesen y que podamos ver a través de ellos.</template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:before="">Son cuerpos que no permiten el paso de la luz a través de ellos, y proyectan una sombra.</template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:before="">Son cuerpos que permiten el paso de cierta cantidad de luz, por esto mismo generan sombra y provocan que el objeto que está detrás se vea borroso.</template>
+          </inputbox>
+        </div>
+      </div>
+      <labeltext>Objetos</labeltext>
+      <div class="row mt-3 ex2 flex-wrap">
+        <div class="col-md-4">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a1.png"/></template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a2.png"/></template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a3.png"/></template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a4.png"/></template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a5.png"/></template>
+          </inputbox>
+        </div>
+        <div class="col-md-4">
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:before=""><img class="img-fluid" src="aimg/a6.png"/></template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
