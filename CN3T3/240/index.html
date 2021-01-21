@@ -4,23 +4,85 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Exploro el magnetismo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .check {
+          justify-content: center;
+          background: #fff;
+          text-align: center;
+      }
+      .ex1 .check .checkbox {
+          display: none;
+      }
+      .ex1 .check.activecheck {
+          background: var(--pastel3);
+      }
+      .ex2 .inputbox input {
+          display: inline-block;
+          max-width: 240px;
+      }
+      .ex2 .parrafoinputs {
+          margin-bottom: 20px;
+          background: var(--pastel6);
+      }
+      .ex2 .parrafoinputs:nth-child(odd) {
+          background: var(--pastel1);
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Exploro el magnetismo</h1>
+      <h2>Interacción de imanes y su aprovechamiento</h2>
+      <div class="instruccion mt-5">Colorea los nombres de los electrodométicos que necesitan imanes para funcionar. Consulta las páginas 120 a 125 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.ex1">
+          <div class="col-md-3">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[0]" :text="i[1]"></check>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Completa los enunciados con las palabras del recuadro. Consulta las páginas 120 a 125 de tu libro de texto SEP.</div>
+      <recuadropalabras :palabras="['bocina','imanes','resonancia magnética','brújula', 'micrófono']"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12 parrafoinputs">
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="brújula" type="text" placeh="-">
+            <template v-slot:before="">La</template>
+            <template v-slot:after="">es el instrumento que sirve para ubicar los puntos cardinales. Para funcionar emplea propiedades magnéticas.</template>
+          </inputbox>
+        </div>
+        <div class="col-12 parrafoinputs">
+          <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="resonancia magnética" type="text" placeh="-">
+            <template v-slot:before="">La</template>
+            <template v-slot:after="">es una serie de imágenes del cerebro obtenidas por medio de la radiación, las ondas de radio y los imanes; sirve para conocer la actividad bioeléctrica del cerebro.</template>
+          </inputbox>
+        </div>
+        <div class="col-12 parrafoinputs">
+          <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="imanes" type="text" placeh="-">
+            <template v-slot:before="">Los</template>
+            <template v-slot:after="">decorativos son objetos de diferentes tamaños y colores que suelen usarse como adornos en el refrigerador y para sostener notas o recados.</template>
+          </inputbox>
+        </div>
+        <div class="col-12 parrafoinputs">
+          <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="micrófono" type="text" placeh="-">
+            <template v-slot:before="">El</template>
+            <template v-slot:after="">es otro aparato que contiene un imán neodimio para mayor producción y rela- ción señal-ruido, lo que ayuda a tener una mayor intensidad y claridad del habla.</template>
+          </inputbox>
+        </div>
+        <div class="col-12 parrafoinputs">
+          <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="bocina" type="text" placeh="-">
+            <template v-slot:before="">En una</template>
+            <template v-slot:after="">, al pasar electricidad por el cable, el imán atrae con diferente fuerza la pequeña membrana que tiene enfrente y la hace vibrar.</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -40,6 +102,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          [0,'Lavadora'],
+          [0,'Microondas'],
+          [1,'Refrigerador'],
+          [0,'Licuadora'],
+          [0,'Estufa'],
+          [1,'Computadora'],
+          [0,'Teléfono'],
+          [1,'Bocinas del estéreo'],
+      ])
+    </script>
   </body>
 </html>

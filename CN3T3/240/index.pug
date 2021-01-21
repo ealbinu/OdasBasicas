@@ -1,32 +1,85 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Exploro el magnetismo'
+- subtitle = 'Interacción de imanes y su aprovechamiento'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .check {
+                justify-content: center;
+                background: #fff;
+                text-align: center;
+            }
+            .ex1 .check .checkbox {
+                display: none;
+            }
+            .ex1 .check.activecheck {
+                background: var(--pastel3);
+            }
+            .ex2 .inputbox input {
+                display: inline-block;
+                max-width: 240px;
+            }
+            .ex2 .parrafoinputs {
+                margin-bottom: 20px;
+                background: var(--pastel6);
+            }
+            .ex2 .parrafoinputs:nth-child(odd) {
+                background: var(--pastel1);
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Colorea los nombres de los electrodométicos que necesitan imanes para funcionar. Consulta las páginas 120 a 125 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.ex1")
+                    .col-md-3: check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i[0]" :text="i[1]")
 
+            .instruccion.mt-5 Completa los enunciados con las palabras del recuadro. Consulta las páginas 120 a 125 de tu libro de texto SEP.
 
-
+            recuadropalabras(:palabras="['bocina','imanes','resonancia magnética','brújula', 'micrófono']")
+            .row.mt-3.ex2
+                .col-12.parrafoinputs
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" answer="brújula" type="text" placeh="-")
+                        template(v-slot:before="") La
+                        template(v-slot:after="") es el instrumento que sirve para ubicar los puntos cardinales. Para funcionar emplea propiedades magnéticas.
+                .col-12.parrafoinputs
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" answer="resonancia magnética" type="text" placeh="-")
+                        template(v-slot:before="") La
+                        template(v-slot:after="") es una serie de imágenes del cerebro obtenidas por medio de la radiación, las ondas de radio y los imanes; sirve para conocer la actividad bioeléctrica del cerebro.
+                .col-12.parrafoinputs
+                    inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" answer="imanes" type="text" placeh="-")
+                        template(v-slot:before="") Los
+                        template(v-slot:after="") decorativos son objetos de diferentes tamaños y colores que suelen usarse como adornos en el refrigerador y para sostener notas o recados.
+                .col-12.parrafoinputs
+                    inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" answer="micrófono" type="text" placeh="-")
+                        template(v-slot:before="") El
+                        template(v-slot:after="") es otro aparato que contiene un imán neodimio para mayor producción y rela- ción señal-ruido, lo que ayuda a tener una mayor intensidad y claridad del habla.
+                .col-12.parrafoinputs
+                    inputbox(v-model="r[12]" :ref="refCount()" @isright="right++" answer="bocina" type="text" placeh="-")
+                        template(v-slot:before="") En una
+                        template(v-slot:after="") , al pasar electricidad por el cable, el imán atrae con diferente fuerza la pequeña membrana que tiene enfrente y la hace vibrar.
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    [0,'Lavadora'],
+                    [0,'Microondas'],
+                    [1,'Refrigerador'],
+                    [0,'Licuadora'],
+                    [0,'Estufa'],
+                    [1,'Computadora'],
+                    [0,'Teléfono'],
+                    [1,'Bocinas del estéreo'],
+                ])
