@@ -1,29 +1,74 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Sumo los lados irregulares'
+- subtitle = 'Abreviemos operaciones'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox{
+                background: #f5f5f5;
+                padding: 20px 6px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            }
+            .inputbox input{
+                width: 80px;
+                margin: 0 6px;
+                font-size: 1.4rem;
+            }
+            .fig{
+                max-width: 200px;
+            }
+            .f1 .inputbox{
+                background: var(--pastel3);
+            }
+            .f2 .inputbox{
+                background: var(--pastel4);
+            }
+            .f3 .inputbox{
+                background: var(--pastel2);
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe la respuesta correcta del siguiente problema. 
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.centerrow
+                .col-12
+                    labeltext() Pedro correrá una vuelta alrededor del siguiente estacionamiento. Discute con tus compañeros cómo podrían calcular la distancia que recorrerá, y escribe el resultado en el recuadro.
+                .col-md-6: img(src="aimg/a.png").img-fluid
+                .col-md-6
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="125" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) Pedro recorrerá
+                        template(v-slot:after=""): numbers(c=2 smaller) metros.
 
 
-
+            .instruccion.mt-5 Calcula el perímetro de cada figura tomando en cuenta la medida de cada lado indicado. Escribe los resultados en los recuadros correspondientes.
+            .row: .col-12: img(src="aimg/nums.png").w-100
+            .row.mt-3.ex2.centerrow
+                .col-md-6.text-center: img(src="aimg/b.png").img-fluid.fig
+                .col-md-6.f1
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="47" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) P=
+                        template(v-slot:after=""): numbers(c=2 smaller) cm
+            .row.mt-3.ex2.centerrow
+                .col-md-6.text-center: img(src="aimg/c.png").img-fluid.fig
+                .col-md-6.f2
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="49" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) P=
+                        template(v-slot:after=""): numbers(c=2 smaller) cm
+            .row.mt-3.ex2.centerrow
+                .col-md-6.text-center: img(src="aimg/d.png").img-fluid.fig
+                .col-md-6.f3
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="55" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) P=
+                        template(v-slot:after=""): numbers(c=2 smaller) cm
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

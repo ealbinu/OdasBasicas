@@ -4,23 +4,102 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sumo los lados irregulares</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox{
+          background: #f5f5f5;
+          padding: 20px 6px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+      }
+      .inputbox input{
+          width: 80px;
+          margin: 0 6px;
+          font-size: 1.4rem;
+      }
+      .fig{
+          max-width: 200px;
+      }
+      .f1 .inputbox{
+          background: var(--pastel3);
+      }
+      .f2 .inputbox{
+          background: var(--pastel4);
+      }
+      .f3 .inputbox{
+          background: var(--pastel2);
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sumo los lados irregulares</h1>
+      <h2>Abreviemos operaciones</h2>
+      <div class="instruccion mt-5">Escribe la respuesta correcta del siguiente problema. </div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-12">
+          <labeltext>Pedro correrá una vuelta alrededor del siguiente estacionamiento. Discute con tus compañeros cómo podrían calcular la distancia que recorrerá, y escribe el resultado en el recuadro.</labeltext>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png"/></div>
+        <div class="col-md-6">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="125" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">Pedro recorrerá</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers c="2" smaller="smaller">metros.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Calcula el perímetro de cada figura tomando en cuenta la medida de cada lado indicado. Escribe los resultados en los recuadros correspondientes.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/nums.png"/></div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6 text-center"><img class="img-fluid fig" src="aimg/b.png"/></div>
+        <div class="col-md-6 f1">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="47" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">P=</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers c="2" smaller="smaller">cm</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6 text-center"><img class="img-fluid fig" src="aimg/c.png"/></div>
+        <div class="col-md-6 f2">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="49" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">P=</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers c="2" smaller="smaller">cm</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6 text-center"><img class="img-fluid fig" src="aimg/d.png"/></div>
+        <div class="col-md-6 f3">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="55" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">P=</numbers>
+            </template>
+            <template v-slot:after="">
+              <numbers c="2" smaller="smaller">cm</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
