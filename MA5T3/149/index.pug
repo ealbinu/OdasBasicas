@@ -51,7 +51,7 @@ html(lang="es")
                 .col-12
                     choose(v-model="r[5]" :ref="refCount()" text="Santiago quiere ir a la casa de Israel, pero su carro sólo tiene gasolina para viajar 12 km. Si Santiago vive a 198 hm de la casa de Israel, ¿cuántos hm le faltarían para llegar con la gasolina que tiene?" :options="['78 hm','186 hm','78 km']" @isright="right++" :answer-num="0")
 
-                    
+
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

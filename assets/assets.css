@@ -234,22 +234,22 @@ strong.sec {
 .relational.iswrong {
   border: 2px solid #DB3E34;
 }
-.check .isright,
-.choose .isright,
-.inputbox .isright,
-.selectable .isright,
-.selectableoptions .isright,
-.draggableModule .isright,
-.dropdowns .isright,
-.relational .isright,
-.check .iswrong,
-.choose .iswrong,
-.inputbox .iswrong,
-.selectable .iswrong,
-.selectableoptions .iswrong,
-.draggableModule .iswrong,
-.dropdowns .iswrong,
-.relational .iswrong {
+.check .result.isright,
+.choose .result.isright,
+.inputbox .result.isright,
+.selectable .result.isright,
+.selectableoptions .result.isright,
+.draggableModule .result.isright,
+.dropdowns .result.isright,
+.relational .result.isright,
+.check .result.iswrong,
+.choose .result.iswrong,
+.inputbox .result.iswrong,
+.selectable .result.iswrong,
+.selectableoptions .result.iswrong,
+.draggableModule .result.iswrong,
+.dropdowns .result.iswrong,
+.relational .result.iswrong {
   position: absolute;
   right: -2%;
   top: -10%;
@@ -257,22 +257,22 @@ strong.sec {
   height: 40px;
   border-radius: 50%;
 }
-.check .isright:after,
-.choose .isright:after,
-.inputbox .isright:after,
-.selectable .isright:after,
-.selectableoptions .isright:after,
-.draggableModule .isright:after,
-.dropdowns .isright:after,
-.relational .isright:after,
-.check .iswrong:after,
-.choose .iswrong:after,
-.inputbox .iswrong:after,
-.selectable .iswrong:after,
-.selectableoptions .iswrong:after,
-.draggableModule .iswrong:after,
-.dropdowns .iswrong:after,
-.relational .iswrong:after {
+.check .result.isright:after,
+.choose .result.isright:after,
+.inputbox .result.isright:after,
+.selectable .result.isright:after,
+.selectableoptions .result.isright:after,
+.draggableModule .result.isright:after,
+.dropdowns .result.isright:after,
+.relational .result.isright:after,
+.check .result.iswrong:after,
+.choose .result.iswrong:after,
+.inputbox .result.iswrong:after,
+.selectable .result.iswrong:after,
+.selectableoptions .result.iswrong:after,
+.draggableModule .result.iswrong:after,
+.dropdowns .result.iswrong:after,
+.relational .result.iswrong:after {
   content: "";
   display: block;
   width: 100%;
@@ -692,6 +692,24 @@ input[type=number] {
 }
 .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
   stroke: var(--rightcol);
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #ff3caf;
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #0078dd;
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #87ffff;
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #ffd145;
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #8dff69;
+}
+.jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector + .jtk-connector path {
+  stroke: #9e102f;
 }
 /* TABLEMOD  */
 .tablemod .col {
