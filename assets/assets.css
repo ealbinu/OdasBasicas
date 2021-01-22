@@ -465,6 +465,12 @@ input[type=number] {
     font-size: 1.4rem;
   }
 }
+.numbers.small {
+  font-size: 2rem;
+}
+.numbers.smaller {
+  font-size: 1.4rem;
+}
 .recuadropalabras {
   background: #f5f5f5;
   padding: 10px;

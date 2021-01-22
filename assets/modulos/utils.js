@@ -3,8 +3,15 @@ Vue.component('checkmark', {
 })
 
 Vue.component('numbers', {
-    props: ['c'],
-    template: `<div :class="'numbers ' + (c!=undefined?'c'+c:'')"><slot></slot></div>`
+    props: ['c', 'small', 'smaller'],
+    template: `<div :class="
+            'numbers ' +
+            (c!=undefined?'c'+c:' ' ) +
+            ' ' +
+            (small!=undefined?'small':' ') +
+            ' ' +
+            (smaller!=undefined?'smaller':'')
+        "><slot></slot></div>`
 })
 
 Vue.component('labeltext', {

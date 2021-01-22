@@ -1,29 +1,100 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizo la relación'
+- subtitle = 'Las costuras de Paula / ¿Cuántos caben?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                padding: 10px;
+                background: #f5f5f5;
+                border-radius: 10px;
+                margin: 20px 0;
+            }
+            .inputbox .numbers {
+                font-size: 1.4rem;
+            }
+            .inputbox input {
+                font-size: 1.2rem;
+                padding: 2px;
+                width: 80px;
+                margin: 0 6px;
+            }
+
+            .ex1, .ex2, .ex3, .ex4{
+                border: 4px dashed #fff;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .ex1{
+                background: #FEF0DD;
+                border-color: #E9832C;
+            }
+            .ex2{
+                background: #E9F4F3;
+                border-color: #00AEB5;
+            }
+            .ex3{
+                background: #FEF0DD;
+                border-color: #AE4E8F;
+            }
+            .ex4{
+                background: #E9F4F3;
+                border-color: #0083BF;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve los siguientes problemas.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-12
+                    labeltext Don Pedro tiene en su hacienda un tejado de 20 m de largo y 10 m de ancho. ¿Cuál es el perímetro del tejado?
+                .col-md-6.text-center
+                    numbers(c=3 small) Resultado:
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="60" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) Perímetro =
+                        template(v-slot:after="") m
+                .col-md-6: img(src="aimg/a.png").img-fluid
             
-
-
-
+            .row.mt-3.ex2.centerrow
+                .col-12
+                    labeltext Pepe tiene una alberca de 5 m de ancho y 10 m de largo. ¿Cuál es el perímetro de la alberca?
+                .col-md-6.text-center
+                    numbers(c=3 small) Resultado:
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) Perímetro =
+                        template(v-slot:after="") m
+                .col-md-6: img(src="aimg/b.png").img-fluid
+            
+            .row.mt-3.ex3.centerrow
+                .col-12
+                    labeltext Lalo usó un tablero de ajedrez para formar a sus juguetes. Si el tablero tiene 8 filas y 8 columnas, ¿cuántos juguetes formó Lalo?
+                .col-md-6.text-center
+                    numbers(c=3 small) Resultado:
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="64" type="number" placeh="#")
+                        template(v-slot:after="") juguetes.
+                .col-md-6: img(src="aimg/c.png").img-fluid
+            
+            .row.mt-3.ex4.centerrow
+                .col-12
+                    labeltext En el patio de la escuela "Miguel Hidalgo", el maestro de Educación Física quiere saber el área de la zona de ejercicios ubicada en un patio que mide 50 m de largo y 20 m de ancho. Si la zona de ejercicios mide la mitad del largo y del ancho del patio, ¿cuál es el área que debe delimitar el maestro?
+                .col-md-6.text-center
+                    numbers(c=3 small) Resultado:
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="250" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=2 smaller) Área =
+                        template(v-slot:after="") m<sup>2</sup>
+                .col-md-6: img(src="aimg/d.png").img-fluid
+            
+            
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

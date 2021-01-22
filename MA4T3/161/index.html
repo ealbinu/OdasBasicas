@@ -4,23 +4,116 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo la relación</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          padding: 10px;
+          background: #f5f5f5;
+          border-radius: 10px;
+          margin: 20px 0;
+      }
+      .inputbox .numbers {
+          font-size: 1.4rem;
+      }
+      .inputbox input {
+          font-size: 1.2rem;
+          padding: 2px;
+          width: 80px;
+          margin: 0 6px;
+      }
+      
+      .ex1, .ex2, .ex3, .ex4{
+          border: 4px dashed #fff;
+          border-radius: 10px;
+          padding: 10px;
+      }
+      .ex1{
+          background: #FEF0DD;
+          border-color: #E9832C;
+      }
+      .ex2{
+          background: #E9F4F3;
+          border-color: #00AEB5;
+      }
+      .ex3{
+          background: #FEF0DD;
+          border-color: #AE4E8F;
+      }
+      .ex4{
+          background: #E9F4F3;
+          border-color: #0083BF;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo la relación</h1>
+      <h2>Las costuras de Paula / ¿Cuántos caben?</h2>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-12">
+          <labeltext>Don Pedro tiene en su hacienda un tejado de 20 m de largo y 10 m de ancho. ¿Cuál es el perímetro del tejado?</labeltext>
+        </div>
+        <div class="col-md-6 text-center">
+          <numbers c="3" small="small">Resultado:</numbers>
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="60" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">Perímetro =</numbers>
+            </template>
+            <template v-slot:after="">m</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png"/></div>
+      </div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-12">
+          <labeltext>Pepe tiene una alberca de 5 m de ancho y 10 m de largo. ¿Cuál es el perímetro de la alberca?</labeltext>
+        </div>
+        <div class="col-md-6 text-center">
+          <numbers c="3" small="small">Resultado:</numbers>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">Perímetro =</numbers>
+            </template>
+            <template v-slot:after="">m</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/b.png"/></div>
+      </div>
+      <div class="row mt-3 ex3 centerrow">
+        <div class="col-12">
+          <labeltext>Lalo usó un tablero de ajedrez para formar a sus juguetes. Si el tablero tiene 8 filas y 8 columnas, ¿cuántos juguetes formó Lalo?</labeltext>
+        </div>
+        <div class="col-md-6 text-center">
+          <numbers c="3" small="small">Resultado:</numbers>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="64" type="number" placeh="#">
+            <template v-slot:after="">juguetes.</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/c.png"/></div>
+      </div>
+      <div class="row mt-3 ex4 centerrow">
+        <div class="col-12">
+          <labeltext>En el patio de la escuela "Miguel Hidalgo", el maestro de Educación Física quiere saber el área de la zona de ejercicios ubicada en un patio que mide 50 m de largo y 20 m de ancho. Si la zona de ejercicios mide la mitad del largo y del ancho del patio, ¿cuál es el área que debe delimitar el maestro?</labeltext>
+        </div>
+        <div class="col-md-6 text-center">
+          <numbers c="3" small="small">Resultado:</numbers>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="250" type="number" placeh="#">
+            <template v-slot:before="">
+              <numbers c="2" smaller="smaller">Área =</numbers>
+            </template>
+            <template v-slot:after="">m<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/d.png"/></div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
