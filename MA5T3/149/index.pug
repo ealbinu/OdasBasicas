@@ -1,32 +1,68 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Cambio unidades de medición'
+- subtitle = 'Equivalencias'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                border-radius: 6px;
+                padding: 10px;
+                height: 100%;
+                background-image: linear-gradient(var(--pastel6), var(--pastel2), var(--clear));
+                box-shadow: 4px 4px 0 var(--sec);
+                font-size: 1.2rem;
+            }
+            .ex1 .inputbox input,
+            .ex1 .inputbox .numbers {
+                font-size: 1.2rem;
+                width: 100px;
+                border-radius: 4px;
+                margin: 0 4px;
+                text-align: center;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las siguientes conversiones. Observa el ejemplo.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.ex1")
+                    .col-md-4.mb-2(v-if="i.example")
+                        inputbox( :answer="i.value" placeh="-" example)
+                            template(v-slot:before="") {{i.before}}
+                            template(v-slot:after="") {{i.after}}
+                    .col-md-4.mb-2(v-else)
+                        inputbox(v-model="r[index-1]" :ref="refCount()" @isright="right++" :answer="i.value" type="number" placeh="-")
+                            template(v-slot:before="") {{i.before}}
+                            template(v-slot:after="") {{i.after}}
 
 
+            .instruccion.mt-5 Lee el problema y selecciona la respuesta correcta.
 
+            .row.mt-3.ex2
+                .col-12
+                    choose(v-model="r[5]" :ref="refCount()" text="Santiago quiere ir a la casa de Israel, pero su carro sólo tiene gasolina para viajar 12 km. Si Santiago vive a 198 hm de la casa de Israel, ¿cuántos hm le faltarían para llegar con la gasolina que tiene?" :options="['78 hm','186 hm','78 km']" @isright="right++" :answer-num="0")
+
+                    
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'ex1', [
+                    {before: '90 000 dam =', value: 900, after: 'km', example: true},
+                    {before: '7m =', value: 700, after: 'cm'},
+                    {before: '', value: 6000, after: 'm = 6 k'},
+                    {before: '', value: 900, after: 'dm = 90 m'},
+                    {before: '30 000 m =', value: 30, after: 'km'},
+                    {before: '8 000 mm =', value: 8, after: 'm'},
+
+                ])
