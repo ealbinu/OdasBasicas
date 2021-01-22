@@ -4,23 +4,101 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco el perímetro</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .figure {
+          max-width: 200px;
+      }
+      .ex1 {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          border-bottom: 2px solid var(--pastel4);
+      }
+      .ex1 .head .label {
+          background: var(--pastel3);
+          font-size: 0.8rem;
+          border-radius: 4px;
+          padding: 4px 2px;
+      }
+      .ex1 .head .choose .options {
+          font-size: 0.8rem;
+          flex-direction: column;
+      }
+      .ex1 .head .choose .options > div {
+          background: #f5f5f5;
+          border: none;
+          margin-bottom: 4px;
+          border-radius: 4px;
+          padding: 8px 2px;
+      }
+      .ex1 .head .choose .options > div.active {
+          background: var(--pastel4);
+          font-size: 1rem;
+          box-shadow: 4px 4px 0 #BF57A4;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco el perímetro</h1>
+      <div class="instruccion mt-5">Observa las figuras y selecciona la respuesta correcta de cada celda de la tabla. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12 text-center"><img class="img-fluid figure" src="aimg/a.png"/></div>
+        <div class="col-12">
+          <div class="row head text-center">
+            <div class="col-md col-6">
+              <labeltext>Nombre de la figura</labeltext>
+              <p><strong>Triángulo equilátero</strong></p>
+            </div>
+            <div class="col-md col-6">
+              <labeltext>No. de lados</labeltext>
+              <p><strong>3</strong></p>
+            </div>
+            <div class="col-md col-6">
+              <labeltext>Procedimiento</labeltext>
+              <p><strong>8 + 8 + 8</strong></p>
+            </div>
+            <div class="col-md col-6">
+              <labeltext>Fórmula</labeltext>
+              <p><strong>𝞠 = 3𝓵</strong></p>
+            </div>
+            <div class="col-md col-6">
+              <labeltext>Perímetro</labeltext>
+              <p><strong>24 m</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template v-for="(i, index) in tempsobj.ex1">
+        <div class="row mt-3 ex1">
+          <div class="col-12 text-center"><img class="img-fluid figure" :src="'aimg/'+i.fig"/></div>
+          <div class="col-12">
+            <div class="row head text-center no-gutters">
+              <div class="col-md col-6">
+                <choose v-model="r[0+i.mod]" :ref="refCount()" text="Nombre de la figura" :options="i.n1" @isright="right++" :answer-num="i.r1"></choose>
+              </div>
+              <div class="col-md col-6">
+                <choose v-model="r[1+i.mod]" :ref="refCount()" text="No. de lados" :options="i.n2" @isright="right++" :answer-num="i.r2"></choose>
+              </div>
+              <div class="col-md col-6">
+                <choose v-model="r[2+i.mod]" :ref="refCount()" text="Procedimiento" :options="i.n3" @isright="right++" :answer-num="i.r3"></choose>
+              </div>
+              <div class="col-md col-6">
+                <choose v-model="r[3+i.mod]" :ref="refCount()" text="Fórmula" :options="i.n4" @isright="right++" :answer-num="i.r4"></choose>
+              </div>
+              <div class="col-md col-6">
+                <choose v-model="r[4+i.mod]" :ref="refCount()" text="Perímetro" :options="i.n5" @isright="right++" :answer-num="i.r5"></choose>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +119,79 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'ex1', [
+          { 
+              mod: 0,
+              fig: 'b.png',
+              n1: ['Cuadrado','Rectángulo','Pentágono'],
+              r1: 0,
+              n2: [3,4,5],
+              r2: 1,
+              n3: ['4 x 2','4 + 4 + 4','4 + 4 + 4 + 4'],
+              r3: 2,
+              n4: ['𝞠 = 4𝓵', '𝞠 = 2𝓵', '𝞠 = 3𝓵'],
+              r4: 0,
+              n5: ['8 m','16 m','12 m'],
+              r5: 1,
+          },
+          { 
+              mod: 5,
+              fig: 'c.png',
+              n1: ['Cuadrado','Rectángulo','Pentágono'],
+              r1: 2,
+              n2: [3,4,5],
+              r2: 2,
+              n3: ['6 x 3','6 + 6 + 6 + 6 + 6','4 + 4 + 4 + 4 + 4'],
+              r3: 1,
+              n4: ['𝞠 = 5𝓵', '𝞠 = 2𝓵', '𝞠 = 3𝓵'],
+              r4: 0,
+              n5: ['18 m','30 m','24 m'],
+              r5: 1,
+          },
+          { 
+              mod: 10,
+              fig: 'd.png',
+              n1: ['Triángulo equilátero','Triángulo isósceles','Trapecio'],
+              r1: 1,
+              n2: [3,4,5],
+              r2: 0,
+              n3: ['6 + 6 + 3','6 + 6 + 6 ','6 x 3'],
+              r3: 0,
+              n4: ['𝞠 = a + b + c', '𝞠 = 2a + b', '𝞠 = 3𝓵'],
+              r4: 1,
+              n5: ['12 m','18 m','15 m'],
+              r5: 2,
+          },
+          { 
+              mod: 15,
+              fig: 'e.png',
+              n1: ['Triángulo isósceles','Triángulo rectángulo o escaleno','Triángulo equilátero'],
+              r1: 1,
+              n2: [3,4,5],
+              r2: 0,
+              n3: ['8 + 8 + 7','7 + 7 + 8','3 + 7 + 8'],
+              r3: 2,
+              n4: ['𝞠 = 3𝓵', '𝞠 = 2a + b', '𝞠 = a + b + c'],
+              r4: 2,
+              n5: ['18 m','30 m','24 m'],
+              r5: 0,
+          },
+          { 
+              mod: 20,
+              fig: 'f.png',
+              n1: ['Cuadrado','Trapecio','Rectángulo'],
+              r1: 2,
+              n2: [3,4,5],
+              r2: 1,
+              n3: ['3 + 3 + 6 + 6','3 + 3 + 3 + 6','6 + 6 + 6 + 3'],
+              r3: 0,
+              n4: ['𝞠 = a + b + 2c', '𝞠 = 2a + b + c', '𝞠 = 2a + 2b'],
+              r4: 2,
+              n5: ['18 m','21 m','15 m'],
+              r5: 0,
+          },
+      ])
+    </script>
   </body>
 </html>
