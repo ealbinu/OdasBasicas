@@ -65,9 +65,9 @@
             <labeltext num="7.">Estado de México, Nuevo León, Ciudad de México, Veracruz, Coahuila, Guanajuato y Jalisco.</labeltext>
           </div>
         </div>
-        <div class="col-md-6 trueorfalse">
+        <div class="col-md-6 trueorfalse left">
           <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
-            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="-">
               <template v-slot:after="">
                 <labeltext>{{i.t}}</labeltext>
               </template>
