@@ -210,8 +210,7 @@ strong.sec {
 .selectable,
 .selectableoptions,
 .draggableModule,
-.dropdowns,
-.relational {
+.dropdowns {
   position: relative;
 }
 .check.isright,
@@ -220,8 +219,7 @@ strong.sec {
 .selectable.isright,
 .selectableoptions.isright,
 .draggableModule.isright,
-.dropdowns.isright,
-.relational.isright {
+.dropdowns.isright {
   border: 2px solid #5EB246;
 }
 .check.iswrong,
@@ -230,26 +228,23 @@ strong.sec {
 .selectable.iswrong,
 .selectableoptions.iswrong,
 .draggableModule.iswrong,
-.dropdowns.iswrong,
-.relational.iswrong {
+.dropdowns.iswrong {
   border: 2px solid #DB3E34;
 }
-.check .result.isright,
-.choose .result.isright,
-.inputbox .result.isright,
-.selectable .result.isright,
-.selectableoptions .result.isright,
-.draggableModule .result.isright,
-.dropdowns .result.isright,
-.relational .result.isright,
-.check .result.iswrong,
-.choose .result.iswrong,
-.inputbox .result.iswrong,
-.selectable .result.iswrong,
-.selectableoptions .result.iswrong,
-.draggableModule .result.iswrong,
-.dropdowns .result.iswrong,
-.relational .result.iswrong {
+.check .isright,
+.choose .isright,
+.inputbox .isright,
+.selectable .isright,
+.selectableoptions .isright,
+.draggableModule .isright,
+.dropdowns .isright,
+.check .iswrong,
+.choose .iswrong,
+.inputbox .iswrong,
+.selectable .iswrong,
+.selectableoptions .iswrong,
+.draggableModule .iswrong,
+.dropdowns .iswrong {
   position: absolute;
   right: -2%;
   top: -10%;
@@ -257,22 +252,20 @@ strong.sec {
   height: 40px;
   border-radius: 50%;
 }
-.check .result.isright:after,
-.choose .result.isright:after,
-.inputbox .result.isright:after,
-.selectable .result.isright:after,
-.selectableoptions .result.isright:after,
-.draggableModule .result.isright:after,
-.dropdowns .result.isright:after,
-.relational .result.isright:after,
-.check .result.iswrong:after,
-.choose .result.iswrong:after,
-.inputbox .result.iswrong:after,
-.selectable .result.iswrong:after,
-.selectableoptions .result.iswrong:after,
-.draggableModule .result.iswrong:after,
-.dropdowns .result.iswrong:after,
-.relational .result.iswrong:after {
+.check .isright:after,
+.choose .isright:after,
+.inputbox .isright:after,
+.selectable .isright:after,
+.selectableoptions .isright:after,
+.draggableModule .isright:after,
+.dropdowns .isright:after,
+.check .iswrong:after,
+.choose .iswrong:after,
+.inputbox .iswrong:after,
+.selectable .iswrong:after,
+.selectableoptions .iswrong:after,
+.draggableModule .iswrong:after,
+.dropdowns .iswrong:after {
   content: "";
   display: block;
   width: 100%;
@@ -288,8 +281,7 @@ strong.sec {
 .selectable .isright,
 .selectableoptions .isright,
 .draggableModule .isright,
-.dropdowns .isright,
-.relational .isright {
+.dropdowns .isright {
   background: #5EB246;
 }
 .check .isright:after,
@@ -298,8 +290,7 @@ strong.sec {
 .selectable .isright:after,
 .selectableoptions .isright:after,
 .draggableModule .isright:after,
-.dropdowns .isright:after,
-.relational .isright:after {
+.dropdowns .isright:after {
   background-image: url(aimg/isright.svg);
 }
 @media (max-width: 680px) {
@@ -309,8 +300,7 @@ strong.sec {
   .selectable .isright,
   .selectableoptions .isright,
   .draggableModule .isright,
-  .dropdowns .isright,
-  .relational .isright {
+  .dropdowns .isright {
     transform: scale(0.6);
   }
 }
@@ -320,8 +310,7 @@ strong.sec {
 .selectable .iswrong,
 .selectableoptions .iswrong,
 .draggableModule .iswrong,
-.dropdowns .iswrong,
-.relational .iswrong {
+.dropdowns .iswrong {
   background: #DB3E34;
 }
 @media (max-width: 680px) {
@@ -331,7 +320,54 @@ strong.sec {
   .selectable .iswrong,
   .selectableoptions .iswrong,
   .draggableModule .iswrong,
-  .dropdowns .iswrong,
+  .dropdowns .iswrong {
+    transform: scale(0.6);
+  }
+}
+.relational {
+  position: relative;
+}
+.relational.isright {
+  border: 2px solid #5EB246;
+}
+.relational.iswrong {
+  border: 2px solid #DB3E34;
+}
+.relational .result.isright,
+.relational .result.iswrong {
+  position: absolute;
+  right: -2%;
+  top: -10%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.relational .result.isright:after,
+.relational .result.iswrong:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url(aimg/iswrong.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+.relational .isright {
+  background: #5EB246;
+}
+.relational .isright:after {
+  background-image: url(aimg/isright.svg);
+}
+@media (max-width: 680px) {
+  .relational .isright {
+    transform: scale(0.6);
+  }
+}
+.relational .iswrong {
+  background: #DB3E34;
+}
+@media (max-width: 680px) {
   .relational .iswrong {
     transform: scale(0.6);
   }
