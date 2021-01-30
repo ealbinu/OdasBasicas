@@ -4,23 +4,40 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco la importancia del agua</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imagerelative .items > div{width:14%;height:20%}.imagerelative .items > div:nth-child(1){left:17%;top:70%}
+      .imagerelative .items > div:nth-child(2){left:50%;top:52%}.imagerelative .items > div:nth-child(3){left:70%;top:52%}
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco la importancia del agua</h1>
+      <h2>La importancia del agua / Evitemos el desperdicio del agua</h2>
+      <div class="instruccion mt-5">Observa la imagen y marca así <markex></markex> las acciones que contaminan el agua.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="imagerelative"><img class="w-100" src="aimg/a.png"/>
+            <div class="items">
+              <template v-for="(i, index) in 3">
+                <selectable :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++" ex="ex"></selectable>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <template v-for="(i, index) in [1,0,1,0,1,0,1,1]">
+          <div class="col-md-3">
+            <check v-model="r[index+3]" :ref="refCount()" @isright="right++" :answer="i"><img class="img-fluid" :src="imgpath('b',index+1)" alt=""/></check>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

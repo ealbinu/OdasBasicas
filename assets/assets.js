@@ -38,6 +38,9 @@ var app = new Vue({
         }
     },
     methods: {
+        imgpath(prefix, nm, ext){
+            return 'aimg/'+prefix+nm+'.'+(ext==undefined?'png':ext)
+        },
         refCount($e){
             let ct = 'rf_'+counterRef
             counterRef = counterRef+1
