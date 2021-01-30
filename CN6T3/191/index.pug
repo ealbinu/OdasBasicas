@@ -1,28 +1,54 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_crossword
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprovecho la tecnología'
+- subtitle = 'Aprovechamiento de la formación de imágenes en espejos y lentes'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .crowsswordmod .box {
+                width: 9.09%;
+                min-height: 40px;
+            }
+            .h4{
+                color: var(--accent);
+                margin-top: 20px;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Consulta las páginas 113 a 118 de tu libro de texto SEP y resuelve el crucigrama.
 
             .row.mt-3
-            
+                .col-md-6
+                    .h4 Horizontales
+                    labeltext(num="1.") Instrumento elaborado con espejos, se utiliza en los submarinos para ver la superficie.
+                    labeltext(num="2.") Conjunto de rayos ordenados, llamados <strong>haz</strong>, que viajan en línea recta.
+                    labeltext(num="3.") Espejo en el que los rayos reflejados convergen en un punto llamado foco.
 
+                    .h4 Verticales
+                    labeltext(num="4.") Tipo de espejo en el que los objetos se reflejan de manera invertida, en tamaño real
+                    labeltext(num="5.") Cambio de dirección de un rayo de luz al chocar con una superficie.
+                    labeltext(num="6.") Tipo de espejo retrovisor de los automóviles.
 
+                .col-md
+                    - var hor = []
+                    - var ver = []
+                    - hor.push([1, 3, '1', 'PERISCOPIO'])
+                    - hor.push([3, 6, '2', 'LUZ'])
+                    - hor.push([2, 10, '3', 'CÓNCAVO'])
+                    
+                    - ver.push([2, 2, '4', 'PLANO'])
+                    - ver.push([4, 2, '5', 'REFLEXIÓN'])
+                    - ver.push([11, 1, '6', 'CONVEXO'])
+                    +crosswordmod(0, 11,11, hor, ver)
+                    
 
 
 

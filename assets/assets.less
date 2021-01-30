@@ -738,3 +738,64 @@ input[type=number] {
 	border-radius: 6px;
 	box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
+
+
+/*cross*/
+
+.crowsswordmod {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	.box {
+		width: 6.666%;
+		min-height: 30px;
+		text-align: center;
+		div:not(.result) {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.inputbox {
+			height: 100%;
+			input {
+				height: 100%;
+				padding: 0;
+				border-radius: 2px;
+				font-size: 1rem;
+
+			}
+		}
+	}
+	.number {
+		background: var(--main);
+		width: 100%;
+		border-radius: 3px;
+		color: #fff;
+	}
+	.result{
+		width: 20px; height: 20px;
+		right: -20%;
+		top: -20%;
+	}
+	.cell.demo, .cell.example {
+		width: 100%;
+		border: 1px solid var(--clear);
+		background: var(--pastel2);
+		color: var(--clear);
+		font-weight: bold;
+    }
+    .space {
+        background: #888;
+        border-radius: 2px;
+    }
+	.box{outline: 1px solid rgba(0,0,0,0.05);}
+}
+			

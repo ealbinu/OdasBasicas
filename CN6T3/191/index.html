@@ -1,26 +1,470 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--PUG
+- var hor = []
+- var ver = []
+//[x,y,code,word, isexample]
+- hor.push([1, 3, '1', 'PERISCOPIO'])
+- hor.push([3, 6, '2', 'LUZ', true]) //is example
+- ver.push([2, 2, '4', 'PLANO'])
+//v-modelcount, width, height, horizontalwords, verticalwords
+//v-modelcount, width, height, horizontalwords, verticalwords , test:true para modo debug
++crosswordmod(0, 11,11, hor, ver)
+
+-->
+<!--CSS
+.crowsswordmod .box {
+    width: 6.666%;
+    min-height: 30px;
+}
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprovecho la tecnología</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .crowsswordmod .box {
+          width: 9.09%;
+          min-height: 40px;
+      }
+      .h4{
+          color: var(--accent);
+          margin-top: 20px;
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprovecho la tecnología</h1>
+      <h2>Aprovechamiento de la formación de imágenes en espejos y lentes</h2>
+      <div class="instruccion mt-5">Consulta las páginas 113 a 118 de tu libro de texto SEP y resuelve el crucigrama.</div>
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <div class="h4">Horizontales</div>
+          <labeltext num="1.">Instrumento elaborado con espejos, se utiliza en los submarinos para ver la superficie.</labeltext>
+          <labeltext num="2.">Conjunto de rayos ordenados, llamados <strong>haz</strong>, que viajan en línea recta.</labeltext>
+          <labeltext num="3.">Espejo en el que los rayos reflejados convergen en un punto llamado foco.</labeltext>
+          <div class="h4">Verticales</div>
+          <labeltext num="4.">Tipo de espejo en el que los objetos se reflejan de manera invertida, en tamaño real</labeltext>
+          <labeltext num="5.">Cambio de dirección de un rayo de luz al chocar con una superficie.</labeltext>
+          <labeltext num="6.">Tipo de espejo retrovisor de los automóviles.</labeltext>
+        </div>
+        <div class="col-md">
+          <div class="crowsswordmod">
+            <!-- GRID-->
+            <div class="box x1 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y1">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y1">
+              <div class="number">6</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y2">
+              <div class="number">4</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y2">
+              <div class="number">5</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y2">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y2">
+              <inputbox v-model="r[30]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y3">
+              <div class="number">1</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y3">
+              <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="P" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y3">
+              <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y3">
+              <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="R" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y3">
+              <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="I" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y3">
+              <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="S" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y3">
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y3">
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y3">
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="P" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y3">
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="I" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y3">
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y4">
+              <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" answer="L" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y4">
+              <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y4">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y4">
+              <inputbox v-model="r[31]" :ref="refCount()" @isright="right++" answer="N" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y5">
+              <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y5">
+              <inputbox v-model="r[25]" :ref="refCount()" @isright="right++" answer="F" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y5">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y5">
+              <inputbox v-model="r[32]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y6">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y6">
+              <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" answer="N" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y6">
+              <div class="number">2</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y6">
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="L" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y6">
+              <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="U" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y6">
+              <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" answer="Z" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y6">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y6">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y6">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y6">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y6">
+              <inputbox v-model="r[33]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y7">
+              <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y7">
+              <inputbox v-model="r[26]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y7">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y7">
+              <inputbox v-model="r[34]" :ref="refCount()" @isright="right++" answer="X" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y8">
+              <inputbox v-model="r[27]" :ref="refCount()" @isright="right++" answer="X" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y8">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y8">
+              <inputbox v-model="r[35]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y9">
+              <inputbox v-model="r[28]" :ref="refCount()" @isright="right++" answer="I" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y9">
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y10">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y10">
+              <div class="number">3</div>
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y10">
+              <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y10">
+              <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" answer="Ó" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y10">
+              <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" answer="N" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y10">
+              <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y10">
+              <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y10">
+              <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" answer="V" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y10">
+              <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" answer="O" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y10">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y10">
+            </div>
+            <!-- GRID-->
+            <div class="box x1 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x2 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x3 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x4 y11">
+              <inputbox v-model="r[29]" :ref="refCount()" @isright="right++" answer="N" type="text" placeh="-"></inputbox>
+            </div>
+            <!-- GRID-->
+            <div class="box x5 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x6 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x7 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x8 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x9 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x10 y11">
+            </div>
+            <!-- GRID-->
+            <div class="box x11 y11">
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

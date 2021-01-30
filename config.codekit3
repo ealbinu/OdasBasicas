@@ -401,6 +401,15 @@
 		"sC": 0,
 		"tS": 0
 		},
+	"\/assets\/pug\/_crossword.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 1,
+		"oAP": "\/assets\/pug\/_crossword.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/assets\/pug\/_head.pug": {
 		"cB": 0,
 		"cOD": 1,
