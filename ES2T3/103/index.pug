@@ -1,25 +1,57 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Juego al aire libre'
+- subtitle = 'Nuestros juegos favoritos / Elaboramos una tabla'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .selectable {
+                display: inline-block;
+            }
+            .ex1 .selectable .circledactive {
+                border-width: 2px;
+                border-radius: 10px;
+            }
+            .ex1 .selectable .result {
+                transform: scale(0.5);
+                margin: -10px;
+                right: -10px;
+                top: -10px;
+            }
+            .ex1 .selectable.isright {
+                background: #fff;
+            }
+            .ex1 .common .h4 {
+                font-size: 0.8rem;
+            }
+            .ex1 .common > div {
+                font-size: 0.7rem;
+            }
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona con una línea el nombre de cada juego con su canción. Después encierra las palabras que riman en cada canción.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12
+                    relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="[['s_0', 't_1'], ['s_1', 't_0']]")
+                        template(v-slot:source="{source}"): img(:src="source.i").img-fluid
+                        template(v-slot:target="{target}"): div.common.ma-3
+                            .h4(v-html="target.title")
+                            div
+                                template(v-for="(i, index) in target.txt")
+                                    span(v-if="typeof i == 'string'") {{i}}
+                                    br(v-else-if="typeof i == 'boolean'")
+                                    template(v-else): selectable(:isok="true" v-model="r[i[1]]" :ref="refCount()" @isright="right++") {{i[0]}}
             
 
 
@@ -29,4 +61,41 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {i: 'aimg/a.png'},
+                    {i: 'aimg/b.png'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {
+                        title: 'Los niños forman un círculo y caminando cantan:',
+                        txt: [
+                            'A la rueda, rueda de pan y ',
+                            ['canela', 1],
+                            '.', true,
+                            'Dame un besito y vete a la ',
+                            ['escuela', 2],
+                            '.', true,
+                            'si no quieres ',
+                            ['ir', 3],
+                            ',', true,
+                            'acuéstate a ',
+                            ['dormir', 4],
+                            '. (Todos se tiran a dormir).'
+                        ]
+                    },
+                    {
+                        title: 'Los niños forman un círculo y caminando cantan:',
+                        txt: [
+                            'Arroz con leche, me quiero ',
+                            ['casar', 5], true,
+                            'con una señorita de San Nicolás,', true,
+                            'que sepa coser, que sepa ',
+                            ['bordar', 6], ',', true,
+                            'que sepa abrir la puerta para ir a ',
+                            ['jugar', 7], '.', true,
+                            'Con ésta sí, con ésta no,',true,
+                            'con esta señorita me caso yo.', true, true,
+                            'Uno de los integrantes lleva al centro a otro para bailar mientras sigue la canción.'
+                        ]
+                    },
+                ])
