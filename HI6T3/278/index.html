@@ -4,23 +4,88 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico aportaciones culturales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          padding: 20px;
+      }
+      .inputbox input {
+          font-size: 1.4rem;
+          position: absolute;
+          right: -10px;
+          bottom: -10px;
+          width: 60px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico aportaciones culturales</h1>
+      <h2>El islam y la expansión musulmana</h2>
+      <div class="instruccion mt-5">Ordena cronológicamente del <strong>1</strong> al <strong>6</strong> los siguientes sucesos.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>A partir de la muerte de Mahoma los califas expandieron el islam.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>Mahoma tuvo la visita del Arcángel Gabriel (Noche del destino).</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>Mahoma fue perseguido por sus adversarios.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>En la ciudad de Medina, Mahoma escribió el libro <em>El Corán</em>.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>Mahoma comenzó a predicar una nueva religión monoteísta llamada: islam.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common c3">
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
+              <template v-slot:after="">
+                <div>Mahoma conquistó la ciudad de La Meca y unificó a los árabes en una misma fe.</div>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
