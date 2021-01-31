@@ -1,25 +1,54 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Resuelvo juegos con palabras'
+- subtitle = 'Juego con el lenguaje'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .imagerelative .items > div{height:7%}
+            .ex1 .imagerelative .items > div .circledactive{border:2px solid var(--main);border-radius:10px}
+            .ex1 .imagerelative .items > div:nth-child(1){top:13%;width:60%}
+            .ex1 .imagerelative .items > div:nth-child(2){left:46.5%;top:6.5%;width:40.5%}
+            .ex1 .imagerelative .items > div:nth-child(3){left:20%;top:20%;width:40%}
+            .ex1 .imagerelative .items > div:nth-child(4){left:46.7%;top:33%;width:40%}
+            .ex1 .imagerelative .items > div:nth-child(5){left:20%;top:93%;width:60%}
+            .ex1 .imagerelative .items > div:nth-child(6){top:0;width:7%;height:80%}
+            .ex1 .imagerelative .items > div:nth-child(7){top:46.5%;left:6.5%;width:7%;height:40%}
+            .ex1 .imagerelative .items > div:nth-child(8){top:0;left:93%;width:7%;height:73%}
+            .recuadropalabras {
+                background: var(--pastel1);
+                flex-direction: column;
+            }
+            @media (max-width: 768px) {
+                .recuadropalabras {
+                    flex-direction: row;
+                }
+            }
+            .recuadropalabras strong {
+                background: #fff;
+                color: var(--accent);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Encuentra las siguientes palabras en la sopa de letras.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-md-4
+                    recuadropalabras(:palabras="['COPLAS','CANCIONES','JUEGOS','POEMAS','ANTOLOGÍA','ÍNDICE','TRABALENGUAS','CRUCIGRAMAS','TRABALENGUAS']")
+                .col-md
+                    .imagerelative
+                        img(src="aimg/s.png").w-100
+                        .items
+                            template(v-for="(i, index) in 8")
+                                selectable(:isok="true" v-model="r[index]" :ref="refCount()" @isright="right++")
             
 
 
