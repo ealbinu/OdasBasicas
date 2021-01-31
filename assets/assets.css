@@ -855,4 +855,9 @@ input[type=number] {
 .crowsswordmod .box {
   outline: 1px solid rgba(0, 0, 0, 0.05);
 }
+.common {
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--pastel1);
+}
 /*# sourceMappingURL=assets.css.map */
