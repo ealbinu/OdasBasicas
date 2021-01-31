@@ -1,8 +1,9 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Redacto mi reporte'
+- subtitle = 'Reflexiona sobre la encuesta'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +18,27 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa el siguiente texto utilizando los nexos del recuadro.
 
-            .row.mt-3
+            recuadropalabras(c=5 :palabras="['En cambio','Algunos','otros','la mayoría','muy pocos','Por último','y']")
+
+            .row.mt-3.ex1
+                .col-12
+                    - var ar = []
+                    - ar.push('El grupo de 3° A realizó una encuesta para proponer nuevas formas de saludarse.')
+                    - ar.push(['Algunos'])
+                    - ar.push(' propusieron saludarse moviendo el pie derecho, ')
+                    - ar.push(['otros'])
+                    - ar.push(' levantando la mano y con una distancia apropiada, ')
+                    - ar.push(['y'])
+                    - ar.push(' la maestra presentó la forma de saludarse con los codos. ')
+                    - ar.push(['La mayoría'])
+                    - ar.push(' votó por la opción de saludarse con los codos y muy pocos votaron por saludarse con los pies. ')
+                    - ar.push(['En cambio'])
+                    - ar.push(', la forma de presentarse con la mano y con distancia se utilizará para saludarse con alumnos de otros grupos. ')
+                    - ar.push(['Por último'])
+                    - ar.push(', se llegó al acuerdo de que poner en práctica estas propues- tas de higiene ayudaría a cuidar nuestra salud y la de los demás.')
+                    +parrafo(0, ar)
             
 
 
