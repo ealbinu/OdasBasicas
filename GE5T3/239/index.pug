@@ -1,27 +1,53 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Descubro las redes carreteras'
+- subtitle = '¿Cómo obtenemos los servicios y los productos?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex2 .parrafoinputs{
+                border: 2px solid var(--accent);
+                background: var(--pastel1)
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las actividades que se desarrollan en el sector terciario. Consulta las páginas 128 y 129 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in [1,1,0,1,1]")
+                    .col-md: check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i" initclass="withimg")
+                        img(:src="imgpath('a', index+1)").img-fluid
             
-
+            
+            .instruccion.mt-5 Lee y completa el siguiente párrafo con las palabras del recuadro.
+            recuadropalabras(c=4 :palabras="['distribuir','cultural','población','secundario','desarrollo','servicios','económicas']")
+            .row.mt-3.ex2
+                .col-12
+                    - var arr = []
+                    - arr.push('Las actividades ')
+                    - arr.push(['económicas'])
+                    - arr.push(' del sector terciario ayudan a todas las labores de los seres humanos. Fomentan el ')
+                    - arr.push(['desarrollo'])
+                    - arr.push(' educativo, ')
+                    - arr.push(['cultural'])
+                    - arr.push(', social y el bienestar de la ')
+                    - arr.push(['población'])
+                    - arr.push('. Estas actividades no generan bienes materiales, sino ')
+                    - arr.push(['servicios'])
+                    - arr.push(', pues su función es vender, ')
+                    - arr.push(['distribuir'])
+                    - arr.push(' y dar mantenimiento a lo que producen el sec- tor primario y el ')
+                    - arr.push(['secundario'])
+                    - arr.push('.')
+                    +parrafo(5, arr)
 
 
 

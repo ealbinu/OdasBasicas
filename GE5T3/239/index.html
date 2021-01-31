@@ -1,26 +1,55 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Descubro las redes carreteras</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex2 .parrafoinputs{
+          border: 2px solid var(--accent);
+          background: var(--pastel1)
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Descubro las redes carreteras</h1>
+      <h2>¿Cómo obtenemos los servicios y los productos?</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las actividades que se desarrollan en el sector terciario. Consulta las páginas 128 y 129 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in [1,1,0,1,1]">
+          <div class="col-md">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" initclass="withimg"><img class="img-fluid" :src="imgpath('a', index+1)"/></check>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Lee y completa el siguiente párrafo con las palabras del recuadro.</div>
+      <recuadropalabras c="4" :palabras="['distribuir','cultural','población','secundario','desarrollo','servicios','económicas']"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="parrafoinputs"><span>Las actividades </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="económicas" type="text" placeh="-"></inputbox><span> del sector terciario ayudan a todas las labores de los seres humanos. Fomentan el </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="desarrollo" type="text" placeh="-"></inputbox><span> educativo, </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="cultural" type="text" placeh="-"></inputbox><span>, social y el bienestar de la </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="población" type="text" placeh="-"></inputbox><span>. Estas actividades no generan bienes materiales, sino </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="servicios" type="text" placeh="-"></inputbox><span>, pues su función es vender, </span>
+            <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" answer="distribuir" type="text" placeh="-"></inputbox><span> y dar mantenimiento a lo que producen el sec- tor primario y el </span>
+            <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" answer="secundario" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

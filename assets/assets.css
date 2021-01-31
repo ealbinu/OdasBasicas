@@ -189,6 +189,13 @@ strong.sec {
   margin: 10%;
   width: 80%;
 }
+.check.withimg .checkbox {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  background: #fff;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
 .choose {
   font-size: 1.2rem;
   margin: 20px 10px;

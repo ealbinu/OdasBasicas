@@ -1,5 +1,5 @@
 Vue.component('check', {
-    props: ['value', 'text', 'answer', 'num', 'setMark'],
+    props: ['value', 'text', 'answer', 'num', 'setMark', 'initclass'],
     data() {
         return {
             status: false,
@@ -45,7 +45,7 @@ Vue.component('check', {
         }
     },
     template: `
-        <div class="check" :class="setclass + ' ' + (status ? 'activecheck':'') ">
+        <div class="check" :class="setclass + ' ' + (status ? 'activecheck':'') + ' ' + (initclass?initclass:'')">
         <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
         <div class="label" @click="clicked"><strong v-if="num">{{num}}</strong> <slot></slot></div>
             <div class="checkbox" @click="clicked">
