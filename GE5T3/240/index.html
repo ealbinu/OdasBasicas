@@ -1,10 +1,16 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo el traslado de productos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +24,24 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo el traslado de productos</h1>
+      <h2>Redes carreteras y ferroviarias</h2>
+      <div class="instruccion mt-5">Completa el texto con las palabras del recuadro y después encuéntralas en la sopa de letras. Consulta las páginas 106 a 108 de tu Atlas de Geografía del Mundo.</div>
+      <recuadropalabras c="5" :palabras="['Estambul','Canadá','Pakistán','China','Seúl','Europa','España','Panamericana','americano']"></recuadropalabras>
+      <div class="row mt-3 ex2">
+        <div class="col-12"></div>
+        <div class="parrafoinputs c5"><span>La carretera</span>
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Panamericana" type="text" placeh="-"></inputbox><span> se encuentra en el continente </span>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="americano" type="text" placeh="-"></inputbox><span>. Este sistema carretero tiene una extensión de 48 000 km de longitud, lo que la hace la autopista más larga del mundo. Recorre 14 países, desde </span>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Canadá" type="text" placeh="-"></inputbox><span>hasta Argentina y sólo se interrumpe 87 km en Panamá. <br> En el continente asiático, existe una carretera con más de 20 000 km de longitud, que se extiende desde Tokio hasta </span>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Estambul" type="text" placeh="-"></inputbox><span>. La carretera AH1 pasa también por otros países como India, </span>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Pakistán" type="text" placeh="-"></inputbox><span>, Irán y China. <br></span><span>En </span>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Europa" type="text" placeh="-"></inputbox><span>, la carretera E - 05 tiene una longitud de 2 960 km. Inicia en Gran Bre- taña y, recorre el Reino Unido, Francia y </span>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="España" type="text" placeh="-"></inputbox><span>. <br></span><span>Corea del Sur tiene una de las rutas aéreas más transitadas en el mundo, en la que, a diario, cinco aerolíneas realizan 159 vuelos, entre las ciudades de </span>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="Seúl" type="text" placeh="-"></inputbox><span> y Jeju. <br></span><span>El primer lugar del mundo en vías férreas pertenece a </span>
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="China" type="text" placeh="-"></inputbox><span>, que tiene un total de 6 920 km de ferrocarril de alta velocidad.</span>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

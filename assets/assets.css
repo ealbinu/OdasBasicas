@@ -611,6 +611,46 @@ input[type=number] {
   border-width: 1px;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
 }
+.parrafoinputs.c1 {
+  background: #FDEDE2;
+  box-shadow: 4px 4px 0 #e6d7cd;
+  border: 2px solid #ED1846;
+}
+.parrafoinputs.c1 .inputbox input {
+  border-color: #ED1846;
+}
+.parrafoinputs.c2 {
+  background: #D5EDF6;
+  box-shadow: 4px 4px 0 #c2d7e0;
+  border: 2px solid #005093;
+}
+.parrafoinputs.c2 .inputbox input {
+  border-color: #005093;
+}
+.parrafoinputs.c3 {
+  background: #EAF5E5;
+  box-shadow: 4px 4px 0 #d5dfd0;
+  border: 2px solid #5AAEDA;
+}
+.parrafoinputs.c3 .inputbox input {
+  border-color: #5AAEDA;
+}
+.parrafoinputs.c4 {
+  background: #F3E5EF;
+  box-shadow: 4px 4px 0 #ddd0d9;
+  border: 2px solid #EB8B2E;
+}
+.parrafoinputs.c4 .inputbox input {
+  border-color: #EB8B2E;
+}
+.parrafoinputs.c5 {
+  background: #EEEAE3;
+  box-shadow: 4px 4px 0 #d8d5ce;
+  border: 2px solid #5EB246;
+}
+.parrafoinputs.c5 .inputbox input {
+  border-color: #5EB246;
+}
 .imagerelative {
   position: relative;
 }

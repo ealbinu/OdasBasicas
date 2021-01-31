@@ -1,8 +1,9 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Analizo el traslado de productos'
+- subtitle = 'Redes carreteras y ferroviarias'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,14 +18,34 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
-            
-
-
-
-
+            .instruccion.mt-5 Completa el texto con las palabras del recuadro y después encuéntralas en la sopa de letras. Consulta las páginas 106 a 108 de tu Atlas de Geografía del Mundo.
+            recuadropalabras(c=5 :palabras="['Estambul','Canadá','Pakistán','China','Seúl','Europa','España','Panamericana','americano']")
+            .row.mt-3.ex2
+                .col-12
+                - var arr = []
+                - arr.push('La carretera')
+                - arr.push(['Panamericana'])
+                - arr.push(' se encuentra en el continente ')
+                - arr.push(['americano'])
+                - arr.push('. Este sistema carretero tiene una extensión de 48 000 km de longitud, lo que la hace la autopista más larga del mundo. Recorre 14 países, desde ')
+                - arr.push(['Canadá'])
+                - arr.push('hasta Argentina y sólo se interrumpe 87 km en Panamá. <br> En el continente asiático, existe una carretera con más de 20 000 km de longitud, que se extiende desde Tokio hasta ')
+                - arr.push(['Estambul'])
+                - arr.push('. La carretera AH1 pasa también por otros países como India, ')
+                - arr.push(['Pakistán'])
+                - arr.push(', Irán y China. <br>')
+                - arr.push('En ')
+                - arr.push(['Europa'])
+                - arr.push(', la carretera E - 05 tiene una longitud de 2 960 km. Inicia en Gran Bre- taña y, recorre el Reino Unido, Francia y ')
+                - arr.push(['España'])
+                - arr.push('. <br>')
+                - arr.push('Corea del Sur tiene una de las rutas aéreas más transitadas en el mundo, en la que, a diario, cinco aerolíneas realizan 159 vuelos, entre las ciudades de ')
+                - arr.push(['Seúl'])
+                - arr.push(' y Jeju. <br>')
+                - arr.push('El primer lugar del mundo en vías férreas pertenece a ')
+                - arr.push(['China'])
+                - arr.push(', que tiene un total de 6 920 km de ferrocarril de alta velocidad.')
+                +parrafo(0, arr, 'c5')
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts

@@ -489,8 +489,28 @@ input[type=number] {
 			border-width: 1px;
 			box-shadow: 2px 2px 0 rgba(0,0,0,0.05);
 		}
-	}
+    }
+    &.c1{ .picols(@main, @pastel1) }
+    &.c2{ .picols(@sec, @pastel2) }
+    &.c3{ .picols(@clear, @pastel3) }
+    &.c4{ .picols(@accent, @pastel4) }
+    &.c5{ .picols(@rightcol, @pastel5) }
 }
+
+
+.picols (@c, @p){
+    @col : @c;
+    @pas : @p;
+    background: @pas; 
+    box-shadow: 4px 4px 0 @pas/1.1;
+    border: 2px solid @col;
+    .inputbox{
+        input{
+            border-color: @col;
+        }
+    }
+}
+
 
 
 
