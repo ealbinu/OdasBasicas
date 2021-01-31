@@ -1,26 +1,62 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Escribo palabras con c o con qu</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .parrafoinputs {
+          background: var(--pastel4);
+          margin-top: 10px;
+      }
+      .ex1 .recuadropalabras {
+          background: var(--pastel2);
+      }
+      .ex1 .recuadropalabras strong {
+          background: #fff;
+          color: var(--clear);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Escribo palabras con c o con qu</h1>
+      <h2>¿Con c o con qu?</h2>
+      <div class="instruccion mt-5">Completa las oraciones con las palabras del recuadro.</div>
+      <div class="ex1">
+        <recuadropalabras :palabras="['círculo','quiero','centro','cuento','cocodrilo','casar']"></recuadropalabras>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="parrafoinputs"><span><strong>1.</strong> Los niños forman un </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="círculo" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+          <div class="parrafoinputs"><span><strong>2.</strong> Al </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="centro" type="text" placeh="-"></inputbox><span> del patio se coloca un niño.</span>
+          </div>
+          <div class="parrafoinputs"><span><strong>3.</strong> En el  </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="cuento" type="text" placeh="-"></inputbox><span> aparece un </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="cocodrilo" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+          <div class="parrafoinputs"><span><strong>4.</strong> Arroz con leche, me </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="quiero" type="text" placeh="-"></inputbox>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="casar" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

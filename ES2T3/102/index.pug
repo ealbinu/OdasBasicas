@@ -1,30 +1,42 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Escribo palabras con c o con qu'
+- subtitle = '¿Con c o con qu?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .parrafoinputs {
+                background: var(--pastel4);
+                margin-top: 10px;
+            }
+            .ex1 .recuadropalabras {
+                background: var(--pastel2);
+            }
+            .ex1 .recuadropalabras strong {
+                background: #fff;
+                color: var(--clear);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las oraciones con las palabras del recuadro.
 
-            .row.mt-3
-            
-
-
-
-
+            .ex1: recuadropalabras(:palabras="['círculo','quiero','centro','cuento','cocodrilo','casar']")
+            .row.mt-3.ex1
+                .col-12
+                    +parrafo(0, ['<strong>1.</strong> Los niños forman un ', ['círculo'], '.'])
+                    +parrafo(1, ['<strong>2.</strong> Al ', ['centro'], ' del patio se coloca un niño.'])
+                    +parrafo(2, ['<strong>3.</strong> En el  ', ['cuento'], ' aparece un ', ['cocodrilo'], '.'])
+                    +parrafo(4, ['<strong>4.</strong> Arroz con leche, me ', ['quiero'], ['casar'], '.'])
+                    
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
