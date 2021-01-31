@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico las Cruzadas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,29 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico las Cruzadas</h1>
+      <h2>El Imperio bizantino</h2>
+      <div class="instruccion mt-5">Colorea las características del Imperio bizantino. Consulta la página 91 y 92 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-3">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[0]" :text="i[1]" initclass="coloring"></check>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Relaciona con una línea las columnas.Consulta las páginas 92 y 93 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <relational v-if="tempsobj.sources" v-model="r[8]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <div class="common c3 w-100">{{source}}</div>
+            </template>
+            <template v-slot:target="{target}">
+              <div class="common c1 w-100 h4">{{target}}</div>
+            </template>
+          </relational>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +61,44 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          [1, 'Su capital estuvo en Bizancio.'],
+          [1, 'Su religión fue la politeísta.'],
+          [0, 'Tenía como lengua oficial el latín.'],
+          [1, 'La ciudad más poblada fue Constantinopla.'],
+          [1, 'Abarcó la península de los Balcanes, Asia menor, Palestina, Siria, Egipto e islas del Mediterráneo oriental.'],
+          [1, 'Acumularon grandes riquezas para mantener su poder.'],
+          [0, 'Desarrolló el comercio, la navegación y la industria.'],
+          [1, 'Concentraban mercancías que procedían de oriente.'],
+      ])
+      
+      app.$set(app.tempsobj, 'sources', [
+          'Era la religión de Bizancio.',
+          'Gracias a la fusión de dos elementos, en Bizancio se impusieron los concilios:',
+          'Año en que se separó la Iglesia católica romana y la Iglesia bizantina.',
+          'En el imperio bizantino se fusionaron elementos romanos con los:',
+          'Fue la lengua oficial del Imperio bizantino.',
+          'En el Imperio bizantino florecieron el arte y las:',
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          'Del poder político y eclesiástico',
+          'Cristiano-ortodoxa',
+          'Griegos y persas',
+          '1054',
+          'Ciencias',
+          'Griego'
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_1'], 
+          ['s_1', 't_0'], 
+          
+          ['s_2', 't_3'],
+          ['s_3', 't_2'],
+          
+          ['s_4', 't_5'],
+          ['s_5', 't_4'],
+          ])
+    </script>
   </body>
 </html>

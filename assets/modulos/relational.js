@@ -61,7 +61,7 @@ Vue.component('relational', {
         }
     },
     mounted () {
-        //this.$emit('input', false)
+        this.$emit('input', false)
 
         var _this = this
 

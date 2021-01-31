@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico las Cruzadas'
+- subtitle = 'El Imperio bizantino'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,16 +17,57 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Colorea las características del Imperio bizantino. Consulta la página 91 y 92 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-3: check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i[0]" :text="i[1]" initclass="coloring")
             
 
-
-
-
+            .instruccion.mt-5 Relaciona con una línea las columnas.Consulta las páginas 92 y 93 de tu libro de texto SEP.
+            .row.mt-3.ex2
+                .col-12
+                    relational(v-if="tempsobj.sources" v-model="r[8]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): .common.c3.w-100 {{source}}
+                        template(v-slot:target="{target}"): .common.c1.w-100.h4 {{target}}
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    [1, 'Su capital estuvo en Bizancio.'],
+                    [1, 'Su religión fue la politeísta.'],
+                    [0, 'Tenía como lengua oficial el latín.'],
+                    [1, 'La ciudad más poblada fue Constantinopla.'],
+                    [1, 'Abarcó la península de los Balcanes, Asia menor, Palestina, Siria, Egipto e islas del Mediterráneo oriental.'],
+                    [1, 'Acumularon grandes riquezas para mantener su poder.'],
+                    [0, 'Desarrolló el comercio, la navegación y la industria.'],
+                    [1, 'Concentraban mercancías que procedían de oriente.'],
+                ])
+
+                app.$set(app.tempsobj, 'sources', [
+                    'Era la religión de Bizancio.',
+                    'Gracias a la fusión de dos elementos, en Bizancio se impusieron los concilios:',
+                    'Año en que se separó la Iglesia católica romana y la Iglesia bizantina.',
+                    'En el imperio bizantino se fusionaron elementos romanos con los:',
+                    'Fue la lengua oficial del Imperio bizantino.',
+                    'En el Imperio bizantino florecieron el arte y las:',
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Del poder político y eclesiástico',
+                    'Cristiano-ortodoxa',
+                    'Griegos y persas',
+                    '1054',
+                    'Ciencias',
+                    'Griego'
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_1'], 
+                    ['s_1', 't_0'], 
+                    
+                    ['s_2', 't_3'],
+                    ['s_3', 't_2'],
+                    
+                    ['s_4', 't_5'],
+                    ['s_5', 't_4'],
+                    ])

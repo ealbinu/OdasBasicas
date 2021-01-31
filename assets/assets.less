@@ -210,6 +210,16 @@ strong {
             box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
         }
     }
+    &.coloring{
+        background: #f5f5f5;
+        .checkbox{
+            display: none;
+        }
+        &.activecheck{
+            background: @pastel1;
+            border: 2px solid @accent;
+        }
+    }
 }
 
 .choose{
@@ -300,13 +310,14 @@ strong {
             background-repeat: no-repeat;
             background-size: 70%;
         }
+        &.isright{
+            background: @rightcol;
+            &:after{ background-image: url(aimg/isright.svg); }
+            @media (max-width: 680px){ transform: scale(.6); }
+        }
 
     }
-    .isright{
-        background: @rightcol;
-        &:after{ background-image: url(aimg/isright.svg); }
-        @media (max-width: 680px){ transform: scale(.6); }
-    }
+    
     .iswrong{
         background: @wrongcol;
         @media (max-width: 680px){ transform: scale(.6); }
@@ -831,4 +842,10 @@ input[type=number] {
     padding: 10px;
     border-radius: 10px;
     background: var(--pastel1);
+    &.c1{ background: var(--pastel1); }
+    &.c2{ background: var(--pastel2); }
+    &.c3{ background: var(--pastel3); }
+    &.c4{ background: var(--pastel4); }
+    &.c5{ background: var(--pastel5); }
+    &.c6{ background: var(--pastel6); }
 }
