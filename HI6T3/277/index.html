@@ -41,6 +41,15 @@
           </relational>
         </div>
       </div>
+      <div class="instruccion mt-5">Selecciona la opción que completa cada enunciado. Consulta la página 93 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-12">
+          <choose v-model="r[9]" :ref="refCount()" :num="'1.'" text="Las guerras entre Medio Oriente y Europa comenzaron en el siglo:" :options="['Siglo X.','Siglo IX.','Siglo XI.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[10]" :ref="refCount()" :num="'2.'" text="El objetivo principal de estas guerras era:" :options="['Obtener más oro.','Recuperar Jerusalén.','Derrocar el Imperio bizantino.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[11]" :ref="refCount()" :num="'3.'" text="Era la institución que ofrecía el perdón de los pecados y resguardo de los bienes materiales a cambio de que se participara en las Cruzadas." :options="['La Iglesia.','El rey.','El consulado.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[12]" :ref="refCount()" :num="'4.'" text="Cuando los cristianos derrotaron a los musulmanes y al paso del tiempo éstos derrotaron a los europeos, se favoreció:" :options="['El comercio.','El contacto entre las civilizaciones.','Más conflictos.']" @isright="right++" :answer-num="1"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
