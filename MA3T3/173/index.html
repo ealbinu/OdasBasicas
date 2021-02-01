@@ -4,23 +4,126 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sumo y resto fracciones</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .frac {
+          text-align: center;
+          font-size: 1.4rem;
+      }
+      .frac hr {
+          margin: 5px auto;
+          border: none;
+          border-top: 4px solid var(--sec);
+          min-width: 30px;
+      }
+      .frac .inputbox input {
+          border-radius: 6px;
+          padding: 0 2px;
+          font-size: 1.4rem;
+          max-width: 50px;
+          margin: 0 6px;
+      }
+      .numbers {
+          color: var(--accent);
+          margin: 0 6px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sumo y resto fracciones</h1>
+      <h2>¿Me sobra o me falta?</h2>
+      <div class="instruccion mt-5">Completa las siguientes operaciones.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 verticalrow">
+          <div class="row centerrow common c1 mt-1">
+            <div class="frac">4<hr>10</div>
+            <numbers>+</numbers>
+            <div class="frac">6<hr>10</div>
+            <numbers>=</numbers>
+            <div class="frac">
+              <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+          <div class="row centerrow common c2 mt-1">
+            <div class="frac">5<hr>5</div>
+            <numbers>-</numbers>
+            <div class="frac">
+              <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+            </div>
+            <numbers>=</numbers>
+            <div class="frac">2<hr>5</div>
+          </div>
+          <div class="row centerrow common c3 mt-1">
+            <div class="frac">
+              <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+            </div>
+            <numbers>+</numbers>
+            <div class="frac">1<hr>7</div>
+            <numbers>=</numbers>
+            <div class="frac">5<hr>7</div>
+          </div>
+          <div class="row centerrow common c4 mt-1">
+            <div class="frac">7<hr>8</div>
+            <numbers>-</numbers>
+            <div class="frac">3<hr>8</div>
+            <numbers>=</numbers>
+            <div class="frac">
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+          <div class="row centerrow common c5 mt-1">
+            <div class="frac">9<hr>9</div>
+            <numbers>-</numbers>
+            <div class="frac">
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+            </div>
+            <numbers>+</numbers>
+            <div class="frac">2<hr>9</div>
+            <numbers>=</numbers>
+            <div class="frac">6<hr>9</div>
+          </div>
+          <div class="row centerrow common c1 mt-1">
+            <div class="frac">2<hr>6</div>
+            <numbers>+</numbers>
+            <div class="frac">3<hr>6</div>
+            <numbers>=</numbers>
+            <div class="frac">
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+          <div class="row centerrow common c2 mt-1">
+            <div class="frac">3<hr>4</div>
+            <numbers>-</numbers>
+            <div class="frac">2<hr>4</div>
+            <numbers>=</numbers>
+            <div class="frac">
+              <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png" alt=""/></div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +144,6 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>//</script>
   </body>
 </html>
