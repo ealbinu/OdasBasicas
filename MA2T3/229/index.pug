@@ -1,25 +1,37 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Multiplico por 2, 4 y 8'
+- subtitle = 'Patos, gatos y arañas'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                font-size: 1.2rem;
+            }
+            .inputbox input {
+                max-width: 80px;
+                border-radius: 6px;
+                padding: 4px;
+                font-size: 1.2rem;
+                margin-left: 4px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve las siguientes multiplicaciones.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-4
+                        .common.my-2: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[0]*i[1]" type="number" placeh="#")
+                            template(v-slot:before="") {{i[0]}} x {{i[1]}} = 
             
 
 
@@ -29,4 +41,20 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    [2,2],
+                    [2,3],
+                    [2,5],
+                    [2,6],
+                    [2,10],
+                    [2,4],
+                    [4,3],
+                    [4,5],
+                    [4,6],
+                    [4,10],
+                    [2,8],
+                    [8,3],
+                    [8,5],
+                    [8,6],
+                    [8,10],
+                ])

@@ -4,23 +4,42 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Multiplico por 2, 4 y 8</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          font-size: 1.2rem;
+      }
+      .inputbox input {
+          max-width: 80px;
+          border-radius: 6px;
+          padding: 4px;
+          font-size: 1.2rem;
+          margin-left: 4px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Multiplico por 2, 4 y 8</h1>
+      <h2>Patos, gatos y arañas</h2>
+      <div class="instruccion mt-5">Resuelve las siguientes multiplicaciones.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-4">
+            <div class="common my-2">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i[0]*i[1]" type="number" placeh="#">
+                <template v-slot:before="">{{i[0]}} x {{i[1]}} = </template>
+              </inputbox>
+            </div>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +60,24 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          [2,2],
+          [2,3],
+          [2,5],
+          [2,6],
+          [2,10],
+          [2,4],
+          [4,3],
+          [4,5],
+          [4,6],
+          [4,10],
+          [2,8],
+          [8,3],
+          [8,5],
+          [8,6],
+          [8,10],
+      ])
+    </script>
   </body>
 </html>
