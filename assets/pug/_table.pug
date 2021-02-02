@@ -7,12 +7,17 @@ mixin table(indexvmodel, campos)
                     if typeof field === 'object'
                         .col
                             inputbox(v-model="r["+(vmcount+indexvmodel)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="number" placeh="#")
+                                if field[1]
+                                    template(v-slot:before="")=field[1]
+                                if field[2]
+                                    template(v-slot:after="")=field[2]
                         - vmcount++
                     else 
                         .col: inputbox(answer=field type="number" example)
 
 
 //
+    - var tb = []
     - tb.push([[8], 16, [32], [40], 56])
     - tb.push([[9], 18, 36, [45], [63]])
     +table(0, tb)

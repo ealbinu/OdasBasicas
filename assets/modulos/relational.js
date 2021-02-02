@@ -19,7 +19,8 @@ Vue.component('relational', {
             result: false,
             started: false,
             anchorSource: 'Right',
-            anchorTarget: 'Left'
+            anchorTarget: 'Left',
+            uuid: 0
         }
     },
     computed:{
@@ -35,10 +36,10 @@ Vue.component('relational', {
         startConnections () {
             this.started = true
             for (item in this.sources) {
-                jsPlumb.addEndpoint('s_'+item, { anchor:this.anchorSource, uuid: 's_'+item }, epDrag )
+                jsPlumb.addEndpoint(this.uuid+'s_'+item, { anchor:this.anchorSource, uuid: this.uuid+'s_'+item }, epDrag )
             }
             for (item in this.targets) {
-                jsPlumb.addEndpoint('t_'+item, { anchor:this.anchorTarget, uuid: 't_'+item }, epTarget )
+                jsPlumb.addEndpoint(this.uuid+'t_'+item, { anchor:this.anchorTarget, uuid: this.uuid+'t_'+item }, epTarget )
             }
             
             // Load connections
@@ -50,7 +51,15 @@ Vue.component('relational', {
             }
         },
         verify () { 
+
+            for(var i in this.oks){
+                for(var x in this.oks[i]){
+                    this.oks[i][x] = this.uuid + this.oks[i][x]
+                }
+            }
+
             this.evaluate = true
+            console.log(this.status.sort(), this.oks.sort())
             var endResult = _.isEqual( this.status.sort(), this.oks.sort() )
             if(endResult){
                 this.$emit('isright', true)
@@ -93,20 +102,21 @@ Vue.component('relational', {
     },
     created() {
         window.addEventListener("resize", function (){
-            console.log('resizing')
             jsPlumb.repaintEverything()
         })
+
+        this.uuid = Math.random().toString(36).substring(10)
     },
     template: `
         <div class="relational d-flex justify-content-between" :class="setclass + ' ' + (initclass?initclass:' ')">
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
             <div class="sources">
-                <div v-for="(source, index) in sources" class="r_source" :id="'s_'+index" :data="source.data">
+                <div v-for="(source, index) in sources" class="r_source" :id="uuid+'s_'+index" :data="source.data">
                     <slot name="source" :source="source" />
                 </div>
             </div>
             <div class="targets">
-                <div v-for="(target, index) in targets" class="r_target" :id="'t_'+index" :data="target.data">
+                <div v-for="(target, index) in targets" class="r_target" :id="uuid+'t_'+index" :data="target.data">
                     <slot name="target" :target="target" />
                 </div>
             </div>
