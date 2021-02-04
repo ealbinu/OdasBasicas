@@ -41,59 +41,66 @@
           font-size: 1rem;
           box-shadow: 4px 4px 0 #BF57A4;
       }
+      .dropdowns select{
+          font-size: 1rem;
+      }
       
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Reconozco el perímetro</h1>
-      <div class="instruccion mt-5">Observa las figuras y selecciona la respuesta correcta de cada celda de la tabla. Observa el ejemplo.</div>
-      <div class="row mt-3 ex1">
-        <div class="col-12 text-center"><img class="img-fluid figure" src="aimg/a.png"/></div>
-        <div class="col-12">
-          <div class="row head text-center">
-            <div class="col-md col-6">
-              <labeltext>Nombre de la figura</labeltext>
-              <p><strong>Triángulo equilátero</strong></p>
-            </div>
-            <div class="col-md col-6">
-              <labeltext>No. de lados</labeltext>
-              <p><strong>3</strong></p>
-            </div>
-            <div class="col-md col-6">
-              <labeltext>Procedimiento</labeltext>
-              <p><strong>8 + 8 + 8</strong></p>
-            </div>
-            <div class="col-md col-6">
-              <labeltext>Fórmula</labeltext>
-              <p><strong>𝞠 = 3𝓵</strong></p>
-            </div>
-            <div class="col-md col-6">
-              <labeltext>Perímetro</labeltext>
-              <p><strong>24 m</strong></p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2>¿Cuánto mide? / Hagámoslo más fácil</h2>
+      <div class="instruccion mt-5">Observa las figuras y selecciona la respuesta correcta de cada celda de la tabla.</div>
+      <!--.row.mt-3.ex1
+      .col-12.text-center: img(src="aimg/a.png").img-fluid.figure
+      .col-12
+          .row.head.text-center
+              .col-md.col-6
+                  labeltext Nombre de la figura
+                  p: strong Triángulo equilátero
+              .col-md.col-6
+                  labeltext No. de lados
+                  p: strong 3
+              .col-md.col-6
+                  labeltext Procedimiento
+                  p: strong 8 + 8 + 8
+              .col-md.col-6
+                  labeltext Fórmula
+                  p: strong 𝞠 = 3𝓵
+              .col-md.col-6
+                  labeltext Perímetro
+                  p: strong 24 m
+      -->
       <template v-for="(i, index) in tempsobj.ex1">
         <div class="row mt-3 ex1">
           <div class="col-12 text-center"><img class="img-fluid figure" :src="'aimg/'+i.fig"/></div>
           <div class="col-12">
             <div class="row head text-center no-gutters">
               <div class="col-md col-6">
-                <choose v-model="r[0+i.mod]" :ref="refCount()" text="Nombre de la figura" :options="i.n1" @isright="right++" :answer-num="i.r1"></choose>
+                <div class="label">Nombre de la figura</div>
+                <dropdowns v-model="r[0+i.mod]" :ref="refCount()" :options="[{options:i.n1, answer: i.n1[i.r1]}]"></dropdowns>
+                <!--choose(v-model="r[0+i.mod]" :ref="refCount()" text="Nombre de la figura" :options="i.n1" @isright="right++" :answer-num="i.r1")-->
               </div>
               <div class="col-md col-6">
-                <choose v-model="r[1+i.mod]" :ref="refCount()" text="No. de lados" :options="i.n2" @isright="right++" :answer-num="i.r2"></choose>
+                <div class="label">No. de lados</div>
+                <dropdowns v-model="r[1+i.mod]" :ref="refCount()" :options="[{options:i.n2, answer:i.n2[i.r2]}]"></dropdowns>
+                <!--choose(v-model="r[1+i.mod]" :ref="refCount()" text="No. de lados" :options="i.n2" @isright="right++" :answer-num="i.r2")-->
               </div>
               <div class="col-md col-6">
-                <choose v-model="r[2+i.mod]" :ref="refCount()" text="Procedimiento" :options="i.n3" @isright="right++" :answer-num="i.r3"></choose>
+                <div class="label">Procedimiento</div>
+                <dropdowns v-model="r[2+i.mod]" :ref="refCount()" :options="[{options:i.n3, answer:i.n3[i.r3]}]"></dropdowns>
+                <!--choose(v-model="r[2+i.mod]" :ref="refCount()" text="Procedimiento" :options="i.n3" @isright="right++" :answer-num="i.r3")-->
               </div>
               <div class="col-md col-6">
-                <choose v-model="r[3+i.mod]" :ref="refCount()" text="Fórmula" :options="i.n4" @isright="right++" :answer-num="i.r4"></choose>
+                <div class="label">Fórmula</div>
+                <dropdowns v-model="r[3+i.mod]" :ref="refCount()" :options="[{options:i.n4, answer:i.n4[i.r4]}]"></dropdowns>
+                <!--choose(v-model="r[3+i.mod]" :ref="refCount()" text="Fórmula" :options="i.n4" @isright="right++" :answer-num="i.r4")-->
               </div>
               <div class="col-md col-6">
-                <choose v-model="r[4+i.mod]" :ref="refCount()" text="Perímetro" :options="i.n5" @isright="right++" :answer-num="i.r5"></choose>
+                <div class="label">Perímetro</div>
+                <dropdowns v-model="r[4+i.mod]" :ref="refCount()" :options="[{options:i.n5, answer:i.n5[i.r5]}]"></dropdowns>
+                <!--choose(v-model="r[4+i.mod]" :ref="refCount()" text="Perímetro" :options="i.n5" @isright="right++" :answer-num="i.r5")-->
               </div>
             </div>
           </div>
