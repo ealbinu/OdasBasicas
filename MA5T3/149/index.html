@@ -22,9 +22,10 @@
       .ex1 .inputbox input,
       .ex1 .inputbox .numbers {
           font-size: 1.2rem;
-          width: 100px;
+          width: 60px;
           border-radius: 4px;
           margin: 0 4px;
+          padding: 2px;
           text-align: center;
       }
       
@@ -37,13 +38,13 @@
       <div class="instruccion mt-5">Completa las siguientes conversiones. Observa el ejemplo.</div>
       <div class="row mt-3 ex1">
         <template v-for="(i, index) in tempsobj.ex1">
-          <div class="col-md-4 mb-2" v-if="i.example">
+          <div class="col-md-6 col-lg-4 mb-2" v-if="i.example">
             <inputbox :answer="i.value" placeh="-" example="example">
               <template v-slot:before="">{{i.before}}</template>
               <template v-slot:after="">{{i.after}}</template>
             </inputbox>
           </div>
-          <div class="col-md-4 mb-2" v-else="v-else">
+          <div class="col-md-6 col-lg-4 mb-2" v-else="v-else">
             <inputbox v-model="r[index-1]" :ref="refCount()" @isright="right++" :answer="i.value" type="number" placeh="-">
               <template v-slot:before="">{{i.before}}</template>
               <template v-slot:after="">{{i.after}}</template>

@@ -19,9 +19,10 @@ html(lang="es")
             .ex1 .inputbox input,
             .ex1 .inputbox .numbers {
                 font-size: 1.2rem;
-                width: 100px;
+                width: 60px;
                 border-radius: 4px;
                 margin: 0 4px;
+                padding: 2px;
                 text-align: center;
             }
 
@@ -35,11 +36,11 @@ html(lang="es")
 
             .row.mt-3.ex1
                 template(v-for="(i, index) in tempsobj.ex1")
-                    .col-md-4.mb-2(v-if="i.example")
+                    .col-md-6.col-lg-4.mb-2(v-if="i.example")
                         inputbox( :answer="i.value" placeh="-" example)
                             template(v-slot:before="") {{i.before}}
                             template(v-slot:after="") {{i.after}}
-                    .col-md-4.mb-2(v-else)
+                    .col-md-6.col-lg-4.mb-2(v-else)
                         inputbox(v-model="r[index-1]" :ref="refCount()" @isright="right++" :answer="i.value" type="number" placeh="-")
                             template(v-slot:before="") {{i.before}}
                             template(v-slot:after="") {{i.after}}
