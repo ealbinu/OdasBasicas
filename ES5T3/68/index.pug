@@ -1,0 +1,79 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+
+- title = 'Identifico acotaciones y diálogos'
+- subtitle = 'Segundo acto'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .selectable {
+                display: inline-block;
+            }
+            .selectable .circledactive {
+                display: none;
+            }
+            .selectable.on {
+                box-sizing: border-box;
+                border: 2px solid var(--main);
+                border-radius: 7px;
+            }
+            .selectable.on.sub {
+                border: none;
+                border-radius: 0;
+                border-bottom: 2px solid var(--main);
+            }
+            .ex1{
+                background: #EACE9F;
+                padding: 40px 0;
+                border-radius: 10px;
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Lee con atención el siguiente fragmento de un guion de teatro. Encierra todas las acotaciones del guion y subraya los diálogos.
+
+            .row.mt-3.ex1.centerrow
+                .col-md-8
+                    .text-center
+                        .h4 Pedro y el lobo
+                        p: small (Adaptación a teatro. Fragmento)
+                    div 
+                        | Pedro: 
+                        selectable(:isok="true" v-model="r[0]" :ref="refCount()" @isright="right++") (Grita desesperado.)
+                    div
+                        selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++" initclass="sub") ¡Auxilio, viene el lobo por mis ovejas!
+                    div.my-2: em Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.
+                    div
+                        | Campesino:
+                        selectable(:isok="true" v-model="r[2]" :ref="refCount()" @isright="right++") (Preocupado.)
+                    div
+                        selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++" initclass="sub") ¿Dónde está el lobo?
+                    
+                    div.mt-2
+                        | Pedro:
+                        selectable(:isok="true" v-model="r[4]" :ref="refCount()" @isright="right++") (Riendo a carcajadas.)
+                    div
+                        selectable(:isok="true" v-model="r[5]" :ref="refCount()" @isright="right++" initclass="sub") ¡Qué tonto eres! No hay ningún lobo.
+                    
+                    div.mt-2
+                        | Campesino:
+                        selectable(:isok="true" v-model="r[6]" :ref="refCount()" @isright="right++") (Muy enojado.)
+                    div
+                        selectable(:isok="true" v-model="r[7]" :ref="refCount()" @isright="right++" initclass="sub") Síguele con tus bromas y ya verás que el día que aparezca el lobo nadie te va a creer.
+                .col-md: img(src="aimg/im.png").img-fluid
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])
