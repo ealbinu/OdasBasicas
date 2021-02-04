@@ -45,6 +45,12 @@
           padding: 4px 0;
           border-radius: 4px;
       }
+      .ex2 .inputbox input {
+          font-size: 1rem;
+          padding: 4px 0;
+          border-radius: 4px;
+      }
+      
       
     </style>
   </head>
@@ -144,6 +150,17 @@
           </div>
           <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" answer="Cuatrocientos ochenta y nueve" type="text" placeh="Nombre"></inputbox>
         </div>
+      </div>
+      <div class="instruccion mt-5">Ordena las cantidades anteriores de <strong>menor a mayor</strong>.</div>
+      <div class="row mt-3 ex2 no-gutters">
+        <template v-for="(i, index) in [23,54,364,489,742,851]">
+          <div class="col">
+            <inputbox v-model="r[index+23]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-">
+              <template v-slot:after="" v-if="index == 5">.</template>
+              <template v-slot:after="" v-else="v-else">,</template>
+            </inputbox>
+          </div>
+        </template>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>

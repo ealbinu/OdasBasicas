@@ -42,6 +42,12 @@ html(lang="es")
                 padding: 4px 0;
                 border-radius: 4px;
             }
+            .ex2 .inputbox input {
+                font-size: 1rem;
+                padding: 4px 0;
+                border-radius: 4px;
+            }
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -94,6 +100,15 @@ html(lang="es")
                         inputbox(v-model="r[21]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"): template(v-slot:before="") Decenas
                         inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"): template(v-slot:before="") Unidades
                     inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" answer="Cuatrocientos ochenta y nueve" type="text" placeh="Nombre")
+
+            .instruccion.mt-5 Ordena las cantidades anteriores de #[strong menor a mayor].
+
+            .row.mt-3.ex2.no-gutters
+                template(v-for="(i, index) in [23,54,364,489,742,851]")
+                    .col: inputbox(v-model="r[index+23]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-")
+                        template(v-slot:after="" v-if="index == 5") .
+                        template(v-slot:after="" v-else) ,
+                            
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
