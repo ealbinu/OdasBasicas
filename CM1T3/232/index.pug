@@ -25,6 +25,7 @@ html(lang="es")
                         template(v-for="(i, index) in 3")
                             selectable(:isok="true" v-model="r[index]" :ref="refCount()" @isright="right++" ex)
             
+            .instruccion.mt-5 Marca así las acciones que ayudan a cuidar el agua.
             .row.mt-3.ex2
                 template(v-for="(i, index) in [1,0,1,0,1,0,1,1]")
                     .col-md-3: check(v-model="r[index+3]" :ref="refCount()"  @isright="right++" :answer="i"): img(:src="imgpath('b',index+1)", alt="").img-fluid
