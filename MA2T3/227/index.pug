@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Descomponemos figuras'
+- subtitle = 'Mosaicos con 6 lados / Con rombos'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,18 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe el nombre de las figuras:
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md-4
+                    img(src="aimg/f1.png").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="hexágono" type="text" placeh="-")
+                .col-md-4
+                    img(src="aimg/f2.png").img-fluid
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="rombo" type="text" placeh="-")
+                .col-md-4
+                    img(src="aimg/f3.png").img-fluid
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="romboide" type="text" placeh="-")
             
 
 
