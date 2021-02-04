@@ -24,7 +24,7 @@ html(lang="es")
                     .col-md-3: check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i[0]" :text="i[1]" initclass="coloring")
             
 
-            .instruccion.mt-5 Relaciona con una línea las columnas.Consulta las páginas 92 y 93 de tu libro de texto SEP.
+            .instruccion.mt-5 Relaciona con una línea las columnas. Consulta las páginas 92 y 93 de tu libro de texto SEP.
             .row.mt-3.ex2
                 .col-12
                     relational(v-if="tempsobj.sources" v-model="r[8]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
