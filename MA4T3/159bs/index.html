@@ -4,75 +4,45 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cuento unidades cuadradas</title>
+    <title>Estimo el contenido</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      .inputbox {
-          padding: 10px;
-          background: #f5f5f5;
-          border-radius: 10px;
-          margin: 20px 0;
-      }
-      .inputbox .numbers {
+      .inputbox input {
+          padding: 2px;
           font-size: 1.4rem;
       }
-      .inputbox input {
-          font-size: 1.2rem;
-          padding: 2px;
-          width: 80px;
-          margin: 0 6px;
+      .instruccion img{
+          max-width: 60px;
       }
+      
       
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Cuento unidades cuadradas</h1>
-      <h2>¿Cuántas veces cabe? / Contorno y superficie</h2>
-      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
-      <div class="row mt-3 ex1 centerrow">
-        <div class="col-12">
-          <labeltext num="1.">Manuel tiene un terreno que mide 8 unidades de ancho y 5 unidades de largo. ¿Cuál es el área y el perímetro?</labeltext>
-        </div>
-        <div class="col-md-6"><img class="img-fluid" src="aimg/a.png"/></div>
-        <div class="col-md-6">
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#">
-            <template v-slot:before="">
-              <numbers c="3">Área = </numbers>
-            </template>
-            <template v-slot:after="">unidades cuadradas.</template>
-          </inputbox>
-          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
-            <template v-slot:before="">
-              <numbers c="3">Perímetro = </numbers>
-            </template>
-            <template v-slot:after="">unidades.</template>
-          </inputbox>
-        </div>
+      <h1>Estimo el contenido</h1>
+      <h2>¿A cuál le cabe más?</h2>
+      <div class="instruccion mt-5">Enumera los recipientes de mayor a menor según su capacidad.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12"><img class="img-fluid" src="aimg/a1.png"/></div>
+        <template v-for="(i, index) in [3,1,5,2,4]">
+          <div class="col">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+          </div>
+        </template>
       </div>
-      <div class="row mt-3 ex1 centerrow">
-        <div class="col-12">
-          <labeltext num="2.">Pedro compró una mesa que mide 7 unidades de ancho y 6 unidades de largo. ¿Cuánto tiene de área y de perímetro su mesa?</labeltext>
-        </div>
-        <div class="col-md-6"><img class="img-fluid" src="aimg/b.png"/></div>
-        <div class="col-md-6">
-          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#">
-            <template v-slot:before="">
-              <numbers c="4">Área = </numbers>
-            </template>
-            <template v-slot:after="">unidades cuadradas.</template>
-          </inputbox>
-          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#">
-            <template v-slot:before="">
-              <numbers c="4">Perímetro = </numbers>
-            </template>
-            <template v-slot:after="">unidades.</template>
-          </inputbox>
-        </div>
+      <div class="instruccion mt-5">Escribe en los recuadros cuántos veces cabe <img src="aimg/l.png"/> en cada envase.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12"><img class="img-fluid" src="aimg/a2.png"/></div>
+        <template v-for="(i, index) in [8,4,3,2,1]">
+          <div class="col">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+          </div>
+        </template>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>

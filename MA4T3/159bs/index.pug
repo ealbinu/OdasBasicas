@@ -1,28 +1,21 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'Cuento unidades cuadradas'
-- subtitle = '¿Cuántas veces cabe? / Contorno y superficie'
+- title = 'Estimo el contenido'
+- subtitle = '¿A cuál le cabe más?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            .inputbox {
-                padding: 10px;
-                background: #f5f5f5;
-                border-radius: 10px;
-                margin: 20px 0;
-            }
-            .inputbox .numbers {
+            .inputbox input {
+                padding: 2px;
                 font-size: 1.4rem;
             }
-            .inputbox input {
-                font-size: 1.2rem;
-                padding: 2px;
-                width: 80px;
-                margin: 0 6px;
+            .instruccion img{
+                max-width: 60px;
             }
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -30,32 +23,19 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Resuelve los siguientes problemas.
+            .instruccion.mt-5 Enumera los recipientes de mayor a menor según su capacidad.
 
-            .row.mt-3.ex1.centerrow
-                .col-12
-                    labeltext(num="1.") Manuel tiene un terreno que mide 8 unidades de ancho y 5 unidades de largo. ¿Cuál es el área y el perímetro?
-                .col-md-6: img(src="aimg/a.png").img-fluid
-                .col-md-6
-                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="40" type="number" placeh="#")
-                        template(v-slot:before=""): numbers(c=3) Área = 
-                        template(v-slot:after="") unidades cuadradas.
-                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
-                        template(v-slot:before=""): numbers(c=3) Perímetro = 
-                        template(v-slot:after="") unidades.
+            .row.mt-3.ex1
+                .col-12: img(src="aimg/a1.png").img-fluid
+                template(v-for="(i, index) in [3,1,5,2,4]")
+                    .col: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
             
-            .row.mt-3.ex1.centerrow
-                .col-12
-                    labeltext(num="2.") Pedro compró una mesa que mide 7 unidades de ancho y 6 unidades de largo. ¿Cuánto tiene de área y de perímetro su mesa?
-                .col-md-6: img(src="aimg/b.png").img-fluid
-                .col-md-6
-                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#")
-                        template(v-slot:before=""): numbers(c=4) Área = 
-                        template(v-slot:after="") unidades cuadradas.
-                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="26" type="number" placeh="#")
-                        template(v-slot:before=""): numbers(c=4) Perímetro = 
-                        template(v-slot:after="") unidades.
+            .instruccion.mt-5 Escribe en los recuadros cuántos veces cabe #[img(src="aimg/l.png")] en cada envase.
 
+            .row.mt-3.ex1
+                .col-12: img(src="aimg/a2.png").img-fluid
+                template(v-for="(i, index) in [8,4,3,2,1]")
+                    .col: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
 
 
 
