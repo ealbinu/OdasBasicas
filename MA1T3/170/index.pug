@@ -103,7 +103,6 @@ html(lang="es")
                 margin-bottom: 4px;
             }
             .ex3 {
-                background: var(--pastel3);
                 border-radius: 10px;
                 padding: 10px;
             }
@@ -150,13 +149,13 @@ html(lang="es")
                     width: 22px;
                 }
             }
-            .ex3 + .ex3 {
-                background: var(--pastel2);
-            }
             .ex3 .numbers{
                 margin-left: 8px;
                 color: var(--sec);
             }
+
+            .bg1{background: var(--pastel3);}
+            .bg2 { background: var(--pastel2); }
 
 
 
@@ -225,52 +224,70 @@ html(lang="es")
 
             .instruccion.mt-5 Observa los racimos, cuenta las uvas y completa las siguientes operaciones.
 
-            .row.mt-3.ex3
+            .row.mt-3.ex3.centerrow.bg1
                 .col-4
                     .row.justify-content-center.centerrow.no-gutters
-                        .col.text-center: img(src="aimg/u.png").img-fluid
+                        img(src="aimg/u.png" v-for="(i, index) in 1").img-fluid
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        img(src="aimg/u.png" v-for="(i, index) in 1").img-fluid
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        img(src="aimg/u.png" v-for="(i, index) in 2").img-fluid
+            .row.ex3.centerrow.bg1
+                .col-4
                     inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
                         template(v-slot:after="") decena #[numbers + ]
+                .col-4
+                    inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                        template(v-slot:after="") decena #[numbers = ]
+                .col-4
+                    inputbox(v-model="r[26]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:after="") decenas
+            .row.ex3.centerrow.bg1
+                .col-4
                     inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers + ]
                 .col-4
-                    .row.justify-content-center.centerrow.no-gutters
-                        .col.text-center: img(src="aimg/u.png").img-fluid
-                    inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
-                        template(v-slot:after="") decena #[numbers = ]
                     inputbox(v-model="r[25]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers = ]
                 .col-4
-                    .row.justify-content-center.centerrow.no-gutters
-                        .col(v-for="(i, index) in 2").text-center: img(src="aimg/u.png").img-fluid
-                    inputbox(v-model="r[26]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
-                        template(v-slot:after="") decenas
                     inputbox(v-model="r[27]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
                         template(v-slot:after="") unidades
             
-            .row.mt-3.ex3
+
+
+            .row.mt-3.ex3.centerrow.bg2
                 .col-4
                     .row.justify-content-center.centerrow.no-gutters
-                        .col(v-for="(i, index) in 3").text-center: img(src="aimg/u.png").img-fluid
+                        img(src="aimg/u.png" v-for="(i, index) in 3").img-fluid
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        img(src="aimg/u.png" v-for="(i, index) in 2").img-fluid
+                .col-4
+                    .row.justify-content-center.centerrow.no-gutters
+                        img(src="aimg/u.png" v-for="(i, index) in 5").img-fluid
+
+            .row.ex3.centerrow.bg2
+                .col-4
                     inputbox(v-model="r[28]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
                         template(v-slot:after="") decenas #[numbers + ]
+                .col-4
+                    inputbox(v-model="r[30]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        template(v-slot:after="") decenas #[numbers = ]
+                .col-4
+                    inputbox(v-model="r[32]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                        template(v-slot:after="") decenas
+            .row.ex3.centerrow.bg2
+                .col-4
                     inputbox(v-model="r[29]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers + ]
                 .col-4
-                    .row.justify-content-center.centerrow.no-gutters
-                        .col(v-for="(i, index) in 2").text-center: img(src="aimg/u.png").img-fluid
-                    inputbox(v-model="r[30]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
-                        template(v-slot:after="") decenas #[numbers = ]
                     inputbox(v-model="r[31]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
                         template(v-slot:after="") unidades #[numbers = ]
                 .col-4
-                    .row.justify-content-center.centerrow.no-gutters
-                        .col(v-for="(i, index) in 5").text-center: img(src="aimg/u.png").img-fluid
-                    inputbox(v-model="r[32]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
-                        template(v-slot:after="") decenas
                     inputbox(v-model="r[33]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
                         template(v-slot:after="") unidades
-
                         
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
