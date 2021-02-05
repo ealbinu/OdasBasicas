@@ -35,7 +35,7 @@ html(lang="es")
             .row.mt-3.ex1
                 .col-12: img(src="aimg/a2.png").img-fluid
                 template(v-for="(i, index) in [8,4,3,2,1]")
-                    .col: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+                    .col: inputbox(v-model="r[index+5]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
 
 
 
