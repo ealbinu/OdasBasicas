@@ -38,7 +38,7 @@ html(lang="es")
 
             .row.mt-3.ex1
                 template(v-for="(i, index) in [3,6,5,1,2,4]")
-                    .col-md-4: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-")
+                    .col-md-4.mb-3: inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-")
                         template(v-slot:before=""): img(:src="'aimg/a'+(index+1)+'.png'").img-fluid
 
             .instruccion.mt-5 Selecciona la respuesta correcta de las siguientes preguntas.

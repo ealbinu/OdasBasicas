@@ -39,7 +39,7 @@
       <div class="instruccion mt-5">Lee el texto "La gotita de agua" de la página 110 de tu libro de texto SEP. Después, ordena las ilustraciones numerándolas del <strong>1</strong> al <strong>6</strong> de acuerdo con la historia.</div>
       <div class="row mt-3 ex1">
         <template v-for="(i, index) in [3,6,5,1,2,4]">
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="-">
               <template v-slot:before=""><img class="img-fluid" :src="'aimg/a'+(index+1)+'.png'"/></template>
             </inputbox>
