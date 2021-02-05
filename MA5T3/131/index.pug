@@ -76,23 +76,23 @@ html(lang="es")
                         .row.head.text-center.no-gutters
                             .col-md.col-6
                                 .label Nombre de la figura
-                                dropdowns(v-model="r[0+i.mod]" :ref="refCount()" :options="[{options:i.n1, answer: i.n1[i.r1]}]")
+                                dropdowns(v-model="r[0+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n1, answer: i.n1[i.r1]}]")
                                 //choose(v-model="r[0+i.mod]" :ref="refCount()" text="Nombre de la figura" :options="i.n1" @isright="right++" :answer-num="i.r1")
                             .col-md.col-6
                                 .label No. de lados
-                                dropdowns(v-model="r[1+i.mod]" :ref="refCount()" :options="[{options:i.n2, answer:i.n2[i.r2]}]")
+                                dropdowns(v-model="r[1+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n2, answer:i.n2[i.r2]}]")
                                 //choose(v-model="r[1+i.mod]" :ref="refCount()" text="No. de lados" :options="i.n2" @isright="right++" :answer-num="i.r2")
                             .col-md.col-6
                                 .label Procedimiento
-                                dropdowns(v-model="r[2+i.mod]" :ref="refCount()" :options="[{options:i.n3, answer:i.n3[i.r3]}]")
+                                dropdowns(v-model="r[2+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n3, answer:i.n3[i.r3]}]")
                                 //choose(v-model="r[2+i.mod]" :ref="refCount()" text="Procedimiento" :options="i.n3" @isright="right++" :answer-num="i.r3")
                             .col-md.col-6
                                 .label Fórmula
-                                dropdowns(v-model="r[3+i.mod]" :ref="refCount()" :options="[{options:i.n4, answer:i.n4[i.r4]}]")
+                                dropdowns(v-model="r[3+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n4, answer:i.n4[i.r4]}]")
                                 //choose(v-model="r[3+i.mod]" :ref="refCount()" text="Fórmula" :options="i.n4" @isright="right++" :answer-num="i.r4")
                             .col-md.col-6
                                 .label Perímetro
-                                dropdowns(v-model="r[4+i.mod]" :ref="refCount()" :options="[{options:i.n5, answer:i.n5[i.r5]}]")
+                                dropdowns(v-model="r[4+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n5, answer:i.n5[i.r5]}]")
                                 //choose(v-model="r[4+i.mod]" :ref="refCount()" text="Perímetro" :options="i.n5" @isright="right++" :answer-num="i.r5")
 
 

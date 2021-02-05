@@ -79,27 +79,27 @@
             <div class="row head text-center no-gutters">
               <div class="col-md col-6">
                 <div class="label">Nombre de la figura</div>
-                <dropdowns v-model="r[0+i.mod]" :ref="refCount()" :options="[{options:i.n1, answer: i.n1[i.r1]}]"></dropdowns>
+                <dropdowns v-model="r[0+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n1, answer: i.n1[i.r1]}]"></dropdowns>
                 <!--choose(v-model="r[0+i.mod]" :ref="refCount()" text="Nombre de la figura" :options="i.n1" @isright="right++" :answer-num="i.r1")-->
               </div>
               <div class="col-md col-6">
                 <div class="label">No. de lados</div>
-                <dropdowns v-model="r[1+i.mod]" :ref="refCount()" :options="[{options:i.n2, answer:i.n2[i.r2]}]"></dropdowns>
+                <dropdowns v-model="r[1+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n2, answer:i.n2[i.r2]}]"></dropdowns>
                 <!--choose(v-model="r[1+i.mod]" :ref="refCount()" text="No. de lados" :options="i.n2" @isright="right++" :answer-num="i.r2")-->
               </div>
               <div class="col-md col-6">
                 <div class="label">Procedimiento</div>
-                <dropdowns v-model="r[2+i.mod]" :ref="refCount()" :options="[{options:i.n3, answer:i.n3[i.r3]}]"></dropdowns>
+                <dropdowns v-model="r[2+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n3, answer:i.n3[i.r3]}]"></dropdowns>
                 <!--choose(v-model="r[2+i.mod]" :ref="refCount()" text="Procedimiento" :options="i.n3" @isright="right++" :answer-num="i.r3")-->
               </div>
               <div class="col-md col-6">
                 <div class="label">Fórmula</div>
-                <dropdowns v-model="r[3+i.mod]" :ref="refCount()" :options="[{options:i.n4, answer:i.n4[i.r4]}]"></dropdowns>
+                <dropdowns v-model="r[3+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n4, answer:i.n4[i.r4]}]"></dropdowns>
                 <!--choose(v-model="r[3+i.mod]" :ref="refCount()" text="Fórmula" :options="i.n4" @isright="right++" :answer-num="i.r4")-->
               </div>
               <div class="col-md col-6">
                 <div class="label">Perímetro</div>
-                <dropdowns v-model="r[4+i.mod]" :ref="refCount()" :options="[{options:i.n5, answer:i.n5[i.r5]}]"></dropdowns>
+                <dropdowns v-model="r[4+i.mod]" :ref="refCount()" @isright="right++" :options="[{options:i.n5, answer:i.n5[i.r5]}]"></dropdowns>
                 <!--choose(v-model="r[4+i.mod]" :ref="refCount()" text="Perímetro" :options="i.n5" @isright="right++" :answer-num="i.r5")-->
               </div>
             </div>
