@@ -4,23 +4,33 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico el uso de la electricidad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .check{
+          background: var(--pastel4);
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico el uso de la electricidad</h1>
+      <h2>El funcionamiento del circuito eléctrico y su aprovechamiento</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los cuidados que se debe tener para el manejo de la electricidad en nuestra vida cotidiana.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true" text="Remplazar cables dañados o quemados por donde transite la electricidad."></check>
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="true" text="Asegurarse de que las manos estén secas antes de tocar una toma de luz."></check>
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="false" text="Dejar encendido el televisor todo el día."></check>
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="true" text="No colocar cables eléctricos debajo de tapetes o alfombras, puede ocasionar incendios."></check>
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="false" text="Usar muchos aparatos eléctricos en una sola toma de corriente."></check>
+          <check v-model="r[5]" :ref="refCount()" @isright="right++" :answer="true" text="Desconectar los electrodomésticos después de utilizarlos para ahorrar el consumo de energía."></check>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

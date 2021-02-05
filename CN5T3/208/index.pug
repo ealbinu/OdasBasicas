@@ -1,25 +1,32 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico el uso de la electricidad'
+- subtitle = 'El funcionamiento del circuito eléctrico y su aprovechamiento'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .check{
+                background: var(--pastel4);
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los cuidados que se debe tener para el manejo de la electricidad en nuestra vida cotidiana.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12
+                    check(v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="true" text="Remplazar cables dañados o quemados por donde transite la electricidad.")
+                    check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="true" text="Asegurarse de que las manos estén secas antes de tocar una toma de luz.")
+                    check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false" text="Dejar encendido el televisor todo el día.")
+                    check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="true" text="No colocar cables eléctricos debajo de tapetes o alfombras, puede ocasionar incendios.")
+                    check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="false" text="Usar muchos aparatos eléctricos en una sola toma de corriente.")
+                    check(v-model="r[5]" :ref="refCount()"  @isright="right++" :answer="true" text="Desconectar los electrodomésticos después de utilizarlos para ahorrar el consumo de energía.")
             
 
 
