@@ -1,10 +1,16 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var tb = []
+- tb.push([[8], 16, [32], [40], 56])
+- tb.push([[9], 18, 36, [45], [63]])
++table(0, tb)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Uso de tablas y gráficas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -14,13 +20,97 @@
       /*
       .ex1 {}
       */
+      .ex2 .tablemod .row:nth-child(n+2) .col:first-child .inputbox {
+          justify-content: flex-start;
+      }
+      .ex2 .tablemod .row:nth-child(n+2) .col:first-child .inputbox .numbers {
+          font-size: 1rem;
+      }
+      .ex2 .tablemod .row:nth-child(1) .col .inputbox,
+      .ex2 .tablemod .row:last-child .col .inputbox {
+          background: var(--pastel3);
+      }
+      .ex2 .tablemod .row:nth-child(1) .col .inputbox .numbers,
+      .ex2 .tablemod .row:last-child .col .inputbox .numbers {
+          color: var(--rightcol) !important;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Uso de tablas y gráficas</h1>
+      <h2>Las características de los reportes de encuesta</h2>
+      <div class="instruccion mt-5">Observa la ilustración, reflexiona y selecciona la respuesta correcta de cada pregunta.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/a.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <choose v-model="r[0]" :ref="refCount()" num="1." text="¿Cuántas personas hay en la sala?" :options="['13','14','15']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[1]" :ref="refCount()" :num="2+'.'" text="¿Cuántos leen?" :options="['14','13','12']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[2]" :ref="refCount()" :num="3+'.'" text="¿Qué leen?" :options="['Libros, periódicos y textos digitales.','Libros y periódicos.','Periódicos y textos digitales.']" @isright="right++" :answer-num="2"></choose>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Observa la gráfica de barras, completa la tabla y selecciona la respuesta correcta de cada pregunta.</div>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6">
+          <div class="tablemod">
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="Qué leen" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox answer="Personas" type="number" example="example"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="Textos digitales" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="Periódicos" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="Libros" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="8" type="number" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <inputbox answer="Total de personas" type="number" example="example"></inputbox>
+              </div>
+              <div class="col">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="12" type="number" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="aimg/b.png"/></div>
+      </div>
+      <div class="row mt-3 ex3">
+        <div class="col-12">
+          <choose v-model="r[7]" :ref="refCount()" :num="1+'.'" text="¿Cuál es la frecuencia menor?" :options="['La lectura de textos digitales.','La lectura de libros.','La lectura de periódicos.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[8]" :ref="refCount()" :num="2+'.'" text="¿Cuál es la frecuencia de la lectura de libros?" :options="['8 de 12','8 de 14','3 de 12']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[9]" :ref="refCount()" :num="3+'.'" text="¿Cuál es la frecuencia de la lectura de periódicos?" :options="['8 de 12','1 de 12','3 de 12 ']" @isright="right++" :answer-num="2"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

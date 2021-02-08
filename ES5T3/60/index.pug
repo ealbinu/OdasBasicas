@@ -1,8 +1,9 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Uso de tablas y gráficas'
+- subtitle = 'Las características de los reportes de encuesta'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -11,19 +12,56 @@ html(lang="es")
             /*
             .ex1 {}
             */
+            .ex2 .tablemod .row:nth-child(n+2) .col:first-child .inputbox {
+                justify-content: flex-start;
+            }
+            .ex2 .tablemod .row:nth-child(n+2) .col:first-child .inputbox .numbers {
+                font-size: 1rem;
+            }
+            .ex2 .tablemod .row:nth-child(1) .col .inputbox,
+            .ex2 .tablemod .row:last-child .col .inputbox {
+                background: var(--pastel3);
+            }
+            .ex2 .tablemod .row:nth-child(1) .col .inputbox .numbers,
+            .ex2 .tablemod .row:last-child .col .inputbox .numbers {
+                color: var(--rightcol) !important;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la ilustración, reflexiona y selecciona la respuesta correcta de cada pregunta.
 
-            .row.mt-3
+            .row: .col-12: img(src="aimg/a.png").w-100
             
+            .row.mt-3.ex1
+                .col-12
+                    choose(v-model="r[0]" :ref="refCount()" num="1." text="¿Cuántas personas hay en la sala?" :options="['13','14','15']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[1]" :ref="refCount()" :num="2+'.'" text="¿Cuántos leen?" :options="['14','13','12']" @isright="right++" :answer-num="2")
+                    choose(v-model="r[2]" :ref="refCount()" :num="3+'.'" text="¿Qué leen?" :options="['Libros, periódicos y textos digitales.','Libros y periódicos.','Periódicos y textos digitales.']" @isright="right++" :answer-num="2")
+            
+            .instruccion.mt-5 Observa la gráfica de barras, completa la tabla y selecciona la respuesta correcta de cada pregunta.
 
+            .row.mt-3.ex2.centerrow
+                .col-md-6
+                    - var tb = []
+                    - tb.push([ 'Qué leen', 'Personas' ])
+                    - tb.push([ 'Textos digitales', [1] ])
+                    - tb.push([ 'Periódicos', [3] ])
+                    - tb.push([ 'Libros', [8] ])
+                    - tb.push([ 'Total de personas', [12] ])
+                    +table(3, tb)
+                .col-md-6
+                    img(src="aimg/b.png").img-fluid
 
-
+            .row.mt-3.ex3
+                .col-12
+                    choose(v-model="r[7]" :ref="refCount()" :num="1+'.'" text="¿Cuál es la frecuencia menor?" :options="['La lectura de textos digitales.','La lectura de libros.','La lectura de periódicos.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[8]" :ref="refCount()" :num="2+'.'" text="¿Cuál es la frecuencia de la lectura de libros?" :options="['8 de 12','8 de 14','3 de 12']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[9]" :ref="refCount()" :num="3+'.'" text="¿Cuál es la frecuencia de la lectura de periódicos?" :options="['8 de 12','1 de 12','3 de 12 ']" @isright="right++" :answer-num="2")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
