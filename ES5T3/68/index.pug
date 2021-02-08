@@ -36,7 +36,7 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Lee con atención el siguiente fragmento de un guion de teatro. Encierra todas las acotaciones del guion y subraya los diálogos.
+            .instruccion.mt-5 Lee con atención el siguiente fragmento de un guion de teatro. Selecciona todas las acotaciones del guion.
 
             .row.mt-3.ex1.centerrow
                 .col-md-8
@@ -44,28 +44,29 @@ html(lang="es")
                         .h4 Pedro y el lobo
                         p: small (Adaptación a teatro. Fragmento)
                     div 
-                        | Pedro: 
-                        selectable(:isok="true" v-model="r[0]" :ref="refCount()" @isright="right++") (Grita desesperado.)
+                        selectable(:isok="false" v-model="r[0]" :ref="refCount()" @isright="right++") Pedro: 
+                        selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++") (Grita desesperado.)
                     div
-                        selectable(:isok="true" v-model="r[1]" :ref="refCount()" @isright="right++" initclass="sub") ¡Auxilio, viene el lobo por mis ovejas!
-                    div.my-2: em Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.
+                        selectable(:isok="false" v-model="r[2]" :ref="refCount()" @isright="right++" initclass="sub") ¡Auxilio, viene el lobo por mis ovejas!
+                    div.my-2
+                    selectable(:isok="false" v-model="r[3]" :ref="refCount()" @isright="right++"): em Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.
                     div
-                        | Campesino:
-                        selectable(:isok="true" v-model="r[2]" :ref="refCount()" @isright="right++") (Preocupado.)
+                        selectable(:isok="false" v-model="r[4]" :ref="refCount()" @isright="right++") Campesino:
+                        selectable(:isok="true" v-model="r[5]" :ref="refCount()" @isright="right++") (Preocupado.)
                     div
-                        selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++" initclass="sub") ¿Dónde está el lobo?
+                        selectable(:isok="false" v-model="r[6]" :ref="refCount()" @isright="right++" initclass="sub") ¿Dónde está el lobo?
                     
                     div.mt-2
-                        | Pedro:
-                        selectable(:isok="true" v-model="r[4]" :ref="refCount()" @isright="right++") (Riendo a carcajadas.)
+                        selectable(:isok="false" v-model="r[7]" :ref="refCount()" @isright="right++") Pedro:
+                        selectable(:isok="true" v-model="r[8]" :ref="refCount()" @isright="right++") (Riendo a carcajadas.)
                     div
-                        selectable(:isok="true" v-model="r[5]" :ref="refCount()" @isright="right++" initclass="sub") ¡Qué tonto eres! No hay ningún lobo.
+                        selectable(:isok="false" v-model="r[9]" :ref="refCount()" @isright="right++" initclass="sub") ¡Qué tonto eres! No hay ningún lobo.
                     
                     div.mt-2
-                        | Campesino:
-                        selectable(:isok="true" v-model="r[6]" :ref="refCount()" @isright="right++") (Muy enojado.)
+                        selectable(:isok="false" v-model="r[10]" :ref="refCount()" @isright="right++") Campesino:
+                        selectable(:isok="true" v-model="r[11]" :ref="refCount()" @isright="right++") (Muy enojado.)
                     div
-                        selectable(:isok="true" v-model="r[7]" :ref="refCount()" @isright="right++" initclass="sub") Síguele con tus bromas y ya verás que el día que aparezca el lobo nadie te va a creer.
+                        selectable(:isok="false" v-model="r[12]" :ref="refCount()" @isright="right++" initclass="sub") Síguele con tus bromas y ya verás que el día que aparezca el lobo nadie te va a creer.
                 .col-md: img(src="aimg/im.png").img-fluid
             
 

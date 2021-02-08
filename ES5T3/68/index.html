@@ -39,38 +39,42 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Identifico acotaciones y diálogos</h1>
       <h2>Segundo acto</h2>
-      <div class="instruccion mt-5">Lee con atención el siguiente fragmento de un guion de teatro. Encierra todas las acotaciones del guion y subraya los diálogos.</div>
+      <div class="instruccion mt-5">Lee con atención el siguiente fragmento de un guion de teatro. Selecciona todas las acotaciones del guion.</div>
       <div class="row mt-3 ex1 centerrow">
         <div class="col-md-8">
           <div class="text-center">
             <div class="h4">Pedro y el lobo</div>
             <p><small>(Adaptación a teatro. Fragmento)</small></p>
           </div>
-          <div>
-             Pedro: 
-            <selectable :isok="true" v-model="r[0]" :ref="refCount()" @isright="right++">(Grita desesperado.)</selectable>
+          <div> 
+            <selectable :isok="false" v-model="r[0]" :ref="refCount()" @isright="right++">Pedro: </selectable>
+            <selectable :isok="true" v-model="r[1]" :ref="refCount()" @isright="right++">(Grita desesperado.)</selectable>
           </div>
           <div>
-            <selectable :isok="true" v-model="r[1]" :ref="refCount()" @isright="right++" initclass="sub">¡Auxilio, viene el lobo por mis ovejas!</selectable>
+            <selectable :isok="false" v-model="r[2]" :ref="refCount()" @isright="right++" initclass="sub">¡Auxilio, viene el lobo por mis ovejas!</selectable>
           </div>
-          <div class="my-2"><em>Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.</em></div>
-          <div>Campesino:
-            <selectable :isok="true" v-model="r[2]" :ref="refCount()" @isright="right++">(Preocupado.)</selectable>
+          <div class="my-2"></div>
+          <selectable :isok="false" v-model="r[3]" :ref="refCount()" @isright="right++"><em>Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.</em></selectable>
+          <div>
+            <selectable :isok="false" v-model="r[4]" :ref="refCount()" @isright="right++">Campesino:</selectable>
+            <selectable :isok="true" v-model="r[5]" :ref="refCount()" @isright="right++">(Preocupado.)</selectable>
           </div>
           <div>
-            <selectable :isok="true" v-model="r[3]" :ref="refCount()" @isright="right++" initclass="sub">¿Dónde está el lobo?</selectable>
+            <selectable :isok="false" v-model="r[6]" :ref="refCount()" @isright="right++" initclass="sub">¿Dónde está el lobo?</selectable>
           </div>
-          <div class="mt-2">Pedro:
-            <selectable :isok="true" v-model="r[4]" :ref="refCount()" @isright="right++">(Riendo a carcajadas.)</selectable>
-          </div>
-          <div>
-            <selectable :isok="true" v-model="r[5]" :ref="refCount()" @isright="right++" initclass="sub">¡Qué tonto eres! No hay ningún lobo.</selectable>
-          </div>
-          <div class="mt-2">Campesino:
-            <selectable :isok="true" v-model="r[6]" :ref="refCount()" @isright="right++">(Muy enojado.)</selectable>
+          <div class="mt-2">
+            <selectable :isok="false" v-model="r[7]" :ref="refCount()" @isright="right++">Pedro:</selectable>
+            <selectable :isok="true" v-model="r[8]" :ref="refCount()" @isright="right++">(Riendo a carcajadas.)</selectable>
           </div>
           <div>
-            <selectable :isok="true" v-model="r[7]" :ref="refCount()" @isright="right++" initclass="sub">Síguele con tus bromas y ya verás que el día que aparezca el lobo nadie te va a creer.</selectable>
+            <selectable :isok="false" v-model="r[9]" :ref="refCount()" @isright="right++" initclass="sub">¡Qué tonto eres! No hay ningún lobo.</selectable>
+          </div>
+          <div class="mt-2">
+            <selectable :isok="false" v-model="r[10]" :ref="refCount()" @isright="right++">Campesino:</selectable>
+            <selectable :isok="true" v-model="r[11]" :ref="refCount()" @isright="right++">(Muy enojado.)</selectable>
+          </div>
+          <div>
+            <selectable :isok="false" v-model="r[12]" :ref="refCount()" @isright="right++" initclass="sub">Síguele con tus bromas y ya verás que el día que aparezca el lobo nadie te va a creer.</selectable>
           </div>
         </div>
         <div class="col-md"><img class="img-fluid" src="aimg/im.png"/></div>
