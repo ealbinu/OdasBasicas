@@ -26,16 +26,16 @@
           <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="#"></inputbox>
         </div>
         <div class="col"><img class="img-fluid" src="aimg/a2.png"/>
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#"></inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="1" type="number" placeh="#"></inputbox>
         </div>
         <div class="col"><img class="img-fluid" src="aimg/a3.png"/>
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#"></inputbox>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="4" type="number" placeh="#"></inputbox>
         </div>
         <div class="col"><img class="img-fluid" src="aimg/a4.png"/>
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#"></inputbox>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="2" type="number" placeh="#"></inputbox>
         </div>
         <div class="col"><img class="img-fluid" src="aimg/a5.png"/>
-          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#"></inputbox>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#"></inputbox>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
