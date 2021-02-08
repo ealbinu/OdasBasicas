@@ -116,8 +116,35 @@ html(lang="es")
                         .col-4.col-md: inputbox(v-model="r[22]" :ref="refCount()" @isright="right++" answer="N" type="text" placeh="-")
                         .col-4.col-md: inputbox(v-model="r[23]" :ref="refCount()" @isright="right++" answer="E" type="text" placeh="-")
 
+            .instruccion.mt-5 Lee el siguiente formato y escribe los significados de las abreviaturas en los espacios correspondientes.
 
+            .row: .col-12: img(src="aimg/formato.png").w-100
 
+            .mt-3.ex1.text-center
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=1 smaller) Num.
+                        .col: inputbox(v-model="r[24]" :ref="refCount()" @isright="right++" answer="Número" type="text" placeh="-")
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=2 smaller) Col.
+                        .col: inputbox(v-model="r[25]" :ref="refCount()" @isright="right++" answer="Colonia" type="text" placeh="-")
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=3 smaller) Cd.
+                        .col: inputbox(v-model="r[26]" :ref="refCount()" @isright="right++" answer="Ciudad" type="text" placeh="-")
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=4 smaller) Edo.
+                        .col: inputbox(v-model="r[27]" :ref="refCount()" @isright="right++" answer="Estado" type="text" placeh="-")
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=5 smaller) C.P.
+                        .col: inputbox(v-model="r[28]" :ref="refCount()" @isright="right++" answer="Código postal" type="text" placeh="-")
+                .tablemod
+                    .row.no-gutters.centerrow.flex-wrap
+                        .col: numbers(c=6 smaller) Tel.
+                        .col: inputbox(v-model="r[29]" :ref="refCount()" @isright="right++" answer="Teléfono" type="text" placeh="-")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
