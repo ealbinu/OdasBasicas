@@ -1,25 +1,40 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Descubrimos formas de comunicarnos'
+- subtitle = 'El correo electrónico'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .sources > div img {
+                max-width: 200px;
+            }
+
+            .targets div {
+                padding: 10px;
+            }
+            @media (max-width: 680px) {
+                .targets div {
+                    font-size: 0.5rem;
+                    padding: 4px;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Une cada herramienta de comunicación con su definición correspondiente.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): img(:src="source.i").img-fluid
+                        template(v-slot:target="{target}"): div(v-html="target.t")
             
 
 
@@ -30,3 +45,21 @@ html(lang="es")
         +scripts
             script.
                 //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {i: 'aimg/a.png'},
+                    {i: 'aimg/b.png'},
+                    {i: 'aimg/c.png'},
+                    {i: 'aimg/d.png'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {t: 'Es un medio que nos permite comunicarnos de manera inmediata por medio de la voz con una o varias personas por medio del marcado de un número telefónico.'},
+                    {t: 'Son un medio audiovisual y multimedia que nos conectan de manera instantánea con nuestros familiares, amigos y gente en todo el mundo.'},
+                    {t: 'Es un texto para comunicarnos con una persona en específico, a distancia, a través de las palabras en un papel que puede tardar varios días para obtener una respuesta.'},
+                    {t: 'Es un texto para comunicarnos con una per- sona en específico, a distancia, a través de las palabras escritas en una página electrónica con un tiempo de respuesta más corto.'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_3'],
+                    ['s_2', 't_0'],
+                    ['s_3', 't_1'],
+                ])
