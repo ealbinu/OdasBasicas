@@ -1,25 +1,62 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Encuentro el remitente y el destinatario'
+- subtitle = 'Lo que conozco'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
+        link(href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet")
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 {
+                background: #E4CAD7;
+                border-radius: 6px;
+                box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
+                padding: 10px;
+                font-family: 'Special Elite', cursive;
+            }
+            .ex1 .inputbox {
+                margin-bottom: 10px;
+                justify-content: flex-start;
+                font-size: 1.2rem;
+                font-family: 'Special Elite', cursive;
+            }
+            .ex1 .inputbox input {
+                font-size: 1.2rem;
+                padding: 4px;
+                margin-left: 6px;
+                border-radius: 6px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa el siguiente ejemplo de una carta personal. Después completa los datos que se piden en el sobre.
 
-            .row.mt-3
+            .row: .col-12: img(src="aimg/carta.png").w-100
+
+            .row.mt-3.ex1
+                .col-md-6
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="Mirna Antúnez" type="text" placeh="-")
+                        template(v-slot:before="") Remitente:
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="['Av. Madero #123', 'av. madero', 'madero', 'avenida madero', 'madero 123', 'avenida madero 123', 'madero #123']" type="text" placeh="-")
+                        template(v-slot:before="") Dirección:
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="['Guadalajara, Jalisco', 'guadalajara', 'jalisco']" type="text" placeh="-")
+                        template(v-slot:before="") Ciudad:
+                    div C. P. 44950
+                .col-md-6.text-right: img(src="aimg/pt.png").img-fluid
+                .col-md-6.offset-md-6
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" answer="Beatriz Salgado" type="text" placeh="-")
+                        template(v-slot:before="") Destinatario:
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="['Calle Garza #234', 'calle garza', 'garza #234', 'garza 234','calle garza 234']" type="text" placeh="-")
+                        template(v-slot:before="") Dirección:
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="['Monterrey, Nuevo León', 'Monterrey', 'Nuevo León']" type="text" placeh="-")
+                        template(v-slot:before="") Ciudad:
+                    div C. P. 64060
             
 
 

@@ -4,23 +4,71 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro el remitente y el destinatario</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap" rel="stylesheet"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          background: #E4CAD7;
+          border-radius: 6px;
+          box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
+          padding: 10px;
+          font-family: 'Special Elite', cursive;
+      }
+      .ex1 .inputbox {
+          margin-bottom: 10px;
+          justify-content: flex-start;
+          font-size: 1.2rem;
+          font-family: 'Special Elite', cursive;
+      }
+      .ex1 .inputbox input {
+          font-size: 1.2rem;
+          padding: 4px;
+          margin-left: 6px;
+          border-radius: 6px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro el remitente y el destinatario</h1>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Observa el siguiente ejemplo de una carta personal. Después completa los datos que se piden en el sobre.</div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/carta.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Mirna Antúnez" type="text" placeh="-">
+            <template v-slot:before="">Remitente:</template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="['Av. Madero #123', 'av. madero', 'madero', 'avenida madero', 'madero 123', 'avenida madero 123', 'madero #123']" type="text" placeh="-">
+            <template v-slot:before="">Dirección:</template>
+          </inputbox>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="['Guadalajara, Jalisco', 'guadalajara', 'jalisco']" type="text" placeh="-">
+            <template v-slot:before="">Ciudad:</template>
+          </inputbox>
+          <div>C. P. 44950</div>
+        </div>
+        <div class="col-md-6 text-right"><img class="img-fluid" src="aimg/pt.png"/></div>
+        <div class="col-md-6 offset-md-6">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Beatriz Salgado" type="text" placeh="-">
+            <template v-slot:before="">Destinatario:</template>
+          </inputbox>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="['Calle Garza #234', 'calle garza', 'garza #234', 'garza 234','calle garza 234']" type="text" placeh="-">
+            <template v-slot:before="">Dirección:</template>
+          </inputbox>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="['Monterrey, Nuevo León', 'Monterrey', 'Nuevo León']" type="text" placeh="-">
+            <template v-slot:before="">Ciudad:</template>
+          </inputbox>
+          <div>C. P. 64060</div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
