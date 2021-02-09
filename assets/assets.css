@@ -945,4 +945,8 @@ input[type=number] {
 .common.c6 {
   background: var(--pastel6);
 }
+.common .choose {
+  margin: 0;
+  padding: 0;
+}
 /*# sourceMappingURL=assets.css.map */

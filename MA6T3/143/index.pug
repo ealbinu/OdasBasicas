@@ -1,26 +1,48 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Comparo razones'
+- subtitle = '¿Qué conviene comprar?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                justify-content: center;
+            }
+            .ex1 .inputbox input {
+                max-width: 140px;
+                font-size: 1.4rem;
+                margin-left: 4px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve los siguientes problemas.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-12
+                    labeltext() Sofía quiere comprar galletas para regalarles a sus compañeros de la escuela. En la panadería El Ángel venden 3 galletas por $5, y en la panadería La Luciérnaga 5 galletas por $8.
+                    
+                    .common.mt-3.c1: choose(v-model="r[0]" :ref="refCount()" :num="'a)'" text="¿En cuál de las panaderías las galletas cuestan menos?" :options="['En la panadería El Ángel.','En la panadería La Luciérnaga.','En ninguna de las dos. ']" @isright="right++" :answer-num="1")
+                    
+                    .common.mt-3.c2
+                        labeltext(num="b)") ¿Cuánto debe pagar Sofía por 30 galletas de la panadería El Ángel?
+                        inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#")
+                            template(v-slot:before=""): numbers(small c=2) $
+                    
+                    .common.mt-3.c3
+                        labeltext(num="c)") Sofía tiene 30 compañeros y quiere regalar tres galletas a cada uno. Si las compra en la panadería La Luciérnaga, ¿cuánto debe pagar?
+                        inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="144" type="number" placeh="#")
+                            template(v-slot:before=""): numbers(small c=2) $
+                    
+                    
+                    .common.mt-3.c4: choose(v-model="r[3]" :ref="refCount()" :num="'b)'" text="Si Sofía pagó con un billete de $50 en la panadería El Ángel y le regresaron $10 de cambio, ¿cuántas galletas compró?" :options="['24 galletas.','26 galletas.','20 galletas.']" @isright="right++" :answer-num="0")
 
 
 

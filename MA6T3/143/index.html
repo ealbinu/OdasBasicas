@@ -4,23 +4,56 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comparo razones</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          justify-content: center;
+      }
+      .ex1 .inputbox input {
+          max-width: 140px;
+          font-size: 1.4rem;
+          margin-left: 4px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comparo razones</h1>
+      <h2>¿Qué conviene comprar?</h2>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <labeltext>Sofía quiere comprar galletas para regalarles a sus compañeros de la escuela. En la panadería El Ángel venden 3 galletas por $5, y en la panadería La Luciérnaga 5 galletas por $8.</labeltext>
+          <div class="common mt-3 c1">
+            <choose v-model="r[0]" :ref="refCount()" :num="'a)'" text="¿En cuál de las panaderías las galletas cuestan menos?" :options="['En la panadería El Ángel.','En la panadería La Luciérnaga.','En ninguna de las dos. ']" @isright="right++" :answer-num="1"></choose>
+          </div>
+          <div class="common mt-3 c2">
+            <labeltext num="b)">¿Cuánto debe pagar Sofía por 30 galletas de la panadería El Ángel?</labeltext>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#">
+              <template v-slot:before="">
+                <numbers small="small" c="2">$</numbers>
+              </template>
+            </inputbox>
+          </div>
+          <div class="common mt-3 c3">
+            <labeltext num="c)">Sofía tiene 30 compañeros y quiere regalar tres galletas a cada uno. Si las compra en la panadería La Luciérnaga, ¿cuánto debe pagar?</labeltext>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="144" type="number" placeh="#">
+              <template v-slot:before="">
+                <numbers small="small" c="2">$</numbers>
+              </template>
+            </inputbox>
+          </div>
+          <div class="common mt-3 c4">
+            <choose v-model="r[3]" :ref="refCount()" :num="'b)'" text="Si Sofía pagó con un billete de $50 en la panadería El Ángel y le regresaron $10 de cambio, ¿cuántas galletas compró?" :options="['24 galletas.','26 galletas.','20 galletas.']" @isright="right++" :answer-num="0"></choose>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
