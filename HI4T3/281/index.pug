@@ -1,27 +1,172 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Ordeno los acontecimientos'
+- subtitle = 'Ubicación temporal y espacial del movimiento de Independencia'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .tablemod .inputbox {
+                max-width: 80px;
+                margin: 0 auto;
+            }
+            .ex1 .tablemod .col {
+                display: flex;
+                align-items: center;
+                background: var(--pastel3);
+            }
+            @media (max-width: 680px) {
+                .ex1 .tablemod .col {
+                    font-size: 0.6rem;
+                }
+            }
+            .ex1 .tablemod .col:nth-child(1),
+            .ex1 .tablemod .col:nth-child(3) {
+                flex: 0 0 35%;
+                max-width: 35%;
+                padding: 10px;
+            }
+            .ex2 .inputbox {
+                flex-direction: column;
+            }
+            .ex2 .inputbox .tag {
+                width: 100%;
+                text-align: center;
+                background: var(--pastel3);
+                padding: 4px 12px;
+                border-radius: 6px;
+                font-size: 1.4rem;
+                position: relative;
+            }
+            @media (max-width: 768px) {
+                .ex2 .inputbox .tag {
+                    font-size: 0.9rem;
+                }
+            }
+            @media (max-width: 680px) {
+                .ex2 .inputbox .tag {
+                    font-size: 0.5rem;
+                }
+            }
+            .ex2 .inputbox .tag .arrow {
+                position: absolute;
+                right: 0;
+                top: 20%;
+                z-index: 0;
+            }
+            @media (max-width: 768px) {
+                .ex2 .inputbox .tag .arrow {
+                    right: -10%;
+                }
+            }
+            @media (max-width: 680px) {
+                .ex2 .inputbox .tag .arrow {
+                    right: -14%;
+                    opacity: 0.5;
+                }
+            }
+            .ex2 .inputbox input {
+                font-size: 1rem;
+                padding: 2px;
+                border-radius: 4px;
+                max-width: 160px;
+            }
+            @media (max-width: 680px) {
+                .ex2 .inputbox input {
+                    padding: 1px;
+                    font-size: 0.7rem;
+                }
+            }
+            .ex2 .textbox {
+                background: var(--pastel2);
+                padding: 10px;
+                border-radius: 6px;
+            }
+            @media (max-width: 768px) {
+                .ex2 .textbox {
+                    font-size: 0.8rem;
+                }
+            }
+            @media (max-width: 680px) {
+                .ex2 .textbox {
+                    font-size: 0.4rem;
+                    padding: 2px;
+                    margin: 2px 0;
+                }
+            }
+            .arrow {
+                position: relative;
+                height: 0;
+                width: 0;
+                border: 6px solid;
+                border-color: darkcyan darkcyan transparent transparent;
+                transform: rotate(45deg);
+            }
+            .arrow:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                height: 10px;
+                width: 12px;
+                background-color: darkcyan;
+                transform: rotate(-45deg) translate(2px, 1px);
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa la tabla escribiendo #[strong E] si es una causa externa o #[strong I] si es una causa interna del movimiento de Independencia.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12
+                    .h4.text-center Causas de la Independencia de México
+                    - var tb = []
+                    - tb.push([ 'La explotación de indígenas, mestizos y esclavos.', ['I'], 'Las reformas borbónicas.', ['E'] ])
+                    - tb.push([ 'Las ideas de la Ilustración que influyeron en los criollos y otros grupos intelectuales.', ['E'], 'La Revolución Industrial.', ['E'] ])
+                    - tb.push([ 'La independencia de las Trece Colonias (Estados Unidos de América).', ['E'], 'La invasión de Francia a España en 1808.', ['E'] ])
+                    - tb.push([ 'La renuncia de Fernando VII al trono de España.', ['E'], 'El descontento de los criollos por no tener puestos de poder político.', ['I'] ])
+
+
+                    +table(0, tb, true)
             
 
+            .instruccion.mt-5 Lee el esquema y complétalo con las fechas del recuadro.
+
+            recuadropalabras(c=3 :palabras="['1815-1821','1821','1811-1815','1810-1811']")
+
+            .row.mt-3.ex2
+                .col-3.verticalrow: img(src="aimg/time.png").img-fluid
+                .col-4.verticalrow
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++" :answer="['1810-1811', '1810 - 1811']" type="text" placeh="-")
+                        template(v-slot:before="")
+                            div.tag Inicio
+                                .arrowed: .arrow
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++" :answer="['1811-1815', '1811 - 1815']" type="text" placeh="-")
+                        template(v-slot:before="")
+                            div.tag Organización
+                                .arrowed: .arrow
+                    inputbox(v-model="r[10]" :ref="refCount()" @isright="right++" :answer="['1815-1821', '1815 - 1821']" type="text" placeh="-")
+                        template(v-slot:before="")
+                            div.tag Resistencia
+                                .arrowed: .arrow
+                    inputbox(v-model="r[11]" :ref="refCount()" @isright="right++" :answer="['1821']" type="text" placeh="-")
+                        template(v-slot:before="")
+                            div.tag Consumación
+                                .arrowed: .arrow
+                .col.verticalrow
+                    .textbox Se da el Grito de Dolores. Decreto de la abolición de la esclavitud. Muerte de Miguel Hidalgo.
+                    .textbox José María Morelos se hace cargo de la rebelión. Constitución de Apatzingán. Fusilamiento de Morelos el 22 de diciembre de 1815.
+                    .textbox Los insurgentes se separan. La lucha sigue con Vicente Guerrero, Javier Mina y Guadalupe Victoria al mando.
+                    .textbox Se proclama el Plan de Iguala. Guerrero deja al mando del Ejército Trigarante a Iturbide, quien hace una entrada triunfal a la Ciudad de México el 27 de septiembre de 1821.
 
 
 

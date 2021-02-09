@@ -1,4 +1,4 @@
-mixin table(indexvmodel, campos)
+mixin table(indexvmodel, campos, regulartext)
     - var vmcount = 0
     .tablemod
         each row in campos
@@ -13,7 +13,11 @@ mixin table(indexvmodel, campos)
                                     template(v-slot:after="")=field[2]
                         - vmcount++
                     else 
-                        .col: inputbox(answer=field type="number" example)
+                        .col
+                            if regulartext
+                                span=field
+                            else
+                                inputbox(answer=field type="number" example)
 
 
 //
