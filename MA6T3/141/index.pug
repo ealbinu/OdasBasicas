@@ -1,26 +1,86 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico el volumen de un cuerpo'
+- subtitle = 'Cajas para regalo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .check .checktext {
+                font-size: 1.2rem;
+                position: absolute;
+                background: var(--clear);
+                width: 22px;
+                height: 22px;
+                font-size: 0.8rem;
+                border-radius: 50%;
+                left: 0;
+                bottom: 0;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .ex2 .inputbox input {
+                font-size: 1.2rem;
+                padding: 2px;
+                max-width: 50px;
+                margin: 0 4px;
+                border-radius: 4px;
+            }
+            .ex1 {
+                text-align: center;
+            }
+            .ex1 .check {
+                margin: 0 auto;
+                text-align: center;
+                justify-content: center;
+            }
+            .ex1 img {
+                margin: 0 auto;
+                max-width: 200px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Señala cuál de los siguientes edificios está formado por 16 cubos.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-md
+                    check(initclass="withimg" v-model="r[0]" :ref="refCount()"  @isright="right++" :answer="false" text="A"): img(src="aimg/a.png").img-fluid
+                .col-md
+                    check(initclass="withimg" v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="true" text="B"): img(src="aimg/b.png").img-fluid
+                .col-md
+                    check(initclass="withimg" v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false" text="C"): img(src="aimg/c.png").img-fluid
+                .col-md
+                    check(initclass="withimg" v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="false" text="D"): img(src="aimg/d.png").img-fluid
             
+            .instruccion.mt-5 Calcula el volumen de cada uno de los edificios anteriores.
+            .row.mt-3.ex2
+                .col-md-3
+                    .common.c6: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=3 smaller) A.
+                        template(v-slot:after="") cubos.
+                .col-md-3
+                    .common.c6: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="16" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=3 smaller) B.
+                        template(v-slot:after="") cubos.
+                .col-md-3
+                    .common.c6: inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="13" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=3 smaller) C.
+                        template(v-slot:after="") cubos.
+                .col-md-3
+                    .common.c6: inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="20" type="number" placeh="#")
+                        template(v-slot:before=""): numbers(c=3 smaller) D.
+                        template(v-slot:after="") cubos.
 
 
 
