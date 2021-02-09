@@ -4,23 +4,505 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro los términos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .frac {
+          text-align: center;
+          font-size: 1.4rem;
+      }
+      .frac hr {
+          margin: 5px auto;
+          border: none;
+          border-top: 4px solid #fff;
+          min-width: 20px;
+          max-width: 60px;
+      }
+      .ex1 .frac hr{ border-top: 4px solid #fff; }
+      .ex2 .frac hr{ border-top: 4px solid var(--clear); }
+      .frac .inputbox input {
+          border-radius: 6px;
+          padding: 0 2px;
+          font-size: 1.4rem;
+          max-width: 50px;
+          margin: 0 2px;
+      }
+      .frac .inputbox .numbers{
+          font-size: 1.3rem;
+      }
+      @media (max-width: 680px){
+          .frac{
+              font-size: 1rem;
+          }
+          .frac .inputbox input{
+              margin: 0;
+              font-size: 1rem;
+              padding: 0;
+          }
+      }
+      .brick{ max-height: 24px; }
+      .ex1 {
+          background: linear-gradient(#0078B2, #7DCBE4);
+          color: #fff;
+          border-radius: 10px;
+          padding: 20px 0;
+      }
+      .ex1 .numbers {
+          color: #fff;
+      }
+      .ex1 .area {
+          background: rgba(0, 0, 0, 0.1);
+          border: 2px solid #fff;
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .ex2 .tub .frac {
+          background: linear-gradient(to left, #009542, #006129);
+          margin: 0 8px;
+          border-left: 8px solid #fff;
+      }
+      .ex2 .tub .frac div:first-child {
+          margin-top: 10px;
+      }
+      .ex2 .tub .frac div:last-child {
+          padding-bottom: 10px;
+          margin-bottom: -1px;
+      }
+      .ex2 .tub .frac:before {
+          content: "";
+          display: block;
+          background: linear-gradient(to left, #00c542, #006129);
+          box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
+          margin-left: -8px;
+          margin-right: -8px;
+          height: 20px;
+          border-radius: 3px;
+      }
+      .ex2 .tub .text-center {
+          color: var(--sec);
+          border: 2px solid #fff;
+          border-radius: 6px;
+          padding: 4px;
+          font-size: 0.8rem;
+          background: var(--pastel2);
+      }
+      
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro los términos</h1>
+      <h2>¿Cuánto más? / ¿Cuánto menos?</h2>
+      <div class="instruccion mt-5">Completa la siguiente tabla. Observa el ejemplo.</div>
+      <!-- ################################################################################################-->
+      <div class="row mt-3 ex1 text-center">
+        <div class="col-md-6 col-lg-2 mt-1">
+          <div class="h4">Fracción</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a1.png"/></div>
+          <div><img class="img-fluid" src="aimg/f1.png"/></div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El doble</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a2.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">+</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="2" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El triple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a3.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El cuádruple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a4.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="4" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="1" type="number" placeh="#" example="example"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox :answer="4" type="number" placeh="#" example="example"></inputbox>
+              <hr/>
+              <inputbox :answer="3" type="number" placeh="#" example="example"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ################################################################################################-->
+      <div class="row mt-3 ex1 text-center">
+        <div class="col-md-6 col-lg-2 mt-1">
+          <div class="h4">Fracción</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a1.png"/></div>
+          <div><img class="img-fluid" src="aimg/f2.png"/></div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El doble</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a2.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">+</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El triple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a3.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El cuádruple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a4.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ################################################################################################-->
+      <div class="row mt-3 ex1 text-center">
+        <div class="col-md-6 col-lg-2 mt-1">
+          <div class="h4">Fracción</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a1.png"/></div>
+          <div><img class="img-fluid" src="aimg/f3.png"/></div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El doble</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a2.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">+</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[24]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El triple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a3.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[25]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[26]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[27]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[28]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[29]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[30]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg mt-1">
+          <div class="h4">El cuádruple</div>
+          <div class="mb-2"><img class="img-fluid brick" src="aimg/a4.png"/></div>
+          <div class="row area centerrow no-gutters">
+            <div class="col frac">
+              <inputbox v-model="r[31]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[32]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">x</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[33]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[34]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="0">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[35]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[36]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Resuelve las siguientes fracciones calculando lo que se pide.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4">
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">2<hr>3</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[37]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[38]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[39]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[40]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">4<hr>5</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[41]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[42]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[43]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[44]" :ref="refCount()" @isright="right++" :answer="15" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div><img class="img-fluid" src="aimg/barr.png"/>
+        </div>
+        <div class="col-md-4">
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">1<hr>4</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[45]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[46]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[47]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[49]" :ref="refCount()" @isright="right++" :answer="12" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">6<hr>7</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[49]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[50]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[51]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[52]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div><img class="img-fluid" src="aimg/barr.png"/>
+        </div>
+        <div class="col-md-4">
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">1<hr>3</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[53]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[54]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[55]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[56]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div>
+          <div class="row area centerrow no-gutters text-area">
+            <div class="col frac">6<hr>9</div>
+            <div class="col tub">
+              <div class="text-center">Mitad</div>
+              <div class="frac">
+                <inputbox v-model="r[57]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[58]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+            <div class="col tub">
+              <div class="text-center">Tercera parte</div>
+              <div class="frac">
+                <inputbox v-model="r[59]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+                <hr/>
+                <inputbox v-model="r[60]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+              </div>
+            </div>
+          </div><img class="img-fluid" src="aimg/barr.png"/>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
