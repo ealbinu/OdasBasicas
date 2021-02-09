@@ -41,7 +41,7 @@ html(lang="es")
                 .col-12
                     choose(v-model="r[0]" :ref="refCount()" num="1." text="¿Cuántas personas hay en la sala?" :options="['13','14','15']" @isright="right++" :answer-num="1")
                     choose(v-model="r[1]" :ref="refCount()" :num="2+'.'" text="¿Cuántos leen?" :options="['14','13','12']" @isright="right++" :answer-num="2")
-                    choose(v-model="r[2]" :ref="refCount()" :num="3+'.'" text="¿Qué leen?" :options="['Libros, periódicos y textos digitales.','Libros y periódicos.','Periódicos y textos digitales.']" @isright="right++" :answer-num="2")
+                    choose(v-model="r[2]" :ref="refCount()" :num="3+'.'" text="¿Qué leen?" :options="['Libros, periódicos y textos digitales.','Libros y periódicos.','Periódicos y textos digitales.']" @isright="right++" :answer-num="0")
             
             .instruccion.mt-5 Observa la gráfica de barras, completa la tabla y selecciona la respuesta correcta de cada pregunta.
 
