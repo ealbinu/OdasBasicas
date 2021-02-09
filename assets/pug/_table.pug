@@ -6,7 +6,7 @@ mixin table(indexvmodel, campos, regulartext)
                 each field,findx in row
                     if typeof field === 'object'
                         .col(class="cl_"+findx)
-                            inputbox(v-model="r["+(vmcount+indexvmodel)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="number" placeh="#")
+                            inputbox(v-model="r["+(vmcount+indexvmodel)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="#")
                                 if field[1]
                                     template(v-slot:before="") !{field[1]}
                                 if field[2]
