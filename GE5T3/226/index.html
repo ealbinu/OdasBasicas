@@ -1,26 +1,56 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Intercambiamos productos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .caja {
+          background: var(--pastel1);
+          padding: 10px;
+          border-radius: 10px;
+      }
+      .caja:nth-child(odd) {
+          background: var(--pastel2);
+      }
+      .inputbox {
+          max-width: 400px;
+          margin: 10px auto;
+      }
+      .inputbox input {
+          font-size: 1.2rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Intercambiamos productos</h1>
+      <h2>Redes carreteras y ferroviarias</h2>
+      <div class="instruccion mt-5">Utiliza las palabras del recuadro para completar los siguientes enunciados. Consulta las páginas 106 a 108 de tu Atlas de geografía del mundo SEP.</div>
+      <recuadropalabras c="3" :palabras="['América','Asia', 'Todo el mundo', 'Europa','Europa con América','Corea del Sur','Asia']"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <template v-for="(i, index) in tempsobj.a">
+            <div class="caja mt-2">
+              <labeltext :num="(index+1)+'.'">{{i.t}}</labeltext>
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.r" type="text" placeh="-"></inputbox>
+            </div>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +71,16 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {r:'América',t: 'La carretera Panamericana es la autopista más larga del mundo.Tiene 48 000 km de longitud, recorre 14 países desde Canadá hasta Argentina y sólo se interrumpe 87 km en Pana- má. Se encuentra en:'},
+          {r:'Asia', t:'La carretera AH1 cuenta con más de 20 000 km, va de Tokio a Estambul, pasa por India, Pakistán, Irán y China. Se encuentra en:'},
+          {r:'Europa', t:'La carretera E-05 inicia su recorrido en Gran Bretaña, recorre el Reino Unido, Francia y España, su longitud es de 2 960 km. Se encuentra en:'},
+          {r:'Europa con América', t:'Existen rutas marítimas que se encuentran entre los 40o y 65o de latitud norte y cubren una distancia de entre 5 000 y 9 000 km. En el Atlántico Norte se localiza el mayor número de este tipo de rutas, ya que llegan cargas que proceden de los océanos Pacífico e Índico. ¿Qué continentes comunican?'},
+          {r:'Corea del Sur', t:'En una de las rutas aéreas más transitadas del mundo se llevan a cabo 159 vuelos diarios realizados por cinco aerolíneas distintas entre Seúl y Jeju, en Asia, específicamente en:'},
+          {r:'Asia', t:'China tiene un total de 6 920 km de ferrocarril de alta velocidad, lo que la ubica en el primer lugar del mundo en vías férreas. Se localiza en:'},
+          {r:'Todo el mundo', t:' Las redes carreteras, férreas, marítimas y aéreas son una parte importante en el comercio y el turismo, ya que a través de ellas se trasportan personas y una gran cantidad de mercancías con destino a distintas partes de:'},
+      ])
+    </script>
   </body>
 </html>

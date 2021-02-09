@@ -1,26 +1,45 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Intercambiamos productos'
+- subtitle = 'Redes carreteras y ferroviarias'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .caja {
+                background: var(--pastel1);
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .caja:nth-child(odd) {
+                background: var(--pastel2);
+            }
+            .inputbox {
+                max-width: 400px;
+                margin: 10px auto;
+            }
+            .inputbox input {
+                font-size: 1.2rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Utiliza las palabras del recuadro para completar los siguientes enunciados. Consulta las páginas 106 a 108 de tu Atlas de geografía del mundo SEP.
 
-            .row.mt-3
-            
+            recuadropalabras(c=3 :palabras="['América','Asia', 'Todo el mundo', 'Europa','Europa con América','Corea del Sur','Asia']")
+            .row.mt-3.ex1
+                .col
+                    template(v-for="(i, index) in tempsobj.a")
+                        .caja.mt-2
+                            labeltext(:num="(index+1)+'.'") {{i.t}}
+                            inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.r" type="text" placeh="-")
 
 
 
@@ -29,4 +48,12 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {r:'América',t: 'La carretera Panamericana es la autopista más larga del mundo.Tiene 48 000 km de longitud, recorre 14 países desde Canadá hasta Argentina y sólo se interrumpe 87 km en Pana- má. Se encuentra en:'},
+                    {r:'Asia', t:'La carretera AH1 cuenta con más de 20 000 km, va de Tokio a Estambul, pasa por India, Pakistán, Irán y China. Se encuentra en:'},
+                    {r:'Europa', t:'La carretera E-05 inicia su recorrido en Gran Bretaña, recorre el Reino Unido, Francia y España, su longitud es de 2 960 km. Se encuentra en:'},
+                    {r:'Europa con América', t:'Existen rutas marítimas que se encuentran entre los 40o y 65o de latitud norte y cubren una distancia de entre 5 000 y 9 000 km. En el Atlántico Norte se localiza el mayor número de este tipo de rutas, ya que llegan cargas que proceden de los océanos Pacífico e Índico. ¿Qué continentes comunican?'},
+                    {r:'Corea del Sur', t:'En una de las rutas aéreas más transitadas del mundo se llevan a cabo 159 vuelos diarios realizados por cinco aerolíneas distintas entre Seúl y Jeju, en Asia, específicamente en:'},
+                    {r:'Asia', t:'China tiene un total de 6 920 km de ferrocarril de alta velocidad, lo que la ubica en el primer lugar del mundo en vías férreas. Se localiza en:'},
+                    {r:'Todo el mundo', t:' Las redes carreteras, férreas, marítimas y aéreas son una parte importante en el comercio y el turismo, ya que a través de ellas se trasportan personas y una gran cantidad de mercancías con destino a distintas partes de:'},
+                ])
