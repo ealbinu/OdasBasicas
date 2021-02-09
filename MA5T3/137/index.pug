@@ -1,27 +1,88 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Elaboro una gráfica de barras'
+- subtitle = '¿Qué tanto leemos? / Información gráfica'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .tablemod .row {
+                align-items: center;
+            }
+            .tablemod .cl_0 {
+                min-width: 70px;
+            }
+            .tablemod .row.ix_0 .cl_1 {
+                background: #AE508F;
+            }
+            .tablemod .row.ix_0 .cl_2 {
+                background: #E8822E;
+            }
+            .tablemod .row.ix_0 .cl_3 {
+                background: #6DB645;
+            }
+            .tablemod .row.ix_0 .cl_4 {
+                background: #6A4387;
+            }
+            .tablemod .row.ix_0 .cl_5 {
+                background: #0EADB5;
+            }
+            .tablemod .col:not(.cl_0) .numbers {
+                color: #fff;
+            }
+            @media (max-width: 680px) {
+                .tablemod .numbers {
+                    font-size: 0.5rem !important;
+                }
+            }
+            @media (max-width: 680px) {
+                .tablemod .inputbox input {
+                    font-size: 0.8rem;
+                }
+            }
+            .ex2 .inputbox {
+                margin: 10px auto 0;
+                max-width: 200px;
+            }
+            .ex2 .inputbox input {
+                padding: 4px;
+                font-size: 1.4rem;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la siguiente gráfica y completa la tabla de frecuencias.
 
-            .row.mt-3
+            .row: .col-md-8.offset-md-2: img(src="aimg/a.png").w-100
             
+            .row.mt-3.ex1
+                .col-12
+                    - var tb = []
+                    - tb.push([ 'Calificación', '6', '7', '8', '9', '10' ])
+                    - tb.push([ 'Alumnos', [10], [15], [20], [35], [25] ])
+                    +table(0, tb)
 
+            .instruccion.mt-5 Contesta las preguntas con la información anterior.
+
+            .row.mt-3.ex2
+                .col-12
+                    .common
+                        labeltext(num="1.") ¿Cuántas calificaciones se registraron en la gráfica?
+                        inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                    .common.mt-3
+                        labeltext(num="2.") ¿Cuál es la calificación que más alumnos sacaron?
+                        inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#")
+                    .common.mt-3
+                        labeltext(num="3.") ¿Cuál es el total de alumnos?
+                        inputbox(v-model="r[7]" :ref="refCount()" @isright="right++" :answer="105" type="number" placeh="#")
 
 
 

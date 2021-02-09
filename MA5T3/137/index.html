@@ -1,26 +1,144 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var tb = []
+- tb.push([[8], 16, [32], [40], 56])
+- tb.push([[9], 18, 36, [45], [63]])
++table(0, tb)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Elaboro una gráfica de barras</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .tablemod .row {
+          align-items: center;
+      }
+      .tablemod .cl_0 {
+          min-width: 70px;
+      }
+      .tablemod .row.ix_0 .cl_1 {
+          background: #AE508F;
+      }
+      .tablemod .row.ix_0 .cl_2 {
+          background: #E8822E;
+      }
+      .tablemod .row.ix_0 .cl_3 {
+          background: #6DB645;
+      }
+      .tablemod .row.ix_0 .cl_4 {
+          background: #6A4387;
+      }
+      .tablemod .row.ix_0 .cl_5 {
+          background: #0EADB5;
+      }
+      .tablemod .col:not(.cl_0) .numbers {
+          color: #fff;
+      }
+      @media (max-width: 680px) {
+          .tablemod .numbers {
+              font-size: 0.5rem !important;
+          }
+      }
+      @media (max-width: 680px) {
+          .tablemod .inputbox input {
+              font-size: 0.8rem;
+          }
+      }
+      .ex2 .inputbox {
+          margin: 10px auto 0;
+          max-width: 200px;
+      }
+      .ex2 .inputbox input {
+          padding: 4px;
+          font-size: 1.4rem;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Elaboro una gráfica de barras</h1>
+      <h2>¿Qué tanto leemos? / Información gráfica</h2>
+      <div class="instruccion mt-5">Observa la siguiente gráfica y completa la tabla de frecuencias.</div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2"><img class="w-100" src="aimg/a.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12">
+          <div class="tablemod">
+            <div class="row no-gutters ix_0">
+              <div class="col cl_0">
+                <inputbox answer="Calificación" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_1">
+                <inputbox answer="6" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox answer="7" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_3">
+                <inputbox answer="8" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_4">
+                <inputbox answer="9" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_5">
+                <inputbox answer="10" type="number" example="example"></inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters ix_1">
+              <div class="col cl_0">
+                <inputbox answer="Alumnos" type="number" example="example"></inputbox>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="10" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="15" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_3">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="20" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_4">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="35" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_5">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="25" type="number" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Contesta las preguntas con la información anterior.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12">
+          <div class="common">
+            <labeltext num="1.">¿Cuántas calificaciones se registraron en la gráfica?</labeltext>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="common mt-3">
+            <labeltext num="2.">¿Cuál es la calificación que más alumnos sacaron?</labeltext>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="9" type="number" placeh="#"></inputbox>
+          </div>
+          <div class="common mt-3">
+            <labeltext num="3.">¿Cuál es el total de alumnos?</labeltext>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="105" type="number" placeh="#"></inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
