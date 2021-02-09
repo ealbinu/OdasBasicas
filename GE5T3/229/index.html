@@ -4,23 +4,97 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Observo diferencias económicas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .dragdrop .draggable > div:not(.result) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 6px;
+          background: var(--pastel1);
+      }
+      .ex1 .dragdrop .draggable > div:not(.result) div {
+          background: #fff;
+          padding: 2px 6px;
+          border-radius: 4px;
+      }
+      @media (max-width: 680px) {
+          .ex1 .dragdrop .draggable > div:not(.result) div {
+              padding: 1px;
+              font-size: 0.5rem;
+          }
+      }
+      .ex1 .d1 .dragdrop .draggable > div:not(.result) {
+          background: #E77B98;
+      }
+      .ex1 .d2 .dragdrop .draggable > div:not(.result) {
+          background: #FDD540;
+      }
+      .ex1 .d3 .dragdrop .draggable > div:not(.result) {
+          background: #9CC85F;
+      }
+      .ex1 .d4 .dragdrop .draggable > div:not(.result) {
+          background: #77CAE7;
+      }
+      .ex1 .d5 .dragdrop .draggable > div:not(.result) {
+          background: #A15C95;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Observo diferencias económicas</h1>
+      <h2>¿Cómo vivimos aquí y cómo viven allá?</h2>
+      <div class="instruccion mt-5">Consulta la página 99 de tu Atlas de Geografía del Mundo SEP para responder los siguientes ejercicios. </div>
+      <div class="instruccion mt-5">Coloca el nombre de la industria destacada de cada continente en el espacio correspondiente. </div>
+      <div class="recuadropalabras dragdrop c2">
+        <dragdrop :options="['Maquinaria','Alimentaria','Automotriz','Petrolera','Cementera']" :options-ok="[]"> </dragdrop>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-12"><img class="img-fluid" src="aimg/a.png"/></div>
+      </div>
+      <div class="row ex1 no-gutters">
+        <div class="col d1">
+          <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Automotriz']"></dragdrop>
+        </div>
+        <div class="col d2">
+          <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Petrolera']"></dragdrop>
+        </div>
+        <div class="col d3">
+          <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Maquinaria']"></dragdrop>
+        </div>
+        <div class="col d4">
+          <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Cementera']"></dragdrop>
+        </div>
+        <div class="col d5">
+          <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Alimentaria']"></dragdrop>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Relaciona cada descripción con los países correspondientes. Escribe cada número en el paréntesis correcto. </div>
+      <div class="row mt-3 ex2 trueorfalse left">
+        <div class="col-md-6 verticalrow">
+          <labeltext num="1.">Son países que tienen 8 o más tipos de industrias.</labeltext>
+          <labeltext num="2.">Son países que sólo tienen un tipo de industria, ya sea alimentaria, fertilizante o cementera.</labeltext>
+          <labeltext num="3.">Son países que tienen únicamente la industria petrolera.</labeltext>
+        </div>
+        <div class="col-md-6 verticalrow">
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
+            <template v-slot:after="">Nigeria, Iraq, Kuwait.</template>
+          </inputbox>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
+            <template v-slot:after="">Estados Unidos, Brasil, China.</template>
+          </inputbox>
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
+            <template v-slot:after="">Australia, Israel, Egipto.</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

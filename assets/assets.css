@@ -860,6 +860,13 @@ input[type=number] {
   border-radius: 6px;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 680px) {
+  .recuadropalabras.dragdrop .dragdrop .draggable > div:not(.result) > div {
+    font-size: 0.6rem;
+    padding: 1px 2px;
+    margin: 2px;
+  }
+}
 /*cross*/
 .crowsswordmod {
   display: flex;
