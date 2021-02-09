@@ -1,26 +1,134 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var tb = []
+- tb.push([[8], 16, [32], [40], 56])
+- tb.push([[9], 18, 36, [45], [63]])
++table(0, tb)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro la fórmula</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .tablemod {
+          text-align: center;
+      }
+      .ex1 .tablemod .ix_0 .col {
+          background: var(--rightcol);
+          text-align: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #fff;
+          padding: 10px 0;
+      }
+      .ex1 .tablemod .inputbox {
+          margin: 0 auto;
+          max-width: 60px;
+      }
+      .ex1 .tablemod .inputbox input {
+          border-color: var(--rightcol);
+      }
+      .ex2 {
+          text-align: center;
+      }
+      .ex2 img {
+          max-height: 100px;
+      }
+      .ex2 .inputbox input {
+          max-width: 80px;
+          font-size: 1.2rem;
+          padding: 2px;
+          border-radius: 4px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro la fórmula</h1>
+      <h2>Superficies rectangulares / En busca de una fórmula</h2>
+      <div class="instruccion mt-5">Completa la tabla de tal forma que las medidas de los rectángulos den como resultado 60 m<sup>2</sup>.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-2 d-none d-md-block"><img class="img-fluid" src="aimg/man.png"/></div>
+        <div class="col">
+          <div class="tablemod">
+            <div class="row no-gutters ix_0">
+              <div class="col cl_0"><span>Largo</span>
+              </div>
+              <div class="col cl_1"><span>Ancho</span>
+              </div>
+              <div class="col cl_2"><span>Area m<sup>2</sup></span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_1">
+              <div class="col cl_0"><span>20</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="3" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_2"><span>60 m<sup>2</sup></span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_2">
+              <div class="col cl_0">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="15" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_1"><span>4</span>
+              </div>
+              <div class="col cl_2"><span>60 m<sup>2</sup></span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_3">
+              <div class="col cl_0"><span>6</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="10" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_2"><span>60 m<sup>2</sup></span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_4">
+              <div class="col cl_0">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="5" type="number" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_1"><span>12</span>
+              </div>
+              <div class="col cl_2"><span>60 m<sup>2</sup></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Calcula el área de cada rectángulo. Cada cuadrito representa a escala la unidad de medida (1 cm<sup>2</sup>).</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md"><img class="img-fluid" src="aimg/b1.png"/>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="36" type="number" placeh="#">
+            <template v-slot:after="">cm<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md"><img class="img-fluid" src="aimg/b2.png"/>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="15" type="number" placeh="#">
+            <template v-slot:after="">cm<sup>2</sup></template>
+          </inputbox>
+        </div>
+        <div class="col-md"><img class="img-fluid" src="aimg/b3.png"/>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="54" type="number" placeh="#">
+            <template v-slot:after="">cm<sup>2</sup></template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

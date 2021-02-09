@@ -1,28 +1,81 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Encuentro la fórmula'
+- subtitle = 'Superficies rectangulares / En busca de una fórmula'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .tablemod {
+                text-align: center;
+            }
+            .ex1 .tablemod .ix_0 .col {
+                background: var(--rightcol);
+                text-align: center;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+                padding: 10px 0;
+            }
+            .ex1 .tablemod .inputbox {
+                margin: 0 auto;
+                max-width: 60px;
+            }
+            .ex1 .tablemod .inputbox input {
+                border-color: var(--rightcol);
+            }
+            .ex2 {
+                text-align: center;
+            }
+            .ex2 img {
+                max-height: 100px;
+            }
+            .ex2 .inputbox input {
+                max-width: 80px;
+                font-size: 1.2rem;
+                padding: 2px;
+                border-radius: 4px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa la tabla de tal forma que las medidas de los rectángulos den como resultado 60 m#[sup 2].
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                .col-md-2.d-none.d-md-block: img(src="aimg/man.png").img-fluid
+                .col
+                    - var tb = []
+                    - tb.push([ 'Largo', 'Ancho', 'Area m<sup>2</sup>' ])
+                    - tb.push([ 20, [3], '60 m<sup>2</sup>' ])
+                    - tb.push([ [15], 4, '60 m<sup>2</sup>' ])
+                    - tb.push([ 6, [10], '60 m<sup>2</sup>' ])
+                    - tb.push([ [5], 12, '60 m<sup>2</sup>' ])
+                    +table(0, tb, true)
             
 
+            .instruccion.mt-5 Calcula el área de cada rectángulo. Cada cuadrito representa a escala la unidad de medida (1 cm#[sup 2]).
 
+            .row.mt-3.ex2
+                .col-md
+                    img(src="aimg/b1.png").img-fluid
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="36" type="number" placeh="#")
+                        template(v-slot:after="") cm<sup>2</sup>
+                .col-md
+                    img(src="aimg/b2.png").img-fluid
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="15" type="number" placeh="#")
+                        template(v-slot:after="") cm<sup>2</sup>
+                .col-md
+                    img(src="aimg/b3.png").img-fluid
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++" :answer="54" type="number" placeh="#")
+                        template(v-slot:after="") cm<sup>2</sup>
 
 
 

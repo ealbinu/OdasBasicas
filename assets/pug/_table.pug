@@ -1,21 +1,21 @@
 mixin table(indexvmodel, campos, regulartext)
     - var vmcount = 0
     .tablemod
-        each row in campos
-            .row.no-gutters
-                each field in row
+        each row,indx in campos
+            .row.no-gutters(class="ix_"+indx   )
+                each field,findx in row
                     if typeof field === 'object'
-                        .col
+                        .col(class="cl_"+findx)
                             inputbox(v-model="r["+(vmcount+indexvmodel)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="number" placeh="#")
                                 if field[1]
-                                    template(v-slot:before="")=field[1]
+                                    template(v-slot:before="") !{field[1]}
                                 if field[2]
-                                    template(v-slot:after="")=field[2]
+                                    template(v-slot:after="") !{field[2]}
                         - vmcount++
                     else 
-                        .col
+                        .col(class="cl_"+findx)
                             if regulartext
-                                span=field
+                                span !{field}
                             else
                                 inputbox(answer=field type="number" example)
 
