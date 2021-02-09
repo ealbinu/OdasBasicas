@@ -4,23 +4,64 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Examino la calidad de vida en México</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .label {
+          background: var(--pastel3);
+          padding: 10px;
+          margin: 10px 0;
+          border-radius: 10px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Examino la calidad de vida en México</h1>
+      <h2>¿Cómo vivimos los mexicanos?</h2>
+      <div class="instruccion mt-5">Relaciona las columnas escribiendo la letra de cada enunciado en el círculo correspondiente.</div>
+      <div class="row mt-3 ex1 trueorfalse left">
+        <div class="col-md-7 verticalrow">
+          <labeltext num="A.">Servicio que tiene como finalidad preparar a hombres y mujeres para que tengan un proyecto de vida y satisfacer sus necesidades.</labeltext>
+          <labeltext num="B.">Es el lugar donde habita, convive y se desarrolla una familia.</labeltext>
+          <labeltext num="C.">Estado en el que un organismo no presenta ninguna enfermedad.</labeltext>
+        </div>
+        <div class="col-md-5 verticalrow">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-">
+            <template v-slot:after="">Salud.</template>
+          </inputbox>
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-">
+            <template v-slot:after="">Educación.</template>
+          </inputbox>
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-">
+            <template v-slot:after="">Vivienda.</template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> la definición correcta del concepto <strong>esperanza de vida</strong>.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="false" text="Es el aspecto indispensable para cualquier espacio habitable."></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="true" text="Es el promedio de años que viven las personas."></check>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Subraya la respuesta que complete cada enunciado. Consulta las páginas 151 a 156 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex3">
+        <div class="col-12">
+          <choose v-model="r[5]" :ref="refCount()" :num="'1.'" text="De acuerdo con la Constitución, todos los mexicanos tenemos derecho a:" :options="['Una vivienda digna y decorosa.', 'Tener un medioambiente dañino.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[6]" :ref="refCount()" :num="'2.'" text="Nombre que reciben las personas que no saben leer ni escribir." :options="['Ignorantes.', 'Analfabetas.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[7]" :ref="refCount()" :num="'3.'" text="La población que no cuenta con energía eléctrica, agua entubada, sanitarios ni espacio suficiente carece de:" :options="['Vivienda.', 'Una buena calidad de vida.']" @isright="right++" :answer-num="1"></choose>
+          <choose v-model="r[8]" :ref="refCount()" :num="'4.'" text="Es el promedio de esperanza de vida que hay en nuestro país." :options="['75 años.', '85 años.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[9]" :ref="refCount()" :num="'5.'" text="El acceso a los servicios de salud y los avances de la medicina se reflejan en:" :options="['Las condiciones de vivienda.', 'La salud de la población.']" @isright="right++" :answer-num="1"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

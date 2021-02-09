@@ -1,29 +1,58 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Examino la calidad de vida en México'
+- subtitle = '¿Cómo vivimos los mexicanos?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .label {
+                background: var(--pastel3);
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 10px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona las columnas escribiendo la letra de cada enunciado en el círculo correspondiente.
 
-            .row.mt-3
+            .row.mt-3.ex1.trueorfalse.left
+                .col-md-7.verticalrow
+                    labeltext(num="A.") Servicio que tiene como finalidad preparar a hombres y mujeres para que tengan un proyecto de vida y satisfacer sus necesidades.
+                    labeltext(num="B.") Es el lugar donde habita, convive y se desarrolla una familia.
+                    labeltext(num="C.") Estado en el que un organismo no presenta ninguna enfermedad.
+                .col-md-5.verticalrow
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" answer="C" type="text" placeh="-")
+                        template(v-slot:after="") Salud.
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" answer="A" type="text" placeh="-")
+                        template(v-slot:after="") Educación.
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" answer="B" type="text" placeh="-")
+                        template(v-slot:after="") Vivienda.
             
+            .instruccion.mt-5 Marca así <checkmark></checkmark> la definición correcta del concepto #[strong esperanza de vida].
 
+            .row.mt-3.ex2
+                .col-md-6
+                    check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="false" text="Es el aspecto indispensable para cualquier espacio habitable.")
+                .col-md-6
+                    check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="true" text="Es el promedio de años que viven las personas.")
 
+            .instruccion.mt-5 Subraya la respuesta que complete cada enunciado. Consulta las páginas 151 a 156 de tu libro de texto SEP.
 
+            .row.mt-3.ex3
+                .col-12
+                    choose(v-model="r[5]" :ref="refCount()" :num="'1.'" text="De acuerdo con la Constitución, todos los mexicanos tenemos derecho a:" :options="['Una vivienda digna y decorosa.', 'Tener un medioambiente dañino.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[6]" :ref="refCount()" :num="'2.'" text="Nombre que reciben las personas que no saben leer ni escribir." :options="['Ignorantes.', 'Analfabetas.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[7]" :ref="refCount()" :num="'3.'" text="La población que no cuenta con energía eléctrica, agua entubada, sanitarios ni espacio suficiente carece de:" :options="['Vivienda.', 'Una buena calidad de vida.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[8]" :ref="refCount()" :num="'4.'" text="Es el promedio de esperanza de vida que hay en nuestro país." :options="['75 años.', '85 años.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[9]" :ref="refCount()" :num="'5.'" text="El acceso a los servicios de salud y los avances de la medicina se reflejan en:" :options="['Las condiciones de vivienda.', 'La salud de la población.']" @isright="right++" :answer-num="1")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
