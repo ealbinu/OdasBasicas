@@ -1,25 +1,64 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Reconozco medidas'
+- subtitle = 'Más unidades para medir'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .frac {
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .frac hr {
+                margin: 0 auto;
+                border: none;
+                border-top: 3px solid var(--sec);
+                min-width: 20px;
+                max-width: 60px;
+            }
+            .inputbox {
+                margin-right: 4px;
+            }
+            .parrafoinputs {
+                border: 2px solid #fff;
+                font-size: 0.9rem;
+                margin: 5px;
+
+            }
+            .parrafoinputs .inputbox {
+                max-width: 120px;
+            }
+            @media (max-width: 680px){
+                .parrafoinputs .inputbox {
+                    max-width: 80px;
+                }
+            }
+            .pr:nth-child(odd) .parrafoinputs {
+                box-shadow: 4px 4px 0 var(--pastel1);
+            }
+            .pr:nth-child(even) .parrafoinputs {
+                box-shadow: 4px 4px 0 var(--pastel3);
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe la equivalencia correspondiente en gramos y en sus múltiplos o submúltiplos.
 
-            .row.mt-3
+            .row.mt-3.ex1.centerrow
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6.pr: .parrafoinputs
+                        span(v-html="i.b")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.r" type="number" placeh="#")
+                        span(v-html="i.a")
             
 
 
@@ -29,4 +68,19 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {b: '1 kg =', r: 1000, a: 'gramos.'},
+                    {b: '25 000 miligramos =', r: 0.25, a: 'hg'},
+                    {b: '<span class="frac">1<hr>2</span> kg =', r: 500000, a: 'miligramos.'},
+                    {b: '46 520 decigramos =', r: 4.652, a: 'kg'},
+                    {b: '0.25 dag =', r: 250, a: 'centigramos.'},
+                    {b: '120 000 centigramos =', r: 12000, a: 'kg'},
+
+                    {b: '3 kg =', r: 3000, a: 'gramos.'},
+                    {b: '<span class="frac">1<hr>4</span> kg =', r: 250000, a: 'miligramos.'},
+                    {b: '0.50 dag =', r: 500, a: 'centigramos.'},
+                    {b: '50 000 miligramos =', r: 0.50, a: 'hg'},
+                    {b: '35 250 decigramos =', r: 3.525, a: 'kg'},
+                    {b: '350 000 centigramos =', r: 35000, a: 'dg'},
+
+                ])

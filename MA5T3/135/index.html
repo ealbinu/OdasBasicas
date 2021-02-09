@@ -4,23 +4,66 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco medidas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .frac {
+          text-align: center;
+          display: inline-block;
+          vertical-align: middle;
+      }
+      .frac hr {
+          margin: 0 auto;
+          border: none;
+          border-top: 3px solid var(--sec);
+          min-width: 20px;
+          max-width: 60px;
+      }
+      .inputbox {
+          margin-right: 4px;
+      }
+      .parrafoinputs {
+          border: 2px solid #fff;
+          font-size: 0.9rem;
+          margin: 5px;
+      
+      }
+      .parrafoinputs .inputbox {
+          max-width: 120px;
+      }
+      @media (max-width: 680px){
+          .parrafoinputs .inputbox {
+              max-width: 80px;
+          }
+      }
+      .pr:nth-child(odd) .parrafoinputs {
+          box-shadow: 4px 4px 0 var(--pastel1);
+      }
+      .pr:nth-child(even) .parrafoinputs {
+          box-shadow: 4px 4px 0 var(--pastel3);
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco medidas</h1>
+      <h2>Más unidades para medir</h2>
+      <div class="instruccion mt-5">Escribe la equivalencia correspondiente en gramos y en sus múltiplos o submúltiplos.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6 pr">
+            <div class="parrafoinputs"><span v-html="i.b"></span>
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.r" type="number" placeh="#"></inputbox><span v-html="i.a"></span>
+            </div>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +84,23 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {b: '1 kg =', r: 1000, a: 'gramos.'},
+          {b: '25 000 miligramos =', r: 0.25, a: 'hg'},
+          {b: '<span class="frac">1<hr>2</span> kg =', r: 500000, a: 'miligramos.'},
+          {b: '46 520 decigramos =', r: 4.652, a: 'kg'},
+          {b: '0.25 dag =', r: 250, a: 'centigramos.'},
+          {b: '120 000 centigramos =', r: 12000, a: 'kg'},
+      
+          {b: '3 kg =', r: 3000, a: 'gramos.'},
+          {b: '<span class="frac">1<hr>4</span> kg =', r: 250000, a: 'miligramos.'},
+          {b: '0.50 dag =', r: 500, a: 'centigramos.'},
+          {b: '50 000 miligramos =', r: 0.50, a: 'hg'},
+          {b: '35 250 decigramos =', r: 3.525, a: 'kg'},
+          {b: '350 000 centigramos =', r: 35000, a: 'dg'},
+      
+      ])
+    </script>
   </body>
 </html>
