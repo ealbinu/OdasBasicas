@@ -4,23 +4,292 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Trabajo con fracciones equivalentes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .frac {
+          text-align: center;
+          font-size: 1.4rem;
+      }
+      
+      .frac hr {
+          margin: 5px auto;
+          border: none;
+          border-top: 4px solid var(--sec);
+          min-width: 20px;
+      }
+      .frac .inputbox input {
+          border-radius: 6px;
+          padding: 0 2px;
+          font-size: 1.4rem;
+          max-width: 50px;
+          margin: 0 2px;
+      }
+      .area {
+          background: #f5f5f5;
+          padding: 10px;
+          margin: 4px;
+          border-radius: 10px;
+      }
+      .area.a1 {
+          background: var(--pastel3);
+      }
+      .area.a2 {
+          background: var(--pastel4);
+      }
+      .area.a3 {
+          background: var(--pastel5);
+      }
+      .area.a4 {
+          background: var(--pastel2);
+      }
+      @media (max-width: 680px){
+          .frac{
+              font-size: 1rem;
+          }
+          .frac .inputbox input{
+              margin: 0;
+              font-size: 1rem;
+              padding: 0;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Trabajo con fracciones equivalentes</h1>
+      <h2>¿Por qué son iguales? / Sólo del mismo valor / El número mayor</h2>
+      <div class="instruccion mt-5">Encuentra las fracciones equivalentes y escríbelas en los recuadros utilizando el recurso de la multiplicación. Observa el ejemplo.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-lg-6">
+          <div class="area row centerrow text-center a1 no-gutters">
+            <div class="col frac">5<hr>8</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">3<hr>3</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <numbers smaller="smaller" c="3">15</numbers>
+              <hr/>
+              <numbers smaller="smaller" c="3">24</numbers>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">2<hr>2</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <numbers smaller="smaller" c="3">30</numbers>
+              <hr/>
+              <numbers smaller="smaller" c="3">48</numbers>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="area row centerrow text-center a2 no-gutters">
+            <div class="col frac">2<hr>7</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">2<hr>2</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="14" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">4<hr>4</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="16" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="56" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="area row centerrow text-center a3 no-gutters">
+            <div class="col frac">1<hr>2</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">5<hr>5</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="10" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">3<hr>3</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="15" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" :answer="30" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="area row centerrow text-center a4 no-gutters">
+            <div class="col frac">1<hr>4</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">6<hr>6</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" :answer="24" type="number" placeh="#"></inputbox>
+            </div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">x</numbers>
+            </div>
+            <div class="col frac">7<hr>7</div>
+            <div class="col">
+              <numbers smaller="smaller" c="2">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[10]" :ref="refCount()" @isright="right++" :answer="42" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[11]" :ref="refCount()" @isright="right++" :answer="168" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Encuentra las fracciones equivalentes y escríbelas en los recuadros utilizando el recurso de la división.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">12<hr>16</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">2<hr>2</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[12]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[13]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">3<hr>6</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">3<hr>3</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[14]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[15]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">15<hr>30</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">5<hr>5</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[16]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[17]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">32<hr>20</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">4<hr>4</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[18]" :ref="refCount()" @isright="right++" :answer="8" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[19]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">7<hr>14</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">7<hr>7</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[20]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[21]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="area row centerrow text-center no-gutters">
+            <div class="col frac">48<hr>40</div>
+            <div class="col">
+              <numbers small="small" c="4">÷</numbers>
+            </div>
+            <div class="col frac">8<hr>8</div>
+            <div class="col">
+              <numbers small="small" c="4">=</numbers>
+            </div>
+            <div class="col frac">
+              <inputbox v-model="r[22]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#"></inputbox>
+              <hr/>
+              <inputbox v-model="r[23]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#"></inputbox>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
