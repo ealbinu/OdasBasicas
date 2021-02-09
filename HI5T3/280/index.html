@@ -4,23 +4,66 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Explico la explosión demográfica</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .r_source,
+      .r_target {
+          text-align: left;
+          padding: 10px;
+      }
+      @media (max-width: 680px) {
+          .r_source,
+          .r_target {
+              font-size: 0.6rem;
+              padding: 1px 4px;
+          }
+      }
+      .r_source {
+          background: var(--pastel3);
+      }
+      .r_target {
+          background: var(--pastel1);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Explico la explosión demográfica</h1>
+      <h2>La seguridad social y el inicio de la explosión demográfica</h2>
+      <div class="instruccion mt-5">Une con una línea cada enunciado con su causa.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <labetext>{{source.t}}</labetext>
+            </template>
+            <template v-slot:target="{target}">
+              <labetext>{{target.t}}</labetext>
+            </template>
+          </relational>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Selecciona los enunciados que son verdaderos. </div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <check v-model="r[1]" :ref="refCount()" @isright="right++" :answer="true" text="Las mujeres pueden ser candidatas en elecciones." initclass="coloring"></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="false" text="El voto femenino se reconoció en el artículo 117 de la Constitución." initclass="coloring"></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[3]" :ref="refCount()" @isright="right++" :answer="false" text="En Inglaterra,Alemania y Canadá se reconoció el voto femenino en la década de los años veinte." initclass="coloring"></check>
+        </div>
+        <div class="col-md-6">
+          <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="true" text="El voto femenino es importante, ya que ha ayudado a elegir a nuestros gobernantes." initclass="coloring"></check>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +84,29 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      //app.$set(app.tempsobj, 'a', [])
+      app.$set(app.tempsobj, 'sources', [
+          {t:'Las comunidades rurales y las ciudades mejoraron su calidad de vida.'},
+          {t:'El crecimiento de la población se elevó en las zonas urbanas.'},
+          {t:'Se creó el IMSS en 1943 y el ISSSTE en 1959.'},
+          {t:'La migración del campo a la ciudad aumentó.'},
+          {t:'Se creó el Consejo Nacional de Población (Conapo) en 1974.'},
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          {t:'Se buscó controlar el aumento de la población.'},
+          {t:'La búsqueda de mejores condiciones de vida.'},
+          {t:'La introducción de agua potable, alcantarillado, electricidad, caminos y servicios médicos.'},
+          {t:'Se extendieron los servicios médicos, de salud y de seguridad social.'},
+          {t:'El mejoramiento económico y de las condiciones de vida tanto de los individuos como de las familias.'},
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_2'],
+          ['s_1', 't_4'],
+          ['s_2', 't_3'],
+          ['s_3', 't_1'],
+          ['s_4', 't_0'],
+      ])
+    </script>
   </body>
 </html>

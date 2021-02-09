@@ -1,27 +1,54 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Explico la explosión demográfica'
+- subtitle = 'La seguridad social y el inicio de la explosión demográfica'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .r_source,
+            .r_target {
+                text-align: left;
+                padding: 10px;
+            }
+            @media (max-width: 680px) {
+                .r_source,
+                .r_target {
+                    font-size: 0.6rem;
+                    padding: 1px 4px;
+                }
+            }
+            .r_source {
+                background: var(--pastel3);
+            }
+            .r_target {
+                background: var(--pastel1);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Une con una línea cada enunciado con su causa.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): labetext() {{source.t}}
+                        template(v-slot:target="{target}"): labetext() {{target.t}}
+                    
             
+            .instruccion.mt-5 Selecciona los enunciados que son verdaderos. 
 
+            .row.mt-3.ex2
+                .col-md-6: check(v-model="r[1]" :ref="refCount()"  @isright="right++" :answer="true" text="Las mujeres pueden ser candidatas en elecciones." initclass="coloring")
+                .col-md-6: check(v-model="r[2]" :ref="refCount()"  @isright="right++" :answer="false" text="El voto femenino se reconoció en el artículo 117 de la Constitución." initclass="coloring")
+                .col-md-6: check(v-model="r[3]" :ref="refCount()"  @isright="right++" :answer="false" text="En Inglaterra,Alemania y Canadá se reconoció el voto femenino en la década de los años veinte." initclass="coloring")
+                .col-md-6: check(v-model="r[4]" :ref="refCount()"  @isright="right++" :answer="true" text="El voto femenino es importante, ya que ha ayudado a elegir a nuestros gobernantes." initclass="coloring")
 
 
 
@@ -30,3 +57,24 @@ html(lang="es")
         +scripts
             script.
                 //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {t:'Las comunidades rurales y las ciudades mejoraron su calidad de vida.'},
+                    {t:'El crecimiento de la población se elevó en las zonas urbanas.'},
+                    {t:'Se creó el IMSS en 1943 y el ISSSTE en 1959.'},
+                    {t:'La migración del campo a la ciudad aumentó.'},
+                    {t:'Se creó el Consejo Nacional de Población (Conapo) en 1974.'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {t:'Se buscó controlar el aumento de la población.'},
+                    {t:'La búsqueda de mejores condiciones de vida.'},
+                    {t:'La introducción de agua potable, alcantarillado, electricidad, caminos y servicios médicos.'},
+                    {t:'Se extendieron los servicios médicos, de salud y de seguridad social.'},
+                    {t:'El mejoramiento económico y de las condiciones de vida tanto de los individuos como de las familias.'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_4'],
+                    ['s_2', 't_3'],
+                    ['s_3', 't_1'],
+                    ['s_4', 't_0'],
+                ])
