@@ -101,36 +101,36 @@ html(lang="es")
             .row.mt-3.ex1.no-gutters.centerrow.text-center
                 .col-2.main: numbers(c=2) 8
                 .col(v-for="(i, index) in tempsobj.a").boxy
-                    check(v-model="r[i.vm+1]" :ref="refCount()"  @isright="right++" :answer="i.mul")
+                    check(v-model="d['1'+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
                     template(v-if="!i.ex")
-                        inputbox(v-model="r[i.vm]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        inputbox(v-model="d['2'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
             
             .row.mt-3.ex2.no-gutters.centerrow.text-center
                 .col-2.main: numbers(c=5) 6
                 .col(v-for="(i, index) in tempsobj.b").boxy
-                    check(v-model="r[i.vm+1]" :ref="refCount()"  @isright="right++" :answer="i.mul")
+                    check(v-model="d['3'+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
                     template(v-if="!i.ex")
-                        inputbox(v-model="r[i.vm]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        inputbox(v-model="d['4'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
 
             .row.mt-3.ex3.no-gutters.centerrow.text-center
                 .col-2.main: numbers(c=8) 3
                 .col(v-for="(i, index) in tempsobj.c").boxy
-                    check(v-model="r[i.vm+1]" :ref="refCount()"  @isright="right++" :answer="i.mul")
+                    check(v-model="d[5+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
                     template(v-if="!i.ex")
-                        inputbox(v-model="r[i.vm]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        inputbox(v-model="d['5'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
 
             .row.mt-3.ex4.no-gutters.centerrow.text-center
                 .col-2.main: numbers(c=4) 4
                 .col(v-for="(i, index) in tempsobj.d").boxy
-                    check(v-model="r[i.vm+1]" :ref="refCount()"  @isright="right++" :answer="i.mul")
+                    check(v-model="d['7'+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
                     template(v-if="!i.ex")
-                        inputbox(v-model="r[i.vm]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        inputbox(v-model="d['8'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
 
@@ -142,43 +142,43 @@ html(lang="es")
         +scripts
             script.
                 app.$set(app.tempsobj, 'a', [
-                    {n: 8, vm: 0, ex: false, mul: false},
-                    {n: 16, vm: 2, ex: 1, mul: false},
-                    {n: 24, vm: 4, ex: false, mul: 1},
-                    {n: 32, vm: 6, ex: false, mul: false},
-                    {n: 40, vm: 8, ex: false, mul: false},
-                    {n: 48, vm: 10, ex: 1, mul: 1},
-                    {n: 64, vm: 12, ex: false, mul: false},
-                    {n: 72, vm: 14, ex: false, mul: false},
+                    {n: 8, vm: 0, vm2: 1,       ex: false, mul: false},
+                    {n: 16, vm: null, vm2: 2,  ex: 1, mul: false},
+                    {n: 24, vm: 3, vm2: 4,      ex: false, mul: 1},
+                    {n: 32, vm: 5, vm2: 6,      ex: false, mul: false},
+                    {n: 40, vm: 7, vm2: 8,      ex: false, mul: false},
+                    {n: 48, vm: null, vm2: 9,  ex: 1, mul: 1},
+                    {n: 64, vm: 10, vm2: 11,      ex: false, mul: false},
+                    {n: 72, vm: 12, vm2: 13,      ex: false, mul: false},
                 ])
                 app.$set(app.tempsobj, 'b', [
-                    {n: 6, vm: 16, ex: 1, mul: false},
-                    {n: 12, vm: 18, ex: false, mul: false},
-                    {n: 18, vm: 20, ex: false, mul: false},
-                    {n: 24, vm: 22, ex: 1, mul: 1},
-                    {n: 30, vm: 24, ex: false, mul: false},
-                    {n: 36, vm: 26, ex: false, mul: false},
-                    {n: 42, vm: 28, ex: false, mul: false},
-                    {n: 48, vm: 30, ex: false, mul: 1},
+                    {n: 6, vm: null,vm2: 14, ex: 1, mul: false},
+                    {n: 12, vm: 15, vm2: 16,      ex: false, mul: false},
+                    {n: 18, vm: 17, vm2: 18,      ex: false, mul: false},
+                    {n: 24, vm: null, vm2: 19,  ex: 1, mul: 1},
+                    {n: 30, vm: 20, vm2: 21,     ex: false, mul: false},
+                    {n: 36, vm: 22, vm2: 23,     ex: false, mul: false},
+                    {n: 42, vm: 24, vm2: 25,     ex: false, mul: false},
+                    {n: 48, vm: 26, vm2: 27,     ex: false, mul: 1},
                 ])
                 app.$set(app.tempsobj, 'c', [
-                    {n: 3, vm: 32, ex: false, mul: false},
-                    {n: 6, vm: 34, ex: 1, mul: false},
-                    {n: 9, vm: 36, ex: false, mul: false},
-                    {n: 12, vm: 38, ex: false, mul: 1},
-                    {n: 15, vm: 40, ex: false, mul: false},
-                    {n: 18, vm: 42, ex: false, mul: false},
-                    {n: 21, vm: 44, ex: false, mul: false},
-                    {n: 24, vm: 46, ex: false, mul: 1},
+                    {n: 3, vm: 14, vm2: 39,      ex: false, mul: false},
+                    {n: 6, vm: null,vm2: null,   ex: 1, mul: false},
+                    {n: 9, vm: 15, vm2: 40,      ex: false, mul: false},
+                    {n: 12, vm: 16, vm2: 41,     ex: false, mul: 1},
+                    {n: 15, vm: 17, vm2: 42,     ex: false, mul: false},
+                    {n: 18, vm: 18, vm2: 43,     ex: false, mul: false},
+                    {n: 21, vm: 19, vm2: 44,     ex: false, mul: false},
+                    {n: 24, vm: 20, vm2: 45,     ex: false, mul: 1},
                 ])
                 
                 app.$set(app.tempsobj, 'd', [
-                    {n: 4, vm: 48, ex: 1, mul: false},
-                    {n: 8, vm: 50, ex: 1, mul: false},
-                    {n: 12, vm: 52, ex: false, mul: 1},
-                    {n: 16, vm: 54, ex: false, mul: false},
-                    {n: 20, vm: 56, ex: false, mul: false},
-                    {n: 24, vm: 58, ex: false, mul: 1},
-                    {n: 28, vm: 60, ex: false, mul: false},
-                    {n: 32, vm: 62, ex: false, mul: false},
+                    {n: 4, vm: null, vm2: null, ex: 1, mul: false},
+                    {n: 8, vm: null, vm2: null, ex: 1, mul: false},
+                    {n: 12, vm: 21, vm2: 46,     ex: false, mul: 1},
+                    {n: 16, vm: 22, vm2: 47,     ex: false, mul: false},
+                    {n: 20, vm: 23, vm2: 48,     ex: false, mul: false},
+                    {n: 24, vm: 24, vm2: 49,     ex: false, mul: 1},
+                    {n: 28, vm: 25, vm2: 50,     ex: false, mul: false},
+                    {n: 32, vm: 26, vm2: 51,     ex: false, mul: false},
                 ])

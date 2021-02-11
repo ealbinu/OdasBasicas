@@ -18,6 +18,7 @@ var app = new Vue({
     data () {
         return {
             r: [],
+            d: {},
             g: [],
             right: 0,
             total: 0,
@@ -26,6 +27,7 @@ var app = new Vue({
             temps2: null,
             temps3: null,
             tempsobj:{},
+            vmcounter:0,
             finalData:{
                 score: 0,
                 scoresum: 0,
@@ -54,6 +56,11 @@ var app = new Vue({
             s_win.play()
             this.total = this.r.length
 
+            if(this.total == 0){
+                this.total = Object.keys(this.d).length
+                console.log(this.total)
+            }
+
 
             for(var i in this.$refs){
                 if(this.$refs[i]!=undefined){
@@ -75,7 +82,6 @@ var app = new Vue({
                 _this.screen.push(dataUrl)
                 _this.ended()
             }).catch(function (error) { console.error(error) })
-
 
 
             //this.ended()
