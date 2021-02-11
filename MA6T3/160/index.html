@@ -133,9 +133,9 @@
           <numbers c="8">3</numbers>
         </div>
         <div class="col boxy" v-for="(i, index) in tempsobj.c">
-          <check v-model="d[5+index]" :ref="refCount()" @isright="right++" :answer="i.mul"></check>
+          <check v-model="d['5'+index]" :ref="refCount()" @isright="right++" :answer="i.mul"></check>
           <template v-if="!i.ex">
-            <inputbox v-model="d['5'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#"></inputbox>
+            <inputbox v-model="d['6'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#"></inputbox>
           </template>
           <template v-else="v-else">
             <inputbox :answer="i.n" type="number" placeh="#" example="example"></inputbox>

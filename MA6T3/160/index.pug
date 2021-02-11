@@ -119,9 +119,9 @@ html(lang="es")
             .row.mt-3.ex3.no-gutters.centerrow.text-center
                 .col-2.main: numbers(c=8) 3
                 .col(v-for="(i, index) in tempsobj.c").boxy
-                    check(v-model="d[5+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
+                    check(v-model="d['5'+index]" :ref="refCount()"  @isright="right++" :answer="i.mul")
                     template(v-if="!i.ex")
-                        inputbox(v-model="d['5'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
+                        inputbox(v-model="d['6'+index]" :ref="refCount()" @isright="right++" :answer="i.n" type="number" placeh="#")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
 
