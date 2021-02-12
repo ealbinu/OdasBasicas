@@ -90,6 +90,60 @@ html(lang="es")
                 background: #F0A360;
             }
 
+            .ex5 .h4 {
+                background: var(--clear);
+                padding: 3px 0;
+                margin: 0;
+                border-radius: 6px;
+                color: #fff;
+                text-align: center;
+            }
+            .ex5 .out {
+                margin: 2px;
+                display: flex;
+                align-items: flex-end;
+            }
+            .ex5 .out:nth-child(4n+1) .selectable {
+                border-color: #E9832C;
+            }
+            .ex5 .out:nth-child(4n+2) .selectable {
+                border-color: #AE4E8F;
+            }
+            .ex5 .out:nth-child(4n+3) .selectable {
+                border-color: #887544;
+            }
+            .ex5 .out:nth-child(4n+4) .selectable {
+                border-color: #6A4287;
+            }
+            .ex5 .selectable {
+                background: #fff;
+                border-top: solid 2px #f0f0f0;
+                border-bottom: solid 2px #f0f0f0;
+                border-left: solid 14px #f0f0f0;
+                border-right: solid 14px #f0f0f0;
+                text-align: center;
+                padding: 1px 0;
+                border-radius: 2px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                display: inline-block;
+                width: 80%;
+            }
+            @media (max-width: 680px) {
+                .ex5 .selectable {
+                    border-left: solid 2px #f0f0f0;
+                    border-right: solid 2px #f0f0f0;
+                }
+            }
+            .ex5 .selectable .result {
+                transform: scale(0.6);
+                margin-right: -16px;
+                margin-top: -16px;
+            }
+            .ex5 .commas {
+                display: inline-block;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
@@ -134,8 +188,26 @@ html(lang="es")
                     template(v-else)
                         inputbox( :answer="i.n" type="number" placeh="#" example)
 
-
-
+            .instruccion.mt-5 Marca así <markex></markex> el mínimo común múltiplo del 4 y 7.
+            
+            .row.mt-3.ex5.no-gutters.centerrow
+                .col-md-4.h4 Múltiplos de 4:
+                .col-md
+                    .row.no-gutters.centerrow
+                        .col(v-for="(i, index) in [4,8,12,16,20,24,28]").out
+                            selectable(ex :isok="i==28" v-model="d['9'+index]" :ref="refCount()" @isright="right++") {{i}}
+                            div.commas
+                                template(v-if="index<6") ,
+                                template(v-else) .
+            .row.mt-3.ex5.no-gutters.centerrow
+                .col-md-4.h4 Múltiplos de 7:
+                .col-md
+                    .row.no-gutters.centerrow
+                        .col(v-for="(i, index) in [7,14,21,28,35,42,49]").out
+                            selectable(ex :isok="i==28" v-model="d['10'+index]" :ref="refCount()" @isright="right++") {{i}}
+                            div.commas
+                                template(v-if="index<6") ,
+                                template(v-else) .
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

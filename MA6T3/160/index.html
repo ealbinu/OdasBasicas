@@ -93,6 +93,60 @@
           background: #F0A360;
       }
       
+      .ex5 .h4 {
+          background: var(--clear);
+          padding: 3px 0;
+          margin: 0;
+          border-radius: 6px;
+          color: #fff;
+          text-align: center;
+      }
+      .ex5 .out {
+          margin: 2px;
+          display: flex;
+          align-items: flex-end;
+      }
+      .ex5 .out:nth-child(4n+1) .selectable {
+          border-color: #E9832C;
+      }
+      .ex5 .out:nth-child(4n+2) .selectable {
+          border-color: #AE4E8F;
+      }
+      .ex5 .out:nth-child(4n+3) .selectable {
+          border-color: #887544;
+      }
+      .ex5 .out:nth-child(4n+4) .selectable {
+          border-color: #6A4287;
+      }
+      .ex5 .selectable {
+          background: #fff;
+          border-top: solid 2px #f0f0f0;
+          border-bottom: solid 2px #f0f0f0;
+          border-left: solid 14px #f0f0f0;
+          border-right: solid 14px #f0f0f0;
+          text-align: center;
+          padding: 1px 0;
+          border-radius: 2px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+          display: inline-block;
+          width: 80%;
+      }
+      @media (max-width: 680px) {
+          .ex5 .selectable {
+              border-left: solid 2px #f0f0f0;
+              border-right: solid 2px #f0f0f0;
+          }
+      }
+      .ex5 .selectable .result {
+          transform: scale(0.6);
+          margin-right: -16px;
+          margin-top: -16px;
+      }
+      .ex5 .commas {
+          display: inline-block;
+      }
+      
+      
     </style>
   </head>
   <body>
@@ -154,6 +208,35 @@
           <template v-else="v-else">
             <inputbox :answer="i.n" type="number" placeh="#" example="example"></inputbox>
           </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <markex></markex> el mínimo común múltiplo del 4 y 7.</div>
+      <div class="row mt-3 ex5 no-gutters centerrow">
+        <div class="col-md-4 h4">Múltiplos de 4:</div>
+        <div class="col-md">
+          <div class="row no-gutters centerrow">
+            <div class="col out" v-for="(i, index) in [4,8,12,16,20,24,28]">
+              <selectable ex="ex" :isok="i==28" v-model="d['9'+index]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+              <div class="commas">
+                <template v-if="index&lt;6">,</template>
+                <template v-else="v-else">.</template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex5 no-gutters centerrow">
+        <div class="col-md-4 h4">Múltiplos de 7:</div>
+        <div class="col-md">
+          <div class="row no-gutters centerrow">
+            <div class="col out" v-for="(i, index) in [7,14,21,28,35,42,49]">
+              <selectable ex="ex" :isok="i==28" v-model="d['10'+index]" :ref="refCount()" @isright="right++">{{i}}</selectable>
+              <div class="commas">
+                <template v-if="index&lt;6">,</template>
+                <template v-else="v-else">.</template>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
