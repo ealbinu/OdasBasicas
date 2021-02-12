@@ -8,16 +8,20 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
+            .common{ height: 100%; }
             .inputbox {
                 padding: 20px;
+                height: 100%;
             }
             .inputbox input {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 position: absolute;
+                padding: 2px;
                 right: -10px;
-                bottom: -10px;
-                width: 60px;
+                bottom: -14px;
+                width: 50px;
                 box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+                border-color: #CCE6E2;
             }
 
     body
@@ -29,22 +33,22 @@ html(lang="es")
             .instruccion.mt-5 Ordena cronológicamente del #[strong 1] al #[strong 6] los siguientes sucesos.
 
             .row.mt-3.ex1
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#")
                         template(v-slot:after=""): div A partir de la muerte de Mahoma los califas expandieron el islam.
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
                         template(v-slot:after=""): div Mahoma tuvo la visita del Arcángel Gabriel (Noche del destino).
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
                         template(v-slot:after=""): div Mahoma fue perseguido por sus adversarios.
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
                         template(v-slot:after=""): div En la ciudad de Medina, Mahoma escribió el libro <em>El Corán</em>.
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
                         template(v-slot:after=""): div Mahoma comenzó a predicar una nueva religión monoteísta llamada: islam.
-                .col-md-4.mt-2
+                .col-md-4.mt-3
                     .common.c3: inputbox(v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
                         template(v-slot:after=""): div Mahoma conquistó la ciudad de La Meca y unificó a los árabes en una misma fe.
             

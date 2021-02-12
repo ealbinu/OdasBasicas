@@ -11,16 +11,20 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
+      .common{ height: 100%; }
       .inputbox {
           padding: 20px;
+          height: 100%;
       }
       .inputbox input {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
           position: absolute;
+          padding: 2px;
           right: -10px;
-          bottom: -10px;
-          width: 60px;
+          bottom: -14px;
+          width: 50px;
           box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+          border-color: #CCE6E2;
       }
       
     </style>
@@ -31,7 +35,7 @@
       <h2>El islam y la expansión musulmana</h2>
       <div class="instruccion mt-5">Ordena cronológicamente del <strong>1</strong> al <strong>6</strong> los siguientes sucesos.</div>
       <div class="row mt-3 ex1">
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="6" type="number" placeh="#">
               <template v-slot:after="">
@@ -40,7 +44,7 @@
             </inputbox>
           </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#">
               <template v-slot:after="">
@@ -49,7 +53,7 @@
             </inputbox>
           </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#">
               <template v-slot:after="">
@@ -58,7 +62,7 @@
             </inputbox>
           </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#">
               <template v-slot:after="">
@@ -67,7 +71,7 @@
             </inputbox>
           </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#">
               <template v-slot:after="">
@@ -76,7 +80,7 @@
             </inputbox>
           </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4 mt-3">
           <div class="common c3">
             <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#">
               <template v-slot:after="">
