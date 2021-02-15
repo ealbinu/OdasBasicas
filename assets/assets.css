@@ -159,7 +159,7 @@ strong.sec {
 }
 .selectable.withex .circledactive,
 .selectableoptions.withex .circledactive {
-  background-image: url(../../assets/aimg/markex.svg);
+  background-image: url(../assets/aimg/markex.svg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
