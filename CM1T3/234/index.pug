@@ -1,25 +1,49 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Sé de qué están hechas las cosas'
+- subtitle = '¡A buscar objetos en la escuela! / Materiales para elaborar objetos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .inputbox {
+                margin: 10px 0;
+            }
+            @media (max-width: 680px) {
+                .inputbox {
+                    flex-direction: column;
+                }
+            }
+            .inputbox img {
+                margin: 6px;
+                border-radius: 10px;
+                max-width: 160px;
+            }
+            .inputbox input {
+                font-size: 1.4rem;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe en los renglones de qué material están hechos cada uno de los objetos. Utiliza las palabras del recuadro.
 
-            .row.mt-3
+            recuadropalabras(:palabras="['madera','vidrio','metal','plástico']" c=3)
+
+            .row.mt-3.ex1
+                inputbox(v-model="r[0]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="metal")
+                    template(v-slot:before=""): img(:src="'aimg/'+'a1'+'.png'").img-fluid
+                inputbox(v-model="r[1]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="vidrio")
+                    template(v-slot:before=""): img(:src="'aimg/'+'a2'+'.png'").img-fluid
+                inputbox(v-model="r[2]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="plástico")
+                        template(v-slot:before=""): img(:src="'aimg/'+'a3'+'.png'").img-fluid
+                inputbox(v-model="r[3]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="madera")
+                    template(v-slot:before=""): img(:src="'aimg/'+'a4'+'.png'").img-fluid
             
 
 

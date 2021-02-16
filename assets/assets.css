@@ -140,6 +140,18 @@ strong.sec {
   height: 100%;
   resize: none;
 }
+.inputbox.ib2 input {
+  padding: 2px;
+  font-size: 1.4rem;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+  max-width: 160px;
+}
+.inputbox.ib2:nth-child(odd) input {
+  border-color: var(--clear);
+}
+.inputbox.ib2:nth-child(even) input {
+  border-color: var(--accent);
+}
 .selectable,
 .selectableoptions {
   display: flex;
@@ -471,9 +483,6 @@ input[type=number] {
   width: 20%;
   left: 1%;
   top: 1%;
-}
-.imgbgMod .inputbox input {
-  font-size: 1.4.rem;
 }
 @media (max-width: 990px) {
   .imgbgMod .inputbox input {

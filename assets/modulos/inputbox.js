@@ -7,6 +7,7 @@ Vue.component('inputbox', {
         'example', 
         'min', 'max', //evalua el valor entre min y max
         'hidetilok', // oculto hasta que se evalua
+        'initclass', //extraclass
     ],
     data() {
         return {
@@ -123,7 +124,11 @@ Vue.component('inputbox', {
         this.$emit('input', "")
     },
     template: `
-        <div class="inputbox" :class="setclass" v-show="hideorshow">
+        <div :class="[
+                'inputbox',
+                setclass,
+                initclass,
+            ]" v-show="hideorshow">
             <slot name="before"></slot>
             <template v-if="example!=undefined">
                 <div class="inp_example"><numbers>{{answer}}</numbers></div> 

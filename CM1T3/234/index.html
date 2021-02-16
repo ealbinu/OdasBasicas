@@ -4,23 +4,52 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sé de qué están hechas las cosas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .inputbox {
+          margin: 10px 0;
+      }
+      @media (max-width: 680px) {
+          .inputbox {
+              flex-direction: column;
+          }
+      }
+      .inputbox img {
+          margin: 6px;
+          border-radius: 10px;
+          max-width: 160px;
+      }
+      .inputbox input {
+          font-size: 1.4rem;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sé de qué están hechas las cosas</h1>
+      <h2>¡A buscar objetos en la escuela! / Materiales para elaborar objetos</h2>
+      <div class="instruccion mt-5">Escribe en los renglones de qué material están hechos cada uno de los objetos. Utiliza las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['madera','vidrio','metal','plástico']" c="3"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <inputbox v-model="r[0]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="metal">
+          <template v-slot:before=""><img class="img-fluid" :src="'aimg/'+'a1'+'.png'"/></template>
+        </inputbox>
+        <inputbox v-model="r[1]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="vidrio">
+          <template v-slot:before=""><img class="img-fluid" :src="'aimg/'+'a2'+'.png'"/></template>
+        </inputbox>
+        <inputbox v-model="r[2]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="plástico">
+          <template v-slot:before=""><img class="img-fluid" :src="'aimg/'+'a3'+'.png'"/></template>
+        </inputbox>
+        <inputbox v-model="r[3]" initclass="col-md-6 ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="madera">
+          <template v-slot:before=""><img class="img-fluid" :src="'aimg/'+'a4'+'.png'"/></template>
+        </inputbox>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
