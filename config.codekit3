@@ -3754,6 +3754,28 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/CN4T3\/200\/aimg\/bg.png": {
+		"ft": 32768,
+		"iS": 364808,
+		"oA": 0,
+		"oAP": "\/CN4T3\/200\/aimg\/bg.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/CN4T3\/200\/aimg\/inst.png": {
+		"ft": 32768,
+		"iS": 83472,
+		"oA": 0,
+		"oAP": "\/CN4T3\/200\/aimg\/inst.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
 	"\/CN4T3\/200\/index.html": {
 		"cB": 0,
 		"ft": 8192,

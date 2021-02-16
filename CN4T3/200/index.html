@@ -4,23 +4,70 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aprendo sobre la interacción de las cosas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          width: 10%;
+          max-width: 50px;
+      }
+      .ex1 .inputbox input {
+          font-size: 1rem;
+          padding: 4px 2px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+      }
+      @media (max-width: 680px) {
+          .ex1 .inputbox input {
+              font-size: 0.6rem;
+              border-width: 1px;
+          }
+      }
+      .ex1 .inputbox:nth-child(1) {
+          left: 37%;
+          top: 40%;
+      }
+      .ex1 .inputbox:nth-child(2) {
+          left: 55%;
+          top: 40%;
+      }
+      .ex1 .inputbox:nth-child(3) {
+          left: 3%;
+          top: 45%;
+      }
+      .ex1 .inputbox:nth-child(4) {
+          left: 83%;
+          top: 54%;
+      }
+      .ex1 .inputbox:nth-child(5) {
+          left: 86%;
+          top: 75%;
+      }
+      .ex1 .inputbox:nth-child(6) {
+          left: 76%;
+          top: 11%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aprendo sobre la interacción de las cosas</h1>
+      <h2>Reflexión y refracción de la luz</h2>
+      <div class="instruccion mt-5">Consulta la página 105 de tu libro de texto SEP y escribe en cada círculo el número que corresponda.</div>
+      <div class="row mt-3 ex">
+        <div class="col-md-8">
+          <imgbg img="aimg/bg.png" initclass="ex1">
+            <template v-for="(i, index) in 6">
+              <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#"></inputbox>
+            </template>
+          </imgbg>
+        </div>
+        <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'inst'+'.png'"/></div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

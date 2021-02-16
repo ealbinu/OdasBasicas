@@ -1,25 +1,68 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sobre la interacción de las cosas'
+- subtitle = 'Reflexión y refracción de la luz'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                width: 10%;
+                max-width: 50px;
+            }
+            .ex1 .inputbox input {
+                font-size: 1rem;
+                padding: 4px 2px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+            }
+            @media (max-width: 680px) {
+                .ex1 .inputbox input {
+                    font-size: 0.6rem;
+                    border-width: 1px;
+                }
+            }
+            .ex1 .inputbox:nth-child(1) {
+                left: 37%;
+                top: 40%;
+            }
+            .ex1 .inputbox:nth-child(2) {
+                left: 55%;
+                top: 40%;
+            }
+            .ex1 .inputbox:nth-child(3) {
+                left: 3%;
+                top: 45%;
+            }
+            .ex1 .inputbox:nth-child(4) {
+                left: 83%;
+                top: 54%;
+            }
+            .ex1 .inputbox:nth-child(5) {
+                left: 86%;
+                top: 75%;
+            }
+            .ex1 .inputbox:nth-child(6) {
+                left: 76%;
+                top: 11%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Consulta la página 105 de tu libro de texto SEP y escribe en cada círculo el número que corresponda.
 
-            .row.mt-3
+            .row.mt-3.ex
+                
+                .col-md-8: imgbg(img="aimg/bg.png" initclass="ex1")
+                    template(v-for="(i, index) in 6")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i" type="number" placeh="#")
+                
+                .col-md-4: img(:src="'aimg/'+'inst'+'.png'").img-fluid
             
 
 
