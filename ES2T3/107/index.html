@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco los palíndromos</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,21 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco los palíndromos</h1>
+      <h2>Palíndromos</h2>
+      <div class="instruccion mt-5">Lee las siguientes oraciones y marca así <checkmark></checkmark> las que son palíndromos.</div>
+      <div class="row">
+        <div class="col-12 text-center"><img class="img-fluid" src="aimg/kid.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6 mt-3">
+            <div class="common c5">
+              <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+            </div>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +53,19 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v: 1, t: 'Yo social y laico soy.'},
+          {v: 0, t: 'Traigo una camioneta gris.'},
+          {v: 0, t: 'Abel trajo la bicicleta.'},
+          {v: 1, t: 'No deseo ese don.'},
+          {v: 1, t: 'Arde ya la yedra.'},
+          {v: 1, t: 'Anita lava la tina.'},
+          {v: 1, t: 'Yo hago yoga hoy.'},
+          {v: 0, t: 'Traen maíz del campo.'},
+          {v: 0, t: 'Vino el pájaro cantando.'},
+          {v: 1, t: 'Se es o no se es.'},
+      ])
+    </script>
   </body>
 </html>

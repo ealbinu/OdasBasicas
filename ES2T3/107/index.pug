@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco los palíndromos'
+- subtitle = 'Palíndromos'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,10 +17,14 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee las siguientes oraciones y marca así <checkmark></checkmark> las que son palíndromos.
 
-            .row.mt-3
-            
+            .row: .col-12.text-center: img(src="aimg/kid.png").img-fluid
+
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6.mt-3: .common.c5
+                        check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
 
 
 
@@ -29,4 +33,15 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v: 1, t: 'Yo social y laico soy.'},
+                    {v: 0, t: 'Traigo una camioneta gris.'},
+                    {v: 0, t: 'Abel trajo la bicicleta.'},
+                    {v: 1, t: 'No deseo ese don.'},
+                    {v: 1, t: 'Arde ya la yedra.'},
+                    {v: 1, t: 'Anita lava la tina.'},
+                    {v: 1, t: 'Yo hago yoga hoy.'},
+                    {v: 0, t: 'Traen maíz del campo.'},
+                    {v: 0, t: 'Vino el pájaro cantando.'},
+                    {v: 1, t: 'Se es o no se es.'},
+                ])
