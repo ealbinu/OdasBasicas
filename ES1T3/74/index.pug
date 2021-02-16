@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Digo lo mismo pero diferente'
+- subtitle = 'Maneras de expresarnos / Yo lo diría así'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,11 +17,16 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona con una línea cada palabra o frase con otra que tenga significado parecido.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): numbers(c=5 smaller) {{source.t}}
+                        template(v-slot:target="{target}"): numbers(c=4 smaller) {{target.t}}
+                    
             
-
+                    
 
 
 
@@ -30,3 +35,24 @@ html(lang="es")
         +scripts
             script.
                 //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {t: 'jefe'},
+                    {t: 'bolillo'},
+                    {t: 'estuvo padre'},
+                    {t: 'lonche'},
+                    {t: '¡quihubo!'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {t: 'birote'},
+                    {t: 'papá'},
+                    {t: 'torta'},
+                    {t: 'estuvo divertido'},
+                    {t: '¡hola!'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_1'],
+                    ['s_1', 't_0'],
+                    ['s_2', 't_3'],
+                    ['s_3', 't_2'],
+                    ['s_4', 't_4'],
+                ])

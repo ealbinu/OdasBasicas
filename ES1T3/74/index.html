@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Digo lo mismo pero diferente</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,21 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Digo lo mismo pero diferente</h1>
+      <h2>Maneras de expresarnos / Yo lo diría así</h2>
+      <div class="instruccion mt-5">Relaciona con una línea cada palabra o frase con otra que tenga significado parecido.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <numbers c="5" smaller="smaller">{{source.t}}</numbers>
+            </template>
+            <template v-slot:target="{target}">
+              <numbers c="4" smaller="smaller">{{target.t}}</numbers>
+            </template>
+          </relational>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +53,29 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      //app.$set(app.tempsobj, 'a', [])
+      app.$set(app.tempsobj, 'sources', [
+          {t: 'jefe'},
+          {t: 'bolillo'},
+          {t: 'estuvo padre'},
+          {t: 'lonche'},
+          {t: '¡quihubo!'},
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          {t: 'birote'},
+          {t: 'papá'},
+          {t: 'torta'},
+          {t: 'estuvo divertido'},
+          {t: '¡hola!'},
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_1'],
+          ['s_1', 't_0'],
+          ['s_2', 't_3'],
+          ['s_3', 't_2'],
+          ['s_4', 't_4'],
+      ])
+    </script>
   </body>
 </html>
