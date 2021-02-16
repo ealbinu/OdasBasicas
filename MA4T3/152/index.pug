@@ -1,32 +1,232 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Parto por la mitad'
+- subtitle = '¿Cuánto menos?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .frac {
+                text-align: center;
+                font-size: 1.4rem;
+            }
+            .frac hr {
+                margin: 5px auto;
+                border: none;
+                border-top: 4px solid #fff;
+                min-width: 20px;
+                max-width: 60px;
+            }
+
+            .frac hr{ border-top: 4px solid var(--sec); }
+            .frac .inputbox input {
+                border-radius: 6px;
+                padding: 0 2px;
+                font-size: 1.4rem;
+                max-width: 50px;
+                margin: 0 2px;
+            }
+            .frac .inputbox .numbers{
+                font-size: 1.3rem;
+            }
+            .tub .frac {
+                background: linear-gradient(to left, #B19FC0, #9D8DAA);
+                margin: 0 8px;
+
+                padding: 10px 0;
+            }
+            
+            .tub .frac div:last-child {
+
+            }
+            .tub .text-center {
+                color: var(--sec);
+                border: 2px solid #fff;
+                border-radius: 6px;
+                padding: 4px;
+                font-size: 0.8rem;
+                background: var(--pastel2);
+            }
+            .img-fluid{
+                max-width:200px;
+                margin: 0 auto;
+            }
+            @media (max-width:680px){
+                .tub .text-center{
+                    font-size: 0.6rem;
+                    line-height: 1;
+                }
+            }
+            
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Busca la mitad y tercera parte de las siguientes fracciones y anótalas en la línea.
 
-            .row.mt-3
+            .row.mt-3.ex2.centerrow
+                .col-md-8
+                    .row
+                        .col-md-6(v-for="(i, index) in tempsobj.a").mt-2: .common.c3
+                            .row.area.centerrow.no-gutters.text-area
+                                .col.frac(v-html="i[0]")
+                                .col.tub
+                                    .text-center Mitad
+                                    .frac
+                                        inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i[1]" type="number" placeh="#")
+                                        hr
+                                        inputbox(v-model="d['b'+index]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="#")
+                                .col.tub
+                                    .text-center Tercera parte
+                                    .frac
+                                        inputbox(v-model="d['c'+index]" :ref="refCount()" @isright="right++" :answer="i[3]" type="number" placeh="#")
+                                        hr
+                                        inputbox(v-model="d['d'+index]" :ref="refCount()" @isright="right++" :answer="i[4]" type="number" placeh="#")
+                .col-md-4.text-center: img(:src="'aimg/'+'a'+'.png'").img-fluid
+            
             
 
 
+
+
+            .instruccion.mt-5 Observa el ejemplo y calcula según se indique.
+
+            .row.mt-3.ex3
+                .col-md-7: .common.c2
+                    .row.no-gutters
+                        .col.tub
+                            .text-center Fracción
+                            .frac
+                                inputbox(:answer="3" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="4" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Doble
+                            .frac
+                                inputbox(:answer="6" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="4" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Triple
+                            .frac
+                                inputbox(:answer="9" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="4" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Cuádruple
+                            .frac
+                                inputbox(:answer="12" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="4" type="number" placeh="#" example)
+                    .row.no-gutters
+                        .col.tub
+                            .text-center Fracción
+                            .frac
+                                inputbox(:answer="1" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="2" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Doble
+                            .frac
+                                inputbox(v-model="d['r'+1]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['o'+1]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        .col.tub
+                            .text-center Triple
+                            .frac
+                                inputbox(v-model="d['i'+1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['j'+1]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                        .col.tub
+                            .text-center Cuádruple
+                            .frac
+                                inputbox(v-model="d['k'+1]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['l'+1]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+            
+                .col-md: .common.c5
+                    .row.no-gutters
+                        .col.tub
+                            .text-center Fracción
+                            .frac
+                                inputbox(:answer="2" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="5" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Mitad
+                            .frac
+                                inputbox(v-model="d['x'+1]" :ref="refCount()" @isright="right++" :answer="1" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['z'+1]" :ref="refCount()" @isright="right++" :answer="5" type="number" placeh="#")
+                        .col.tub
+                            .text-center Tercera parte
+                            .frac
+                                inputbox(v-model="d['x'+2]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['z'+3]" :ref="refCount()" @isright="right++" :answer="15" type="number" placeh="#")
+                    .row.no-gutters
+                        .col.tub
+                            .text-center Fracción
+                            .frac
+                                inputbox(:answer="4" type="number" placeh="#" example)
+                                hr
+                                inputbox(:answer="7" type="number" placeh="#" example)
+                        .col.tub
+                            .text-center Mitad
+                            .frac
+                                inputbox(v-model="d['w'+1]" :ref="refCount()" @isright="right++" :answer="2" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['y'+1]" :ref="refCount()" @isright="right++" :answer="7" type="number" placeh="#")
+                        .col.tub
+                            .text-center Tercera parte
+                            .frac
+                                inputbox(v-model="d['w'+2]" :ref="refCount()" @isright="right++" :answer="4" type="number" placeh="#")
+                                hr
+                                inputbox(v-model="d['y'+2]" :ref="refCount()" @isright="right++" :answer="21" type="number" placeh="#")
+
+
+            .instruccion.mt-5 Calcula las siguientes fracciones como se indica.
+            
+            .row.mt-3.ex2.centerrow
+                .col-md-8
+                    .row.no-gutters
+                        .col-md-6(v-for="(i, index) in tempsobj.c").mt-2: .common.c4
+                            .row.area.centerrow.no-gutters.text-area
+                                .col.frac(v-html="i[0]")
+                                .col.tub
+                                    .text-center {{(index<2?'Mitad':'Doble')}}
+                                    .frac
+                                        inputbox(v-model="d['e'+index]" :ref="refCount()" @isright="right++" :answer="i[1]" type="number" placeh="#")
+                                        hr
+                                        inputbox(v-model="d['f'+index]" :ref="refCount()" @isright="right++" :answer="i[2]" type="number" placeh="#")
+                                .col.tub
+                                    .text-center {{(index<2?'Tercera parte':'Triple')}}
+                                    .frac
+                                        inputbox(v-model="d['g'+index]" :ref="refCount()" @isright="right++" :answer="i[3]" type="number" placeh="#")
+                                        hr
+                                        inputbox(v-model="d['h'+index]" :ref="refCount()" @isright="right++" :answer="i[4]" type="number" placeh="#")
+                    
+                .col-md-4.text-center: img(:src="'aimg/'+'b'+'.png'").img-fluid
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    ['1<hr>2', 1, 4, 1, 6],
+                    ['7<hr>9', 7, 18, 7, 27],
+                    ['6<hr>18', 3, 18, 2,18],
+                    ['4<hr>20', 2, 20, 4, 60 ]
+                ])
+                
+                app.$set(app.tempsobj, 'c', [
+                    ['1<hr>3', 1,6,1,9],
+                    ['6<hr>9', 3,9,2,9],
+                    ['2<hr>19', 4,19,6,19 ],
+                    ['9<hr>32', 18,32, 27,32 ]
+                ])
