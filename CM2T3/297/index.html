@@ -1,26 +1,121 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var tb = []
+- tb.push([[8], 16, [32], [40], 56])
++table(0, tb)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco los meses del año</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 {
+          background-image: url("aimg/bg.png");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+      }
+      .ex1 .cl_0 {
+          max-width: 50px;
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+          white-space: nowrap;
+          display: inline-block;
+          overflow: visible;
+          padding: 10px;
+          font-weight: bold;
+      }
+      .ex1 .col {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: transparent;
+      }
+      @media (max-width: 680px) {
+          .ex1 {
+              font-size: 0.6rem;
+          }
+          .ex1 .inputbox input {
+              font-size: 0.7rem;
+          }
+          .ex1 .cl_0 {
+              padding: 4px;
+              max-width: 30px;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco los meses del año</h1>
+      <h2>Cambios en la naturaleza del lugar donde vivo</h2>
+      <div class="instruccion mt-5">Completa la tabla escribiendo los nombres de los meses del año que faltan.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <div class="tablemod">
+            <div class="row no-gutters ix_0">
+              <div class="col cl_0"><span>Invierno</span>
+              </div>
+              <div class="col cl_1"><span>Enero</span>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Febrero" type="text" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_3"><span>Marzo</span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_1">
+              <div class="col cl_0"><span>Primavera</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Abril" type="text" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_2"><span>Mayo</span>
+              </div>
+              <div class="col cl_3">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Junio" type="text" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters ix_2">
+              <div class="col cl_0"><span>Verano</span>
+              </div>
+              <div class="col cl_1"><span>Julio</span>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Agosto" type="text" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_3"><span>Septiembre</span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_3">
+              <div class="col cl_0"><span>Otoño</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Octubre" type="text" placeh="#">
+                </inputbox>
+              </div>
+              <div class="col cl_2"><span>Noviembre</span>
+              </div>
+              <div class="col cl_3">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Diciembre" type="text" placeh="#">
+                </inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

@@ -1,25 +1,65 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco los meses del año'
+- subtitle = 'Cambios en la naturaleza del lugar donde vivo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 {
+                background-image: url("aimg/bg.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .ex1 .cl_0 {
+                max-width: 50px;
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                white-space: nowrap;
+                display: inline-block;
+                overflow: visible;
+                padding: 10px;
+                font-weight: bold;
+            }
+            .ex1 .col {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+            }
+            @media (max-width: 680px) {
+                .ex1 {
+                    font-size: 0.6rem;
+                }
+                .ex1 .inputbox input {
+                    font-size: 0.7rem;
+                }
+                .ex1 .cl_0 {
+                    padding: 4px;
+                    max-width: 30px;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa la tabla escribiendo los nombres de los meses del año que faltan.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    - var tb = []
+                    - tb.push([ 'Invierno', 'Enero', ['Febrero'], 'Marzo' ])
+                    - tb.push([ 'Primavera', ['Abril'], 'Mayo', ['Junio'] ])
+                    - tb.push([ 'Verano', 'Julio', ['Agosto'], 'Septiembre' ])
+                    - tb.push([ 'Otoño', ['Octubre'], 'Noviembre', ['Diciembre'] ])
+                    +table(0, tb, true)
             
 
 
