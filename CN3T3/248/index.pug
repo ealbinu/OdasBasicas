@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Consumimos alimentos saludables'
+- subtitle = 'La importancia de la nutrición y la salud'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,12 +17,34 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Encierra las respuestas a cada pregunta. Después comenten en clase cómo pueden implementar el consumo de alimentos saludables en su escuela.
 
-            .row.mt-3
             
+            .mt-3: labeltext(num="1.") ¿Cuáles son los alimentos o platillos que vende la cooperativa de tu escuela?
+            
+            .row.mt-3.ex1.text-center.centerrow
+                .col-md-4.mt-2: selectable(:isok="true" v-model="r[0]" :ref="refCount()" @isright="right++"): .common.c3 Papas con chile.
+                .col-md-4.mt-2: selectable(:isok="false" v-model="r[1]" :ref="refCount()" @isright="right++"): .common.c3 Lonches de jamón.
+                .col-md-4.mt-2: selectable(:isok="true" v-model="r[2]" :ref="refCount()" @isright="right++"): .common.c3 Molletes.
+                .col-md-4.mt-2: selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++"): .common.c3 Fruta picada.
+                .col-md-4.mt-2: selectable(:isok="false" v-model="r[4]" :ref="refCount()" @isright="right++"): .common.c3 Dulces.
+                .col-md-4.mt-2: selectable(:isok="false" v-model="r[5]" :ref="refCount()" @isright="right++"): .common.c3 Refresco.
+                
+            
+            .mt-3: labeltext(num="2.") ¿Cuáles son las opciones que debería ofrecer la cooperativa para tomar en cuenta el Plato del Bien Comer?
+            .row.mt-3.ex1.text-center.centerrow
+                .col-md-3.mt-2: selectable(:isok="true" v-model="r[6]" :ref="refCount()" @isright="right++"): .common.c4 Ensaladas.
+                .col-md-3.mt-2: selectable(:isok="false" v-model="r[7]" :ref="refCount()" @isright="right++"): .common.c4 Botella de agua.
+                .col-md-3.mt-2: selectable(:isok="false" v-model="r[8]" :ref="refCount()" @isright="right++"): .common.c4 Verduras.
+                .col-md-3.mt-2: selectable(:isok="true" v-model="r[9]" :ref="refCount()" @isright="right++"): .common.c4 Fruta con yogur.
 
 
+            .mt-3: labeltext(num="3.") Son alimentos ricos y nutritivos.
+            .row.mt-3.ex1.text-center.centerrow
+                .col-md-3.mt-2: selectable(:isok="true" v-model="r[10]" :ref="refCount()" @isright="right++"): .common.c2 Fruta con yogur.
+                .col-md-3.mt-2: selectable(:isok="true" v-model="r[11]" :ref="refCount()" @isright="right++"): .common.c2 Sándwich de pavo.
+                .col-md-3.mt-2: selectable(:isok="true" v-model="r[12]" :ref="refCount()" @isright="right++"): .common.c2 Fruta picada.
+                .col-md-3.mt-2: selectable(:isok="false" v-model="r[13]" :ref="refCount()" @isright="right++"): .common.c2 Papas fritas.
 
 
 
