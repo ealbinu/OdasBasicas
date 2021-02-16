@@ -152,6 +152,25 @@ strong.sec {
 .inputbox.ib2:nth-child(even) input {
   border-color: var(--accent);
 }
+.inputbox.withimg {
+  position: relative;
+}
+.inputbox.withimg input {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  max-width: 50px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 680px) {
+  .inputbox.withimg input {
+    font-size: 0.8rem;
+    padding: 2px;
+    max-width: 40px;
+    left: 4px;
+    top: 4px;
+  }
+}
 .selectable,
 .selectableoptions {
   display: flex;
@@ -719,6 +738,7 @@ input[type=number] {
   max-width: 80px;
   padding: 4px;
   font-size: 1.6rem;
+  min-width: 30px;
 }
 .trueorfalse:not(.left) .inputbox input {
   margin-left: auto;
@@ -728,6 +748,18 @@ input[type=number] {
 }
 .trueorfalse.left .inputbox input {
   margin-right: 10px;
+}
+@media (max-width: 680px) {
+  .trueorfalse .inputbox {
+    padding: 4px;
+  }
+  .trueorfalse .inputbox input {
+    padding: 1px;
+    font-size: 1rem;
+  }
+  .trueorfalse p {
+    font-size: 0.7rem;
+  }
 }
 /* RELATIONAL MODULE */
 .jtk-endpoint {

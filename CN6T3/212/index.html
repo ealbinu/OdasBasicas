@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo energías renovables</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,54 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo energías renovables</h1>
+      <h2>Fuentes de energía alternativa</h2>
+      <div class="instruccion mt-5">Relaciona el número que corresponda a cada fuente de energía alternativa con su imagen y su definición.</div>
+      <div class="row mt-3 ex1 justify-content-center text-center">
+        <div class="col-md-4 mt-2">
+          <div class="common">
+            <labeltext num="1.">Solar</labeltext>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common">
+            <labeltext num="2.">Eólica</labeltext>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common">
+            <labeltext num="3.">Biomasa</labeltext>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common">
+            <labeltext num="4.">Oceánica o Maremotriz</labeltext>
+          </div>
+        </div>
+        <div class="col-md-4 mt-2">
+          <div class="common">
+            <labeltext num="5.">Geotérmica</labeltext>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-6 verticalrow">
+          <template v-for="(i, index) in [4,1,5,3,2]">
+            <inputbox v-model="d['a'+index]" :ref="refCount()" initclass="ib2 withimg mt-1" @isright="right++" type="number" placeh="#" :answer="i">
+              <template v-slot:after=""><img class="img-fluid" :src="'aimg/a'+(index+1)+'.png'"/></template>
+            </inputbox>
+          </template>
+        </div>
+        <div class="col-6 trueorfalse left verticalrow">
+          <template v-for="(i, index) in tempsobj.a">
+            <inputbox v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i.v">
+              <template v-slot:after="">
+                <p>{{i.t}}</p>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +86,14 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v: 5, t: 'Es la energía que aprovecha las altas temperaturas de yacimientos bajo la superficie terrestre.'},
+          {v: 3, t: 'Es la que se genera a partir de los residuos orgánicos.'},
+          {v: 2, t: 'Es el tipo de energía que se obtiene con la fuerza del viento con ayuda de aerogeneradores.'},
+          {v: 1, t: 'Es el tipo de energía que se obtiene del sol.'},
+          {v: 4, t: 'Es la energía en la que se aprovecha la fuerza de las mareas o de las olas.'},
+      ])
+    </script>
   </body>
 </html>
