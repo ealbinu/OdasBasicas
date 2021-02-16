@@ -1,0 +1,82 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conozco los elementos del cuento</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .imgbgMod.soup .inputs .selectable{height:8%}
+      .imgbgMod.soup .inputs .selectable:nth-child(1){top:1.2%;width:60%}
+      .imgbgMod.soup .inputs .selectable:nth-child(2){left:20%;top:34%;width:79%}
+      .imgbgMod.soup .inputs .selectable:nth-child(3){left:20%;top:1%;height:74%;width:10%}
+      .imgbgMod.soup .inputs .selectable:nth-child(4){left:50%;top:17%;height:82%;width:10%}
+      .imgbgMod.soup .inputs .selectable:nth-child(5){left:60%;top:34%;height:65%;width:10%}
+      .imgbgMod.soup .inputs .selectable:nth-child(6){left:89.2%;top:25%;height:41%;width:10%}
+      .parrafoinputs {
+          background: var(--pastel2);
+      }
+      .parrafoinputs strong {
+          color: var(--accent);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Conozco los elementos del cuento</h1>
+      <h2>Leamos cuentos infantiles</h2>
+      <div class="instruccion mt-5">Escribe las palabras que completan cada definición. Después, enciérralas en la sopa de letras.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <div class="parrafoinputs"><span><strong>1.</strong> El </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="narrador" type="text" placeh="-"></inputbox><span>  es el que cuenta la historia. Puede ser en primera, segunda o tercera persona.</span><span> <br> </span><span><strong>2.</strong> Los </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="personajes" type="text" placeh="-"></inputbox><span> pueden ser protagonistas, antagonistas o secundarios. </span><span> <br> </span><span><strong>3.</strong> El </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="escenario" type="text" placeh="-"></inputbox><span> representa el lugar y la época donde ocurre la historia. </span><span> <br> </span><span><strong>4.</strong> El </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="ambiente" type="text" placeh="-"></inputbox><span> es el clima psicológico que crea la narración: un ambiente de tristeza, miedo, etcétera. </span><span> <br> </span><span><strong>5.</strong> La </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="trama" type="text" placeh="-"></inputbox><span> es la forma como se presentan y se relacionan las acciones de una narración, es decir, es lo que pasa y cómo pasa. </span><span> <br> </span><span><strong>6.</strong> El </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="tiempo" type="text" placeh="-"></inputbox><span> es el orden temporal en el que se presentan las acciones. Puede ser lineal, cuando se narran los hechos cronológicamente; o pueden darse saltos, cuando se narra primero el presente y luego el pasado de la historia. </span>
+          </div>
+        </div>
+        <div class="col-md-6">           
+          <imgbg img="aimg/soup.png" initclass="soup">
+            <template v-for="(i, index) in 6">
+              <selectable :isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++"></selectable>
+            </template>
+          </imgbg>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.5/js/jsplumb.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/tip.js"></script>
+    <script src="../../assets/modulos/relational.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>

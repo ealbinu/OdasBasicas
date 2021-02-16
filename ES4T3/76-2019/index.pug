@@ -1,0 +1,77 @@
+include ../../assets/pug/_head
+include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
+
+- title = 'Conozco los elementos del cuento'
+- subtitle = 'Leamos cuentos infantiles'
+
+<!DOCTYPE html>
+html(lang="es")
+    +head
+        style.
+            .imgbgMod.soup .inputs .selectable{height:8%}
+            .imgbgMod.soup .inputs .selectable:nth-child(1){top:1.2%;width:60%}
+            .imgbgMod.soup .inputs .selectable:nth-child(2){left:20%;top:34%;width:79%}
+            .imgbgMod.soup .inputs .selectable:nth-child(3){left:20%;top:1%;height:74%;width:10%}
+            .imgbgMod.soup .inputs .selectable:nth-child(4){left:50%;top:17%;height:82%;width:10%}
+            .imgbgMod.soup .inputs .selectable:nth-child(5){left:60%;top:34%;height:65%;width:10%}
+            .imgbgMod.soup .inputs .selectable:nth-child(6){left:89.2%;top:25%;height:41%;width:10%}
+            .parrafoinputs {
+                background: var(--pastel2);
+            }
+            .parrafoinputs strong {
+                color: var(--accent);
+            }
+
+    body
+        #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
+            h1 #{title}
+            if subtitle.length>1
+                h2 #{subtitle}
+
+            .instruccion.mt-5 Escribe las palabras que completan cada definición. Después, enciérralas en la sopa de letras.
+
+            .row.mt-3.ex1
+                .col-md-6
+                    - var arr = []
+                    - arr.push('<strong>1.</strong> El ')
+                    - arr.push(['narrador'])
+                    - arr.push('  es el que cuenta la historia. Puede ser en primera, segunda o tercera persona.')
+                    - arr.push(' <br> ')
+                    - arr.push('<strong>2.</strong> Los ')
+                    - arr.push(['personajes'])
+                    - arr.push(' pueden ser protagonistas, antagonistas o secundarios. ')
+                    - arr.push(' <br> ')
+                    - arr.push('<strong>3.</strong> El ')
+                    - arr.push(['escenario'])
+                    - arr.push(' representa el lugar y la época donde ocurre la historia. ')
+                    - arr.push(' <br> ')
+                    - arr.push('<strong>4.</strong> El ')
+                    - arr.push(['ambiente'])
+                    - arr.push(' es el clima psicológico que crea la narración: un ambiente de tristeza, miedo, etcétera. ')
+                    - arr.push(' <br> ')
+                    - arr.push('<strong>5.</strong> La ')
+                    - arr.push(['trama'])
+                    - arr.push(' es la forma como se presentan y se relacionan las acciones de una narración, es decir, es lo que pasa y cómo pasa. ')
+                    - arr.push(' <br> ')
+                    - arr.push('<strong>6.</strong> El ')
+                    - arr.push(['tiempo'])
+                    - arr.push(' es el orden temporal en el que se presentan las acciones. Puede ser lineal, cuando se narran los hechos cronológicamente; o pueden darse saltos, cuando se narra primero el presente y luego el pasado de la historia. ')
+
+                    +parrafo(0, arr)
+
+
+                .col-md-6            
+                    imgbg(img="aimg/soup.png" initclass="soup")
+                        template(v-for="(i, index) in 6")
+                            selectable(:isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++")
+            
+
+
+
+
+
+            finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
+        +scripts
+            script.
+                //app.$set(app.tempsobj, 'a', [])

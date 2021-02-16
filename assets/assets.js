@@ -55,11 +55,14 @@ var app = new Vue({
         finalizar () {
             s_win.play()
             this.total = this.r.length
+            this.total += Object.keys(this.d).length
 
+            /*
             if(this.total == 0){
                 this.total = Object.keys(this.d).length
                 console.log(this.total)
             }
+            */
 
 
             for(var i in this.$refs){

@@ -8101,30 +8101,41 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/ES4T3\/76\/aimg\/formato.png": {
+	"\/ES4T3\/76-2019\/aimg\/formato.png": {
 		"ft": 32768,
 		"iS": 35742,
 		"oA": 0,
-		"oAP": "\/ES4T3\/76\/aimg\/formato.png",
+		"oAP": "\/ES4T3\/76-2019\/aimg\/formato.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/ES4T3\/76\/index.html": {
+	"\/ES4T3\/76-2019\/aimg\/soup.png": {
+		"ft": 32768,
+		"iS": 89546,
+		"oA": 0,
+		"oAP": "\/ES4T3\/76-2019\/aimg\/soup.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES4T3\/76-2019\/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/ES4T3\/76\/index.html",
+		"oAP": "\/ES4T3\/76-2019\/index.html",
 		"oF": 0
 		},
-	"\/ES4T3\/76\/index.pug": {
+	"\/ES4T3\/76-2019\/index.pug": {
 		"cB": 0,
 		"cOD": 1,
 		"ft": 512,
 		"oA": 0,
-		"oAP": "\/ES4T3\/76\/index.html",
+		"oAP": "\/ES4T3\/76-2019\/index.html",
 		"oF": 0,
 		"oS": 0
 		},
