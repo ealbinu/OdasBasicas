@@ -4,23 +4,179 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Ubicamos los viajes hacia América</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .boxwr {
+          display: flex;
+          flex-direction: column;
+          background-image: url("aimg/l1.svg");
+          background-size: 100%;
+          background-repeat: no-repeat;
+      }
+      .boxwr:nth-child(odd) {
+          background-image: url("aimg/l2.svg");
+      }
+      .boxwr:first-child {
+          background-image: url("aimg/l4.svg");
+      }
+      .boxwr:last-child {
+          background-image: url("aimg/l3.svg");
+      }
+      .ex1 {
+          border-radius: 10px;
+          text-align: center;
+      }
+      .ex1 img {
+          margin: 0 auto;
+          max-width: 120px;
+          margin-bottom: -20px;
+      }
+      @media (max-width: 680px) {
+          .ex1 img {
+              max-width: 60%;
+              margin-bottom: -30%;
+          }
+      }
+      .ex1 .inputbox input,
+      .ex1 .inputbox .inp_example {
+          font-size: 1.6rem;
+          max-width: 30%;
+          min-width: 25%;
+          border-radius: 50%;
+          padding: 1%;
+          background: #fff;
+          border: 2px solid var(--clear);
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+      }
+      @media (max-width: 680px) {
+          .ex1 .inputbox input,
+          .ex1 .inputbox .inp_example {
+              font-size: 0.8rem;
+          }
+      }
+      .ex1 .inputbox input.inp_example,
+      .ex1 .inputbox .inp_example.inp_example {
+          border-color: var(--accent);
+          background: var(--pastel1);
+      }
+      .ex1 .inputbox input .numbers,
+      .ex1 .inputbox .inp_example .numbers {
+          font-size: 1.6rem;
+          color: var(--accent);
+      }
+      @media (max-width: 680px) {
+          .ex1 .inputbox input .numbers,
+          .ex1 .inputbox .inp_example .numbers {
+              font-size: 0.8rem;
+          }
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Ubicamos los viajes hacia América</h1>
+      <h2>Panorama del periodo</h2>
+      <div class="instruccion mt-5">Ordena cronológicamente los eventos históricos. Consulta las páginas 108, 110 y 111 de tu libro de texto SEP. Observa los ejemplos.</div>
+      <div class="row mt-3 ex1 no-gutters">
+        <div class="col boxwr">
+          <inputbox type="number" placeh="#" :answer="4" example="example"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="14"></inputbox><img class="img-fluid" :src="'aimg/'+'a1'+'.png'"/>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="11"></inputbox><img class="img-fluid" :src="'aimg/'+'a2'+'.png'"/>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="7"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox type="number" placeh="#" :answer="1" example="example"></inputbox>
+        </div>
+      </div>
+      <div class="my-2"><img class="w-100" src="aimg/l5.svg"/></div>
+      <div class="row mt-3 ex1 no-gutters">
+        <div class="col boxwr">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="12"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="2"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox type="number" placeh="#" :answer="2" example="example"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="5"></inputbox><img class="img-fluid" :src="'aimg/'+'a3'+'.png'"/>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8"></inputbox>
+        </div>
+      </div>
+      <div class="my-2"><img class="w-100" src="aimg/l5.svg"/></div>
+      <div class="row mt-3 ex1 no-gutters">
+        <div class="col boxwr"></div>
+        <div class="col boxwr">
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="6"></inputbox><img class="img-fluid" :src="'aimg/'+'a4'+'.png'"/>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="9"></inputbox><img class="img-fluid" :src="'aimg/'+'a5'+'.png'"/>
+        </div>
+        <div class="col boxwr">
+          <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="10"></inputbox>
+        </div>
+        <div class="col boxwr">
+          <inputbox type="number" placeh="#" :answer="13" example="example"></inputbox>
+        </div>
+      </div>
+      <div class="row mt-5 ex2">
+        <div class="col-md-6 verticalrow">
+          <div class="common c1">
+            <labeltext num="1.">Cristóbal Colón llegó a América.</labeltext>
+          </div>
+          <div class="common c2">
+            <labeltext num="2.">Pedro Álvarez llegó a Brasil.</labeltext>
+          </div>
+          <div class="common c3">
+            <labeltext num="3.">Américo Vespucio exploró Sudamérica.</labeltext>
+          </div>
+          <div class="common c4">
+            <labeltext num="4.">El Renacimiento.</labeltext>
+          </div>
+          <div class="common c5">
+            <labeltext num="5.">La reforma protestante.</labeltext>
+          </div>
+          <div class="common c6">
+            <labeltext num="6.">La conquista de Tenochtitlán.</labeltext>
+          </div>
+          <div class="common c1">
+            <labeltext num="7.">La conquista de Constantinopla.</labeltext>
+          </div>
+        </div>
+        <div class="col-md-6 verticalrow">
+          <div class="common c2">
+            <labeltext num="8.">Fernando de Magallanes hizo un viaje alrede- dor del mundo.</labeltext>
+          </div>
+          <div class="common c3">
+            <labeltext num="9.">La conquista del Imperio inca. 10. El Virreinato de Nueva España.</labeltext>
+          </div>
+          <div class="common c4">
+            <labeltext num="11.">El nacimiento de Leonardo da Vinci. 12. Vasco de Gama llegó a Calcuta.</labeltext>
+          </div>
+          <div class="common c5">
+            <labeltext num="13.">El Virreinato de Perú.</labeltext>
+          </div>
+          <div class="common c6">
+            <labeltext num="14.">Gutenberg inventó la imprenta.</labeltext>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +197,10 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+      
+      ])
+    </script>
   </body>
 </html>

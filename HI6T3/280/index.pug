@@ -1,32 +1,146 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Ubicamos los viajes hacia América'
+- subtitle = 'Panorama del periodo'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .boxwr {
+                display: flex;
+                flex-direction: column;
+                background-image: url("aimg/l1.svg");
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            .boxwr:nth-child(odd) {
+                background-image: url("aimg/l2.svg");
+            }
+            .boxwr:first-child {
+                background-image: url("aimg/l4.svg");
+            }
+            .boxwr:last-child {
+                background-image: url("aimg/l3.svg");
+            }
+            .ex1 {
+                border-radius: 10px;
+                text-align: center;
+            }
+            .ex1 img {
+                margin: 0 auto;
+                max-width: 120px;
+                margin-bottom: -20px;
+            }
+            @media (max-width: 680px) {
+                .ex1 img {
+                    max-width: 60%;
+                    margin-bottom: -30%;
+                }
+            }
+            .ex1 .inputbox input,
+            .ex1 .inputbox .inp_example {
+                font-size: 1.6rem;
+                max-width: 30%;
+                min-width: 25%;
+                border-radius: 50%;
+                padding: 1%;
+                background: #fff;
+                border: 2px solid var(--clear);
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+            }
+            @media (max-width: 680px) {
+                .ex1 .inputbox input,
+                .ex1 .inputbox .inp_example {
+                    font-size: 0.8rem;
+                }
+            }
+            .ex1 .inputbox input.inp_example,
+            .ex1 .inputbox .inp_example.inp_example {
+                border-color: var(--accent);
+                background: var(--pastel1);
+            }
+            .ex1 .inputbox input .numbers,
+            .ex1 .inputbox .inp_example .numbers {
+                font-size: 1.6rem;
+                color: var(--accent);
+            }
+            @media (max-width: 680px) {
+                .ex1 .inputbox input .numbers,
+                .ex1 .inputbox .inp_example .numbers {
+                    font-size: 0.8rem;
+                }
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Ordena cronológicamente los eventos históricos. Consulta las páginas 108, 110 y 111 de tu libro de texto SEP. Observa los ejemplos.
 
-            .row.mt-3
+            .row.mt-3.ex1.no-gutters
+                .col.boxwr: inputbox(type="number" placeh="#" :answer="4" example)
+                .col.boxwr
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="14")
+                    img(:src="'aimg/'+'a1'+'.png'").img-fluid
+                .col.boxwr
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="11")
+                    img(:src="'aimg/'+'a2'+'.png'").img-fluid
+                .col.boxwr: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="7")
+                .col.boxwr: inputbox(type="number" placeh="#" :answer="1" example)
             
+            .my-2: img(src="aimg/l5.svg").w-100
+            
+            .row.mt-3.ex1.no-gutters
+                .col.boxwr
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="12")
+                .col.boxwr
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="2")
+                .col.boxwr: inputbox(type="number" placeh="#" :answer="2" example)
+                .col.boxwr
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="5")
+                    img(:src="'aimg/'+'a3'+'.png'").img-fluid
+                .col.boxwr
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8")
+            
+            .my-2: img(src="aimg/l5.svg").w-100
+            
+            .row.mt-3.ex1.no-gutters
+                .col.boxwr
+                .col.boxwr
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="6")
+                    img(:src="'aimg/'+'a4'+'.png'").img-fluid
+                .col.boxwr
+                    inputbox(v-model="r[7]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="9")
+                    img(:src="'aimg/'+'a5'+'.png'").img-fluid
+                .col.boxwr
+                    inputbox(v-model="r[8]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="10")
+                .col.boxwr: inputbox(type="number" placeh="#" :answer="13" example)
 
-
-
+            .row.mt-5.ex2
+                .col-md-6.verticalrow
+                    .common.c1: labeltext(num="1.") Cristóbal Colón llegó a América.
+                    .common.c2: labeltext(num="2.") Pedro Álvarez llegó a Brasil.
+                    .common.c3: labeltext(num="3.") Américo Vespucio exploró Sudamérica.
+                    .common.c4: labeltext(num="4.") El Renacimiento.
+                    .common.c5: labeltext(num="5.") La reforma protestante.
+                    .common.c6: labeltext(num="6.") La conquista de Tenochtitlán.
+                    .common.c1: labeltext(num="7.") La conquista de Constantinopla.
+                .col-md-6.verticalrow
+                    .common.c2: labeltext(num="8.") Fernando de Magallanes hizo un viaje alrede- dor del mundo.
+                    .common.c3: labeltext(num="9.") La conquista del Imperio inca. 10. El Virreinato de Nueva España.
+                    .common.c4: labeltext(num="11.") El nacimiento de Leonardo da Vinci. 12. Vasco de Gama llegó a Calcuta.
+                    .common.c5: labeltext(num="13.") El Virreinato de Perú.
+                    .common.c6: labeltext(num="14.") Gutenberg inventó la imprenta.
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+
+                ])
