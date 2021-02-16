@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Describo el desarrollo de ciudades</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,26 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Describo el desarrollo de ciudades</h1>
+      <h2>El resurgimiento de la vida urbana y del comercio</h2>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las causas que favorecieron el crecimiento de las ciudades. Consulta las páginas 114 y 115 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-4">
+            <check v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero o <strong>F</strong> si es falso.</div>
+      <div class="row mt-3 ex2">
+        <div class="col trueorfalse">
+          <template v-for="(i, index) in tempsobj.b">
+            <inputbox v-model="d['b'+index]" :ref="refCount()" @isright="right++" type="text" placeh="-" :answer="i.v">
+              <template v-slot:before="">{{i.t}}</template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +58,27 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v:1, t:'Europa se recupera de la peste.'},
+          {v:1, t:'Se fundan los primeros bancos.'},
+          {v:1, t:'Se fundan las primeras universidades.'},
+          {v:1, t:'Aumenta la producción agrícola.'},
+          {v:0, t:'Se fabrican productos en las zonas rurales.'},
+          {v:1, t:'Se patrocina a artistas e inventores.'},
+          {v:0, t:'Disminuye el comercio.'},
+          {v:0, t:'Las ciudades tienen poca higiene.'},
+          {v:1, t:'Se producen armas y artículos de lujo.'},
+      ])
+      
+      app.$set(app.tempsobj, 'b', [
+          {v:'F', t:'Desde el tiempo de las cruzadas el comercio con occidente fue importante para el desarrollo económico de Europa.' },
+          {v:'V', t:'Génova y Venecia tuvieron una participación muy importante en el intercambio comercial.'},
+          {v:'V', t:'Las mercancías provenían de Persia, China, Filipinas e India.' },
+          {v:'F', t:'Otros centros de comercio y de actividades bancarias fueron Alejandría y Constantinopla.' },
+          {v:'V', t:'Gracias a la riqueza, la política y la tradición cultural algunas ciudades italianas se constituyeron como repúblicas independientes.' },
+          {v:'V', t:' No se logró tener una monarquía como la de Francia en Italia por los roces entre los gobernantes y principados de las repúblicas independientes.' },
+      ])
+    </script>
   </body>
 </html>

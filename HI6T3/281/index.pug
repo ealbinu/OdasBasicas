@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Describo el desarrollo de ciudades'
+- subtitle = 'El resurgimiento de la vida urbana y del comercio'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,11 +17,20 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> las causas que favorecieron el crecimiento de las ciudades. Consulta las páginas 114 y 115 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-4: check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+                
             
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadero o #[strong F] si es falso.
 
+            .row.mt-3.ex2
+                .col.trueorfalse
+                    template(v-for="(i, index) in tempsobj.b")
+                        inputbox(v-model="d['b'+index]" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="i.v")
+                            template(v-slot:before="") {{i.t}}
 
 
 
@@ -29,4 +38,23 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:1, t:'Europa se recupera de la peste.'},
+                    {v:1, t:'Se fundan los primeros bancos.'},
+                    {v:1, t:'Se fundan las primeras universidades.'},
+                    {v:1, t:'Aumenta la producción agrícola.'},
+                    {v:0, t:'Se fabrican productos en las zonas rurales.'},
+                    {v:1, t:'Se patrocina a artistas e inventores.'},
+                    {v:0, t:'Disminuye el comercio.'},
+                    {v:0, t:'Las ciudades tienen poca higiene.'},
+                    {v:1, t:'Se producen armas y artículos de lujo.'},
+                ])
+
+                app.$set(app.tempsobj, 'b', [
+                    {v:'F', t:'Desde el tiempo de las cruzadas el comercio con occidente fue importante para el desarrollo económico de Europa.' },
+                    {v:'V', t:'Génova y Venecia tuvieron una participación muy importante en el intercambio comercial.'},
+                    {v:'V', t:'Las mercancías provenían de Persia, China, Filipinas e India.' },
+                    {v:'F', t:'Otros centros de comercio y de actividades bancarias fueron Alejandría y Constantinopla.' },
+                    {v:'V', t:'Gracias a la riqueza, la política y la tradición cultural algunas ciudades italianas se constituyeron como repúblicas independientes.' },
+                    {v:'V', t:' No se logró tener una monarquía como la de Francia en Italia por los roces entre los gobernantes y principados de las repúblicas independientes.' },
+                ])
