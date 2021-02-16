@@ -4,23 +4,93 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Exploro el guion de teatro</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imgbgMod .inputs .selectable {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 8%;
+          height: 10%;
+          border-radius: 4px;
+      }
+      .imgbgMod .inputs .selectable .circledactive {
+          display: none;
+      }
+      .imgbgMod .inputs .selectable.on {
+          border: 2px solid var(--wrongcol);
+          background: rgba(200, 0, 0, 0.1);
+          border-radius: 4px;
+      }
+      .imgbgMod .inputs .selectable .result {
+          transform: scale(0.5);
+          top: -15px;
+          right: -15px;
+      }
+      .imgbgMod .inputs .selectable:nth-child(1) {
+          top: 0.8%;
+          width: 75.3%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(2) {
+          left: 25%;
+          top: 11.8%;
+          width: 58.5%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(3) {
+          left: 8%;
+          top: 22.7%;
+          width: 67%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(4) {
+          left: 0;
+          top: 33.8%;
+          width: 100%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(5) {
+          left: 0;
+          top: 78.2%;
+          width: 91.8%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(6) {
+          left: 16.5%;
+          top: 89.5%;
+          width: 83.5%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(7) {
+          left: 91.8%;
+          top: 11.5%;
+          height: 66%;
+          width: 8%;
+      }
+      .imgbgMod .inputs .selectable:nth-child(8) {
+          left: 58.5%;
+          top: 44%;
+          height: 55.5%;
+          width: 8%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Exploro el guion de teatro</h1>
+      <h2>Analizamos obras de teatro</h2>
+      <div class="instruccion mt-5">Encuentra en la sopa de letras las palabras que se relacionan con una obra de teatro.</div>
+      <recuadropalabras :palabras="['VESTUARIO','ACTORES','DIÁLOGOS','ESCENOGRAFÍA','GUION','TEATRO','ACOTACIONES','PERSONAJES']" c="3"></recuadropalabras>
+      <div class="row mt-3 ex1 justify-content-center">
+        <div class="col-md-6">
+          <imgbg img="aimg/soup.png" initclass="ex1">
+            <template v-for="(i, index) in 8">
+              <selectable :isok="true" v-model="r[index]" :ref="refCount()" @isright="right++"></selectable>
+            </template>
+          </imgbg>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
