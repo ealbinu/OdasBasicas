@@ -1,32 +1,124 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Utilizo aparatos ópticos'
+- subtitle = 'Dos tipos de lentes: convergentes y divergentes'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex2 .trueorfalse .inputbox input {
+                font-size: 1rem;
+                padding: 2px;
+                max-width: 300px;
+            }
+            @media (max-width: 680px) {
+                .ex2 .trueorfalse .inputbox input {
+                    font-size: 0.6rem;
+                }
+            }
+            @media (max-width: 680px) {
+                .trueorfalse .inputbox {
+                    font-size: 0.6rem;
+                }
+            }
+            .ex3 .imagerelative .items .selectable {
+                width: 10%;
+                height: 10%;
+            }
+            .ex3 .imagerelative .items .selectable .result {
+                transform: scale(0.5);
+                top: -15px;
+                right: -15px;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(1) {
+                left: 25%;
+                top: 6%;
+                width: 56%;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(2) {
+                left: 36%;
+                top: 33%;
+                width: 34%;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(3) {
+                left: 25%;
+                top: 68%;
+                width: 61%;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(4) {
+                left: 31%;
+                top: 85.5%;
+                width: 61%;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(5) {
+                left: 53%;
+                top: 6%;
+                width: 5%;
+                height: 63%;
+            }
+            .ex3 .imagerelative .items .selectable:nth-child(6) {
+                left: 86.5%;
+                top: 15%;
+                width: 5%;
+                height: 71%;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee las páginas 120 a 125 de tu libro de texto SEP y escribe en el paréntesis el número que corresponda.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-6.verticalrow
+                    labeltext(num="1.") Lentes convergentes.
+                    labeltext(num="2.") Lentes divergentes.
+                    labeltext(num="3.") Puebla.
+                    labeltext(num="4.") Hipermetropía.
+                    labeltext(num="5.") Satélites de Júpiter.
+                    labeltext(num="6.") Miopía.
+                .col-6.trueorfalse.left
+                    template(v-for="(i, index) in tempsobj.a")
+                        inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i.v")
+                            template(v-slot:after="") {{i.t}}
 
+            .instruccion.mt-5 Completa los enunciados. Después, encierra las seis palabras escondidas en la sopa de letras.
 
+            .row.mt-3.ex2
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.b")
+                        inputbox(v-model="d['b'+index]" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="i.v")
+                            template(v-slot:before="") {{i.t}}
 
+            .row.mt-3.ex3
+                .row.mt-3.ex: .col-12
+                    .imagerelative
+                        img(src="aimg/soup.png").w-100
+                        .items
+                            template(v-for="(i, index) in 6")
+                                selectable(:isok="true" v-model="d['c'+index]" :ref="refCount()" @isright="right++")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v: 4, t: 'Problema de la vista que impide ver claramente los objetos que están cerca.'},
+                    {v: 3, t: 'Lugar donde se encuentra el Gran Telescopio Milimétrico.'},
+                    {v: 2, t: 'A través de ellas, las imágenes se ven más pequeñas que los objetos reales.'},
+                    {v: 6, t: 'Problema de la vista que impide ver bien de lejos pero permite ver bien de cerca.'},
+                    {v: 5, t: 'Fueron descubiertos por Galileo Galilei con su telescopio.'},
+                    {v: 1, t: 'Con ellas, las imágenes se ven más gran- des que los objetos reales.'},
+                ])
+
+                app.$set(app.tempsobj, 'b', [
+                    {v: 'Convergente', t: 'Tipo de lente que se utiliza en las lupas y los binoculares:'},
+                    {v: 'Óptico, mecánico y de iluminación', t: 'Son los tres sistemas que conforman los microscopios:'},
+                    {v: 'Galileo', t: 'Nombre del científico que diseñó el telescopio en 1610:'},
+                    {v: 'Divergente', t: 'Tipo de lente con el que se corrige la miopía:'},
+                ])
