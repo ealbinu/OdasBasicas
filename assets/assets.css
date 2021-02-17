@@ -1054,6 +1054,10 @@ input[type=number] {
 .common.c6 {
   background: var(--pastel6);
 }
+.common.br {
+  background: transparent;
+  border: 4px solid var(--pastel1);
+}
 .common .choose {
   margin: 0;
   padding: 0;

@@ -1,25 +1,50 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Multiplico lo mismo pero al revés'
+- subtitle = '¡Los resultados se repiten!'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .img-fluid{
+                max-width: 200px;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Resuelve los siguientes problemas multiplicando.
 
-            .row.mt-3
+            .row.mt-3.ex1.justify-content-center
+                .col-md-6.mt-4: .common.br
+                    labeltext(num="1.") Mi mamá encontró esta oferta y me compró 3 pelotas. $9 ¿Cuánto pagó?
+                    .text-center: img(:src="'aimg/'+'a'+'.png'").img-fluid
+                    inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" initclass="ib2"  type="number" placeh="#" :answer="27")
+                        template(v-slot:before=""): numbers(c=1 smaller) $
+                .col-md-6.mt-4: .common.br
+                    labeltext(num="2.") Si una botella de salsa cuesta $3, ¿cuánto cuestan 9 botellas?
+                    .text-center: img(:src="'aimg/'+'b'+'.png'").img-fluid
+                    inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" initclass="ib2"  type="number" placeh="#" :answer="27")
+                        template(v-slot:before=""): numbers(c=1 smaller) $
+                .col-md-6.mt-4: .common.br
+                    labeltext(num="3.") Me gustaría comprar 7 caramelos, cada uno cuesta $7, ¿cuánto tendría que pagar? 
+                    .text-center: img(:src="'aimg/'+'c'+'.png'").img-fluid
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++" initclass="ib2"  type="number" placeh="#" :answer="49")
+                        template(v-slot:before=""): numbers(c=1 smaller) $
+                .col-md-6.mt-4: .common.br
+                    labeltext(num="4.") Cada lápiz cuesta $6, necesito comprar 4, ¿cuánto tendría que pagar? 
+                    .text-center: img(:src="'aimg/'+'d'+'.png'").img-fluid
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++" initclass="ib2"  type="number" placeh="#" :answer="24")
+                        template(v-slot:before=""): numbers(c=1 smaller) $
+                .col-md-6.mt-4: .common.br
+                    labeltext(num="5.") Mamá comprará 5 naranjas, cada una cuesta $3, ¿cuánto pagará?
+                    .text-center: img(:src="'aimg/'+'e'+'.png'").img-fluid
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++" initclass="ib2"  type="number" placeh="#" :answer="15")
+                        template(v-slot:before=""): numbers(c=1 smaller) $
             
 
 
