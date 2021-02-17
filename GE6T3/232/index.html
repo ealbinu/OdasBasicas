@@ -4,23 +4,76 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco los retos del mundo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imagerelative .items > .dragdrop {
+          margin-left: -12.5%;
+      }
+      .imagerelative .items > .dragdrop .draggable {
+          background: #fff;
+          box-sizing: border-box;
+      }
+      .imagerelative .items > .dragdrop:nth-child(1) {
+          left: 50%;
+          top: 7%;
+      }
+      .imagerelative .items > .dragdrop:nth-child(2) {
+          left: 80%;
+          top: 64%;
+      }
+      .imagerelative .items > .dragdrop:nth-child(3) {
+          left: 20%;
+          top: 29%;
+      }
+      .imagerelative .items > .dragdrop:nth-child(4) {
+          left: 74%;
+          top: 25%;
+      }
+      .imagerelative .items > .dragdrop:nth-child(5) {
+          left: 70%;
+          top: 82%;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco los retos del mundo</h1>
+      <h2>Calidad de vida</h2>
+      <div class="instruccion mt-5">Coloca en el diagrama los factores que inciden en el desarrollo de los países. Consulta la página 150 de tu libro de texto SEP.</div>
+      <template v-if="tempsobj.a">
+        <div class="recuadropalabras c5">
+          <dragdrop :options="tempsobj.a" :options-ok="[]"></dragdrop>
+        </div>
+        <div class="row mt-3 ex1">
+          <div class="col-12">
+            <div class="imagerelative"><img class="w-100" src="aimg/diag.png"/>
+              <div class="items">
+                <template v-for="(i, index) in tempsobj.a">
+                  <dragdrop v-model="d['a'+index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="tempsobj.a" any-options-ok="any-options-ok"></dragdrop>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero o <strong>F</strong> si es falso. Consulta las páginas 150 a 153 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 trueorfalse left">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="d['b'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:after="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +94,17 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', ['Culturales', 'Educativos', 'Económicos', 'Políticos', 'Avances en la ciencia'])
+      app.$set(app.tempsobj, 'TorF', [
+          {v:'V', t:'Una nación será más rica si sus habitantes son más capaces, productivos y creativos.'},
+          {v:'F', t:'Contar con servicios básicos como educación y salud no es determinante para mejorar la calidad de vida de los habitantes de un país.'},
+          {v:'F', t:'De los países con mayor calidad de vida, Estados Unidos de América es el que tiene el mayor ingreso nacional bruto per cápita.'},
+          {v:'V', t:'Uruguay tiene una esperanza de vida de 77 años.'},
+          {v:'V', t:'Belice es un país con calidad de vida media.'},
+          {v:'V', t:'Congo y Kenia son países cuya población tiene la menor esperanza de vida al nacer.'},
+          {v:'V', t:'Las condiciones ecológicas y el equilibrio entre lo natural y lo social también influyen para lograr una buena calidad de vida.'},
+      ])
+    </script>
   </body>
 </html>

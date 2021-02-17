@@ -1,32 +1,81 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco los retos del mundo'
+- subtitle = 'Calidad de vida'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .imagerelative .items > .dragdrop {
+                margin-left: -12.5%;
+            }
+            .imagerelative .items > .dragdrop .draggable {
+                background: #fff;
+                box-sizing: border-box;
+            }
+            .imagerelative .items > .dragdrop:nth-child(1) {
+                left: 50%;
+                top: 7%;
+            }
+            .imagerelative .items > .dragdrop:nth-child(2) {
+                left: 80%;
+                top: 64%;
+            }
+            .imagerelative .items > .dragdrop:nth-child(3) {
+                left: 20%;
+                top: 29%;
+            }
+            .imagerelative .items > .dragdrop:nth-child(4) {
+                left: 74%;
+                top: 25%;
+            }
+            .imagerelative .items > .dragdrop:nth-child(5) {
+                left: 70%;
+                top: 82%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Coloca en el diagrama los factores que inciden en el desarrollo de los países. Consulta la página 150 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            template(v-if="tempsobj.a")
+                .recuadropalabras.c5: dragdrop(:options="tempsobj.a" :options-ok="[]")
+                .row.mt-3.ex1: .col-12
+                    .imagerelative
+                        img(src="aimg/diag.png").w-100
+                        .items
+                            template(v-for="(i, index) in tempsobj.a")
+                                dragdrop(v-model="d['a'+index]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="tempsobj.a" any-options-ok)
+                
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadero o #[strong F] si es falso. Consulta las páginas 150 a 153 de tu libro de texto SEP.
 
-
+            .row.mt-3.ex2
+                .col-12.trueorfalse.left
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="d['b'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:after="")
+                                labeltext() {{i.t}}
+                          
+                       
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', ['Culturales', 'Educativos', 'Económicos', 'Políticos', 'Avances en la ciencia'])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v:'V', t:'Una nación será más rica si sus habitantes son más capaces, productivos y creativos.'},
+                    {v:'F', t:'Contar con servicios básicos como educación y salud no es determinante para mejorar la calidad de vida de los habitantes de un país.'},
+                    {v:'F', t:'De los países con mayor calidad de vida, Estados Unidos de América es el que tiene el mayor ingreso nacional bruto per cápita.'},
+                    {v:'V', t:'Uruguay tiene una esperanza de vida de 77 años.'},
+                    {v:'V', t:'Belice es un país con calidad de vida media.'},
+                    {v:'V', t:'Congo y Kenia son países cuya población tiene la menor esperanza de vida al nacer.'},
+                    {v:'V', t:'Las condiciones ecológicas y el equilibrio entre lo natural y lo social también influyen para lograr una buena calidad de vida.'},
+                ])

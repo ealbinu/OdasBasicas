@@ -1,5 +1,13 @@
 Vue.component('dragdrop', {
-    props: ['value', 'isok', 'options', 'optionsOk','ignoreOrder', 'group'],
+    props: ['value',
+    'isok',
+    'options',
+    'optionsOk',
+    'ignoreOrder',
+    'group',
+    'initclass', 
+        'anyOptionsOk', // Puede ser cualquier respuesta del array
+    ],
     data() {
         return {
             status: false,
@@ -52,6 +60,12 @@ Vue.component('dragdrop', {
                 console.log('ignoreOptions')
             }
 
+            //Any option
+            if(this.anyOptionsOk!=undefined){
+                optionsAreEqual = _.includes(this.optionsOk, this.optionsDraggable[0])
+            }
+
+
             if(optionsAreEqual){
                 this.$emit('isright', true)
                 this.result = true
@@ -76,7 +90,7 @@ Vue.component('dragdrop', {
 
     },
     template: `
-<div class="dragdrop" >
+<div :class="['dragdrop', initclass]" >
     <div class="draggable draggableModule" :class="setclass">
         <draggable v-model="optionsDraggable" :group="groupdrag" @change="itChanged" @start="itStarted">
             <div v-for="e in optionsDraggable" :key="e.l" v-html="e"></div>
