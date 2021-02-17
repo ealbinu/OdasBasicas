@@ -90,14 +90,15 @@ html(lang="es")
                 .col.boxwr
                     inputbox(v-model="r[1]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="11")
                     img(:src="'aimg/'+'a2'+'.png'").img-fluid
-                .col.boxwr: inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="7")
+                .col.boxwr
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="7")
                 .col.boxwr: inputbox(type="number" placeh="#" :answer="1" example)
             
             .my-2: img(src="aimg/l5.svg").w-100
             
             .row.mt-3.ex1.no-gutters
                 .col.boxwr
-                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="12")
+                    inputbox(v-model="r[9]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="12")
                 .col.boxwr
                     inputbox(v-model="r[3]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="2")
                 .col.boxwr: inputbox(type="number" placeh="#" :answer="2" example)
