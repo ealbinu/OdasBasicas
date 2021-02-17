@@ -4,23 +4,44 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco los múltiplos de 10</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .parrafoinputs .inputbox input{
+          max-width: 90px;
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco los múltiplos de 10</h1>
+      <h2>¿Cuánto le falta? / Los más cercanos / De frutas y verduras</h2>
+      <div class="instruccion mt-5">Completa las siguientes operaciones.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 mt-2" v-for="(i, index) in tempsobj.a">
+          <div class="c2 parrafoinputs text-center">
+            <inputbox v-model="d['a'+index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i[0]-i[1]">
+              <template v-slot:before="">{{i[0]}} - </template>
+              <template v-slot:after="">= {{i[1]}}</template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Completa las siguientes sumas para obtener el resultado indicado.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 mt-2" v-for="(i, index) in tempsobj.b">
+          <div class="c4 parrafoinputs text-center">
+            <inputbox v-model="d['b'+index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i[2]-(i[0]+i[1])">
+              <template v-slot:before="">{{i[0]}} + {{i[1]}} + </template>
+              <template v-slot:after="">= {{i[2]}}</template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +62,29 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          [250, 216],
+          [190, 178],
+          [410,391],
+          [520,502],
+          [90,76],
+          [50,26],
+          [150,25],
+          [350,200],
+          [550,440],
+          [110,40],
+          [60,26],
+          [200,191],
+      ])
+      app.$set(app.tempsobj, 'b', [
+          [100,20,160],
+          [200,50,300],
+          [600,20,650],
+          [80,30,140],
+          [90,60,500],
+          [250,150,900],
+      ])
+    </script>
   </body>
 </html>
