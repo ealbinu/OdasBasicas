@@ -36,6 +36,11 @@ html(lang="es")
                 top: 82%;
             }
 
+            .imagerelative .items > .dragdrop:nth-child(6) {
+                left: 30%;
+                top: 66%;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
@@ -69,7 +74,7 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                app.$set(app.tempsobj, 'a', ['Culturales', 'Educativos', 'Económicos', 'Políticos', 'Avances en la ciencia'])
+                app.$set(app.tempsobj, 'a', ['Culturales', 'Educativos', 'Económicos', 'Políticos', 'Avances en la ciencia', 'Avances de la tecnología'])
                 app.$set(app.tempsobj, 'TorF', [
                     {v:'V', t:'Una nación será más rica si sus habitantes son más capaces, productivos y creativos.'},
                     {v:'F', t:'Contar con servicios básicos como educación y salud no es determinante para mejorar la calidad de vida de los habitantes de un país.'},
