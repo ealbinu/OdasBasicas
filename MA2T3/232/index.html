@@ -119,7 +119,7 @@
           <template v-for="(i, index) in (i-1)">+ 3 </template>) =
         </div>
         <div class="col-md-3 col-12">
-          <inputbox v-model="d['a'+index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i"></inputbox>
+          <inputbox v-model="d['a'+index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i*3"></inputbox>
         </div>
       </div>
       <template v-for="(i, index) in tempsobj.a"></template>

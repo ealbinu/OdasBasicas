@@ -78,7 +78,7 @@ html(lang="es")
                     template(v-for="(i, index) in (i-1)") + 3 
                     | ) =
                 .col-md-3.col-12
-                    inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
+                    inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i*3")
 
             template(v-for="(i, index) in tempsobj.a")
             
