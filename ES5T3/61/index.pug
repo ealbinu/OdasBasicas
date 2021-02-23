@@ -1,8 +1,9 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Uso los nexos en una encuesta'
+- subtitle = 'Las características de los reportes de encuesta'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,10 +18,30 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Completa el texto utilizando los #[strong nexos] del recuadro para relacionar de manera lógica las ideas.
+            recuadropalabras(:palabras="['asimismo','por otro lado','finalmente','primero','como']" c=2)
             
+            .h4.text-center.my-2 EL USO DE LENTES
+
+            .row.mt-3.ex1.centerrow
+                .col-md-9
+                    - var arr = []
+                    - arr.push('En este reporte se presentarán datos sobre las personas que necesitan usar lentes. <br>')
+                    - arr.push('En tres escuelas se aplicó una encuesta a cien personas, de las cuales fueron tres directores, quince maestros y ochenta y dos niños. <br>')
+                    - arr.push(['Primero'])
+                    - arr.push(' se aplicó a los niños y después a las personas adultas. <br>')
+                    - arr.push('Una mínima parte no asistió y, ')
+                    - arr.push(['como'])
+                    - arr.push(' era de esperarse, no fueron encuestados. <br>')
+                    - arr.push(['Por otro lado'])
+                    - arr.push(', los directores fueron un gran apoyo para lograr el éxito en esta investigación. <br>')
+                    - arr.push('La mayoría de los niños no sabía si necesitaba lentes. ')
+                    - arr.push(['Asimismo'])
+                    - arr.push(', las maestras desconocían los problemas visuales de sus alumnos. <br>')
+                    - arr.push(['Finalmente'])
+                    - arr.push(', registramos los resultados para poder identificar la problemática que existe en nuestra comunidad escolar.')
+                    +parrafo(0, arr)
+                .col-md: img(:src="'aimg/'+'girl'+'.png'").img-fluid
 
 
 
