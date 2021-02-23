@@ -4,23 +4,48 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico descripciones correctas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .img-fluid{
+          max-width: unset;
+          max-height: 200px;
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico descripciones correctas</h1>
+      <h2>Lo que conozco</h2>
+      <div class="instruccion mt-5">Observa con atención las siguientes ilustraciones y marca así <checkmark></checkmark> la descripción que le corresponda.</div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'a'+'.png'"/></div>
+        <div class="col-md">
+          <template v-for="(i, index) in tempsobj.a">
+            <check v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'b'+'.png'"/></div>
+        <div class="col-md">
+          <template v-for="(i, index) in tempsobj.b">
+            <check v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'c'+'.png'"/></div>
+        <div class="col-md">
+          <template v-for="(i, index) in tempsobj.c">
+            <check v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +66,22 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v:0, t:'Jarrón mediano cuya parte superior es más grande que la base, de color rojo y rayas blancas.'},
+          {v:1, t:'Jarrón alargado cuya base es más gruesa que su parte superior, de color azul abajo y blanco arriba.'},
+          {v:0, t:'Jarrón pequeño cuya base es igual de ancha que la parte superior, de color verde y negro.'},
+      ])
+      app.$set(app.tempsobj, 'b', [
+          {v:1, t:'Un hombre alto de piel morena, delgado y fuerte, de cabello negro y rizado.'},
+          {v:0, t:'Un hombre chaparrito y blanco, de cabello rojizo y pies pequeños.'},
+          {v:0, t:'Un hombre corpulento y rubio, de estatura mediana y con grandes ojos azules.'},
+      ])
+      app.$set(app.tempsobj, 'c', [
+          {v:1, t:'Un árbol frondoso cubierto con cientos de flores pequeñas de color rosado y que dan una gran sombra.'},
+          {v:0, t:'Un arbusto pequeño con grandes hojas verdes que cubren un pequeño jardín.'},
+          {v:0, t:'Una palmera alta con hojas muy largas que cuelgan de forma ligera.'},
+      ])
+    </script>
   </body>
 </html>

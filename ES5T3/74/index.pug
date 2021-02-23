@@ -1,26 +1,40 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico descripciones correctas'
+- subtitle = 'Lo que conozco'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .img-fluid{
+                max-width: unset;
+                max-height: 200px;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa con atención las siguientes ilustraciones y marca así <checkmark></checkmark> la descripción que le corresponda.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-4: img(:src="'aimg/'+'a'+'.png'").img-fluid
+                .col-md
+                    template(v-for="(i, index) in tempsobj.a")
+                        check(v-model="d['a'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-4: img(:src="'aimg/'+'b'+'.png'").img-fluid
+                .col-md
+                    template(v-for="(i, index) in tempsobj.b")
+                        check(v-model="d['a'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-4: img(:src="'aimg/'+'c'+'.png'").img-fluid
+                .col-md
+                    template(v-for="(i, index) in tempsobj.c")
+                        check(v-model="d['a'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
 
 
 
@@ -29,4 +43,18 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:0, t:'Jarrón mediano cuya parte superior es más grande que la base, de color rojo y rayas blancas.'},
+                    {v:1, t:'Jarrón alargado cuya base es más gruesa que su parte superior, de color azul abajo y blanco arriba.'},
+                    {v:0, t:'Jarrón pequeño cuya base es igual de ancha que la parte superior, de color verde y negro.'},
+                ])
+                app.$set(app.tempsobj, 'b', [
+                    {v:1, t:'Un hombre alto de piel morena, delgado y fuerte, de cabello negro y rizado.'},
+                    {v:0, t:'Un hombre chaparrito y blanco, de cabello rojizo y pies pequeños.'},
+                    {v:0, t:'Un hombre corpulento y rubio, de estatura mediana y con grandes ojos azules.'},
+                ])
+                app.$set(app.tempsobj, 'c', [
+                    {v:1, t:'Un árbol frondoso cubierto con cientos de flores pequeñas de color rosado y que dan una gran sombra.'},
+                    {v:0, t:'Un arbusto pequeño con grandes hojas verdes que cubren un pequeño jardín.'},
+                    {v:0, t:'Una palmera alta con hojas muy largas que cuelgan de forma ligera.'},
+                ])
