@@ -1,32 +1,75 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Me muevo con la Luna'
+- subtitle = 'Las fases de la Luna'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .targets img,
+            .sources img {
+                max-width: 60%;
+                margin: 10px;
+            }
+            @media (max-width: 680px) {
+                .targets img,
+                .sources img {
+                    margin: 2px;
+                    max-width: 80%;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los mitos que has escuchado acerca de la Luna.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6.mt-3: div(:class="['common', 'c'+(index+1)]")
+                        check(v-model="r[index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
             
-
-
+            .instruccion.mt-5 Une con una línea las piezas que son pareja.
+            
+            .row.mt-3.ex2
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['a']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): img(:src="source.i").img-fluid
+                        template(v-slot:target="{target}"): img(:src="target.i").img-fluid
+                   
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:0, t:'La Luna es de queso.'},
+                    {v:1, t:'En la Luna está atrapado un conejo.'},
+                    {v:1, t:'Cuando hay Luna llena, algunos hombres se convierten en lobos.'},
+                    {v:0, t:'Los enamorados le bajan la Luna y las estrellas a su amada.'},
+                ])
+
+                 app.$set(app.tempsobj, 'sources', [
+                    {i: 'aimg/a.png'},
+                    {i: 'aimg/b.png'},
+                    {i: 'aimg/c.png'},
+                    {i: 'aimg/d.png'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {i: 'aimg/e.png'},
+                    {i: 'aimg/f.png'},
+                    {i: 'aimg/g.png'},
+                    {i: 'aimg/h.png'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_3'],
+                    ['s_2', 't_0'],
+                    ['s_4', 't_1'],
+                ])
