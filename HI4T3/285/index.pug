@@ -1,32 +1,60 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Observamos el fin de la Independencia'
+- subtitle = 'La consumación de la Independencia'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .label.checktext{
+                width: 100%;
+                text-align: center;
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Colorea los derechos establecidos por las Cortes de Cádiz en la Constitución promulgada en 1812. Consulta la página 176 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6.text-center: check(v-model="d['ex1'+index]" initclass="coloring" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
             
 
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadero,o #[strong F] si es falso.
 
-
+            .row.mt-3.ex2
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="d['ex2'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext() {{i.t}}
+                    
+                    
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {v:1, t: 'Son ciudadanos los mayores de 25 años.'},
+                    {v:0, t: 'Ascenso de criollos al trono.'},
+                    {v:0, t: 'Los esclavos serían terratenientes.'},
+                    {v:1, t: 'Igualdad entre americanos y españoles.'},
+                    {v:0, t: 'Las mujeres podían ejercer cargos políticos.'},
+                    {v:1, t: 'Abolición del tributo indígena.'},
+                    {v:1, t: 'Otorga la libertad de prensa.'},
+                    {v:0, t: 'Los indios recibirían apoyos del gobierno.'}
+                ])
+                
+                app.$set(app.tempsobj, 'TorF', [
+                    {v:'F', t: 'Napoleón Bonaparte se coronó como rey de España.'},
+                    {v:'V', t: 'La Constitución de Cádiz estuvo vigente durante dos años.'},
+                    {v:'V', t: 'Fernando VII suspendió la Constitución de Cádiz porque limitaba su poder.'},
+                    {v:'F', t: 'Las tropas francesas se retiraron de España después de imponer a un presidente.'},
+                    {v:'V', t: 'En 1820 los liberales españoles obligaron a Fernando VII a reestablecer la Consti- tución de Cádiz.'},
+                ])

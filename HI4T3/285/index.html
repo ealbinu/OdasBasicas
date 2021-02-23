@@ -4,23 +4,43 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Observamos el fin de la Independencia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .label.checktext{
+          width: 100%;
+          text-align: center;
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Observamos el fin de la Independencia</h1>
+      <h2>La consumación de la Independencia</h2>
+      <div class="instruccion mt-5">Colorea los derechos establecidos por las Cortes de Cádiz en la Constitución promulgada en 1812. Consulta la página 176 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6 text-center">
+            <check v-model="d['ex1'+index]" initclass="coloring" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero,o <strong>F</strong> si es falso.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 trueorfalse">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="d['ex2'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:before="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +61,25 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {v:1, t: 'Son ciudadanos los mayores de 25 años.'},
+          {v:0, t: 'Ascenso de criollos al trono.'},
+          {v:0, t: 'Los esclavos serían terratenientes.'},
+          {v:1, t: 'Igualdad entre americanos y españoles.'},
+          {v:0, t: 'Las mujeres podían ejercer cargos políticos.'},
+          {v:1, t: 'Abolición del tributo indígena.'},
+          {v:1, t: 'Otorga la libertad de prensa.'},
+          {v:0, t: 'Los indios recibirían apoyos del gobierno.'}
+      ])
+      
+      app.$set(app.tempsobj, 'TorF', [
+          {v:'F', t: 'Napoleón Bonaparte se coronó como rey de España.'},
+          {v:'V', t: 'La Constitución de Cádiz estuvo vigente durante dos años.'},
+          {v:'V', t: 'Fernando VII suspendió la Constitución de Cádiz porque limitaba su poder.'},
+          {v:'F', t: 'Las tropas francesas se retiraron de España después de imponer a un presidente.'},
+          {v:'V', t: 'En 1820 los liberales españoles obligaron a Fernando VII a reestablecer la Consti- tución de Cádiz.'},
+      ])
+    </script>
   </body>
 </html>
