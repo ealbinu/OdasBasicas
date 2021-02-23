@@ -4,60 +4,23 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cambio unidades de medición</title>
+    <title>titulo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      .ex1 .inputbox {
-          border-radius: 6px;
-          padding: 10px;
-          height: 100%;
-          background-image: linear-gradient(var(--pastel6), var(--pastel2), var(--clear));
-          box-shadow: 4px 4px 0 var(--sec);
-          font-size: 1.2rem;
-      }
-      .ex1 .inputbox input,
-      .ex1 .inputbox .numbers {
-          font-size: 1.2rem;
-          width: 60px;
-          border-radius: 4px;
-          margin: 0 4px;
-          padding: 2px;
-          text-align: center;
-      }
-      
+      /*
+      .ex1 {}
+      */
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>Cambio unidades de medición</h1>
-      <h2>Equivalencias</h2>
-      <div class="instruccion mt-5">Completa las siguientes conversiones. Observa el ejemplo.</div>
-      <div class="row mt-3 ex1">
-        <template v-for="(i, index) in tempsobj.ex1">
-          <div class="col-md-6 col-lg-4 mb-2" v-if="i.example">
-            <inputbox :answer="i.value" placeh="-" example="example">
-              <template v-slot:before="">{{i.before}}</template>
-              <template v-slot:after="">{{i.after}}</template>
-            </inputbox>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-2" v-else="v-else">
-            <inputbox v-model="r[index-1]" :ref="refCount()" @isright="right++" :answer="i.value" type="number" placeh="-">
-              <template v-slot:before="">{{i.before}}</template>
-              <template v-slot:after="">{{i.after}}</template>
-            </inputbox>
-          </div>
-        </template>
-      </div>
-      <div class="instruccion mt-5">Lee el problema y selecciona la respuesta correcta.</div>
-      <div class="row mt-3 ex2">
-        <div class="col-12">
-          <choose v-model="r[5]" :ref="refCount()" text="Santiago quiere ir a la casa de Israel, pero su carro sólo tiene gasolina para viajar 12 km. Si Santiago vive a 198 hm de la casa de Israel, ¿cuántos hm le faltarían para llegar con la gasolina que tiene?" :options="['78 hm','186 hm','78 km']" @isright="right++" :answer-num="0"></choose>
-        </div>
-      </div>
+      <h1>titulo</h1>
+      <div class="instruccion mt-5">INSTRUCCIONES</div>
+      <div class="row mt-3"></div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -78,16 +41,6 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>
-      app.$set(app.tempsobj, 'ex1', [
-          {before: '90 000 dam =', value: 900, after: 'km', example: true},
-          {before: '7m =', value: 700, after: 'cm'},
-          {before: '', value: 6000, after: 'm = 6 k'},
-          {before: '', value: 900, after: 'dm = 90 m'},
-          {before: '30 000 m =', value: 30, after: 'km'},
-          {before: '8 000 mm =', value: 8, after: 'm'},
-      
-      ])
-    </script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
   </body>
 </html>
