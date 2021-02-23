@@ -1,26 +1,136 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico los riesgos en México'
+- subtitle = 'Los desastres que enfrentamos'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .imgbgMod.soup .inputs .selectable {
+                height: 7%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(1) {
+                top: 2.5%;
+                left: 2%;
+                width: 62%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(2) {
+                top: 63.2%;
+                left: 37%;
+                width: 41%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(3) {
+                top: 83.5%;
+                left: 17%;
+                width: 61%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(4) {
+                top: 23%;
+                left: 24.3%;
+                width: 7%;
+                height: 54%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(5) {
+                top: 10%;
+                left: 50.2%;
+                width: 7%;
+                height: 60%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(6) {
+                top: 10%;
+                left: 57%;
+                width: 7%;
+                height: 40%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(7) {
+                top: 2.5%;
+                left: 77.7%;
+                width: 7%;
+                height: 95%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(8) {
+                top: 2.5%;
+                left: 84.4%;
+                width: 7%;
+                height: 47.5%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(9) {
+                top: 13%;
+                left: 1%;
+                width: 7%;
+                height: 72%;
+                transform-origin: 0 0;
+                transform: rotate(-50.5deg);
+            }
+            .ex1 .parrafoinputs {
+                margin-bottom: 10px;
+            }
+            .ex1 .parrafoinputs strong {
+                color: #75C14C;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Contesta lo siguiente, después localiza las respuestas en la sopa de letras. Consulta las páginas 167 a 171 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.centerrow
+                .col-md-6
+                    - var arrA = []
+                    - arrA.push('<strong>1.</strong> Son situaciones que alteran gravemente la vida de las personas debido a la presencia de fenómenos naturales o por acciones humanas.')
+                    - arrA.push(['Desastres'])
+                    +parrafo(0, arrA, 'c2')
+                    
+                    - var arrB = []
+                    - arrB.push('<strong>2.</strong> Es el nombre que reciben los riesgos ocasionados por la actividad humana.')
+                    - arrB.push(['Antropogénicos'])
+                    +parrafo(1, arrB, 'c3')
+                    
+                    - var arrC = []
+                    - arrC.push('<strong>3.</strong> Las ')
+                    - arrC.push(['lluvias'])
+                    - arrC.push(', los ')
+                    - arrC.push(['sismos'])
+                    - arrC.push(' y los ')
+                    - arrC.push(['huracanes'])
+                    - arrC.push(' son parte de la dinámica natural de nuestro planeta, por lo que es importante que la población tenga conocimiento de lo que se debe hacer para prevenir desastres.')
+                    +parrafo(2, arrC, 'c2')
+
+                    - var arrD = []
+                    - arrD.push('<strong>4.</strong> Los desastres alteran de forma negativa la vida ')
+                    - arrD.push(['natural'])
+                    - arrD.push(', ')
+                    - arrD.push(['social'])
+                    - arrD.push(', ')
+                    - arrD.push(['económico'])
+                    - arrD.push(' y ')
+                    - arrD.push(['cultura'])
+                    - arrD.push(' del lugar donde se desarrollan.')
+
+                    +parrafo(5, arrD, 'c3')
+
+                .col-md-6
+                    imgbg(img="aimg/soup.png" initclass="soup")
+                        template(v-for="(i, index) in 9")
+                            selectable(:isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++")
+
+            .instruccion.mt-5 Escribe #[strong V] si el enunciado es verdadero, o #[strong F] si es falso. Consulta las páginas 168 a 170 de tu libro de texto SEP.
+            .row.mt-3.ex2
+
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext(:num="(index+1)+'.'") {{i.t}}
+                
+                
 
 
 
@@ -29,4 +139,9 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 'V', t: 'En septiembre de 1985, ocurrió un sismo en la Ciudad de México.'},
+                    {v: 'V', t: 'En septiembre de 2009, el huracán Jimena azotó las costas de Baja California Sur.'},
+                    {v: 'F', t: 'En 2007, sucedió el incendio del pozo Ixtoc I en la bahía de Campeche, lo que provocó un gran derrame de petróleo.'},
+                    {v: 'V', t: 'En el 2007 el estado de Tabasco sufrió graves inundaciones.'},
+                ])

@@ -1,26 +1,133 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico los riesgos en México</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imgbgMod.soup .inputs .selectable {
+          height: 7%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(1) {
+          top: 2.5%;
+          left: 2%;
+          width: 62%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(2) {
+          top: 63.2%;
+          left: 37%;
+          width: 41%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(3) {
+          top: 83.5%;
+          left: 17%;
+          width: 61%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(4) {
+          top: 23%;
+          left: 24.3%;
+          width: 7%;
+          height: 54%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(5) {
+          top: 10%;
+          left: 50.2%;
+          width: 7%;
+          height: 60%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(6) {
+          top: 10%;
+          left: 57%;
+          width: 7%;
+          height: 40%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(7) {
+          top: 2.5%;
+          left: 77.7%;
+          width: 7%;
+          height: 95%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(8) {
+          top: 2.5%;
+          left: 84.4%;
+          width: 7%;
+          height: 47.5%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(9) {
+          top: 13%;
+          left: 1%;
+          width: 7%;
+          height: 72%;
+          transform-origin: 0 0;
+          transform: rotate(-50.5deg);
+      }
+      .ex1 .parrafoinputs {
+          margin-bottom: 10px;
+      }
+      .ex1 .parrafoinputs strong {
+          color: #75C14C;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico los riesgos en México</h1>
+      <h2>Los desastres que enfrentamos</h2>
+      <div class="instruccion mt-5">Contesta lo siguiente, después localiza las respuestas en la sopa de letras. Consulta las páginas 167 a 171 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-6">
+          <div class="parrafoinputs c2"><span><strong>1.</strong> Son situaciones que alteran gravemente la vida de las personas debido a la presencia de fenómenos naturales o por acciones humanas.</span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Desastres" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs c3"><span><strong>2.</strong> Es el nombre que reciben los riesgos ocasionados por la actividad humana.</span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Antropogénicos" type="text" placeh="-"></inputbox>
+          </div>
+          <div class="parrafoinputs c2"><span><strong>3.</strong> Las </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="lluvias" type="text" placeh="-"></inputbox><span>, los </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="sismos" type="text" placeh="-"></inputbox><span> y los </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="huracanes" type="text" placeh="-"></inputbox><span> son parte de la dinámica natural de nuestro planeta, por lo que es importante que la población tenga conocimiento de lo que se debe hacer para prevenir desastres.</span>
+          </div>
+          <div class="parrafoinputs c3"><span><strong>4.</strong> Los desastres alteran de forma negativa la vida </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="natural" type="text" placeh="-"></inputbox><span>, </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="social" type="text" placeh="-"></inputbox><span>, </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="económico" type="text" placeh="-"></inputbox><span> y </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="cultura" type="text" placeh="-"></inputbox><span> del lugar donde se desarrollan.</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <imgbg img="aimg/soup.png" initclass="soup">
+            <template v-for="(i, index) in 9">
+              <selectable :isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++"></selectable>
+            </template>
+          </imgbg>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe <strong>V</strong> si el enunciado es verdadero, o <strong>F</strong> si es falso. Consulta las páginas 168 a 170 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-12 trueorfalse">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-">
+              <template v-slot:before="">
+                <labeltext :num="(index+1)+'.'">{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +148,13 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 'V', t: 'En septiembre de 1985, ocurrió un sismo en la Ciudad de México.'},
+          {v: 'V', t: 'En septiembre de 2009, el huracán Jimena azotó las costas de Baja California Sur.'},
+          {v: 'F', t: 'En 2007, sucedió el incendio del pozo Ixtoc I en la bahía de Campeche, lo que provocó un gran derrame de petróleo.'},
+          {v: 'V', t: 'En el 2007 el estado de Tabasco sufrió graves inundaciones.'},
+      ])
+    </script>
   </body>
 </html>
