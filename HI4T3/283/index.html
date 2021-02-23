@@ -1,26 +1,96 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco las ideas de Hidalgo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .parrafoinputs strong{
+          color: var(--accent);
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(1) {
+          left: 28%;
+          top: 1.3%;
+          width: 63%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(2) {
+          left: 28%;
+          top: 20%;
+          width: 63%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(3) {
+          left: 10%;
+          top: 29.5%;
+          width: 89%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(4) {
+          left: 28%;
+          top: 78.4%;
+          width: 71%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(5) {
+          left: 1%;
+          top: 87.8%;
+          width: 90%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(6) {
+          left: 1%;
+          top: 1.3%;
+          height: 97%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(7) {
+          left: 10%;
+          top: 11%;
+          height: 77%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(8) {
+          left: 44%;
+          top: 44%;
+          height: 83%;
+          transform-origin: 0 0;
+          transform: rotate(-48deg);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco las ideas de Hidalgo</h1>
+      <h2>El inicio de la guerra y la participación de Hidalgo y Allende</h2>
+      <div class="instruccion mt-5">Completa las siguientes oraciones. Después busca las palabras en la sopa de letras. Consulta las páginas 168 y 169 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex centerrow">
+        <div class="col-md-6">
+          <imgbg img="aimg/soup.png" initclass="soup">
+            <template v-for="(i, index) in 8">
+              <selectable :isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++"></selectable>
+            </template>
+          </imgbg>
+        </div>
+        <div class="col-md-6">
+          <div class="parrafoinputs c4 mt-2"><span><strong>1.</strong> </span><span> El cura Miguel </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Hidalgo" type="text" placeh="-"></inputbox><span> formó un ejército con algunos </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="criollos" type="text" placeh="-"></inputbox><span>, campesinos e indígenas.</span><span><br></span><span><strong>2.</strong> </span><span> El ejército </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="insurgente" type="text" placeh="-"></inputbox><span> no tenía experiencia con las armas.</span><span><br></span><span><strong>3.</strong> </span><span> Ignacio</span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Allende" type="text" placeh="-"></inputbox><span> fue el encargado de disciplinar al recién formado ejército.</span><span><br></span><span><strong>4.</strong> </span><span> En </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Guanajuato" type="text" placeh="-"></inputbox><span>, los insurgentes tomaron la Alhóndiga de </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Granaditas" type="text" placeh="-"></inputbox><span>.</span><span><br></span><span><strong>5.</strong> </span><span> El ejército </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="realista" type="text" placeh="-"></inputbox><span> del </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="virrey" type="text" placeh="-"></inputbox><span>detuvo el avance de Hidalgo y su tropa en el monte de Las Cruces.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

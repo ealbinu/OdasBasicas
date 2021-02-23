@@ -1,26 +1,106 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Conozco las ideas de Hidalgo'
+- subtitle = 'El inicio de la guerra y la participación de Hidalgo y Allende'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .parrafoinputs strong{
+                color: var(--accent);
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(1) {
+                left: 28%;
+                top: 1.3%;
+                width: 63%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(2) {
+                left: 28%;
+                top: 20%;
+                width: 63%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(3) {
+                left: 10%;
+                top: 29.5%;
+                width: 89%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(4) {
+                left: 28%;
+                top: 78.4%;
+                width: 71%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(5) {
+                left: 1%;
+                top: 87.8%;
+                width: 90%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(6) {
+                left: 1%;
+                top: 1.3%;
+                height: 97%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(7) {
+                left: 10%;
+                top: 11%;
+                height: 77%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(8) {
+                left: 44%;
+                top: 44%;
+                height: 83%;
+                transform-origin: 0 0;
+                transform: rotate(-48deg);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las siguientes oraciones. Después busca las palabras en la sopa de letras. Consulta las páginas 168 y 169 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex.centerrow
+                .col-md-6
+                    imgbg(img="aimg/soup.png" initclass="soup")
+                        template(v-for="(i, index) in 8")
+                            selectable(:isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++")
+                .col-md-6
+                    - var arrA = []
+                    - arrA.push('<strong>1.</strong> ')
+                    - arrA.push(' El cura Miguel ')
+                    - arrA.push(['Hidalgo'])
+                    - arrA.push(' formó un ejército con algunos ')
+                    - arrA.push(['criollos'])
+                    - arrA.push(', campesinos e indígenas.')
+                    - arrA.push('<br>')
+                    - arrA.push('<strong>2.</strong> ')
+                    - arrA.push(' El ejército ')
+                    - arrA.push(['insurgente'])
+                    - arrA.push(' no tenía experiencia con las armas.')
+                    - arrA.push('<br>')
+                    - arrA.push('<strong>3.</strong> ')
+                    - arrA.push(' Ignacio')
+                    - arrA.push(['Allende'])
+                    - arrA.push(' fue el encargado de disciplinar al recién formado ejército.')
+                    - arrA.push('<br>')
+                    - arrA.push('<strong>4.</strong> ')
+                    - arrA.push(' En ')
+                    - arrA.push(['Guanajuato'])
+                    - arrA.push(', los insurgentes tomaron la Alhóndiga de ')
+                    - arrA.push(['Granaditas'])
+                    - arrA.push('.')
+                    - arrA.push('<br>')
+                    - arrA.push('<strong>5.</strong> ')
+                    - arrA.push(' El ejército ')
+                    - arrA.push(['realista'])
+                    - arrA.push(' del ')
+                    - arrA.push(['virrey'])
+                    - arrA.push('detuvo el avance de Hidalgo y su tropa en el monte de Las Cruces.')
+                    +parrafo(0, arrA, 'c4 mt-2')
 
 
 
