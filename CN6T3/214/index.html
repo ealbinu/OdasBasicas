@@ -4,23 +4,61 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco el universo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex2 .label {
+          text-align: center;
+          background: var(--rightcol);
+          border-radius: 6px;
+          padding: 10px 0;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco el universo</h1>
+      <h2>Conocimiento de las características del universo</h2>
+      <div class="instruccion mt-5">Escribe en el recuadro el número que corresponda a cada definición. Consulta las páginas 148 a 157 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 verticalrow">
+          <labeltext num="1.">Es el nombre de la galaxia de la que forma parte nuestro sistema solar.</labeltext>
+          <labeltext num="2.">Es la estrella y el cuerpo de mayor tamaño del sistema solar.</labeltext>
+          <labeltext num="3.">Son los cuerpos semejantes a una esfera, son de diferentes tamaños y emiten luz.</labeltext>
+          <labeltext num="4.">Es el nombre de las estrellas con luces pequeñas que al unirlas con líneas imaginarias forman figuras.</labeltext>
+          <labeltext num="5.">Son los cuerpos celestes que se mueven en torno a los planetas.</labeltext>
+        </div>
+        <div class="col-md-6 trueorfalse left verticalrow">
+          <template v-for="(i, index) in tempsobj.a">
+            <inputbox v-model="d['a'+index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i[0]">
+              <template v-slot:after="">{{i[1]}}</template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> las tecnologías que se utilizan para estudiar el universo. Después contesta la pregunta. Consulta las páginas 160 y 161 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4">
+          <check v-model="r[0]" initclass="withimg" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" :src="'aimg/'+'a'+'.png'"/>
+            <labeltext>Transbordador</labeltext>
+          </check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[1]" initclass="withimg" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" :src="'aimg/'+'b'+'.png'"/>
+            <labeltext>Estación espacial</labeltext>
+          </check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[2]" initclass="withimg" :ref="refCount()" @isright="right++" :answer="true"><img class="img-fluid" :src="'aimg/'+'c'+'.png'"/>
+            <labeltext>Observatorio</labeltext>
+          </check>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +79,14 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          [3, 'Estrellas'],
+          [1, 'Vía Láctea'],
+          [4, 'Constelaciones'],
+          [5, 'Satélites'],
+          [2, 'Sol'],
+      ])
+    </script>
   </body>
 </html>
