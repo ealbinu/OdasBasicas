@@ -1,26 +1,114 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco a las heroínas de México</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .imgbgMod.soup .inputs .selectable {
+          height: 8%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(1) {
+          top: 2%;
+          width: 59%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(2) {
+          left: 8%;
+          top: 10.6%;
+          width: 63%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(3) {
+          top: 28%;
+          width: 46%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(4) {
+          left: 14%;
+          top: 46%;
+          width: 44%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(5) {
+          left: 26%;
+          top: 81%;
+          width: 38%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(6) {
+          left: 1.3%;
+          top: 28%;
+          height: 53%;
+          width: 6%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(7) {
+          left: 14%;
+          top: 46%;
+          height: 53%;
+          width: 6%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(8) {
+          left: 58.2%;
+          top: 19%;
+          height: 70%;
+          width: 6%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(9) {
+          left: 64.6%;
+          top: 19%;
+          height: 79%;
+          width: 6%;
+      }
+      .imgbgMod.soup .inputs .selectable:nth-child(10) {
+          left: 0;
+          top: 24%;
+          height: 125%;
+          width: 6%;
+          transform-origin: 0 0;
+          transform: rotate(-52deg);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco a las heroínas de México</h1>
+      <h2>La Independencia y la búsqueda de una sociedad más igualitaria</h2>
+      <div class="instruccion mt-5">Completa el texto con las palabras del recuadro y después búscalas en la sopa de letras.</div>
+      <recuadropalabras :palabras="['Domínguez', 'realistas', 'virrey','Patriotas', 'Iraeta', 'Morelos', 'insurgente', 'Medina', 'Vicario', 'Capitana']" c="8"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <div class="parrafoinputs c4"><span>Durante el movimiento </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="insurgente" type="text" placeh="-"></inputbox><span> destacaron algunas mujeres por su valor y compromiso. Manuela </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Medina" type="text" placeh="-"></inputbox><span>, por ejemplo, era una indígena mejor conocida como La</span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Capitana" type="text" placeh="-"></inputbox><span>. Ella luchó en el ejército de José María </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Morelos" type="text" placeh="-"></inputbox><span>. Por otro lado, Leona </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Vicario" type="text" placeh="-"></inputbox><span> donó parte de su fortuna para hacer viable la lucha insurgente, y además, proporcionó armas y ayudó a reclutar soldados. Josefa Ortiz de</span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="Domínguez" type="text" placeh="-"></inputbox><span> es conocida porque organizaba reuniones secretas contra el </span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="virrey" type="text" placeh="-"></inputbox><span>. Por el lado de los </span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="realistas" type="text" placeh="-"></inputbox><span>, algunas mujeres, lideradas por Ana</span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="Iraeta" type="text" placeh="-"></inputbox><span> de Mier, recolectaban fondos para ayudar a las familias de los soldados realistas. A estas mujeres se les conoció como Las </span>
+            <inputbox v-model="r[9]" :ref="refCount()" @isright="right++" answer="Patriotas" type="text" placeh="-"></inputbox><span> Marianas.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col">
+          <imgbg img="aimg/soup.png" initclass="soup">
+            <template v-for="(i, index) in 10">
+              <selectable :isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++"></selectable>
+            </template>
+          </imgbg>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
