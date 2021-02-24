@@ -29,12 +29,12 @@ html(lang="es")
                 .col-md-4: img(:src="'aimg/'+'b'+'.png'").img-fluid
                 .col-md
                     template(v-for="(i, index) in tempsobj.b")
-                        check(v-model="d['a'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+                        check(v-model="d['b'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
             .row.mt-3.ex1.centerrow.text-center.common.br
                 .col-md-4: img(:src="'aimg/'+'c'+'.png'").img-fluid
                 .col-md
                     template(v-for="(i, index) in tempsobj.c")
-                        check(v-model="d['a'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+                        check(v-model="d['c'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
 
 
 

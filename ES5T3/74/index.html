@@ -34,7 +34,7 @@
         <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'b'+'.png'"/></div>
         <div class="col-md">
           <template v-for="(i, index) in tempsobj.b">
-            <check v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+            <check v-model="d['b'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
           </template>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div class="col-md-4"><img class="img-fluid" :src="'aimg/'+'c'+'.png'"/></div>
         <div class="col-md">
           <template v-for="(i, index) in tempsobj.c">
-            <check v-model="d['a'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+            <check v-model="d['c'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
           </template>
         </div>
       </div>
