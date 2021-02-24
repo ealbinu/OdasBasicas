@@ -1,25 +1,35 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico nuevas monarquías'
+- subtitle = 'La formación de las monarquías europeas: España, Portugal, Inglaterra y Francia'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            @media (max-width: 680px) {
+                .sources,
+                .targets {
+                    font-size: 0.5rem;
+                    line-height: 1.2;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona ambas columnas según corresponda. Consulta las páginas 116 y 117 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): div.px-2.text-center {{source.t}}
+                        template(v-slot:target="{target}"): div.px-2.text-center {{target.t}}
+                    
             
 
 
@@ -29,4 +39,27 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {t: 'Fenómeno político que transformó Europa y que unificó pequeños reinos, concentrándolos bajo el poder de un solo gobernante.'},
+                    {t: 'Consolidó su independencia como reino a finales del siglo XIV.'},
+                    {t: 'Último territorio de la península ibérica bajo control musulmán, conquistado por los reyes Isabel de Castilla y Fernando de Aragón en 1492.'},
+                    {t: 'Guerra emprendida entre los reyes ingleses y los franceses, en la que los primeros trataron de adueñarse del trono francés.'},
+                    {t: 'Reinos que Enrique VIII e Isabel I quisieron anexar a Inglaterra.'},
+                    {t: 'Principales monarquías que tuvieron gran poder entre los siglos XVI y XIX.'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {t:'Granada.'},
+                    {t:'Escocia e Irlanda.'},
+                    {t:'La monarquía.'},
+                    {t:'España, Portugal, Inglaterra, Francia y Rusia.'},
+                    {t:'Portugal.'},
+                    {t:'Guerra de los Cien Años.'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_4'],
+                    ['s_2', 't_0'],
+                    ['s_3', 't_5'],
+                    ['s_4', 't_1'],
+                    ['s_5', 't_3'],
+                ])
