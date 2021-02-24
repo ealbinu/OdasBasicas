@@ -1,29 +1,88 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_table
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Obtengo porcentajes'
+- subtitle = 'Dinero electrónico / La mejor tienda'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex1 .inputbox {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            .ex1 .inputbox input {
+                max-width: 60px;
+                margin: 0 4px;
+            }
+            .ex1 .tablemod {
+                text-align: center;
+            }
+            .ex1 .tablemod .ix_0 .col {
+                background: var(--accent);
+                color: #fff;
+            }
+            .ex1 .tablemod .col {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .ex2 img {
+                max-width: 240px;
+            }
+            .ex2 .inputbox input {
+                max-width: 80px;
+                margin: 0 4px;
+                border-radius: 4px;
+            }
+            .fr {
+                margin: 0 4px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa la tabla y complétala con la información que falta, los precios son proporcionales a la capacidad de los recipientes.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    - var tb = []
+                    - tb.push(['Recipiente', 'Precio', 'Porcentaje de 1 litro'])
+                    - tb.push(['Jarra de 1 litro', [15,'$'], [100, '', '%']])
+                    - tb.push(['Jarra de <div class=fr>1<hr>2</div> litro', [7.5,'$'], [50, '', '%']])
+                    - tb.push(['Jarra de <div class=fr>1<hr>4</div> litro', [3.75,'$'], [25, '', '%']])
+                    - tb.push(['Jarra de <div class=fr>1<hr>8</div> litro', [1.875,'$'], [12.5, '', '%']])
+                    +table(0, tb, true)
             
+            .instruccion.mt-5 Recuerda que 1 000 ml es igual a un litro, y un litro es igual al 100 % del agua contenida en la jarra de la izquierda. ¿A qué porcentaje equivale el contenido de los otros recipientes en relación a la jarra de un litro?
 
-
-
+            .row.mt-3.ex2.no-gutters
+                .col-md-6.text-center
+                    img(src="aimg/2a.png").img-fluid
+                    inputbox(v-model="d['a']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="100")
+                        template(v-slot:before="") 1 litro =
+                        template(v-slot:after="") %
+                .col-md-6.text-center
+                    img(src="aimg/2b.png").img-fluid
+                    inputbox(v-model="d['b']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="50")
+                        template(v-slot:before="") <div class=fr>1<hr>2</div> litro =
+                        template(v-slot:after="") %
+                .col-md-6.text-center
+                    img(src="aimg/2c.png").img-fluid
+                    inputbox(v-model="d['c']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="25")
+                        template(v-slot:before="") <div class=fr>1<hr>4</div> litro =
+                        template(v-slot:after="") %
+                .col-md-6.text-center
+                    img(src="aimg/2d.png").img-fluid
+                    inputbox(v-model="d['d']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="12.5")
+                        template(v-slot:before="") <div class=fr>1<hr>8</div> litro =
+                        template(v-slot:after="") %
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

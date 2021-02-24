@@ -1,26 +1,159 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var tb = []
+- tb.push([[8], 16, [32], [40], 56])
++table(0, tb)
+// +table(vmmodel, camposVar, regulartext)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Obtengo porcentajes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1 .inputbox {
+          font-size: 1.2rem;
+          font-weight: bold;
+      }
+      .ex1 .inputbox input {
+          max-width: 60px;
+          margin: 0 4px;
+      }
+      .ex1 .tablemod {
+          text-align: center;
+      }
+      .ex1 .tablemod .ix_0 .col {
+          background: var(--accent);
+          color: #fff;
+      }
+      .ex1 .tablemod .col {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .ex2 img {
+          max-width: 240px;
+      }
+      .ex2 .inputbox input {
+          max-width: 80px;
+          margin: 0 4px;
+          border-radius: 4px;
+      }
+      .fr {
+          margin: 0 4px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Obtengo porcentajes</h1>
+      <h2>Dinero electrónico / La mejor tienda</h2>
+      <div class="instruccion mt-5">Observa la tabla y complétala con la información que falta, los precios son proporcionales a la capacidad de los recipientes.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <div class="tablemod">
+            <div class="row no-gutters ix_0">
+              <div class="col cl_0"><span>Recipiente</span>
+              </div>
+              <div class="col cl_1"><span>Precio</span>
+              </div>
+              <div class="col cl_2"><span>Porcentaje de 1 litro</span>
+              </div>
+            </div>
+            <div class="row no-gutters ix_1">
+              <div class="col cl_0"><span>Jarra de 1 litro</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="15" type="number" placeh="#">
+                  <template v-slot:before="">$</template>
+                </inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="100" type="number" placeh="#">
+                  <template v-slot:after="">%</template>
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters ix_2">
+              <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>2</div> litro</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="7.5" type="number" placeh="#">
+                  <template v-slot:before="">$</template>
+                </inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="50" type="number" placeh="#">
+                  <template v-slot:after="">%</template>
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters ix_3">
+              <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>4</div> litro</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="3.75" type="number" placeh="#">
+                  <template v-slot:before="">$</template>
+                </inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="25" type="number" placeh="#">
+                  <template v-slot:after="">%</template>
+                </inputbox>
+              </div>
+            </div>
+            <div class="row no-gutters ix_4">
+              <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>8</div> litro</span>
+              </div>
+              <div class="col cl_1">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="1.875" type="number" placeh="#">
+                  <template v-slot:before="">$</template>
+                </inputbox>
+              </div>
+              <div class="col cl_2">
+                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="12.5" type="number" placeh="#">
+                  <template v-slot:after="">%</template>
+                </inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Recuerda que 1 000 ml es igual a un litro, y un litro es igual al 100 % del agua contenida en la jarra de la izquierda. ¿A qué porcentaje equivale el contenido de los otros recipientes en relación a la jarra de un litro?</div>
+      <div class="row mt-3 ex2 no-gutters">
+        <div class="col-md-6 text-center"><img class="img-fluid" src="aimg/2a.png"/>
+          <inputbox v-model="d['a']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="100">
+            <template v-slot:before="">1 litro =</template>
+            <template v-slot:after="">%</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6 text-center"><img class="img-fluid" src="aimg/2b.png"/>
+          <inputbox v-model="d['b']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="50">
+            <template v-slot:before=""><div class=fr>1<hr>2</div> litro =</template>
+            <template v-slot:after="">%</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6 text-center"><img class="img-fluid" src="aimg/2c.png"/>
+          <inputbox v-model="d['c']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="25">
+            <template v-slot:before=""><div class=fr>1<hr>4</div> litro =</template>
+            <template v-slot:after="">%</template>
+          </inputbox>
+        </div>
+        <div class="col-md-6 text-center"><img class="img-fluid" src="aimg/2d.png"/>
+          <inputbox v-model="d['d']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="12.5">
+            <template v-slot:before=""><div class=fr>1<hr>8</div> litro =</template>
+            <template v-slot:after="">%</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
