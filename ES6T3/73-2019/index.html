@@ -1,0 +1,119 @@
+
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Escribo cartas formales</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
+    <link rel="stylesheet" href="../../assets/assets.css"/>
+    <style>
+      .tablemod .row:first-child .col {
+          background: var(--pastel1);
+      }
+      .tablemod .row .col {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
+      @media (max-width: 680px) {
+          .tablemod .row .col {
+              font-size: 0.6rem;
+          }
+          .tablemod .row .col .inputbox input {
+              font-size: 0.6rem;
+          }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
+      <h1>Escribo cartas formales</h1>
+      <h2>Producto final</h2>
+      <div class="instruccion mt-5">Lee la siguiente carta. Después, completa el cuadro de características con base en el contenido de la carta. </div>
+      <div class="row">
+        <div class="col-12"><img class="w-100" src="aimg/carta.png"/></div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col"></div>
+      </div>
+      <div class="tablemod">
+        <div class="row no-gutters text-center">
+          <div class="col">Elemento</div>
+          <div class="col">Está presente</div>
+          <div class="col">Texto</div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col"><strong>Fecha de la carta</strong></div>
+          <div class="col">
+            <check v-model="r[0]" :ref="refCount()" @isright="right++" :answer="true"></check>
+          </div>
+          <div class="col">
+            <inputbox v-model="r[1]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="Guadalajara, Jal., 12 de abril de 2019"></inputbox>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col"><strong>Saludo</strong></div>
+          <div class="col">
+            <check v-model="r[2]" :ref="refCount()" @isright="right++" :answer="true"></check>
+          </div>
+          <div class="col">
+            <inputbox v-model="r[3]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="Estimada directora: Muy buenos días, espero que se encuentre bien."></inputbox>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col"><strong>Expresiones que sitúan en el tiempo</strong></div>
+          <div class="col">
+            <check v-model="r[4]" :ref="refCount()" @isright="right++" :answer="false"></check>
+          </div>
+          <div class="col">
+            <inputbox v-model="r[5]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer=""></inputbox>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col"><strong>Expresiones que sitúan en el lugar</strong></div>
+          <div class="col">
+            <check v-model="r[6]" :ref="refCount()" @isright="right++" :answer="false"></check>
+          </div>
+          <div class="col">
+            <inputbox v-model="r[7]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer=""></inputbox>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col"><strong>Lenguaje adaptado al destinatario</strong></div>
+          <div class="col">
+            <check v-model="r[8]" :ref="refCount()" @isright="right++" :answer="true"></check>
+          </div>
+          <div class="col">
+            <inputbox v-model="r[9]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="Me gustaría tener la oportunidad de entrevistarme con usted"></inputbox>
+          </div>
+        </div>
+      </div>
+      <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.5/js/jsplumb.js"></script>
+    <script src="../../assets/modulos/dragdropMod.js"></script>
+    <script src="../../assets/modulos/dropdowns.js"></script>
+    <script src="../../assets/modulos/selectable.js"></script>
+    <script src="../../assets/modulos/selectableoptions.js"></script>
+    <script src="../../assets/modulos/check.js"></script>
+    <script src="../../assets/modulos/inputbox.js"></script>
+    <script src="../../assets/modulos/choose.js"></script>
+    <script src="../../assets/modulos/tip.js"></script>
+    <script src="../../assets/modulos/relational.js"></script>
+    <script src="../../assets/modulos/finalize.js"></script>
+    <script src="../../assets/modulos/utils.js"></script>
+    <script src="../../assets/assets.js"></script>
+    <script>//app.$set(app.tempsobj, 'a', [])</script>
+  </body>
+</html>

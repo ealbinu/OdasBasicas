@@ -9625,63 +9625,30 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/ES6T3\/73\/aimg\/a.png": {
+	"\/ES6T3\/73-2019\/aimg\/carta.png": {
 		"ft": 32768,
-		"iS": 106132,
+		"iS": 625929,
 		"oA": 0,
-		"oAP": "\/ES6T3\/73\/aimg\/a.png",
+		"oAP": "\/ES6T3\/73-2019\/aimg\/carta.png",
 		"oF": 0,
 		"oIPL": 1,
 		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},
-	"\/ES6T3\/73\/aimg\/b.png": {
-		"ft": 32768,
-		"iS": 41567,
-		"oA": 0,
-		"oAP": "\/ES6T3\/73\/aimg\/b.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/ES6T3\/73\/aimg\/c.png": {
-		"ft": 32768,
-		"iS": 27932,
-		"oA": 0,
-		"oAP": "\/ES6T3\/73\/aimg\/c.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/ES6T3\/73\/aimg\/d.png": {
-		"ft": 32768,
-		"iS": 32121,
-		"oA": 0,
-		"oAP": "\/ES6T3\/73\/aimg\/d.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/ES6T3\/73\/index.html": {
+	"\/ES6T3\/73-2019\/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/ES6T3\/73\/index.html",
+		"oAP": "\/ES6T3\/73-2019\/index.html",
 		"oF": 0
 		},
-	"\/ES6T3\/73\/index.pug": {
+	"\/ES6T3\/73-2019\/index.pug": {
 		"cB": 0,
 		"cOD": 1,
 		"ft": 512,
 		"oA": 0,
-		"oAP": "\/ES6T3\/73\/index.html",
+		"oAP": "\/ES6T3\/73-2019\/index.html",
 		"oF": 0,
 		"oS": 0
 		},
