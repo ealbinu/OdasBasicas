@@ -1,7 +1,7 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'Resuelvo problemas'
+- title = 'Encuentro el factor desconocido'
 - subtitle = ''
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ html(lang="es")
                     .parrafoinputs: inputbox(v-model="r[0]" :ref="refCount()" @isright="right++" :answer="90" type="number" placeh="#")
                         template(v-slot:after="") visitas por día.
                 .col-12.mt-3
-                    labeltext(num="2.") En la celebración del Día del Niño se repartieron dulces a los alumnos de 4o. Si la maestra tenía una bolsa con 90 paletas y las repartió equitativamente entre 25 niños, ¿cuántas paletas le tocaron a cada uno y cuántas paletas sobraron?
+                    labeltext(num="2.") En la celebración del Día del Niño se repartieron dulces a los alumnos de 4º. Si la maestra tenía una bolsa con 90 paletas y las repartió equitativamente entre 25 niños, ¿cuántas paletas le tocaron a cada uno y cuántas paletas sobraron?
                     .parrafoinputs
                         inputbox(v-model="r[1]" :ref="refCount()" @isright="right++" :answer="3" type="number" placeh="#")
                             template(v-slot:after="") paletas a cada niño y sobraron
