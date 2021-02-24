@@ -1,9 +1,12 @@
 mixin parrafo(indexvmodel, campos, initclass)
-    - var vmcount = indexvmodel
+    - var vmcount = (typeof indexvmodel == 'string' ? 0 : indexvmodel)
     .parrafoinputs(class=initclass)
         each field in campos
             if typeof field === 'object'
-                inputbox(v-model="r["+(vmcount)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
+                if typeof indexvmodel == 'string'
+                    inputbox(v-model="d['"+indexvmodel+(vmcount)+"']" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
+                else
+                    inputbox(v-model="r["+(vmcount)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
                 - vmcount++
             else 
                 span !{field}
