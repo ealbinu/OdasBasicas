@@ -502,6 +502,7 @@ strong.right {
   border-radius: 20px;
 }
 .dropdowns select {
+  max-width: 100%;
   border: 2px solid #5AAEDA;
   padding: 6px 10px;
   border-radius: 20px;
