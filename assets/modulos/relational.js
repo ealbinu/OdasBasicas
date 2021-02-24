@@ -1,17 +1,29 @@
 var epDrag = {
     isSource:true, isTarget:true,
-    connector: ["Bezier", {curviness: 100}],
+    connector: ["Bezier", {curviness: 60}],
     paintStyle: { stroke:'#70BF44', strokeWidth:6, fill: '#fff' },
     connectorPaintStyle:{ stroke:'#70BF44', strokeWidth:6, fill: '#fff' },
 }
+
+
+
+var epMiddles = {
+    isSource:true, isTarget:true,
+    connector: ["Bezier", {curviness: 20}],
+    paintStyle: { stroke:'#5BAEDA', strokeWidth:6, fill: '#fff' },
+    maxConnections: -1
+}
+
+
 var epTarget = {
     isSource:true, isTarget:true,
+    connector: ["Bezier", {curviness: 60}],
     paintStyle: { stroke:'#F88E26', strokeWidth:6, fill: '#fff' },
     maxConnections: -1
 } 
 
 Vue.component('relational', {
-    props: ['value', 'sources', 'targets', 'connections', 'oks', 'initclass', 'anchors', 'anchort'],
+    props: ['value', 'sources', 'targets', 'middles', 'connections', 'oks', 'initclass', 'anchors', 'anchort'],
     data() {
         return {
             status: [],
@@ -40,6 +52,10 @@ Vue.component('relational', {
             }
             for (item in this.targets) {
                 jsPlumb.addEndpoint(this.uuid+'t_'+item, { anchor:this.anchorTarget, uuid: this.uuid+'t_'+item }, epTarget )
+            }
+            
+            for (item in this.targets) {
+                jsPlumb.addEndpoint(this.uuid+'m_'+item, { anchor:'Bottom', uuid: this.uuid+'m_'+item }, epMiddles )
             }
             
             // Load connections
@@ -76,6 +92,7 @@ Vue.component('relational', {
 
         if(this.anchors!=undefined){ this.anchorSource = this.anchors }
         if(this.anchors!=undefined){ this.anchorTarget = this.anchort }
+        
 
         setTimeout(function () {    
             _this.startConnections()
@@ -115,6 +132,14 @@ Vue.component('relational', {
                     <slot name="source" :source="source" />
                 </div>
             </div>
+
+
+            <div class="middles" v-if="middles!=undefined">
+                <div v-for="(middle, index) in middles" class="r_middle" :id="uuid+'m_'+index" :data="middle.data">
+                    <slot name="middle" :middle="middle" />
+                </div>
+            </div>
+            
             <div class="targets">
                 <div v-for="(target, index) in targets" class="r_target" :id="uuid+'t_'+index" :data="target.data">
                     <slot name="target" :target="target" />
@@ -123,3 +148,48 @@ Vue.component('relational', {
         </div>
     `
 })
+
+
+
+
+/* Snippet:  rela */
+
+
+
+
+/* WITH MIDDLE COLUMN */
+
+/* 
+relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :middles="tempsobj.middles" :oks="tempsobj.oks")
+        template(v-slot:source="{source}"): img(:src="source.i").img-fluid
+        template(v-slot:middle="{middle}"): div.text-center.px-1 {{middle.t}}
+        template(v-slot:target="{target}"): div.text-center.px-1 {{target.t}}
+ */
+/* 
+app.$set(app.tempsobj, 'sources', [
+    {i: 'aimg/a1.png'},
+    {i: 'aimg/a2.png'},
+    {i: 'aimg/a3.png'},
+])
+app.$set(app.tempsobj, 'middles', [
+    {t: 'Emisión de gases producidos por la combustión de autos o por la industria.'},
+    {t: 'Derrame de aguas residuales, sustancias radioactivas, basura y petróleo.'},
+    {t: 'Liberación de productos químicos como herbicidas o petróleo, o vertederos de basura.'},
+])
+app.$set(app.tempsobj, 'targets', [
+    {t: 'Contaminación de ríos, lagos y depósitos subterráneos; pérdida de animales y plantas.'},
+    {t: 'Cambio de clima, lluvia ácida y enfermedades respiratorias.'},
+    {t: 'Erosión, pérdida de la cubierta vegetal, extinción de animales.'},
+])
+app.$set(app.tempsobj, 'oks', [
+    ['m_0', 's_0'],
+    ['m_0', 't_1'],
+    
+    ['m_1', 's_2'],
+    ['m_1', 't_0'],
+    
+    ['m_2', 's_1'],
+    ['m_2', 't_2'],
+])
+
+ */

@@ -4,23 +4,73 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Sé de los problemas ambientales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      img.img-fluid{
+          max-width: 220px;
+      }
+      @media (max-width: 680px) {
+          .sources img.img-fluid {
+              max-width: 80px;
+          }
+          .relation,
+          .middles,
+          .targets {
+              font-size: 0.5rem;
+              max-width: 30% !important;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Sé de los problemas ambientales</h1>
+      <h2>Problemas ambientales</h2>
+      <div class="instruccion mt-5">Relaciona con una línea cada componente natural con las formas en que se <strong class="clear">contamina</strong> y sus <strong class="accent">efectos</strong>. Consulta la página 114 de tu Atlas de geografía del mundo SEP.</div>
+      <div class="row mt-3 ex">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :middles="tempsobj.middles" :oks="tempsobj.oks">
+            <template v-slot:source="{source}"><img class="img-fluid" :src="source.i"/></template>
+            <template v-slot:middle="{middle}">
+              <div class="text-center px-1">{{middle.t}}</div>
+            </template>
+            <template v-slot:target="{target}">
+              <div class="text-center px-1">{{target.t}}</div>
+            </template>
+          </relational>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Selecciona el mapa de la página 115 de tu Atlas de geografía del mundo SEP y contesta lo siguiente.</div>
+      <labeltext num="1.">Colorea el recuadro que indique el problema ambiental más común en México.</labeltext>
+      <div class="row mt-3 ex2 centerrow text-center">
+        <div class="col-md-4">
+          <check v-model="r[0]" :ref="refCount()" initclass="coloring" @isright="right++" :answer="true" text="Pérdida de biodiversidad."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[1]" :ref="refCount()" initclass="coloring" @isright="right++" :answer="false" text="Proceso de desertificación."></check>
+        </div>
+        <div class="col-md-4">
+          <check v-model="r[2]" :ref="refCount()" initclass="coloring" @isright="right++" :answer="false" text="Demasiada emisión de CO&lt;sup&gt;2&lt;/sup&gt;."></check>
+        </div>
+      </div>
+      <labeltext num="2.">Selecciona cuál es uno de los continentes con más áreas de emisión de CO2.</labeltext>
+      <div class="row mt-3 ex2 centerrow text-center">
+        <div class="col-md-4">
+          <selectable :isok="false" initclass="txt" v-model="r[3]" :ref="refCount()" @isright="right++">Oceanía.</selectable>
+        </div>
+        <div class="col-md-4">
+          <selectable :isok="false" initclass="txt" v-model="r[4]" :ref="refCount()" @isright="right++">África.</selectable>
+        </div>
+        <div class="col-md-4">
+          <selectable :isok="true" initclass="txt" v-model="r[5]" :ref="refCount()" @isright="right++">Europa.</selectable>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +91,32 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          {i: 'aimg/a1.png'},
+          {i: 'aimg/a2.png'},
+          {i: 'aimg/a3.png'},
+      ])
+      app.$set(app.tempsobj, 'middles', [
+          {t: 'Emisión de gases producidos por la combustión de autos o por la industria.'},
+          {t: 'Derrame de aguas residuales, sustancias radioactivas, basura y petróleo.'},
+          {t: 'Liberación de productos químicos como herbicidas o petróleo, o vertederos de basura.'},
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          {t: 'Contaminación de ríos, lagos y depósitos subterráneos; pérdida de animales y plantas.'},
+          {t: 'Cambio de clima, lluvia ácida y enfermedades respiratorias.'},
+          {t: 'Erosión, pérdida de la cubierta vegetal, extinción de animales.'},
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['m_0', 's_0'],
+          ['m_0', 't_1'],
+          
+          ['m_1', 's_2'],
+          ['m_1', 't_0'],
+          
+          ['m_2', 's_1'],
+          ['m_2', 't_2'],
+      ])
+    </script>
   </body>
 </html>

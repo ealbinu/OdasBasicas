@@ -768,7 +768,7 @@ input[type=number] {
 	width: 50%;
 }
 
-.sources, .targets{
+.sources, .targets, .middles{
 	padding: 0 !important;
 	margin: 0 !important;
 	display: flex;
@@ -776,14 +776,15 @@ input[type=number] {
 	justify-content: space-around;
 }
 .sources > div,
-.targets > div {
+.targets > div,
+.middles > div {
 	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .relational .sources {
-	width: 40%;
+	max-width: 40%;
 	text-align: right;
 }
 .relational .sources > div {
@@ -792,7 +793,7 @@ input[type=number] {
     margin-bottom: 4px;
 }
 .relational .targets {
-    width: 40%;
+    max-width: 40%;
 	text-align: left;
 }
 .relational .targets > div {
@@ -800,6 +801,20 @@ input[type=number] {
 	border-radius: 10px;
     margin-bottom: 4px;
 }
+
+.relational .middles {
+    max-width: 26%;
+    margin: 0 10%;
+	text-align: center;
+    & >div{
+        border: 4px solid @clear;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+
+
 
 /* RELATIONAL LINE COLORS */
 .jtk-connector path {
@@ -836,6 +851,11 @@ input[type=number] {
 	stroke: @main/1.5;
 }
 
+@media (max-width: 680px){
+    .jtk-connector path{
+        stroke-width: 4px;
+    }
+}
 
 
 
