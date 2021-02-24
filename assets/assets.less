@@ -204,6 +204,14 @@ strong {
         background-repeat: no-repeat;
         border: none;
     }
+    &.txt{
+        display:inline-block;
+        border-radius: 4px;
+        &.on{
+            .circledactive{display: none;}
+            outline: 2px solid @main;
+        }
+    }
 }
 
 .check{

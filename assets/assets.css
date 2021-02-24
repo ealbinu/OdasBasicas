@@ -199,6 +199,19 @@ strong.right {
   background-repeat: no-repeat;
   border: none;
 }
+.selectable.txt,
+.selectableoptions.txt {
+  display: inline-block;
+  border-radius: 4px;
+}
+.selectable.txt.on,
+.selectableoptions.txt.on {
+  outline: 2px solid #ED1846;
+}
+.selectable.txt.on .circledactive,
+.selectableoptions.txt.on .circledactive {
+  display: none;
+}
 .check {
   display: flex;
   font-size: 1.2rem;
