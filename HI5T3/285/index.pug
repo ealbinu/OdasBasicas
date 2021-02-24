@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Participo en la democracia'
+- subtitle = 'Reformas en la organización política, la alternancia en el poder y cambios en la participación ciudadana'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,16 +17,49 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Organiza cronológicamente los siguientes eventos escribiendo dentro de los recuadros los números del #[strong 1] al #[strong 6]. 
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.centerrow
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-4.mt-4
+                        .common.c2
+                            labeltext {{i[1]}}
+                            inputbox(v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i[0]")
 
+            .instruccion.mt-5 Une cada concepto con el medio de comunicación correspondiente.
 
+            .row.mt-3.ex2
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['rel']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): div.px-2.text-center {{source.t}}
+                        template(v-slot:target="{target}"): img(:src="target.i").img-fluid
+                    
 
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    [1, 'Reforma electoral que fomentó que los ciudadanos participaran más.'],
+                    [3, 'Creación del IFE.'],
+                    [4, 'Asesinato del candidato Luis Donaldo Colosio.'],
+                    [5, 'Reforma para dar autonomía al IFE.'],
+                    [6, 'Vicente Fox Quesada gana las elecciones y la presidencia de la República.'],
+                    [2, 'Gana por primera vez un candidato de oposición la gubernatura de Baja California.'],
+                ])
+                app.$set(app.tempsobj, 'sources', [
+                    {t: 'Transmite de manera instantánea noticas y eventos que ocurren en otras partes del mundo.'},
+                    {t: 'Se imprimen con mayor velocidad y son más accesi- bles para la población.'},
+                    {t: 'Permite tener acceso a la información y sirve para comunicarse a lugares remotos a través de las redes sociales.'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    {i: 'aimg/2a.png'},
+                    {i: 'aimg/2b.png'},
+                    {i: 'aimg/2c.png'},
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_0'],
+                    ['s_2', 't_1'],
+                ])
