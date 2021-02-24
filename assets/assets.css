@@ -73,6 +73,9 @@ strong.clear {
 strong.sec {
   color: #005093;
 }
+strong.right {
+  color: #5EB246;
+}
 .label {
   font-size: 1.2rem;
 }

@@ -1,25 +1,32 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Distingo problemas ambientales'
+- subtitle = '¿Cómo reducimos los problemas ambientales?'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            @media (max-width: 680px) {
+                .sources,
+                .targets {
+                    font-size: 0.6rem;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona las siguientes #[strong.right causas] y #[strong.accent consecuencias] de los problemas ambientales. Consulta las páginas 158 y 159 de tu libro de texto SEP.
 
-            .row.mt-3
+            relational(v-if="tempsobj.sources" v-model="r[0]" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                template(v-slot:source="{source}"): div.px-2.text-center {{source}}
+                template(v-slot:target="{target}"): div.px-2.text-center {{target}}
+            
             
 
 
@@ -29,4 +36,27 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    'Erupciones volcánicas',
+                    'Uso de plaguicidas, fertilizantes y pesticidas',
+                    'Basura en ríos, lagos y mares',
+                    'Incendios',
+                    'Desechos tóxicos de industrias',
+                    'Deforestación'
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Enfermedades respiratorias, aumento de la contaminación del aire.',
+                    'Enfermedades en animales, plantas y seres humanos, pérdida de biodiversidad.',
+                    'Erosión y pérdida del hábitat de especies.',
+                    'Enfermedades respiratorias, en ojos y piel.',
+                    'Reducción de la fertilidad del suelo y con- taminación de alimentos.',
+                    'Contaminación del agua para consumo humano y del subsuelo.',
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_3'],
+                    ['s_1', 't_4'],
+                    ['s_2', 't_1'],
+                    ['s_3', 't_0'],
+                    ['s_4', 't_5'],
+                    ['s_5', 't_2'],
+                ])
