@@ -49,7 +49,7 @@ html(lang="es")
                     div
                         selectable(:isok="false" v-model="r[2]" :ref="refCount()" @isright="right++" initclass="sub") ¡Auxilio, viene el lobo por mis ovejas!
                     div.my-2
-                    selectable(:isok="false" v-model="r[3]" :ref="refCount()" @isright="right++"): em Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.
+                    selectable(:isok="true" v-model="r[3]" :ref="refCount()" @isright="right++"): em Entra corriendo un campesino al escenario y tropieza con una piedra en el camino.
                     div
                         selectable(:isok="false" v-model="r[4]" :ref="refCount()" @isright="right++") Campesino:
                         selectable(:isok="true" v-model="r[5]" :ref="refCount()" @isright="right++") (Preocupado.)
