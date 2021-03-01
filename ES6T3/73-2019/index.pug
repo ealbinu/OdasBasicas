@@ -25,6 +25,27 @@ html(lang="es")
                     font-size: 0.6rem;
                 }
             }
+            .tablemod .inputbox {
+                width: 100%;
+            }
+            .tablemod .col:nth-child(2) {
+                max-width: 13%;
+                text-align: center;
+            }
+            .tablemod .check .checkbox {
+                margin: 0;
+            }
+            @media (max-width: 680px) {
+                .check .checkbox {
+                    width: 20px;
+                    height: 20px;
+                    flex-basis: 20px;
+                }
+                img {
+                    vertical-align: top;
+                }
+            }
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
