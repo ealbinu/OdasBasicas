@@ -54,7 +54,7 @@ Vue.component('relational', {
                 jsPlumb.addEndpoint(this.uuid+'t_'+item, { anchor:this.anchorTarget, uuid: this.uuid+'t_'+item }, epTarget )
             }
             
-            for (item in this.targets) {
+            for (item in this.epMiddles) {
                 jsPlumb.addEndpoint(this.uuid+'m_'+item, { anchor:'Bottom', uuid: this.uuid+'m_'+item }, epMiddles )
             }
             
