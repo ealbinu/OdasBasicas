@@ -71,13 +71,10 @@
             <div class="row no-gutters ix_1">
               <div class="col cl_0"><span>Jarra de 1 litro</span>
               </div>
-              <div class="col cl_1">
-                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="15" type="number" placeh="#">
-                  <template v-slot:before="">$</template>
-                </inputbox>
+              <div class="col cl_1"><span>$15</span>
               </div>
               <div class="col cl_2">
-                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="100" type="number" placeh="#">
+                <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" :answer="100" type="number" placeh="#">
                   <template v-slot:after="">%</template>
                 </inputbox>
               </div>
@@ -86,12 +83,12 @@
               <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>2</div> litro</span>
               </div>
               <div class="col cl_1">
-                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="7.5" type="number" placeh="#">
+                <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" :answer="7.5" type="number" placeh="#">
                   <template v-slot:before="">$</template>
                 </inputbox>
               </div>
               <div class="col cl_2">
-                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="50" type="number" placeh="#">
+                <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" :answer="50" type="number" placeh="#">
                   <template v-slot:after="">%</template>
                 </inputbox>
               </div>
@@ -100,12 +97,12 @@
               <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>4</div> litro</span>
               </div>
               <div class="col cl_1">
-                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="3.75" type="number" placeh="#">
+                <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" :answer="3.75" type="number" placeh="#">
                   <template v-slot:before="">$</template>
                 </inputbox>
               </div>
               <div class="col cl_2">
-                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="25" type="number" placeh="#">
+                <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" :answer="25" type="number" placeh="#">
                   <template v-slot:after="">%</template>
                 </inputbox>
               </div>
@@ -114,12 +111,12 @@
               <div class="col cl_0"><span>Jarra de <div class=fr>1<hr>8</div> litro</span>
               </div>
               <div class="col cl_1">
-                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="1.875" type="number" placeh="#">
+                <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" :answer="1.875" type="number" placeh="#">
                   <template v-slot:before="">$</template>
                 </inputbox>
               </div>
               <div class="col cl_2">
-                <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="12.5" type="number" placeh="#">
+                <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" :answer="12.5" type="number" placeh="#">
                   <template v-slot:after="">%</template>
                 </inputbox>
               </div>
