@@ -22,18 +22,18 @@ html(lang="es")
             .row.mt-3
                 .parrafoinputs.c2
                     | El desarrollo 
-                    selectable(:isok="true" initclass="txt" v-model="r[0]" :ref="refCount()" @isright="right++") sustentable
-                    | / no renovable está compuesto por acciones que podemos llevar a cabo el día de hoy y que van a tener un impacto negativo / 
-                    selectable(:isok="true" initclass="txt" v-model="r[1]" :ref="refCount()" @isright="right++") positivo
-                    | en el futuro, pero no funcionará si sólo lo hace una persona, o si son aplicadas de forma global durante un sólo día, estas acciones requieren de 
-                    selectable(:isok="true" initclass="txt" v-model="r[2]" :ref="refCount()" @isright="right++") constancia
-                    | / indiferencia y 
-                    selectable(:isok="true" initclass="txt" v-model="r[3]" :ref="refCount()" @isright="right++") compromiso
-                    | / desarrollo, para que el día de mañana continuemos 
-                    selectable(:isok="true" initclass="txt" v-model="r[4]" :ref="refCount()" @isright="right++") disfrutando
-                    | / contaminando de un planeta limpio y con una gran variedad de especies animales.
+                    selectable(:isok="true" initclass="txt" v-model="r[0]" :ref="refCount()" @isright="right++"): strong sustentable
+                    |  / #[strong no renovable] está compuesto por acciones que podemos llevar a cabo el día de hoy y que van a tener un impacto #[strong negativo] /  
+                    selectable(:isok="true" initclass="txt" v-model="r[1]" :ref="refCount()" @isright="right++"): strong positivo
+                    |  en el futuro, pero no funcionará si sólo lo hace una persona, o si son aplicadas de forma global durante un sólo día, estas acciones requieren de 
+                    selectable(:isok="true" initclass="txt" v-model="r[2]" :ref="refCount()" @isright="right++"): strong constancia
+                    |  / #[strong indiferencia] y 
+                    selectable(:isok="true" initclass="txt" v-model="r[3]" :ref="refCount()" @isright="right++"): strong compromiso
+                    |  / #[strong desarrollo], para que el día de mañana continuemos 
+                    selectable(:isok="true" initclass="txt" v-model="r[4]" :ref="refCount()" @isright="right++"): strong disfrutando
+                    |  / #[strong contaminando] de un planeta limpio y con una gran variedad de especies animales.
 
-            .instruccion.mt-5 Marca así <checkmark></checkmark> los problemas ambientales que existen en tu localidad. E
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los problemas ambientales que existen en tu localidad.
 
             .row.mt-3.ex2
                 template(v-for="(i, index) in tempsobj.a")

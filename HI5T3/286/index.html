@@ -23,14 +23,14 @@
       <div class="instruccion mt-5">Encierra la palabra que completa correctamente el siguiente texto.</div>
       <div class="row mt-3">
         <div class="parrafoinputs c2">El desarrollo 
-          <selectable :isok="true" initclass="txt" v-model="r[0]" :ref="refCount()" @isright="right++">sustentable</selectable>/ no renovable está compuesto por acciones que podemos llevar a cabo el día de hoy y que van a tener un impacto negativo / 
-          <selectable :isok="true" initclass="txt" v-model="r[1]" :ref="refCount()" @isright="right++">positivo</selectable>en el futuro, pero no funcionará si sólo lo hace una persona, o si son aplicadas de forma global durante un sólo día, estas acciones requieren de 
-          <selectable :isok="true" initclass="txt" v-model="r[2]" :ref="refCount()" @isright="right++">constancia</selectable>/ indiferencia y 
-          <selectable :isok="true" initclass="txt" v-model="r[3]" :ref="refCount()" @isright="right++">compromiso</selectable>/ desarrollo, para que el día de mañana continuemos 
-          <selectable :isok="true" initclass="txt" v-model="r[4]" :ref="refCount()" @isright="right++">disfrutando</selectable>/ contaminando de un planeta limpio y con una gran variedad de especies animales.
+          <selectable :isok="true" initclass="txt" v-model="r[0]" :ref="refCount()" @isright="right++"><strong>sustentable</strong></selectable> / <strong>no renovable</strong> está compuesto por acciones que podemos llevar a cabo el día de hoy y que van a tener un impacto <strong>negativo</strong> /  
+          <selectable :isok="true" initclass="txt" v-model="r[1]" :ref="refCount()" @isright="right++"><strong>positivo</strong></selectable> en el futuro, pero no funcionará si sólo lo hace una persona, o si son aplicadas de forma global durante un sólo día, estas acciones requieren de 
+          <selectable :isok="true" initclass="txt" v-model="r[2]" :ref="refCount()" @isright="right++"><strong>constancia</strong></selectable> / <strong>indiferencia</strong> y 
+          <selectable :isok="true" initclass="txt" v-model="r[3]" :ref="refCount()" @isright="right++"><strong>compromiso</strong></selectable> / <strong>desarrollo</strong>, para que el día de mañana continuemos 
+          <selectable :isok="true" initclass="txt" v-model="r[4]" :ref="refCount()" @isright="right++"><strong>disfrutando</strong></selectable> / <strong>contaminando</strong> de un planeta limpio y con una gran variedad de especies animales.
         </div>
       </div>
-      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los problemas ambientales que existen en tu localidad. E</div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> los problemas ambientales que existen en tu localidad.</div>
       <div class="row mt-3 ex2">
         <template v-for="(i, index) in tempsobj.a">
           <div class="col-md-6">
