@@ -85,7 +85,7 @@ html(lang="es")
                 .row.no-gutters
                     .col: strong Lenguaje adaptado al destinatario
                     .col: check(v-model="r[8]" :ref="refCount()"  @isright="right++" :answer="true")
-                    .col: inputbox(v-model="r[9]" initclass="" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="Me gustaría tener la oportunidad de entrevistarme con usted")
+                    .col: inputbox(v-model="r[9]" initclass="" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="['Me gustaría tener la oportunidad de entrevistarme con usted', 'Me gustaría tener la oportunidad de entrevistarme con usted...']")
 
 
 

@@ -111,7 +111,7 @@
             <check v-model="r[8]" :ref="refCount()" @isright="right++" :answer="true"></check>
           </div>
           <div class="col">
-            <inputbox v-model="r[9]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="Me gustaría tener la oportunidad de entrevistarme con usted"></inputbox>
+            <inputbox v-model="r[9]" initclass="" :ref="refCount()" @isright="right++" type="text" placeh="-" :answer="['Me gustaría tener la oportunidad de entrevistarme con usted', 'Me gustaría tener la oportunidad de entrevistarme con usted...']"></inputbox>
           </div>
         </div>
       </div>
