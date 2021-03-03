@@ -32,7 +32,8 @@ Vue.component('relational', {
             started: false,
             anchorSource: 'Right',
             anchorTarget: 'Left',
-            uuid: 0
+            uuid: 0,
+            jsplumbInstance: jsPlumb.getInstance()
         }
     },
     computed:{
@@ -48,14 +49,14 @@ Vue.component('relational', {
         startConnections () {
             this.started = true
             for (item in this.sources) {
-                jsPlumb.addEndpoint(this.uuid+'s_'+item, { anchor:this.anchorSource, uuid: this.uuid+'s_'+item }, epDrag )
+                this.jsplumbInstance.addEndpoint(this.uuid+'s_'+item, { anchor:this.anchorSource, uuid: this.uuid+'s_'+item }, epDrag )
             }
             for (item in this.targets) {
-                jsPlumb.addEndpoint(this.uuid+'t_'+item, { anchor:this.anchorTarget, uuid: this.uuid+'t_'+item }, epTarget )
+                this.jsplumbInstance.addEndpoint(this.uuid+'t_'+item, { anchor:this.anchorTarget, uuid: this.uuid+'t_'+item }, epTarget )
             }
             
             for (item in this.epMiddles) {
-                jsPlumb.addEndpoint(this.uuid+'m_'+item, { anchor:'Bottom', uuid: this.uuid+'m_'+item }, epMiddles )
+                this.jsplumbInstance.addEndpoint(this.uuid+'m_'+item, { anchor:'Bottom', uuid: this.uuid+'m_'+item }, epMiddles )
             }
             
             // Load connections
@@ -63,7 +64,7 @@ Vue.component('relational', {
                 this.status = this.value
             }
             for (item in this.status) {
-                jsPlumb.connect({ uuids:this.status[item] })
+                this.jsplumbInstance.connect({ uuids:this.status[item] })
             }
         },
         verify () { 
@@ -97,11 +98,11 @@ Vue.component('relational', {
         setTimeout(function () {    
             _this.startConnections()
         }, 400)
-        jsPlumb.bind('connection',function(info,ev){
+        this.jsplumbInstance.bind('connection',function(info,ev){
             var con=info.connection;   //this is the new connection
             var sourcedata = info.connection.source.getAttribute('data')
             var targetid = info.connection.targetId
-            var allconnections = jsPlumb.getConnections()
+            var allconnections = this.jsplumbInstance.getConnections()
             var userConnections = []
 
             s_select.play()
@@ -118,8 +119,9 @@ Vue.component('relational', {
         
     },
     created() {
+        var _this = this
         window.addEventListener("resize", function (){
-            jsPlumb.repaintEverything()
+            _this.jsplumbInstance.repaintEverything()
         })
 
         this.uuid = Math.random().toString(36).substring(10)

@@ -1,26 +1,123 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Confirmo lo que aprendí</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .r_target, .r_source{
+          padding: 4px 16px;
+          font-weight: bold;
+      }
+      .r_target{
+          color: var(--accent);
+      }
+      .r_source{
+          color: var(--rightcol);
+      }
+      .ex2 img {
+          border-radius: 10px;
+      }
+      .ex2 .check {
+          text-align: center;
+          width: 100%;
+          background: #f5f5f5;
+      }
+      .ex2 .check .label {
+          width: 100%;
+          text-align: center;
+      }
+      .ex2 .check img {
+          max-width: 60px;
+          margin: 0 auto;
+      }
+      .ex2 .check .checktext {
+          display: none;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Resuelve como se indica.</div>
+      <labeltext num="1.">Relaciona cada número con su nombre.</labeltext>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" key="a" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <numbers c="5">{{source}}</numbers>
+            </template>
+            <template v-slot:target="{target}">
+              <div>{{target}}</div>
+            </template>
+          </relational>
+        </div>
+      </div>
+      <div class="mt-3">
+        <labeltext num="2.">Relaciona cada operación con su resultado.</labeltext>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources2" key="b" v-model="d['rela2']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources2" :targets="tempsobj.targets2" :oks="tempsobj.oks2">
+            <template v-slot:source="{source}">
+              <div>{{source}}</div>
+            </template>
+            <template v-slot:target="{target}">
+              <numbers c="4">{{target}}</numbers>
+            </template>
+          </relational>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <checkmark></checkmark> la unidad que utilizarías para medir en cada caso.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <div class="row centerrow">
+            <div class="col-6"><img class="img-fluid" :src="'aimg/'+'c1'+'.png'"/></div>
+            <div class="col-6">
+              <check v-model="d['ex2'+1]" :ref="refCount()" @isright="right++" :answer="false" initclass="withimg"><img class="img-fluid" :src="'aimg/'+'da'+'.png'"/></check>
+              <check v-model="d['ex2'+2]" :ref="refCount()" @isright="right++" :answer="true" initclass="withimg"><img class="img-fluid" :src="'aimg/'+'db'+'.png'"/></check>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row centerrow">
+            <div class="col-6"><img class="img-fluid" :src="'aimg/'+'c2'+'.png'"/></div>
+            <div class="col-6">
+              <check v-model="d['ex2'+3]" :ref="refCount()" @isright="right++" :answer="true" initclass="withimg"><img class="img-fluid" :src="'aimg/'+'da'+'.png'"/></check>
+              <check v-model="d['ex2'+4]" :ref="refCount()" @isright="right++" :answer="false" initclass="withimg"><img class="img-fluid" :src="'aimg/'+'db'+'.png'"/></check>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe cuántos meses tiene un año.</div>
+      <div class="row mt-3 ex3">
+        <div class="col">
+          <div class="parrafoinputs"><span>Un año tiene </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="12" type="text" placeh="-"></inputbox><span>meses.</span>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Escribe cuántos días tiene una semana. </div>
+      <div class="row mt-3 ex3">
+        <div class="col">
+          <div class="parrafoinputs"><span>Una semana tiene </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="7" type="text" placeh="-"></inputbox><span>días.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +138,24 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [ 80, 100, 63 ])
+      app.$set(app.tempsobj, 'targets', ['Sesenta y tres.', 'Ochenta.', 'Cien.'])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_1'],
+          ['s_1', 't_2'],
+          ['s_2', 't_0'],
+      ])
+      
+      
+      
+      app.$set(app.tempsobj, 'sources2', [ '30 + 9', '80 + 4', '90 + 7' ])
+      app.$set(app.tempsobj, 'targets2', [84, 39, 97])
+      app.$set(app.tempsobj, 'oks2', [
+          ['s_0', 't_1'],
+          ['s_1', 't_0'],
+          ['s_2', 't_2'],
+      ])
+    </script>
   </body>
 </html>
