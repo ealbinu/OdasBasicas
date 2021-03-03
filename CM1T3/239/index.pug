@@ -1,26 +1,34 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .blank{border-bottom:2px solid var(--main);width:50px;display:inline-block}
+            .frc{display:inline-block;text-align:center;vertical-align:middle}
+            .choose .options div hr,.frc hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
+            .choose .options div{;padding:6px;border-bottom:none; border-radius: 10px;}
+            .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+            .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+            .choose .options div img{ max-width: 200px; border-radius: 6px; }
+            img{ display: block; margin: 0 auto; width: 100%; max-width: 400px; }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca la respuesta correcta.
 
             .row.mt-3
-            
+                .col-12
+                    template(v-for="(i, index) in temps")
+                        choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]")
+                       
 
 
 
@@ -29,4 +37,46 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app, 'temps', [
+                    {
+                        p: '¿Quién debe protegerte y darte afecto?',
+                        ops: ['Mi familia.','Todas las personas.','Las autoridades.'],
+                        a:0
+                    },
+                    {
+                        p: '¿Qué acción ayuda a cuidar la naturaleza?',
+                        ops: [
+                            '<img src="aimg/2a.png">',
+                            '<img src="aimg/2b.png">',
+                            '<img src="aimg/2c.png">'
+                            ],
+                        a:1
+                    },
+                    {
+                        p: 'Es el niño que está depositando la basura en el lugar correcto.',
+                        ops: [
+                            '<img src="aimg/3a.png">',
+                            '<img src="aimg/3b.png">',
+                            '<img src="aimg/3c.png">'
+                            ],
+                        a:0
+                    },
+                    {
+                        p: '¿Quién <strong>no</strong> está tratando bien a su mascota?',
+                        ops: [
+                            '<img src="aimg/4a.png">',
+                            '<img src="aimg/4b.png">',
+                            '<img src="aimg/4c.png">'
+                            ],
+                        a:2
+                    },
+                    {
+                        p: 'Es un juego en el que jalas con fuerza para ganar.',
+                        ops: [
+                            '<img src="aimg/5a.png">',
+                            '<img src="aimg/5b.png">',
+                            '<img src="aimg/5c.png">'
+                            ],
+                        a:1
+                    },
+                ])
