@@ -1,26 +1,80 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Confirmo lo que aprendí</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex3 {
+          justify-content: space-around;
+      }
+      .ex3 .selectable {
+          padding: 10px;
+      }
+      .ex2 .inputbox {
+          max-width: 80px;
+      }
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Separa correctamente las palabras en sílabas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-5 h4">Chapala</div>
+        <div class="col">
+          <div class="row parrafoinputs">
+            <template v-for="(i, index) in ['cha','pa','la']">
+              <inputbox v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" :answer="i"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 ex1">
+        <div class="col-5 h4">Chema</div>
+        <div class="col">
+          <div class="row parrafoinputs">
+            <template v-for="(i, index) in ['che','ma']">
+              <inputbox v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="text" placeh="-" :answer="i"></inputbox>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Usa las sílabas del recuadro para completar cada frase.</div>
+      <recuadropalabras :palabras="['ba', 'Cha', 'be']" c="3"></recuadropalabras>
+      <div class="row mt-3 ex2 centerrow">
+        <div class="col-md-6">
+          <div class="parrafoinputs"><span>La </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="ba" type="text" placeh="-"></inputbox><span>llena azul. <br></span><span>El coche de </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="Cha" type="text" placeh="-"></inputbox><span>bela. <br></span><span>La bata de </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Be" type="text" placeh="-"></inputbox><span>linda.</span>
+          </div>
+        </div>
+        <div class="col-md-6"><img class="img-fluid" :src="'aimg/'+'coche'+'.png'"/></div>
+      </div>
+      <div class="instruccion mt-5">Encierra las palabras que riman con <strong>balón</strong>, <strong>feliz</strong> y <strong>coche</strong>.</div>
+      <div class="row mt-3 ex3">
+        <selectable :isok="false" initclass="txt" v-model="d['ex3'+0]" :ref="refCount()" @isright="right++">bata</selectable>
+        <selectable :isok="true" initclass="txt" v-model="d['ex3'+1]" :ref="refCount()" @isright="right++">melón</selectable>
+        <selectable :isok="false" initclass="txt" v-model="d['ex3'+2]" :ref="refCount()" @isright="right++">sandía</selectable>
+        <selectable :isok="true" initclass="txt" v-model="d['ex3'+3]" :ref="refCount()" @isright="right++">lombriz</selectable>
+        <selectable :isok="true" initclass="txt" v-model="d['ex3'+4]" :ref="refCount()" @isright="right++">noche</selectable>
+        <selectable :isok="false" initclass="txt" v-model="d['ex3'+5]" :ref="refCount()" @isright="right++">botella</selectable>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

@@ -1,27 +1,73 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ex3 {
+                justify-content: space-around;
+            }
+            .ex3 .selectable {
+                padding: 10px;
+            }
+            .ex2 .inputbox {
+                max-width: 80px;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Separa correctamente las palabras en sílabas.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-5.h4 Chapala
+                .col: .row.parrafoinputs
+                    template(v-for="(i, index) in ['cha','pa','la']")
+                        inputbox(v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="i")
+            .row.mt-3.ex1
+                .col-5.h4 Chema
+                .col: .row.parrafoinputs
+                    template(v-for="(i, index) in ['che','ma']")
+                        inputbox(v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="i")
             
+            .instruccion.mt-5 Usa las sílabas del recuadro para completar cada frase.
 
+            recuadropalabras(:palabras="['ba', 'Cha', 'be']" c=3)
+
+            .row.mt-3.ex2.centerrow
+                .col-md-6
+                    - var arr = []
+                    - arr.push('La ')
+                    - arr.push(['ba'])
+                    - arr.push('llena azul. <br>')
+                    - arr.push('El coche de ')
+                    - arr.push(['Cha'])
+                    - arr.push('bela. <br>')
+                    - arr.push('La bata de ')
+                    - arr.push(['Be'])
+                    - arr.push('linda.')
+                    +parrafo(0, arr)
+                .col-md-6: img(:src="'aimg/'+'coche'+'.png'").img-fluid
+            
+            
+            .instruccion.mt-5 Encierra las palabras que riman con #[strong balón], #[strong feliz] y #[strong coche].
+
+            .row.mt-3.ex3
+                selectable(:isok="false" initclass="txt" v-model="d['ex3'+0]" :ref="refCount()" @isright="right++") bata
+                selectable(:isok="true" initclass="txt"  v-model="d['ex3'+1]" :ref="refCount()" @isright="right++") melón
+                selectable(:isok="false" initclass="txt"  v-model="d['ex3'+2]" :ref="refCount()" @isright="right++") sandía
+                selectable(:isok="true" initclass="txt"  v-model="d['ex3'+3]" :ref="refCount()" @isright="right++") lombriz
+                selectable(:isok="true" initclass="txt"  v-model="d['ex3'+4]" :ref="refCount()" @isright="right++") noche
+                selectable(:isok="false" initclass="txt"  v-model="d['ex3'+5]" :ref="refCount()" @isright="right++") botella
 
 
 
