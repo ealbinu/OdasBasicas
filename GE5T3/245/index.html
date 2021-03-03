@@ -1,26 +1,51 @@
 
-<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])--><!DOCTYPE html>
+<!--+parrafoinputs(['La mayoría de los liberales eran', ['civiles', 0],])-->
+<!--
+- var arr = []
+- arr.push('El ')
+- arr.push(['comercio'])
++parrafo(0, arr)
+--><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico acuerdos internacionales</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .parrafoinputs {
+          line-height: 2;
+      }
+      .parrafoinputs strong {
+          color: var(--rightcol);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico acuerdos internacionales</h1>
+      <div class="instruccion mt-5">Completa los textos con las palabras del recuadro.</div>
+      <recuadropalabras :palabras="['contaminación','cementeras','Mazamitla','reforestación','sustancias','humedales','invernadero','ozono','acuáticas']" c="5"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <div class="parrafoinputs c3"><span><strong>1.</strong> Mediante el Protocolo de Kioto se obliga a los gobiernos a la reducción de emisión de gases de efecto </span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="invernadero" type="text" placeh="-"></inputbox><span>. Por ello, en México, el gobierno realizó acuerdos con la industria automotriz y de línea blanca para que dejen de utilizar solventes y gases refrigerantes en sus producciones con el fin de cuidar la capa de </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="ozono" type="text" placeh="-"></inputbox><span>.</span><span><br></span><span><strong>2.</strong> La Convención sobre los <u>Humedales</u> promueve la conservación de los </span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="humedales" type="text" placeh="-"></inputbox><span>. Por eso, en Cancún se reunieron diversos empresarios hoteleros para determinar y respetar las áreas de humedales de las aves </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="acuáticas" type="text" placeh="-"></inputbox><span> de la región.</span><span><br></span><span><strong>3.</strong> Con la Carta de la Tierra, se promueve entre países el cuidado de la comunidad de vida, el respeto a la diversidad y la cultura de la paz. Por tanto, en la comunidad de </span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Mazamitla" type="text" placeh="-"></inputbox><span>, Jalisco, donde se produce gran cantidad de muebles y artesanías de madera, sus pobladores están llevando a cabo una </span>
+            <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" answer="reforestación" type="text" placeh="-"></inputbox><span> masiva de su territorio para que, en un futuro, las próximas generaciones se beneficien.</span><span><br></span><span><strong>4.</strong> Mediante el Protocolo de Montreal se promueve la eliminación del consumo de</span>
+            <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" answer="sustancias" type="text" placeh="-"></inputbox><span> agotadoras de la capa de ozono. Por este motivo, diversos empresarios de las industrias</span>
+            <inputbox v-model="r[7]" :ref="refCount()" @isright="right++" answer="cementeras" type="text" placeh="-"></inputbox><span>, químicas, aceiteras, entre otras, llevaron a cabo asambleas para tratar de disminuir la emisión de gases de efecto invernadero que generan tanta </span>
+            <inputbox v-model="r[8]" :ref="refCount()" @isright="right++" answer="contaminación" type="text" placeh="-"></inputbox><span>.</span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

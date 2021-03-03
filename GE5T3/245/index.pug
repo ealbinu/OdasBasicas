@@ -1,25 +1,64 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
 
-- title = 'titulo'
+- title = 'Identifico acuerdos internacionales'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .parrafoinputs {
+                line-height: 2;
+            }
+            .parrafoinputs strong {
+                color: var(--rightcol);
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa los textos con las palabras del recuadro.
+            recuadropalabras(:palabras="['contaminación','cementeras','Mazamitla','reforestación','sustancias','humedales','invernadero','ozono','acuáticas']" c=5)
+            .row.mt-3.ex1
+                .col
+                    - var arr = []
+                    - arr.push('<strong>1.</strong> Mediante el Protocolo de Kioto se obliga a los gobiernos a la reducción de emisión de gases de efecto ') 
+                    - arr.push(['invernadero'])
+                    - arr.push('. Por ello, en México, el gobierno realizó acuerdos con la industria automotriz y de línea blanca para que dejen de utilizar solventes y gases refrigerantes en sus producciones con el fin de cuidar la capa de ')
+                    - arr.push(['ozono'])
+                    - arr.push('.')
+                    - arr.push('<br>')
 
-            .row.mt-3
+                    - arr.push('<strong>2.</strong> La Convención sobre los <u>Humedales</u> promueve la conservación de los ')
+                    - arr.push(['humedales'])
+                    - arr.push('. Por eso, en Cancún se reunieron diversos empresarios hoteleros para determinar y respetar las áreas de humedales de las aves ')
+                    - arr.push(['acuáticas'])
+                    - arr.push(' de la región.')
+                    - arr.push('<br>')
+
+                    - arr.push('<strong>3.</strong> Con la Carta de la Tierra, se promueve entre países el cuidado de la comunidad de vida, el respeto a la diversidad y la cultura de la paz. Por tanto, en la comunidad de ')
+                    - arr.push(['Mazamitla'])
+                    - arr.push(', Jalisco, donde se produce gran cantidad de muebles y artesanías de madera, sus pobladores están llevando a cabo una ')
+                    - arr.push(['reforestación'])
+
+                    - arr.push(' masiva de su territorio para que, en un futuro, las próximas generaciones se beneficien.')
+                    - arr.push('<br>')
+
+                    - arr.push('<strong>4.</strong> Mediante el Protocolo de Montreal se promueve la eliminación del consumo de')
+                    - arr.push(['sustancias'])
+                    - arr.push(' agotadoras de la capa de ozono. Por este motivo, diversos empresarios de las industrias')
+                    - arr.push(['cementeras'])
+                    - arr.push(', químicas, aceiteras, entre otras, llevaron a cabo asambleas para tratar de disminuir la emisión de gases de efecto invernadero que generan tanta ')
+                    - arr.push(['contaminación'])
+                    - arr.push('.')
+
+
+                    +parrafo(0, arr, 'c3')
             
 
 
