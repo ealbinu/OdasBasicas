@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Tengo una vida saludable'
+- subtitle = 'Caminos para la convivencia y la reflexión'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,10 +17,23 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Encierra las respuestas a cada pregunta.
 
-            .row.mt-3
+            labeltext(num="1.") ¿Cuáles son los hábitos saludables que debes implementar en tu casa? 
+
+            .row.mt-3.ex1.text-center.centerrow
+                
+                    selectable(:isok="true" initclass="col-md-4" v-model="r[0]" :ref="refCount()" @isright="right++"): .common.c2 Llevar una dieta saludable.
+                    selectable(:isok="false" initclass="col-md-4" v-model="r[1]" :ref="refCount()" @isright="right++"): .common.c2 Ver televisión todo el día.
+                    selectable(:isok="true" initclass="col-md-4" v-model="r[2]" :ref="refCount()" @isright="right++"): .common.c2 Realizar actividad física.
+
+
+            .mt-3: labeltext(num="2.") ¿Qué actividades debes realizar en la escuela para tener una vida saludable? 
             
+            .row.mt-3.ex1.text-center.centerrow
+                    selectable(:isok="true" initclass="col-md-4" v-model="r[3]" :ref="refCount()" @isright="right++"): .common.c3 Evitar los alimentos procesados.
+                    selectable(:isok="true" initclass="col-md-4" v-model="r[4]" :ref="refCount()" @isright="right++"): .common.c3 Desayunar de manera saludable.
+                    selectable(:isok="true" initclass="col-md-4" v-model="r[5]" :ref="refCount()" @isright="right++"): .common.c3 Aprender sobre alimentación sana.
 
 
 

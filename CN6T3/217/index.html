@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Tengo una vida saludable</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,35 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Tengo una vida saludable</h1>
+      <h2>Caminos para la convivencia y la reflexión</h2>
+      <div class="instruccion mt-5">Encierra las respuestas a cada pregunta.</div>
+      <labeltext num="1.">¿Cuáles son los hábitos saludables que debes implementar en tu casa? </labeltext>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <selectable :isok="true" initclass="col-md-4" v-model="r[0]" :ref="refCount()" @isright="right++">
+          <div class="common c2">Llevar una dieta saludable.</div>
+        </selectable>
+        <selectable :isok="false" initclass="col-md-4" v-model="r[1]" :ref="refCount()" @isright="right++">
+          <div class="common c2">Ver televisión todo el día.</div>
+        </selectable>
+        <selectable :isok="true" initclass="col-md-4" v-model="r[2]" :ref="refCount()" @isright="right++">
+          <div class="common c2">Realizar actividad física.</div>
+        </selectable>
+      </div>
+      <div class="mt-3">
+        <labeltext num="2.">¿Qué actividades debes realizar en la escuela para tener una vida saludable? </labeltext>
+      </div>
+      <div class="row mt-3 ex1 text-center centerrow">
+        <selectable :isok="true" initclass="col-md-4" v-model="r[3]" :ref="refCount()" @isright="right++">
+          <div class="common c3">Evitar los alimentos procesados.</div>
+        </selectable>
+        <selectable :isok="true" initclass="col-md-4" v-model="r[4]" :ref="refCount()" @isright="right++">
+          <div class="common c3">Desayunar de manera saludable.</div>
+        </selectable>
+        <selectable :isok="true" initclass="col-md-4" v-model="r[5]" :ref="refCount()" @isright="right++">
+          <div class="common c3">Aprender sobre alimentación sana.</div>
+        </selectable>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
