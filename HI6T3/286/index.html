@@ -4,23 +4,72 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Reconozco las expediciones europeas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      @media (max-width: 680px) {
+          .label {
+              font-size: 0.8rem;
+          }
+      }
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Reconozco las expediciones europeas</h1>
+      <h2>El encuentro de América y Europa</h2>
+      <div class="instruccion mt-5">Escribe los números <strong>1</strong> y <strong>2</strong> según el orden en que comenzaron los países a realizar sus viajes de exploración. Consulta la página 124 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6">
+          <div class="common c1">
+            <inputbox v-model="r[0]" :ref="refCount()" initclass="ib2" @isright="right++" type="number" placeh="#" :answer="1">
+              <template v-slot:after="">
+                <numbers class="ml-2" c="1" smaller="smaller">Portugal</numbers>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="common c2">
+            <inputbox v-model="r[1]" :ref="refCount()" initclass="ib2" @isright="right++" type="number" placeh="#" :answer="2">
+              <template v-slot:after="">
+                <numbers class="ml-2" c="2" smaller="smaller">España</numbers>
+              </template>
+            </inputbox>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Relaciona las columnas escribiendo la letra correspondiente dentro del círculo.</div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-6">
+          <labeltext num="A.">Marino genovés que afirmaba que podía llegar a la India navegando por el oeste.</labeltext>
+          <labeltext num="B.">Nombre del puerto desde el que zarpó Cristóbal Colón en su primera expedición.</labeltext>
+          <labeltext num="C.">Nombre de la embarcación más grande en la expedición de Cristóbal Colón.</labeltext>
+          <labeltext num="D.">Fecha en la que Colón y su tripulación desembarcaron en la isla de San Salvador.</labeltext>
+          <labeltext num="E.">Razón por la que llamaron indios a los nativos de la isla de Guanahani.</labeltext>
+        </div>
+        <div class="col-md-6 trueorfalse left">
+          <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="C">
+            <template v-slot:after="">Santa María.</template>
+          </inputbox>
+          <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="A">
+            <template v-slot:after="">Cristóbal Colón.</template>
+          </inputbox>
+          <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="D">
+            <template v-slot:after="">12 de octubre 1492.</template>
+          </inputbox>
+          <inputbox v-model="r[5]" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="B">
+            <template v-slot:after="">Palos.</template>
+          </inputbox>
+          <inputbox v-model="r[6]" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="E">
+            <template v-slot:after="">Porque Colón creyó que había llegado a la India.</template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

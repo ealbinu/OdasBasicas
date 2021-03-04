@@ -1,28 +1,62 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Reconozco las expediciones europeas'
+- subtitle = 'El encuentro de América y Europa'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            @media (max-width: 680px) {
+                .label {
+                    font-size: 0.8rem;
+                }
+            }
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Escribe los números #[strong 1] y #[strong 2] según el orden en que comenzaron los países a realizar sus viajes de exploración. Consulta la página 124 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-6: .common.c1: inputbox(v-model="r[0]" :ref="refCount()" initclass="ib2" @isright="right++"  type="number" placeh="#" :answer="1")
+                    template(v-slot:after=""): numbers(c=1 smaller).ml-2 Portugal
+                .col-md-6: .common.c2: inputbox(v-model="r[1]" :ref="refCount()" initclass="ib2" @isright="right++"  type="number" placeh="#" :answer="2")
+                    template(v-slot:after=""): numbers(c=2 smaller).ml-2 España
 
 
+            .instruccion.mt-5 Relaciona las columnas escribiendo la letra correspondiente dentro del círculo.
+
+            .row.mt-3.ex2
+                .col-md-6
+                    labeltext(num="A.") Marino genovés que afirmaba que podía llegar a la India navegando por el oeste.
+                    labeltext(num="B.") Nombre del puerto desde el que zarpó Cristóbal Colón en su primera expedición.
+                    labeltext(num="C.") Nombre de la embarcación más grande en la expedición de Cristóbal Colón.
+                    labeltext(num="D.") Fecha en la que Colón y su tripulación desembarcaron en la isla de San Salvador.
+                    labeltext(num="E.") Razón por la que llamaron indios a los nativos de la isla de Guanahani.
+
+                .col-md-6.trueorfalse.left
+                    inputbox(v-model="r[2]" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="C")
+                        template(v-slot:after="") Santa María.
+                    inputbox(v-model="r[3]" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="A")
+                        template(v-slot:after="") Cristóbal Colón.
+                    inputbox(v-model="r[4]" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="D")
+                        template(v-slot:after="") 12 de octubre 1492.
+                    inputbox(v-model="r[5]" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="B")
+                        template(v-slot:after="") Palos.
+                    inputbox(v-model="r[6]" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="E")
+                        template(v-slot:after="") Porque Colón creyó que había llegado a la India.
+
+
+
+
+
+   
+   
+   
 
 
 
