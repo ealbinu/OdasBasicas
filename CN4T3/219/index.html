@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Hacemos un proyecto final</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,17 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Hacemos un proyecto final</h1>
+      <div class="instruccion mt-5">Después de definir el tema, las preguntas y el método de investigación del proyecto de las páginas 148 y 149 de tu libro de texto SEP, numera las siguientes actividades del 1 al 6 según el orden en que deben realizarse para una buena organización.</div>
+      <div class="row mt-3 ex1 trueorfalse">
+        <template v-for="(i, index) in tempsobj.a">
+          <div class="col-md-6">
+            <inputbox v-model="r[index]" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i.n">
+              <template v-slot:before="">{{i.t}}</template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +49,15 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {n: 6, t: 'Llegar temprano el día de la presentación.'},
+          {n: 3, t: 'Selección de información.'},
+          {n: 5, t: 'Elaboración de carteles y materiales.'},
+          {n: 2, t: 'Búsqueda de información.'},
+          {n: 4, t: 'Redacción de la presentación.'},
+          {n: 1, t: 'Reunión con mi equipo.'},
+      ])
+    </script>
   </body>
 </html>
