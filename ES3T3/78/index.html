@@ -25,9 +25,9 @@
           border: 2px dashed var(--sec);
           border-radius: 10px;
           margin: 4px;
-          background: var(--pastel1);
+          
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
           align-items: center;
           flex-wrap: wrap;
           min-height: 80px;
@@ -50,6 +50,9 @@
       .box .draggable > div:not(.result) {
           background: #EFF5E3;
       }
+      .common.c4 strong{
+          color: #887544;
+      }
       
       
     </style>
@@ -58,32 +61,46 @@
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Identifico adverbios y adjetivos</h1>
       <div class="instruccion mt-5">Coloca las palabras del recuadro en su clasificación correspondiente.</div>
-      <div class="recuadropalabras" v-if="tempsobj.a">
+      <div class="recuadropalabras c1" v-if="tempsobj.a">
         <dragdrop :options="tempsobj.a" :options-ok="[]"></dragdrop>
       </div>
-      <div class="row mt-3 ex1">
+      <div class="row mt-5 ex1">
         <div class="col-12">
-          <p>Los <strong>adjetivos calificativos</strong> describen las características del sustantivo al que acompañan. Algunos ejemplos son:</p>
-          <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order="ignore-order"></dragdrop>
+          <div class="row common c2">
+            <div class="col-md-6">
+              <p>Los <strong>adjetivos calificativos</strong> describen las características del sustantivo al que acompañan. Algunos ejemplos son:</p>
+            </div>
+            <div class="col-md-6">
+              <dragdrop v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order="ignore-order"></dragdrop>
+            </div>
+          </div>
         </div>
-        <div class="col-12 mt-3">
+        <div class="col-12 mt-4">
           <p>Los <strong>adverbios</strong> expresan las circunstancias del verbo y algunas clasificaciones son las siguientes.</p>
         </div>
-        <div class="col-md-3 text-center box">
-          <p><strong>Modo: ¿cómo?</strong></p>
-          <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['peor','mal','cuidadosamente','mejor']" ignore-order="ignore-order"></dragdrop>
+        <div class="col-md-3 text-center">
+          <div class="common c4 mt-2">
+            <p><strong>Modo: ¿cómo?</strong></p>
+            <dragdrop v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['peor','mal','cuidadosamente','mejor']" ignore-order="ignore-order"></dragdrop>
+          </div>
         </div>
-        <div class="col-md-3 text-center box">
-          <p><strong>Cantidad: ¿cuánto?</strong></p>
-          <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['mucho','nada','más','bastante','poco']" ignore-order="ignore-order"></dragdrop>
+        <div class="col-md-3 text-center">
+          <div class="common c4 mt-2">
+            <p><strong>Cantidad: ¿cuánto?</strong></p>
+            <dragdrop v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['mucho','nada','más','bastante','poco']" ignore-order="ignore-order"></dragdrop>
+          </div>
         </div>
-        <div class="col-md-3 text-center box">
-          <p><strong>Lugar: ¿dónde?</strong></p>
-          <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['lejos','cerca','arriba','detrás','allá','debajo']" ignore-order="ignore-order"></dragdrop>
+        <div class="col-md-3 text-center">
+          <div class="common c4 mt-2">
+            <p><strong>Lugar: ¿dónde?</strong></p>
+            <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['lejos','cerca','arriba','detrás','allá','debajo']" ignore-order="ignore-order"></dragdrop>
+          </div>
         </div>
-        <div class="col-md-3 text-center box">
-          <p><strong>Tiempo: ¿cuándo?</strong></p>
-          <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['ayer','antier','antes','hoy']" ignore-order="ignore-order"></dragdrop>
+        <div class="col-md-3 text-center">
+          <div class="common c4 mt-2">
+            <p><strong>Tiempo: ¿cuándo?</strong></p>
+            <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['ayer','antier','antes','hoy']" ignore-order="ignore-order"></dragdrop>
+          </div>
         </div>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>

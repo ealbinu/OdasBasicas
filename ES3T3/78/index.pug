@@ -22,9 +22,9 @@ html(lang="es")
                 border: 2px dashed var(--sec);
                 border-radius: 10px;
                 margin: 4px;
-                background: var(--pastel1);
+                
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
                 flex-wrap: wrap;
                 min-height: 80px;
@@ -47,6 +47,9 @@ html(lang="es")
             .box .draggable > div:not(.result) {
                 background: #EFF5E3;
             }
+            .common.c4 strong{
+                color: #887544;
+            }
 
 
     body
@@ -57,25 +60,26 @@ html(lang="es")
 
             .instruccion.mt-5 Coloca las palabras del recuadro en su clasificación correspondiente.
 
-            .recuadropalabras(v-if="tempsobj.a")
+            .recuadropalabras(v-if="tempsobj.a").c1
                 dragdrop(:options="tempsobj.a" :options-ok="[]")
 
-            .row.mt-3.ex1
+            .row.mt-5.ex1
                 .col-12
-                    p Los #[strong adjetivos calificativos] describen las características del sustantivo al que acompañan. Algunos ejemplos son:
-                    dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order)
-                .col-12.mt-3
+                    .row.common.c2
+                        .col-md-6: p Los #[strong adjetivos calificativos] describen las características del sustantivo al que acompañan. Algunos ejemplos son:
+                        .col-md-6: dragdrop(v-model="r[0]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['bonita','alto', 'bajito', 'rojo','suave','café','agradable']" ignore-order)
+                .col-12.mt-4
                     p Los #[strong adverbios] expresan las circunstancias del verbo y algunas clasificaciones son las siguientes.
-                .col-md-3.text-center.box
+                .col-md-3.text-center: .common.c4.mt-2
                     p: strong Modo: ¿cómo?
                     dragdrop(v-model="r[1]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['peor','mal','cuidadosamente','mejor']" ignore-order)
-                .col-md-3.text-center.box
+                .col-md-3.text-center: .common.c4.mt-2
                     p: strong Cantidad: ¿cuánto?
                     dragdrop(v-model="r[2]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['mucho','nada','más','bastante','poco']" ignore-order)
-                .col-md-3.text-center.box
+                .col-md-3.text-center: .common.c4.mt-2
                     p: strong Lugar: ¿dónde?
                     dragdrop(v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['lejos','cerca','arriba','detrás','allá','debajo']" ignore-order)
-                .col-md-3.text-center.box
+                .col-md-3.text-center: .common.c4.mt-2
                     p: strong Tiempo: ¿cuándo?
                     dragdrop(v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['ayer','antier','antes','hoy']" ignore-order)
 

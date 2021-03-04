@@ -6,7 +6,7 @@ Vue.component('dragdrop', {
     'ignoreOrder',
     'group',
     'initclass', 
-        'anyOptionsOk', // Puede ser cualquier respuesta del array
+    'anyOptionsOk', // Puede ser cualquier respuesta del array
     ],
     data() {
         return {
