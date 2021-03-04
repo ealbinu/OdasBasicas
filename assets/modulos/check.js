@@ -1,5 +1,5 @@
 Vue.component('check', {
-    props: ['value', 'text', 'answer', 'num', 'setMark', 'initclass'],
+    props: ['value', 'text', 'answer', 'num', 'setMark', 'initclass', 'allok'],
     data() {
         return {
             status: false,
@@ -32,6 +32,13 @@ Vue.component('check', {
         },
         verify () { 
             this.evaluate = true
+
+            if(this.allok != undefined || this.allok){
+                this.$emit('isright', true)
+                this.result = true
+                return false
+            }
+
             if(this.status == this.answer) {
                 this.$emit('isright', true)
                 this.result = true

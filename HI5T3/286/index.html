@@ -34,7 +34,7 @@
       <div class="row mt-3 ex2">
         <template v-for="(i, index) in tempsobj.a">
           <div class="col-md-6">
-            <check v-model="d['ex2'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t"></check>
+            <check v-model="d['ex2'+index]" :ref="refCount()" @isright="right++" :answer="i.v" :text="i.t" allok="allok"></check>
           </div>
         </template>
       </div>

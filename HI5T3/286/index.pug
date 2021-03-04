@@ -37,7 +37,7 @@ html(lang="es")
 
             .row.mt-3.ex2
                 template(v-for="(i, index) in tempsobj.a")
-                    .col-md-6: check(v-model="d['ex2'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t")
+                    .col-md-6: check(v-model="d['ex2'+index]" :ref="refCount()"  @isright="right++" :answer="i.v" :text="i.t" allok)
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
