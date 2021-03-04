@@ -4,23 +4,42 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Conozco la diversidad lingüística de México</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .relational .sources > div,
+      .relational .targets > div {
+          border: none !important;
+      }
+      .relational .sources > div img,
+      .relational .targets > div img {
+          max-width: 200px;
+      }
+      @media (max-width: 680px) {
+          .relational .sources > div img,
+          .relational .targets > div img {
+              max-width: 120px;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Conozco la diversidad lingüística de México</h1>
+      <div class="instruccion mt-5">Une con líneas cada una de las piezas a su significado correspondiente para que conozcas más palabras en lengua náhuatl.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}"><img class="img-fluid" :src="source.i"/></template>
+            <template v-slot:target="{target}"><img class="img-fluid" :src="target.i"/></template>
+          </relational>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +60,44 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          {i: 'aimg/a1.png'},
+          {i: 'aimg/a2.png'},
+          {i: 'aimg/a3.png'},
+          {i: 'aimg/a4.png'},
+          {i: 'aimg/a5.png'},
+          {i: 'aimg/a6.png'},
+          {i: 'aimg/a7.png'},
+          {i: 'aimg/a8.png'},
+          {i: 'aimg/a9.png'},
+          {i: 'aimg/a10.png'}
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          {i: 'aimg/b1.png'},
+          {i: 'aimg/b2.png'},
+          {i: 'aimg/b3.png'},
+          {i: 'aimg/b4.png'},
+          {i: 'aimg/b5.png'},
+          {i: 'aimg/b6.png'},
+          {i: 'aimg/b7.png'},
+          {i: 'aimg/b8.png'},
+          {i: 'aimg/b9.png'},
+          {i: 'aimg/b10.png'}
+      
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_5'],
+          ['s_1', 't_0'],
+          ['s_2', 't_7'],
+          ['s_3', 't_1'],
+          ['s_4', 't_6'],
+          ['s_5', 't_9'],
+          ['s_6', 't_2'],
+          ['s_7', 't_3'],
+          ['s_8', 't_4'],
+          ['s_9', 't_8'],
+      ])
+    </script>
   </body>
 </html>

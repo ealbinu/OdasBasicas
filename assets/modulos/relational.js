@@ -75,14 +75,22 @@ Vue.component('relational', {
                 }
             }
 
+
             this.evaluate = true
-            console.log(this.status.sort(), this.oks.sort())
-            var endResult = _.isEqual( this.status.sort(), this.oks.sort() )
+            var statussort = this.status.sort()
+            var okssort = this.oks.sort()
+            var endResult = _.isEqual( statussort, okssort )
             if(endResult){
+                //ITS OK
                 this.$emit('isright', true)
                 this.result = true
             } else {
                 this.$emit('iswrong')
+                
+                for(ts in statussort){
+                    console.log(_.isEqual(statussort[ts], okssort[ts]), statussort[ts] , okssort[ts] )
+                }
+
             }
         }
     },
@@ -98,11 +106,13 @@ Vue.component('relational', {
         setTimeout(function () {    
             _this.startConnections()
         }, 400)
-        this.jsplumbInstance.bind('connection',function(info,ev){
+        
+
+        _this.jsplumbInstance.bind('connection',function(info,ev){
             var con=info.connection;   //this is the new connection
             var sourcedata = info.connection.source.getAttribute('data')
             var targetid = info.connection.targetId
-            var allconnections = this.jsplumbInstance.getConnections()
+            var allconnections = _this.jsplumbInstance.getConnections()
             var userConnections = []
 
             s_select.play()
@@ -115,6 +125,7 @@ Vue.component('relational', {
 
             _this.$emit('input', _this.status)
         })
+        
 
         
     },
