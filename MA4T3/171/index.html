@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Calculo la capacidad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,43 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Calculo la capacidad</h1>
+      <h2>Entre uno y otro / ¿Cuántos de ésos?</h2>
+      <div class="instruccion mt-5">Observa los siguientes juguetes y ordénalos de menor a mayor escribiendo del <strong>1</strong> al <strong>4</strong>, de acuerdo a la cantidad de arena que le cabe a cada uno.</div>
+      <div class="row mt-3 ex1">
+        <template v-for="(i, index) in [4,3,2,1]">
+          <div class="col-md-3 col-6">
+            <inputbox v-model="d['a'+index]" initclass="withimg" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i">
+              <template v-slot:after=""><img class="img-fluid" :src="'aimg/a'+(index+1)+'.png'"/></template>
+            </inputbox>
+          </div>
+        </template>
+      </div>
+      <div class="instruccion mt-5">Resuelve los siguientes problemas. Realiza las operaciones necesarias en tu cuaderno. </div>
+      <div class="mt-3">
+        <labeltext num="1.">Fermín y Adrián quieren saber cuántos vasos pueden llenar con varias jarras de agua. Si una jarra puede llenar 2 vasos, ¿cuántos vasos podrán llenar con 3 jarras?</labeltext>
+      </div>
+      <div class="row mt-1 ex2">
+        <div class="col">
+          <inputbox v-model="r[0]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="6">
+            <template v-slot:after="">
+              <numbers class="ml-2" smaller="smaller" c="3">vasos.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="mt-3">
+        <labeltext num="2.">Antonio quiere saber con cuántas paladas de arena se pueden llenar varios recipientes. Si con una palada llena la mitad de un recipiente, ¿con cuántas paladas llenará 8 recipientes?</labeltext>
+      </div>
+      <div class="row mt-1 ex2">
+        <div class="col">
+          <inputbox v-model="r[1]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="16">
+            <template v-slot:after="">
+              <numbers class="ml-2" smaller="smaller" c="3">paladas.</numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>

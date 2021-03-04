@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Calculo la capacidad'
+- subtitle = 'Entre uno y otro / ¿Cuántos de ésos?'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,14 +17,29 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Observa los siguientes juguetes y ordénalos de menor a mayor escribiendo del #[strong 1] al #[strong 4], de acuerdo a la cantidad de arena que le cabe a cada uno.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                template(v-for="(i, index) in [4,3,2,1]")
+                    .col-md-3.col-6
+                        inputbox(v-model="d['a'+index]" initclass="withimg" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
+                            template(v-slot:after=""): img(:src="'aimg/a'+(index+1)+'.png'").img-fluid
+
             
 
+            .instruccion.mt-5 Resuelve los siguientes problemas. Realiza las operaciones necesarias en tu cuaderno. 
 
-
-
+            .mt-3: labeltext(num="1.") Fermín y Adrián quieren saber cuántos vasos pueden llenar con varias jarras de agua. Si una jarra puede llenar 2 vasos, ¿cuántos vasos podrán llenar con 3 jarras?
+            .row.mt-1.ex2
+                .col
+                    inputbox(v-model="r[0]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="6")
+                        template(v-slot:after=""): numbers(smaller c=3).ml-2 vasos.
+            
+            .mt-3: labeltext(num="2.") Antonio quiere saber con cuántas paladas de arena se pueden llenar varios recipientes. Si con una palada llena la mitad de un recipiente, ¿con cuántas paladas llenará 8 recipientes?
+            .row.mt-1.ex2
+                .col
+                    inputbox(v-model="r[1]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="16")
+                        template(v-slot:after=""): numbers(smaller c=3).ml-2 paladas.
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
