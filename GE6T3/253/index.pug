@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Prevenimos en la escuela'
+- subtitle = 'Prevención de desastres'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,12 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca así <checkmark></checkmark> los suministros que deben ir en una mochila o bolsa de emergencia en caso de desastre.
 
-            .row.mt-3
+
+            .row.mt-3.ex1
+                template(v-for="(i, index) in [1, 1, 1, 1, 1, 0]")
+                    .col-md-4: check(v-model="r[index]" :ref="refCount()" initclass="withimg"  @isright="right++" :answer="i"): img(:src="'aimg/a'+(index+1)+'.png'").img-fluid
             
 
 
