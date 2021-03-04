@@ -1,28 +1,63 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Identifico la moda'
+- subtitle = '¡Pasteles, pasteles!'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .img-fluid {
+                width: 400px;
+            }
+            .ib2 {
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            }
+            .ib2.i1 {
+                background: #FBC3D8;
+            }
+            .ib2.i2 {
+                background: #FEFDE0;
+            }
+            .ib2.i3 {
+                background: #BFE6F8;
+            }
+            .ib2 input {
+                margin-right: 6px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Calcula la moda de los siguientes casos.
 
-            .row.mt-3
-            
+            .mt-3: labeltext(num="1.") Un doctor tomó nota de la cantidad de niños a los que dio consulta en un mes, así como su edad. ¿Cuál es la moda de edad de sus pacientes?
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-8: img(:src="'aimg/'+'a1'+'.png'").img-fluid
+                .col-md
+                    labeltext() La moda es:
+                    inputbox(v-model="r[0]" initclass="ib2 i1" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8")
+                        template(v-slot:after="") años.
 
+            .mt-3: labeltext(num="2.") ¿Cuál es la moda del siguiente grupo de números?
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-8: img(:src="'aimg/'+'a2'+'.png'").img-fluid
+                .col-md
+                    labeltext() La moda es:
+                    inputbox(v-model="r[1]" initclass="ib2 i2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="5")
 
+            .mt-3: labeltext(num="3.") Un grupo de alumnos fue encuestado acerca de su fruta favorita y se obtuvo la siguiente gráfica. ¿Cuál es la moda?
+            .row.mt-3.ex1.centerrow.text-center.common.br
+                .col-md-8: img(:src="'aimg/'+'a3'+'.png'").img-fluid
+                .col-md
+                    labeltext() La moda es:
+                    inputbox(v-model="r[2]" initclass="ib2 i3" :ref="refCount()" @isright="right++"  type="text" placeh="-" answer="Fresa")
 
 
 

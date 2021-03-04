@@ -4,23 +4,73 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Identifico la moda</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .img-fluid {
+          width: 400px;
+      }
+      .ib2 {
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      .ib2.i1 {
+          background: #FBC3D8;
+      }
+      .ib2.i2 {
+          background: #FEFDE0;
+      }
+      .ib2.i3 {
+          background: #BFE6F8;
+      }
+      .ib2 input {
+          margin-right: 6px;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Identifico la moda</h1>
+      <h2>¡Pasteles, pasteles!</h2>
+      <div class="instruccion mt-5">Calcula la moda de los siguientes casos.</div>
+      <div class="mt-3">
+        <labeltext num="1.">Un doctor tomó nota de la cantidad de niños a los que dio consulta en un mes, así como su edad. ¿Cuál es la moda de edad de sus pacientes?</labeltext>
+      </div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-8"><img class="img-fluid" :src="'aimg/'+'a1'+'.png'"/></div>
+        <div class="col-md">
+          <labeltext>La moda es:</labeltext>
+          <inputbox v-model="r[0]" initclass="ib2 i1" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8">
+            <template v-slot:after="">años.</template>
+          </inputbox>
+        </div>
+      </div>
+      <div class="mt-3">
+        <labeltext num="2.">¿Cuál es la moda del siguiente grupo de números?</labeltext>
+      </div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-8"><img class="img-fluid" :src="'aimg/'+'a2'+'.png'"/></div>
+        <div class="col-md">
+          <labeltext>La moda es:</labeltext>
+          <inputbox v-model="r[1]" initclass="ib2 i2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="5"></inputbox>
+        </div>
+      </div>
+      <div class="mt-3">
+        <labeltext num="3.">Un grupo de alumnos fue encuestado acerca de su fruta favorita y se obtuvo la siguiente gráfica. ¿Cuál es la moda?</labeltext>
+      </div>
+      <div class="row mt-3 ex1 centerrow text-center common br">
+        <div class="col-md-8"><img class="img-fluid" :src="'aimg/'+'a3'+'.png'"/></div>
+        <div class="col-md">
+          <labeltext>La moda es:</labeltext>
+          <inputbox v-model="r[2]" initclass="ib2 i3" :ref="refCount()" @isright="right++" type="text" placeh="-" answer="Fresa"></inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
