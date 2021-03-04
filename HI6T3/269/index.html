@@ -4,23 +4,47 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Comparo ideas sobre el mundo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      @media (max-width: 680px) {
+          .label {
+              font-size: 0.8rem;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Comparo ideas sobre el mundo</h1>
+      <h2>Las concepciones europeas del mundo</h2>
+      <div class="instruccion mt-5">Repasa las ideas que tenían los europeos del siglo XV acerca del mundo. Relaciona la columna izquierda con los conceptos de la derecha, escribiendo el número correcto en cada círculo. Consulta las páginas 122 y 123 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 verticalrow">
+          <labeltext num="1.">Se consideraba como el centro del universo.</labeltext>
+          <labeltext num="2.">Este continente era desconocido para los europeos.</labeltext>
+          <labeltext num="3.">En esa época desconocían qué tanto se extendía al sur este continente.</labeltext>
+          <labeltext num="4.">Así se le conoce a la teoría que afirmaba que los planetas y el Sol giraban alrededor de la Tierra.</labeltext>
+          <labeltext num="5.">Astrónomo del siglo II que propuso que la Tierra era el centro del universo.</labeltext>
+          <labeltext num="6.">Embarcaciones que podían recorrer mayores distancias y fueron empleadas en los viajes de exploración.</labeltext>
+          <labeltext num="7.">Teoría cuyo nombre significa que el Sol es el centro del sistema planetario.</labeltext>
+          <labeltext num="8.">Tomó el pensamiento heliocéntrico en sus investigaciones, hasta que el Tribunal de la Santa Inquisición lo obligó a retractarse.</labeltext>
+          <labeltext num="9.">Fueron instrumentos que ayudaron a los navegantes a recorrer grandes distancias en barcos más grandes.</labeltext>
+          <labeltext num="10.">Reinos que se aventuraron a investigar nuevas rutas realizando largos viajes, aprovechando su situación geográfica.</labeltext>
+        </div>
+        <div class="col-md-6 trueorfalse left">
+          <template v-for="(i, index) in tempsobj.a">
+            <inputbox v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i.n">
+              <template v-slot:after="">{{i.t}}</template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +65,19 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [
+          {n: 5, t:'Ptolomeo.'},
+          {n: 10, t:'Portugal y España.'},
+          {n: 4, t:'Geocéntrica.'},
+          {n: 9, t:'Astrolabio y brújula.'},
+          {n: 1, t:'La Tierra.'},
+          {n: 3, t:'África.'},
+          {n: 6, t:'Carabelas y galeones.'},
+          {n: 2, t:'América.'},
+          {n: 7, t:'Heliocéntrica.'},
+          {n: 8, t:'Galileo Galilei.'},
+      ])
+    </script>
   </body>
 </html>
