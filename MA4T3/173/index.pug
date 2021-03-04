@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Interpreto la moda'
+- subtitle = 'Cuando la moda se acomoda'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,13 +17,18 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee lo siguiente, observa la gráfica y selecciona la respuesta correcta de cada pregunta.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1.centerrow
+                .col-md-6
+                    .mb-2.common.c4: labeltext() La gráfica muestra el número de personas que asistió al Museo de Antropología de la ciudad durante 10 días.
 
-
-
+                    img(:src="'aimg/'+'a'+'.png'").img-fluid
+                
+                .col-md-6
+                    choose(v-model="r[0]" :ref="refCount()" :num="'1.'" text="¿Cuál es el dato que más se repite de acuerdo a la gráfica?" :options="['26 personas.','14 personas.','35 personas.']" @isright="right++" :answer-num="2")
+                    choose(v-model="r[1]" :ref="refCount()" :num="'2.'" text="¿Cuáles son los días en los que hay un mayor número de visitantes?" :options="['Los días 3, 4, 5, y 6.','Los días 3, 5 y 6.','Los días 2, 5 y 10.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[2]" :ref="refCount()" :num="'3.'" text="Si se quieren realizar actividades para que un mayor número de personas las vean, ¿cuáles son los mejores días para realizarlas?" :options="['Los días 2, 5 y 10.','Los días 3, 4, 5 y 6.','Los fines de semana.']" @isright="right++" :answer-num="1")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Interpreto la moda</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -18,9 +18,21 @@
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Interpreto la moda</h1>
+      <h2>Cuando la moda se acomoda</h2>
+      <div class="instruccion mt-5">Lee lo siguiente, observa la gráfica y selecciona la respuesta correcta de cada pregunta.</div>
+      <div class="row mt-3 ex1 centerrow">
+        <div class="col-md-6">
+          <div class="mb-2 common c4">
+            <labeltext>La gráfica muestra el número de personas que asistió al Museo de Antropología de la ciudad durante 10 días.</labeltext>
+          </div><img class="img-fluid" :src="'aimg/'+'a'+'.png'"/>
+        </div>
+        <div class="col-md-6">
+          <choose v-model="r[0]" :ref="refCount()" :num="'1.'" text="¿Cuál es el dato que más se repite de acuerdo a la gráfica?" :options="['26 personas.','14 personas.','35 personas.']" @isright="right++" :answer-num="2"></choose>
+          <choose v-model="r[1]" :ref="refCount()" :num="'2.'" text="¿Cuáles son los días en los que hay un mayor número de visitantes?" :options="['Los días 3, 4, 5, y 6.','Los días 3, 5 y 6.','Los días 2, 5 y 10.']" @isright="right++" :answer-num="0"></choose>
+          <choose v-model="r[2]" :ref="refCount()" :num="'3.'" text="Si se quieren realizar actividades para que un mayor número de personas las vean, ¿cuáles son los mejores días para realizarlas?" :options="['Los días 2, 5 y 10.','Los días 3, 4, 5 y 6.','Los fines de semana.']" @isright="right++" :answer-num="1"></choose>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
