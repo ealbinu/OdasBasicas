@@ -8,18 +8,36 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .ib2 {
+                flex-direction: column;
+                text-align: center;
+                margin: 10px 0;
+            }
+            .ib2 input {
+                font-size: 1rem !important;
+            }
+            .ib2 .txt {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 6px;
+                margin-top: 10px;
+                padding: 10px;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Escribe las preguntas del #[em Te cuento que...] en la explicación correspondiente.
+            
+            .row: .col-12: img(src="aimg/tecuento.png").w-100
+            
+            .row.mt-3.ex1
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-4
+                        inputbox(v-model="d['a'+index]" :initclass="'ib2 common c' + (index+1)" :ref="refCount()" @isright="right++"  type="text" placeh="-" :answer="i.a")
+                            template(v-slot:after=""): div.txt {{i.t}}
             
 
 
@@ -29,4 +47,11 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'a', [
+                    {a: '¿Para qué?', t: 'Se describe qué beneficios se pueden obtener o cuál es la finalidad de lo que se realiza.'},
+                    {a: '¿Quiénes?', t: 'Se determina si el trabajo será en equipo, en pareja o de forma individual.'},
+                    {a: '¿Dónde?', t: 'Se menciona el lugar en donde se trabajará o se realizará el proyecto.'},
+                    {a: '¿Cómo?', t: 'Se establece en la forma en que se realizará o se trabajará el proyecto.'},
+                    {a: '¿Cuándo?', t: 'Se definen con claridad los tiempos para llevar a cabo el proyecto.'},
+                    {a: '¿Qué?', t: 'Sirve para plantear el objetivo o la finalidad de lo que se quiere realizar.'},
+                ])
