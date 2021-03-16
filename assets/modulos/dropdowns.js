@@ -1,11 +1,13 @@
 Vue.component('dropdowns', {
-    props: ['value', 'options'],
+    props: ['value', 'options', 'alt'],
     data() {
         return {
             status: "",
             evaluate: false,
             result: false,
-            answers: []
+            answers: [],
+            uuid: 0,
+            altopen: []
         }
     },
     computed:{
@@ -45,7 +47,6 @@ Vue.component('dropdowns', {
                         console.log('ERRORW', op.answer, this.answers[i])
                         this.result = false
                     }
-                    console.log(op.answer)
                 }
             }
 
@@ -54,19 +55,46 @@ Vue.component('dropdowns', {
                 this.$emit('isright', true)
                 this.result = true
             }
+        },
+        altclick (in1, in2, opt){
+            this.$set(this.answers,in1,opt)
+            this.altopen[in1] = false
         }
     },
     mounted () {
         this.$emit('input', "")
+
+        this.uuid = Math.random().toString(36).substring(10)
+
+        for( var o in this.options){
+            this.answers[o] = ''
+            this.altopen[o] = false
+        }
+
     },
     template: `
         <div class="dropdowns" :class="setclass">
             <template v-for="(i, index) in options">
                 <div v-if="i.text" v-html="i.text"></div>
-                <select v-if="i.options" v-model="answers[index]" :disabled="evaluate">
-                    <option v-if="i.placeholder" selected>{{i.placeholder}}</option>
-                    <option v-for="(op, opindex) in i.options" v-html="op"></option>
-                </select>
+                <template v-if="alt!=undefined">
+                    <div>
+                        <div class="alt-opt">{{answers[index]}}</div>
+                        <div class="alt-arrow" @click="$set(altopen,index,true)" v-if="!altopen[index] && !evaluate"></div>
+                        <div class="alt-options" v-if="altopen[index]">
+                            <div class="alt-option" v-for="(opt, index2) in i.options" @click="altclick(index, index2, opt)">
+                                {{opt}}
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template v-else>
+                    <select :ref="uuid" :id="uuid" v-if="i.options" v-model="answers[index]" :disabled="evaluate">
+                        <option v-if="i.placeholder" selected>{{i.placeholder}}</option>
+                        <option v-for="(op, opindex) in i.options" v-html="op"></option>
+                    </select>
+                </template>
+                
                 <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
             </template>
         </div>

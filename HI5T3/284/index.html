@@ -4,23 +4,81 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Explico las situaciones de México</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .h4,.h3 {
+          width: 100%;
+      }
+      .h4 span,.h3 span {
+          margin: 0 6px;
+          display: inline-block;
+      }
+      .h3{
+          background: var(--pastel2);
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Explico las situaciones de México</h1>
+      <h2>La situación económica en el país y la apertura comercial</h2>
+      <div class="instruccion mt-5">Completa el siguiente diagrama. Consulta las páginas 166 y 167 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col text-center">
+          <numbers c="4" smaller="smaller">Crisis económica</numbers>
+        </div>
+      </div>
+      <div class="row mt-3 ex1 text-center">
+        <div class="col-12">
+          <div class="h3">¿Cuáles son sus características?</div>
+          <template v-if="tempsobj.dd1">
+            <dropdowns v-model="d['dd1']" :ref="refCount()" @isright="right++" :options="tempsobj.dd1" alt="alt"></dropdowns>
+          </template>
+          <div class="h3 mt-3">¿Cuáles ha enfrentado México?</div>
+        </div>
+        <div class="col-6 mt-3">
+          <div class="common c1 h4">Entre 1976 y<span>
+              <template v-if="tempsobj.dd2">
+                <dropdowns v-model="d['dd2']" :ref="refCount()" @isright="right++" :options="tempsobj.dd2" alt="alt"></dropdowns>
+              </template></span></div>
+          <div class="common c1 h4">
+            <div>Causa:</div><span>
+              <template v-if="tempsobj.dd4">
+                <dropdowns v-model="d['dd4']" :ref="refCount()" @isright="right++" :options="tempsobj.dd4" alt="alt"></dropdowns>
+              </template></span>
+          </div>
+          <div class="common c1 h4">
+            <div>Consecuencia:</div><span>
+              <template v-if="tempsobj.dd5">
+                <dropdowns v-model="d['dd5']" :ref="refCount()" @isright="right++" :options="tempsobj.dd5" alt="alt"></dropdowns>
+              </template></span>
+          </div>
+        </div>
+        <div class="col-6 mt-3">
+          <div class="common c3 h4">Entre<span>
+              <template v-if="tempsobj.dd3">
+                <dropdowns v-model="d['dd3']" :ref="refCount()" @isright="right++" :options="tempsobj.dd3" alt="alt"></dropdowns>
+              </template></span>y 1982</div>
+          <div class="common c3 h4">
+            <div>Causa:</div><span>
+              <template v-if="tempsobj.dd6">
+                <dropdowns v-model="d['dd6']" :ref="refCount()" @isright="right++" :options="tempsobj.dd6" alt="alt"></dropdowns>
+              </template></span>
+          </div>
+          <div class="common c3 h4">
+            <div>Consecuencia:</div><span>
+              <template v-if="tempsobj.dd7">
+                <dropdowns v-model="d['dd7']" :ref="refCount()" @isright="right++" :options="tempsobj.dd7" alt="alt"></dropdowns>
+              </template></span>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +99,80 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'dd1', [
+          {
+              options: [
+                  'El desempleo, el cierre de empresas y el aumento en los precios de los productos que consumimos.',
+                  'La explosión demográfica, la apertura de empresas y el aumento de los precios de los productos que consumimos.',
+                  'El desempleo, la apertura de empresas y la disminución de la producción industrial.'
+              ],
+              answer: 'El desempleo, el cierre de empresas y el aumento en los precios de los productos que consumimos.'
+          }
+      ])
+      app.$set(app.tempsobj, 'dd2', [
+          {
+              options: [
+                  '1980',
+                  '1985',
+                  '1991'
+              ],
+              answer: '1985'
+          }
+      ])
+      app.$set(app.tempsobj, 'dd3', [
+          {
+              options: [
+                  '1975',
+                  '1984',
+                  '1981'
+              ],
+              answer: '1981'
+          }
+      ])
+      
+      
+      
+      app.$set(app.tempsobj, 'dd4', [
+          {
+              options: [
+                  'El aumento de la inflación.',
+                  'La devaluación de la moneda.',
+                  'El aumento de la población.',
+              ],
+              answer: 'La devaluación de la moneda.'
+          }
+      ])
+      app.$set(app.tempsobj, 'dd5', [
+          {
+              options: [
+                  'El aumento de la inflación.',
+                  'La devaluación de la moneda.',
+                  'El aumento de la población. ',
+              ],
+              answer: 'El aumento de la inflación.'
+          }
+      ])
+      app.$set(app.tempsobj, 'dd6', [
+          {
+              options: [
+                  'Disminuyó el precio internacional del petróleo.',
+                  'Disminuyó el precio internacional del maíz.',
+                  'Aumentó el precio internacional del petróleo.',
+              ],
+              answer: 'Disminuyó el precio internacional del petróleo.'
+          }
+      ])
+      app.$set(app.tempsobj, 'dd7', [
+          {
+              options: [
+                  'Disminuyó el precio internacional del petróleo.',
+                  'Aumentó el precio internacional del petróleo.',
+                  'Los ingresos del gobierno se redujeron bruscamente.',
+              ],
+              answer: 'Los ingresos del gobierno se redujeron bruscamente.'
+          }
+      ])
+    </script>
   </body>
 </html>

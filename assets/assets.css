@@ -511,6 +511,38 @@ strong.right {
   outline: none !important;
   text-align: center;
 }
+/*alt version */
+.dropdowns .alt-opt {
+  color: #3FABB3;
+  font-size: inherit;
+}
+.dropdowns .alt-options {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+.dropdowns .alt-options div {
+  background: #F5F5F5;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 4px;
+  color: #3FABB3;
+  cursor: pointer;
+}
+.dropdowns .alt-options div:hover {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.dropdowns .alt-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 40px;
+  min-height: 40px;
+  background-size: contain;
+  background-image: url(../../assets/aimg/dropdownicon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* HIDE INPUT NUMBER ARROWS*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
