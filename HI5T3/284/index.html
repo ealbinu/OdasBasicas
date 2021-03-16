@@ -22,6 +22,34 @@
           background: var(--pastel2);
       }
       
+      .choose {
+          background: #F5F1F4;
+          border: 2px solid #6A4287;
+          text-align: center;
+      }
+      .choose .options div {
+          width: 40px;
+          height: 40px;
+          text-indent: -9999px;
+          border: none;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 50%;
+      }
+      .choose .options div.active {
+          border: none;
+          border: 2px solid var(--main);
+          border-radius: 50%;
+          background-size: contain;
+      }
+      .choose .options div:nth-child(1) {
+          background-image: url("../../assets/aimg/markex.svg");
+      }
+      .choose .options div:nth-child(2) {
+          background-image: url("../../assets/aimg/check.svg");
+      }
+      
+      
     </style>
   </head>
   <body>
@@ -78,6 +106,14 @@
               </template></span>
           </div>
         </div>
+      </div>
+      <div class="instruccion mt-5">Marca así <markex></markex> los conflictos de la sobrepoblación y así <checkmark></checkmark> las expresiones de injusticia social.</div>
+      <div class="row mt-3 ex">
+        <template v-for="(i, index) in tempsobj.ex2">
+          <div class="col-md-4">
+            <choose v-model="d['ex2'+index]" :ref="refCount()" :text="i.t" :options="['x', 'o']" @isright="right++" :answer="i.v"></choose>
+          </div>
+        </template>
       </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
@@ -172,6 +208,17 @@
               ],
               answer: 'Los ingresos del gobierno se redujeron bruscamente.'
           }
+      ])
+      
+      
+      
+      app.$set(app.tempsobj, 'ex2', [
+          {v:'x', t:'Falta de empleo.'},
+          {v:'o', t:'Discriminación a indígenas.'},
+          {v:'x', t:'Pobreza.'},
+          {v:'o', t:'Maltrato hacia mujeres.'},
+          {v:'x', t:'Contaminación.'},
+          {v:'o', t:'Rechazo hacia adultos mayores y personas con discapacidad.'},
       ])
     </script>
   </body>

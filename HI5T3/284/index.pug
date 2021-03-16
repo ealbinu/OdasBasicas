@@ -19,6 +19,34 @@ html(lang="es")
                 background: var(--pastel2);
             }
 
+            .choose {
+                background: #F5F1F4;
+                border: 2px solid #6A4287;
+                text-align: center;
+            }
+            .choose .options div {
+                width: 40px;
+                height: 40px;
+                text-indent: -9999px;
+                border: none;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 50%;
+            }
+            .choose .options div.active {
+                border: none;
+                border: 2px solid var(--main);
+                border-radius: 50%;
+                background-size: contain;
+            }
+            .choose .options div:nth-child(1) {
+                background-image: url("../../assets/aimg/markex.svg");
+            }
+            .choose .options div:nth-child(2) {
+                background-image: url("../../assets/aimg/check.svg");
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
@@ -67,6 +95,12 @@ html(lang="es")
                             dropdowns(v-model="d['dd7']" :ref="refCount()" @isright="right++" :options="tempsobj.dd7" alt)
 
 
+            .instruccion.mt-5 Marca así <markex></markex> los conflictos de la sobrepoblación y así <checkmark></checkmark> las expresiones de injusticia social.
+
+            .row.mt-3.ex
+                    template(v-for="(i, index) in tempsobj.ex2")
+                        .col-md-4
+                            choose(v-model="d['ex2'+index]" :ref="refCount()" :text="i.t" :options="['x', 'o']" @isright="right++" :answer="i.v")
 
 
 
@@ -146,6 +180,17 @@ html(lang="es")
                         ],
                         answer: 'Los ingresos del gobierno se redujeron bruscamente.'
                     }
+                ])
+
+
+
+                app.$set(app.tempsobj, 'ex2', [
+                    {v:'x', t:'Falta de empleo.'},
+                    {v:'o', t:'Discriminación a indígenas.'},
+                    {v:'x', t:'Pobreza.'},
+                    {v:'o', t:'Maltrato hacia mujeres.'},
+                    {v:'x', t:'Contaminación.'},
+                    {v:'o', t:'Rechazo hacia adultos mayores y personas con discapacidad.'},
                 ])
 
                 
