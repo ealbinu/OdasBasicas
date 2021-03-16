@@ -1,32 +1,126 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Manifestamos nuestra cultura'
+- subtitle = 'Las expresiones culturales'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .relational .common {
+                margin: 6px;
+                text-align: center;
+            }
+            @media (max-width: 680px) {
+                .relational .common {
+                    font-size: 0.7rem;
+                }
+            }
+            .imgbgMod.soup .inputs .selectable {
+                background: rgba(0, 0, 0, 0.1);
+                height: 6%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(1) {
+                left: 28.4%;
+                width: 69%;
+                top: 8.7%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(2) {
+                left: 2%;
+                width: 87%;
+                top: 15.6%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(3) {
+                left: 19.8%;
+                width: 43%;
+                top: 43.5%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(4) {
+                left: 11%;
+                width: 52%;
+                top: 64.3%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(5) {
+                left: 46%;
+                width: 43%;
+                top: 71.3%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(6) {
+                left: 2%;
+                width: 70%;
+                top: 78.2%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(7) {
+                left: 2%;
+                width: 87%;
+                top: 85.2%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(8) {
+                left: 46%;
+                width: 8%;
+                top: 36.4%;
+                height: 27%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(9) {
+                left: 63.4%;
+                width: 8%;
+                top: 16%;
+                height: 54.5%;
+            }
+            .imgbgMod.soup .inputs .selectable:nth-child(10) {
+                left: 89.5%;
+                width: 8%;
+                top: 29.4%;
+                height: 69%;
+            }
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona con líneas las expresiones culturales con sus principales exponentes. Consulta las páginas 178 y 179 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): .common.c1 {{source}}
+                        template(v-slot:target="{target}"): .common.c5 {{target}}
             
 
+            .instruccion.mt-5 Encierra las palabras del recuadro en la sopa de letras. Consulta las páginas 178 y 179 de tu libro de texto SEP.
 
-
+            recuadropalabras(:palabras="['Televisión','Radio','Revistas','Cine','Internet','Periódicos','Literatura','Plástica','Música','Danza']" c=8 initclass="mt-2")
+            
+            .row.mt-3.ex2.centerrow
+                .col-md-6
+                    imgbg(img="aimg/soup.png" initclass="soup")
+                        template(v-for="(i, index) in 10")
+                            selectable(:isok="true" v-model="d['s'+index]" :ref="refCount()" @isright="right++")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    'Juan José Arreola, Juan Rulfo, Carlos Fuentes, Rosario Castellanos.',
+                    'Guillermo del Toro, Alejandro González Iñárritu, Alfonso Cuarón.',
+                    'José Luis Cuevas, Juan Soriano, Francisco Toledo.',
+                    'Emilio Carballido, Hugo Argüelles, Vicente Leñero.',
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Teatro.',
+                    'Pintura y escultura.',
+                    'Cine.',
+                    'Literatura.',
+
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_3'],
+                    ['s_1', 't_2'],
+                    ['s_2', 't_1'],
+                    ['s_3', 't_0'],
+                ])
