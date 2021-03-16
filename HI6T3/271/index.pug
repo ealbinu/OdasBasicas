@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Vemos nacer el protestantismo'
+- subtitle = 'La Reforma religiosa'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,9 +17,16 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Lee cada enunciado y escribe en el círculo #[strong V] si es verdadero o #[strong F] si es falso. Consulta las páginas 126 y 127 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="r[index]" :ref="refCount()" @isright="right++" :answer="i.v" type="text" placeh="-")
+                            template(v-slot:before="")
+                                labeltext() {{i.t}}
+                    
+                    
             
 
 
@@ -29,4 +36,13 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 'V', t: 'El protestantismo se negó a la idea de que sólo la Iglesia podía interpretar la Biblia.'},
+                    {v: 'V', t: 'Martín Lutero fue un monje agustino alemán que estaba en contra de la corrupción de la Iglesia católica.'},
+                    {v: 'F', t: 'Martín Lutero estaba a favor de la venta de indulgencias a familiares de difuntos.'},
+                    {v: 'V', t: 'La Biblia fue el primer libro elaborado con la imprenta perfeccionada por Gutenberg.'},
+                    {v: 'V', t: 'Martín Lutero tradujo la Biblia al idioma alemán para que más personas pudieran leerla.'},
+                    {v: 'F', t: 'La aparición del protestantismo originó tiempos de paz y armonía en Europa.'},
+                    {v: 'V', t: 'La Reforma protestante fue la separación que se dio entre los católicos y los que desconocieron la autoridad del papa.'},
+                    {v: 'V', t: 'Los líderes de la Iglesia católica vivían rodeados de lujos, incluyendo al papa.'},
+                ])
