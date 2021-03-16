@@ -4,23 +4,73 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Analizo una narración </title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .dr2 .draggable > div:not(.result) {
+          background: #fff;
+          border-radius: 6px;
+          border: 2px dashed var(--pastel2);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Analizo una narración </h1>
+      <div class="instruccion mt-5">Escribe los números 1, 2 y 3 para relacionar los nombres de las partes de una narración con sus características.</div>
+      <div class="row mt-3 ex1">
+        <div class="col-md-6 verticalrow">
+          <labeltext num="1.">Estado inicial.</labeltext>
+          <labeltext num="2.">Aparición de un conflicto.</labeltext>
+          <labeltext num="3.">Solución del conflicto.</labeltext>
+        </div>
+        <div class="col-md-6">
+          <div class="common c1">
+            <inputbox v-model="r[0]" initclass="ib2 withimg" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="3"></inputbox>
+            <div class="ml-5 pl-3">También se le conoce como desenlace; es el momento en el que se resuelve el problema y se termina la historia.</div>
+          </div>
+          <div class="common c2 mt-1">
+            <inputbox v-model="r[1]" initclass="ib2 withimg" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="1"></inputbox>
+            <div class="ml-5 pl-3">Es el principio de la narración, cuando se presenta a los personajes, el lugar y el tiempo de la historia.</div>
+          </div>
+          <div class="common c3 mt-1">
+            <inputbox v-model="r[2]" initclass="ib2 withimg" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="2"></inputbox>
+            <div class="ml-5 pl-3">También se le llama nudo; se trata del momento en el que surge un problema que afecta a los personajes. En esta parte se cuenta lo que sucede a los personajes.</div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Lee la narración <em>"Las manchas de la Luna"</em> de la página 114 de tu libro de texto SEP. Después, lee los siguientes recuadros y colócalos en los espacios correspondientes, de modo que se mantenga el orden original de la narración. </div>
+      <div class="recuadropalabras dragdrop c3 mt-2">
+        <dragdrop :options="['Aparición del conflicto', 'Resolución del conflicto', 'Estado inicial']" :options-ok="[]"></dragdrop>
+      </div>
+      <div class="row mt-3 ex2">
+        <div class="col-md-4">
+          <div class="common c2">
+            <dragdrop v-model="r[3]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Estado inicial']" initclass="dr2"></dragdrop>
+            <p>El conejo travieso convenció al tigrillo de que había queso al fondo del lago, pero era solo el reflejo de la Luna en el agua. </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="common c3">
+            <dragdrop v-model="r[4]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Aparición del conflicto']" initclass="dr2"></dragdrop>
+            <p>El tigrillo persiguió al conejo hasta una peña y le dijo que se lo comería por haberlo engañado. El conejo le dijo que lo esperara porque no había comido y el tigrillo lo esperó. </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="common c4">
+            <dragdrop v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Resolución del conflicto']" initclass="dr2"></dragdrop>
+            <p>El tigrillo desesperado fue a buscar al conejo para comerlo, pero el conejo le pidió que le diera tiempo de medir su tambor y desde entonces el conejo no ha salido de la Luna. </p>
+          </div>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
