@@ -26,6 +26,19 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
+
+            .instruccion.mt-5 Escribe el número de palabras que tiene cada oración.
+
+            .row.mt-3.ex0
+                .col-12.trueorfalse
+                    template(v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF")
+                        inputbox(v-model="d['numwords'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="-")
+                            template(v-slot:before="")
+                                labeltext {{i.t}}
+                  
+
+
+
             .instruccion.mt-5 Separa correctamente las palabras en sílabas.
 
             .row.mt-3.ex1
@@ -75,4 +88,8 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'TorF', [
+                    {v: 6, t: 'Vanesa tiene una casa en Chapala.'},
+                    {v: 4, t: 'Valente vive en Chiapas.'},
+                    {v: 5, t: 'Víctor es amigo de Chema.'},
+                ])

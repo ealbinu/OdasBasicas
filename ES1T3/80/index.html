@@ -33,6 +33,18 @@
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
       <h1>Confirmo lo que aprendí</h1>
+      <div class="instruccion mt-5">Escribe el número de palabras que tiene cada oración.</div>
+      <div class="row mt-3 ex0">
+        <div class="col-12 trueorfalse">
+          <template v-for="(i, index) in tempsobj.TorF" v-if="tempsobj.TorF">
+            <inputbox v-model="d['numwords'+index]" :ref="refCount()" @isright="right++" :answer="i.v" type="number" placeh="-">
+              <template v-slot:before="">
+                <labeltext>{{i.t}}</labeltext>
+              </template>
+            </inputbox>
+          </template>
+        </div>
+      </div>
       <div class="instruccion mt-5">Separa correctamente las palabras en sílabas.</div>
       <div class="row mt-3 ex1">
         <div class="col-5 h4">Chapala</div>
@@ -95,6 +107,12 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'TorF', [
+          {v: 6, t: 'Vanesa tiene una casa en Chapala.'},
+          {v: 4, t: 'Valente vive en Chiapas.'},
+          {v: 5, t: 'Víctor es amigo de Chema.'},
+      ])
+    </script>
   </body>
 </html>
