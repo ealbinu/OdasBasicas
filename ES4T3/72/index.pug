@@ -16,6 +16,19 @@ html(lang="es")
                 justify-content: center;
                 align-items: center;
             }
+            .r_source img {
+                width: 200px;
+                max-width: 80%;
+                border-radius: 10px;
+                margin: 6px 0;
+            }
+            @media (max-width: 680px) {
+                .relational {
+                    font-size: 0.7rem;
+                }
+            }
+
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -57,7 +70,32 @@ html(lang="es")
                         dragdrop(v-model="r[5]" :ref="refCount()" @isright="right++" :options="[]" :options-ok="['Resolución del conflicto']"  initclass="dr2")
                         p El tigrillo desesperado fue a buscar al conejo para comerlo, pero el conejo le pidió que le diera tiempo de medir su tambor y desde entonces el conejo no ha salido de la Luna. 
 
+
+            .instruccion.mt-5 Relaciona cada causa con su consecuencia según la historia de "Caperucita Roja".
+
+            relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                template(v-slot:source="{source}")
+                    .ma-2.text-center
+                        img(:src="source.i").img-fluid
+                        .common.c1.text-center {{source.t}}
+                template(v-slot:target="{target}"): .common.c2.ma-2 {{target}}
+            
+
+
+
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {i:'aimg/c1.png', t:'Caperucita se encuentra a El Lobo en el bosque y habla con él a pesar de que su mamá le dijo que no hablara con extraños.'},
+                    {i:'aimg/c2.png', t:'El Lobo convence a Caperucita de tomar el camino largo hacia la casa de su abuelita.'}
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Caperucita se retrasó en su camino y El Lobo pudo llegar primero a comerse a la abuelita.',
+                    'El Lobo convenció a Caperucita de que le informe qué está haciendo y así poder sacar ventaja de la situación.'
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_0'],
+                    ['s_1', 't_1'],
+
+                ])

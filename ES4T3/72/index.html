@@ -19,6 +19,19 @@
           justify-content: center;
           align-items: center;
       }
+      .r_source img {
+          width: 200px;
+          max-width: 80%;
+          border-radius: 10px;
+          margin: 6px 0;
+      }
+      @media (max-width: 680px) {
+          .relational {
+              font-size: 0.7rem;
+          }
+      }
+      
+      
       
     </style>
   </head>
@@ -71,6 +84,17 @@
           </div>
         </div>
       </div>
+      <div class="instruccion mt-5">Relaciona cada causa con su consecuencia según la historia de "Caperucita Roja".</div>
+      <relational v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+        <template v-slot:source="{source}">
+          <div class="ma-2 text-center"><img class="img-fluid" :src="source.i"/>
+            <div class="common c1 text-center">{{source.t}}</div>
+          </div>
+        </template>
+        <template v-slot:target="{target}">
+          <div class="common c2 ma-2">{{target}}</div>
+        </template>
+      </relational>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -91,6 +115,20 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          {i:'aimg/c1.png', t:'Caperucita se encuentra a El Lobo en el bosque y habla con él a pesar de que su mamá le dijo que no hablara con extraños.'},
+          {i:'aimg/c2.png', t:'El Lobo convence a Caperucita de tomar el camino largo hacia la casa de su abuelita.'}
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          'Caperucita se retrasó en su camino y El Lobo pudo llegar primero a comerse a la abuelita.',
+          'El Lobo convenció a Caperucita de que le informe qué está haciendo y así poder sacar ventaja de la situación.'
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_0'],
+          ['s_1', 't_1'],
+      
+      ])
+    </script>
   </body>
 </html>
