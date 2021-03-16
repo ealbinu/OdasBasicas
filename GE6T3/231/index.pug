@@ -1,26 +1,45 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Contribuimos al desarrollo económico'
+- subtitle = 'Aprendamos más'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .numbers{
+                margin: 10px;
+            }
+            .r_source {
+                text-align: center;
+                padding: 6px;
+            }
+            @media (max-width: 680px) {
+                .r_source {
+                    font-size: 0.7rem;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Consulta la tabla de la página 115 de tu libro de texto SEP y relaciona las columnas.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col
+
+                    relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}")
+                            div
+                                img(:src="source.i").img-fluid
+                                .common.c3 {{source.t}}
+                        template(v-slot:target="{target}"): numbers(c=2) {{target}}
+
+
 
 
 
@@ -29,4 +48,16 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    {i: 'aimg/a1.png', t: 'Es el país europeo con más ingreso per cápita, en promedio le correspondería a una persona ganar 82 480 dólares al año.'},
+                    {i: 'aimg/a2.png', t:'Es el país en el cual una persona ganaría al año 9 715 dólares en promedio, si se repartiera equitativamente la riqueza de ese país.'},
+                    {i: 'aimg/a3.png', t:'Es el país con el ingreso per cápita más bajo del mundo: 115 dólares al año.'},
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Burundi', 'Noruega', 'México'
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_1'],
+                    ['s_2', 't_0'],
+                ])

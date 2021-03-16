@@ -4,23 +4,47 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Contribuimos al desarrollo económico</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .numbers{
+          margin: 10px;
+      }
+      .r_source {
+          text-align: center;
+          padding: 6px;
+      }
+      @media (max-width: 680px) {
+          .r_source {
+              font-size: 0.7rem;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Contribuimos al desarrollo económico</h1>
+      <h2>Aprendamos más</h2>
+      <div class="instruccion mt-5">Consulta la tabla de la página 115 de tu libro de texto SEP y relaciona las columnas.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <div><img class="img-fluid" :src="source.i"/>
+                <div class="common c3">{{source.t}}</div>
+              </div>
+            </template>
+            <template v-slot:target="{target}">
+              <numbers c="2">{{target}}</numbers>
+            </template>
+          </relational>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +65,20 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          {i: 'aimg/a1.png', t: 'Es el país europeo con más ingreso per cápita, en promedio le correspondería a una persona ganar 82 480 dólares al año.'},
+          {i: 'aimg/a2.png', t:'Es el país en el cual una persona ganaría al año 9 715 dólares en promedio, si se repartiera equitativamente la riqueza de ese país.'},
+          {i: 'aimg/a3.png', t:'Es el país con el ingreso per cápita más bajo del mundo: 115 dólares al año.'},
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          'Burundi', 'Noruega', 'México'
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_2'],
+          ['s_1', 't_1'],
+          ['s_2', 't_0'],
+      ])
+    </script>
   </body>
 </html>
