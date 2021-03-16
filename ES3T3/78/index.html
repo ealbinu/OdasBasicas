@@ -20,22 +20,25 @@
       }
       .draggable {
           background: #f5f5f5;
+          border-radius: 6px;
       }
       .draggable > div:not(.result) {
           border: 2px dashed var(--sec);
           border-radius: 10px;
           margin: 4px;
-          
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          flex-wrap: wrap;
-          min-height: 80px;
+          min-height: 40px;
+          margin: 4px auto;
+          width: 100%;
+      }
+      .ex1 .draggable > div:not(.result) > div {
+          display: inline-block;
+          width: 50%;
+          text-align:center;
+          box-sizing: border-box;
       }
       .draggable > div:not(.result) > div {
           background: #fff;
           padding: 2px 8px;
-          margin: 2px;
           border-radius: 6px;
       }
       .box {
