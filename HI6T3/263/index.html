@@ -4,23 +4,44 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Aspectos culturales de la Edad Media</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .common {
+          text-align: center;
+          margin: 4px;
+      }
+      @media (max-width: 680px) {
+          .common {
+              font-size: 0.6rem;
+              padding: 4px;
+              line-height: 1.1;
+          }
+      }
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Aspectos culturales de la Edad Media</h1>
+      <h2>Los tiempos de la peste</h2>
+      <div class="instruccion mt-5">Relaciona ambas columnas con líneas según corresponda. Consulta la página 102 de tu libro de texto SEP.</div>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <relational v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks">
+            <template v-slot:source="{source}">
+              <div class="common c3">{{source}}</div>
+            </template>
+            <template v-slot:target="{target}">
+              <div class="common c2">{{target}}</div>
+            </template>
+          </relational>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +62,31 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'sources', [
+          'Ciudades musulmanas que comerciaban con los principales puertos europeos.',
+          'Países donde se dio el mayor intercambio cultural, ya que existían asentamientos musulmanes.',
+          'Fueron reconocidos centros de traducción de manuscritos.',
+          'Fueron reconocidos centros de copistas.',
+          'Contenían información científica con aportes de personajes griegos como Aristóteles, Hipócrates, Galeno, Euclides y Ptolomeo.',
+          'Llevaron a Europa conocimientos chinos como la pólvora, el papel y la brújula.',
+      ])
+      app.$set(app.tempsobj, 'targets', [
+          'Toledo, Murcia y Palermo.',
+          'Los manuscritos.',
+          'Damasco, Túnez, Bagdad y Córdoba.',
+          'Los musulmanes.',
+          'Italia y España.',
+          'Castilla y León, en España.',
+      ])
+      app.$set(app.tempsobj, 'oks', [
+          ['s_0', 't_2'],
+          ['s_1', 't_4'],
+          ['s_2', 't_0'],
+          ['s_3', 't_5'],
+          ['s_4', 't_1'],
+          ['s_5', 't_3'],
+      ])
+    </script>
   </body>
 </html>

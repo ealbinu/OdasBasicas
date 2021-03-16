@@ -1,25 +1,38 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aspectos culturales de la Edad Media'
+- subtitle = 'Los tiempos de la peste'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .common {
+                text-align: center;
+                margin: 4px;
+            }
+            @media (max-width: 680px) {
+                .common {
+                    font-size: 0.6rem;
+                    padding: 4px;
+                    line-height: 1.1;
+                }
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Relaciona ambas columnas con líneas según corresponda. Consulta la página 102 de tu libro de texto SEP.
 
-            .row.mt-3
+            .row.mt-3.ex1
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): .common.c3 {{source}}
+                        template(v-slot:target="{target}"): .common.c2 {{target}}
             
 
 
@@ -29,4 +42,27 @@ html(lang="es")
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    'Ciudades musulmanas que comerciaban con los principales puertos europeos.',
+                    'Países donde se dio el mayor intercambio cultural, ya que existían asentamientos musulmanes.',
+                    'Fueron reconocidos centros de traducción de manuscritos.',
+                    'Fueron reconocidos centros de copistas.',
+                    'Contenían información científica con aportes de personajes griegos como Aristóteles, Hipócrates, Galeno, Euclides y Ptolomeo.',
+                    'Llevaron a Europa conocimientos chinos como la pólvora, el papel y la brújula.',
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Toledo, Murcia y Palermo.',
+                    'Los manuscritos.',
+                    'Damasco, Túnez, Bagdad y Córdoba.',
+                    'Los musulmanes.',
+                    'Italia y España.',
+                    'Castilla y León, en España.',
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_4'],
+                    ['s_2', 't_0'],
+                    ['s_3', 't_5'],
+                    ['s_4', 't_1'],
+                    ['s_5', 't_3'],
+                ])
