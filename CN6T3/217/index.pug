@@ -8,9 +8,15 @@ include ../../assets/pug/_scripts
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .sem {
+                max-width: 180px;
+                margin: 0 auto;
+            }
+            .ex3 .check {
+                background: #E9F4F3;
+                border: 2px solid #92D1D0;
+            }
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
@@ -35,11 +41,24 @@ html(lang="es")
                     selectable(:isok="true" initclass="col-md-4" v-model="r[4]" :ref="refCount()" @isright="right++"): .common.c3 Desayunar de manera saludable.
                     selectable(:isok="true" initclass="col-md-4" v-model="r[5]" :ref="refCount()" @isright="right++"): .common.c3 Aprender sobre alimentación sana.
 
+            .instruccion.mt-5 Marca así <markex></markex> los hábitos que tienes en tu vida. Después escribe una conclusión en tu cuaderno sobre la importancia de tener una vida saludable.
 
-
+            .row.mt-3.ex3.centerrow
+                .col-md-4.text-center: img(src="aimg/sem.png").img-fluid.sem
+                .col-md
+                    template(v-for="(i, index) in tempsobj.c")
+                        check(v-model="d['ex3'+index]" :ref="refCount()"  @isright="right++" ex :answer="true" :text="i" allok)
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'c', [
+                    'Estoy sentado demasiado tiempo durante el día.',
+                    'Como muchos alimentos con alto contenido en grasas y azúcares.',
+                    'No realizo actividades físicas durante el día. Bebo solo un litro de agua al día.',
+                    'Realizo actividades de esparcimiento.',
+                    'Realizo trabajo de fuerza y flexibilidad 2 a 3 veces por semana.',
+                    'Tengo una alimentación balanceada.',
+                    'Realizo actividad física todos los días de la semana. Duermo alrededor de 8 horas diarias.'
+                ])

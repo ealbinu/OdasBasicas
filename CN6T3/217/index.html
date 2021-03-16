@@ -11,9 +11,15 @@
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .sem {
+          max-width: 180px;
+          margin: 0 auto;
+      }
+      .ex3 .check {
+          background: #E9F4F3;
+          border: 2px solid #92D1D0;
+      }
+      
     </style>
   </head>
   <body>
@@ -47,6 +53,15 @@
           <div class="common c3">Aprender sobre alimentación sana.</div>
         </selectable>
       </div>
+      <div class="instruccion mt-5">Marca así <markex></markex> los hábitos que tienes en tu vida. Después escribe una conclusión en tu cuaderno sobre la importancia de tener una vida saludable.</div>
+      <div class="row mt-3 ex3 centerrow">
+        <div class="col-md-4 text-center"><img class="img-fluid sem" src="aimg/sem.png"/></div>
+        <div class="col-md">
+          <template v-for="(i, index) in tempsobj.c">
+            <check v-model="d['ex3'+index]" :ref="refCount()" @isright="right++" ex="ex" :answer="true" :text="i" allok="allok"></check>
+          </template>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -67,6 +82,16 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'c', [
+          'Estoy sentado demasiado tiempo durante el día.',
+          'Como muchos alimentos con alto contenido en grasas y azúcares.',
+          'No realizo actividades físicas durante el día. Bebo solo un litro de agua al día.',
+          'Realizo actividades de esparcimiento.',
+          'Realizo trabajo de fuerza y flexibilidad 2 a 3 veces por semana.',
+          'Tengo una alimentación balanceada.',
+          'Realizo actividad física todos los días de la semana. Duermo alrededor de 8 horas diarias.'
+      ])
+    </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 Vue.component('check', {
-    props: ['value', 'text', 'answer', 'num', 'setMark', 'initclass', 'allok'],
+    props: ['value', 'text', 'answer', 'num', 'setMark', 'initclass', 'allok', 'ex'],
     data() {
         return {
             status: false,
@@ -49,6 +49,9 @@ Vue.component('check', {
         this.$emit('input', false)
         if(this.setMark!=undefined){
             this.mark = this.setMark
+        }
+        if(this.ex!=undefined){
+            this.mark = '../../assets/aimg/markex.svg'
         }
     },
     template: `
