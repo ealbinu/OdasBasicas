@@ -128,7 +128,7 @@ Vue.component('inputbox', {
                 'inputbox',
                 setclass,
                 initclass,
-            ]" v-show="hideorshow">
+            ]" v-show="hideorshow" :data="answer">
             <slot name="before"></slot>
             <template v-if="example!=undefined">
                 <div class="inp_example"><numbers>{{answer}}</numbers></div> 

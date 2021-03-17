@@ -1,27 +1,134 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
+include ../../assets/pug/_parrafo
+include ../../assets/pug/_crossword
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Aprendo sobre la educación en México'
+- subtitle = 'La educación nacional'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
+            .parrafoinputs {
+                font-size: 0.9rem;
+            }
+            @media (max-width: 680px) {
+                .parrafoinputs .inputbox {
+                    max-width: 160px;
+                }
+                .parrafoinputs .inputbox input {
+                    font-size: 0.7rem;
+                }
+            }
+
+            .crowsswordmod .box {
+                width: 7.14%;
+                min-height: 40px;
+            }
+            @media (max-width: 680px){
+                .crowsswordmod .box {
+                    min-height: 26px;
+                }
+
+            }
+            .crowsswordmod .number.hor{
+                background: #D6EDF6;
+                color: #025193;
+            }
+
+            .crowsswordmod .number.ver{
+                background: #EAF6E5;
+                color: #5BAEDA;
+            }
+
+            .parrafoinputs .inputbox input{
+                font-size: 1rem;
+            }
+            .inputbox[data="SEP"]{
+                max-width: 100px;
+            }
+            .parrafoinputs .inputbox[data="SEP"] {
+                text-align: center;
+            }
+            .parrafoinputs .inputbox[data="SEP"] input {
+                display: inline-block;
+                max-width: 80%;
+            }
+
+
+
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Completa las oraciones y después resuelve el crucigrama. Consulta las páginas 146 a 150 de tu libro de texto SEP.
 
-            .row.mt-3
-            
+            .row.mt-3.ex1
+                .col-md-5
+                    .common.c2
+                        numbers(c=2 smaller) Horizontales
+                        - var arrA = []
+                        - arrA.push('<strong>1.</strong> Las ')
+                        - arrA.push(['universidades'])
+                        - arrA.push(' sirven para formar profesionistas de diversas disciplinas, esto ha contribuido al desarrollo económico y social del país.<br>')
 
+                        - arrA.push('<strong>2.</strong> A principios del siglo XX, uno de los principales problemas en la sociedad era la falta de ')
+                        - arrA.push(['educación'])
+                        - arrA.push('.<br>')
+                        
+                        - arrA.push('<strong>3.</strong> La educación ')
+                        - arrA.push(['indígena'])
+                        - arrA.push(' fue un aspecto que se descuidó en el país.')
+
+                        +parrafo(0, arrA, 'c2')
+
+                .col-md-7
+                    .common.c3
+                        numbers(c=3 smaller) Verticales
+                        - var arrB = []
+                        - arrB.push('<strong>1.</strong> En 1959 se establecieron los Libros de ')
+                        - arrB.push(['texto'])
+                        - arrB.push(' Gratuitos. <br>')
+                        
+                        - arrB.push('<strong>2.</strong> Se consideraba delito de ')
+                        - arrB.push(['disolución'])
+                        - arrB.push(' social cuando se hablaba de forma oral o escrita en contra de la soberanía del país. <br>')
+                        
+                        - arrB.push('<strong>3.</strong> La Secretaría de Educación Pública ')
+                        - arrB.push(['SEP', '(', ')'])
+                        - arrB.push(' se fundó en 1921, y hasta la actualidad, se encarga de administrar los recursos públicos de la educación básica en todo el país. <br>')
+                        
+                        - arrB.push('<strong>4.</strong> El presidente ')
+                        - arrB.push(['Lázaro'])
+                        - arrB.push(' Cárdenas dio asilo a los refugiados de la guerra civil española. <br>')
+                        
+                        - arrB.push('<strong>5.</strong> La educación ')
+                        - arrB.push(['socialista'])
+                        - arrB.push(' convirtió la escuela en la transformación social y del desarrollo económico del país.')
+
+
+                        +parrafo(3, arrB, 'c3')
+
+            .row.mt-3.ex.centerrow
+                .col-md-8
+                    //PUG
+                    - var hor = []
+                    - var ver = []
+                    //[x,y,code,word, isexample]
+                    - hor.push([1, 5, '1', 'UNIVERSIDADES'])
+                    - hor.push([1, 9, '2', 'EDUCACIÓN'])
+                    - hor.push([3, 11, '3', 'INDÍGENA'])
+
+                    - ver.push([2, 7, '1', 'TEXTO'])
+                    - ver.push([4, 3, '2', 'DISOLUCIÓN'])
+                    - ver.push([8, 4, '3', 'SEP'])
+                    - ver.push([11, 1, '4', 'LÁZARO'])
+                    - ver.push([14, 4, '5', 'SOCIALISTA'])
+                    
+                    +crosswordmod(8, 14,14, hor, ver)
 
 
 

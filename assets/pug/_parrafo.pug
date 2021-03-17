@@ -5,8 +5,16 @@ mixin parrafo(indexvmodel, campos, initclass)
             if typeof field === 'object'
                 if typeof indexvmodel == 'string'
                     inputbox(v-model="d['"+indexvmodel+(vmcount)+"']" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
+                        if field[1]
+                            template(v-slot:before=""): span=field[1]
+                        if field[2]
+                            template(v-slot:after=""): span=field[2]
                 else
                     inputbox(v-model="r["+(vmcount)+"]" :ref="refCount()" @isright="right++" answer=field[0] type="text" placeh="-")
+                        if field[1]
+                            template(v-slot:before=""): span=field[1]
+                        if field[2]
+                            template(v-slot:after=""): span=field[2]
                 - vmcount++
             else 
                 span !{field}

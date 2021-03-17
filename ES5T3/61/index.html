@@ -32,11 +32,16 @@
       <div class="row mt-3 ex1 centerrow">
         <div class="col-md-9">
           <div class="parrafoinputs"><span>En este reporte se presentarán datos sobre las personas que necesitan usar lentes. <br></span><span>En tres escuelas se aplicó una encuesta a cien personas, de las cuales fueron tres directores, quince maestros y ochenta y dos niños. <br></span>
-            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Primero" type="text" placeh="-"></inputbox><span> se aplicó a los niños y después a las personas adultas. <br></span><span>Una mínima parte no asistió y, </span>
-            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="como" type="text" placeh="-"></inputbox><span> era de esperarse, no fueron encuestados. <br></span>
-            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Por otro lado" type="text" placeh="-"></inputbox><span>, los directores fueron un gran apoyo para lograr el éxito en esta investigación. <br></span><span>La mayoría de los niños no sabía si necesitaba lentes. </span>
-            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Asimismo" type="text" placeh="-"></inputbox><span>, las maestras desconocían los problemas visuales de sus alumnos. <br></span>
-            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Finalmente" type="text" placeh="-"></inputbox><span>, registramos los resultados para poder identificar la problemática que existe en nuestra comunidad escolar.</span>
+            <inputbox v-model="r[0]" :ref="refCount()" @isright="right++" answer="Primero" type="text" placeh="-">
+            </inputbox><span> se aplicó a los niños y después a las personas adultas. <br></span><span>Una mínima parte no asistió y, </span>
+            <inputbox v-model="r[1]" :ref="refCount()" @isright="right++" answer="como" type="text" placeh="-">
+            </inputbox><span> era de esperarse, no fueron encuestados. <br></span>
+            <inputbox v-model="r[2]" :ref="refCount()" @isright="right++" answer="Por otro lado" type="text" placeh="-">
+            </inputbox><span>, los directores fueron un gran apoyo para lograr el éxito en esta investigación. <br></span><span>La mayoría de los niños no sabía si necesitaba lentes. </span>
+            <inputbox v-model="r[3]" :ref="refCount()" @isright="right++" answer="Asimismo" type="text" placeh="-">
+            </inputbox><span>, las maestras desconocían los problemas visuales de sus alumnos. <br></span>
+            <inputbox v-model="r[4]" :ref="refCount()" @isright="right++" answer="Finalmente" type="text" placeh="-">
+            </inputbox><span>, registramos los resultados para poder identificar la problemática que existe en nuestra comunidad escolar.</span>
           </div>
         </div>
         <div class="col-md"><img class="img-fluid" :src="'aimg/'+'girl'+'.png'"/></div>
