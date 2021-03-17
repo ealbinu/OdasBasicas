@@ -70,7 +70,7 @@
           </template>
           <div class="h3 mt-3">¿Cuáles ha enfrentado México?</div>
         </div>
-        <div class="col-6 mt-3">
+        <div class="col-md-6 mt-3">
           <div class="common c1 h4">Entre 1976 y<span>
               <template v-if="tempsobj.dd2">
                 <dropdowns v-model="d['dd2']" :ref="refCount()" @isright="right++" :options="tempsobj.dd2" alt="alt"></dropdowns>
@@ -88,7 +88,7 @@
               </template></span>
           </div>
         </div>
-        <div class="col-6 mt-3">
+        <div class="col-md-6 mt-3">
           <div class="common c3 h4">Entre<span>
               <template v-if="tempsobj.dd3">
                 <dropdowns v-model="d['dd3']" :ref="refCount()" @isright="right++" :options="tempsobj.dd3" alt="alt"></dropdowns>
