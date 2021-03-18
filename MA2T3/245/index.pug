@@ -1,32 +1,97 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
+- title = 'Confirmo lo que aprendí'
 - subtitle = ''
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            /*
-            .ex1 {}
-            */
-    body
+            .blank{border-bottom:2px solid var(--main);width:120px;display:inline-block}
+            .fr{display:inline-block;text-align:center;vertical-align:middle}
+            .choose .options div hr,.fr hr{borde:none;border-top:2px solid var(--sec);min-width:40px;margin:0}
+            .choose .options div{background:#f5f5f5;padding:6px;border-bottom:none;border-radius:6px}
+            .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
+            .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+            .choose .options div img{ max-width: 220px; border-radius: 6px; }
+            img{ display: block; margin: 0 auto; width: 100%; max-width: 380px; }
+            img.small{ max-width: 180px; }
+            img.big{ max-width: 80%; }
+            .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+            .choose .options div img{ max-width: 220px; border-radius: 6px; }
+        body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
             h1 #{title}
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
+            .instruccion.mt-5 Marca la respuesta correcta.
 
             .row.mt-3
+                .col-12
+                    template(v-for="(i, index) in temps")
+                        choose(:key="index" v-model="r[index]" :ref="refCount()" :num="(index+1)+'.'" :text="i.p" :options="i.ops" @isright="right++" :answer="i.ops[i.a]")
+
             
-
-
-
-
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                //app.$set(app.tempsobj, 'a', [])
+                app.$set(app, 'temps', [
+            
+                    {
+                        p: 'Es el número que se descompone en 5 centenas, 8 decenas y 9 unidades.',
+                        ops: ['589','859','985'],
+                        a:0
+                    },
+                    {
+                        p: 'Observa los siguientes objetos y selecciona la opción en la que se mencionan los productos de <strong>menor a mayor</strong> precio. <img src="aimg/2.png" class="big">',
+                        ops: ['Tenis, balón, playera.','Playera, tenis, balón.','Balón, playera, tenis.'],
+                        a:2
+                    },
+                    {
+                        p: '¿Cuál es la multiplicación con la que podemos obtener el mismo resultado de a siguiente suma? <img src="aimg/3.png">',
+                        ops: ['4 x 7 =','5 x 7 =','6 x 7 ='],
+                        a:1
+                    },
+                    {
+                        p: 'Selecciona la agrupación de canicas que equivale a la multiplicación <strong>3 × 5=</strong>.',
+                        ops: ['<img src="aimg/4a.png">','<img src="aimg/4b.png">','<img src="aimg/4c.png">'],
+                        a:1
+                    },
+                    {
+                        p: '¿Cuántos triángulos caben en el octágono? <img src="aimg/5.png" class="small">',
+                        ops: ['4 triángulos.','6 triángulos.','8 triángulos.'],
+                        a:2
+                    },
+                    
+       
+                    
+                    /*
+                    {
+                        p: '',
+                        ops: [''],
+                        a:0
+                    },
+                    */
+                    
+                ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
