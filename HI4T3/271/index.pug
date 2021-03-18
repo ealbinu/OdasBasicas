@@ -1,8 +1,8 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'titulo'
-- subtitle = ''
+- title = 'Continuamos la resistencia insurgente'
+- subtitle = 'La consumación de la Independencia'
 
 <!DOCTYPE html>
 html(lang="es")
@@ -17,16 +17,46 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 INSTRUCCIONES
-
-            .row.mt-3
+            .instruccion.mt-5 Marca la respuesta correcta. Consulta las páginas 176 y 177 de tu libro de texto SEP.
             
+            .row.mt-3.ex1
+                .col
+                    choose(v-model="r[0]" :ref="refCount()" :num="'1.'" text="Redujeron los poderes del rey, establecieron la igualdad de todos ante la ley y eliminaron el tributo que pagaban los indígenas." :options="['Las Cortes de Cádiz.','Los Tratados de Córdoba.','Las monarquías españolas.']" @isright="right++" :answer-num="0")
+                    choose(v-model="r[1]" :ref="refCount()" :num="'2.'" text="Documento firmado por Vicente Guerrero y Agustín de Iturbide para terminar la guerra de Independencia." :options="['Los Tratados de Córdoba.','El Plan de Iguala.','La Constitución de Cádiz.']" @isright="right++" :answer-num="1")
+                    choose(v-model="r[2]" :ref="refCount()" :num="'3.'" text="Tras su firma se reconoció la Independencia de México." :options="['Los Tratados de Córdoba.','El Plan de Iguala.','La Constitución de Cádiz.']" @isright="right++" :answer-num="0")
 
+            .instruccion.mt-5 Une con líneas de colores cada personaje histórico con la descripción que corresponda. Consulta las páginas 175 a 177 de tu libro de texto SEP.
 
-
+            .row.mt-3.ex2
+                .col
+                    relational(v-if="tempsobj.sources" v-model="d['rela']" :ref="refCount()" @isright="right++" :sources="tempsobj.sources" :targets="tempsobj.targets" :oks="tempsobj.oks")
+                        template(v-slot:source="{source}"): .common.c3 {{source}}
+                        template(v-slot:target="{target}"): .common.c1 {{target}}
+                    
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
                 //app.$set(app.tempsobj, 'a', [])
+                app.$set(app.tempsobj, 'sources', [
+                    'Fernando VII',
+                    'Albino García',
+                    'Vicente Guerrero',
+                    'Agustín de Iturbide',
+                    'Juan O\'Donojú',
+                ])
+                app.$set(app.tempsobj, 'targets', [
+                    'Siguió la lucha de Hidalgo y Morelos. Logró la consumación de la Independencia.',
+                    'Entró a la Ciudad de México el 27 de septiembre de 1821 al frente del Ejército de las Tres Garantías.',
+                    'Rey que desconoció la Constitución de Cádiz.',
+                    'Fue conocido como "el Coco de los realistas" por sus ataques certeros y triunfos constantes.',
+                    'Último virrey en gobernar Nueva España.'
+                ])
+                app.$set(app.tempsobj, 'oks', [
+                    ['s_0', 't_2'],
+                    ['s_1', 't_3'],
+                    ['s_2', 't_0'],
+                    ['s_3', 't_1'],
+                    ['s_4', 't_4'],
+                ])

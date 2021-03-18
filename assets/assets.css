@@ -1130,6 +1130,13 @@ input[type=number] {
   background: transparent;
   border: 4px solid var(--pastel1);
 }
+@media (max-width: 680px) {
+  .common {
+    font-size: 0.6rem;
+    padding: 6px;
+    border-radius: 6px;
+  }
+}
 .common .choose {
   margin: 0;
   padding: 0;
