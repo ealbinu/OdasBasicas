@@ -8559,6 +8559,28 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/ES4T3\/81\/aimg\/a.png": {
+		"ft": 32768,
+		"iS": 1279320,
+		"oA": 0,
+		"oAP": "\/ES4T3\/81\/aimg\/a.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/ES4T3\/81\/aimg\/sector2.png": {
+		"ft": 32768,
+		"iS": 102615,
+		"oA": 0,
+		"oAP": "\/ES4T3\/81\/aimg\/sector2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/ES4T3\/81\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -17097,6 +17119,17 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/MA2T3\/245\/aimg\/2.png": {
+		"ft": 32768,
+		"iS": 165740,
+		"oA": 0,
+		"oAP": "\/MA2T3\/245\/aimg\/2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/MA2T3\/245\/aimg\/2a.png": {
 		"ft": 32768,
 		"iS": 59307,
@@ -17182,17 +17215,6 @@
 		"oF": 0,
 		"oIPL": 1,
 		"opt": 1,
-		"oT": 1,
-		"q": 100
-		},
-	"\/MA2T3\/245\/aimg\/Captura de Pantalla 2021-03-18 a la(s) 10.43.28.png": {
-		"ft": 32768,
-		"iS": 165740,
-		"oA": 0,
-		"oAP": "\/MA2T3\/245\/aimg\/Captura de Pantalla 2021-03-18 a la(s) 10.43.28.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
