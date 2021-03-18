@@ -114,15 +114,16 @@ html(lang="es")
             .instruccion.mt-5 Anota las calificaciones en orden ascendente. Después escribe la moda en el recuadro.
             
             .row.mt-3.ex1a.sec.centerrow
-                inputbox(type="number" :answer="6" example)
-                    template(v-slot:after=""):  numbers(c=1 smaller) ,
+                numbers(smaller) 6
+                numbers(c=1 smaller) ,
                 template(v-for="(i, index) in tempsobj.b")
-                    inputbox(v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
+                    inputbox(v-model="d['bb'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
                         template(v-slot:after="")
                             template(v-if="index<tempsobj.a.length-1"): numbers(c=1 smaller) ,
-                inputbox(type="number" :answer="10" example)
+                numbers(smaller) 10
 
-            .row.mt-1.sec.centerrow
+
+            .row.mt-3.sec.centerrow
                 .col: inputbox(v-model="d['moda']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8")
                     template(v-slot:before=""): numbers(c=4 smaller) Moda = 
 

@@ -170,13 +170,10 @@
       </div>
       <div class="instruccion mt-5">Anota las calificaciones en orden ascendente. Después escribe la moda en el recuadro.</div>
       <div class="row mt-3 ex1a sec centerrow">
-        <inputbox type="number" :answer="6" example="example">
-          <template v-slot:after="">
-            <numbers c="1" smaller="smaller">,</numbers>
-          </template>
-        </inputbox>
+        <numbers smaller="smaller">6</numbers>
+        <numbers c="1" smaller="smaller">,</numbers>
         <template v-for="(i, index) in tempsobj.b">
-          <inputbox v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i">
+          <inputbox v-model="d['bb'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i">
             <template v-slot:after="">
               <template v-if="index&lt;tempsobj.a.length-1">
                 <numbers c="1" smaller="smaller">,</numbers>
@@ -184,9 +181,9 @@
             </template>
           </inputbox>
         </template>
-        <inputbox type="number" :answer="10" example="example"></inputbox>
+        <numbers smaller="smaller">10</numbers>
       </div>
-      <div class="row mt-1 sec centerrow">
+      <div class="row mt-3 sec centerrow">
         <div class="col">
           <inputbox v-model="d['moda']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8">
             <template v-slot:before="">
