@@ -4,23 +4,197 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>titulo</title>
+    <title>Encuentro la media y la moda</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../assets/font/stylesheet.css"/>
     <link rel="stylesheet" href="../../assets/assets.css"/>
     <style>
-      /*
-      .ex1 {}
-      */
+      .ex1a .ib2 {
+          max-width: 40px;
+      }
+      .ex1a .ib2 input {
+          border-radius: 6px;
+          padding: 2px;
+          font-size: 1rem;
+      }
+      .ex1a .ib2.total {
+          max-width: 100px;
+      }
+      .ex1a .ib2.total input {
+          border-color: var(--rightcol);
+          font-size: 1.2rem;
+      }
+      .common.division {
+          max-width: 260px;
+          margin: 0 auto;
+          padding: 10px 20px;
+          text-align: center;
+      }
+      .common.division .row {
+          margin: 0;
+      }
+      .common.division .ib2 input {
+          border-radius: 4px;
+      }
+      .common.division .nobr {
+          border-top: 4px solid transparent;
+      }
+      .common.division .brd {
+          border-left: 4px solid var(--main);
+          border-top: 4px solid var(--main);
+      }
+      .common.division .brd2 {
+          border-top: 4px solid var(--main);
+      }
+      .sec .inp_example .numbers {
+          background: var(--pastel2);
+          font-size: 1.2rem;
+          padding: 0 6px;
+          border-radius: 4px;
+      }
+      
+      
+      
     </style>
   </head>
   <body>
     <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s" id="app">
-      <h1>titulo</h1>
-      <div class="instruccion mt-5">INSTRUCCIONES</div>
-      <div class="row mt-3"></div>
+      <h1>Encuentro la media y la moda</h1>
+      <div class="instruccion mt-5">Encuentra el promedio en las calificaciones que obtuvieron los alumnos de 5º en el examen final de Matemáticas.</div>
+      <recuadropalabras :palabras="tempsobj.a" c="4"></recuadropalabras>
+      <div class="row mt-3 ex1">
+        <div class="col">
+          <div class="h4">Para obtener el promedio:</div>
+          <div class="common c3 ex1a">
+            <labeltext>Suma:</labeltext>
+            <div class="row wrap centerrow">
+              <template v-for="(i, index) in tempsobj.a">
+                <inputbox v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i">
+                  <template v-slot:after="">
+                    <template v-if="index&lt;tempsobj.a.length-1">
+                      <numbers c="1" smaller="smaller">+</numbers>
+                    </template>
+                  </template>
+                </inputbox>
+              </template>
+              <inputbox v-model="d['aRes']" initclass="ib2 total" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="123">
+                <template v-slot:before="">
+                  <numbers c="5" small="small"> = </numbers>
+                </template>
+              </inputbox>
+            </div>
+          </div>
+          <div class="common c2 mt-1">
+            <labeltext>Divide:</labeltext>
+            <div class="common c2 division">
+              <div class="row division no-gutters">
+                <div class="col-6">&nbsp;</div>
+                <div class="col-6">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <inputbox v-model="r[0]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8"></inputbox>
+                    </div>
+                    <div class="col">
+                      <numbers c="2" smaller="smaller">.</numbers>
+                    </div>
+                    <div class="col">
+                      <inputbox v-model="r[1]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="2"></inputbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row division no-gutters">
+                <div class="col-4 nobr">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <inputbox v-model="r[2]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="1"></inputbox>
+                    </div>
+                    <div class="col">
+                      <inputbox v-model="r[3]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="5"></inputbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 brd">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <inputbox v-model="r[4]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="1"></inputbox>
+                    </div>
+                    <div class="col">
+                      <inputbox v-model="r[5]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="2"></inputbox>
+                    </div>
+                    <div class="col">
+                      <inputbox v-model="r[6]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="3"></inputbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 brd2">&nbsp;</div>
+              </div>
+              <div class="row division no-gutters">
+                <div class="col-8">&nbsp;</div>
+                <div class="col-4">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <inputbox v-model="r[7]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="3"></inputbox>
+                    </div>
+                    <div class="col">
+                      <inputbox v-model="r[8]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="0"></inputbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row division no-gutters">
+                <div class="col-10">&nbsp;</div>
+                <div class="col-2">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <inputbox v-model="r[9]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="0"></inputbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="common c4 ex3 mt-1">
+            <div class="row"> 
+              <div class="col-6">
+                <labeltext>Promedio o media:</labeltext>
+              </div>
+              <div class="col-6">
+                <inputbox v-model="r[10]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8.2"></inputbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instruccion mt-5">Anota las calificaciones en orden ascendente. Después escribe la moda en el recuadro.</div>
+      <div class="row mt-3 ex1a sec centerrow">
+        <inputbox type="number" :answer="6" example="example">
+          <template v-slot:after="">
+            <numbers c="1" smaller="smaller">,</numbers>
+          </template>
+        </inputbox>
+        <template v-for="(i, index) in tempsobj.b">
+          <inputbox v-model="d['b'+index]" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="i">
+            <template v-slot:after="">
+              <template v-if="index&lt;tempsobj.a.length-1">
+                <numbers c="1" smaller="smaller">,</numbers>
+              </template>
+            </template>
+          </inputbox>
+        </template>
+        <inputbox type="number" :answer="10" example="example"></inputbox>
+      </div>
+      <div class="row mt-1 sec centerrow">
+        <div class="col">
+          <inputbox v-model="d['moda']" initclass="ib2" :ref="refCount()" @isright="right++" type="number" placeh="#" :answer="8">
+            <template v-slot:before="">
+              <numbers c="4" smaller="smaller">Moda = </numbers>
+            </template>
+          </inputbox>
+        </div>
+      </div>
       <finalize @evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total"></finalize>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
@@ -41,6 +215,9 @@
     <script src="../../assets/modulos/finalize.js"></script>
     <script src="../../assets/modulos/utils.js"></script>
     <script src="../../assets/assets.js"></script>
-    <script>//app.$set(app.tempsobj, 'a', [])</script>
+    <script>
+      app.$set(app.tempsobj, 'a', [8, 9, 6, 8, 8, 9, 7, 6, 10, 8, 9, 8, 10, 9, 8])
+      app.$set(app.tempsobj, 'b', [6 , 7 , 8 , 8 , 8 , 8 , 8 , 8 , 9 , 9 , 9 , 9 , 10])
+    </script>
   </body>
 </html>
