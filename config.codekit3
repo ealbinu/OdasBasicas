@@ -8603,11 +8603,11 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/ES4T3\/81\/aimg\/Captura de Pantalla 2021-03-23 a la(s) 14.45.59.png": {
+	"\/ES4T3\/81\/aimg\/tecuento.png": {
 		"ft": 32768,
 		"iS": 81122,
 		"oA": 0,
-		"oAP": "\/ES4T3\/81\/aimg\/Captura de Pantalla 2021-03-23 a la(s) 14.45.59.png",
+		"oAP": "\/ES4T3\/81\/aimg\/tecuento.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -18255,6 +18255,28 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/MA3T3\/183\/aimg\/12a.png": {
+		"ft": 32768,
+		"iS": 21442,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/12a.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T3\/183\/aimg\/12b.png": {
+		"ft": 32768,
+		"iS": 21554,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/12b.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/MA3T3\/183\/aimg\/3.png": {
 		"ft": 32768,
 		"iS": 49135,
@@ -18304,6 +18326,50 @@
 		"iS": 8308,
 		"oA": 0,
 		"oAP": "\/MA3T3\/183\/aimg\/8c.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T3\/183\/aimg\/9a.png": {
+		"ft": 32768,
+		"iS": 17264,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/9a.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T3\/183\/aimg\/9b.png": {
+		"ft": 32768,
+		"iS": 17661,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/9b.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T3\/183\/aimg\/9c.png": {
+		"ft": 32768,
+		"iS": 17607,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/9c.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/MA3T3\/183\/aimg\/Captura de Pantalla 2021-03-23 a la(s) 14.56.22.png": {
+		"ft": 32768,
+		"iS": 21416,
+		"oA": 0,
+		"oAP": "\/MA3T3\/183\/aimg\/Captura de Pantalla 2021-03-23 a la(s) 14.56.22.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,

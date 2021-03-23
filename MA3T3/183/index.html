@@ -18,6 +18,7 @@
       .choose .options div.active{border:2px solid var(--main);background:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.1)}
       .choose .options div{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
       .choose .options div img{ max-width: 220px; border-radius: 6px; }
+      .choose .options div img.small{ max-width: 140px !important; }
       img{ display: block; margin: 0 auto; width: 100%; max-width: 380px; }
       img.small{ max-width: 180px; }
       img.big{ max-width: 80%; }
@@ -95,11 +96,45 @@
           {
               p: '¿Cuál de los siguientes ángulos es obtuso?',
               ops: ['<img src="aimg/8a.png">','<img src="aimg/8b.png">','<img src="aimg/8c.png">'],
-              a:1
+              a:0
           },
           
           
-      
+          {
+              p: '¿En cuál de las siguientes figuras la parte sombreada representa <div class=fr>4<hr>6</div>?',
+              ops: ['<img src="aimg/9a.png" class=small>','<img src="aimg/9b.png" class=small>','<img src="aimg/9c.png" class=small>'],
+              a:0
+          },
+          {
+              p: 'Araceli partió un queso en 10 partes iguales y le regaló <div class=fr>3<hr>10</div> a su tía, <div class=fr>4<hr>10</div> a su mamá y el resto se lo regaló a su hermano. ¿Qué cantidad de queso le tocó a su hermano?',
+              ops: ['<div class=fr>2<hr>10</div> de queso.', '<div class=fr>3<hr>10</div> de queso.', '<div class=fr>4<hr>10</div> de queso.'],
+              a:1
+          },
+          {
+              p: 'Hugo fue a la tienda y compró 1 kg de azúcar, cuando llegó a su casa se dio cuenta de que la bolsa de azúcar estaba rota y había tirado <div class=fr>3<hr>8</div> kg. ¿Qué cantidad de azúcar le quedó?',
+              ops: ['<div class=fr>7<hr>8</div> de azúcar.', '<div class=fr>6<hr>8</div> de azúcar.', '<div class=fr>5<hr>8</div> de azúcar.'],
+              a:2
+          },
+          {
+              p: '¿En cuál de los siguientes ejemplos el resultado es <div class=fr>3<hr>8</div>?',
+              ops: ['<img src="aimg/12a.png">','<img src="aimg/12b.png">','<img src="aimg/12c.png">'],
+              a:2
+          },
+          {
+              p: 'Roberto tiene 85 canicas y las quiere repartir entre sus 9 amigos en cantidades iguales. ¿Cuántas canicas les tocará a cada uno de sus amigos y cuántas sobrarán?',
+              ops: ['9 y sobran 4.','7 y sobran 6.','8 y sobran 3.'],
+              a:0
+          },
+          {
+              p: 'Marcela tiene $56 y quiere comprar jícamas. Si cada bolsita de jícama cuesta $8, ¿cuántas bolsitas puede comprar?',
+              ops: ['6 bolsitas.','7 bolsitas.','8 bolsitas.'],
+              a:1
+          },
+          {
+              p: 'En un salón hay 5 filas de 8 alumnos cada una y la maestra les pide que formen 4 equipos con el mismo número de integrantes. ¿Cuántos alumnos habrá en cada equipo?',
+              ops: ['8 alumnos.','9 alumnos.','10 alumnos.'],
+              a:2
+          },
           
           /*
           {
