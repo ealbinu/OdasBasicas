@@ -64,8 +64,12 @@ Vue.component('choose', {
             this.clicked(this.options[this.autoSelectNum], false)
         }
     },
+    //"choose" :class="setclass + ' ' + (initclass?initclass:' ')"
     template: `
-        <div class="choose" :class="setclass + ' ' + (initclass?initclass:' ')">
+        <div :class="['choose',
+            (initclass?initclass:''),
+            (status?status:'')
+        ]">
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
             <div class="label"><strong v-if="num">{{num}}</strong> <span v-html="text"></span></div>
             <div class="options">

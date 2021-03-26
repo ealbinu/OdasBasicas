@@ -38,6 +38,60 @@ html(lang="es")
             .ex2 .check .checktext {
                 display: none;
             }
+            .ex6 .parrafoinputs {
+                display: flex;
+                justify-content: center;
+            }
+            .ex6 .inputbox {
+                margin: 0 4px;
+            }
+            .ex6 .inputbox input {
+                max-width: 60px;
+            }
+            .ex10 .choose .label img{
+                max-width: 100% !important;
+            }
+            .ex10 .choose.s img {
+                border: 4px solid var(--main);
+                border-radius: 2px;
+            }
+            .ex10 .choose.c img {
+                border: 4px solid var(--main);
+                border-radius: 50%;
+            }
+            .ex10 .options div {
+                border: none;
+                vertical-align: middle;
+                color: var(--sec);
+                padding: 0;
+                line-height: 12px;
+            }
+            .ex10 .options div.active {
+                border: none;
+            }
+            .ex10 .options div.active:nth-child(1) {
+                border-color: var(--main);
+            }
+            .ex10 .options div.active:nth-child(2) {
+                border-color: var(--main);
+            }
+            .ex10 .options div:nth-child(1) {
+                width: 16px;
+                height: 16px;
+                border: 2px solid var(--sec);
+                text-indent: -999px;
+                overflow: hidden;
+            }
+            .ex10 .options div:nth-child(2) {
+                width: 16px;
+                height: 16px;
+                border: 2px solid var(--sec);
+                text-indent: -999px;
+                overflow: hidden;
+                border-radius: 50%;
+            }
+
+
 
     body
         #app.container.my-5.animate__animated.animate__fadeIn.animate__delay-1s
@@ -66,7 +120,7 @@ html(lang="es")
                         template(v-slot:target="{target}"): numbers(c=4) {{target}}
 
 
-            .instruccion.mt-5 Marca así <checkmark></checkmark> la unidad que utilizarías para medir en cada caso.
+            .mt-3: labeltext(num="3.") Marca así <checkmark></checkmark> la unidad que utilizarías para medir en cada caso.
             .row.mt-3.ex2
                 .col-md-6
                     .row.centerrow
@@ -82,13 +136,60 @@ html(lang="es")
                             check(v-model="d['ex2'+4]" :ref="refCount()"  @isright="right++" :answer="false" initclass="withimg"): img(:src="'aimg/'+'db'+'.png'").img-fluid
 
 
-            .instruccion.mt-5 Escribe cuántos meses tiene un año.
+            .mt-3: labeltext(num="4.") Escribe cuántos meses tiene un año.
             .row.mt-3.ex3
                 .col: +parrafo(0, ['Un año tiene ', [12], 'meses.'])
             
-            .instruccion.mt-5 Escribe cuántos días tiene una semana. 
+            .mt-3: labeltext(num="5.") Escribe cuántos días tiene una semana. 
             .row.mt-3.ex3
                 .col: +parrafo(1, ['Una semana tiene ', [7], 'días.'])
+
+            .mt-3: labeltext(num="6.") Escribe los números que faltan.
+
+            .row.mt-3.ex6
+                .col-md-4
+                    labeltext El que sigue.
+                    .col: +parrafo(2, ['87 ', [88], ''], 'c2')
+                .col-md-4
+                    labeltext El que va en medio.
+                    .col: +parrafo(3, ['89 ', [90], ' 91'], 'c2')
+                .col-md-4
+                    labeltext El que va antes.
+                    .col: +parrafo(4, ['', [99], ' 100'], 'c2')
+
+            .mt-3: labeltext(num="7.") Identifica los siguientes números. 
+            .row.mt-3.ex3
+                .col: +parrafo(5, ['Tres decenas más ocho. ', [38]])
+                .col: +parrafo(6, ['Sesenta más siete. ', [67]])
+
+            
+            .mt-3: labeltext(num="8.") Escribe en cada recuadro el número que representan las columnas y los cubos sueltos.
+            .row.mt-3.ex8
+                .col-md-4: .common.br.mt-1
+                    img(:src="'aimg/'+'8a'+'.png'").img-fluid
+                    inputbox(v-model="d['ex8'+1]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="84" initclass="ib2")
+                .col-md-4: .common.br.mt-1
+                    img(:src="'aimg/'+'8b'+'.png'").img-fluid
+                    inputbox(v-model="d['ex8'+2]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="42" initclass="ib2")
+                .col-md-4: .common.br.mt-1
+                    img(:src="'aimg/'+'8c'+'.png'").img-fluid
+                    inputbox(v-model="d['ex8'+3]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="53" initclass="ib2")
+
+
+            .mt-3: labeltext(num="9.") Resuelve el siguiente problema descomponiendo las cantidades.
+            .common.c2
+                labeltext Juan, un pescador, se adentró al lago de Pátzcuaro en su lancha. Lanzó su red y logró sacar 53 peces, volvió a lanzarla y pescó 45. ¿Cuántos peces pescó en total?
+                .mt-2: inputbox(v-model="d['ex9']" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="98" initclass="ib2")
+                    template(v-slot:after="") peces.
+            
+
+            .mt-3: labeltext(num="10.") Encierra con un círculo el objeto más pesado y con un rectángulo el más ligero.
+
+            .row.mt-3.ex10
+                .col-md-3: choose(v-model="d['ex10'+1]" :ref="refCount()" :options="['s', 'c', 'x']" text="<img src=aimg/10a.png class=img-fluid>" @isright="right++" :answer-num="0"  :auto-select-num="2")
+                .col-md-3: choose(v-model="d['ex10'+2]" :ref="refCount()" :options="['s', 'c', 'x']" text="<img src=aimg/10b.png class=img-fluid>" @isright="right++" :answer-num="2" :auto-select-num="2")
+                .col-md-3: choose(v-model="d['ex10'+3]" :ref="refCount()" :options="['s', 'c', 'x']" text="<img src=aimg/10c.png class=img-fluid>" @isright="right++" :answer-num="1"  :auto-select-num="2")
+                .col-md-3: choose(v-model="d['ex10'+4]" :ref="refCount()" :options="['s', 'c', 'x']" text="<img src=aimg/10d.png class=img-fluid>" @isright="right++" :answer-num="2"  :auto-select-num="2")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")

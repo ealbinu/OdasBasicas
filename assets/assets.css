@@ -79,6 +79,9 @@ strong.right {
 .label {
   font-size: 1.2rem;
 }
+.label img {
+  max-width: 16px;
+}
 .label strong {
   font-family: 'barnacle_boyregular';
   font-weight: normal;
