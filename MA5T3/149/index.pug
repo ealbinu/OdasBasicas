@@ -1,55 +1,27 @@
 include ../../assets/pug/_head
 include ../../assets/pug/_scripts
 
-- title = 'Encuentro la media y la moda'
-- subtitle = 'Vamos por una beca / ¿A todos les va igual?'
+- title = 'Cambio unidades de medición'
+- subtitle = 'Equivalencias'
 
 <!DOCTYPE html>
 html(lang="es")
     +head
         style.
-            .ex1a .ib2 {
-                max-width: 40px;
-            }
-            .ex1a .ib2 input {
-                border-radius: 6px;
-                padding: 2px;
-                font-size: 1rem;
-            }
-            .ex1a .ib2.total {
-                max-width: 100px;
-            }
-            .ex1a .ib2.total input {
-                border-color: var(--rightcol);
-                font-size: 1.2rem;
-            }
-            .common.division {
-                max-width: 260px;
-                margin: 0 auto;
-                padding: 10px 20px;
+           .ex1 .parrafoinputs {
                 text-align: center;
+                padding: 20px 6px;
             }
-            .common.division .row {
-                margin: 0;
+            .ex1 .parrafoinputs .inputbox input {
+                max-width: 80px;
             }
-            .common.division .ib2 input {
-                border-radius: 4px;
+            .ex1 .parrafoinputs .inputbox .inp_example {
+                display: inline;
             }
-            .common.division .nobr {
-                border-top: 4px solid transparent;
-            }
-            .common.division .brd {
-                border-left: 4px solid var(--main);
-                border-top: 4px solid var(--main);
-            }
-            .common.division .brd2 {
-                border-top: 4px solid var(--main);
-            }
-            .sec .inp_example .numbers {
-                background: var(--pastel2);
-                font-size: 1.2rem;
-                padding: 0 6px;
-                border-radius: 4px;
+            .ex1 .parrafoinputs .inputbox .numbers {
+                display: inline;
+                font-size: 1.4rem;
+                color: var(--sec);
             }
 
 
@@ -60,77 +32,36 @@ html(lang="es")
             if subtitle.length>1
                 h2 #{subtitle}
 
-            .instruccion.mt-5 Encuentra el promedio en las calificaciones que obtuvieron los alumnos de 5º en el examen final de Matemáticas.
-
-            recuadropalabras(:palabras="tempsobj.a" c=4)
-
+            .instruccion.mt-5 Completa las siguientes conversiones. Observa el ejemplo.
+            
             .row.mt-3.ex1
+                .col-md-6.mt-2
+                        .parrafoinputs.c2
+                            inputbox(:answer="900" example)
+                                template(v-slot:before="") 90 000 dam = 
+                                template(v-slot:after="") km
+                template(v-for="(i, index) in tempsobj.a")
+                    .col-md-6.mt-2
+                        .parrafoinputs.c2
+                            inputbox(v-model="d['a'+index]" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i.v")
+                                template(v-slot:before="") {{i.b}}
+                                template(v-slot:after="") {{i.a}}
+
+
+            .instruccion.mt-5 Lee el problema y marca la respuesta correcta.
+
+            .row.mt-3.ex2
                 .col
-                    .h4 Para obtener el promedio:
-                    .common.c3.ex1a
-                        labeltext() Suma:
-                        .row.wrap.centerrow
-                            template(v-for="(i, index) in tempsobj.a")
-                                inputbox(v-model="d['a'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
-                                    template(v-slot:after="")
-                                        template(v-if="index<tempsobj.a.length-1"): numbers(c=1 smaller) +
-                            inputbox(v-model="d['aRes']" initclass="ib2 total" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="123")
-                                template(v-slot:before=""): numbers(c=5 small)  = 
-                
-                    .common.c2.mt-1
-                        labeltext() Divide:
-                        .common.c2.division
-                            .row.division.no-gutters
-                                .col-6 &nbsp;
-                                .col-6: .row.no-gutters
-                                    .col: inputbox(v-model="r[0]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8")
-                                    .col: numbers(c=2 smaller) .
-                                    .col: inputbox(v-model="r[1]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="2")
-                            .row.division.no-gutters
-                                .col-4.nobr: .row.no-gutters
-                                    .col: inputbox(v-model="r[2]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="1")
-                                    .col: inputbox(v-model="r[3]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="5")
-                                .col-6.brd: .row.no-gutters
-                                    .col: inputbox(v-model="r[4]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="1")
-                                    .col: inputbox(v-model="r[5]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="2")
-                                    .col: inputbox(v-model="r[6]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="3")
-                                .col-2.brd2 &nbsp;
-                            .row.division.no-gutters
-                                .col-8 &nbsp;
-                                .col-4: .row.no-gutters
-                                    .col: inputbox(v-model="r[7]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="3")
-                                    .col: inputbox(v-model="r[8]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="0")
-
-                            .row.division.no-gutters
-                                .col-10 &nbsp;
-                                .col-2: .row.no-gutters
-                                    .col: inputbox(v-model="r[9]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="0")
-                    .common.c4.ex3.mt-1
-                        .row 
-                            .col-6: labeltext() Promedio o media:
-                            .col-6: inputbox(v-model="r[10]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8.2")
-            
-            
-            .instruccion.mt-5 Anota las calificaciones en orden ascendente. Después escribe la moda en el recuadro.
-            
-            .row.mt-3.ex1a.sec.centerrow
-                numbers(smaller) 6
-                numbers(c=1 smaller) ,
-                template(v-for="(i, index) in tempsobj.b")
-                    inputbox(v-model="d['bb'+index]" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="i")
-                        template(v-slot:after="")
-                            template(v-if="index<tempsobj.a.length-1"): numbers(c=1 smaller) ,
-                numbers(smaller) 10
-
-
-            .row.mt-3.sec.centerrow
-                .col: inputbox(v-model="d['moda']" initclass="ib2" :ref="refCount()" @isright="right++"  type="number" placeh="#" :answer="8")
-                    template(v-slot:before=""): numbers(c=4 smaller) Moda = 
-
+                    choose(v-model="r[0]" :ref="refCount()" text="Santiago quiere ir a la casa de Israel, pero su carro sólo tiene gasolina para viajar 12 km. Si Santiago vive a 198 hm de la casa de Israel, ¿cuántos hm le faltarían para llegar con la gasolina que tiene?" :options="['78 hm','186 hm','78 km']" @isright="right++" :answer-num="0")
 
 
             finalize(@evaluate="finalizar" @reset="reset" :resultado="resultado" :right="right" :total="total")
         +scripts
             script.
-                app.$set(app.tempsobj, 'a', [8, 9, 6, 8, 8, 9, 7, 6, 10, 8, 9, 8, 10, 9, 8])
-                app.$set(app.tempsobj, 'b', [6 , 7 , 8 , 8 , 8 , 8 , 8 , 8 , 9 , 9 , 9 , 9 , 10])
+                app.$set(app.tempsobj, 'a', [
+                    {b: '7m = ', v: 700, a: 'cm' },
+                    {b: '', v: 6000, a: 'm = 6 k' },
+                    {b: '', v: 900, a: 'dm = 90 m' },
+                    {b: '30 000 m = ', v: 30, a: 'km' },
+                    {b: '8 000 mm = ', v: 8, a: 'm' },
+                ])
