@@ -7,7 +7,8 @@ Vue.component('dropdowns', {
             result: false,
             answers: [],
             uuid: 0,
-            altopen: []
+            altopen: [],
+            firstClick: false
         }
     },
     computed:{
@@ -59,6 +60,10 @@ Vue.component('dropdowns', {
         altclick (in1, in2, opt){
             this.$set(this.answers,in1,opt)
             this.altopen[in1] = false
+        },
+        arrowclick (altopen, index, bol) {
+            this.$set(altopen,index,bol)
+            this.firstClick = true
         }
     },
     mounted () {
@@ -79,7 +84,10 @@ Vue.component('dropdowns', {
                 <template v-if="alt!=undefined">
                     <div>
                         <div class="alt-opt">{{answers[index]}}</div>
-                        <div class="alt-arrow" @click="$set(altopen,index,true)" v-if="!altopen[index] && !evaluate"></div>
+                        <div :class="[
+                            'alt-arrow',
+                            (!firstClick ? 'animate__animated animate__heartBeat animate__infinite' : '')
+                            ]" @click="arrowclick(altopen,index,true)" v-if="!altopen[index] && !evaluate"></div>
                         <div class="alt-options" v-if="altopen[index]">
                             <div class="alt-option" v-for="(opt, index2) in i.options" @click="altclick(index, index2, opt)">
                                 {{opt}}
