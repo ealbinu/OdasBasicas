@@ -19,6 +19,14 @@ Vue.component('choose', {
         }
     },
     methods: {
+        slugy(Text)
+        {
+            return Text
+                .toLowerCase()
+                .replace(/ /g,'_')
+                .replace(/[^\w-]+/g,'')
+                ;
+        },
         clicked (op, playsound) {
             if(this.evaluate) {
                 return false
@@ -68,7 +76,7 @@ Vue.component('choose', {
     template: `
         <div :class="['choose',
             (initclass?initclass:''),
-            (status?status:'')
+            (status?slugy(status):'')
         ]">
             <div class="result" v-if="evaluate" :class="setclass + ' animate__animated animate__heartBeat'"></div>
             <div class="label"><strong v-if="num">{{num}}</strong> <span v-html="text"></span></div>
