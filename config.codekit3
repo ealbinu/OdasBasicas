@@ -36,6 +36,16 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"\/assets\/aimg\/closebutton.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/assets\/aimg\/closebutton.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
 	"\/assets\/aimg\/dropdownicon.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -71,6 +81,16 @@
 		"miP": 0,
 		"oA": 2,
 		"oAP": "\/assets\/aimg\/markex.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/assets\/aimg\/playbutton.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/assets\/aimg\/playbutton.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
@@ -16510,7 +16530,7 @@
 		},
 	"\/MA2T2\/210\/aimg\/b1.png": {
 		"ft": 32768,
-		"iS": 52068,
+		"iS": 6400,
 		"oA": 0,
 		"oAP": "\/MA2T2\/210\/aimg\/b1.png",
 		"oF": 0,
@@ -16521,7 +16541,7 @@
 		},
 	"\/MA2T2\/210\/aimg\/b2.png": {
 		"ft": 32768,
-		"iS": 47511,
+		"iS": 5427,
 		"oA": 0,
 		"oAP": "\/MA2T2\/210\/aimg\/a3.png",
 		"oF": 0,
