@@ -57,7 +57,7 @@ Vue.component('imgbg', {
 
 
 Vue.component('embedvideo', {
-    props: ['url', 'title'],
+    props: ['urlid', 'title'],
     data () { return {
         openvideo: false
     }},

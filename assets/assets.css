@@ -1153,6 +1153,7 @@ input[type=number] {
 }
 /* embed video mod */
 .embedvideo {
+  text-align: center;
   display: flex;
   justify-content: center;
   cursor: pointer;
